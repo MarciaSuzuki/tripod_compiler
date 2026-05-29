@@ -1,0 +1,28 @@
+{
+  "name": "tripod-compiler",
+  "version": "0.1.0",
+  "description": "Upstream artifact-production toolchain for the Tripod Method. Slice 1: spec loader + drift-check, Obsidian reader, profile-aware 3-layer validator (tripod validate).",
+  "type": "module",
+  "bin": {
+    "tripod": "./dist/cli/tripod.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "tripod": "tsx src/cli/tripod.ts",
+    "validate": "tsx src/cli/tripod.ts validate",
+    "check-drift": "tsx src/cli/tripod.ts check-drift",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

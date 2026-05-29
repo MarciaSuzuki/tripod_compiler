@@ -8,9 +8,10 @@ Map against it.
 
 ## Source of truth: vendor + pin + drift-check (decision A)
 
-- `validation-rules.json` — **vendored, pinned by version + sha256**. Current pin: **`v0.5`**,
-  sha256 `a326dbdd2601089851907c2025517a7f3b076a9432d380e00487ee0ec76f1b4a` (see
-  [`../SPEC_CHANGES.md`](../SPEC_CHANGES.md)).
+- `validation-rules.json` — **vendored, pinned by version + sha256**. Current pin: **`v0.6`**,
+  sha256 `b024e0ea40771ba4a169b936ce57f05686e5333485d937cbed97a80e0d14de3a`. All four schema pins
+  live in [`pins.json`](pins.json); the full table + rationale is in
+  [`../SPEC_CHANGES.md`](../SPEC_CHANGES.md).
 - Do **not** hand-edit the vendored copy. Every vocabulary change is made in the wiki's
   canonical file as a **governed edit** recorded in `../SPEC_CHANGES.md`, then re-vendored and
   re-pinned (new version + new hash).
