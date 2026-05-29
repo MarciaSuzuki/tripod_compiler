@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tripod.example.org/ruth-pilot-2/bcd-delta-v0-4.schema.json",
+  "title": "BCD Delta",
+  "description": "Registry additions for one pericope, ready for promotion into the Book Character Database (BCD), Figure Registry, and Concept Bank. Extracted from canonical AUDIT.registry_additions in v0.3. Consumed by BCD-update tooling; not read by teams or the Seed Model.",
+  "version": "v0.4",
+  "tagset_version": "TRIPOD_STA_v2_0",
+  "date_locked": "2026-05-29",
+  "canonical_reference": {
+    "source": "Extracted from registry_additions field in canonical P01-Ruth-1-1-5-AUDIT.md. Field shapes (bcd_being_addition, bcd_place_addition, etc.) preserved exactly from validation-rules.json v0.3 $defs."
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tagset_version",
+    "bcd_delta_id",
+    "bcv",
+    "pericope_id",
+    "pericope_title",
+    "generated_at",
+    "source_meaning_map_ref",
+    "source_compilation_log_ref",
+    "to_bcd",
+    "to_figures_registry",
+    "to_concept_bank"
+  ],
+  "properties": {
+    "schema_version": { "const": "TRIPOD_BCD_DELTA_V1" },
+    "tagset_version": { "const": "TRIPOD_STA_v2_0" },
+    "bcd_delta_id": {
+      "type": "string",
+      "pattern": "^ruth_bcd_delta_\\d{2}_v\\d+_\\d+$"
+    },
+    "bcv": { "type": "string", "minLength": 1 },
+    "pericope_id": {
+      "type": "string",
+      "pattern": "^P\\d{2}$"
+    },
+    "pericope_title": { "type": "string", "minLength": 1 },
+    "generated_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}Z?)?$"
+    },
+    "source_meaning_map_ref": { "type": "string", "minLength": 1 },
+    "source_compilation_log_ref": { "type": "string", "minLength": 1 },
+    "to_bcd": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["beings", "places", "objects", "times", "discourse_thread_events"],
+      "properties": {
+        "beings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/bcd_being_addition" }
+        },
+        "places": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/bcd_place_addition" }
+        },
+        "objects": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/bcd_object_addition" }
+        },
+        "times": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/bcd_time_addition" }
+        },
+        "discourse_thread_events": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/discourse_thread_event" }
+        }
+      }
+    },
+    "to_figures_registry": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/figure_registry_addition" }
+    },
+    "to_concept_bank": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cb_flags_active"],
+      "properties": {
+        "cb_flags_active": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/concept_bank_flag" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "upper_token": { "type": "string", "pattern": "^[A-Z][A-Z0-9_?]*$" },
+    "b_code": { "type": "string", "pattern": "^B(\\d+|\\?)$" },
+    "place_id": {
+      "type": "string",
+      "pattern": "^PL(\\d+(_[A-Z][A-Z0-9_]*)?|_[A-Z][A-Z0-9_]*)$"
+    },
+    "object_id": {
+      "type": "string",
+      "pattern": "^(O\\d+|TH_[A-Z][A-Z0-9_]*|CB_[A-Z0-9_]+)$"
+    },
+    "time_id": {
+      "type": "string",
+      "pattern": "^TM_[A-Z][A-Z0-9_]*$"
+    },
+    "cb_id": { "type": "string", "pattern": "^CB_\\d{4}$" },
+    "figure_id": { "type": "string", "pattern": "^FIG_\\d{4}$" },
+    "bcd_being_addition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["being_id", "name_hebrew", "name_english", "first_appearance", "kind"],
+      "properties": {
+        "being_id": { "$ref": "#/$defs/b_code" },
+        "name_hebrew": { "type": "string", "minLength": 1 },
+        "name_english": { "type": "string", "minLength": 1 },
+        "first_appearance": { "type": "string", "minLength": 1 },
+        "first_named_at": { "type": "string", "minLength": 1 },
+        "kind": { "$ref": "#/$defs/upper_token" },
+        "gender": { "$ref": "#/$defs/upper_token" },
+        "ethnic_identity": { "$ref": "#/$defs/upper_token" },
+        "clan_identity": { "$ref": "#/$defs/upper_token" },
+        "home_place": { "$ref": "#/$defs/place_id" },
+        "presence_in_book": { "$ref": "#/$defs/upper_token" },
+        "notes": { "type": "string" }
+      }
+    },
+    "bcd_place_addition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["place_id", "name_hebrew", "name_english", "first_appearance", "kind"],
+      "properties": {
+        "place_id": { "$ref": "#/$defs/place_id" },
+        "name_hebrew": { "type": "string", "minLength": 1 },
+        "name_english": { "type": "string", "minLength": 1 },
+        "first_appearance": { "type": "string", "minLength": 1 },
+        "kind": { "$ref": "#/$defs/upper_token" },
+        "notes": { "type": "string" }
+      }
+    },
+    "bcd_object_addition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["object_id", "name_english", "kind", "first_appearance"],
+      "properties": {
+        "object_id": { "$ref": "#/$defs/object_id" },
+        "name_hebrew": { "type": "string", "minLength": 1 },
+        "name_english": { "type": "string", "minLength": 1 },
+        "kind": { "$ref": "#/$defs/upper_token" },
+        "first_appearance": { "type": "string", "minLength": 1 },
+        "cross_occurrences": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "bcd_time_addition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time_id", "name_hebrew", "name_english", "kind", "first_appearance"],
+      "properties": {
+        "time_id": { "$ref": "#/$defs/time_id" },
+        "name_hebrew": { "type": "string", "minLength": 1 },
+        "name_english": { "type": "string", "minLength": 1 },
+        "kind": { "$ref": "#/$defs/upper_token" },
+        "first_appearance": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string" }
+      }
+    },
+    "discourse_thread_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["thread_id", "state", "verse_locus", "note"],
+      "properties": {
+        "thread_id": {
+          "type": "string",
+          "pattern": "^T\\d+_[a-z0-9_]+$"
+        },
+        "state": { "$ref": "#/$defs/upper_token" },
+        "verse_locus": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "figure_registry_addition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["figure_id", "surface_image", "intended_meaning", "keep_image", "image_kind", "first_occurrence", "audit_note"],
+      "properties": {
+        "figure_id": { "$ref": "#/$defs/figure_id" },
+        "surface_image": { "type": "string", "minLength": 1 },
+        "intended_meaning": { "type": "string", "minLength": 1 },
+        "keep_image": {
+          "enum": ["REQUIRED", "PREFERRED", "OPTIONAL", "UNKNOWN"]
+        },
+        "image_kind": { "$ref": "#/$defs/upper_token" },
+        "first_occurrence": { "type": "string", "minLength": 1 },
+        "cross_pericope_pairing": { "type": "string", "minLength": 1 },
+        "audit_note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "concept_bank_flag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cb_id", "first_occurrence_in_book_here", "occurrences_in_pericope", "surface_form"],
+      "properties": {
+        "cb_id": { "$ref": "#/$defs/cb_id" },
+        "first_occurrence_in_book_here": { "type": "boolean" },
+        "occurrences_in_pericope": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "surface_form": { "$ref": "#/$defs/upper_token" }
+      }
+    }
+  }
+}

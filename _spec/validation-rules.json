@@ -1,22 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-5.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-6.json",
   "title": "Ruth Pilot 2 - FOR_MODEL Validation Rules + Closed Lists + Drift Detector",
   "description": "Three-section document. (1) for_model_schema: JSON Schema for FOR_MODEL artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
-  "version": "v0.5",
+  "version": "v0.6",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date_locked": "2026-05-29",
-  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md.",
+  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them).",
 
   "sibling_schemas": {
     "compilation_log": "compilation-log.schema.json v0.3",
-    "bcd_delta": "bcd-delta.schema.json v0.3",
-    "verification_input": "verification-input.schema.json v1.0"
+    "bcd_delta": "bcd-delta.schema.json v0.4",
+    "verification_input": "verification-input.schema.json v1.1"
   },
 
   "for_model_schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-5.schema.json",
+    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-6.schema.json",
     "title": "FOR_MODEL",
     "description": "Structural tag artifact derived from an approved meaning map. Trained on by the Seed Model alongside the meaning map.",
     "type": "object",
@@ -62,7 +62,7 @@
     "$defs": {
       "upper_token": { "type": "string", "pattern": "^[A-Z][A-Z0-9_?]*$" },
       "b_code": { "type": "string", "pattern": "^B(\\d+|\\?)$" },
-      "place_id": { "type": "string", "pattern": "^PL(\\d+|_[A-Z][A-Z0-9_]*)$" },
+      "place_id": { "type": "string", "pattern": "^PL(\\d+(_[A-Z][A-Z0-9_]*)?|_[A-Z][A-Z0-9_]*)$" },
       "object_id": { "type": "string", "pattern": "^(O\\d+|TH_[A-Z][A-Z0-9_]*|CB_[A-Z0-9_]+)$" },
       "time_id": { "type": "string", "pattern": "^TM_[A-Z][A-Z0-9_]*$" },
       "cb_id": { "type": "string", "pattern": "^CB_\\d{4}$" },

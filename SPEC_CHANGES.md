@@ -20,12 +20,14 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
   the compiler implements and verifies them.
 
 ## Spec version pin (current)
-| Field | Value |
-| --- | --- |
-| `tagset_version` | `TRIPOD_STA_v2_0` |
-| `validation-rules.json` version | `v0.5` |
-| `validation-rules.json` sha256 | `a326dbdd2601089851907c2025517a7f3b076a9432d380e00487ee0ec76f1b4a` |
-| Vendored into compiler at | `_spec/validation-rules.json` (pinned; drift-checked) |
+`tagset_version`: `TRIPOD_STA_v2_0`. Vendored + drift-checked in the compiler at `_spec/` (see `_spec/pins.json`; `tripod check-drift` enforces these).
+
+| Schema | Version | sha256 |
+| --- | --- | --- |
+| `validation-rules.json` | `v0.6` | `b024e0ea40771ba4a169b936ce57f05686e5333485d937cbed97a80e0d14de3a` |
+| `compilation-log.schema.json` | `v0.3` | `24afa60b6d1c22ce338c0698d2a5a4269ddee58ddacff949fc44a35e19108921` |
+| `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
+| `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
 
 ---
 
@@ -44,6 +46,35 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0005 — Widen the `place_id` pattern to allow `PL<n>_<DESCRIPTOR>` sub-place codes
+- **Date:** 2026-05-29
+- **Decided by:** Marcia Suzuki
+- **Status:** SHIPPED (2026-05-29)
+- **Type:** schema-shape (closed pattern; affects 3 schemas)
+- **Summary:** The locked `place_id` pattern `^PL(\d+|_[A-Z][A-Z0-9_]*)$` accepted `PL5` or
+  `PL_BOAZ_PORTION` but **not** the hybrid sub-place form `PL5_BOAZ_PORTION` — which the BCD
+  itself registers (`bcd/places/PL5_BOAZ_PORTION-…md`) and P05/P06 use. Widen the pattern to
+  permit an optional `_<DESCRIPTOR>` after the number. **Surfaced by the Slice 1 validator on
+  its first run against the gold fixtures** — the drift-control payoff in action.
+- **Spec change (exact):** pattern `^PL(\d+|_[A-Z][A-Z0-9_]*)$` → `^PL(\d+(_[A-Z][A-Z0-9_]*)?|_[A-Z][A-Z0-9_]*)$`
+  in all three schemas that carry it:
+  - `validation-rules.json` (`$defs.place_id`) → version **v0.5 → v0.6**, `$id` + `for_model_schema.$id` bumped, `sibling_schemas` refs updated.
+  - `bcd-delta.schema.json` (`$defs.…place_id`) → version **v0.3 → v0.4**, `$id` bumped.
+  - `verification-input.schema.json` (`place_id`) → version **v1.0 → v1.1**.
+  - `compilation-log.schema.json` — unchanged (no `place_id` field).
+- **Artifact migration:** none. P05/P06 (and the BCD) already use `PL5_BOAZ_PORTION`; the widen
+  makes the spec match existing artifacts. No `PL` code anywhere needs renaming.
+- **Validator impact:** `place_id` now accepts `PL<n>`, `PL_<DESCRIPTOR>`, and `PL<n>_<DESCRIPTOR>`.
+  After the widen, all six gold FOR_MODELs (P01–P06) validate block-clean.
+- **Version:** `validation-rules.json v0.5 → v0.6`
+  (sha256 `b024e0ea40771ba4a169b936ce57f05686e5333485d937cbed97a80e0d14de3a`); siblings re-pinned
+  (see pin table above + `_spec/pins.json`).
+- **Verification:** `tripod validate fixtures/for-model/` → 6/6 block-clean (P01 drift 0; P02–P06
+  bounded-open drift only); `tripod check-drift` green against the new pins; the closed-list sync
+  invariant holds. A reverted (narrow) pattern re-blocks P05/P06 (regression guard in the test suite).
 
 ---
 

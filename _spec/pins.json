@@ -1,0 +1,22 @@
+{
+  "_comment": "Pinned version + sha256 for each locked spec schema vendored from the wiki vault (ruth-pilot-b-wiki/_spec). `tripod check-drift` fails the build if a vendored file's hash no longer matches its pin, or (with --vault) if the wiki's canonical copy has drifted. Update only via a governed SPEC_CHANGES.md entry. See decision A + SPEC_CHANGES.md.",
+  "tagset_version": "TRIPOD_STA_v2_0",
+  "schemas": {
+    "validation-rules.json": {
+      "version": "v0.6",
+      "sha256": "b024e0ea40771ba4a169b936ce57f05686e5333485d937cbed97a80e0d14de3a"
+    },
+    "compilation-log.schema.json": {
+      "version": "v0.3",
+      "sha256": "24afa60b6d1c22ce338c0698d2a5a4269ddee58ddacff949fc44a35e19108921"
+    },
+    "bcd-delta.schema.json": {
+      "version": "v0.4",
+      "sha256": "b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04"
+    },
+    "verification-input.schema.json": {
+      "version": "v1.1",
+      "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
+    }
+  }
+}

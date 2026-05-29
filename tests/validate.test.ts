@@ -1,0 +1,86 @@
+import { describe, it, expect } from "vitest";
+import { readdirSync, readFileSync, writeFileSync, mkdtempSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { tmpdir } from "node:os";
+import { fileURLToPath } from "node:url";
+import { validateArtifact } from "../src/engine/validate.js";
+import { checkDrift, closedListSyncIssues } from "../src/spec/pins.js";
+
+const here = dirname(fileURLToPath(import.meta.url));
+const FIX = join(here, "..", "fixtures", "for-model");
+const forModels = readdirSync(FIX).filter((f) => f.endsWith("-FOR-MODEL.md")).sort();
+const blockMsgs = (r: ReturnType<typeof validateArtifact>) =>
+  JSON.stringify(r.findings.filter((f) => f.severity === "block"), null, 2);
+
+describe("FOR_MODEL gold fixtures (P01–P06)", () => {
+  it("vendors all six gold fixtures", () => {
+    expect(forModels).toHaveLength(6);
+  });
+
+  for (const f of forModels) {
+    it(`${f} validates block-clean`, () => {
+      const r = validateArtifact(join(FIX, f));
+      expect(r.artifact).toBe("FOR_MODEL");
+      expect(r.counts.block, blockMsgs(r)).toBe(0);
+      expect(r.ok).toBe(true);
+    });
+  }
+
+  it("P01 (the drift seed) has zero drift", () => {
+    const r = validateArtifact(join(FIX, "P01-Ruth-1-1-5-FOR-MODEL.md"));
+    expect(r.counts.drift).toBe(0);
+  });
+
+  it("later pericopes exercise the bounded-open drift detector", () => {
+    const r = validateArtifact(join(FIX, "P06-Ruth-2-8-16-FOR-MODEL.md"));
+    expect(r.counts.drift).toBeGreaterThan(0);
+  });
+
+  it("accepts the PL<n>_<DESCRIPTOR> sub-place form (SC-0005)", () => {
+    // P05 uses PL5_BOAZ_PORTION; if the widened pattern regressed, P05 would block.
+    const r = validateArtifact(join(FIX, "P05-Ruth-2-1-7-FOR-MODEL.md"));
+    expect(r.counts.block, blockMsgs(r)).toBe(0);
+  });
+});
+
+describe("negative cases (located, precise errors)", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "tripod-"));
+  const p01 = readFileSync(join(FIX, "P01-Ruth-1-1-5-FOR-MODEL.md"), "utf8");
+  const write = (name: string, body: string) => {
+    const f = join(tmp, name);
+    writeFileSync(f, body);
+    return f;
+  };
+
+  it("blocks a closed-list (L1) violation — bad genre_group", () => {
+    const r = validateArtifact(write("bad-genre-FOR-MODEL.md", p01.replace('"genre_group": "NARRATIVE"', '"genre_group": "BOGUS_GROUP"')));
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((x) => x.code === "closed-list" && x.location.includes("genre_group"))).toBe(true);
+  });
+
+  it("blocks a dangling proposition link — referential integrity", () => {
+    const r = validateArtifact(write("bad-link-FOR-MODEL.md", p01.replace('"forward_link_to": "P2"', '"forward_link_to": "P999"')));
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((x) => x.code === "referential-integrity" && x.message.includes("P999"))).toBe(true);
+  });
+
+  it("blocks a malformed place_id", () => {
+    const r = validateArtifact(write("bad-place-FOR-MODEL.md", p01.replace('"place_id": "PL1"', '"place_id": "lowercase_bad"')));
+    expect(r.ok).toBe(false);
+  });
+
+  it("blocks an artifact whose JSON body is missing", () => {
+    const r = validateArtifact(write("no-json-FOR-MODEL.md", "---\ntype: sta-for-model\n---\n# no fenced block here\n"));
+    expect(r.ok).toBe(false);
+  });
+});
+
+describe("spec integrity", () => {
+  it("vendored schemas match their pins", () => {
+    for (const d of checkDrift()) expect(d.vendoredOk, `${d.file} drifted from pin`).toBe(true);
+  });
+
+  it("closed-list sync invariant holds (closed_lists.X == $defs.x_value.enum)", () => {
+    expect(closedListSyncIssues()).toEqual([]);
+  });
+});

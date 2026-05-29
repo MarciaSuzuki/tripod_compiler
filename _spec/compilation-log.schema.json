@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tripod.example.org/ruth-pilot-2/compilation-log-v0-3.schema.json",
+  "title": "Compilation Log",
+  "description": "Methodology trace for one pericope's STA compilation. Renamed from AUDIT in v0.3. Contains compilation decisions, vocabulary additions, high-risk register, cross-pericope pair verification, validation checklist, and known limitations. Registry additions extracted to bcd-delta. Reviewer-facing content extracted to verification-input. The Seed Model does not train on this file; teams do not see it.",
+  "version": "v0.3",
+  "tagset_version": "TRIPOD_STA_v2_0",
+  "date_locked": "2026-05-24",
+  "canonical_reference": {
+    "source": "Renamed and slimmed from canonical P01-Ruth-1-1-5-AUDIT.md. registry_additions field moved to bcd-delta.schema.json. No reviewer-facing content; that lives in verification-input.schema.json."
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sta_id",
+    "tagset_version",
+    "bcv",
+    "pericope_id",
+    "pericope_title",
+    "compiled_at",
+    "review_status",
+    "confidence_overall",
+    "confidence_overall_note",
+    "compilation_decisions",
+    "vocabulary_additions",
+    "proposition_kind_slot_sets",
+    "high_risk_register_audit",
+    "cross_pericope_pair_verification",
+    "validation_checklist",
+    "known_limitations"
+  ],
+  "not": {
+    "anyOf": [
+      { "required": ["artifact_profile"] },
+      { "required": ["narrator_frame_ambiguities"] },
+      { "required": ["architecture_observations"] },
+      { "required": ["registry_additions"] }
+    ]
+  },
+  "properties": {
+    "sta_id": {
+      "type": "string",
+      "pattern": "^ruth_pericope_\\d{2}_v\\d+_\\d+$"
+    },
+    "tagset_version": { "const": "TRIPOD_STA_v2_0" },
+    "bcv": { "type": "string", "minLength": 1 },
+    "pericope_id": {
+      "type": "string",
+      "pattern": "^P\\d{2}$",
+      "description": "Added in v0.3 for explicit cross-artifact joining (was implicit via sta_id)."
+    },
+    "pericope_title": { "type": "string", "minLength": 1 },
+    "compiled_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "review_status": { "$ref": "#/$defs/review_status" },
+    "confidence_overall": {
+      "enum": ["HIGH", "MEDIUM_HIGH", "MEDIUM", "LOW"]
+    },
+    "confidence_overall_note": { "type": "string", "minLength": 1 },
+    "compilation_decisions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/compilation_decision" }
+    },
+    "vocabulary_additions": { "$ref": "#/$defs/vocabulary_additions" },
+    "proposition_kind_slot_sets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slot_set_entry" }
+    },
+    "high_risk_register_audit": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/high_risk_register_entry" }
+    },
+    "cross_pericope_pair_verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pairs"],
+      "properties": {
+        "pairs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/cross_pericope_pair" }
+        }
+      }
+    },
+    "validation_checklist": { "$ref": "#/$defs/validation_checklist" },
+    "known_limitations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "upper_token": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_?]*$"
+    },
+    "prop_id": { "type": "string", "pattern": "^P\\d+$" },
+    "figure_id": { "type": "string", "pattern": "^FIG_\\d{4}$" },
+    "speech_act_value": {
+      "enum": [
+        "STATES_AS_TRUE",
+        "STATES_HOPED_FOR_CONDITION",
+        "STATES_LAMENT_OBSERVATION",
+        "DIRECTS_HEARER_TO_DO",
+        "DIRECTS_HEARER_NOT_TO_DO",
+        "DIRECTS_HEARER_TO_RETURN",
+        "GRANTS_PERMISSION_TO_DO",
+        "REQUESTS_PERMISSION_TO_DO",
+        "WISHES_FOR_HEARER",
+        "WISHES_FOR_THIRD_PARTY",
+        "INVOKES_DIVINE_AS_OATH_GUARANTOR",
+        "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME",
+        "ASKS_INFORMATION_SEEKING_QUESTION",
+        "ASKS_RHETORICAL_QUESTION_AS_DISSUASION",
+        "ASKS_RHETORICAL_QUESTION_OF_SURPRISED_RECOGNITION",
+        "ASKS_RHETORICAL_QUESTION_AS_PROTEST",
+        "ASKS_KINSHIP_BELONGING_QUESTION",
+        "ASKS_HUMILITY_QUESTION",
+        "REFUSES_REQUEST_WITH_COUNTER_DECLARATION",
+        "REFUSES_USE_OF_OWN_NAME",
+        "PROPOSES_NEW_NAME_FOR_SELF",
+        "VOWS_IDENTITY_BINDING",
+        "VOWS_ROAD_BINDING",
+        "VOWS_RESIDENCE_BINDING",
+        "VOWS_PEOPLE_BINDING",
+        "VOWS_GOD_BINDING",
+        "VOWS_PLACE_OF_BURIAL_BINDING",
+        "INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT",
+        "REPORTS_PRIOR_SPEECH_REQUEST",
+        "REPORTS_PRIOR_SPEECH_INSTRUCTION",
+        "REPORTS_OWN_PRIOR_PROHIBITION"
+      ]
+    },
+    "review_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "meaning_map_status",
+        "sta_compilation_status",
+        "community_verified",
+        "translation_team_verified",
+        "consultant_review_required",
+        "production_use"
+      ],
+      "properties": {
+        "meaning_map_status": { "type": "string", "minLength": 1 },
+        "sta_compilation_status": { "type": "string", "minLength": 1 },
+        "community_verified": { "type": "boolean" },
+        "translation_team_verified": { "type": "boolean" },
+        "consultant_review_required": { "type": "boolean" },
+        "production_use": { "type": "boolean" }
+      }
+    },
+    "compilation_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_id", "decision", "description"],
+      "properties": {
+        "decision_id": {
+          "type": "string",
+          "pattern": "^P\\d{2}-D\\d+$"
+        },
+        "decision": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "supersedes": { "type": "string" }
+      }
+    },
+    "vocabulary_addition_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "source", "status"],
+      "properties": {
+        "category": { "$ref": "#/$defs/upper_token" },
+        "value": { "$ref": "#/$defs/upper_token" },
+        "source": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/upper_token" },
+        "note": { "type": "string" }
+      }
+    },
+    "vocabulary_additions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposition_kinds", "scene_kinds", "presence_values", "referential_forms", "other"],
+      "properties": {
+        "proposition_kinds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vocabulary_addition_entry" }
+        },
+        "scene_kinds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vocabulary_addition_entry" }
+        },
+        "presence_values": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vocabulary_addition_entry" }
+        },
+        "referential_forms": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vocabulary_addition_entry" }
+        },
+        "other": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vocabulary_addition_entry" }
+        }
+      }
+    },
+    "slot_set_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposition_kind", "slot_set", "status", "occurrences_in_pericope"],
+      "properties": {
+        "proposition_kind": { "$ref": "#/$defs/upper_token" },
+        "slot_set": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+        },
+        "component_record_shape": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "status": { "$ref": "#/$defs/upper_token" },
+        "occurrences_in_pericope": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/prop_id" }
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "high_risk_register_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "applies_to", "note", "required_in_audit", "source_in_meaning_map"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^R\\d+$"
+        },
+        "kind": { "$ref": "#/$defs/upper_token" },
+        "applies_to": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 },
+        "required_in_audit": { "type": "boolean" },
+        "do_not_decide": { "type": "boolean" },
+        "carries_forward_to": { "type": "string", "minLength": 1 },
+        "source_in_meaning_map": { "type": "string", "minLength": 1 }
+      }
+    },
+    "cross_pericope_pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fig_id", "opens_at", "closes_at", "verification_status", "note"],
+      "properties": {
+        "fig_id": { "$ref": "#/$defs/figure_id" },
+        "opens_at": { "type": "string", "minLength": 1 },
+        "closes_at": { "type": "string", "minLength": 1 },
+        "verification_status": {
+          "enum": ["VERIFIED", "DEFERRED", "PENDING"]
+        },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "validation_checklist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "meaning_map_contains_only_story_content",
+        "for_model_contains_only_inference_signal",
+        "every_proposition_has_cb_flags_and_figure_flags",
+        "no_grammatical_frame_slot_names",
+        "speech_act_present_on_all_component_records",
+        "speech_act_values_used",
+        "discourse_threads_tracked_in_audit_only",
+        "known_limitations_tracked_in_audit_only",
+        "high_risk_register_complete",
+        "every_high_risk_entry_traces_to_meaning_map",
+        "no_content_added_beyond_meaning_map",
+        "registry_additions_extracted_to_bcd_delta",
+        "no_reviewer_facing_prompts_in_compilation_log"
+      ],
+      "properties": {
+        "meaning_map_contains_only_story_content": { "type": "boolean" },
+        "for_model_contains_only_inference_signal": { "type": "boolean" },
+        "every_proposition_has_cb_flags_and_figure_flags": { "type": "boolean" },
+        "every_being_in_propositions_declared_in_scenes": { "type": "boolean" },
+        "every_place_in_propositions_declared_in_scenes": { "type": "boolean" },
+        "every_object_in_propositions_declared_in_scenes": { "type": "boolean" },
+        "every_time_in_propositions_declared_in_scenes": { "type": "boolean" },
+        "no_grammatical_frame_slot_names": { "type": "boolean" },
+        "speech_act_present_on_all_component_records": { "type": "boolean" },
+        "speech_act_values_used": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/speech_act_value" }
+        },
+        "negation_not_double_encoded": {
+          "anyOf": [{ "type": "string" }, { "type": "boolean" }]
+        },
+        "cross_pericope_cross_refs_present_on_correct_propositions": { "type": "boolean" },
+        "empty_slot_rule_applied_to_times_in_scene": { "type": "boolean" },
+        "discourse_threads_tracked_in_audit_only": { "type": "boolean" },
+        "known_limitations_tracked_in_audit_only": { "type": "boolean" },
+        "high_risk_register_complete": { "type": "boolean" },
+        "every_high_risk_entry_traces_to_meaning_map": { "type": "boolean" },
+        "significant_absences_traced_to_meaning_map": { "type": "boolean" },
+        "no_content_added_beyond_meaning_map": { "type": "boolean" },
+        "wife_pairing_withholding_enforced": { "type": "boolean" },
+        "b_codes_match_bcd_version": {
+          "anyOf": [{ "type": "string" }, { "type": "boolean" }]
+        },
+        "registry_additions_extracted_to_bcd_delta": {
+          "type": "boolean",
+          "description": "New in v0.3. Confirms registry additions are in BCD-DELTA, not in this file."
+        },
+        "no_reviewer_facing_prompts_in_compilation_log": {
+          "type": "boolean",
+          "description": "New in v0.3. Confirms COMPILATION-LOG does not contain team-facing prompts (listen_for, do_not_add, discussion_items). Those are Agent 4's job in VERIFICATION-INPUT. The high_risk_register_audit in COMPILATION-LOG is the methodology trace from which Agent 4 derives team-facing items; the team-facing items themselves do not belong here."
+        }
+      }
+    }
+  }
+}

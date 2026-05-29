@@ -34,16 +34,36 @@ CLAUDE.md           project brief & build guide
 
 **Slice 1 (Spec + Validator) — in progress.**
 
-- `_spec/` exists but the controlled lists are **SKELETON**: seeded only with values
-  observed in real `pilot-2` artifacts (Ruth P01 = 1:1–5, P02 = 1:6–14), each carrying
-  `complete: false` and value-level `observed_in` provenance. They must be filled from the
-  authoritative `pilot-2` / `TRIPOD_STA_v2_0` vocabulary doc before the validator is
-  treated as authoritative. See [`_spec/README.md`](_spec/README.md).
-- `src/`, `fixtures/`, `tests/` are scaffolded but empty.
-- No reader, vocabulary engine, or `tripod validate` CLI yet. No LLM / generator — those
-  are later slices.
+**Slice 1 is implemented** — spec loader + drift-check, Obsidian reader, profile-aware
+3-layer validator, and the `tripod` CLI, proven against the P01–P06 gold fixtures.
 
-## Stack (planned)
+- **Source of truth:** the four locked schemas are **vendored + pinned** (version + sha256)
+  from the wiki vault under [`_spec/`](_spec/README.md), governed by
+  [`SPEC_CHANGES.md`](SPEC_CHANGES.md). `tripod check-drift` enforces the pins + the
+  closed-list sync invariant. The hand-seeded skeleton YAMLs were superseded and removed
+  (decision A / SC-0001).
+- **`tripod validate <note|dir>`** — Layer 1 (ajv against the pinned schema: structure +
+  closed-list **block**), Layer 2 (bounded-open **drift** vs the canonical-P01 seed), Layer 3
+  (referential integrity + registry references), plus register-critical presence checks.
+- **Proof:** P01–P06 FOR_MODELs validate block-clean (P01 drift 0 as the seed; P02–P06 surface
+  bounded-open drift); a corrupted artifact yields precise, located errors. `npm test` (vitest)
+  covers all of this.
+- Not yet: the deep Layer-2/3 vocabulary passes for COMPILATION-LOG / BCD-DELTA /
+  VERIFICATION-INPUT (those validate structurally today; FOR_MODEL leads per decision E), and
+  the compiler / LLM generator (later slices).
 
-TypeScript / Node, `zod` for schema-as-types-and-validator, a small CLI runner. Vault I/O
-over the filesystem. See `CLAUDE.md` §5.
+## Stack
+
+TypeScript / Node (ESM), **ajv** consuming the pinned JSON-Schemas (no re-transcription — see
+decision A), `commander` CLI, `vitest`. `zod` is reserved for internal report types rather than
+re-deriving the canonical schema. Vault I/O over the filesystem. See `CLAUDE.md` §5.
+
+## Usage
+
+```
+npm install
+npm run build                         # tsc → dist/ (provides the `tripod` bin)
+npx tsx src/cli/tripod.ts validate fixtures/for-model/     # or: tripod validate <note|dir>
+npx tsx src/cli/tripod.ts check-drift [--vault <wiki/_spec>]
+npm test
+```
