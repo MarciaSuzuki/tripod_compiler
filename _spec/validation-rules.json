@@ -1,0 +1,682 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-5.json",
+  "title": "Ruth Pilot 2 - FOR_MODEL Validation Rules + Closed Lists + Drift Detector",
+  "description": "Three-section document. (1) for_model_schema: JSON Schema for FOR_MODEL artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
+  "version": "v0.5",
+  "tagset_version": "TRIPOD_STA_v2_0",
+  "date_locked": "2026-05-29",
+  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md.",
+
+  "sibling_schemas": {
+    "compilation_log": "compilation-log.schema.json v0.3",
+    "bcd_delta": "bcd-delta.schema.json v0.3",
+    "verification_input": "verification-input.schema.json v1.0"
+  },
+
+  "for_model_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-5.schema.json",
+    "title": "FOR_MODEL",
+    "description": "Structural tag artifact derived from an approved meaning map. Trained on by the Seed Model alongside the meaning map.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "sta_id",
+      "tagset_version",
+      "header",
+      "pericope_classification",
+      "level_1",
+      "level_2_scenes",
+      "level_3_propositions"
+    ],
+    "not": {
+      "anyOf": [
+        { "required": ["artifact_profile"] },
+        { "required": ["registry_additions"] },
+        { "required": ["compilation_decisions"] },
+        { "required": ["high_risk_register_audit"] }
+      ]
+    },
+    "properties": {
+      "sta_id": {
+        "type": "string",
+        "pattern": "^ruth_pericope_\\d{2}_v\\d+_\\d+$"
+      },
+      "tagset_version": { "const": "TRIPOD_STA_v2_0" },
+      "header": { "$ref": "#/$defs/header" },
+      "pericope_classification": { "$ref": "#/$defs/pericope_classification" },
+      "level_1": { "$ref": "#/$defs/level_1" },
+      "level_2_scenes": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "$ref": "#/$defs/scene" }
+      },
+      "level_3_propositions": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "$ref": "#/$defs/proposition" }
+      }
+    },
+
+    "$defs": {
+      "upper_token": { "type": "string", "pattern": "^[A-Z][A-Z0-9_?]*$" },
+      "b_code": { "type": "string", "pattern": "^B(\\d+|\\?)$" },
+      "place_id": { "type": "string", "pattern": "^PL(\\d+|_[A-Z][A-Z0-9_]*)$" },
+      "object_id": { "type": "string", "pattern": "^(O\\d+|TH_[A-Z][A-Z0-9_]*|CB_[A-Z0-9_]+)$" },
+      "time_id": { "type": "string", "pattern": "^TM_[A-Z][A-Z0-9_]*$" },
+      "cb_id": { "type": "string", "pattern": "^CB_\\d{4}$" },
+      "figure_id": { "type": "string", "pattern": "^FIG_\\d{4}$" },
+      "scene_id": { "type": "string", "pattern": "^S\\d+$" },
+      "prop_id": { "type": "string", "pattern": "^P\\d+$" },
+
+      "header": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bcv", "pericope_title", "book_context_ref", "source_meaning_map_ref", "source_language"],
+        "properties": {
+          "bcv": { "type": "string", "minLength": 1 },
+          "pericope_title": { "type": "string", "minLength": 1 },
+          "book_context_ref": { "type": "string", "minLength": 1 },
+          "source_meaning_map_ref": { "type": "string", "minLength": 1 },
+          "source_language": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "pericope_classification": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["genre_group", "genre", "register", "register_overrides"],
+        "properties": {
+          "genre_group": {
+            "enum": ["NARRATIVE", "POETIC_SUNG", "INSTRUCTIONAL_REGULATORY", "ORAL_DISCOURSE"]
+          },
+          "genre": { "$ref": "#/$defs/genre_value" },
+          "register": { "const": "INFORMAL_CASUAL" },
+          "register_overrides": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["scene_level", "moment_level"],
+            "properties": {
+              "_note": { "type": "string" },
+              "scene_level": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "type": "array", "items": { "$ref": "#/$defs/register_override_entry" } }
+                ]
+              },
+              "moment_level": {
+                "anyOf": [
+                  { "type": "null" },
+                  { "type": "array", "items": { "$ref": "#/$defs/register_override_entry" } }
+                ]
+              }
+            }
+          }
+        }
+      },
+
+      "register_override_entry": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "A scene- or moment-level override. Carries a social-register override (override_value, one of the 7 REGISTER values) and/or a narrative-framing/voice override (framing_override, from NARRATIVE_FRAMING). At least one of the two must be present (SC-0001).",
+        "anyOf": [
+          { "required": ["override_value"] },
+          { "required": ["framing_override"] }
+        ],
+        "properties": {
+          "verse": { "type": "string", "minLength": 1 },
+          "scene_id": { "$ref": "#/$defs/scene_id" },
+          "override_value": { "$ref": "#/$defs/register_value" },
+          "framing_override": { "$ref": "#/$defs/narrative_framing_value" },
+          "genre_override": {
+            "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/genre_value" }]
+          },
+          "genre_group_override": {
+            "anyOf": [
+              { "type": "null" },
+              { "enum": ["NARRATIVE", "POETIC_SUNG", "INSTRUCTIONAL_REGULATORY", "ORAL_DISCOURSE"] }
+            ]
+          }
+        }
+      },
+
+      "level_1": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "arc_elements",
+          "context_elements",
+          "tone_elements",
+          "pace_elements",
+          "communicative_function_elements"
+        ],
+        "not": {
+          "anyOf": [
+            { "required": ["discourse_threads_active"] }
+          ]
+        },
+        "properties": {
+          "arc_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "context_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "tone_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "pace_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "communicative_function_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } }
+        }
+      },
+
+      "scene": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scene_id",
+          "verse_range",
+          "scene_kind",
+          "scene_communicative_purpose",
+          "beings_in_scene",
+          "places_in_scene",
+          "objects_in_scene",
+          "times_in_scene"
+        ],
+        "properties": {
+          "scene_id": { "$ref": "#/$defs/scene_id" },
+          "verse_range": { "type": "string", "minLength": 1 },
+          "scene_kind": { "$ref": "#/$defs/upper_token" },
+          "scene_communicative_purpose": { "type": "string", "minLength": 1 },
+          "beings_in_scene": { "$ref": "#/$defs/scene_beings_container" },
+          "places_in_scene": { "$ref": "#/$defs/scene_places_container" },
+          "objects_in_scene": { "$ref": "#/$defs/scene_objects_container" },
+          "times_in_scene": { "$ref": "#/$defs/scene_times_container" },
+          "significant_absence": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "scene_beings_container": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["entries"],
+        "properties": {
+          "_note": { "type": "string" },
+          "entries": {
+            "anyOf": [
+              { "type": "null" },
+              { "type": "array", "items": { "$ref": "#/$defs/scene_being_entry" } }
+            ]
+          }
+        }
+      },
+
+      "scene_being_entry": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["being_id", "role_in_scene", "presence"],
+        "properties": {
+          "being_id": { "$ref": "#/$defs/b_code" },
+          "role_in_scene": { "$ref": "#/$defs/upper_token" },
+          "presence": { "$ref": "#/$defs/upper_token" },
+          "referential_form": { "$ref": "#/$defs/upper_token" }
+        }
+      },
+
+      "scene_places_container": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["entries"],
+        "properties": {
+          "_note": { "type": "string" },
+          "entries": {
+            "anyOf": [
+              { "type": "null" },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["place_id", "role_in_scene"],
+                  "properties": {
+                    "place_id": { "$ref": "#/$defs/place_id" },
+                    "role_in_scene": { "$ref": "#/$defs/upper_token" }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+
+      "scene_objects_container": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["entries"],
+        "properties": {
+          "_note": { "type": "string" },
+          "entries": {
+            "anyOf": [
+              { "type": "null" },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["object_id", "function_in_scene"],
+                  "properties": {
+                    "object_id": { "$ref": "#/$defs/object_id" },
+                    "function_in_scene": { "$ref": "#/$defs/upper_token" }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+
+      "scene_times_container": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["entries"],
+        "properties": {
+          "_note": { "type": "string" },
+          "entries": {
+            "anyOf": [
+              { "type": "null" },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["time_id", "role_in_scene"],
+                  "properties": {
+                    "time_id": { "$ref": "#/$defs/time_id" },
+                    "role_in_scene": { "$ref": "#/$defs/upper_token" }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+
+      "proposition": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "prop_id",
+          "scene_link",
+          "verse_anchor",
+          "proposition_kind",
+          "event_specific_slots",
+          "inter_proposition_links",
+          "cb_flags",
+          "figure_flags"
+        ],
+        "properties": {
+          "prop_id": { "$ref": "#/$defs/prop_id" },
+          "scene_link": { "$ref": "#/$defs/scene_id" },
+          "verse_anchor": { "type": "string", "minLength": 1 },
+          "proposition_kind": { "$ref": "#/$defs/upper_token" },
+          "event_specific_slots": { "type": "object" },
+          "inter_proposition_links": { "type": "object" },
+          "cb_flags": { "type": "array", "items": { "$ref": "#/$defs/cb_id" } },
+          "figure_flags": { "type": "array", "items": { "$ref": "#/$defs/figure_id" } },
+          "cross_ref": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "register_value": {
+        "enum": [
+          "INTIMATE",
+          "INFORMAL_CASUAL",
+          "CONSULTATIVE",
+          "FORMAL_OFFICIAL",
+          "CEREMONIAL",
+          "ELDER_AUTHORITY",
+          "RELIGIOUS_WORSHIP"
+        ]
+      },
+
+      "narrative_framing_value": {
+        "enum": [
+          "COMMUNITY_MEMORY"
+        ]
+      },
+
+      "genre_value": {
+        "enum": [
+          "HISTORICAL_NARRATIVE",
+          "PERSONAL_ACCOUNT_TESTIMONY",
+          "PARABLE_ILLUSTRATIVE_STORY",
+          "ORIGIN_CREATION_STORY",
+          "LEGEND_HERO_STORY",
+          "VISION_OR_DREAM_NARRATIVE",
+          "GENEALOGY",
+          "RECENT_EVENT_REPORT",
+          "HYMN_WORSHIP_SONG",
+          "LAMENT",
+          "FUNERAL_DIRGE",
+          "VICTORY_CELEBRATION_SONG",
+          "LOVE_SONG",
+          "MOCKING_TAUNT_SONG",
+          "BLESSING",
+          "CURSE",
+          "WISDOM_POEM_PROVERB",
+          "DIDACTIC_POETRY",
+          "LAW_LEGAL_CODE",
+          "RITUAL_LITURGY",
+          "PROCEDURE_INSTRUCTION",
+          "LIST_INVENTORY",
+          "PROPHETIC_ORACLE_SPEECH",
+          "EXHORTATION_SERMON",
+          "WISDOM_TEACHING_DISCOURSE",
+          "PRAYER",
+          "DIALOGUE",
+          "EPISTLE_LETTER",
+          "APOCALYPTIC_DISCOURSE",
+          "CEREMONIAL_SPEECH",
+          "COMMUNITY_MEMORY"
+        ]
+      }
+    }
+  },
+
+  "closed_lists": {
+    "description": "Hard-enforced enumerations. Closed-list violations block compilation and require revision to the originating agent.",
+    "GENRE_GROUP": [
+      "NARRATIVE",
+      "POETIC_SUNG",
+      "INSTRUCTIONAL_REGULATORY",
+      "ORAL_DISCOURSE"
+    ],
+    "GENRE": [
+      "HISTORICAL_NARRATIVE",
+      "PERSONAL_ACCOUNT_TESTIMONY",
+      "PARABLE_ILLUSTRATIVE_STORY",
+      "ORIGIN_CREATION_STORY",
+      "LEGEND_HERO_STORY",
+      "VISION_OR_DREAM_NARRATIVE",
+      "GENEALOGY",
+      "RECENT_EVENT_REPORT",
+      "HYMN_WORSHIP_SONG",
+      "LAMENT",
+      "FUNERAL_DIRGE",
+      "VICTORY_CELEBRATION_SONG",
+      "LOVE_SONG",
+      "MOCKING_TAUNT_SONG",
+      "BLESSING",
+      "CURSE",
+      "WISDOM_POEM_PROVERB",
+      "DIDACTIC_POETRY",
+      "LAW_LEGAL_CODE",
+      "RITUAL_LITURGY",
+      "PROCEDURE_INSTRUCTION",
+      "LIST_INVENTORY",
+      "PROPHETIC_ORACLE_SPEECH",
+      "EXHORTATION_SERMON",
+      "WISDOM_TEACHING_DISCOURSE",
+      "PRAYER",
+      "DIALOGUE",
+      "EPISTLE_LETTER",
+      "APOCALYPTIC_DISCOURSE",
+      "CEREMONIAL_SPEECH",
+      "COMMUNITY_MEMORY"
+    ],
+    "REGISTER": [
+      "INTIMATE",
+      "INFORMAL_CASUAL",
+      "CONSULTATIVE",
+      "FORMAL_OFFICIAL",
+      "CEREMONIAL",
+      "ELDER_AUTHORITY",
+      "RELIGIOUS_WORSHIP"
+    ],
+    "NARRATIVE_FRAMING": [
+      "COMMUNITY_MEMORY"
+    ],
+    "PERICOPE_LEVEL_REGISTER": ["INFORMAL_CASUAL"],
+    "SPEECH_ACT": [
+      "STATES_AS_TRUE",
+      "STATES_HOPED_FOR_CONDITION",
+      "STATES_LAMENT_OBSERVATION",
+      "DIRECTS_HEARER_TO_DO",
+      "DIRECTS_HEARER_NOT_TO_DO",
+      "DIRECTS_HEARER_TO_RETURN",
+      "GRANTS_PERMISSION_TO_DO",
+      "REQUESTS_PERMISSION_TO_DO",
+      "WISHES_FOR_HEARER",
+      "WISHES_FOR_THIRD_PARTY",
+      "INVOKES_DIVINE_AS_OATH_GUARANTOR",
+      "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME",
+      "ASKS_INFORMATION_SEEKING_QUESTION",
+      "ASKS_RHETORICAL_QUESTION_AS_DISSUASION",
+      "ASKS_RHETORICAL_QUESTION_OF_SURPRISED_RECOGNITION",
+      "ASKS_RHETORICAL_QUESTION_AS_PROTEST",
+      "ASKS_KINSHIP_BELONGING_QUESTION",
+      "ASKS_HUMILITY_QUESTION",
+      "REFUSES_REQUEST_WITH_COUNTER_DECLARATION",
+      "REFUSES_USE_OF_OWN_NAME",
+      "PROPOSES_NEW_NAME_FOR_SELF",
+      "VOWS_IDENTITY_BINDING",
+      "VOWS_ROAD_BINDING",
+      "VOWS_RESIDENCE_BINDING",
+      "VOWS_PEOPLE_BINDING",
+      "VOWS_GOD_BINDING",
+      "VOWS_PLACE_OF_BURIAL_BINDING",
+      "INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT",
+      "REPORTS_PRIOR_SPEECH_REQUEST",
+      "REPORTS_PRIOR_SPEECH_INSTRUCTION",
+      "REPORTS_OWN_PRIOR_PROHIBITION"
+    ],
+    "VERIFICATION_INPUT_LANGUAGE": ["en", "es", "pt", "fr", "id", "ar", "sw"],
+    "FIGURE_KEEP_IMAGE_LEVEL": ["REQUIRED", "PREFERRED", "OPTIONAL", "UNKNOWN"],
+    "COMPILATION_LOG_CONFIDENCE": ["HIGH", "MEDIUM_HIGH", "MEDIUM", "LOW"],
+    "TRANSLATION_STATUS": ["machine_only", "human_reviewed", "human_corrected"],
+    "VERIFICATION_INPUT_CRITICALITY": ["REQUIRED", "PREFERRED", "OPTIONAL"],
+    "FORBIDDEN_GRAMMATICAL_FRAME_SLOT_NAMES": [
+      "actor",
+      "recipient",
+      "agent",
+      "patient",
+      "theme",
+      "beneficiary",
+      "experiencer",
+      "instrument"
+    ],
+    "FORBIDDEN_GRAMMATICAL_MOOD_SPEECH_ACTS": [
+      "IMPERATIVE",
+      "INDICATIVE",
+      "JUSSIVE",
+      "INFINITIVE",
+      "PARTICIPIAL"
+    ]
+  },
+
+  "drift_detector": {
+    "description": "Bounded-open enumerations seeded from canonical P01. New values surfaced by Agent 3 trigger drift warnings at Gate F for Agent 1 to assess (accept / revise / defer). Drift warnings do not block compilation; they require explicit human assessment.",
+    "canonical_p01_enumerations": {
+      "proposition_kind": [
+        "TIME_ANCHOR_ESTABLISHED",
+        "FAMINE_OCCURRED",
+        "MIGRATED",
+        "NAMED",
+        "IDENTIFIED_AS_CLAN_MEMBERS",
+        "ARRIVED_AT_AND_BEGAN_DWELLING",
+        "DIED",
+        "LEFT_AS_RESIDUAL",
+        "TOOK_AS_WIFE",
+        "DWELT_AT"
+      ],
+      "scene_kind": [
+        "OPENING_CHRONICLE_SCENE",
+        "BEREAVEMENT_SCENE",
+        "FOREIGN_MARRIAGE_AND_EXTENDED_RESIDENCE_SCENE"
+      ],
+      "presence_value": [
+        "PRESENT",
+        "REFERENCED",
+        "PRESENT_BECOMES_DECEASED"
+      ],
+      "referential_form": [
+        "UNNAMED_MAN_FROM_BETHLEHEM",
+        "UNNAMED_WIFE_OF_HEAD",
+        "UNNAMED_FIRST_SON",
+        "UNNAMED_SECOND_SON",
+        "HUSBAND_OF_NAOMI_FRAMING",
+        "SHE_PRONOMINAL",
+        "STRIPPED_TO_HA_ISHAH",
+        "HER_HUSBAND_RELATIONAL"
+      ],
+      "arc_element": [
+        "AFFLICTION",
+        "DEPARTURE",
+        "FOREIGN_RESIDENCE",
+        "FAMILY_LOSS",
+        "EMPTYING"
+      ],
+      "context_element": [
+        "STORY_WORLD_CONTEXT",
+        "PHYSICAL_LOCATION",
+        "KINSHIP_CONTEXT",
+        "INSTITUTIONAL_CONTEXT",
+        "TEMPORAL_CONTEXT",
+        "AUDIENCE_KNOWLEDGE_CONTEXT",
+        "HISTORICAL_ERA_CONTEXT"
+      ],
+      "tone_element": [
+        "RESTRAINED",
+        "WEIGHTED",
+        "CHRONICLE",
+        "SOBER",
+        "QUIETLY_ACCELERATING"
+      ],
+      "pace_element": [
+        "STEADY",
+        "QUIETLY_ACCELERATING"
+      ],
+      "communicative_function_element": [
+        "OPENS_BOOK",
+        "ESTABLISHES_PARTICIPANTS",
+        "ESTABLISHES_CONDITION",
+        "PLANTS_OPEN_QUESTION",
+        "TRANSMITS_COMMUNITY_MEMORY",
+        "WITHHOLDS_DIVINE_AGENCY"
+      ],
+      "role_in_scene_examples_being": [
+        "HOUSEHOLD_HEAD_LEADING_DEPARTURE",
+        "WIFE_ACCOMPANYING_HEAD",
+        "ELDER_SON_ACCOMPANYING_FAMILY",
+        "YOUNGER_SON_ACCOMPANYING_FAMILY",
+        "ERA_ANCHOR_REFERENT",
+        "CLAN_IDENTITY_OF_HOUSEHOLD",
+        "DECEASED_HOUSEHOLD_HEAD",
+        "WIDOW_REMAINING_AS_RESIDUE",
+        "SURVIVING_SON_WITH_MOTHER",
+        "SON_TAKING_FOREIGN_WIFE",
+        "SOURCE_POOL_FROM_WHICH_WIVES_ARE_TAKEN",
+        "FOREIGN_BRIDE_INCORPORATED_INTO_HOUSEHOLD",
+        "MATRIARCH_OF_EXTENDED_HOUSEHOLD",
+        "DECEASED_SON",
+        "DOUBLY_BEREAVED_WIDOW_REDUCED_TO_RESIDUE",
+        "PREVIOUSLY_DECEASED_HUSBAND_INVOKED_IN_CUMULATIVE_LOSS",
+        "FOREIGN_DAUGHTER_IN_LAW_NOW_ALSO_BEREAVED"
+      ],
+      "role_in_scene_examples_place": [
+        "LAND_AFFLICTED_BY_FAMINE",
+        "HOMETOWN_DEPARTED_FROM",
+        "FOREIGN_DESTINATION_OF_SOJOURN",
+        "FOREIGN_LAND_WHERE_FIRST_DEATH_OCCURS",
+        "FOREIGN_LAND_OF_MARRIAGES_AND_DECADE_OF_DWELLING",
+        "FOREIGN_LAND_THAT_HAS_CONSUMED_ENTIRE_MALE_LINE"
+      ],
+      "role_in_scene_examples_time": [
+        "HISTORICAL_ERA_ANCHOR"
+      ],
+      "function_in_scene_examples_object": [
+        "AFFLICTION_THAT_TRIGGERS_DEPARTURE",
+        "CHRONICLE_OPENING_FORMULA_ANCHORING_ERA",
+        "FRAMES_DEPARTURE_AS_INTENDED_TEMPORARY",
+        "ANCHORS_FAMILY_IN_BETHLEHEM_FOUNDING_STOCK",
+        "REMOVES_HUSBAND_AND_FATHER_FROM_HOUSEHOLD",
+        "PIVOTS_NARRATIVE_FRAMING_ONTO_NAOMI_AT_HEADS_DEATH",
+        "FIRST_OCCURRENCE_OF_RESIDUAL_SURVIVAL_VERB",
+        "EXTENDS_FAMILY_WITH_TWO_FOREIGN_BORN_MEMBERS",
+        "MARKS_MARRIAGES_AS_SONS_OWN_INITIATIVE",
+        "DURATION_OF_FOREIGN_DWELLING_COMPRESSED_AS_CONTENT_ELEMENT",
+        "REMOVES_BOTH_SONS_FROM_HOUSEHOLD",
+        "TOTALITY_MARKER_NOTHING_REMAINS_OF_SONS",
+        "SECOND_OCCURRENCE_IMAGE_RHYME_WITH_1_3",
+        "NAMING_DOWN_OF_PROTAGONIST_SIGNALING_REDUCTION",
+        "REFRAMES_LOSS_AS_LOSS_OF_CHILDREN_NOT_HEIRS",
+        "SINGLE_PHRASE_COMPRESSION_TALLYING_ALL_THREE_LOSSES",
+        "PRIOR_LOSS_SUMMED_INTO_CUMULATIVE_BEREAVEMENT_PHRASE"
+      ],
+      "object_kind_examples": [
+        "AFFLICTION",
+        "CHRONICLE_OPENING_FORMULA",
+        "CLAN_IDENTIFIER_PHRASE",
+        "DEATH_EVENT",
+        "RELATIONAL_REFRAMING_PHRASE",
+        "RESIDUAL_SURVIVAL_VERB",
+        "MARRIAGE_EVENT",
+        "INITIATIVE_MARRIAGE_PHRASING",
+        "APPROXIMATE_DURATION_PHRASE",
+        "TOTALITY_MARKER",
+        "NAMING_DOWN_REFERENTIAL_FORM",
+        "TENDER_CHILD_REFERENTIAL_FORM",
+        "CUMULATIVE_LOSS_LISTING_FORM",
+        "REFERENCED_PRIOR_LOSS"
+      ],
+      "place_kind_examples": [
+        "HOMETOWN",
+        "FOREIGN_REGION",
+        "COVENANT_TERRITORY"
+      ],
+      "time_kind_examples": [
+        "HISTORICAL_ERA_ANCHOR"
+      ],
+      "image_kind_examples": [
+        "CHRONICLE_OPENING_FORMULA",
+        "PLACE_NAME_IRONY",
+        "IMAGE_RHYME_VERB_REPETITION",
+        "ETHNIC_IDENTITY_MARKER"
+      ],
+      "discourse_thread_state": [
+        "OPENED",
+        "OPENED_AND_THREATENED",
+        "ADVANCED",
+        "STRUCTURALLY_ABSENT",
+        "RESOLVED"
+      ],
+      "high_risk_register_kind": [
+        "STRUCTURAL_FRAMING_DEVICE",
+        "FIGURE_FIRST_OCCURRENCE",
+        "CROSS_OCCURRENCE_INTRA_PERICOPE",
+        "CROSS_PERICOPE_PAIRING_FIRST_OCCURRENCE",
+        "NAMING_SHIFT",
+        "CUMULATIVE_LOSS_LISTING_REQUIRED_FORM",
+        "STRUCTURAL_ABSENCE_OF_DIVINE_AGENCY",
+        "STRUCTURAL_ABSENCE_OF_GRIEF",
+        "STRUCTURAL_ABSENCE_OF_OFFSPRING",
+        "NUMBER_MEASURE_EXACT_RENDERING",
+        "NAMING_SEQUENCE_PRESERVATION",
+        "WITHHELD_PAIRING_PER_SOURCE_DISCIPLINE",
+        "TENDER_CHILD_REFERENCE_PRESERVATION",
+        "DISCOURSE_THREAD_OPENED",
+        "PROVIDENTIAL_ANSWER_ANTICIPATED",
+        "STRUCTURAL_CONTRAST"
+      ]
+    },
+    "drift_warning_recommendations": [
+      {
+        "value": "accept",
+        "meaning": "Real pericope-specific value. Record in COMPILATION-LOG.vocabulary_additions. The value joins the bounded-open enumeration for future pericopes."
+      },
+      {
+        "value": "revise",
+        "meaning": "Likely drift. Use an existing canonical-P01 value or adjust the structural representation."
+      },
+      {
+        "value": "defer",
+        "meaning": "Legitimate but requires Marcia's methodology decision before accepting. Hold pericope at Gate F."
+      }
+    ]
+  }
+}
