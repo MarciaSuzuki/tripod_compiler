@@ -53,3 +53,23 @@ export function closedList(name: string): string[] {
   if (!Array.isArray(v)) throw new Error(`closed_lists.${name} is not a list`);
   return v;
 }
+
+export type AxisClass = "convergent" | "descriptive";
+
+/**
+ * Classify a drift-detector enumeration axis.
+ *  - convergent: expected to stabilize as more pericopes are mapped — an unseen value is a genuine
+ *    review signal (proposition_kind, scene_kind, arc/context/tone/pace/communicative_function
+ *    elements, presence_value, discourse_thread_state, high_risk_register_kind).
+ *  - descriptive: open by nature — new values appear every pericope and never converge, so an unseen
+ *    value is informational, not a review signal. These are the `_examples` axes (role_in_scene,
+ *    function_in_scene, *_kind_examples) and `referential_form`.
+ *
+ * The split is rule-based (the seed-key naming carries it): a key containing `_examples`
+ * (role_in_scene_examples_*, function_in_scene_examples_object, *_kind_examples) or equal to
+ * `referential_form` ⇒ descriptive; everything else ⇒ convergent. (Note: `context_element` is
+ * treated as convergent, like the other Level-1 element axes.)
+ */
+export function axisClass(seedKey: string): AxisClass {
+  return seedKey.includes("_examples") || seedKey === "referential_form" ? "descriptive" : "convergent";
+}

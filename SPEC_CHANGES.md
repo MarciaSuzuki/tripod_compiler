@@ -28,6 +28,9 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 | `compilation-log.schema.json` | `v0.3` | `24afa60b6d1c22ce338c0698d2a5a4269ddee58ddacff949fc44a35e19108921` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
+| `approved-enumerations.json` | `v0.1` | `3623630868562083bb0c7d35a177db0416bd3a983e43f22808d66bea96a7a282` |
+
+Routine vocabulary promotions (growing `approved-enumerations.json`) are logged in [`VOCABULARY_LOG.md`](VOCABULARY_LOG.md), not as a new SC each time (SC-0006 establishes the mechanism); each promotion re-pins the registry above.
 
 ---
 
@@ -46,6 +49,47 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0006 — Establish drift convergence: convergent/descriptive split + growing approved-enumerations registry
+- **Date:** 2026-05-29
+- **Decided by:** Marcia Suzuki
+- **Status:** SHIPPED (2026-05-29)
+- **Type:** axis reclassification + schema-shape (new registry file) + validator mechanism
+- **Summary:** Two linked changes so drift becomes a real, converging review signal instead of
+  per-pericope noise. (1) **Split** the drift detector's axes into *convergent* (review-signal)
+  vs *descriptive* (open, never converge); (2) replace the frozen P01-only baseline with a
+  **growing `approved-enumerations.json` registry** that accumulates approved convergent values
+  with provenance, so a value approved in one pericope stops drifting in the next.
+- **(1) Convergent vs descriptive (rule-based):** an axis whose seed key contains `_examples`
+  (`role_in_scene_examples_*`, `function_in_scene_examples_object`, `*_kind_examples`) or equals
+  `referential_form` is **descriptive** — per-pericope by nature, surfaced as severity `descriptive`
+  (informational), never as drift. Everything else (`proposition_kind`, `scene_kind`,
+  `presence_value`, the L1 element axes incl. `context_element`, `discourse_thread_state`,
+  `high_risk_register_kind`) is **convergent** → severity `drift`. Example: P02 drops from 86
+  lumped "drift" to **37 convergent + 49 descriptive**.
+- **(2) Growing registry:** new `_spec/approved-enumerations.json` (v0.1), seeded from the
+  convergent axes of `drift_detector.canonical_p01_enumerations` (each value tagged
+  `first_seen`/`approved_in`/`source_artifact`/`sc_ref`). The validator reads it as the live drift
+  baseline for convergent axes (descriptive axes still use the P01 seed for the informational note).
+  `drift_detector.canonical_p01_enumerations` is retained as the documented seed.
+- **Promotion-with-provenance:** `tripod promote <COMPILATION-LOG>` reads the log's
+  `vocabulary_additions` (the Gate-F-approved values), gates on `status` (default `CONFIRMED`),
+  and grows the registry; `tripod propose-vocabulary <FOR_MODEL>` lists convergent-drift values as
+  candidate additions. Promotions append to `VOCABULARY_LOG.md` and re-pin the registry — no new SC
+  per promotion (this entry establishes the policy).
+- **Known limitation (flagged):** the COMPILATION-LOG `vocabulary_additions` only carries
+  `proposition_kinds` / `scene_kinds` / `presence_values`, so those converge; the L1-element axes
+  (arc/context/tone/pace/communicative_function), `discourse_thread_state`, and
+  `high_risk_register_kind` have **no promotion slot** in the COMPILATION-LOG schema yet and will
+  keep drifting until that schema gains one (a future SC). `tripod promote` prints these uncovered axes.
+- **Version:** new `approved-enumerations.json v0.1`
+  (sha256 `3623630868562083bb0c7d35a177db0416bd3a983e43f22808d66bea96a7a282`); pinned in `_spec/pins.json`.
+  No change to `validation-rules.json` (the canonical_p01_enumerations seed is unchanged).
+- **Verification:** `tripod validate` P01–P06 still block-clean; P02 splits 37 convergent / 49
+  descriptive; promoting P02's `vocabulary_additions` zeroes its `proposition_kind`+`scene_kind`
+  drift on re-validate, with residual convergent drift only on the uncovered axes. 22 tests green.
 
 ---
 

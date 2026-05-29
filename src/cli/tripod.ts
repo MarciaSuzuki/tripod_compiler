@@ -1,15 +1,21 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { readdirSync, statSync, writeFileSync } from "node:fs";
+import { readdirSync, statSync, writeFileSync, appendFileSync } from "node:fs";
 import { join } from "node:path";
 import { validateArtifact } from "../engine/validate.js";
 import { formatReport } from "../engine/report.js";
 import { checkDrift, closedListSyncIssues } from "../spec/pins.js";
 import { readMeaningMap } from "../reader/meaning-map.js";
 import { compileSkeleton } from "../compiler/skeleton.js";
+import { SPEC_DIR } from "../spec/load.js";
+import { loadApprovedEnumerations } from "../spec/enumerations.js";
+import { planPromotion, applyPromotion } from "../compiler/promote.js";
 
 const program = new Command();
-program.name("tripod").description("Tripod Compiler — Slice 1 (validator) + Slice 2 (skeleton compiler)").version("0.2.0");
+program
+  .name("tripod")
+  .description("Tripod Compiler — validator, drift convergence, and MeaningMap→FOR_MODEL skeleton compiler")
+  .version("0.3.0");
 
 program
   .command("validate")
@@ -30,9 +36,10 @@ program
     } else {
       for (const r of reports) console.log(formatReport(r), "\n");
       const drift = reports.reduce((n, r) => n + r.counts.drift, 0);
+      const descr = reports.reduce((n, r) => n + r.counts.descriptive, 0);
       const propose = reports.reduce((n, r) => n + r.counts.propose, 0);
       console.log(
-        `— ${reports.length} artifact(s): ${reports.length - invalid} valid, ${invalid} invalid · ${drift} drift · ${propose} propose —`,
+        `— ${reports.length} artifact(s): ${reports.length - invalid} valid, ${invalid} invalid · ${drift} drift (convergent) · ${descr} descr (open) · ${propose} propose —`,
       );
     }
     // Set exitCode (don't process.exit) so large stdout flushes before exit.
@@ -102,6 +109,66 @@ program
     }
     if (opts.out) console.log(`  skeleton written to ${opts.out}`);
     else console.log(`  → --out <file> to write the skeleton; --json for the full gap list with hints`);
+  });
+
+program
+  .command("propose-vocabulary")
+  .description("from a FOR_MODEL, list convergent-axis drift values as candidate COMPILATION-LOG vocabulary_additions")
+  .argument("<for-model>", "a FOR_MODEL artifact note")
+  .action((path: string) => {
+    const r = validateArtifact(path);
+    const byAxis = new Map<string, Set<string>>();
+    for (const f of r.findings) {
+      if (f.severity !== "drift" || !f.axis) continue; // convergent drift only
+      const v = f.message.match(/^'([^']+)'/)?.[1];
+      if (v) (byAxis.get(f.axis) ?? byAxis.set(f.axis, new Set()).get(f.axis)!).add(v);
+    }
+    if (byAxis.size === 0) {
+      console.log(`${path}: no convergent drift — nothing to propose.`);
+      return;
+    }
+    console.log(`Convergent-drift values in ${path} — candidate vocabulary_additions for review (Gate F):`);
+    for (const [axis, vals] of [...byAxis.entries()].sort()) {
+      console.log(`  ${axis}:`);
+      for (const v of [...vals].sort()) console.log(`     - ${v}`);
+    }
+    console.log(`\n  Record approved ones in the pericope's COMPILATION-LOG vocabulary_additions, then \`tripod promote\`.`);
+  });
+
+program
+  .command("promote")
+  .description("promote approved convergent vocabulary from a COMPILATION-LOG into the approved-enumerations registry (SC-0006)")
+  .argument("<compilation-log>", "a COMPILATION-LOG artifact note")
+  .option("--status <status>", "promote only values at this status (CONFIRMED|PROPOSED|ANY)", "CONFIRMED")
+  .option("--apply", "write the grown registry (default target: the vendored _spec/approved-enumerations.json)")
+  .option("--to <file>", "registry file to write when --apply is set")
+  .option("--log <file>", "VOCABULARY_LOG path to append a promotion line", "VOCABULARY_LOG.md")
+  .action((path: string, opts: { status?: string; apply?: boolean; to?: string; log?: string }) => {
+    const plan = planPromotion(path, { status: opts.status });
+    console.log(`promote ${plan.pericope ?? path} — status gate: ${plan.statusFilter}`);
+    console.log(
+      `  ${plan.promote.length} to promote · ${plan.alreadyApproved.length} already approved · ${plan.skippedByStatus.length} skipped (status)`,
+    );
+    for (const c of plan.promote) console.log(`     + ${c.axis}: ${c.value}  [${c.status ?? "—"}]`);
+    if (plan.skippedByStatus.length)
+      console.log(`  (${plan.skippedByStatus.length} skipped — not ${plan.statusFilter}; use --status ANY to include)`);
+    console.log(
+      `  note: convergent axes NOT covered by COMPILATION-LOG vocabulary_additions (won't converge via promote yet): ${plan.uncoveredAxes.join(", ")}`,
+    );
+    if (!opts.apply) {
+      console.log(`  → dry run. Re-run with --apply to grow the registry.`);
+      return;
+    }
+    const target = opts.to ?? join(SPEC_DIR, "approved-enumerations.json");
+    const { reg, added } = applyPromotion(loadApprovedEnumerations(), plan);
+    writeFileSync(target, JSON.stringify(reg, null, 2) + "\n");
+    const stamp = plan.sourceArtifact;
+    appendFileSync(
+      opts.log ?? "VOCABULARY_LOG.md",
+      `- ${stamp}: promoted ${added.length} value(s) [${added.map((a) => `${a.axis}:${a.value}`).join(", ")}] → ${target}\n`,
+    );
+    console.log(`  applied: ${added.length} value(s) written to ${target}; logged to ${opts.log ?? "VOCABULARY_LOG.md"}.`);
+    console.log(`  ⚠ governed step: re-vendor + re-pin (update _spec/pins.json sha256) and record under SPEC_CHANGES if this is the canonical registry.`);
   });
 
 program.parseAsync(process.argv);

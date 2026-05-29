@@ -27,8 +27,24 @@ Map against it.
 - `for_model_schema` — JSON Schema for the FOR_MODEL envelope + structure. It mirrors each
   closed list as a `$defs.*_value` enum; the array and its mirror enum must stay in sync —
   itself a validator invariant.
-- `drift_detector.canonical_p01_enumerations` — the L2 **bounded-open** seeds; a value not yet
-  present is a **drift warning** (review → add-with-provenance), not a hard error.
+- `drift_detector.canonical_p01_enumerations` — the documented L2 **bounded-open** seed (retained
+  for provenance). The *live* drift baseline now comes from `approved-enumerations.json` (below).
+
+## `approved-enumerations.json` — the growing drift baseline (SC-0006)
+
+Bounded-open axes split two ways (rule: a seed key containing `_examples` or equal to
+`referential_form` is **descriptive**; else **convergent**):
+
+- **convergent** axes (`proposition_kind`, `scene_kind`, `presence_value`, the L1 element axes,
+  `discourse_thread_state`, `high_risk_register_kind`) are expected to stabilize — an unseen value is
+  a real **drift** review-signal. Their approved values accumulate **with provenance** in
+  `approved-enumerations.json` (pinned, v0.1, seeded from P01), grown by `tripod promote` from
+  COMPILATION-LOG `vocabulary_additions`. So drift **converges** across pericopes.
+- **descriptive** axes (`role_in_scene_*`, `function_in_scene_*`, `*_kind_examples`,
+  `referential_form`) are open by nature; unseen values are reported as `descriptive`
+  (informational), never drift, and are **not** tracked in the registry.
+
+See `../SPEC_CHANGES.md` (SC-0006) + `../VOCABULARY_LOG.md`.
 
 The three sibling artifact schemas (`compilation-log`, `bcd-delta`, `verification-input`) live
 in the wiki `_spec/` and are vendored/validated the same way as Slice 1 expands.
