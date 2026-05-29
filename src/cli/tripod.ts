@@ -7,6 +7,9 @@ import { formatReport } from "../engine/report.js";
 import { checkDrift, closedListSyncIssues } from "../spec/pins.js";
 import { readMeaningMap } from "../reader/meaning-map.js";
 import { compileSkeleton } from "../compiler/skeleton.js";
+import { compileCompilationLog } from "../compiler/complog.js";
+import { goldDiff } from "../compiler/golddiff.js";
+import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
@@ -15,7 +18,7 @@ const program = new Command();
 program
   .name("tripod")
   .description("Tripod Compiler — validator, drift convergence, and MeaningMap→FOR_MODEL skeleton compiler")
-  .version("0.3.0");
+  .version("0.4.0");
 
 program
   .command("validate")
@@ -68,11 +71,13 @@ program
   .command("compile")
   .description("deterministically compile a Meaning Map into a FOR_MODEL skeleton + gap report (no LLM)")
   .argument("<meaning-map>", "a pericope Meaning Map .md note")
-  .option("--out <file>", "write the FOR_MODEL skeleton JSON to a file")
+  .option("--out <file>", "write the FOR_MODEL skeleton as a draft note")
+  .option("--out-log <file>", "write the gap report as a schema-valid COMPILATION-LOG note")
   .option("--json", "print { skeleton, gaps, stats } as JSON")
-  .action((mmPath: string, opts: { out?: string; json?: boolean }) => {
+  .action((mmPath: string, opts: { out?: string; outLog?: string; json?: boolean }) => {
     const mm = readMeaningMap(mmPath);
-    const { skeleton, gaps, stats } = compileSkeleton(mm);
+    const result = compileSkeleton(mm);
+    const { skeleton, gaps, stats } = result;
     if (opts.out) {
       const ref = String((skeleton as any).header?.source_meaning_map_ref ?? mm.pericope ?? "");
       const note =
@@ -91,6 +96,21 @@ program
         JSON.stringify(skeleton, null, 2) +
         "\n```\n";
       writeFileSync(opts.out, note);
+    }
+    if (opts.outLog) {
+      const log = compileCompilationLog(mm, result);
+      const note =
+        `---\n` +
+        `type: "compilation-log"\n` +
+        `pericope: "${mm.pericope ?? ""}"\n` +
+        `status: "skeleton"\n` +
+        `pilot: "pilot-2"\n` +
+        `---\n\n` +
+        `# ${mm.pericope ?? ""} — ${mm.bcv ?? ""} — COMPILATION-LOG (skeleton gap report)\n\n` +
+        "```json\n" +
+        JSON.stringify(log, null, 2) +
+        "\n```\n";
+      writeFileSync(opts.outLog, note);
     }
     if (opts.json) {
       console.log(JSON.stringify({ skeleton, gaps, stats }, null, 2));
@@ -169,6 +189,38 @@ program
     );
     console.log(`  applied: ${added.length} value(s) written to ${target}; logged to ${opts.log ?? "VOCABULARY_LOG.md"}.`);
     console.log(`  ⚠ governed step: re-vendor + re-pin (update _spec/pins.json sha256) and record under SPEC_CHANGES if this is the canonical registry.`);
+  });
+
+program
+  .command("gold-diff")
+  .description("diff each fixture skeleton vs its gold FOR_MODEL: extracted-and-matched vs judgment (Slice-4 regression baseline)")
+  .option("--mm-dir <dir>", "meaning-map fixtures dir", "fixtures/meaning-map")
+  .option("--fm-dir <dir>", "gold FOR_MODEL fixtures dir", "fixtures/for-model")
+  .option("--out <file>", "write the diff baseline JSON")
+  .action((opts: { mmDir: string; fmDir: string; out?: string }) => {
+    const fmFiles = readdirSync(opts.fmDir).filter((f) => f.endsWith("-FOR-MODEL.md"));
+    const diffs = readdirSync(opts.mmDir)
+      .filter((f) => f.endsWith(".md"))
+      .sort()
+      .map((mf) => {
+        const pid = mf.slice(0, 3); // P0#
+        const fm = fmFiles.find((f) => f.startsWith(pid));
+        if (!fm) return null;
+        const mm = readMeaningMap(join(opts.mmDir, mf));
+        const { skeleton } = compileSkeleton(mm);
+        return goldDiff(mm, skeleton, readArtifactNote(join(opts.fmDir, fm)).json);
+      })
+      .filter((d): d is ReturnType<typeof goldDiff> => d !== null);
+    for (const d of diffs) {
+      console.log(
+        `${d.pericope}: ${d.agreementPct}% gold agreement (${d.matched} matched · ${d.divergent} divergent vs gold) · ${d.judgmentPlaceholders} judgment placeholders`,
+      );
+      for (const m of d.divergences) console.log(`     ~ ${m.field}: ${m.note}`);
+    }
+    if (opts.out) {
+      writeFileSync(opts.out, JSON.stringify(diffs, null, 2) + "\n");
+      console.log(`baseline written to ${opts.out}`);
+    }
   });
 
 program.parseAsync(process.argv);

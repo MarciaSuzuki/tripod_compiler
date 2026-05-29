@@ -69,6 +69,13 @@ Meaning Map and emits a FOR_MODEL **skeleton** + **gap report**:
 - `--out <file.md>` writes the skeleton as a draft FOR_MODEL note (status `skeleton`); `--json`
   prints `{ skeleton, gaps, stats }`. The deterministic fields are cross-checked against the gold
   FOR_MODELs in the tests.
+- **Hardened (slice-2-hardening):** judgment placeholders **carry their source-prose span**
+  (`__TODO__: <span>`); the gap report also emits as a **schema-valid COMPILATION-LOG**
+  (`--out-log`, validated via Slice 1, gaps in `known_limitations`, extract-only attested); an
+  **extract-only trace** check guarantees every emitted token resolves to an MM span (no invented
+  values); and **`tripod gold-diff`** reports per-pericope gold agreement (90–100% on the comparable
+  layer; P01 100%) with a committed baseline as Slice 4's regression check. Residual gold
+  divergences are MM↔FOR_MODEL coverage differences, not extractor errors.
 
 - Not yet: the deep Layer-2/3 vocabulary passes for COMPILATION-LOG / BCD-DELTA /
   VERIFICATION-INPUT (those validate structurally today; FOR_MODEL leads per decision E), and
@@ -87,7 +94,8 @@ npm install
 npm run build                         # tsc → dist/ (provides the `tripod` bin)
 npx tsx src/cli/tripod.ts validate fixtures/for-model/     # or: tripod validate <note|dir>
 npx tsx src/cli/tripod.ts check-drift [--vault <wiki/_spec>]
-npx tsx src/cli/tripod.ts compile fixtures/meaning-map/P01-Ruth-1-1-5.md [--out skel.md] [--json]
+npx tsx src/cli/tripod.ts compile fixtures/meaning-map/P01-Ruth-1-1-5.md [--out skel.md] [--out-log log.md] [--json]
+npx tsx src/cli/tripod.ts gold-diff [--out fixtures/gold-diff-baseline.json]
 npx tsx src/cli/tripod.ts propose-vocabulary fixtures/for-model/P02-Ruth-1-6-14-FOR-MODEL.md
 npx tsx src/cli/tripod.ts promote fixtures/compilation-log/P02-Ruth-1-6-14-COMPILATION-LOG.md [--status ANY] [--apply]
 npm test

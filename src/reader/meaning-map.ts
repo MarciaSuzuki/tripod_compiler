@@ -57,6 +57,8 @@ export interface MeaningMap {
   genreGroup: string | null;
   genre: string | null;
   register: string | null;
+  /** Section-2 prose per Level-1 axis group (the source spans the L1 element tokens derive from). */
+  level1Prose: { arc: string | null; context: string | null; tonePace: string | null; commFunc: string | null };
   scenes: MMScene[];
   propositions: MMProposition[];
 }
@@ -67,7 +69,12 @@ function codeFromWikilink(target: string): string {
   return i === -1 ? target : target.slice(0, i);
 }
 const firstWikilink = (line: string): string | null => line.match(/\[\[([^\]]+)\]\]/)?.[1] ?? null;
-const normPresence = (p: string): string => (/→|->/.test(p) ? "PRESENT_BECOMES_DECEASED" : p.trim());
+/** Normalize a presence transition `X → Y` to `X_BECOMES_Y` faithfully (e.g. PRESENT → DECEASED →
+ *  PRESENT_BECOMES_DECEASED; PRESENT → DEPARTS → PRESENT_BECOMES_DEPARTS) — never assume "deceased". */
+const normPresence = (p: string): string => {
+  const m = p.match(/^(.*?)\s*(?:→|->)\s*(.*)$/);
+  return m ? `${m[1]} BECOMES ${m[2]}`.trim().toUpperCase().replace(/\s+/g, "_") : p.trim();
+};
 
 function parseFrontmatter(raw: string): { fm: Record<string, string>; body: string } {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
@@ -122,7 +129,7 @@ function parseEntities(blockLines: string[]): MMEntity[] {
 }
 
 function parseScene(heading: string, body: string[], chapter: string | null): MMScene {
-  const hm = heading.match(/Scene\s+(\d+)\s*[—–-]\s*(.*?)\s*\(v\.?\s*(\d+)(?:\s*[–-]\s*(\d+))?\)/i);
+  const hm = heading.match(/Scene\s+(\d+)\s*[—–-]\s*(.*?)\s*\(vv?\.?\s*(\d+)(?:\s*[–-]\s*(\d+))?\)/i);
   const idx = hm ? Number(hm[1]) : NaN;
   const sceneId = Number.isFinite(idx) ? `S${idx}` : "S?";
   const title = hm ? hm[2]!.trim() : heading;
@@ -231,6 +238,14 @@ export function readMeaningMap(path: string): MeaningMap {
   const propositions = splitSections(section("4."), 3).map((s) => parseProposition(s.heading, s.body));
   applyFlags(section("5."), propositions);
 
+  // Section-2 prose per L1 axis group (the spans the L1 element tokens derive from).
+  const l2subs = splitSections(section("2."), 3);
+  const subProse = (prefix: string): string | null => {
+    const b = l2subs.find((s) => s.heading.startsWith(prefix))?.body ?? [];
+    const t = b.map((l) => l.trim()).filter(Boolean).join(" ").trim();
+    return t || null;
+  };
+
   return {
     path,
     pericope: fm["pericope-num"] ?? null,
@@ -240,6 +255,12 @@ export function readMeaningMap(path: string): MeaningMap {
     genreGroup: fm["genre-group"] ?? null,
     genre: fm["genre"] ?? null,
     register: fm["register"] ?? null,
+    level1Prose: {
+      arc: subProse("2.1"),
+      context: subProse("2.2"),
+      tonePace: subProse("2.3"),
+      commFunc: subProse("2.4"),
+    },
     scenes,
     propositions,
   };

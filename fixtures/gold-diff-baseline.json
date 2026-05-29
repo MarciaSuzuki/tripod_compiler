@@ -1,0 +1,90 @@
+[
+  {
+    "pericope": "P01",
+    "matched": 43,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 79,
+    "divergences": []
+  },
+  {
+    "pericope": "P02",
+    "matched": 35,
+    "divergent": 4,
+    "agreementPct": 90,
+    "judgmentPlaceholders": 105,
+    "divergences": [
+      {
+        "field": "S1/being/B10",
+        "note": "B10:REFERENCED (acts off-stage in the land of Judah) not in gold"
+      },
+      {
+        "field": "S1/being/B31",
+        "note": "B31:REFERENCED (off-stage in the land of Judah) not in gold"
+      },
+      {
+        "field": "S2/being/B2",
+        "note": "B2:REFERENCED (named in P01; named here only as \"the dead\") not in gold"
+      },
+      {
+        "field": "S3/being/B8",
+        "note": "B8:PRESENT_BECOMES_DEPARTS not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "P03",
+    "matched": 26,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 69,
+    "divergences": []
+  },
+  {
+    "pericope": "P04",
+    "matched": 37,
+    "divergent": 2,
+    "agreementPct": 95,
+    "judgmentPlaceholders": 69,
+    "divergences": [
+      {
+        "field": "S1/place/PL2",
+        "note": "PL2 not in gold"
+      },
+      {
+        "field": "S2/place/PL1",
+        "note": "PL1 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "P05",
+    "matched": 49,
+    "divergent": 1,
+    "agreementPct": 98,
+    "judgmentPlaceholders": 95,
+    "divergences": [
+      {
+        "field": "S3/being/B13",
+        "note": "B13:PRESENT (arrives mid-scene at v.4) not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "P06",
+    "matched": 45,
+    "divergent": 2,
+    "agreementPct": 96,
+    "judgmentPlaceholders": 122,
+    "divergences": [
+      {
+        "field": "S3/being/B14",
+        "note": "B14:PRESENT not in gold"
+      },
+      {
+        "field": "S4/being/B17",
+        "note": "B17:PRESENT not in gold"
+      }
+    ]
+  }
+]
