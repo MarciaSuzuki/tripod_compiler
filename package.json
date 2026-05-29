@@ -1,7 +1,7 @@
 {
   "name": "tripod-compiler",
-  "version": "0.1.0",
-  "description": "Upstream artifact-production toolchain for the Tripod Method. Slice 1: spec loader + drift-check, Obsidian reader, profile-aware 3-layer validator (tripod validate).",
+  "version": "0.2.0",
+  "description": "Upstream artifact-production toolchain for the Tripod Method. Slice 1: spec loader + drift-check, Obsidian reader, profile-aware 3-layer validator. Slice 2: deterministic MeaningMap→FOR_MODEL skeleton compiler (tripod compile).",
   "type": "module",
   "bin": {
     "tripod": "./dist/cli/tripod.js"
