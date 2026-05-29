@@ -47,6 +47,37 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 ---
 
+## SC-0003 — Clean residual "elevated register bordering on COMMUNITY_MEMORY" prose from live artifacts
+- **Date:** 2026-05-29
+- **Decided by:** Marcia Suzuki
+- **Status:** SHIPPED (2026-05-29)
+- **Type:** other (artifact-prose consistency; **no spec change** — pin/hash unchanged)
+- **Summary:** Resolves the residual prose flagged under SC-0002. Live artifacts described the
+  *wayhi bi-yemei* opening as an "elevated register bordering on COMMUNITY_MEMORY" — post-SC-0001 a
+  category error, since `COMMUNITY_MEMORY` is a `NARRATIVE_FRAMING` value, not a register.
+- **Spec change (exact):** none (no `validation-rules.json` edit; closed lists untouched).
+- **Artifact edits (wiki):**
+  - `pericopes/P01-Ruth-1-1-5.md` (canonical meaning map — §1 register tagging + the Level-2 figure
+    note): the v.1 *wayhi* formula now reads "elevated narrative framing — COMMUNITY_MEMORY (a
+    NARRATIVE_FRAMING value, not a register)," and the register is stated to stay `INFORMAL_CASUAL` throughout.
+  - `concepts/CB_0029-Judges-Era.md` (Rendering concern, ×2): same reframe.
+  - `figures/FIG_0050-Wayhi-Bimei-Chronicle-Formula.md` (intended-meaning, ×3): "elevated narrative
+    register" → "elevated narrative framing."
+- **Deliberately NOT changed:**
+  - Correct uses of "elevated register" — the P01/P03/P04/P05 COMPILATION-LOGs' "…carried by figure
+    flags, not by elevated register"; the Pilot-3 draft's own category-error analysis; agent
+    style-guidance ("high-register filler").
+  - `_examples/{meaning-map,audit,for-model}-P01-worked-example.md` are **pre-Wave-3** (pericope
+    register `CONSULTATIVE`; obsolete 2-artifact AUDIT model). The phrase persists in the meaning-map
+    example; a one-line patch would leave it incoherent. **Recommend a separate full examples refresh**
+    (regenerate from canonical P01). This is the only remaining live occurrence.
+- **Validator impact:** none.
+- **Version:** unchanged — `validation-rules.json v0.5` (sha256 `a326dbdd2601089851907c2025517a7f3b076a9432d380e00487ee0ec76f1b4a`).
+- **Verification:** vault sweep confirms no "elevated register bordering on COMMUNITY_MEMORY" or
+  "elevated narrative register" remains in any live (non-archive, non-working, non-`_examples`) file.
+
+---
+
 ## SC-0002 — Propagate the `COMMUNITY_MEMORY` reclassification into prompts, templates, and the worked example
 - **Date:** 2026-05-29
 - **Decided by:** Marcia Suzuki
