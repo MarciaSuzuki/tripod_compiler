@@ -1,5 +1,5 @@
 import type { Finding } from "./report.js";
-import type { CanonicalP01Enumerations } from "../spec/load.js";
+import { axisClass } from "../spec/load.js";
 
 /** Entity-registry code shapes (Layer 3). CB_/FIG_ are handled separately (flag arrays). */
 const ENTITY_CODE = /^(B\d+|PL\d+|PL_[A-Z0-9_]+|O\d+|TH_[A-Z0-9_]+|TM_[A-Z0-9_]+|I\d+)$/;
@@ -15,7 +15,7 @@ const sceneEntries = (node: unknown): any[] => asArray((node as any)?.entries) a
  *  - register-critical: significant_absence present/non-empty; referential_form coverage (info).
  *  - L3 registry: surface the CB/FIG/entity codes referenced (info).
  */
-export function vocabularyFindings(json: any, seeds: CanonicalP01Enumerations): Finding[] {
+export function vocabularyFindings(json: any, seeds: Record<string, string[]>): Finding[] {
   const findings: Finding[] = [];
   const seedSets: Record<string, Set<string>> = {};
   for (const [k, v] of Object.entries(seeds)) seedSets[k] = new Set(v as string[]);
@@ -23,14 +23,17 @@ export function vocabularyFindings(json: any, seeds: CanonicalP01Enumerations): 
   const drift = (value: unknown, seedKey: string, location: string) => {
     if (typeof value !== "string") return;
     const set = seedSets[seedKey];
-    if (set && !set.has(value)) {
-      findings.push({
-        severity: "drift",
-        code: "drift",
-        location,
-        message: `'${value}' not in canonical-P01 ${seedKey} seed (bounded-open: review → add-with-provenance)`,
-      });
-    }
+    if (!set || set.has(value)) return;
+    const convergent = axisClass(seedKey) === "convergent";
+    findings.push({
+      severity: convergent ? "drift" : "descriptive",
+      code: convergent ? "drift" : "descriptive",
+      location,
+      axis: seedKey,
+      message: convergent
+        ? `'${value}' not in the approved ${seedKey} enumeration — convergent axis, review → promote-with-provenance`
+        : `'${value}' on open axis ${seedKey} — descriptive (per-pericope; not a review signal)`,
+    });
   };
 
   // ---- Level 1 element arrays ----

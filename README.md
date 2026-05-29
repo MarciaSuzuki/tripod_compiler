@@ -43,8 +43,15 @@ CLAUDE.md           project brief & build guide
   closed-list sync invariant. The hand-seeded skeleton YAMLs were superseded and removed
   (decision A / SC-0001).
 - **`tripod validate <note|dir>`** — Layer 1 (ajv against the pinned schema: structure +
-  closed-list **block**), Layer 2 (bounded-open **drift** vs the canonical-P01 seed), Layer 3
-  (referential integrity + registry references), plus register-critical presence checks.
+  closed-list **block**), Layer 2 (bounded-open **drift**), Layer 3 (referential integrity +
+  registry references), plus register-critical presence checks.
+- **Drift convergence (SC-0006):** L2 drift is split into **convergent** axes (real review-signal —
+  `proposition_kind`, `scene_kind`, L1 elements, …) and **descriptive** open axes (`role_in_scene`,
+  `function_in_scene`, `referential_form`, … — informational, never drift). The convergent baseline
+  is a **growing `approved-enumerations.json`** registry: `tripod promote` accumulates approved
+  values (with provenance) from COMPILATION-LOG `vocabulary_additions`, so drift converges across
+  pericopes (e.g. P02 = 37 convergent + 49 descriptive; promoting P02 zeroes its proposition/scene
+  drift). `tripod propose-vocabulary` lists the candidates.
 - **Proof:** P01–P06 FOR_MODELs validate block-clean (P01 drift 0 as the seed; P02–P06 surface
   bounded-open drift); a corrupted artifact yields precise, located errors. `npm test` (vitest)
   covers all of this.
@@ -81,5 +88,7 @@ npm run build                         # tsc → dist/ (provides the `tripod` bin
 npx tsx src/cli/tripod.ts validate fixtures/for-model/     # or: tripod validate <note|dir>
 npx tsx src/cli/tripod.ts check-drift [--vault <wiki/_spec>]
 npx tsx src/cli/tripod.ts compile fixtures/meaning-map/P01-Ruth-1-1-5.md [--out skel.md] [--json]
+npx tsx src/cli/tripod.ts propose-vocabulary fixtures/for-model/P02-Ruth-1-6-14-FOR-MODEL.md
+npx tsx src/cli/tripod.ts promote fixtures/compilation-log/P02-Ruth-1-6-14-COMPILATION-LOG.md [--status ANY] [--apply]
 npm test
 ```

@@ -3,6 +3,7 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { loadValidationRules, loadSpecJson } from "../spec/load.js";
 import { compileSchema, structuralFindings, type Validator } from "./structural.js";
 import { vocabularyFindings } from "./vocabulary.js";
+import { driftBaseline } from "../spec/enumerations.js";
 import { tally, type Finding, type ValidationReport } from "./report.js";
 
 export type ArtifactKind =
@@ -74,7 +75,7 @@ export function validateArtifact(path: string): ValidationReport {
 
   const findings: Finding[] = [...structuralFindings(validator, note.json)];
   if (kind === "FOR_MODEL") {
-    findings.push(...vocabularyFindings(note.json as any, rules.drift_detector.canonical_p01_enumerations));
+    findings.push(...vocabularyFindings(note.json as any, driftBaseline()));
   }
   const counts = tally(findings);
   return { ...base, artifact: kind, ok: counts.block === 0, findings, counts };
