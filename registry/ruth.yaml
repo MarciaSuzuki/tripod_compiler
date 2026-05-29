@@ -1,0 +1,83 @@
+# Layer 3 — PROFILE REGISTRY for the book of Ruth (BIBLICAL_PASSAGE profile).
+# Behaviour on miss: PROPOSE_REGISTRY_ADDITION (emit a BCD-delta for human approval).
+# AUTHORITATIVE SOURCE: the Book Context Document (BCD). This file is a SEED of codes
+# observed in P01/P02 only; labels/glosses must be filled from the current BCD.
+meta:
+  book: RUTH
+  profile: BIBLICAL_PASSAGE
+  status: SKELETON
+  bcd_source: "<FILL: current pilot-2 BCD, e.g. ruth_pilot_BCD_v0_3 or successor>"
+  notes: >
+    pilot-2 uses NUMERIC cb/figure codes (CB_0029, FIG_0007). Labels are not recoverable from
+    the FOR_MODEL alone — pull them from the BCD / Concept Bank / Figure Registry.
+
+beings:        # B-codes. Each has referential_forms tracked across the book.
+  complete: false
+  values:
+    - { id: B1,  observed_in: [P01], note: "era anchor (period of judges)" }
+    - { id: B2,  observed_in: [P01, P02], referential_forms: [UNNAMED_MAN_FROM_BETHLEHEM] }
+    - { id: B3,  observed_in: [P01, P02], referential_forms: [UNNAMED_WIFE_OF_HEAD, STRIPPED_TO_HA_ISHAH] }
+    - { id: B4,  observed_in: [P01, P02], referential_forms: [UNNAMED_FIRST_SON] }
+    - { id: B5,  observed_in: [P01, P02], referential_forms: [UNNAMED_SECOND_SON] }
+    - { id: B6,  observed_in: [P01], note: "clan identity of household" }
+    - { id: B7,  observed_in: [P01], note: "source pool the wives are taken from" }
+    - { id: B8,  observed_in: [P01, P02], note: "Orpah" }
+    - { id: B9,  observed_in: [P01, P02], note: "Ruth" }
+    - { id: B10, observed_in: [P02], note: "YHWH (divine agent)" }
+    - { id: B31, observed_in: [P02], note: "the covenant people / Naomi's people" }
+
+places:        # PL-codes (numbered + named PL_*)
+  complete: false
+  values:
+    - { id: PL1, observed_in: [P01], note: "Bethlehem (hometown)" }
+    - { id: PL2, observed_in: [P01, P02], note: "fields of Moab (foreign land)" }
+    - { id: PL_HA_ARETZ, observed_in: [P01], note: "the land afflicted by famine" }
+    - { id: PL_LAND_OF_JUDAH, observed_in: [P02] }
+    - { id: PL_EACH_HER_MOTHERS_HOUSE, observed_in: [P02] }
+
+objects:       # O-codes AND TH_* phrase/thematic objects appear together in objects_in_scene.
+  complete: false
+  values:
+    - { id: O1, observed_in: [P01], note: "famine" }
+    # TH_* are thematic/phrase objects (formulae, framings). Many per scene; seed a few:
+    - { id: TH_WAYHI_BIMEI_FORMULA, observed_in: [P01] }
+    - { id: TH_TISHAER_REMAINING_RESIDUE, observed_in: [P01] }
+    - { id: TH_THE_RETURN_ROAD, observed_in: [P02] }
+    - { id: TH_PAQAD_VISITED_VERB, observed_in: [P02] }
+    - { id: TH_DAVQAH_CLINGING_VERB, observed_in: [P02] }
+    # TODO: many more TH_* observed across P01/P02; enumerate from fixtures, label from BCD.
+
+times:         # TM-codes
+  complete: false
+  values:
+    - { id: TM_PERIOD_OF_JUDGES, observed_in: [P01] }
+
+institutions:  # I-codes (none observed in P01/P02; appear later, e.g. kinsman-redeemer)
+  complete: false
+  values: []
+
+concept_bank:  # CB_#### — numeric in pilot-2. Labels live in the BCD Concept Bank.
+  complete: false
+  values:
+    - { id: CB_0004, observed_in: [P01, P02] }
+    - { id: CB_0008, observed_in: [P02] }
+    - { id: CB_0011, observed_in: [P02] }
+    - { id: CB_0012, observed_in: [P02] }
+    - { id: CB_0013, observed_in: [P02] }
+    - { id: CB_0014, observed_in: [P02] }
+    - { id: CB_0015, observed_in: [P02] }
+    - { id: CB_0016, observed_in: [P02] }
+    - { id: CB_0017, observed_in: [P02] }
+    - { id: CB_0018, observed_in: [P02] }
+    - { id: CB_0028, observed_in: [P01] }
+    - { id: CB_0029, observed_in: [P01] }
+    - { id: CB_0030, observed_in: [P01] }
+
+figures:       # FIG_#### — numeric in pilot-2. Labels live in the Figure Registry.
+  complete: false
+  values:
+    - { id: FIG_0001, observed_in: [P01] }
+    - { id: FIG_0007, observed_in: [P01] }
+    - { id: FIG_0012, observed_in: [P02], note: "opens P02; cross-pericope pair closes at P07 (2:23)" }
+    - { id: FIG_0013, observed_in: [P01, P02], note: "opens P01 (1:1); closes P02 (1:6)" }
+    - { id: FIG_0052, observed_in: [P01], note: "opens P01 P8; closes P01 P13" }
