@@ -1,0 +1,48 @@
+# Supporting axes whose layer/closedness is NOT yet confirmed. Resolve against the spec doc,
+# then move each into layer1.closed.yaml or layer2.bounded.yaml as appropriate.
+meta:
+  status: SKELETON
+  tagset_version: TRIPOD_STA_v2_0
+  authoritative_source: "<FILL: current pilot-2 STA vocabulary doc>"
+
+axes:
+  PRESENCE:
+    # being.presence in level_2_scenes. Likely a small CLOSED enum.
+    complete: false
+    likely_layer: 1
+    values:
+      - { id: PRESENT, observed_in: [P01, P02] }
+      - { id: REFERENCED, observed_in: [P01, P02] }
+      - { id: IMPLIED, observed_in: [], note: "seen in older vault artifacts; confirm in pilot-2" }
+      - { id: PRESENT_BECOMES_DECEASED, observed_in: [P01] }
+
+  REGISTER_OVERRIDE_VALUE:
+    # pericope_classification.register_overrides.{scene_level,moment_level}[].override_value
+    # OPEN QUESTION: is this the same list as REGISTER, a superset, or a separate axis?
+    # COMMUNITY_MEMORY (below) is NOT one of the registers -> suggests separate/superset.
+    complete: false
+    values:
+      - { id: INTIMATE, observed_in: [P02], note: "also a REGISTER" }
+      - { id: COMMUNITY_MEMORY, observed_in: [P01], note: "moment-level; NOT in the register list" }
+
+  COMPONENT_ACTION:
+    # the "action" field inside event_specific_slots.*_components[]. Distinct from PROPOSITION_KIND.
+    # OPEN QUESTION: closed, bounded-open, or free? Treat as bounded-open until the spec says otherwise.
+    complete: false
+    likely_layer: 2
+    values:
+      - { id: ARRIVED_AT, observed_in: [P01] }
+      - { id: WERE_AT, observed_in: [P01] }
+      - { id: TOOK_AS_WIFE, observed_in: [P01] }
+      - { id: AROSE_TO_RETURN, observed_in: [P02] }
+      - { id: WENT_OUT_FROM_PLACE_OF_RESIDENCE, observed_in: [P02] }
+      - { id: WALKED_ON_RETURN_ROAD, observed_in: [P02] }
+      - { id: KISSED, observed_in: [P02] }
+      - { id: WEPT_ALOUD, observed_in: [P02] }
+      - { id: REPEATED_DIRECTIVE, observed_in: [P02] }
+      - { id: ASKED_DISSUASIVE_QUESTION, observed_in: [P02] }
+      - { id: STATED_PERSONAL_IMPOSSIBILITY, observed_in: [P02] }
+      - { id: GRANTED_HYPOTHETICAL_CONCESSION, observed_in: [P02] }
+      - { id: STATED_BITTERNESS_COMPARISON, observed_in: [P02] }
+      - { id: ASCRIBED_BITTERNESS_TO_DIVINE_AGENT, observed_in: [P02] }
+      - { id: TURNED_BACK, observed_in: [P02] }
