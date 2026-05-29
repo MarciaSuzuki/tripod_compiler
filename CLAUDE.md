@@ -1,5 +1,9 @@
 # Tripod Compiler — Project Brief & Build Guide
 
+> **Current state: see [`docs/PROGRESS.md`](docs/PROGRESS.md).** This brief is the original
+> scoping handoff and is now partly stale (e.g. it says 2 artifacts — pilot-2 has 4; it suggests
+> zod — we consume the pinned JSON-Schemas via ajv). `docs/PROGRESS.md` overrides it on conflict.
+
 > Commit this file as `CLAUDE.md` at the repo root of `marciasuzuki/tripod_compiler`.
 > It is the handoff from a scoping session. It captures the verified schema, the
 > vocabulary model, the first build slice, and the open questions, so a fresh
