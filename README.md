@@ -48,9 +48,24 @@ CLAUDE.md           project brief & build guide
 - **Proof:** P01–P06 FOR_MODELs validate block-clean (P01 drift 0 as the seed; P02–P06 surface
   bounded-open drift); a corrupted artifact yields precise, located errors. `npm test` (vitest)
   covers all of this.
+**Slice 2 is implemented (deterministic half)** — `tripod compile <meaning-map>` parses a
+Meaning Map and emits a FOR_MODEL **skeleton** + **gap report**:
+
+- Deterministically filled: `sta_id`, `header`, `genre_group`/`genre`/`register`, scene IDs +
+  verse-ranges, per-scene entity IDs + `presence`, `significant_absence`, `scene_communicative_purpose`,
+  proposition IDs/anchors/scene-links/cross-refs, and the Section-5 concept/figure flags.
+- Left as `__TODO__` + a recorded **gap** (with MM prose as a hint): the controlled-vocabulary
+  tokens (`scene_kind`, `proposition_kind`, `role_in_scene`, …), `event_specific_slots`,
+  `inter_proposition_links`, `referential_form`, and the L1 element arrays — the judgment Agent 3
+  supplies. The compiler never invents these. It also flags beings named only in scene prose
+  (the FOR_MODEL often adds them as `REFERENCED`) and notes that proposition granularity is judgment.
+- `--out <file.md>` writes the skeleton as a draft FOR_MODEL note (status `skeleton`); `--json`
+  prints `{ skeleton, gaps, stats }`. The deterministic fields are cross-checked against the gold
+  FOR_MODELs in the tests.
+
 - Not yet: the deep Layer-2/3 vocabulary passes for COMPILATION-LOG / BCD-DELTA /
   VERIFICATION-INPUT (those validate structurally today; FOR_MODEL leads per decision E), and
-  the compiler / LLM generator (later slices).
+  the **LLM drafter** that fills the skeleton's judgment gaps (Slice 4).
 
 ## Stack
 
@@ -65,5 +80,6 @@ npm install
 npm run build                         # tsc → dist/ (provides the `tripod` bin)
 npx tsx src/cli/tripod.ts validate fixtures/for-model/     # or: tripod validate <note|dir>
 npx tsx src/cli/tripod.ts check-drift [--vault <wiki/_spec>]
+npx tsx src/cli/tripod.ts compile fixtures/meaning-map/P01-Ruth-1-1-5.md [--out skel.md] [--json]
 npm test
 ```
