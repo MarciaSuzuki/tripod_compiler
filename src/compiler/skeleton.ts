@@ -1,13 +1,28 @@
-import type { MeaningMap, MMEntity, MMScene } from "../reader/meaning-map.js";
+import type { MeaningMap } from "../reader/meaning-map.js";
 
-/** Sentinel for a field that needs LLM/human judgment (Agent 3's job; Slice 4 fills these). */
+/** Sentinel prefix for a field that needs LLM/human judgment (Agent 3's job; Slice 4 fills these). */
 export const TODO = "__TODO__";
+
+/** Collapse whitespace + truncate a source-prose span for embedding in a placeholder/hint. */
+function oneLine(s: string, max = 160): string {
+  const t = s.replace(/\s+/g, " ").trim();
+  return t.length > max ? `${t.slice(0, max - 1)}…` : t;
+}
+/** A typed judgment placeholder carrying its source-prose span (never null): `__TODO__: <span>`. */
+function todo(span?: string | null): string {
+  return span && span.trim() ? `${TODO}: ${oneLine(span)}` : TODO;
+}
+/** True if a value is an unfilled judgment placeholder (string `__TODO__…` or object with a `__TODO__` key). */
+export function isTodo(v: unknown): boolean {
+  if (typeof v === "string") return v.startsWith(TODO);
+  return !!v && typeof v === "object" && Object.prototype.hasOwnProperty.call(v, TODO);
+}
 
 export interface Gap {
   location: string; // JSON-pointer-ish path in the skeleton
   field: string;
   reason: string;
-  hint?: string; // the MM prose that informs the judgment
+  hint?: string; // the MM prose span that informs the judgment
 }
 
 export interface CompileResult {
@@ -24,12 +39,12 @@ export interface CompileResult {
 }
 
 /**
- * Deterministically compile a Meaning Map into a FOR_MODEL *skeleton*: every field derivable
- * from the MM's machine-readable structure is filled (header, classification, scene + entity
- * IDs/presence, verse-ranges, significant_absence, communicative purpose, proposition
- * anchors/scene-links/cross-refs, and the Section-5 concept/figure flags). Controlled-vocabulary
- * tokens and event slots — the judgment Agent 3 supplies — are left as `__TODO__` and recorded
- * in `gaps` (with the MM prose as a hint). No LLM. The result is the seam Slice 4 fills.
+ * Deterministically compile a Meaning Map into a FOR_MODEL *skeleton*: every field derivable from
+ * the MM's machine-readable structure is filled (header, classification, scene + entity IDs/presence,
+ * verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs,
+ * Section-5 concept/figure flags). Controlled-vocabulary tokens + event slots — the judgment Agent 3
+ * supplies — are left as typed placeholders that **carry their source-prose span** (`__TODO__: <span>`),
+ * each also recorded in `gaps`. No LLM, no invented values. The result is the seam Slice 4 fills.
  */
 export function compileSkeleton(mm: MeaningMap): CompileResult {
   const gaps: Gap[] = [];
@@ -42,10 +57,10 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
 
   // ---- header ----
   const header: Record<string, unknown> = {
-    bcv: bcv || TODO,
-    pericope_title: mm.title ?? TODO,
-    book_context_ref: TODO,
-    source_meaning_map_ref: mmRef ?? TODO,
+    bcv: bcv || todo(),
+    pericope_title: mm.title ?? todo(),
+    book_context_ref: todo("set the BCD ref, e.g. ruth_pilot_BCD_v0_3"),
+    source_meaning_map_ref: mmRef ?? todo(),
     source_language: "Biblical Hebrew",
   };
   if (!bcv) gap("/header/bcv", "bcv", "missing in frontmatter");
@@ -54,9 +69,9 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
 
   // ---- pericope_classification ----
   const classification: Record<string, unknown> = {
-    genre_group: mm.genreGroup ?? TODO,
-    genre: mm.genre ?? TODO,
-    register: mm.register ?? TODO,
+    genre_group: mm.genreGroup ?? todo(),
+    genre: mm.genre ?? todo(),
+    register: mm.register ?? todo(),
     register_overrides: { _note: "scaffold — confirm against the MM's multi-level register tagging", scene_level: null, moment_level: null },
   };
   if (!mm.genreGroup) gap("/pericope_classification/genre_group", "genre_group", "missing in frontmatter");
@@ -64,11 +79,18 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
   if (!mm.register) gap("/pericope_classification/register", "register", "missing in frontmatter");
   gap("/pericope_classification/register_overrides", "register_overrides", "MM Section 1 may mark scene/moment register or NARRATIVE_FRAMING shifts in prose — encode structurally if present");
 
-  // ---- level_1 (all judgment: Section 2 is prose) ----
+  // ---- level_1 (all judgment: Section 2 is prose; the gap carries the Section-2 span) ----
   const level_1: Record<string, unknown[]> = {};
+  const l1span: Record<string, string | null> = {
+    arc_elements: mm.level1Prose.arc,
+    context_elements: mm.level1Prose.context,
+    tone_elements: mm.level1Prose.tonePace,
+    pace_elements: mm.level1Prose.tonePace,
+    communicative_function_elements: mm.level1Prose.commFunc,
+  };
   for (const f of ["arc_elements", "context_elements", "tone_elements", "pace_elements", "communicative_function_elements"]) {
     level_1[f] = [];
-    gap(`/level_1/${f}`, f, "Section 2 prose — tokenize to L2 elements (judgment)");
+    gap(`/level_1/${f}`, f, "Section 2 prose — tokenize to L1 elements (judgment)", l1span[f] ?? undefined);
   }
 
   // ---- level_2_scenes ----
@@ -83,17 +105,17 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
       gap(`${at}/beings_in_scene/entries/${i}/role_in_scene`, "role_in_scene", "tokenize from MM role prose (judgment)", b.roleProse ?? b.label);
       gap(`${at}/beings_in_scene/entries/${i}/referential_form`, "referential_form", "not in MM — assign if the narrator uses a marked reference (judgment)");
       if (!b.presence) gap(`${at}/beings_in_scene/entries/${i}/presence`, "presence", "no Presence line in MM", b.label);
-      return { being_id: b.code ?? TODO, role_in_scene: TODO, presence: b.presence ?? TODO };
+      return { being_id: b.code ?? todo(b.label), role_in_scene: todo(b.roleProse ?? b.label), presence: b.presence ?? todo() };
     });
     const placeEntries = sc.places.map((p, i) => {
       if (!p.code) gap(`${at}/places_in_scene/entries/${i}/place_id`, "place_id", "no wikilink in MM — assign/register a PL code", p.label);
       gap(`${at}/places_in_scene/entries/${i}/role_in_scene`, "role_in_scene", "tokenize from MM role prose (judgment)", p.roleProse ?? p.label);
-      return { place_id: p.code ?? TODO, role_in_scene: TODO };
+      return { place_id: p.code ?? todo(p.label), role_in_scene: todo(p.roleProse ?? p.label) };
     });
     const objectEntries = sc.objects.map((o, i) => {
       if (!o.code) gap(`${at}/objects_in_scene/entries/${i}/object_id`, "object_id", "no wikilink in MM — assign an O#/TH_ code (FOR_MODEL coding may differ from MM)", o.label);
       gap(`${at}/objects_in_scene/entries/${i}/function_in_scene`, "function_in_scene", "tokenize from MM prose (judgment)", o.roleProse ?? o.label);
-      return { object_id: o.code ?? TODO, function_in_scene: TODO };
+      return { object_id: o.code ?? todo(o.label), function_in_scene: todo(o.roleProse ?? o.label) };
     });
     const times =
       sc.times === null
@@ -101,7 +123,7 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
         : {
             entries: sc.times.map((t, i) => {
               gap(`${at}/times_in_scene/entries/${i}/role_in_scene`, "role_in_scene", "tokenize from MM prose (judgment)", t.roleProse ?? t.label);
-              return { time_id: t.code ?? TODO, role_in_scene: TODO };
+              return { time_id: t.code ?? todo(t.label), role_in_scene: todo(t.roleProse ?? t.label) };
             }),
           };
 
@@ -119,33 +141,34 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
 
     return {
       scene_id: sc.sceneId,
-      verse_range: sc.verseRange ?? TODO,
-      scene_kind: TODO,
-      scene_communicative_purpose: sc.communicativePurpose ?? TODO,
+      verse_range: sc.verseRange ?? todo(),
+      scene_kind: todo(sc.title),
+      scene_communicative_purpose: sc.communicativePurpose ?? todo(),
       beings_in_scene: { entries: beingEntries },
       places_in_scene: { entries: placeEntries },
       objects_in_scene: { entries: objectEntries },
       times_in_scene: times,
-      significant_absence: sc.significantAbsence ?? TODO,
+      significant_absence: sc.significantAbsence ?? todo(),
     };
   });
 
-  // ---- level_3_propositions (MM granularity → renumbered P1..PN; judgment fields TODO) ----
+  // ---- level_3_propositions (MM granularity → renumbered P1..PN; judgment fields are span-carrying placeholders) ----
   let flagsCarried = 0;
   const level_3_propositions = mm.propositions.map((p, pi) => {
     const at = `/level_3_propositions/${pi}`;
     flagsCarried += p.cbFlags.length + p.figFlags.length;
+    const qa = p.qa.join(" | ");
     gap(`${at}/proposition_kind`, "proposition_kind", "assign controlled proposition_kind (judgment)", p.qa[0] ?? undefined);
-    gap(`${at}/event_specific_slots`, "event_specific_slots", "assign event-participant slots from the MM Q/A (judgment)", p.qa.join(" | ") || undefined);
+    gap(`${at}/event_specific_slots`, "event_specific_slots", "assign event-participant slots from the MM Q/A (judgment)", qa || undefined);
     gap(`${at}/inter_proposition_links`, "inter_proposition_links", "assign forward_link_to / caused_by / paired_with (judgment)");
     if (!p.sceneLink) gap(`${at}/scene_link`, "scene_link", "no [Scene N] tag on the proposition heading");
     if (!p.verseAnchor) gap(`${at}/verse_anchor`, "verse_anchor", "no verse anchor on the proposition heading");
     const out: Record<string, unknown> = {
       prop_id: `P${pi + 1}`,
-      scene_link: p.sceneLink ?? TODO,
-      verse_anchor: p.verseAnchor ?? TODO,
-      proposition_kind: TODO,
-      event_specific_slots: {},
+      scene_link: p.sceneLink ?? todo(),
+      verse_anchor: p.verseAnchor ?? todo(),
+      proposition_kind: todo(p.qa[0]),
+      event_specific_slots: qa ? { [TODO]: oneLine(qa) } : { [TODO]: "assign event-participant slots (judgment)" },
       inter_proposition_links: {},
       cb_flags: p.cbFlags,
       figure_flags: p.figFlags,
