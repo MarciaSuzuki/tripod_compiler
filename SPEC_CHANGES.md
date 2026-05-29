@@ -47,6 +47,36 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 ---
 
+## SC-0004 — Deprecate the pre-Wave-3 `_examples/` P01 duplicates; redirect to canonical P01
+- **Date:** 2026-05-29
+- **Decided by:** Marcia Suzuki
+- **Status:** SHIPPED (2026-05-29)
+- **Type:** other (examples/docs consistency; **no spec change** — pin/hash unchanged)
+- **Summary:** Resolves the examples refresh flagged under SC-0003. The three
+  `_examples/{meaning-map,audit,for-model}-P01-worked-example.md` files were pre-Wave-3 **full
+  duplicates** of P01 carrying forbidden/obsolete content. Rather than maintain parallel copies (a
+  drift vector), they are **deprecated and redirected** to the canonical P01 reference.
+- **Spec change (exact):** none.
+- **Artifact edits (wiki):** each `_examples/` file replaced with a short deprecation stub
+  (`status: deprecated`, `superseded-by`) pointing to the live canonical artifact:
+  - `meaning-map-…` → `[[P01-Ruth-1-1-5]]` (was `CONSULTATIVE`; treated COMMUNITY_MEMORY as a register).
+  - `for-model-…` → `[[P01-Ruth-1-1-5-FOR-MODEL]]` (was `TRIPOD_STA_v1_0`; had `artifact_profile`,
+    a `discourse_threads_active` block in the FOR_MODEL, `CONSULTATIVE`).
+  - `audit-…` → `[[P01-Ruth-1-1-5-COMPILATION-LOG]]` + `[[P01-Ruth-1-1-5-BCD-DELTA]]` (the monolithic
+    AUDIT artifact type no longer exists; it used `registry_additions` + the combined audit model).
+- **Rationale:** `CLAUDE.md` already designates the live `pericopes/` + `stas/` + `verification/` P01
+  artifacts as the structural reference for every artifact. Maintaining duplicate worked examples
+  would re-introduce drift. Single source of truth.
+- **Supersedes:** the "recommend a separate full examples refresh" note in SC-0003 (resolved here by
+  deprecation rather than regeneration).
+- **Validator impact:** none.
+- **Version:** unchanged — `validation-rules.json v0.5` (sha256 `a326dbdd2601089851907c2025517a7f3b076a9432d380e00487ee0ec76f1b4a`).
+- **Verification:** post-edit sweep — no live (non-archive, non-working) artifact carries a structured
+  `"register": "CONSULTATIVE"`, `artifact_profile`, `discourse_threads_active`, or an AUDIT artifact;
+  the `_examples/` stubs contain only deprecation prose + canonical redirects.
+
+---
+
 ## SC-0003 — Clean residual "elevated register bordering on COMMUNITY_MEMORY" prose from live artifacts
 - **Date:** 2026-05-29
 - **Decided by:** Marcia Suzuki
