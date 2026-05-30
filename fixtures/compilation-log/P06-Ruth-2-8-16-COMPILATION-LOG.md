@@ -89,11 +89,239 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     }
   ],
   "vocabulary_additions": {
-    "proposition_kinds": [],
-    "scene_kinds": [],
-    "presence_values": [],
+    "proposition_kinds": [
+      {
+        "value": "ANSWERED_WITH_FULL_KNOWLEDGE_RECITAL",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ASKED_RECOGNITION_QUESTION_AND_SELF_NAMED_AS_FOREIGNER",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ATE_WAS_SATISFIED_AND_HAD_LEFTOVER",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "BOWED_DEEP_TO_GROUND",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "COMMANDED_DELIBERATE_PULLING_FROM_BUNDLES",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "COMMANDED_HARVESTERS_PERMISSION_AND_SHAME_PROHIBITION",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "COMMANDED_LEAVING_AND_REBUKE_PROHIBITION",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "DESCRIBED_BOAZ_EFFECT_AND_LOWER_SELF_NAMED",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "HANDED_ROASTED_GRAIN",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "INVITED_TO_MEAL",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PRONOUNCED_FORMAL_BLESSING_UNDER_WINGS_OF_REFUGE",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RECITED_RUTH_LEAVING_AND_COMING",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "REPORTED_OWN_PRIOR_PROHIBITION",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RESPONDED_WITH_FAVOR_WISH",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ROSE_TO_GLEAN",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "SAT_BESIDE_HARVESTERS",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "SPOKE_PROTECTIVE_INSTRUCTION",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "SPOKE_WATER_PROVISION_INSTRUCTION",
+        "source": "P06 level_3 proposition_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "scene_kinds": [
+      {
+        "value": "HARVESTER_PROTOCOL_SCENE",
+        "source": "P06 level_2 scene_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "MEAL_INCLUSION_SCENE",
+        "source": "P06 level_2 scene_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PROTECTIVE_INSTRUCTION_SCENE",
+        "source": "P06 level_2 scene_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RECOGNITION_AND_BLESSING_SCENE",
+        "source": "P06 level_2 scene_kind — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "presence_values": [
+      {
+        "value": "PRESENT_COLLECTIVE",
+        "source": "P06 level_2 presence — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
     "referential_forms": [],
-    "other": []
+    "other": [],
+    "arc_elements": [
+      {
+        "value": "BLESSING_INVOCATION",
+        "source": "P06 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "HARVESTER_PROTOCOL_EXTENSION",
+        "source": "P06 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "MEAL_INCLUSION",
+        "source": "P06 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PROTECTIVE_INSTRUCTION",
+        "source": "P06 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RECOGNITION_EXCHANGE",
+        "source": "P06 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "context_elements": [
+      {
+        "value": "DIVINE_CONTEXT",
+        "source": "P06 level_1.context_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PRIOR_ACTION_CONTEXT",
+        "source": "P06 level_1.context_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "tone_elements": [
+      {
+        "value": "CEREMONIAL_AT_BLESSING",
+        "source": "P06 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RELATIONALLY_CLOSE",
+        "source": "P06 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "WARM",
+        "source": "P06 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "pace_elements": [
+      {
+        "value": "SLOWED_THROUGH_SPEECHES",
+        "source": "P06 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "STEADY_AT_MEAL_AND_PROTOCOL",
+        "source": "P06 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "communicative_function_elements": [
+      {
+        "value": "ADVANCES_HARVEST_PROVISION_THREAD_FIRST_MAJOR",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ADVANCES_OUTSIDER_INCORPORATION_THREAD",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "DISTRIBUTES_THREE_PROHIBITION_CLUSTER",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ESTABLISHES_PROTECTIVE_REGIME",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "OPENS_SHIFCHAH_AMAH_CROSS_PERICOPE_PAIR",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "OPENS_WING_OF_REFUGE_CROSS_PERICOPE_PAIR",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RECITES_RUTH_LOYALTY_IN_BOAZ_VOICE",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "WITHHOLDS_MOAB_NAMING_IN_BOAZ_SPEECH",
+        "source": "P06 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ]
   },
   "proposition_kind_slot_sets": [
     {

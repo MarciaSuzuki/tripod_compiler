@@ -13,7 +13,15 @@ const FM = (n: string) => join(here, "..", "fixtures", "for-model", n);
 const CL = (n: string) => join(here, "..", "fixtures", "compilation-log", n);
 const P02_FM = "P02-Ruth-1-6-14-FOR-MODEL.md";
 const P02_CL = "P02-Ruth-1-6-14-COMPILATION-LOG.md";
-const P04_FM = "P04-Ruth-1-19-22-FOR-MODEL.md"; // still unpromoted — the drifting example post-P03-promotion
+const P06_FM = "P06-Ruth-2-8-16-FOR-MODEL.md";
+const ALL_FM = ["P01-Ruth-1-1-5", "P02-Ruth-1-6-14", "P03-Ruth-1-15-18", "P04-Ruth-1-19-22", "P05-Ruth-2-1-7", "P06-Ruth-2-8-16"];
+
+/** The vendored registry with one pericope's promoted values removed — reconstructs the pre-promotion
+ *  baseline so the drift/convergence mechanism stays testable even though P01–P06 have all converged. */
+const registryWithout = (pid: string): ApprovedEnumerations => {
+  const reg = loadApprovedEnumerations();
+  return { ...reg, axes: Object.fromEntries(Object.entries(reg.axes).map(([k, v]) => [k, v.filter((e) => e.approved_in !== pid)])) };
+};
 
 describe("axis classification (convergent vs descriptive)", () => {
   it("convergent axes", () => {
@@ -26,16 +34,19 @@ describe("axis classification (convergent vs descriptive)", () => {
   });
 });
 
-describe("drift report split (P04 — still unpromoted)", () => {
-  const r = validateArtifact(FM(P04_FM));
+describe("drift report split (against a pre-P06 baseline)", () => {
+  // P01–P06 have all converged on the live registry, so exercise the split against a baseline that
+  // lacks P06's promoted values: convergent drift (review-signal) vs descriptive (open) must separate.
+  const p06 = readArtifactNote(FM(P06_FM)).json as any;
+  const findings = vocabularyFindings(p06, driftBaseline(registryWithout("P06")));
   it("separates convergent drift from descriptive; open axes are never counted as drift", () => {
-    expect(r.counts.drift).toBeGreaterThan(0); // convergent review-signal
-    expect(r.counts.descriptive).toBeGreaterThan(0); // open / informational
-    for (const f of r.findings) {
+    expect(findings.some((f) => f.severity === "drift" && f.axis)).toBe(true); // convergent review-signal
+    expect(findings.some((f) => f.severity === "descriptive")).toBe(true); // open / informational
+    for (const f of findings) {
       if (f.severity === "drift" && f.axis) expect(axisClass(f.axis)).toBe("convergent");
       if (f.severity === "descriptive") expect(axisClass(f.axis!)).toBe("descriptive");
     }
-    const driftAxes = new Set(r.findings.filter((f) => f.severity === "drift" && f.axis).map((f) => f.axis));
+    const driftAxes = new Set(findings.filter((f) => f.severity === "drift" && f.axis).map((f) => f.axis));
     for (const open of ["role_in_scene_examples_being", "function_in_scene_examples_object", "referential_form"])
       expect(driftAxes.has(open)).toBe(false);
   });
@@ -45,10 +56,7 @@ describe("accumulation converges drift (P02 promoted into the registry)", () => 
   const p02 = readArtifactNote(FM(P02_FM)).json as any;
   // The registry as it stood BEFORE P02 was promoted (drop P02's entries). Using this keeps the
   // mechanism test robust now that the vendored registry already contains P02 (the routine promotion ran).
-  const beforeP02 = (): ApprovedEnumerations => {
-    const reg = loadApprovedEnumerations();
-    return { ...reg, axes: Object.fromEntries(Object.entries(reg.axes).map(([k, v]) => [k, v.filter((e) => e.approved_in !== "P02")])) };
-  };
+  const beforeP02 = () => registryWithout("P02");
   const driftOn = (axis: string, baseline: Record<string, string[]>) =>
     vocabularyFindings(p02, baseline).filter((f) => f.severity === "drift" && f.axis === axis).length;
 
@@ -93,5 +101,15 @@ describe("accumulation converges drift (P02 promoted into the registry)", () => 
     const before = base.axes["proposition_kind"]!.length;
     applyPromotion(base, planPromotion(CL(P02_CL), { status: "ANY", reg: base }));
     expect(base.axes["proposition_kind"]!.length).toBe(before);
+  });
+});
+
+describe("corpus convergence (P01–P06 all promoted)", () => {
+  it("every gold FOR_MODEL validates with zero convergent drift on the live registry", () => {
+    for (const stem of ALL_FM) {
+      const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
+      expect(r.counts.block, stem).toBe(0);
+      expect(r.counts.drift, stem).toBe(0); // fully converged — descriptive (open) axes may remain
+    }
   });
 });

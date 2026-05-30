@@ -31,9 +31,13 @@ describe("FOR_MODEL gold fixtures (P01–P06)", () => {
     expect(r.counts.drift).toBe(0);
   });
 
-  it("later pericopes exercise the bounded-open drift detector", () => {
+  it("post-convergence: P06 has zero convergent drift but still surfaces open/descriptive axes", () => {
+    // After P01–P06 were all promoted (registry v0.4), convergent drift is 0 corpus-wide. The
+    // bounded-open detector still runs: the descriptive/open axes (referential_form, role/function
+    // examples) never converge and remain flagged as informational.
     const r = validateArtifact(join(FIX, "P06-Ruth-2-8-16-FOR-MODEL.md"));
-    expect(r.counts.drift).toBeGreaterThan(0);
+    expect(r.counts.drift).toBe(0); // convergent axes fully converged
+    expect(r.counts.descriptive).toBeGreaterThan(0); // open axes still surface (informational)
   });
 
   it("accepts the PL<n>_<DESCRIPTOR> sub-place form (SC-0005)", () => {
