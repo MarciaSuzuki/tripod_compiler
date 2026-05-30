@@ -4,11 +4,11 @@
   "schemas": {
     "validation-rules.json": {
       "version": "v0.6",
-      "sha256": "b024e0ea40771ba4a169b936ce57f05686e5333485d937cbed97a80e0d14de3a"
+      "sha256": "80be76213d8a4fb6bd34c87641ac58feccf23e36ee160c2f5c73fe6a7e207bf0"
     },
     "compilation-log.schema.json": {
-      "version": "v0.3",
-      "sha256": "24afa60b6d1c22ce338c0698d2a5a4269ddee58ddacff949fc44a35e19108921"
+      "version": "v0.4",
+      "sha256": "af54950a87b5aeb818a526467e814c2dabbe2ef85fd0386cce213e62789f1400"
     },
     "bcd-delta.schema.json": {
       "version": "v0.4",

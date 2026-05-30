@@ -37,8 +37,8 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 | Schema | Version | sha256 |
 | --- | --- | --- |
-| `validation-rules.json` | `v0.6` | `b024e0ea40771ba4a169b936ce57f05686e5333485d937cbed97a80e0d14de3a` |
-| `compilation-log.schema.json` | `v0.3` | `24afa60b6d1c22ce338c0698d2a5a4269ddee58ddacff949fc44a35e19108921` |
+| `validation-rules.json` | `v0.6` | `80be76213d8a4fb6bd34c87641ac58feccf23e36ee160c2f5c73fe6a7e207bf0` |
+| `compilation-log.schema.json` | `v0.4` | `af54950a87b5aeb818a526467e814c2dabbe2ef85fd0386cce213e62789f1400` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
 | `approved-enumerations.json` | `v0.1` | `3623630868562083bb0c7d35a177db0416bd3a983e43f22808d66bea96a7a282` |
@@ -60,7 +60,7 @@ number bound to exactly one decision.
 | SC-0004 | Deprecate the pre-Wave-3 `_examples/` P01 duplicates | SHIPPED |
 | SC-0005 | Widen the `place_id` pattern to `PL<n>_<DESCRIPTOR>` | SHIPPED |
 | SC-0006 | Drift convergence: convergent/descriptive split + approved-enumerations registry | SHIPPED |
-| SC-0007 | Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot) | PROPOSED |
+| SC-0007 | Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot) | SHIPPED |
 | SC-0008 | Template relics: retire obsolete for-model/audit templates | PROPOSED |
 
 **Superseded / void allocations (recorded, never rebound):**
@@ -120,27 +120,56 @@ number bound to exactly one decision.
 ---
 
 ## SC-0007 — Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot)
-- **Date:** 2026-05-29 (proposed)
+- **Date:** 2026-05-30 (shipped)
 - **Decided by:** Marcia Suzuki
-- **Status:** PROPOSED
+- **Status:** SHIPPED (2026-05-30)
 - **Type:** schema-shape (COMPILATION-LOG) + promotion mechanism
-- **Summary:** Close the SC-0006 known limitation. The COMPILATION-LOG `vocabulary_additions` only
-  carries `proposition_kinds`/`scene_kinds`/`presence_values`, so the remaining convergent axes — the
+- **Summary:** Closes the SC-0006 known limitation. The COMPILATION-LOG `vocabulary_additions` only
+  carried `proposition_kinds`/`scene_kinds`/`presence_values`, so the remaining convergent axes — the
   L1 element axes (arc/context/tone/pace/communicative_function), `discourse_thread_state`, and
-  `high_risk_register_kind` — have no promotion slot and keep drifting. Add slots so `tripod promote`
-  can converge them into `approved-enumerations.json`.
+  `high_risk_register_kind` — had no promotion slot and kept drifting. Added intake slots so
+  `tripod promote` can converge them into `approved-enumerations.json`.
 - **Rationale:** Those axes are already classified convergent (SC-0006) and already keyed in the
-  registry, but with no intake slot they never accumulate; their drift is permanent noise, not signal.
-- **Spec change (exact):** extend `compilation-log.schema.json` `$defs.vocabulary_additions` with the
-  new convergent slots (kept OUT of `required` so P01–P06 stay valid); map them in `promote.ts`
-  `VA_KEY_TO_AXIS`; shrink `UNCOVERED_CONVERGENT_AXES` accordingly.
-- **Artifact migration:** none required (new slots optional); pericope COMPILATION-LOGs may add the
-  new lists as values are approved.
-- **Validator impact:** the named axes become promotable; once promoted they stop drift-warning.
-- **Version (planned):** `compilation-log.schema.json` v0.3 → v0.4 (sha256 set on ship); re-pin in
-  `_spec/pins.json` + the table above.
-- **Verification (planned):** P01–P06 re-validate clean; promoting an L1/discourse/high-risk value
-  zeroes its drift on re-validate; tests extended; `tripod check-drift` green.
+  registry, but with no intake slot they never accumulated; their drift was permanent noise, not signal.
+- **Spec change (exact):**
+  - `compilation-log.schema.json` `$defs.vocabulary_additions.properties` gains seven OPTIONAL arrays
+    (each `array` of `vocabulary_addition_entry`): `arc_elements`, `context_elements`, `tone_elements`,
+    `pace_elements`, `communicative_function_elements`, `discourse_thread_states`,
+    `high_risk_register_kinds`. The `required` set is **unchanged**, so v0.3 logs stay valid (additive).
+    `version` v0.3 → v0.4, `$id` `…compilation-log-v0-3` → `-v0-4`, `date_locked` → 2026-05-30, `supersedes` appended.
+  - `validation-rules.json` `sibling_schemas.compilation_log` pointer `"…v0.3"` → `"…v0.4"`
+    (pointer-accuracy only — **no rule change**, so its `version` stays **v0.6**, re-pinned by hash).
+  - `src/compiler/promote.ts`: `VA_KEY_TO_AXIS` gains the seven `…s → singular` mappings;
+    `UNCOVERED_CONVERGENT_AXES` shrinks to `[]`.
+  - `src/cli/tripod.ts`: `promote` prints "all convergent axes are promotable (SC-0007)" when the
+    uncovered set is empty.
+- **Scope note (honest):** the five **L1-element** axes surface as FOR_MODEL drift, so promoting them
+  measurably zeroes drift (proven below). `discourse_thread_state` and `high_risk_register_kind` are
+  **not FOR_MODEL fields** (they live in the BCD-DELTA discourse threads and this log's
+  `high_risk_register_audit[].kind`); the FOR_MODEL drift detector does not scan them. Their new slots
+  make them **promotable / keep the registry complete**, but drift-*detection-from-source* for those two
+  is out of scope here (future work — the validator would scan the COMPILATION-LOG / BCD-DELTA, not the FOR_MODEL).
+- **Artifact migration:** `fixtures/compilation-log/P02-Ruth-1-6-14-COMPILATION-LOG.md` populated with
+  P02's convergent values (arc ×6, tone ×4, pace ×2, communicative_function ×7, all `PROPOSED`) plus
+  its five genuinely-new `high_risk_register_kind` values (R1/R2/R3/R11/R15). P01 + P03–P06 unchanged
+  (slots optional; they may add the new lists as values are approved).
+- **Registry growth — deferred (decision):** SC-0007 ships the **mechanism only**. The vendored
+  `approved-enumerations.json` is **not** grown here (stays v0.1); the real P02 promotion is a routine
+  `tripod promote --apply` action for a later session (logged in `VOCABULARY_LOG.md`, re-pins the
+  registry). The mechanism is proven in tests without mutating the vendored registry.
+- **Validator impact:** every convergent axis is now promotable; once a value is promoted into the
+  registry it stops drift-warning (the detection side was already wired via `driftBaseline()`).
+- **Version:** `compilation-log.schema.json` v0.3 → **v0.4**
+  (sha256 `af54950a87b5aeb818a526467e814c2dabbe2ef85fd0386cce213e62789f1400`);
+  `validation-rules.json` **v0.6 unchanged**, re-pinned (sha256
+  `80be76213d8a4fb6bd34c87641ac58feccf23e36ee160c2f5c73fe6a7e207bf0`). Both re-pinned in `_spec/pins.json` + the table above.
+- **Verification:** `npm test` 44/44 green; `tripod check-drift` green against the new pins + closed-list
+  sync invariant; `tripod validate fixtures/for-model/` → 6/6 block-clean; `tripod validate
+  fixtures/compilation-log/` → 6/6 valid (P02 against v0.4 with the new slots); `tripod promote
+  fixtures/compilation-log/P02-…-COMPILATION-LOG.md --status ANY` lists 41 values across all convergent
+  axes ("all convergent axes are promotable"); the drift test confirms promoting P02's
+  `vocabulary_additions` drives residual convergent FOR_MODEL drift to **zero** (was non-zero on the L1
+  axes before).
 
 ---
 

@@ -7,25 +7,26 @@ import { loadApprovedEnumerations, type ApprovedEnumerations, type ApprovedValue
  * into the growing approved-enumerations registry (SC-0006). Only *convergent* axes accumulate.
  *
  * The COMPILATION-LOG records additions under proposition_kinds / scene_kinds / presence_values
- * (convergent → promotable) and referential_forms / other.category (descriptive → not promoted).
- * NOTE: the L1-element convergent axes (arc/context/tone/pace/communicative_function),
- * discourse_thread_state, and high_risk_register_kind have NO slot in the COMPILATION-LOG
- * vocabulary_additions, so they cannot converge through this mechanism yet — see `uncoveredAxes`.
+ * and (SC-0007) the L1-element axes (arc/context/tone/pace/communicative_function),
+ * discourse_thread_states, and high_risk_register_kinds — all convergent → promotable.
+ * referential_forms / other.category remain descriptive → not promoted. As of SC-0007 every
+ * convergent axis has an intake slot, so `UNCOVERED_CONVERGENT_AXES` is empty.
  */
 const VA_KEY_TO_AXIS: Record<string, string> = {
   proposition_kinds: "proposition_kind",
   scene_kinds: "scene_kind",
   presence_values: "presence_value",
+  // SC-0007: L1-element / discourse / high-risk convergent axes
+  arc_elements: "arc_element",
+  context_elements: "context_element",
+  tone_elements: "tone_element",
+  pace_elements: "pace_element",
+  communicative_function_elements: "communicative_function_element",
+  discourse_thread_states: "discourse_thread_state",
+  high_risk_register_kinds: "high_risk_register_kind",
 };
-export const UNCOVERED_CONVERGENT_AXES = [
-  "arc_element",
-  "context_element",
-  "tone_element",
-  "pace_element",
-  "communicative_function_element",
-  "discourse_thread_state",
-  "high_risk_register_kind",
-];
+/** Convergent axes with no COMPILATION-LOG intake slot. Empty since SC-0007 (all axes promotable). */
+export const UNCOVERED_CONVERGENT_AXES: string[] = [];
 
 export interface PromotionCandidate {
   axis: string;

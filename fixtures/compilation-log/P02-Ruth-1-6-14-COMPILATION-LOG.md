@@ -201,6 +201,41 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       }
     ],
     "presence_values": [],
+    "arc_elements": [
+      { "value": "NEWS_RECEPTION", "source": "S1 1:6a Naomi hears in Moab that YHWH gave bread", "status": "PROPOSED" },
+      { "value": "RETURN_INITIATED", "source": "S1 1:6b-7 arising to return from the fields of Moab", "status": "PROPOSED" },
+      { "value": "BLESSING_APPEAL", "source": "S2 1:8-9 directive-and-blessing appeal to turn back", "status": "PROPOSED" },
+      { "value": "ARGUED_DISMISSAL", "source": "S3 1:11-13 Naomi's expanded dissuasive appeal", "status": "PROPOSED" },
+      { "value": "SEPARATION_AND_CHOICE", "source": "S3 1:14 Orpah turns back; the ways divide", "status": "PROPOSED" },
+      { "value": "CLINGING", "source": "S3 1:14c Ruth clings (davqah)", "status": "PROPOSED" }
+    ],
+    "context_elements": [],
+    "tone_elements": [
+      { "value": "INTIMATE_DIALOGUE", "source": "S2/S3 roadside mother / daughters-in-law dialogue (INTIMATE scene override)", "status": "PROPOSED" },
+      { "value": "URGENT_APPEAL", "source": "S2-S3 1:8-13 Naomi's repeated directives to return", "status": "PROPOSED" },
+      { "value": "GRIEF_LADEN", "source": "1:9b, 1:14a weeping formulae", "status": "PROPOSED" },
+      { "value": "LAMENT_FRAMED", "source": "1:13d hand-of-YHWH lament ascription", "status": "PROPOSED" }
+    ],
+    "pace_elements": [
+      { "value": "BRISK_CHRONICLE_OPENING", "source": "S1 1:6-7 compressed hearing-and-departure", "status": "PROPOSED" },
+      { "value": "SLOWED_DIALOGUE", "source": "S2-S3 1:8-14 extended dialogue slows the pace", "status": "PROPOSED" }
+    ],
+    "communicative_function_elements": [
+      { "value": "ANSWERS_OPENING_CRISIS", "source": "1:6 YHWH's provision answers the P01 famine", "status": "PROPOSED" },
+      { "value": "ESTABLISHES_DIVINE_AGENCY", "source": "1:6 first non-NONE agent_named (B10 YHWH)", "status": "PROPOSED" },
+      { "value": "OPENS_HESED_QUESTION", "source": "1:8 hesed blessing opens thread T4", "status": "PROPOSED" },
+      { "value": "OPENS_REST_QUESTION", "source": "1:9 rest blessing opens thread T3", "status": "PROPOSED" },
+      { "value": "ESTABLISHES_OUTSIDER_DEFINING_CHOICE", "source": "1:14 Ruth's clinging vs Orpah's return", "status": "PROPOSED" },
+      { "value": "PLANTS_LAMENT_QUESTION", "source": "1:13 Naomi's lament-frame ascription", "status": "PROPOSED" },
+      { "value": "CLOSES_BREAD_HOUSE_IRONY", "source": "1:6 bread given closes FIG_0013 opened at 1:1", "status": "PROPOSED" }
+    ],
+    "high_risk_register_kinds": [
+      { "value": "STRUCTURAL_DIVINE_AGENCY_FIRST_NAMED", "source": "R1: agent_named B10 on P2 (1:6)", "status": "PROPOSED" },
+      { "value": "CROSS_PERICOPE_PAIRING_CLOSED_HERE", "source": "R2: FIG_0013 BREAD_HOUSE_IN_FAMINE closes at P2", "status": "PROPOSED" },
+      { "value": "STRUCTURAL_DIVINE_ATTRIBUTION_IN_LAMENT", "source": "R3: B10 inside lament_components on P12 (1:13)", "status": "PROPOSED" },
+      { "value": "PROVIDENTIAL_ANSWER_RECEIVED", "source": "R11: FIG_0013 closure answers the P01 irony", "status": "PROPOSED" },
+      { "value": "REFERENTIAL_FORM_CHANGE", "source": "R15: kallotehah collective form tracking across S1-S3", "status": "PROPOSED" }
+    ],
     "referential_forms": [
       {
         "value": "CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW",
