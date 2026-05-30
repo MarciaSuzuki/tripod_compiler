@@ -2,12 +2,13 @@
 
 > The live state of `tripod_compiler`. Read this first; it overrides the brief where they differ.
 > `CLAUDE.md` is the original scoping handoff and is now partly **stale** — see "Decisions that
-> refined CLAUDE.md" below. `main` is green through PR #7; **SC-0007 (L1/discourse/high-risk drift
-> convergence) is done on branch `claude/friendly-edison-TGdmt`, pending merge.**
+> refined CLAUDE.md" below. `main` is green through **PR #8 (SC-0007)**. The **routine P02 registry
+> promotion** (`approved-enumerations` v0.2; P02 now 0 convergent drift) is on branch
+> `claude/friendly-edison-TGdmt`, pending merge.
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 44 tests green
+npm install && npm run build && npm test     # 45 tests green
 npx tsx src/cli/tripod.ts check-drift          # 5 pins + closed-list sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
@@ -24,7 +25,7 @@ npx tsx src/cli/tripod.ts gold-diff
   **Validation consumes the pinned JSON-Schemas via ajv — NOT re-transcribed to zod** (zod is
   reserved for internal report types). The hand-seeded skeleton YAMLs were removed (SC-0001).
 - **Spec is `validation-rules.json` v0.6** (+ `bcd-delta` v0.4, `verification-input` v1.1,
-  `compilation-log` v0.4, `approved-enumerations` v0.1). Governed edits **SC-0001 → SC-0007**:
+  `compilation-log` v0.4, `approved-enumerations` v0.2). Governed edits **SC-0001 → SC-0007**:
   - SC-0001 REGISTER 8→7; `COMMUNITY_MEMORY` → new `NARRATIVE_FRAMING` axis + `framing_override`
     (it stays the 31st GENRE, per ruling).
   - SC-0002 propagate that into agent prompts / templates / worked example.
@@ -63,7 +64,7 @@ npx tsx src/cli/tripod.ts gold-diff
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor),
   `READING_QUALITY.md` (human review gate, fidelity ceiling), `SOURCE_AND_SCALING.md` (BHSA frozen
   extract + per-book BCD-by-delta). Gate order: conformance → coverage → reading-quality.
-- **Git:** PRs #1–#6 merged; `main` is the single coherent branch. The wiki vault is **local-only
+- **Git:** PRs #1–#8 merged; `main` is the single coherent branch. The wiki vault is **local-only
   git** (no remote); governed spec edits are committed there locally (SC-0001/0003/0004/0005/0006).
 
 ## Decisions that refined CLAUDE.md (a fresh session must NOT follow the stale brief)
@@ -98,9 +99,10 @@ npx tsx src/cli/tripod.ts gold-diff
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
 2. **Coverage ledger (`docs/COVERAGE.md`)** + the **BHSA frozen-extract sidecar** (`docs/SOURCE_AND_SCALING.md`)
    — the highest-value fidelity feature; lands with source ingestion (needs the vault / BHSA).
-3. **Routine: grow the vendored registry.** SC-0007 enabled L1/discourse/high-risk promotion but
-   deferred the actual run; `tripod promote --apply` per pericope (P02–P06) converges the vendored
-   `approved-enumerations.json` (logs to `VOCABULARY_LOG.md`, re-pins the registry). No new SC needed.
+3. **Routine: grow the vendored registry (in progress).** **P02 promoted** — 41 convergent values,
+   `approved-enumerations` v0.1 → v0.2, P02 FOR_MODEL now 0 convergent drift (was 37). Repeat
+   `tripod promote --apply` for **P03–P06** to converge the rest (logs to `VOCABULARY_LOG.md`, re-pins).
+   No new SC needed (SC-0006 policy).
 
 ## Open threads
 - (a) **L2 drift split + accumulation registry — DONE** (SC-0006, PR #4). Not an open thread; do not redo.
@@ -114,6 +116,6 @@ npx tsx src/cli/tripod.ts gold-diff
 - **L1-axis promotion gap** (was Next #1 / SC-0007) — **RESOLVED** (SC-0007): COMPILATION-LOG v0.4 has
   the intake slots and `promote.ts` maps them, so every convergent axis is promotable. Note: `discourse_thread_state`
   + `high_risk_register_kind` are now *promotable* but are not FOR_MODEL fields, so their drift-detection-from-source
-  is still future work. Vendored-registry growth deferred to routine `tripod promote --apply`.
+  is still future work. Vendored-registry growth: **P02 promoted** (registry v0.2); **P03–P06 remain**.
 - **Coreference attribution & semantic additions** stay human (per `docs/COVERAGE.md` / `READING_QUALITY.md`) — not mechanizable.
 - **Two `.docx`** reference files were left in the working tree; now gitignored (`*.docx`).

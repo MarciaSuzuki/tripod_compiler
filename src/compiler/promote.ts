@@ -45,12 +45,12 @@ export interface PromotionPlan {
   uncoveredAxes: string[];
 }
 
-export function planPromotion(compilationLogPath: string, opts: { status?: string } = {}): PromotionPlan {
+export function planPromotion(compilationLogPath: string, opts: { status?: string; reg?: ApprovedEnumerations } = {}): PromotionPlan {
   const statusFilter = (opts.status ?? "CONFIRMED").toUpperCase();
   const j = readArtifactNote(compilationLogPath).json as any;
   const pericope: string | null = j?.pericope_id ?? null;
   const va = j?.vocabulary_additions ?? {};
-  const reg = loadApprovedEnumerations();
+  const reg = opts.reg ?? loadApprovedEnumerations();
 
   const promote: PromotionCandidate[] = [];
   const alreadyApproved: PromotionCandidate[] = [];
