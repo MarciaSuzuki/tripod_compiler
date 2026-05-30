@@ -172,9 +172,11 @@ program
     for (const c of plan.promote) console.log(`     + ${c.axis}: ${c.value}  [${c.status ?? "—"}]`);
     if (plan.skippedByStatus.length)
       console.log(`  (${plan.skippedByStatus.length} skipped — not ${plan.statusFilter}; use --status ANY to include)`);
-    console.log(
-      `  note: convergent axes NOT covered by COMPILATION-LOG vocabulary_additions (won't converge via promote yet): ${plan.uncoveredAxes.join(", ")}`,
-    );
+    if (plan.uncoveredAxes.length)
+      console.log(
+        `  note: convergent axes NOT covered by COMPILATION-LOG vocabulary_additions (won't converge via promote yet): ${plan.uncoveredAxes.join(", ")}`,
+      );
+    else console.log(`  note: all convergent axes are promotable via the COMPILATION-LOG (SC-0007).`);
     if (!opts.apply) {
       console.log(`  → dry run. Re-run with --apply to grow the registry.`);
       return;

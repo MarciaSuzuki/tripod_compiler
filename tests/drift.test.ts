@@ -45,8 +45,9 @@ describe("accumulation converges drift (promote P02 → re-validate)", () => {
   const driftOn = (axis: string, baseline: Record<string, string[]>) =>
     vocabularyFindings(p02, baseline).filter((f) => f.severity === "drift" && f.axis === axis).length;
 
-  it("promoting P02's vocabulary_additions zeroes proposition_kind + scene_kind drift", () => {
+  it("promoting P02's vocabulary_additions zeroes all convergent drift (SC-0007)", () => {
     expect(driftOn("proposition_kind", driftBaseline())).toBeGreaterThan(0);
+    expect(driftOn("tone_element", driftBaseline())).toBeGreaterThan(0); // an L1-element axis drifts pre-promotion
 
     const plan = planPromotion(CL(P02_CL), { status: "ANY" });
     expect(plan.promote.length).toBeGreaterThan(0);
@@ -56,8 +57,16 @@ describe("accumulation converges drift (promote P02 → re-validate)", () => {
     const remaining = vocabularyFindings(p02, driftBaseline(grown)).filter((f) => f.severity === "drift");
     expect(remaining.filter((f) => f.axis === "proposition_kind").length).toBe(0);
     expect(remaining.filter((f) => f.axis === "scene_kind").length).toBe(0);
-    // whatever convergent drift remains is only on axes the COMPILATION-LOG cannot promote yet
-    for (const f of remaining) expect(UNCOVERED_CONVERGENT_AXES, `unexpected residual axis ${f.axis}`).toContain(f.axis);
+    // SC-0007: every convergent FOR_MODEL axis now has a COMPILATION-LOG intake slot, so promoting
+    // P02's complete vocabulary_additions drives residual convergent drift to zero.
+    expect(
+      remaining,
+      `unexpected residual convergent drift: ${remaining.map((f) => `${f.axis}:${f.message}`).join("; ")}`,
+    ).toHaveLength(0);
+  });
+
+  it("SC-0007: no convergent axis is left without a COMPILATION-LOG promotion slot", () => {
+    expect(UNCOVERED_CONVERGENT_AXES).toEqual([]);
   });
 
   it("the CONFIRMED status gate promotes fewer than ANY", () => {

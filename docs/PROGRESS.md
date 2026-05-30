@@ -2,11 +2,12 @@
 
 > The live state of `tripod_compiler`. Read this first; it overrides the brief where they differ.
 > `CLAUDE.md` is the original scoping handoff and is now partly **stale** — see "Decisions that
-> refined CLAUDE.md" below. Last updated after merging PR #6 (Slice 2 hardening). `main` is green.
+> refined CLAUDE.md" below. `main` is green through PR #7; **SC-0007 (L1/discourse/high-risk drift
+> convergence) is done on branch `claude/friendly-edison-TGdmt`, pending merge.**
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 43 tests green
+npm install && npm run build && npm test     # 44 tests green
 npx tsx src/cli/tripod.ts check-drift          # 5 pins + closed-list sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
@@ -23,7 +24,7 @@ npx tsx src/cli/tripod.ts gold-diff
   **Validation consumes the pinned JSON-Schemas via ajv — NOT re-transcribed to zod** (zod is
   reserved for internal report types). The hand-seeded skeleton YAMLs were removed (SC-0001).
 - **Spec is `validation-rules.json` v0.6** (+ `bcd-delta` v0.4, `verification-input` v1.1,
-  `compilation-log` v0.3, `approved-enumerations` v0.1). Governed edits **SC-0001 → SC-0006**:
+  `compilation-log` v0.4, `approved-enumerations` v0.1). Governed edits **SC-0001 → SC-0007**:
   - SC-0001 REGISTER 8→7; `COMMUNITY_MEMORY` → new `NARRATIVE_FRAMING` axis + `framing_override`
     (it stays the 31st GENRE, per ruling).
   - SC-0002 propagate that into agent prompts / templates / worked example.
@@ -31,6 +32,10 @@ npx tsx src/cli/tripod.ts gold-diff
   - SC-0004 deprecate the pre-Wave-3 `_examples/` P01 duplicates → redirect to canonical P01.
   - SC-0005 widen the `place_id` pattern to allow `PL<n>_<DESCRIPTOR>` (3 schemas).
   - SC-0006 drift convergence (below).
+  - SC-0007 converge the L1-element / discourse / high-risk axes: COMPILATION-LOG schema v0.4 gains
+    optional promotion slots for those axes, mapped in `promote.ts` (`UNCOVERED_CONVERGENT_AXES` now
+    empty). validation-rules re-pinned by hash at v0.6 (sibling-pointer only). **Mechanism only —
+    vendored `approved-enumerations.json` not grown (decision); real promotion is routine, deferred.**
 - **Drift convergence (SC-0006).** L2 drift split into **convergent** axes (review-signal:
   proposition_kind, scene_kind, presence_value, the L1 element axes, discourse_thread_state,
   high_risk_register_kind) vs **descriptive/open** axes (the `_examples` axes + `referential_form` —
@@ -87,15 +92,15 @@ npx tsx src/cli/tripod.ts gold-diff
 - Nothing is uncommitted; no open PRs.
 
 ## Next (recommended)
-1. **SC-0007 — let the convergent L1 axes converge.** The COMPILATION-LOG `vocabulary_additions`
-   only carries proposition_kinds/scene_kinds/presence_values, so the L1-element axes
-   (arc/context/tone/pace/communicative_function), discourse_thread_state, and high_risk_register_kind
-   have **no promotion slot** and keep drifting. Extend the COMPILATION-LOG schema with a slot, then
-   `tripod promote` can converge them. (`tripod promote` already prints these uncovered axes.)
-2. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
+> SC-0007 (the previous #1 — L1/discourse/high-risk convergence) is **DONE** on
+> `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
+1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
-3. **Coverage ledger (`docs/COVERAGE.md`)** + the **BHSA frozen-extract sidecar** (`docs/SOURCE_AND_SCALING.md`)
-   — the highest-value fidelity feature; lands with source ingestion (Slice 2/3).
+2. **Coverage ledger (`docs/COVERAGE.md`)** + the **BHSA frozen-extract sidecar** (`docs/SOURCE_AND_SCALING.md`)
+   — the highest-value fidelity feature; lands with source ingestion (needs the vault / BHSA).
+3. **Routine: grow the vendored registry.** SC-0007 enabled L1/discourse/high-risk promotion but
+   deferred the actual run; `tripod promote --apply` per pericope (P02–P06) converges the vendored
+   `approved-enumerations.json` (logs to `VOCABULARY_LOG.md`, re-pins the registry). No new SC needed.
 
 ## Open threads
 - (a) **L2 drift split + accumulation registry — DONE** (SC-0006, PR #4). Not an open thread; do not redo.
@@ -106,6 +111,9 @@ npx tsx src/cli/tripod.ts gold-diff
   (now BCD-DELTA-only), and `_templates/audit-template-schema.json` is the schema for the obsolete
   AUDIT artifact. Fix as a governed edit — **this is SC-0008** (reconciled 2026-05-29: SC-0006 shipped
   as drift convergence; SC-0007 is the L1-axis convergence in Next #1; see SPEC_CHANGES.md allocation ledger).
-- **L1-axis promotion gap** (Next #1 / SC-0007) — convergent but unpromotable until the COMPILATION-LOG schema gains a slot.
+- **L1-axis promotion gap** (was Next #1 / SC-0007) — **RESOLVED** (SC-0007): COMPILATION-LOG v0.4 has
+  the intake slots and `promote.ts` maps them, so every convergent axis is promotable. Note: `discourse_thread_state`
+  + `high_risk_register_kind` are now *promotable* but are not FOR_MODEL fields, so their drift-detection-from-source
+  is still future work. Vendored-registry growth deferred to routine `tripod promote --apply`.
 - **Coreference attribution & semantic additions** stay human (per `docs/COVERAGE.md` / `READING_QUALITY.md`) — not mechanizable.
 - **Two `.docx`** reference files were left in the working tree; now gitignored (`*.docx`).
