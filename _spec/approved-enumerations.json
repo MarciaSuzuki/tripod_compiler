@@ -1,10 +1,10 @@
 {
   "$comment": "Growing registry of APPROVED convergent bounded-open enumeration values, with provenance. Seeded from canonical P01 (SC-0006); grows by governed promotion (tripod promote) as pericope COMPILATION-LOG vocabulary_additions are CONFIRMED. Replaces drift_detector.canonical_p01_enumerations as the live drift baseline for convergent axes. Descriptive/open axes (role/function/_kind _examples, referential_form) are NOT tracked here — they never converge. Vendored + pinned into the compiler; promotions are logged in VOCABULARY_LOG.md and re-pinned.",
-  "version": "v0.2",
+  "version": "v0.3",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date": "2026-05-30",
   "seeded_from": "validation-rules.json drift_detector.canonical_p01_enumerations (convergent axes only)",
-  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots — see VOCABULARY_LOG.md. P02 now validates with zero convergent drift.",
+  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots — see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) — P03 now validates with zero convergent drift.",
   "axes": {
     "proposition_kind": [
       {
@@ -174,6 +174,41 @@
         "approved_in": "P02",
         "source_artifact": "P02-Ruth-1-6-14-COMPILATION-LOG",
         "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SPOKE_DISSUASIVE_APPEAL_WITH_EXEMPLAR",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "REFUSED_DIRECTIVE_AS_OPENING_OF_VOW",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "UTTERED_COVENANT_BINDING_VOW",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SEALED_VOW_WITH_SELF_CURSE_OATH",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WITNESSED_RESOLVE_AND_CEASED_SPEECH",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
       }
     ],
     "scene_kind": [
@@ -217,6 +252,27 @@
         "first_seen": "P02",
         "approved_in": "P02",
         "source_artifact": "P02-Ruth-1-6-14-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "APPEAL_WITH_EXEMPLAR_POINTING_SCENE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "VOW_AND_RATIFICATION_SCENE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SEEING_AND_FALLING_SILENT_SCENE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],
@@ -320,6 +376,41 @@
         "approved_in": "P02",
         "source_artifact": "P02-Ruth-1-6-14-COMPILATION-LOG",
         "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RELEASE_ATTEMPT",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "REFUSAL_OF_RELEASE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "COVENANT_BINDING_BY_VOW",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "OATH_SEALING",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SILENCE_AFTER_VOW",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
       }
     ],
     "context_element": [
@@ -370,6 +461,20 @@
         "first_seen": "P01",
         "approved_in": "P01",
         "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PRIOR_PERICOPE_CARRY_FORWARD",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "TRAJECTORY_CONTEXT_ON_RETURN_ROAD",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],
@@ -436,6 +541,34 @@
         "approved_in": "P02",
         "source_artifact": "P02-Ruth-1-6-14-COMPILATION-LOG",
         "sc_ref": "SC-0006"
+      },
+      {
+        "value": "INTIMATE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RISING_THROUGH_LADDER",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SLOWED",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "UNSETTLED_AT_CLOSE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
       }
     ],
     "pace_element": [
@@ -465,6 +598,27 @@
         "first_seen": "P02",
         "approved_in": "P02",
         "source_artifact": "P02-Ruth-1-6-14-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "DELIBERATE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARROW",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PAUSED_AT_SILENCE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],
@@ -558,6 +712,41 @@
         "first_seen": "P02",
         "approved_in": "P02",
         "source_artifact": "P02-Ruth-1-6-14-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ESTABLISHES_RUTHS_COVENANT_BINDING_TO_NAOMI",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ADVANCES_MOABITE_OUTSIDER_INCORPORATION",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PLACES_DIVINE_NAME_ON_MOABITE_OUTSIDER_LIPS",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WITHHOLDS_ETHNIC_EPITHET_AT_INCORPORATION_MOMENT",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WITHHOLDS_NAOMIS_INTERIOR_RESPONSE",
+        "first_seen": "P03",
+        "approved_in": "P03",
+        "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],

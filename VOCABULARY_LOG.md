@@ -41,3 +41,10 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
   All tagged `approved_in: P02`. **Result: P02 FOR_MODEL now validates with 0 convergent drift**
   (was 37) — the SC-0006 + SC-0007 payoff on real vendored data. (`presence_value`, `context_element`,
   `discourse_thread_state`: P02 introduced no new values.)
+- 2026-05-30 — **P03 (`P03-Ruth-1-15-18-COMPILATION-LOG`) — first CONFIRMED-only promotion:** Gate-F review
+  flipped P03's **27 convergent values** `PROPOSED → CONFIRMED` in its COMPILATION-LOG (L1-element slots
+  recorded as CONFIRMED; the gold `proposition_kinds`/`scene_kinds` flipped to CONFIRMED), then
+  `promote --apply` at the **default `CONFIRMED` gate** (no `--status` override). Registry `v0.2 → v0.3`,
+  re-pinned. By axis: `proposition_kind`×5, `scene_kind`×3, `arc_element`×5, `context_element`×2,
+  `tone_element`×4, `pace_element`×3, `communicative_function_element`×5. All tagged `approved_in: P03`.
+  **Result: P03 FOR_MODEL now validates with 0 convergent drift** (was 27).
