@@ -15,6 +15,15 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
   one decision. If a decision is abandoned, renamed, or its number was taken in another session,
   give it the **next free** number and mark the old allocation `VOID`/`SUPERSEDED(→SC-YYYY)` in the
   SC-ID allocation ledger below — never silently rebind a live number to a different decision.
+- **Canonical home (one sequence, one home).** This log governs the spec, and the canonical spec
+  lives in the wiki vault — so the canonical `SPEC_CHANGES.md` (and `VOCABULARY_LOG.md`) live in the
+  wiki `_spec/` beside `validation-rules.json`, and the compiler **vendors + pins** them exactly as it
+  vendors the schemas. `tripod check-drift --vault` then asserts the compiler's mirror == the wiki
+  canonical, so a wiki-side spec edit cannot bypass the log. (Ruling 2026-05-29. The wiki is
+  remote-less, so the compiler's pushed mirror is the durable copy — vendor+pin is the durability
+  layer, not a convenience.) **Implementation pending** (next governance task, gates SC-0008): add
+  both files to `_spec/pins.json` + the pin table and relocate them under `_spec/` so the pin path
+  resolves; until then they remain compiler-repo docs and this rule states the target, not the state.
 - **Bump the spec version** on every shipped change and record the new version + file hash so
   the compiler's vendored-copy drift-check can pin to it.
 - **Migrate artifacts in the same entry.** If a change invalidates existing artifacts
