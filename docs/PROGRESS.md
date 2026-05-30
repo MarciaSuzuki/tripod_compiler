@@ -104,8 +104,8 @@ npx tsx src/cli/tripod.ts gold-diff
 - (c) **Template relics — OPEN.** Two pre-Wave-3 stragglers a sweep found:
   `_templates/for-model-template.md` still documents `discourse_threads_active` as a FOR_MODEL field
   (now BCD-DELTA-only), and `_templates/audit-template-schema.json` is the schema for the obsolete
-  AUDIT artifact. Fix as a governed edit — **note SC-0006 is taken (accumulation), so this is SC-0007**
-  (or renumber the L1-convergence item above; pick one).
-- **L1-axis promotion gap** (see Next #1) — convergent but unpromotable until the COMPILATION-LOG schema gains a slot.
+  AUDIT artifact. Fix as a governed edit — **this is SC-0008** (reconciled 2026-05-29: SC-0006 shipped
+  as drift convergence; SC-0007 is the L1-axis convergence in Next #1; see SPEC_CHANGES.md allocation ledger).
+- **L1-axis promotion gap** (Next #1 / SC-0007) — convergent but unpromotable until the COMPILATION-LOG schema gains a slot.
 - **Coreference attribution & semantic additions** stay human (per `docs/COVERAGE.md` / `READING_QUALITY.md`) — not mechanizable.
 - **Two `.docx`** reference files were left in the working tree; now gitignored (`*.docx`).

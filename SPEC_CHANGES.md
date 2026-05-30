@@ -11,6 +11,10 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
   here with status `APPROVED` and an implementation note.
 - **One entry per decision**, newest at the top. Never rewrite a shipped entry; supersede it
   with a new one.
+- **SC IDs are append-only and never reused.** Once allocated, a number is permanently bound to
+  one decision. If a decision is abandoned, renamed, or its number was taken in another session,
+  give it the **next free** number and mark the old allocation `VOID`/`SUPERSEDED(→SC-YYYY)` in the
+  SC-ID allocation ledger below — never silently rebind a live number to a different decision.
 - **Bump the spec version** on every shipped change and record the new version + file hash so
   the compiler's vendored-copy drift-check can pin to it.
 - **Migrate artifacts in the same entry.** If a change invalidates existing artifacts
@@ -34,6 +38,37 @@ Routine vocabulary promotions (growing `approved-enumerations.json`) are logged 
 
 ---
 
+## SC-ID allocation ledger (canonical)
+The authoritative registry of every SC number. IDs are **append-only and never reused** (see Rules).
+The chronological entries below carry the detail; this table is the index — one row per number, each
+number bound to exactly one decision.
+
+| SC-ID | Decision (current binding) | Status |
+| --- | --- | --- |
+| SC-0001 | REGISTER 8→7; move COMMUNITY_MEMORY to a NARRATIVE_FRAMING axis | SHIPPED |
+| SC-0002 | Propagate the register split into prompts/templates | SHIPPED |
+| SC-0003 | Clean residual "elevated register bordering on COMMUNITY_MEMORY" prose | SHIPPED |
+| SC-0004 | Deprecate the pre-Wave-3 `_examples/` P01 duplicates | SHIPPED |
+| SC-0005 | Widen the `place_id` pattern to `PL<n>_<DESCRIPTOR>` | SHIPPED |
+| SC-0006 | Drift convergence: convergent/descriptive split + approved-enumerations registry | SHIPPED |
+| SC-0007 | Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot) | PROPOSED |
+| SC-0008 | Template relics: retire obsolete for-model/audit templates | PROPOSED |
+
+**Superseded / void allocations (recorded, never rebound):**
+- **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
+  Cross-session history shows the template-relics fix was tentatively numbered SC-0006 in an earlier
+  planning session, but it was never written into SPEC_CHANGES.md under that number: the committed log
+  ran SC-0001→SC-0005 (`84bd95c`), and SC-0006 first appears already bound to "Drift convergence"
+  (`9fdef18`, 2026-05-29). That binding is now load-bearing — every seeded value in
+  `approved-enumerations.json` carries `sc_ref:"SC-0006"` and `promote.ts` stamps it by default — so
+  SC-0006 stays bound to drift convergence. The template-relics decision is reinstated below as
+  **SC-0008**. This cross-session collision is why the append-only-IDs rule now exists.
+- **SC-0007 — double-booked in `docs/PROGRESS.md`** between L1-axis convergence (Next #1) and template
+  relics (open-thread (c): "pick one"). Reconciled: **SC-0007 = L1-axis convergence** (it closes
+  SC-0006's flagged known limitation), **SC-0008 = template relics**.
+
+---
+
 ## Entry template
 ```
 ## SC-XXXX — <short title>
@@ -49,6 +84,54 @@ Routine vocabulary promotions (growing `approved-enumerations.json`) are logged 
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0008 — Template relics: retire obsolete for-model/audit templates
+- **Date:** 2026-05-29 (reinstated as SC-0008)
+- **Decided by:** Marcia Suzuki
+- **Status:** PROPOSED
+- **Type:** docs/templates hygiene (no schema change)
+- **ID note:** Tentatively numbered SC-0006 in an earlier planning session but never committed to this
+  log under that number (SC-0006 shipped as drift convergence, `9fdef18`); later surfaced as SC-0007 in
+  `docs/PROGRESS.md` open-thread (c), colliding with the L1-axis item now at SC-0007. Reinstated here
+  under its own permanent ID — see the allocation ledger.
+- **Summary:** Two pre-Wave-3 template files survive in the wiki vault `_templates/`:
+  `for-model-template.md` still documents `discourse_threads_active` as a FOR_MODEL field (now
+  BCD-DELTA-only), and `audit-template-schema.json` is the schema for the obsolete AUDIT artifact.
+  Retire/redirect both.
+- **Rationale:** Stale templates re-introduce retired fields; a future author copying the
+  template would re-add `discourse_threads_active` to a FOR_MODEL.
+- **Spec change (exact):** no `validation-rules.json` change; wiki-vault `_templates/` edits only.
+- **Artifact migration:** none (templates are not validated artifacts).
+- **Validator impact:** none.
+- **Version:** no spec-version bump.
+- **Verification:** grep clean; `_templates/` no longer references retired fields.
+
+---
+
+## SC-0007 — Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot)
+- **Date:** 2026-05-29 (proposed)
+- **Decided by:** Marcia Suzuki
+- **Status:** PROPOSED
+- **Type:** schema-shape (COMPILATION-LOG) + promotion mechanism
+- **Summary:** Close the SC-0006 known limitation. The COMPILATION-LOG `vocabulary_additions` only
+  carries `proposition_kinds`/`scene_kinds`/`presence_values`, so the remaining convergent axes — the
+  L1 element axes (arc/context/tone/pace/communicative_function), `discourse_thread_state`, and
+  `high_risk_register_kind` — have no promotion slot and keep drifting. Add slots so `tripod promote`
+  can converge them into `approved-enumerations.json`.
+- **Rationale:** Those axes are already classified convergent (SC-0006) and already keyed in the
+  registry, but with no intake slot they never accumulate; their drift is permanent noise, not signal.
+- **Spec change (exact):** extend `compilation-log.schema.json` `$defs.vocabulary_additions` with the
+  new convergent slots (kept OUT of `required` so P01–P06 stay valid); map them in `promote.ts`
+  `VA_KEY_TO_AXIS`; shrink `UNCOVERED_CONVERGENT_AXES` accordingly.
+- **Artifact migration:** none required (new slots optional); pericope COMPILATION-LOGs may add the
+  new lists as values are approved.
+- **Validator impact:** the named axes become promotable; once promoted they stop drift-warning.
+- **Version (planned):** `compilation-log.schema.json` v0.3 → v0.4 (sha256 set on ship); re-pin in
+  `_spec/pins.json` + the table above.
+- **Verification (planned):** P01–P06 re-validate clean; promoting an L1/discourse/high-risk value
+  zeroes its drift on re-validate; tests extended; `tripod check-drift` green.
 
 ---
 
