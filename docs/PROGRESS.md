@@ -2,9 +2,9 @@
 
 > The live state of `tripod_compiler`. Read this first; it overrides the brief where they differ.
 > `CLAUDE.md` is the original scoping handoff and is now partly **stale** — see "Decisions that
-> refined CLAUDE.md" below. `main` is green through **PR #8 (SC-0007)**. The **routine P02 registry
-> promotion** (`approved-enumerations` v0.2; P02 now 0 convergent drift) is on branch
-> `claude/friendly-edison-TGdmt`, pending merge.
+> refined CLAUDE.md" below. `main` is green through **PR #9** (P02 promotion + CONFIRMED-only policy).
+> The **P03 CONFIRMED-only promotion** (`approved-enumerations` v0.3; P03 now 0 convergent drift) is on
+> branch `claude/friendly-edison-TGdmt`, pending merge.
 
 ## How to verify the state
 ```
@@ -25,7 +25,7 @@ npx tsx src/cli/tripod.ts gold-diff
   **Validation consumes the pinned JSON-Schemas via ajv — NOT re-transcribed to zod** (zod is
   reserved for internal report types). The hand-seeded skeleton YAMLs were removed (SC-0001).
 - **Spec is `validation-rules.json` v0.6** (+ `bcd-delta` v0.4, `verification-input` v1.1,
-  `compilation-log` v0.4, `approved-enumerations` v0.2). Governed edits **SC-0001 → SC-0007**:
+  `compilation-log` v0.4, `approved-enumerations` v0.3). Governed edits **SC-0001 → SC-0007**:
   - SC-0001 REGISTER 8→7; `COMMUNITY_MEMORY` → new `NARRATIVE_FRAMING` axis + `framing_override`
     (it stays the 31st GENRE, per ruling).
   - SC-0002 propagate that into agent prompts / templates / worked example.
@@ -99,10 +99,10 @@ npx tsx src/cli/tripod.ts gold-diff
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
 2. **Coverage ledger (`docs/COVERAGE.md`)** + the **BHSA frozen-extract sidecar** (`docs/SOURCE_AND_SCALING.md`)
    — the highest-value fidelity feature; lands with source ingestion (needs the vault / BHSA).
-3. **Routine: grow the vendored registry (in progress).** **P02 promoted** — 41 convergent values,
-   `approved-enumerations` v0.1 → v0.2, P02 FOR_MODEL now 0 convergent drift (was 37). Repeat
-   `tripod promote --apply` for **P03–P06** to converge the rest (logs to `VOCABULARY_LOG.md`, re-pins).
-   No new SC needed (SC-0006 policy).
+3. **Routine: grow the vendored registry (in progress).** **P02 + P03 promoted** — registry now v0.3;
+   P02 (41 values, grandfathered `--status ANY`) and P03 (27 values, **CONFIRMED-only default gate**) both
+   validate at 0 convergent drift. Repeat the CONFIRMED flow (Gate-F flip `PROPOSED → CONFIRMED` →
+   `tripod promote --apply`) for **P04–P06** (logs to `VOCABULARY_LOG.md`, re-pins). No new SC (SC-0006 policy).
 
 ## Open threads
 - (a) **L2 drift split + accumulation registry — DONE** (SC-0006, PR #4). Not an open thread; do not redo.
@@ -116,6 +116,6 @@ npx tsx src/cli/tripod.ts gold-diff
 - **L1-axis promotion gap** (was Next #1 / SC-0007) — **RESOLVED** (SC-0007): COMPILATION-LOG v0.4 has
   the intake slots and `promote.ts` maps them, so every convergent axis is promotable. Note: `discourse_thread_state`
   + `high_risk_register_kind` are now *promotable* but are not FOR_MODEL fields, so their drift-detection-from-source
-  is still future work. Vendored-registry growth: **P02 promoted** (registry v0.2); **P03–P06 remain**.
+  is still future work. Vendored-registry growth: **P02 + P03 promoted** (registry v0.3); **P04–P06 remain**.
 - **Coreference attribution & semantic additions** stay human (per `docs/COVERAGE.md` / `READING_QUALITY.md`) — not mechanizable.
 - **Two `.docx`** reference files were left in the working tree; now gitignored (`*.docx`).

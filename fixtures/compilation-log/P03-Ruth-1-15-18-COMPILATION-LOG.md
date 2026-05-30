@@ -98,31 +98,31 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       {
         "value": "SPOKE_DISSUASIVE_APPEAL_WITH_EXEMPLAR",
         "source": "1:15 Naomi's last appeal pointing to Orpah's return",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound speech event combining example-pointing and directive."
       },
       {
         "value": "REFUSED_DIRECTIVE_AS_OPENING_OF_VOW",
         "source": "1:16a Ruth refuses Naomi's directive opening her vow speech",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; carries speech_act REFUSES_REQUEST_WITH_COUNTER_DECLARATION."
       },
       {
         "value": "UTTERED_COVENANT_BINDING_VOW",
         "source": "1:16b-17a Ruth's six-step binding ladder",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound vow speech event with six VOWS_* component speech_acts."
       },
       {
         "value": "SEALED_VOW_WITH_SELF_CURSE_OATH",
         "source": "1:17b Ruth's self-curse oath formula invoking YHWH",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; carries speech_act INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT."
       },
       {
         "value": "WITNESSED_RESOLVE_AND_CEASED_SPEECH",
         "source": "1:18 Naomi sees Ruth determined and stops speaking",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound narrator-report with two components."
       }
     ],
@@ -130,23 +130,52 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       {
         "value": "APPEAL_WITH_EXEMPLAR_POINTING_SCENE",
         "source": "S1 at 1:15",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open."
       },
       {
         "value": "VOW_AND_RATIFICATION_SCENE",
         "source": "S2 at 1:16-17",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; carried forward from Pilot 1 vocabulary archive. First oath-scene in Pilot 2."
       },
       {
         "value": "SEEING_AND_FALLING_SILENT_SCENE",
         "source": "S3 at 1:18",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open."
       }
     ],
     "presence_values": [],
+    "arc_elements": [
+      { "value": "RELEASE_ATTEMPT", "source": "S1 1:15 Naomi's final appeal pointing to Orpah's return", "status": "CONFIRMED" },
+      { "value": "REFUSAL_OF_RELEASE", "source": "S2 1:16a Ruth refuses to turn back", "status": "CONFIRMED" },
+      { "value": "COVENANT_BINDING_BY_VOW", "source": "S2 1:16b-17a Ruth's covenant-binding vow ladder", "status": "CONFIRMED" },
+      { "value": "OATH_SEALING", "source": "S2 1:17b self-curse oath seals the vow", "status": "CONFIRMED" },
+      { "value": "SILENCE_AFTER_VOW", "source": "S3 1:18 Naomi sees the resolve and ceases speaking", "status": "CONFIRMED" }
+    ],
+    "context_elements": [
+      { "value": "PRIOR_PERICOPE_CARRY_FORWARD", "source": "return-road setting carried forward from P02", "status": "CONFIRMED" },
+      { "value": "TRAJECTORY_CONTEXT_ON_RETURN_ROAD", "source": "the journey toward Judah continues", "status": "CONFIRMED" }
+    ],
+    "tone_elements": [
+      { "value": "INTIMATE", "source": "S2 mother / daughter-in-law vow exchange", "status": "CONFIRMED" },
+      { "value": "RISING_THROUGH_LADDER", "source": "1:16-17 the vow's ascending ladder of bindings", "status": "CONFIRMED" },
+      { "value": "SLOWED", "source": "deliberate pacing through the vow", "status": "CONFIRMED" },
+      { "value": "UNSETTLED_AT_CLOSE", "source": "1:18 Naomi's withheld interior response", "status": "CONFIRMED" }
+    ],
+    "pace_elements": [
+      { "value": "DELIBERATE", "source": "the vow uttered deliberately", "status": "CONFIRMED" },
+      { "value": "NARROW", "source": "tight focus on the two women", "status": "CONFIRMED" },
+      { "value": "PAUSED_AT_SILENCE", "source": "1:18 the pause at Naomi's silence", "status": "CONFIRMED" }
+    ],
+    "communicative_function_elements": [
+      { "value": "ESTABLISHES_RUTHS_COVENANT_BINDING_TO_NAOMI", "source": "1:16-17 the covenant vow", "status": "CONFIRMED" },
+      { "value": "ADVANCES_MOABITE_OUTSIDER_INCORPORATION", "source": "Ruth the Moabite binds to Naomi's people", "status": "CONFIRMED" },
+      { "value": "PLACES_DIVINE_NAME_ON_MOABITE_OUTSIDER_LIPS", "source": "1:17 Ruth invokes YHWH by name", "status": "CONFIRMED" },
+      { "value": "WITHHOLDS_ETHNIC_EPITHET_AT_INCORPORATION_MOMENT", "source": "narrator withholds 'the Moabite' at the vow", "status": "CONFIRMED" },
+      { "value": "WITHHOLDS_NAOMIS_INTERIOR_RESPONSE", "source": "1:18 Naomi's interior response left unstated", "status": "CONFIRMED" }
+    ],
     "referential_forms": [
       {
         "value": "KINSHIP_FORM_YEBIMTEKH",

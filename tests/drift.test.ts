@@ -13,7 +13,7 @@ const FM = (n: string) => join(here, "..", "fixtures", "for-model", n);
 const CL = (n: string) => join(here, "..", "fixtures", "compilation-log", n);
 const P02_FM = "P02-Ruth-1-6-14-FOR-MODEL.md";
 const P02_CL = "P02-Ruth-1-6-14-COMPILATION-LOG.md";
-const P03_FM = "P03-Ruth-1-15-18-FOR-MODEL.md"; // still unpromoted — the drifting example post-P02-promotion
+const P04_FM = "P04-Ruth-1-19-22-FOR-MODEL.md"; // still unpromoted — the drifting example post-P03-promotion
 
 describe("axis classification (convergent vs descriptive)", () => {
   it("convergent axes", () => {
@@ -26,8 +26,8 @@ describe("axis classification (convergent vs descriptive)", () => {
   });
 });
 
-describe("drift report split (P03 — still unpromoted)", () => {
-  const r = validateArtifact(FM(P03_FM));
+describe("drift report split (P04 — still unpromoted)", () => {
+  const r = validateArtifact(FM(P04_FM));
   it("separates convergent drift from descriptive; open axes are never counted as drift", () => {
     expect(r.counts.drift).toBeGreaterThan(0); // convergent review-signal
     expect(r.counts.descriptive).toBeGreaterThan(0); // open / informational

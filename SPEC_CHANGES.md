@@ -41,7 +41,7 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 | `compilation-log.schema.json` | `v0.4` | `af54950a87b5aeb818a526467e814c2dabbe2ef85fd0386cce213e62789f1400` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
-| `approved-enumerations.json` | `v0.2` | `9cb8ca89435144c8433ebfc9dede69bebdee4bdca67904f1c15a00a6f84de21a` |
+| `approved-enumerations.json` | `v0.3` | `aff9019b33b3204c2a63f149978220b66814f4a1d8273c5532dbe31b9a8f9c2f` |
 
 Routine vocabulary promotions (growing `approved-enumerations.json`) are logged in [`VOCABULARY_LOG.md`](VOCABULARY_LOG.md), not as a new SC each time (SC-0006 establishes the mechanism); each promotion re-pins the registry above.
 
