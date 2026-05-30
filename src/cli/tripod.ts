@@ -181,6 +181,11 @@ program
       console.log(`  → dry run. Re-run with --apply to grow the registry.`);
       return;
     }
+    if (plan.statusFilter !== "CONFIRMED")
+      console.log(
+        `  ⚠ policy: promotion is CONFIRMED-only from P03 onward — Gate-F flips PROPOSED→CONFIRMED before promote. ` +
+          `'--status ${plan.statusFilter}' is a deliberate gate override (P02 was the grandfathered exception; see VOCABULARY_LOG.md).`,
+      );
     const target = opts.to ?? join(SPEC_DIR, "approved-enumerations.json");
     const { reg, added } = applyPromotion(loadApprovedEnumerations(), plan);
     writeFileSync(target, JSON.stringify(reg, null, 2) + "\n");
