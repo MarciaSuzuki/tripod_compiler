@@ -48,3 +48,12 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
   re-pinned. By axis: `proposition_kind`×5, `scene_kind`×3, `arc_element`×5, `context_element`×2,
   `tone_element`×4, `pace_element`×3, `communicative_function_element`×5. All tagged `approved_in: P03`.
   **Result: P03 FOR_MODEL now validates with 0 convergent drift** (was 27).
+- 2026-05-30 — **P04–P06 batch (CONFIRMED-only):** Gate-F review recorded each pericope's convergent
+  values as `CONFIRMED` in its COMPILATION-LOG (P06's log had none recorded — all added), then
+  `promote --apply` at the **default `CONFIRMED` gate**, one pericope at a time:
+  - **P04** (`P04-Ruth-1-19-22`): 31 promoted (prop ×6, scene ×3, presence ×1, arc ×6, context ×2, tone ×4, pace ×3, comm-func ×6).
+  - **P05** (`P05-Ruth-2-1-7`): 33 promoted (3 already approved — shared with P04).
+  - **P06** (`P06-Ruth-2-8-16`): 40 promoted (3 already approved).
+  Registry `v0.3 → v0.4`, re-pinned. **Result: the full Ruth pilot corpus (P01–P06) now validates with
+  0 convergent drift** — controlled-vocabulary convergence complete for the pilot. (Descriptive/open
+  axes remain per-pericope, by design.)

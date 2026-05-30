@@ -1,10 +1,10 @@
 {
   "$comment": "Growing registry of APPROVED convergent bounded-open enumeration values, with provenance. Seeded from canonical P01 (SC-0006); grows by governed promotion (tripod promote) as pericope COMPILATION-LOG vocabulary_additions are CONFIRMED. Replaces drift_detector.canonical_p01_enumerations as the live drift baseline for convergent axes. Descriptive/open axes (role/function/_kind _examples, referential_form) are NOT tracked here — they never converge. Vendored + pinned into the compiler; promotions are logged in VOCABULARY_LOG.md and re-pinned.",
-  "version": "v0.3",
+  "version": "v0.4",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date": "2026-05-30",
   "seeded_from": "validation-rules.json drift_detector.canonical_p01_enumerations (convergent axes only)",
-  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots — see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) — P03 now validates with zero convergent drift.",
+  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots — see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) — P03 now validates with zero convergent drift. v0.4 (2026-05-30): batch-promoted P04 (31), P05 (33), P06 (40) convergent values via the CONFIRMED-only flow — the full Ruth pilot corpus (P01–P06) now validates with zero convergent drift.",
   "axes": {
     "proposition_kind": [
       {
@@ -209,6 +209,237 @@
         "approved_in": "P03",
         "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WALKING_AND_ARRIVAL",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "COMMUNAL_STIRRING_AT_ARRIVAL",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ASKED_RHETORICAL_RECOGNITION_QUESTION",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "REFUSED_OWN_NAME_AND_PROPOSED_RENAMING",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SPOKE_LAMENT_WITH_DOUBLED_DIVINE_ATTRIBUTION",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARRATOR_FRAME_RETURN_AND_ARRIVAL_AT_HARVEST_OPENING",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARRATOR_INTRODUCES_KINSMAN_BEFORE_ACTION",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "REQUESTED_PERMISSION_TO_GLEAN",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "GRANTED_PERMISSION_TO_GLEAN",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WENT_AND_GLEANED_BEHIND_HARVESTERS",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "CHANCE_ARRIVED_AT_KINSMAN_PORTION_WITH_CLAN_FRAME_RESTATED",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ARRIVED_AT_FIELD_FROM_HOMETOWN",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "EXCHANGED_GREETING_AND_RETURN_BLESSING",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ASKED_KINSHIP_AND_SOCIAL_COVER_QUESTION",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "FOREMAN_REPORTED_IDENTITY_AND_WORK_PATTERN",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ANSWERED_WITH_FULL_KNOWLEDGE_RECITAL",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ASKED_RECOGNITION_QUESTION_AND_SELF_NAMED_AS_FOREIGNER",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ATE_WAS_SATISFIED_AND_HAD_LEFTOVER",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "BOWED_DEEP_TO_GROUND",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "COMMANDED_DELIBERATE_PULLING_FROM_BUNDLES",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "COMMANDED_HARVESTERS_PERMISSION_AND_SHAME_PROHIBITION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "COMMANDED_LEAVING_AND_REBUKE_PROHIBITION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "DESCRIBED_BOAZ_EFFECT_AND_LOWER_SELF_NAMED",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "HANDED_ROASTED_GRAIN",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "INVITED_TO_MEAL",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PRONOUNCED_FORMAL_BLESSING_UNDER_WINGS_OF_REFUGE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RECITED_RUTH_LEAVING_AND_COMING",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "REPORTED_OWN_PRIOR_PROHIBITION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RESPONDED_WITH_FAVOR_WISH",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ROSE_TO_GLEAN",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SAT_BESIDE_HARVESTERS",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SPOKE_PROTECTIVE_INSTRUCTION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SPOKE_WATER_PROVISION_INSTRUCTION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
       }
     ],
     "scene_kind": [
@@ -274,6 +505,83 @@
         "approved_in": "P03",
         "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PUBLIC_ARRIVAL_AND_RECOGNITION_SCENE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PUBLIC_LAMENT_AND_RENAMING_SCENE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARRATOR_FRAMING_CLOSE_SCENE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARRATOR_PARENTHETICAL_INTRODUCTION_SCENE",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "INTERIOR_INITIATIVE_AND_RELEASE_SCENE",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "FIELD_ARRIVAL_CHANCE_PROVIDENCE_AND_GREETING_SCENE",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "FIELD_OWNER_FOREMAN_REPORT_SCENE",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "HARVESTER_PROTOCOL_SCENE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "MEAL_INCLUSION_SCENE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PROTECTIVE_INSTRUCTION_SCENE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RECOGNITION_AND_BLESSING_SCENE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
       }
     ],
     "presence_value": [
@@ -296,6 +604,13 @@
         "first_seen": "P01",
         "approved_in": "P01",
         "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PRESENT_COLLECTIVE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],
@@ -411,6 +726,118 @@
         "approved_in": "P03",
         "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
+      },
+      {
+        "value": "COMMUNITY_RECOGNITION_FAILURE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "HARVEST_FRAMING_OPEN",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARRATOR_FRAMING_CLOSE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PUBLIC_ARRIVAL",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PUBLIC_LAMENT",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RENAMING_LAMENT",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "CHANCE_PROVIDENCE_ARRIVAL",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "FIELD_COMMUNITY_GREETING",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "INITIATIVE_OF_OUTSIDER_DAUGHTER_IN_LAW",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARRATOR_PARENTHETICAL_INTRODUCTION",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PUBLIC_IDENTIFICATION_OF_OUTSIDER",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "BLESSING_INVOCATION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "HARVESTER_PROTOCOL_EXTENSION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "MEAL_INCLUSION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PROTECTIVE_INSTRUCTION",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RECOGNITION_EXCHANGE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
       }
     ],
     "context_element": [
@@ -475,6 +902,20 @@
         "first_seen": "P03",
         "approved_in": "P03",
         "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "DIVINE_CONTEXT",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "PRIOR_ACTION_CONTEXT",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],
@@ -569,6 +1010,76 @@
         "approved_in": "P03",
         "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
         "sc_ref": "SC-0006"
+      },
+      {
+        "value": "DECLARATIVE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RESTRAINED_LAMENT",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "STILLED_AT_ARRIVAL",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "UNRESOLVED_AT_CLOSE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ANTICIPATORY",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ECONOMICAL",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "QUIET",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "CEREMONIAL_AT_BLESSING",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RELATIONALLY_CLOSE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WARM",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
       }
     ],
     "pace_element": [
@@ -619,6 +1130,69 @@
         "first_seen": "P03",
         "approved_in": "P03",
         "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARROWS_AT_RECOGNITION_FAILURE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RISES_THROUGH_LAMENT",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SETTLES_AT_NARRATOR_FRAME_CLOSE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "HOLDS_AT_INTERIOR_DIALOGUE",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "NARROWS_AT_NARRATOR_PARENTHETICAL",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SETTLES_AT_CHRONICLE_REPORT",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WIDENS_AT_CHANCE_PROVIDENCE_FRAMING",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "SLOWED_THROUGH_SPEECHES",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "STEADY_AT_MEAL_AND_PROTOCOL",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],
@@ -747,6 +1321,160 @@
         "first_seen": "P03",
         "approved_in": "P03",
         "source_artifact": "P03-Ruth-1-15-18-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "CLOSES_BREAD_HOUSE_IN_FAMINE_CROSS_PERICOPE_FIGURE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "CLOSES_CHAPTER_ONE_EMPTYING_ARC",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ESTABLISHES_PUBLIC_LAMENT_ACCOUNT",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "OPENS_HARVEST_PROVISION_DISCOURSE_THREAD",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "REACTIVATES_MOABITE_EPITHET_ON_RUTH_IN_NARRATOR_VOICE",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "STAGES_STRUCTURAL_IRONY_HARVEST_OPENS_AS_EMPTY_LAMENT_ENDS",
+        "first_seen": "P04",
+        "approved_in": "P04",
+        "source_artifact": "P04-Ruth-1-19-22-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ANCHORS_KINSMAN_REDEEMER_FRAME_AT_AUDIENCE_LEVEL",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "INTRODUCES_SECOND_MALE_PROTAGONIST_BEFORE_ACTION",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "OPENS_CHAPTER_TWO",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "OPENS_CHAYIL_CROSS_PERICOPE_PAIR",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "POSITIONS_RUTH_AND_BOAZ_IN_SAME_FIELD_THROUGH_CHANCE_CONSTRUCTION",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "REACTIVATES_MOABITE_EPITHET_IN_THIRD_PARTY_VOICE",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "STAGES_GLEANING_INSTITUTION_AS_LEGAL_CUSTOMARY_FRAME",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WITHHOLDS_DIVINE_AGENCY_BEHIND_MIQREH_CONSTRUCTION",
+        "first_seen": "P05",
+        "approved_in": "P05",
+        "source_artifact": "P05-Ruth-2-1-7-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ADVANCES_HARVEST_PROVISION_THREAD_FIRST_MAJOR",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ADVANCES_OUTSIDER_INCORPORATION_THREAD",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "DISTRIBUTES_THREE_PROHIBITION_CLUSTER",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "ESTABLISHES_PROTECTIVE_REGIME",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "OPENS_SHIFCHAH_AMAH_CROSS_PERICOPE_PAIR",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "OPENS_WING_OF_REFUGE_CROSS_PERICOPE_PAIR",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "RECITES_RUTH_LOYALTY_IN_BOAZ_VOICE",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
+        "sc_ref": "SC-0006"
+      },
+      {
+        "value": "WITHHOLDS_MOAB_NAMING_IN_BOAZ_SPEECH",
+        "first_seen": "P06",
+        "approved_in": "P06",
+        "source_artifact": "P06-Ruth-2-8-16-COMPILATION-LOG",
         "sc_ref": "SC-0006"
       }
     ],

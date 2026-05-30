@@ -113,55 +113,55 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       {
         "value": "NARRATOR_INTRODUCES_KINSMAN_BEFORE_ACTION",
         "source": "P1 v.1 narrator-parenthetical introduction of Boaz",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound narrator-economical introduction (relation + attribute + clan + name)."
       },
       {
         "value": "REQUESTED_PERMISSION_TO_GLEAN",
         "source": "P2 v.2a Ruth's gleaning-initiative request",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; carries speech_act REQUESTS_PERMISSION_TO_DO."
       },
       {
         "value": "GRANTED_PERMISSION_TO_GLEAN",
         "source": "P3 v.2b Naomi's release",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; carries speech_act GRANTS_PERMISSION_TO_DO."
       },
       {
         "value": "WENT_AND_GLEANED_BEHIND_HARVESTERS",
         "source": "P4 v.3a three-verb chain plus institutional position",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; chronicle-compressed verb sequence with gleaning-institutional position."
       },
       {
         "value": "CHANCE_ARRIVED_AT_KINSMAN_PORTION_WITH_CLAN_FRAME_RESTATED",
         "source": "P5 v.3b vayyiqer-miqreha plus clan-frame restatement",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; double-cognate chance-providence construction with clan-frame bracket."
       },
       {
         "value": "ARRIVED_AT_FIELD_FROM_HOMETOWN",
         "source": "P6 v.4a Boaz's arrival from Bethlehem",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; chronicle arrival with hinneh attention-marker."
       },
       {
         "value": "EXCHANGED_GREETING_AND_RETURN_BLESSING",
         "source": "P7 v.4b YHWH-greeting exchange",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound speech event with two WISHES_FOR_HEARER components."
       },
       {
         "value": "ASKED_KINSHIP_AND_SOCIAL_COVER_QUESTION",
         "source": "P8 v.5 Boaz's whose-young-woman question",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; carries speech_act ASKS_KINSHIP_BELONGING_QUESTION."
       },
       {
         "value": "FOREMAN_REPORTED_IDENTITY_AND_WORK_PATTERN",
         "source": "P9 v.6-7 four-five component foreman report",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound speech event with STATES_AS_TRUE + REPORTS_PRIOR_SPEECH_REQUEST components."
       }
     ],
@@ -169,25 +169,25 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       {
         "value": "NARRATOR_PARENTHETICAL_INTRODUCTION_SCENE",
         "source": "S1 at 2:1",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; introduction-before-action narrator-parenthetical scene type."
       },
       {
         "value": "INTERIOR_INITIATIVE_AND_RELEASE_SCENE",
         "source": "S2 at 2:2",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; daughter-in-law / mother-in-law interior dialogue scene type."
       },
       {
         "value": "FIELD_ARRIVAL_CHANCE_PROVIDENCE_AND_GREETING_SCENE",
         "source": "S3 at 2:3-4",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound chance-arrival plus owner-arrival plus greeting exchange scene type."
       },
       {
         "value": "FIELD_OWNER_FOREMAN_REPORT_SCENE",
         "source": "S4 at 2:5-7",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; owner-and-overseer exchange about outsider gleaner scene type."
       }
     ],
@@ -397,72 +397,266 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "status": "PROPOSED",
         "note": "Hebrew at v.7b textually disputed across major commentaries; held open with textual_clarity_flag."
       }
+    ],
+    "arc_elements": [
+      {
+        "value": "CHANCE_PROVIDENCE_ARRIVAL",
+        "source": "P05 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "FIELD_COMMUNITY_GREETING",
+        "source": "P05 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "INITIATIVE_OF_OUTSIDER_DAUGHTER_IN_LAW",
+        "source": "P05 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "NARRATOR_PARENTHETICAL_INTRODUCTION",
+        "source": "P05 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PUBLIC_IDENTIFICATION_OF_OUTSIDER",
+        "source": "P05 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "context_elements": [
+      {
+        "value": "DIVINE_CONTEXT",
+        "source": "P05 level_1.context_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PRIOR_ACTION_CONTEXT",
+        "source": "P05 level_1.context_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "tone_elements": [
+      {
+        "value": "ANTICIPATORY",
+        "source": "P05 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ECONOMICAL",
+        "source": "P05 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "QUIET",
+        "source": "P05 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "pace_elements": [
+      {
+        "value": "HOLDS_AT_INTERIOR_DIALOGUE",
+        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "NARROWS_AT_NARRATOR_PARENTHETICAL",
+        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "SETTLES_AT_CHRONICLE_REPORT",
+        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "WIDENS_AT_CHANCE_PROVIDENCE_FRAMING",
+        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "communicative_function_elements": [
+      {
+        "value": "ANCHORS_KINSMAN_REDEEMER_FRAME_AT_AUDIENCE_LEVEL",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "INTRODUCES_SECOND_MALE_PROTAGONIST_BEFORE_ACTION",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "OPENS_CHAPTER_TWO",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "OPENS_CHAYIL_CROSS_PERICOPE_PAIR",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "POSITIONS_RUTH_AND_BOAZ_IN_SAME_FIELD_THROUGH_CHANCE_CONSTRUCTION",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "REACTIVATES_MOABITE_EPITHET_IN_THIRD_PARTY_VOICE",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "STAGES_GLEANING_INSTITUTION_AS_LEGAL_CUSTOMARY_FRAME",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "WITHHOLDS_DIVINE_AGENCY_BEHIND_MIQREH_CONSTRUCTION",
+        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
     ]
   },
   "proposition_kind_slot_sets": [
     {
       "proposition_kind": "NARRATOR_INTRODUCES_KINSMAN_BEFORE_ACTION",
-      "slot_set": ["introduction_components"],
+      "slot_set": [
+        "introduction_components"
+      ],
       "component_record_shape": {
         "action": "required - POSITIONED_THROUGH_KINSHIP_ANCHOR | INTRODUCED_AS_PERSON_OF_STANDING | PLACED_IN_LEGAL_RELATIONAL_KIN_GROUP | NAMED_AT_END_OF_INTRODUCTION",
         "list_position": "required - FIRST | SECOND | THIRD | FOURTH",
         "speech_act": "required - STATES_AS_TRUE"
       },
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P1"],
+      "occurrences_in_pericope": [
+        "P1"
+      ],
       "note": "Four-component narrator-economical introduction in chronicle pattern (relation, attribute, clan, name)."
     },
     {
       "proposition_kind": "REQUESTED_PERMISSION_TO_GLEAN",
-      "slot_set": ["requester", "addressee", "requested_action", "destination", "qualification", "request_form", "gleaning_action_form", "favor_qualification_form", "speech_act"],
+      "slot_set": [
+        "requester",
+        "addressee",
+        "requested_action",
+        "destination",
+        "qualification",
+        "request_form",
+        "gleaning_action_form",
+        "favor_qualification_form",
+        "speech_act"
+      ],
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P2"]
+      "occurrences_in_pericope": [
+        "P2"
+      ]
     },
     {
       "proposition_kind": "GRANTED_PERMISSION_TO_GLEAN",
-      "slot_set": ["permission_granter", "permission_recipient", "addressed_form", "granted_action", "release_form", "speech_act"],
+      "slot_set": [
+        "permission_granter",
+        "permission_recipient",
+        "addressed_form",
+        "granted_action",
+        "release_form",
+        "speech_act"
+      ],
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P3"]
+      "occurrences_in_pericope": [
+        "P3"
+      ]
     },
     {
       "proposition_kind": "WENT_AND_GLEANED_BEHIND_HARVESTERS",
-      "slot_set": ["gleaner", "destination", "gleaning_position_relation", "harvesters_referent", "three_verb_chain_form", "gleaning_position_form", "speech_act"],
+      "slot_set": [
+        "gleaner",
+        "destination",
+        "gleaning_position_relation",
+        "harvesters_referent",
+        "three_verb_chain_form",
+        "gleaning_position_form",
+        "speech_act"
+      ],
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P4"]
+      "occurrences_in_pericope": [
+        "P4"
+      ]
     },
     {
       "proposition_kind": "CHANCE_ARRIVED_AT_KINSMAN_PORTION_WITH_CLAN_FRAME_RESTATED",
-      "slot_set": ["gleaner", "arrived_at_portion", "portion_owner", "clan_referent_restated", "clan_eponym", "agent_named", "chance_construction_form", "clan_frame_restatement_form", "speech_act"],
+      "slot_set": [
+        "gleaner",
+        "arrived_at_portion",
+        "portion_owner",
+        "clan_referent_restated",
+        "clan_eponym",
+        "agent_named",
+        "chance_construction_form",
+        "clan_frame_restatement_form",
+        "speech_act"
+      ],
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P5"],
+      "occurrences_in_pericope": [
+        "P5"
+      ],
       "note": "agent_named slot set to NONE per source-text discipline; do not attribute the chance-arrival to YHWH."
     },
     {
       "proposition_kind": "ARRIVED_AT_FIELD_FROM_HOMETOWN",
-      "slot_set": ["arriver", "origin", "destination", "attention_marker_form", "speech_act"],
+      "slot_set": [
+        "arriver",
+        "origin",
+        "destination",
+        "attention_marker_form",
+        "speech_act"
+      ],
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P6"]
+      "occurrences_in_pericope": [
+        "P6"
+      ]
     },
     {
       "proposition_kind": "EXCHANGED_GREETING_AND_RETURN_BLESSING",
-      "slot_set": ["greeting_components"],
+      "slot_set": [
+        "greeting_components"
+      ],
       "component_record_shape": {
         "action": "required - GREETED_WITH_DIVINE_INVOCATION | RETURNED_BLESSING_WITH_DIVINE_INVOCATION",
         "list_position": "required - FIRST | SECOND",
         "speech_act": "required - WISHES_FOR_HEARER"
       },
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P7"]
+      "occurrences_in_pericope": [
+        "P7"
+      ]
     },
     {
       "proposition_kind": "ASKED_KINSHIP_AND_SOCIAL_COVER_QUESTION",
-      "slot_set": ["question_asker", "question_addressee", "question_target_referent", "question_form", "foreman_role_phrase_form", "speech_act"],
+      "slot_set": [
+        "question_asker",
+        "question_addressee",
+        "question_target_referent",
+        "question_form",
+        "foreman_role_phrase_form",
+        "speech_act"
+      ],
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P8"]
+      "occurrences_in_pericope": [
+        "P8"
+      ]
     },
     {
       "proposition_kind": "FOREMAN_REPORTED_IDENTITY_AND_WORK_PATTERN",
-      "slot_set": ["reporter", "report_addressee", "report_subject_referent", "foreman_role_phrase_form", "report_components"],
+      "slot_set": [
+        "reporter",
+        "report_addressee",
+        "report_subject_referent",
+        "foreman_role_phrase_form",
+        "report_components"
+      ],
       "component_record_shape": {
         "action": "required - IDENTIFIED_BY_ETHNIC_EPITHET | IDENTIFIED_BY_RETURN_WITH_KINSHIP_ANCHOR | REPORTED_PRIOR_REQUEST_QUOTED_SPEECH | REPORTED_WORK_PATTERN_PERSISTENCE | REPORTED_DISPUTED_SHELTER_REST_CLAUSE",
         "list_position": "required - FIRST through FIFTH",
@@ -471,7 +665,9 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "textual_clarity_flag": "conditional - true when REPORTED_DISPUTED_SHELTER_REST_CLAUSE"
       },
       "status": "PROPOSED",
-      "occurrences_in_pericope": ["P9"],
+      "occurrences_in_pericope": [
+        "P9"
+      ],
       "note": "Five-component compound foreman report; the third component carries REPORTS_PRIOR_SPEECH_REQUEST with nested quoted_prior_speech_act REQUESTS_PERMISSION_TO_DO matching Ruth's v.2 cohortative-na request form."
     }
   ],

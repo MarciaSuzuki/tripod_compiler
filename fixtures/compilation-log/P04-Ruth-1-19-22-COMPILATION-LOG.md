@@ -113,37 +113,37 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       {
         "value": "WALKING_AND_ARRIVAL",
         "source": "1:19a walking and arrival at Bethlehem",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; simple narrator chronicle compound."
       },
       {
         "value": "COMMUNAL_STIRRING_AT_ARRIVAL",
         "source": "1:19b city stirred about returning protagonists",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; community-scale arousal event."
       },
       {
         "value": "ASKED_RHETORICAL_RECOGNITION_QUESTION",
         "source": "1:19c women's 'Is this Naomi?'",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; carries speech_act ASKS_RHETORICAL_QUESTION_OF_SURPRISED_RECOGNITION."
       },
       {
         "value": "REFUSED_OWN_NAME_AND_PROPOSED_RENAMING",
         "source": "1:20 Naomi's renaming proposal",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound speech event with REFUSES_USE_OF_OWN_NAME + PROPOSES_NEW_NAME_FOR_SELF + ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME components."
       },
       {
         "value": "SPOKE_LAMENT_WITH_DOUBLED_DIVINE_ATTRIBUTION",
         "source": "1:21 Naomi's four-part lament",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound lament with four components carrying ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME and ASKS_RHETORICAL_QUESTION_AS_PROTEST."
       },
       {
         "value": "NARRATOR_FRAME_RETURN_AND_ARRIVAL_AT_HARVEST_OPENING",
         "source": "1:22 narrator-frame close",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; compound narrator-frame doing three structural things (return + Ruth-epithet + harvest-opening)."
       }
     ],
@@ -151,19 +151,19 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       {
         "value": "PUBLIC_ARRIVAL_AND_RECOGNITION_SCENE",
         "source": "S1 at 1:19",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open."
       },
       {
         "value": "PUBLIC_LAMENT_AND_RENAMING_SCENE",
         "source": "S2 at 1:20-21",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open."
       },
       {
         "value": "NARRATOR_FRAMING_CLOSE_SCENE",
         "source": "S3 at 1:22",
-        "status": "PROPOSED",
+        "status": "CONFIRMED",
         "note": "Bounded-open; closes chapter 1 emptying-and-return arc."
       }
     ],
@@ -370,6 +370,121 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "source": "TM_BARLEY_HARVEST_BEGINNING at 1:22",
         "status": "CONFIRMED",
         "note": "Already in v0.4 TIME_KIND."
+      }
+    ],
+    "arc_elements": [
+      {
+        "value": "COMMUNITY_RECOGNITION_FAILURE",
+        "source": "P04 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "HARVEST_FRAMING_OPEN",
+        "source": "P04 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "NARRATOR_FRAMING_CLOSE",
+        "source": "P04 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PUBLIC_ARRIVAL",
+        "source": "P04 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PUBLIC_LAMENT",
+        "source": "P04 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RENAMING_LAMENT",
+        "source": "P04 level_1.arc_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "context_elements": [
+      {
+        "value": "DIVINE_CONTEXT",
+        "source": "P04 level_1.context_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "PRIOR_ACTION_CONTEXT",
+        "source": "P04 level_1.context_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "tone_elements": [
+      {
+        "value": "DECLARATIVE",
+        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RESTRAINED_LAMENT",
+        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "STILLED_AT_ARRIVAL",
+        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "UNRESOLVED_AT_CLOSE",
+        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "pace_elements": [
+      {
+        "value": "NARROWS_AT_RECOGNITION_FAILURE",
+        "source": "P04 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "RISES_THROUGH_LAMENT",
+        "source": "P04 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "SETTLES_AT_NARRATOR_FRAME_CLOSE",
+        "source": "P04 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      }
+    ],
+    "communicative_function_elements": [
+      {
+        "value": "CLOSES_BREAD_HOUSE_IN_FAMINE_CROSS_PERICOPE_FIGURE",
+        "source": "P04 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "CLOSES_CHAPTER_ONE_EMPTYING_ARC",
+        "source": "P04 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ESTABLISHES_PUBLIC_LAMENT_ACCOUNT",
+        "source": "P04 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "OPENS_HARVEST_PROVISION_DISCOURSE_THREAD",
+        "source": "P04 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "REACTIVATES_MOABITE_EPITHET_ON_RUTH_IN_NARRATOR_VOICE",
+        "source": "P04 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "STAGES_STRUCTURAL_IRONY_HARVEST_OPENS_AS_EMPTY_LAMENT_ENDS",
+        "source": "P04 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "status": "CONFIRMED"
       }
     ]
   },
