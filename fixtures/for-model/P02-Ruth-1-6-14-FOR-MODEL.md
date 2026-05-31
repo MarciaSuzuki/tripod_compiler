@@ -102,12 +102,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "being_id": "B8",
             "role_in_scene": "DAUGHTER_IN_LAW_ACCOMPANYING_RETURN",
-            "presence": "PRESENT"
+            "presence": "PRESENT",
+            "referential_form": "KALLAH_DAUGHTER_IN_LAW"
           },
           {
             "being_id": "B9",
             "role_in_scene": "DAUGHTER_IN_LAW_ACCOMPANYING_RETURN",
-            "presence": "PRESENT"
+            "presence": "PRESENT",
+            "referential_form": "KALLAH_DAUGHTER_IN_LAW"
           },
           {
             "being_id": "B10",
@@ -134,8 +136,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 6 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: bread CB_0012 (covenant provision named in the news at 1:6). Relocated: YHWH's visiting (paqad) → P2 (VISITED_AND_PROVIDED; cb_flag CB_0016); the news-hearing → P1 (HEARD_REPORT); the arising-and-going-out → P3 (RETURNED_FROM_FOREIGN_RESIDENCE); the road they walk → P3 (WALKED_ON_RETURN_ROAD); the daughters-in-law kinship naming (kallah) → B8/B9 referential_form (CB_0017).",
+        "entries": [
+          {
+            "object_id": "CB_0012",
+            "function_in_scene": "COVENANT_PROVISION_OF_BREAD_NAMED_IN_THE_NEWS_THAT_TURNS_NAOMI_HOMEWARD"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is the moment of news-hearing and immediate departure, continuous within the Moabite location.",
@@ -202,8 +209,21 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 9 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: hesed CB_0011, blessing CB_0008, rest/menucha CB_0014 (the loyalty, the performative blessing, and the settled security Naomi invokes at 1:8–9). Relocated: the directive to go back → P4 (SPOKE_DIRECTIVE_TO_RETURN); the mother's-house destination → place PL_EACH_HER_MOTHERS_HOUSE (CB_0013); the grounding in the daughters' prior hesed → P5 prior_hesed_targets; the kiss → P7 (KISSED_AND_WEPT_FAREWELL); the first weeping → P7; the refusal-with-counter → P8 (REFUSED_WITH_COUNTER_DECLARATION); the road they speak on → continuing from S1 (P3).",
+        "entries": [
+          {
+            "object_id": "CB_0011",
+            "function_in_scene": "COVENANT_LOYALTY_NAOMI_ASKS_YHWH_TO_REPAY_THE_DAUGHTERS"
+          },
+          {
+            "object_id": "CB_0008",
+            "function_in_scene": "PERFORMATIVE_BLESSING_NAOMI_CALLS_DOWN_IN_YHWHS_NAME"
+          },
+          {
+            "object_id": "CB_0014",
+            "function_in_scene": "SETTLED_SECURITY_OF_A_HOME_NAOMI_WISHES_FOR_THE_DAUGHTERS"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is the speech-and-response moment on the road, continuous with Scene 1.",
@@ -246,7 +266,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": []
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 13 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the repeated turn-back directive → P9/P10 (REPEATED_DIRECTIVE); the womb dissuasion-question → P9; the personal-impossibility statement → P10; the hypothetical husband-tonight and imagined sons → P10 (GRANTED_HYPOTHETICAL_CONCESSION); the twin waiting/restraining questions → P11; the bitterness comparison → P12; the hand-of-YHWH attribution → P12 (cb_flag CB_0015); the second weeping → P13 (WEPT_AGAIN); Orpah's farewell kiss → P14 (KISSED_AND_DEPARTED); Ruth's clinging (davqah) → P15 (CLUNG_TO; cb_flag CB_0018; FIG_0012); the road they stand on → continuing from S1 (P3).",
         "entries": null
       },
       "times_in_scene": {
@@ -547,7 +567,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "ASCRIBED_BITTERNESS_TO_YHWH",
             "agent_named": "B10",
             "ascription_summary": "HAND_OF_YHWH_AGAINST_NAOMI",
-            "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+            "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
         ]
       },

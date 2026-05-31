@@ -37,8 +37,8 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 | Schema | Version | sha256 |
 | --- | --- | --- |
-| `validation-rules.json` | `v0.6` | `80be76213d8a4fb6bd34c87641ac58feccf23e36ee160c2f5c73fe6a7e207bf0` |
-| `compilation-log.schema.json` | `v0.4` | `af54950a87b5aeb818a526467e814c2dabbe2ef85fd0386cce213e62789f1400` |
+| `validation-rules.json` | `v0.7` | `8c436b261178517108cb44e39408bca2c99dfd8674fb4954ccf2e72197cadcbe` |
+| `compilation-log.schema.json` | `v0.5` | `f009b32781f8a0e4d4d40e4f7500dd64396bdeeb06e3fe16d9ff2214033c36ca` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
 | `approved-enumerations.json` | `v0.4` | `309e5fa71e170b5df52b33c982b630e0fe6eaabb416d0ee12fb317903e9e4de1` |
@@ -67,7 +67,7 @@ number bound to exactly one decision.
 | SC-0011 | BCD `gender` frontmatter field (authoritative; replaces the prose-guess) | SHIPPED |
 | SC-0012 | Level-3 / §3C content discipline (R1–R5) + the `tripod lint` drift-guard | SHIPPED (lint + discipline + template); map remediation follows |
 | SC-0013 | Map content remediation under SC-0012 — P01 reference + P02–P06 roll | P01 SHIPPED; P02–P06 §3C+plain-language APPLIED (pending blessing); §4 dialogue re-atomizing = lead's exegetical pass |
-| SC-0014 | Clean role-theory jargon ("AGENT") from the SPEECH_ACT closed list (L1 vocab) | PROPOSED (surfaced by the lint; governed L1 change) |
+| SC-0014 | Rename SPEECH_ACT `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` → `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drop "AGENT" jargon) | APPLIED (pending the lead's blessing) |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -102,32 +102,97 @@ number bound to exactly one decision.
 
 ---
 
-## SC-0014 — Clean role-theory jargon from the SPEECH_ACT closed list (L1 vocab)
-- **Date:** 2026-05-31 · **Status:** PROPOSED (governed L1 change; not yet applied).
-- **Summary:** `tripod lint` surfaced that the closed SPEECH_ACT list contains
-  `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` — "AGENT" is role-theory jargon (R4). It is used by P02/P04
-  FOR_MODELs (5 occurrences) and cannot be fixed by content edits (it's a closed-list value). Cleaning it
-  (e.g. → `ASCRIBES_CAUSE_TO_YHWH_LAMENT_FRAME`) is a governed Layer-1 change: edit `validation-rules.json`
-  + `approved-enumerations.json`, propagate to the FOR_MODELs using it, re-pin. Deferred to a dedicated SC.
+## SC-0014 — Rename SPEECH_ACT `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` → `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT`
+- **Date:** 2026-05-31
+- **Decided by:** Marcia Suzuki
+- **Status:** **APPLIED — pending the project lead's blessing** (vault PR for P02–P06 / repo PR for the spec + fixtures).
+- **Type:** closed-list change (L1 SPEECH_ACT) + artifact migration.
+- **Summary:** `tripod lint` surfaced that the closed SPEECH_ACT list carried
+  `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` — "AGENT" is role-theory jargon (R4), in a Layer-1 closed-list
+  value, so it cannot be fixed by content edits. **Ruling:** rename it to **`ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT`**
+  — drops the "AGENT" jargon; uses **GOD** (not YHWH) because SPEECH_ACT is the cross-corpus interlanguage
+  (it must read for the LA_RECORDING profile too). The new value carries no forbidden-vocabulary token.
+- **Spec change (exact):**
+  - `validation-rules.json` `closed_lists.SPEECH_ACT`: `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` →
+    `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (one value; no other list touched). Version **v0.6 → v0.7**,
+    `$id` + `for_model_schema.$id` bumped, `sibling_schemas.compilation_log` → `v0.5`, `supersedes` appended.
+  - `compilation-log.schema.json` `$defs…speech_act` enum: same rename (kept in sync). Version **v0.4 → v0.5**,
+    `$id` bumped, `supersedes` appended. (No structural change — additive-only history preserved.)
+  - There is **no** `for_model_schema.$defs.speech_act_value` enum (SPEECH_ACT is enforced by the L1
+    closed-list block, not an ajv enum), so the closed-list **sync invariant** — which covers
+    REGISTER / GENRE / NARRATIVE_FRAMING — is unaffected.
+- **Artifact migration (done):** the value occurs as a structured `speech_act` in **P02 FOR_MODEL (×1, P12)**
+  and **P04 FOR_MODEL (×4, P4+P5)**; migrated in vault `stas/` + compiler `fixtures/for-model/`. The P02/P04
+  **COMPILATION-LOG**s (structured values + audit prose) migrated in vault + compiler fixtures. Propagated to
+  `_spec/agent-3-system-prompt.md` (the Agent-3 prompt that emits the value) and the Pilot-2 usage glossary
+  `_templates/sta-vocabulary.md`. **Deliberately NOT touched** (out of Pilot-2 scope): `_pilot-3-design/`, the
+  bible-wide Layer-2 seed (`tripod-bible-wide-layer-2-vocabulary-seed-*` + `.csv`, `sta-vocabulary-general.md`)
+  where it is a `PENDING_PILOT3_LOCK` candidate, and `_archive/` + `_working/` (historical audit trail).
+- **Validator impact:** `tripod validate` blocks the old value (no longer in the closed list) and accepts the
+  new one. The 5 FOR_MODEL `[forbidden_vocabulary] «agent»` lint findings disappear (corpus lint **19 → 14**,
+  the residual 14 being the §4 Q&A dialogue reserved for the lead).
+- **Version:** `validation-rules.json` **v0.6 → v0.7** (sha256 `8c436b261178517108cb44e39408bca2c99dfd8674fb4954ccf2e72197cadcbe`);
+  `compilation-log.schema.json` **v0.4 → v0.5** (sha256 `f009b32781f8a0e4d4d40e4f7500dd64396bdeeb06e3fe16d9ff2214033c36ca`).
+  Both re-pinned in `_spec/pins.json` + the pin table above.
+- **Note (pre-existing drift observed, flagged):** the vault `_spec/compilation-log.schema.json` was at **v0.3**
+  and lacked SC-0007's promotion slots — i.e. SC-0007 had shipped to the compiler's vendored/pinned copy but was
+  never written back to the vault canonical. Applying SC-0014, the vault `_spec/` schemas were re-synced to the
+  pinned compiler copies (v0.7 / v0.5), incidentally closing that drift. Vault COMPILATION-LOG **artifacts** were
+  not back-filled with SC-0007 convergent values (out of scope); flagged for a future vault-writeback pass.
+- **Verification:** `tripod check-drift` green against the new pins + the closed-list sync invariant;
+  `tripod validate fixtures/for-model/` 6/6 valid; `tripod validate fixtures/compilation-log/` 6/6 valid
+  (P02/P04 against the renamed v0.5 enum); `tripod lint --corpus` 14 findings (0 tier-1), the 5 `«agent»`
+  findings gone; `npm test` green.
 
 ---
 
 ## SC-0013 — Map content remediation (SC-0012): P01 reference + P02–P06 roll
-- **P02–P06 roll (2026-05-31):** applied R1/R3/R4/R5 across P02–P06 (vault + fixtures). **§3C → entities
+- **Corrective second pass — P02–P06 brought to the blessed-P01 standard (2026-05-31):** the first roll
+  (below) was sound on the plain-language (R4) fixes, the dialogue intact, and P06's keepers — but it
+  over-deleted §3C on a **false premise** ("P02–P05 had zero §3C entities"). Per the lead's rulings, those
+  pericopes **do** reference real Concept-Bank entities that belong in §3C (R1, per blessed P01/P06). Restored
+  as proper §3C entities (map: Hebrew header + What-it-is/Function/Signals; FOR_MODEL: `objects_in_scene`
+  `object_id: CB_00xx` + `function_in_scene`), BCD unchanged (these CB_ were already registered):
+  - **P02** — bread `CB_0012` (S1); hesed `CB_0011`, blessing `CB_0008`, rest/menucha `CB_0014` (S2).
+    Relocations made real: daughter-in-law (kallah) → B8/B9 `referential_form` (`CB_0017`); mother's-house →
+    place `PL_EACH_HER_MOTHERS_HOUSE` (`CB_0013`); paqad / news-hearing / departure verbs → P1–P3.
+  - **P03** — §3C "None" confirmed correct; the six vow bindings verified surviving in P3 `vow_components`;
+    pairing `CB_0021` + `FIG_0072`/`FIG_0074` and levirate `CB_0019` verified as flags.
+  - **P04** — barley-harvest `CB_0026` (S3). Mara `CB_0023` (→ P4 renaming + B3 `referential_form` + `FIG_0082`),
+    full/empty `CB_0024`+`CB_0044` (→ `FIG_0084` + P5 payload), testify-against `CB_0025` (→ P5), Moabite
+    `CB_0004` + daughter-in-law `CB_0017` (→ B9 `referential_form`) all verified. **STOP / surfaced for the
+    lead:** the **doubled-divine-name pattern** (YHWH×2 / Shaddai×2, 1:20–21) has **no figure of its own** —
+    its four invocations survive (Shaddai→`FIG_0006`; YHWH→P5+`CB_0025`) but the pattern-as-figure was dropped;
+    a new `FIG` is proposed (handoff), not added pending the ruling.
+  - **P05** — chayil `CB_0032` (S1); favor `CB_0033`, gleaning `CB_0034` (S2); providence/miqreh `CB_0035`,
+    blessing `CB_0008` (S3); foreman-role `CB_0036` verified in B15 `referential_form`, Moabite `CB_0004` added
+    to B9 `referential_form`. The within-day "from morning until now" duration restored to §3C (it was a
+    content-duration the map's §3D note still pointed at, per the P01 `TM_TEN_YEARS` precedent).
+  - **P06** — keepers unchanged; the FOR_MODEL was additively aligned to the map, which retained `CB_0034`
+    (S1/S4) and `CB_0033`/`CB_0038`/`CB_0037`/`CB_0008` (S2) as §3C entities the FOR_MODEL had dropped.
+- **Per-item relocation notes (both artifacts) replace the first pass's generic per-scene counts** ("N thematic
+  items relocated…"), matching P01's item→named-destination standard; a per-pericope relocation audit table
+  proves relocate-never-delete. The deleted `*_form` slots were re-verified (grammatical-pattern labels; the
+  events survive in `proposition_kind`/components).
+- **Result (corrected):** corpus lint **19 → 14** (0 tier-1; the 14 are §4 Q&A dialogue + were 19 before SC-0014
+  removed the 5 `«agent»`); validate 6/6; coverage 6/6 block-clean (245/245, 0 unanchored); gold-diff agreement
+  unchanged; tests green.
+- **Residuals (by design, surfaced for the lead):** (a) the **§4 Q&A dialogue compounds** (re-atomizing is the
+  lead's exegetical pass — each surfaced with a proposed atomization, not decided); (b) the **P04 doubled-divine-name
+  figure** (above).
+
+### First roll (2026-05-31, superseded above)
+- **P02–P06 roll:** applied R1/R3/R4/R5 across P02–P06 (vault + fixtures). **§3C → entities
   only:** 116 thematic objects (events/speech-acts/framings/patterns — *_form/_verb/_formula/_directive/
   _question/_declaration) removed from `objects_in_scene`, with their orphaned `*_form` slots (R5
-  conditioning) and the mirrored map §3C entries; only true O#/CB_ entities kept (P02–P05 had none; P06
-  keeps O9/O10/O11 + CB_*). Plain-language fixes (R4): action/referential values "DIVINE_AGENT"→"YHWH",
-  significant_absence "agent/verb" prose, P06's marquee items ("speech-act of directive instruction"→
-  "telling", "abundance triplet — three verbs"→"she ate · she was satisfied · she had leftover",
+  conditioning) and the mirrored map §3C entries; only true O#/CB_ entities kept (~~P02–P05 had none~~ —
+  **corrected above**; P06 keeps O9/O10/O11 + CB_*). Plain-language fixes (R4): action/referential values
+  "DIVINE_AGENT"→"YHWH", significant_absence "agent/verb" prose, P06's marquee items ("speech-act of directive
+  instruction"→"telling", "abundance triplet — three verbs"→"she ate · she was satisfied · she had leftover",
   "infinitive-absolute doubling"→plain). P06 conditioning-Q&A (Register?/Self-form?/Forward-link?) removed (R5).
 - **Result:** corpus lint **~182 findings (56 tier-1) → 19 (0 tier-1)**; validate 6/6 clean; coverage 6/6
   block-clean (leaner abstract overlays); gold-diff agreement unchanged (leaner placeholders); 88 tests green.
-- **Residuals (by design, surfaced for the lead):** (a) **§4 Q&A compound re-atomizing** (~2/map) — the
-  exegetical dialogue-splitting the discipline doc reserves for the project lead; (b) the **SPEECH_ACT
-  closed-list "AGENT"** value → SC-0014 (governed L1 vocab). Lint precision improved: cross_ref / figure-flag
-  pointer lines are exempt (they are the conditioning layer per R5).
-- **Pending the lead's blessing** (vault PR for P02–P06).
+- **Pending the lead's blessing** (vault PR #5 / repo PR #15, superseded by the corrective pass).
 
 ---
 

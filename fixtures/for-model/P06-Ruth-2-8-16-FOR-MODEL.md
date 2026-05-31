@@ -130,8 +130,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 5 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: gleaning CB_0034 (the institution Ruth works under in Boaz's field; aligned to the map §3C, which retained it). Relocated: the opening 'have you not heard' question → P1; the 'my daughter' address → P1 (address_form); the stay-close (dabaq) directive → P1/P2 (DIRECTED_GLEANER_TO_STAY_CLOSE_WITH_YOUNG_WOMEN); the reported prior touch-prohibition → P3 (REPORTED_OWN_PRIOR_PROHIBITION; FIG_0105); the water-vessels provision → P4 (SPOKE_WATER_PROVISION_INSTRUCTION).",
+        "entries": [
+          {
+            "object_id": "CB_0034",
+            "function_in_scene": "GLEANING_INSTITUTION_UNDER_WHICH_RUTH_WORKS_IN_BOAZ_FIELD"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous within the harvest day established at P05.",
@@ -184,8 +189,25 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 15 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: favor CB_0033, foreigner/nokhriya CB_0038, wing-of-refuge/kanaph CB_0037, blessing CB_0008 (the concepts Boaz's recognition-and-blessing turns on; aligned to the map §3C, which retained them). Relocated (the events that carry them): the deep bow → P5 (BOWED_DEEP_TO_GROUND); the 'favor in your eyes' question → P6 (FIG_0018); the recognition (nakar) question → P6; the self-designation as foreigner → P6; the full-knowledge recital → P7 (FIG_0100); leaving the land of her birth, Moab unnamed → P8; the 'a people unknown before' idiom → P8; the wish that YHWH repay her → P9; the full-wages wish → P9; the formal blessing utterance at v.12 → P9 (FIG_0011); the 'my lord' deferential address → P10; the heart-reaching speech (dibber al lev) → P11; the shifchah self-naming → P11 (FIG_0132); the 'not as one of your maidservants' → P11.",
+        "entries": [
+          {
+            "object_id": "CB_0033",
+            "function_in_scene": "FAVOR_RUTH_ASKS_WHY_SHE_HAS_FOUND_IN_BOAZ_EYES"
+          },
+          {
+            "object_id": "CB_0038",
+            "function_in_scene": "FOREIGNER_SELF_DESIGNATION_RUTH_PLACES_IN_HER_OWN_MOUTH"
+          },
+          {
+            "object_id": "CB_0037",
+            "function_in_scene": "WING_OF_REFUGE_UNDER_WHICH_RUTH_HAS_COME_TO_SHELTER"
+          },
+          {
+            "object_id": "CB_0008",
+            "function_in_scene": "INSTITUTIONAL_BLESSING_BOAZ_PRONOUNCES_AT_VERSE_TWELVE"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; continuous within the field day.",
@@ -228,7 +250,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 2 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "_note": "§3C entities only (SC-0013). Kept: bread CB_0012, vinegar O9, roasted grain O10 (the meal Boaz hands Ruth at 2:14). Relocated: the seat beside the harvesters → P13 (SAT_BESIDE_HARVESTERS); the ate-then-satisfied-then-had-leftover sequence → P15 (ATE_WAS_SATISFIED_AND_HAD_LEFTOVER; FIG_0104).",
         "entries": [
           {
             "object_id": "CB_0012",
@@ -293,8 +315,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 5 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "_note": "§3C entities only (SC-0013). Kept: gleaning CB_0034 (the gleaning frame extended in Boaz's command), sheaves/bundles O11 (the harvest material the extended regime works around); aligned to the map §3C. Relocated: the permission to glean among the sheaves → P17 (PERMITTED_GLEANING_AMONG_SHEAVES; FIG_0106); the don't-shame-her prohibition → P17; the deliberate-pulling command → P18 (FIG_0101); the leave-them-for-her command → P19; the don't-rebuke-her prohibition → P19 (FIG_0107).",
         "entries": [
+          {
+            "object_id": "CB_0034",
+            "function_in_scene": "GLEANING_FRAME_EXTENDED_IN_BOAZ_COMMAND_BEYOND_LEGAL_MINIMUM"
+          },
           {
             "object_id": "O11",
             "function_in_scene": "SHEAVES_AND_BUNDLES_MATERIALS_AROUND_WHICH_EXTENDED_REGIME_WORKS"

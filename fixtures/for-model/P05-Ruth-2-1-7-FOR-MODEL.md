@@ -117,8 +117,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 4 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: chayil CB_0032 (Boaz's standing, named at 2:1). Relocated: the kinship-anchor through Naomi's late husband → P1 (POSITIONED_THROUGH_KINSHIP_ANCHOR); the clan-of-Elimelech locator → P1 (PLACED_IN_LEGAL_RELATIONAL_KIN_GROUP); the delayed naming 'Boaz' → P1 (NAMED_AT_END_OF_INTRODUCTION).",
+        "entries": [
+          {
+            "object_id": "CB_0032",
+            "function_in_scene": "STANDING_AND_CAPABILITY_BY_WHICH_THE_NARRATOR_INTRODUCES_BOAZ"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; the narrator-parenthetical is given outside the storyline's time-flow.",
@@ -160,8 +165,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 4 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: favor CB_0033, gleaning CB_0034 (the grace Ruth seeks and the gleaning institution she proposes, 2:2). Relocated: Ruth's request → P2 (REQUESTED_PERMISSION_TO_GLEAN); Naomi's granting with the 'my daughter' address → P3 (GRANTED_PERMISSION_TO_GLEAN).",
+        "entries": [
+          {
+            "object_id": "CB_0033",
+            "function_in_scene": "GRACE_RUTH_HOPES_TO_FIND_IN_THE_EYES_OF_A_FIELD_OWNER"
+          },
+          {
+            "object_id": "CB_0034",
+            "function_in_scene": "GLEANING_INSTITUTION_FOR_THE_POOR_AND_FOREIGNER_RUTH_PROPOSES_TO_ENTER"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous with the previous pericope's arrival.",
@@ -222,8 +236,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 7 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: providence/miqreh CB_0035, blessing CB_0008 (the chance-construction that lands Ruth in Boaz's portion, 2:3, and the field greeting in YHWH's name, 2:4). Relocated: the went-came-gleaned sequence → P4 (WENT_AND_GLEANED_BEHIND_HARVESTERS); the gleaning position behind the harvesters → P4; the clan-frame restated at the chance-arrival → P5 (clan_referent_restated B29); 'behold' Boaz coming from Bethlehem → P6 (ARRIVED_AT_FIELD_FROM_HOMETOWN).",
+        "entries": [
+          {
+            "object_id": "CB_0035",
+            "function_in_scene": "CHANCE_THAT_LANDS_RUTH_IN_BOAZ_PORTION_WITH_THE_ONE_WHO_LEADS_HER_WITHHELD"
+          },
+          {
+            "object_id": "CB_0008",
+            "function_in_scene": "FIELD_GREETING_AND_ANSWERING_BLESSING_EXCHANGED_IN_YHWHS_NAME"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; the barley-harvest setting from P04 v.22 is the active frame and is not lexically named here.",
@@ -253,7 +276,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "being_id": "B9",
             "role_in_scene": "REFERENT_OF_QUESTION_AND_REPORT_IDENTIFIED_BY_ETHNIC_EPITHET_AND_KIN_RELATION",
-            "presence": "REFERENCED"
+            "presence": "REFERENCED",
+            "referential_form": "NAARA_MOABIYAH_THIRD_PARTY_EPITHET"
           },
           {
             "being_id": "B3",
@@ -284,8 +308,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 8 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: the within-day work-span 'from morning until now' (a content duration, per the P01 TM_TEN_YEARS precedent). Relocated: Boaz's belonging-question → P8 (ASKED_KINSHIP_AND_SOCIAL_COVER_QUESTION); the foreman-role naming (nitsav al haqotsrim) → B15 referential_form (cb_flag CB_0036); the third-party Moabite epithet → B9 referential_form (cb_flag CB_0004); the return-with-Naomi identification → P9; the quoted prior gleaning-request → P9; the work-pattern persistence → P9; the disputed shelter-rest → P9 (REPORTED_DISPUTED_SHELTER_REST).",
+        "entries": [
+          {
+            "object_id": "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW",
+            "function_in_scene": "WITHIN_DAY_WORK_SPAN_AS_CONTENT_IN_THE_FOREMANS_QUOTED_REPORT"
+          }
+        ]
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; the within-day duration 'from morning until now' is a content element inside the foreman's quoted report, encoded in objects_in_scene, not as a scene-setting time frame. Follows P01 TM_TEN_YEARS approximate-duration precedent.",

@@ -50,7 +50,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P02-D4",
       "decision": "Same B10 invoked with opposite valence at P12 lament-frame.",
-      "description": "Naomi's 'the hand of YHWH has gone out against me' at 1:13 ascribes her bitterness to the same divine agent who has just given bread to his people in Judah. agent_named: B10 appears within the lament_components ASCRIBED_BITTERNESS_TO_DIVINE_AGENT record (speech_act: ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME). The opposite-valence pairing is structurally significant: the same divine subject is named as provider at the pericope's opening and as antagonist at the pericope's near-close. Recorded as a STRUCTURAL_CONTRAST high-risk entry."
+      "description": "Naomi's 'the hand of YHWH has gone out against me' at 1:13 ascribes her bitterness to the same divine agent who has just given bread to his people in Judah. agent_named: B10 appears within the lament_components ASCRIBED_BITTERNESS_TO_DIVINE_AGENT record (speech_act: ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT). The opposite-valence pairing is structurally significant: the same divine subject is named as provider at the pericope's opening and as antagonist at the pericope's near-close. Recorded as a STRUCTURAL_CONTRAST high-risk entry."
     },
     {
       "decision_id": "P02-D5",
@@ -159,7 +159,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "value": "SPOKE_LAMENT_WITH_DIVINE_ATTRIBUTION",
         "source": "1:13d Naomi's lament with hand-of-YHWH ascription",
         "status": "PROPOSED",
-        "note": "Compound speech event combining STATES_LAMENT_OBSERVATION and ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME. Bounded-open."
+        "note": "Compound speech event combining STATES_LAMENT_OBSERVATION and ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT. Bounded-open."
       },
       {
         "value": "WEPT_AGAIN",
@@ -571,7 +571,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "component_record_shape": {
         "action": "required — STATED_BITTERNESS_COMPARISON | ASCRIBED_BITTERNESS_TO_DIVINE_AGENT",
         "agent_named": "required for ASCRIBED_BITTERNESS_TO_DIVINE_AGENT",
-        "speech_act": "required — STATES_LAMENT_OBSERVATION | ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+        "speech_act": "required — STATES_LAMENT_OBSERVATION | ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
       },
       "status": "PROPOSED",
       "occurrences_in_pericope": [
@@ -793,7 +793,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "REFUSES_REQUEST_WITH_COUNTER_DECLARATION",
       "ASKS_RHETORICAL_QUESTION_AS_DISSUASION",
       "STATES_LAMENT_OBSERVATION",
-      "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+      "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
     ],
     "negation_not_double_encoded": "N/A — no DIRECTS_HEARER_NOT_TO_DO in P02 (no negative directives)",
     "cross_pericope_cross_refs_present_on_correct_propositions": true,

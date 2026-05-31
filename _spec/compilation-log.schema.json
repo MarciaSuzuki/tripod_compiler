@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/compilation-log-v0-4.schema.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/compilation-log-v0-5.schema.json",
   "title": "Compilation Log",
   "description": "Methodology trace for one pericope's STA compilation. Renamed from AUDIT in v0.3. Contains compilation decisions, vocabulary additions, high-risk register, cross-pericope pair verification, validation checklist, and known limitations. Registry additions extracted to bcd-delta. Reviewer-facing content extracted to verification-input. The Seed Model does not train on this file; teams do not see it.",
-  "version": "v0.4",
+  "version": "v0.5",
   "tagset_version": "TRIPOD_STA_v2_0",
-  "date_locked": "2026-05-30",
-  "supersedes": "v0.3 → v0.4 (SC-0007, 2026-05-30): vocabulary_additions gains optional convergent promotion slots — arc_elements, context_elements, tone_elements, pace_elements, communicative_function_elements, discourse_thread_states, high_risk_register_kinds — so the L1-element / discourse / high-risk convergent axes can be promoted into approved-enumerations.json via `tripod promote` (closing the SC-0006 known limitation). Additive only; the required set is unchanged, so v0.3 logs remain valid. See SPEC_CHANGES.md.",
+  "date_locked": "2026-05-31",
+  "supersedes": "v0.3 → v0.4 (SC-0007, 2026-05-30): vocabulary_additions gains optional convergent promotion slots — arc_elements, context_elements, tone_elements, pace_elements, communicative_function_elements, discourse_thread_states, high_risk_register_kinds — so the L1-element / discourse / high-risk convergent axes can be promoted into approved-enumerations.json via `tripod promote` (closing the SC-0006 known limitation). Additive only; the required set is unchanged, so v0.3 logs remain valid. v0.4 → v0.5 (SC-0014, 2026-05-31): renamed the SPEECH_ACT enum value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (kept in sync with validation-rules.json closed list). See SPEC_CHANGES.md.",
   "canonical_reference": {
     "source": "Renamed and slimmed from canonical P01-Ruth-1-1-5-AUDIT.md. registry_additions field moved to bcd-delta.schema.json. No reviewer-facing content; that lives in verification-input.schema.json."
   },
@@ -111,7 +111,7 @@
         "WISHES_FOR_HEARER",
         "WISHES_FOR_THIRD_PARTY",
         "INVOKES_DIVINE_AS_OATH_GUARANTOR",
-        "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME",
+        "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT",
         "ASKS_INFORMATION_SEEKING_QUESTION",
         "ASKS_RHETORICAL_QUESTION_AS_DISSUASION",
         "ASKS_RHETORICAL_QUESTION_OF_SURPRISED_RECOGNITION",

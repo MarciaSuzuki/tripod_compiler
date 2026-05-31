@@ -117,7 +117,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 4 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the Bethlehem 'house of bread' naming on arrival → FIG_0013 (bread-house-in-famine, active at P1/P2); the arrival → P1 (WALKING_AND_ARRIVAL); the communal stirring of the whole city → P2 (COMMUNAL_STIRRING_AT_ARRIVAL); the women's recognition-question → P3 (ASKED_RHETORICAL_RECOGNITION_QUESTION).",
         "entries": null
       },
       "times_in_scene": {
@@ -160,7 +160,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 12 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the refusal of her own name → P4 (REFUSED_USE_OF_OWN_NAME); the proposed renaming to Mara → P4 (PROPOSED_NEW_NAME; B3 referential_form; cb_flag CB_0023; FIG_0082); the Mara/hemar root-pun → FIG_0083; the bittering ascription to Shaddai → P4 (FIG_0006 Shaddai-name); 'I went out full' and the riqam 'empty' → P5 (STATED_FULL_EMPTY_ANTITHESIS; FIG_0084; cb_flags CB_0024, CB_0044); the rhetorical protest-question → P5 (ASKED_RHETORICAL_QUESTION_AS_PROTEST); the anah-bi courtroom testimony → P5 (ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH; cb_flag CB_0025); the Shaddai-did-evil harm → P5 (FIG_0086). PENDING (the lead's ruling): the doubled-divine-name pattern (YHWH twice and Shaddai twice across 1:20–21) has no figure of its own — its four invocations survive at P4/P5 (Shaddai → FIG_0006; YHWH → P5 slots + CB_0025), but the pattern as a figure was dropped in the first pass; a new figure is proposed for it (see handoff). Not added here pending the ruling.",
         "entries": null
       },
       "times_in_scene": {
@@ -186,7 +186,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "being_id": "B9",
             "role_in_scene": "ACCOMPANYING_DAUGHTER_IN_LAW_REACTIVATING_NARRATOR_EPITHET_RUTH_THE_MOABITESS",
             "presence": "PRESENT",
-            "referential_form": "RUTH_THE_MOABITESS_NARRATOR_EPITHET"
+            "referential_form": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW_NARRATOR_EPITHET"
           }
         ]
       },
@@ -203,8 +203,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013): 5 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
-        "entries": null
+        "_note": "§3C entities only (SC-0013). Kept: barley-harvest CB_0026 (the harvest-frame opening at v.22). Relocated: the narrator return-summary → P6 (RETURNED); the 'Ruth the Moabitess' epithet → B9 referential_form (FIG_0001; cb_flag CB_0004); the daughter-in-law (kallatah) kinship naming → B9 referential_form (cb_flag CB_0017); the arrival at the harvest-opening → P6 (ARRIVED_AT; time_setting TM_BARLEY_HARVEST_BEGINNING).",
+        "entries": [
+          {
+            "object_id": "CB_0026",
+            "function_in_scene": "HARVEST_FRAME_THAT_OPENS_THE_PROVISION_CONTEXT_AGAINST_NAOMIS_EMPTY_LAMENT"
+          }
+        ]
       },
       "times_in_scene": {
         "entries": [
@@ -314,7 +319,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "invoked_divine_agent": "B12",
             "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_FIRST_OCCURRENCE",
             "list_position": "THIRD",
-            "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+            "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
         ]
       },
@@ -348,7 +353,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "state_at_return": "EMPTY",
             "agent_of_return_empty": "B10",
             "list_position": "FIRST",
-            "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+            "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           },
           {
             "action": "ASKED_RHETORICAL_QUESTION_AS_PROTEST",
@@ -360,14 +365,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH",
             "invoked_divine_agent": "B10",
             "list_position": "THIRD",
-            "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+            "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           },
           {
             "action": "ASCRIBED_HARM_TO_YHWH",
             "invoked_divine_agent": "B12",
             "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_SECOND_OCCURRENCE",
             "list_position": "FOURTH",
-            "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+            "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
         ]
       },
@@ -401,7 +406,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "accompanying_household": [
               "B9"
             ],
-            "accompanying_referential_form": "RUTH_THE_MOABITESS_NARRATOR_EPITHET",
+            "accompanying_referential_form": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW_NARRATOR_EPITHET",
             "origin_place": "PL2",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
