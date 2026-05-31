@@ -31,8 +31,9 @@ places:        # PL-codes (numbered + named PL_*)
   values:
     - { id: PL1, observed_in: [P01], note: "Bethlehem (hometown)" }
     - { id: PL2, observed_in: [P01, P02], note: "fields of Moab (foreign land)" }
-    - { id: PL_HA_ARETZ, observed_in: [P01], note: "the land afflicted by famine" }
-    - { id: PL_LAND_OF_JUDAH, observed_in: [P02] }
+    # PL_HA_ARETZ (P01 working code, "the land afflicted by famine") RETIRED → merged into
+    # PL_LAND_OF_JUDAH as the same referent under referential_form THE_LAND_AFFLICTED_BY_FAMINE (SC-0009).
+    - { id: PL_LAND_OF_JUDAH, observed_in: [P01, P02, P03], note: "covenant territory; 'the land' (1:1) + 'land of Judah' (1:6-7) — one referent, two referential forms (SC-0009)" }
     - { id: PL_EACH_HER_MOTHERS_HOUSE, observed_in: [P02] }
 
 objects:       # O-codes AND TH_* phrase/thematic objects appear together in objects_in_scene.

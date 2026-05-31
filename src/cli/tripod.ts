@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { readdirSync, statSync, writeFileSync, appendFileSync } from "node:fs";
+import { readdirSync, statSync, writeFileSync, appendFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { validateArtifact } from "../engine/validate.js";
 import { formatReport } from "../engine/report.js";
@@ -13,6 +13,9 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
+import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions } from "../reader/source-packet.js";
+import { reconcile } from "../engine/coverage.js";
+import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
 
 const program = new Command();
 program
@@ -228,6 +231,118 @@ program
       writeFileSync(opts.out, JSON.stringify(diffs, null, 2) + "\n");
       console.log(`baseline written to ${opts.out}`);
     }
+  });
+
+program
+  .command("coverage")
+  .description("reconcile FOR_MODEL(s) against the frozen BHSA referent set (docs/COVERAGE.md): MATCHED / UNMAPPED_SOURCE / UNANCHORED_ENTITY + coverage score. One target = detailed ledger; many / --corpus = summary.")
+  .argument("[targets...]", "pericope id(s) (e.g. P01) and/or FOR_MODEL .md note path(s)")
+  .option("--book <book>", "book whose pinned packet + alias table to use", "ruth")
+  .option("--fm-dir <dir>", "where to find the FOR_MODEL note when a pericope id is given", "fixtures/for-model")
+  .option("--corpus", "run every pericope that has both a pinned packet and a FOR_MODEL note")
+  .option("--out <file>", "write the full coverage ledger as a wiki note (single-target only)")
+  .option("--out-dir <dir>", "write each pericope's ledger note into this dir (batch)")
+  .option("--json", "emit the structured ledger(s) as JSON")
+  .action((targets: string[], opts: { book: string; fmDir: string; corpus?: boolean; out?: string; outDir?: string; json?: boolean }) => {
+    const aliases = loadAliasTable(opts.book);
+    const exceptions = loadCoverageExceptions();
+
+    const resolveOne = (arg: string): { pericope: string; led: ReturnType<typeof reconcile>; packet: ReturnType<typeof loadSourcePacket> } => {
+      let fmPath: string;
+      let pericope: string;
+      if (/^P\d+$/i.test(arg)) {
+        pericope = arg.toUpperCase();
+        const f = readdirSync(opts.fmDir).find((x) => x.startsWith(pericope) && x.endsWith(".md"));
+        if (!f) throw new Error(`no FOR_MODEL note for ${pericope} in ${opts.fmDir}`);
+        fmPath = join(opts.fmDir, f);
+      } else {
+        fmPath = arg;
+        pericope = (readArtifactNote(fmPath).frontmatter.pericope ?? "").toUpperCase();
+        if (!pericope) throw new Error(`cannot determine pericope from ${fmPath} frontmatter`);
+      }
+      const note = readArtifactNote(fmPath);
+      const packet = loadSourcePacket(sourcePacketPath(opts.book, pericope));
+      return { pericope, led: reconcile(packet, note.json as any, aliases, exceptions), packet };
+    };
+
+    // assemble the target list (explicit args, and/or --corpus auto-discovery)
+    let list = [...targets];
+    if (opts.corpus) {
+      const dir = join(SPEC_DIR, "source", opts.book.toLowerCase());
+      const have = readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
+      const withFm = readdirSync(opts.fmDir).filter((f) => f.endsWith(".md"));
+      for (const p of have.sort()) if (withFm.some((f) => f.startsWith(p)) && !list.includes(p)) list.push(p);
+    }
+    if (list.length === 0) {
+      console.error("no targets. Pass pericope id(s)/path(s), or --corpus to run all pinned pericopes.");
+      process.exit(2);
+    }
+
+    // resolve all, surfacing per-target errors without aborting the batch
+    const results: Array<{ pericope: string; led: ReturnType<typeof reconcile>; packet: ReturnType<typeof loadSourcePacket> }> = [];
+    for (const arg of list) {
+      try {
+        results.push(resolveOne(arg));
+      } catch (e) {
+        console.error(`✗ ${arg}: ${(e as Error).message}`);
+        process.exitCode = 2;
+      }
+    }
+    if (results.length === 0) process.exit(2);
+
+    if (opts.outDir) mkdirSync(opts.outDir, { recursive: true });
+    for (const r of results) {
+      if (opts.outDir) {
+        const slug = `${r.pericope}-${(r.packet.bcv || r.pericope).replace(/[ :]/g, "-")}`; // e.g. P01-Ruth-1-1-5
+        writeFileSync(join(opts.outDir, `${slug}-COVERAGE-LEDGER.md`), renderLedgerNote(r.led, r.packet));
+      }
+    }
+
+    if (opts.json) {
+      console.log(JSON.stringify(results.length === 1 ? results[0]!.led : results.map((r) => r.led), null, 2));
+      if (results.some((r) => !r.led.ok)) process.exitCode = 1;
+      return;
+    }
+
+    if (results.length === 1) {
+      const r = results[0]!;
+      console.log(formatLedgerText(r.led));
+      if (opts.out) {
+        writeFileSync(opts.out, renderLedgerNote(r.led, r.packet));
+        console.log(`  ledger written to ${opts.out}`);
+      } else if (!opts.outDir) {
+        console.log(`  → --out <file> to write the full reconciliation ledger into the audit trail`);
+      }
+      process.exitCode = r.led.ok ? 0 : 1;
+      return;
+    }
+
+    // corpus summary
+    console.log(`Coverage — ${opts.book} corpus (${results.length} pericope${results.length === 1 ? "" : "s"})\n`);
+    let accFor = 0, accTot = 0, implied = 0, unanchored = 0, accepted = 0, withFindings = 0;
+    for (const { led: l } of results) {
+      const s = l.score;
+      accFor += s.explicit_total - s.proper_unmapped;
+      accTot += s.explicit_total;
+      implied += s.implied_flagged;
+      unanchored += s.unanchored;
+      accepted += s.accepted;
+      if (!l.ok) withFindings++;
+      console.log(
+        `  ${l.ok ? "✓" : "✗"} ${l.pericope}  ${(l.bcv + "").padEnd(13)} ` +
+          `${s.explicit_total - s.proper_unmapped}/${s.explicit_total} explicit · ${s.implied_flagged} implied · ` +
+          `${s.unanchored} unanchored · ${s.checklist} tick` + (s.accepted ? ` · ${s.accepted} accepted` : "") +
+          (l.ok ? "" : `   ← ${l.blockers.length} blocker(s)`),
+      );
+      for (const b of l.blockers) console.log(`       ✗ ${b}`);
+    }
+    console.log(
+      `\n— corpus: ${results.length - withFindings}/${results.length} block-clean · ${withFindings} with findings · ` +
+        `${accFor}/${accTot} explicit accounted · ${implied} implied flagged · ${unanchored} unanchored` +
+        (accepted ? ` · ${accepted} accepted exception${accepted === 1 ? "" : "s"}` : "") + " —",
+    );
+    if (opts.outDir) console.log(`  ledgers written to ${opts.outDir}/`);
+    process.exitCode = withFindings ? 1 : 0;
   });
 
 program.parseAsync(process.argv);

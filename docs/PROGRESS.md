@@ -8,10 +8,11 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 46 tests green
-npx tsx src/cli/tripod.ts check-drift          # 5 pins + closed-list sync invariant
+npm install && npm run build && npm test     # 80 tests green (46 + 34 coverage)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 8 source pins (6 packets + alias + exceptions) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
+npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
 ```
 
 ## Shipped (on `main`)
@@ -61,9 +62,56 @@ npx tsx src/cli/tripod.ts gold-diff
     layer; committed `fixtures/gold-diff-baseline.json` is the regression baseline. Gold agreement:
     P01/P03 **100%**, P05 98%, P04/P06 95–96%, P02 90%. Residual divergences are **MM↔FOR_MODEL
     coverage differences** (the MM scene lists off-stage referents the gold omits), not extractor errors.
-- **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor),
-  `READING_QUALITY.md` (human review gate, fidelity ceiling), `SOURCE_AND_SCALING.md` (BHSA frozen
-  extract + per-book BCD-by-delta). Gate order: conformance → coverage → reading-quality.
+- **Coverage reconciliation (`docs/COVERAGE.md`) — SHIPPED for P01.** The fidelity floor: does the map
+  match the **text**, not just the schema? Built fully **offline** on a frozen BHSA extract.
+  - **Extractor sidecar** (`extractor/*.py`, the Python escape-hatch). `extract_bhsa.py` points
+    Text-Fabric at a **local** `tf/2021` dir (`tf.fabric.Fabric`, no GitHub) and freezes the referent
+    set **R** — proper/common nouns, substantival participles ("the judges"), pronouns, pronominal
+    suffixes, and **implied verb-morphology subjects** (the class a reviewer most often misses;
+    `vayhi` existentials flagged `likely_impersonal`) — into the pinned `_spec/source/ruth/P01.json`.
+    `build_aliases.py` freezes the entity↔surface bridge (BCD frontmatter + the places NER sheet) into
+    the pinned `_spec/registry/ruth.aliases.json`. Both pinned in `_spec/pins.json` → `sources` and
+    verified by `check-drift`.
+  - **Engine** (`src/engine/coverage.ts`) reconciles R vs the map's entity mentions M into three
+    buckets — **MATCHED / UNMAPPED_SOURCE / UNANCHORED_ENTITY** — preserving the doc's confidence
+    asymmetry: anchoring ("nothing added") is permissive (kind + gender, near-airtight); mapping
+    ("nothing missing") needs evidence (consonantal Hebrew — Kilion↔Chilion — or a whole-word
+    `referential_form` keyword); proper-noun omissions and non-abstract hallucinations **block**,
+    while the common-noun checklist, implied subjects, pronouns/suffixes, and abstract `TH_`/`CB_`
+    overlays **warn** (reviewer ticks). `tripod coverage <P> [--out ledger.md] [--json]`; the ledger
+    note (`src/audit/coverage-ledger.ts`) files into the audit trail.
+  - **P01 acceptance:** `47/47 explicit referents accounted for · 5 implied subjects flagged ·
+    0 unanchored entities · 14 source nouns to tick` — block-clean (`fixtures/coverage/`,
+    `tests/coverage-p01.test.ts`; a dropped scene → Orpah/Ruth omission block, an out-of-pericope
+    entity → hallucination block).
+  - **SC-0009 (same-referent merge):** "the land" (אָרֶץ, 1:1) and "the land of Judah" (1:6–7) are one
+    referent — `PL_HA_ARETZ` merged into `PL_LAND_OF_JUDAH`, distinguished by `referential_form`. Added
+    `hebrew_aliases` support (BCD `hebrew_aliases` → alias-table `hebrew_cons_aliases` → matcher), so
+    "the land" now reconciles MATCHED → `PL_LAND_OF_JUDAH`. **SHIPPED both sides:** wiki PR
+    [ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1) **merged** (`402f5ef`
+    on vault `main`); compiler side shipped (alias table re-pinned `0.1.1`; gold-diff P01 43→44); repo
+    fixtures + pinned alias table verified identical to the merged canonical BCD. See SPEC_CHANGES SC-0009.
+  - **Corpus coverage — full compiled pilot P01–P06.** Packets extracted + pinned for P02–P06 (`_spec/
+    source/ruth/`, `_spec/pins.json` → `sources`). `tripod coverage --corpus` (and variadic targets) runs
+    all pericopes with a packet + FOR_MODEL and prints a summary; `--out-dir` writes one ledger per
+    pericope (`fixtures/coverage/`). **Result: 244/245 explicit accounted · 0 unanchored across the whole
+    corpus (zero hallucinated entities) · 1 genuine finding.** Engine fix: a proper-noun **name match is
+    authoritative and not vetoed by the heuristic alias gender** (the BCD prose-scan mis-guessed YHWH as
+    `f`, which was wrongly blocking YHWH→B10 in P02/P04/P05/P06).
+  - **SC-0010 — recorded-exception mechanism + Israel ruling.** Reviewer sign-off is mechanized: a pinned
+    `_spec/coverage-exceptions.json` downgrades a matched finding from **block** to **ACCEPTED** (shown in
+    the ledger with reason + provenance; `score.accepted`). The P06 "Israel" (2:12) finding is ruled
+    **epithet-internal** ("the God of Israel" qualifies the divine name, not a participant) — recorded as
+    the first exception. **Corpus is now 6/6 block-clean** (245/245 accounted, 1 by sign-off, 0 unanchored).
+  - **SC-0011 — authoritative BCD `gender` field.** Replaced the unreliable prose-scan gender guess (it read
+    YHWH/foreman as `f` and mis-gendered three collectives) with an explicit `gender` frontmatter field on all
+    31 beings (`null` = collective/mixed). `build_aliases.py` reads it authoritatively; alias table re-pinned
+    `0.1.2`. Wiki side merged (vault PR #2). Coverage block status unchanged (proper-noun matches already
+    gender-immune); entity gender is now correct data.
+- **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
+  now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
+  `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
+  conformance → coverage → reading-quality.
 - **Git:** PRs #1–#8 merged; `main` is the single coherent branch. The wiki vault is **local-only
   git** (no remote); governed spec edits are committed there locally (SC-0001/0003/0004/0005/0006).
 
@@ -97,8 +145,11 @@ npx tsx src/cli/tripod.ts gold-diff
 > `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
 1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
-2. **Coverage ledger (`docs/COVERAGE.md`)** + the **BHSA frozen-extract sidecar** (`docs/SOURCE_AND_SCALING.md`)
-   — the highest-value fidelity feature; lands with source ingestion (needs the vault / BHSA).
+2. **Coverage ledger + BHSA frozen-extract sidecar — SHIPPED across the compiled corpus P01–P06, 6/6
+   block-clean** (see Shipped above; Israel adjudicated as SC-0010, gender hardened as SC-0011). Remaining:
+   (a) **extract P07–P14 when those pericopes are compiled** — they have no FOR_MODEL or decided verse ranges
+   yet, so coverage can't run on them (the `extractor/pericopes.json` ranges stop at P06); (b) wire coverage
+   into the gate order after conformance (conformance → **coverage** → reading-quality).
 3. **Registry growth — COMPLETE for the pilot.** **P01–P06 all promoted** (registry v0.4): P02
    grandfathered (`--status ANY`), P03–P06 via the **CONFIRMED-only default gate**. The full Ruth pilot
    corpus now validates at **0 convergent drift** (descriptive/open axes remain per-pericope, by design).

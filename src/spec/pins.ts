@@ -10,6 +10,8 @@ export interface Pin {
 export interface Pins {
   tagset_version: string;
   schemas: Record<string, Pin>;
+  /** Generated, offline-frozen BHSA extracts + the derived alias table (paths under _spec/). */
+  sources?: Record<string, Pin>;
 }
 
 export function loadPins(): Pins {
@@ -58,6 +60,18 @@ export function checkDrift(vaultSpecDir?: string): DriftResult[] {
       }
     }
     results.push(res);
+  }
+  // Generated source extracts (BHSA packets + alias table): vendored-hash check only.
+  // They have no wiki-canonical original, so there is no vault comparison.
+  for (const [file, pin] of Object.entries(pins.sources ?? {})) {
+    const vendoredSha = sha256OfFile(join(SPEC_DIR, file));
+    results.push({
+      file,
+      pinnedVersion: pin.version,
+      pinnedSha: pin.sha256,
+      vendoredSha,
+      vendoredOk: vendoredSha === pin.sha256,
+    });
   }
   return results;
 }
