@@ -62,7 +62,7 @@ number bound to exactly one decision.
 | SC-0006 | Drift convergence: convergent/descriptive split + approved-enumerations registry | SHIPPED |
 | SC-0007 | Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot) | SHIPPED |
 | SC-0008 | Template relics: retire obsolete for-model/audit templates | PROPOSED |
-| SC-0009 | Merge PL_HA_ARETZ → PL_LAND_OF_JUDAH (same-referent principle, Layer-3) | APPROVED (compiler shipped; vault PR #1) |
+| SC-0009 | Merge PL_HA_ARETZ → PL_LAND_OF_JUDAH (same-referent principle, Layer-3) | SHIPPED |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -100,7 +100,7 @@ number bound to exactly one decision.
 ## SC-0009 — Merge PL_HA_ARETZ into PL_LAND_OF_JUDAH (the same-referent principle)
 - **Date:** 2026-05-30
 - **Decided by:** Marcia Suzuki
-- **Status:** APPROVED — compiler side **shipped**; wiki side is **vault PR [MarciaSuzuki/ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1)** pending the project lead's review/merge.
+- **Status:** **SHIPPED** — wiki side **merged** (vault PR [MarciaSuzuki/ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1), approved by the project lead, rebased as `402f5ef` on `main`); compiler side shipped. Repo fixtures + pinned alias table confirmed identical to the merged canonical BCD.
 - **Type:** registry/BCD (Layer 3) — **no `validation-rules.json` change**.
 - **Summary:** "the land" (הָאָרֶץ, Ruth 1:1) and "the land of Judah" (אֶרֶץ יְהוּדָה, 1:6–7) are the
   **same geographic referent** (the covenant territory) seen at two moments — the famine that empties it

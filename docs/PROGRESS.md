@@ -87,9 +87,10 @@ npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 
   - **SC-0009 (same-referent merge):** "the land" (אָרֶץ, 1:1) and "the land of Judah" (1:6–7) are one
     referent — `PL_HA_ARETZ` merged into `PL_LAND_OF_JUDAH`, distinguished by `referential_form`. Added
     `hebrew_aliases` support (BCD `hebrew_aliases` → alias-table `hebrew_cons_aliases` → matcher), so
-    "the land" now reconciles MATCHED → `PL_LAND_OF_JUDAH`. Wiki side: vault PR
-    [ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1) (pending review);
-    compiler side shipped (alias table re-pinned `0.1.1`; gold-diff P01 43→44). See SPEC_CHANGES SC-0009.
+    "the land" now reconciles MATCHED → `PL_LAND_OF_JUDAH`. **SHIPPED both sides:** wiki PR
+    [ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1) **merged** (`402f5ef`
+    on vault `main`); compiler side shipped (alias table re-pinned `0.1.1`; gold-diff P01 43→44); repo
+    fixtures + pinned alias table verified identical to the merged canonical BCD. See SPEC_CHANGES SC-0009.
   - **Corpus coverage — full compiled pilot P01–P06.** Packets extracted + pinned for P02–P06 (`_spec/
     source/ruth/`, `_spec/pins.json` → `sources`). `tripod coverage --corpus` (and variadic targets) runs
     all pericopes with a packet + FOR_MODEL and prints a summary; `--out-dir` writes one ledger per
