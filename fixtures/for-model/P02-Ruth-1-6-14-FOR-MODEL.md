@@ -134,32 +134,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_PAQAD_VISITED_VERB",
-            "function_in_scene": "COVENANT_REMEMBRANCE_VERB_FRAMING_DIVINE_ACT"
-          },
-          {
-            "object_id": "TH_GIVE_BREAD_PROVISION",
-            "function_in_scene": "COVENANT_PROVISION_TO_PEOPLE_CLOSING_FAMINE_ARC"
-          },
-          {
-            "object_id": "TH_HEARING_FORMULA",
-            "function_in_scene": "AURAL_RECEPTION_OF_NEWS_FROM_ELSEWHERE"
-          },
-          {
-            "object_id": "TH_AROSE_AND_RETURNED_VERB_PAIR",
-            "function_in_scene": "PAIRED_RISING_AND_RETURNING_MARKING_IMMEDIATE_DEPARTURE"
-          },
-          {
-            "object_id": "TH_THE_RETURN_ROAD",
-            "function_in_scene": "PHYSICAL_LOCUS_OF_JOURNEY_AND_DIALOGUES_TO_FOLLOW"
-          },
-          {
-            "object_id": "TH_KALLOTEHAH_COLLECTIVE_FORM",
-            "function_in_scene": "DAUGHTER_IN_LAW_COLLECTIVE_KINSHIP_TERM"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 6 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is the moment of news-hearing and immediate departure, continuous within the Moabite location.",
@@ -226,44 +202,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_THE_RETURN_ROAD",
-            "function_in_scene": "CONTINUING_LOCUS_OF_THE_DIALOGUE"
-          },
-          {
-            "object_id": "TH_DIRECTIVE_GO_RETURN_TO_MOTHERS_HOUSE",
-            "function_in_scene": "FIRST_DIRECTIVE_WITH_DISTRIBUTIVE_DESTINATION"
-          },
-          {
-            "object_id": "TH_HESED_BLESSING_FORMULA",
-            "function_in_scene": "INVOCATION_OF_HESED_THROUGH_YHWH"
-          },
-          {
-            "object_id": "TH_PRIOR_HESED_GROUNDING_CLAUSE",
-            "function_in_scene": "GROUNDS_BLESSING_IN_DAUGHTERS_PAST_HESED_TOWARD_DEAD_AND_NAOMI"
-          },
-          {
-            "object_id": "TH_REST_BLESSING_FORMULA",
-            "function_in_scene": "INVOCATION_OF_REST_IN_HUSBANDS_HOUSE"
-          },
-          {
-            "object_id": "TH_HUSBANDS_HOUSE_DISTRIBUTIVE",
-            "function_in_scene": "LOCUS_OF_BLESSED_REST_HYPOTHETICAL_PER_ADDRESSEE"
-          },
-          {
-            "object_id": "TH_NAOMI_KISS_FAREWELL",
-            "function_in_scene": "PHYSICAL_FAREWELL_GESTURE_FROM_NAOMI"
-          },
-          {
-            "object_id": "TH_WEEPING_FORMULA_FIRST",
-            "function_in_scene": "FIRST_VOCAL_WEEPING_FORMULA_PRECEDING_REFUSAL"
-          },
-          {
-            "object_id": "TH_REFUSAL_COUNTER_DECLARATION",
-            "function_in_scene": "JOINT_REFUSAL_WITH_COUNTER_DECLARATION_TOWARD_NAOMIS_PEOPLE"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 9 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is the speech-and-response moment on the road, continuous with Scene 1.",
@@ -306,60 +246,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": []
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_THE_RETURN_ROAD",
-            "function_in_scene": "CONTINUING_LOCUS_AND_PLACE_OF_THE_DIVISION"
-          },
-          {
-            "object_id": "TH_TURN_BACK_REPEATED_DIRECTIVE",
-            "function_in_scene": "REPEATED_DIRECTIVE_WITH_INTIMATE_ADDRESS_FORM"
-          },
-          {
-            "object_id": "TH_WOMB_RHETORICAL_QUESTION",
-            "function_in_scene": "RHETORICAL_QUESTION_DISSUASION_GROUNDED_IN_EMPTY_WOMB"
-          },
-          {
-            "object_id": "TH_AGE_IMPOSSIBILITY_STATEMENT",
-            "function_in_scene": "PERSONAL_IMPOSSIBILITY_OF_REMARRIAGE"
-          },
-          {
-            "object_id": "TH_TONIGHT_HYPOTHETICAL_HUSBAND",
-            "function_in_scene": "EXTREME_CASE_HYPOTHETICAL_CONCESSION"
-          },
-          {
-            "object_id": "TH_HYPOTHETICAL_BORN_SONS",
-            "function_in_scene": "IMAGINED_OUTCOME_OF_HYPOTHETICAL"
-          },
-          {
-            "object_id": "TH_WAIT_RHETORICAL_QUESTION",
-            "function_in_scene": "TWIN_DISSUASIVE_QUESTION_ABOUT_WAITING_FOR_HYPOTHETICAL_SONS"
-          },
-          {
-            "object_id": "TH_RESTRAIN_RHETORICAL_QUESTION",
-            "function_in_scene": "TWIN_DISSUASIVE_QUESTION_ABOUT_RESTRAINING_FROM_HUSBANDS"
-          },
-          {
-            "object_id": "TH_BITTERNESS_COMPARISON",
-            "function_in_scene": "LAMENT_OBSERVATION_COMPARING_NAOMIS_BITTERNESS_TO_DAUGHTERS"
-          },
-          {
-            "object_id": "TH_HAND_OF_YHWH_LAMENT_ASCRIPTION",
-            "function_in_scene": "LAMENT_FRAME_DIVINE_ATTRIBUTION_TO_NAOMIS_BITTERNESS"
-          },
-          {
-            "object_id": "TH_WEEPING_FORMULA_AGAIN",
-            "function_in_scene": "SECOND_VOCAL_WEEPING_FORMULA_PARALLEL_WITH_FIRST"
-          },
-          {
-            "object_id": "TH_ORPAH_KISS_FAREWELL",
-            "function_in_scene": "EXIT_KISS_REVERSING_DIRECTION_OF_NAOMIS_KISS"
-          },
-          {
-            "object_id": "TH_DAVQAH_CLINGING_VERB",
-            "function_in_scene": "FIRST_OCCURRENCE_OF_DABAQ_ROOT_OPENING_IMAGE_RHYME"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 13 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous with the road-side moment of Scene 2. 'Tonight' at 1:12 is content inside Naomi's hypothetical, carried in objects_in_scene.",
@@ -377,8 +265,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "hearer": "B3",
         "where": "PL2",
-        "report_content_link": "P2",
-        "report_reception_form": "TH_HEARING_FORMULA"
+        "report_content_link": "P2"
       },
       "inter_proposition_links": {
         "forward_link_to": "P3"
@@ -395,9 +282,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "agent_named": "B10",
         "people_provided_for": "B31",
         "provision_kind": "BREAD",
-        "where_implied": "PL_LAND_OF_JUDAH",
-        "covenant_action_verb_form": "TH_PAQAD_VISITED_VERB",
-        "provision_phrase_form": "TH_GIVE_BREAD_PROVISION"
+        "where_implied": "PL_LAND_OF_JUDAH"
       },
       "inter_proposition_links": {
         "paired_with": "P1"
@@ -430,12 +315,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "WALKED_ON_RETURN_ROAD",
             "subjects": ["B3", "B8", "B9"],
-            "via": "TH_THE_RETURN_ROAD",
             "destination": "PL_LAND_OF_JUDAH",
             "speech_act": "STATES_AS_TRUE"
           }
-        ],
-        "departure_verb_pair_form": "TH_AROSE_AND_RETURNED_VERB_PAIR"
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P1",
@@ -452,7 +335,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B3",
         "addressees": ["B8", "B9"],
-        "directive_content_form": "TH_DIRECTIVE_GO_RETURN_TO_MOTHERS_HOUSE",
         "return_destination_distributive": "PL_EACH_HER_MOTHERS_HOUSE",
         "speech_act": "DIRECTS_HEARER_TO_RETURN"
       },
@@ -473,10 +355,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "blessing_recipients": ["B8", "B9"],
         "invoked_divine_agent": "B10",
         "blessing_content_kind": "HESED",
-        "grounding_clause_form": "TH_PRIOR_HESED_GROUNDING_CLAUSE",
         "prior_hesed_targets": ["B2", "B4", "B5", "B3"],
         "prior_hesed_targets_referential_form": "COLLECTIVE_THE_DEAD_AND_NAOMI_NO_PAIRING_INFERRED",
-        "blessing_phrase_form": "TH_HESED_BLESSING_FORMULA",
         "speech_act": "WISHES_FOR_HEARER"
       },
       "inter_proposition_links": {
@@ -497,8 +377,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "blessing_recipients": ["B8", "B9"],
         "invoked_divine_agent": "B10",
         "blessing_content_kind": "MENUCHA_REST",
-        "blessing_locus_distributive_form": "TH_HUSBANDS_HOUSE_DISTRIBUTIVE",
-        "blessing_phrase_form": "TH_REST_BLESSING_FORMULA",
         "speech_act": "WISHES_FOR_HEARER"
       },
       "inter_proposition_links": {
@@ -519,13 +397,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "KISSED",
             "kisser": "B3",
             "kissed": ["B8", "B9"],
-            "kiss_form": "TH_NAOMI_KISS_FAREWELL",
             "speech_act": "STATES_AS_TRUE"
           },
           {
             "action": "WEPT_ALOUD",
             "weepers": ["B8", "B9"],
-            "weeping_form": "TH_WEEPING_FORMULA_FIRST",
             "speech_act": "STATES_AS_TRUE"
           }
         ]
@@ -548,7 +424,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "refusal_target_proposition": "P4",
         "counter_action": "RETURN_WITH_NAOMI",
         "counter_destination_collective": "B31",
-        "refusal_phrase_form": "TH_REFUSAL_COUNTER_DECLARATION",
         "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
       },
       "inter_proposition_links": {
@@ -570,7 +445,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "appeal_components": [
           {
             "action": "REPEATED_DIRECTIVE",
-            "directive_content_form": "TH_TURN_BACK_REPEATED_DIRECTIVE",
             "speech_act": "DIRECTS_HEARER_TO_RETURN"
           },
           {
@@ -582,7 +456,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "ASKED_DISSUASIVE_QUESTION",
             "question_subject": "SONS_IN_NAOMIS_WOMB",
-            "question_form": "TH_WOMB_RHETORICAL_QUESTION",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           }
         ],
@@ -607,18 +480,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "appeal_components": [
           {
             "action": "REPEATED_DIRECTIVE",
-            "directive_content_form": "TH_TURN_BACK_REPEATED_DIRECTIVE",
             "speech_act": "DIRECTS_HEARER_TO_RETURN"
           },
           {
             "action": "STATED_PERSONAL_IMPOSSIBILITY",
-            "impossibility_form": "TH_AGE_IMPOSSIBILITY_STATEMENT",
             "speech_act": "STATES_AS_TRUE"
           },
           {
             "action": "GRANTED_HYPOTHETICAL_CONCESSION",
-            "concession_form": "TH_TONIGHT_HYPOTHETICAL_HUSBAND",
-            "imagined_outcome_form": "TH_HYPOTHETICAL_BORN_SONS",
             "speech_act": "STATES_AS_TRUE"
           }
         ]
@@ -641,13 +510,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "question_components": [
           {
             "question_subject": "WAITING_FOR_HYPOTHETICAL_SONS_TO_GROW",
-            "question_form": "TH_WAIT_RHETORICAL_QUESTION",
             "list_position": "FIRST",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           },
           {
             "question_subject": "RESTRAINING_FROM_HUSBANDS_MEANWHILE",
-            "question_form": "TH_RESTRAIN_RHETORICAL_QUESTION",
             "list_position": "SECOND",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           }
@@ -673,14 +540,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "lament_components": [
           {
             "action": "STATED_BITTERNESS_COMPARISON",
-            "comparison_form": "TH_BITTERNESS_COMPARISON",
             "comparison_summary": "NAOMI_MORE_BITTER_THAN_DAUGHTERS",
             "speech_act": "STATES_LAMENT_OBSERVATION"
           },
           {
-            "action": "ASCRIBED_BITTERNESS_TO_DIVINE_AGENT",
+            "action": "ASCRIBED_BITTERNESS_TO_YHWH",
             "agent_named": "B10",
-            "ascription_form": "TH_HAND_OF_YHWH_LAMENT_ASCRIPTION",
             "ascription_summary": "HAND_OF_YHWH_AGAINST_NAOMI",
             "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
           }
@@ -700,7 +565,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "WEPT_AGAIN",
       "event_specific_slots": {
         "weepers": ["B8", "B9"],
-        "weeping_form": "TH_WEEPING_FORMULA_AGAIN",
         "parallel_with_proposition": "P7"
       },
       "inter_proposition_links": {
@@ -723,7 +587,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "kisser": "B8",
             "kissed": "B3",
             "kissed_referential_form": "CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW",
-            "kiss_form": "TH_ORPAH_KISS_FAREWELL",
             "speech_act": "STATES_AS_TRUE"
           },
           {
@@ -749,7 +612,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "clinger": "B9",
         "clung_to": "B3",
-        "clinging_verb_form": "TH_DAVQAH_CLINGING_VERB",
         "contrast_with_proposition": "P14"
       },
       "inter_proposition_links": {

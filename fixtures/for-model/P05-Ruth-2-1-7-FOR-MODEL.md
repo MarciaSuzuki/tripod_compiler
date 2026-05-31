@@ -117,24 +117,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_KINSHIP_ANCHOR_THROUGH_HUSBAND_PHRASE",
-            "function_in_scene": "POSITIONS_KINSMAN_THROUGH_KINSHIP_ANCHOR_TO_WIDOW"
-          },
-          {
-            "object_id": "TH_ISH_GIBBOR_CHAYIL_INTRODUCTION_FORMULA",
-            "function_in_scene": "INTRODUCES_KINSMAN_AS_PERSON_OF_STANDING_OPENING_CHAYIL_CROSS_PERICOPE_PAIR"
-          },
-          {
-            "object_id": "TH_CLAN_OF_ELIMELECH_LOCATOR_PHRASE",
-            "function_in_scene": "GROUNDS_KINSMAN_REDEEMER_POSSIBILITY_IN_KIN_STRUCTURE_FIRST_OCCURRENCE"
-          },
-          {
-            "object_id": "TH_NARRATOR_NAMING_AT_END_OF_INTRODUCTION",
-            "function_in_scene": "COMPLETES_INTRODUCTION_WITH_NAME_AFTER_RELATION_ATTRIBUTE_AND_CLAN"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 4 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; the narrator-parenthetical is given outside the storyline's time-flow.",
@@ -176,24 +160,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_COHORTATIVE_REQUEST_PERMISSION_FORM",
-            "function_in_scene": "MARKS_SPEECH_AS_REQUEST_ASKING_PERMISSION_NOT_DIRECTING"
-          },
-          {
-            "object_id": "TH_GLEAN_AMONG_EARS_OF_GRAIN_FORMULATION",
-            "function_in_scene": "NAMES_INSTITUTIONAL_GLEANING_RIGHT_AS_PROPOSED_ACTION"
-          },
-          {
-            "object_id": "TH_FIND_FAVOR_IN_EYES_QUALIFICATION",
-            "function_in_scene": "QUALIFIES_PERSON_THE_GLEANER_WILL_FOLLOW_WITH_HEN_CONCEPT"
-          },
-          {
-            "object_id": "TH_GRANT_PERMISSION_WITH_DAUGHTER_FORM",
-            "function_in_scene": "GRANTS_RUTH_PERMISSION_WITHOUT_AMENDMENT"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 4 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous with the previous pericope's arrival.",
@@ -254,42 +222,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_THREE_VERB_ARRIVAL_AND_GLEANING_CHAIN",
-            "function_in_scene": "COMPRESSES_JOURNEY_AND_ACTION_INTO_CHRONICLE_CLAUSE"
-          },
-          {
-            "object_id": "TH_GLEANING_POSITION_BEHIND_REAPERS_PHRASE",
-            "function_in_scene": "LOCATES_GLEANER_IN_INSTITUTIONAL_POSITION_BEHIND_NOT_AMONG"
-          },
-          {
-            "object_id": "TH_VAYYIQER_MIQREHA_DOUBLE_COGNATE_CONSTRUCTION",
-            "function_in_scene": "LANDS_GLEANER_IN_KINSMAN_PORTION_THROUGH_AGENT_WITHHELD_CHANCE_PROVIDENCE_FRAME"
-          },
-          {
-            "object_id": "TH_CLAN_FRAME_RESTATED_AT_CHANCE_ARRIVAL",
-            "function_in_scene": "BRACKETS_CHANCE_ARRIVAL_WITH_SAME_KIN_FRAME_NAMED_AT_INTRODUCTION"
-          },
-          {
-            "object_id": "TH_HINNEH_ATTENTION_MARKER_AT_ARRIVAL",
-            "function_in_scene": "POINTS_AUDIENCE_TO_FIELD_OWNER_ARRIVAL_AS_WORTHY_OF_ATTENTION"
-          },
-          {
-            "object_id": "TH_YHWH_BE_WITH_YOU_GREETING_FORM",
-            "function_in_scene": "INVOKES_DIVINE_NAME_IN_GREETING_FIRST_DIALOGIC_INVOCATION_IN_PURE_BLESSING_FORM"
-          },
-          {
-            "object_id": "TH_YHWH_BLESS_YOU_RETURN_BLESSING_FORM",
-            "function_in_scene": "COMPLETES_GREETING_EXCHANGE_IN_MATCHED_BLESSING_FORM"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 7 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; the barley-harvest setting from P04 v.22 is the active frame and is not lexically named here.",
         "entries": null
       },
-      "significant_absence": "Narrator does not say YHWH led Ruth to Boaz's portion; the miqreh-construction deliberately withholds the agent. Narrator does not say Boaz notices Ruth on arrival. Ruth says nothing in this scene. Naomi is offstage and is not mentioned by anyone in the scene."
+      "significant_absence": "Narrator does not say YHWH led Ruth to Boaz's portion; the miqreh-construction deliberately withholds the one who led her. Narrator does not say Boaz notices Ruth on arrival. Ruth says nothing in this scene. Naomi is offstage and is not mentioned by anyone in the scene."
     },
     {
       "scene_id": "S4",
@@ -344,40 +284,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_WHOSE_YOUNG_WOMAN_KINSHIP_BELONGING_QUESTION",
-            "function_in_scene": "OPENS_FOREMAN_REPORT_BY_ASKING_UNDER_WHOSE_SOCIAL_COVER_THE_GLEANER_IS"
-          },
-          {
-            "object_id": "TH_FOREMAN_ROLE_PHRASE_NITSAV_AL_HAQOTSRIM",
-            "function_in_scene": "IDENTIFIES_FOREMAN_BY_FUNCTION_NOT_BY_PERSONAL_NAME"
-          },
-          {
-            "object_id": "TH_THIRD_PARTY_MOABITE_EPITHET_NAARA_MOABIYAH",
-            "function_in_scene": "IDENTIFIES_GLEANER_BY_ETHNIC_IDENTITY_IN_THIRD_PARTY_VOICE_FIRST_TIME_IN_BETHLEHEM"
-          },
-          {
-            "object_id": "TH_RETURN_WITH_NAOMI_RELATIONAL_IDENTIFICATION",
-            "function_in_scene": "ANCHORS_GLEANER_IN_HOME_COMMUNITY_KNOWLEDGE_OF_WOMEN_ARRIVAL"
-          },
-          {
-            "object_id": "TH_QUOTED_PRIOR_GLEANING_REQUEST",
-            "function_in_scene": "REPORTS_GLEANER_EARLIER_REQUEST_TO_FOREMAN_IN_QUOTED_SPEECH"
-          },
-          {
-            "object_id": "TH_WORK_PATTERN_MORNING_UNTIL_NOW_STATEMENT",
-            "function_in_scene": "REPORTS_CONTINUED_WORK_PERSISTENCE_THROUGH_THE_MORNING"
-          },
-          {
-            "object_id": "TH_WITHIN_DAY_DURATION_FROM_MORNING_UNTIL_NOW",
-            "function_in_scene": "DURATION_INSIDE_QUOTED_REPORT_NOT_SCENE_SETTING_FRAME"
-          },
-          {
-            "object_id": "TH_DISPUTED_SHELTER_REST_CLAUSE",
-            "function_in_scene": "CLOSES_FOREMAN_REPORT_WITH_TEXTUALLY_DISPUTED_REST_OR_NO_REST_CLAUSE_HELD_OPEN"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 8 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; the within-day duration 'from morning until now' is a content element inside the foreman's quoted report, encoded in objects_in_scene, not as a scene-setting time frame. Follows P01 TM_TEN_YEARS approximate-duration precedent.",
@@ -400,7 +308,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "kinship_anchor_being": "B3",
             "kinship_anchor_relation": "WIDOW_OF_DECEASED_ANCESTOR",
             "deceased_ancestor": "B2",
-            "kinship_anchor_form": "TH_KINSHIP_ANCHOR_THROUGH_HUSBAND_PHRASE",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -408,7 +315,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "INTRODUCED_AS_PERSON_OF_STANDING",
             "introduced_party": "B13",
             "introduction_attribute": "PERSON_OF_STANDING",
-            "introduction_formula_form": "TH_ISH_GIBBOR_CHAYIL_INTRODUCTION_FORMULA",
             "chayil_lexeme": "CB_0032",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
@@ -418,7 +324,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "placed_party": "B13",
             "clan_referent": "B29",
             "clan_eponym": "B2",
-            "clan_locator_form": "TH_CLAN_OF_ELIMELECH_LOCATOR_PHRASE",
             "list_position": "THIRD",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -426,7 +331,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "NAMED_AT_END_OF_INTRODUCTION",
             "named_party": "B13",
             "given_name": "Boaz",
-            "naming_form": "TH_NARRATOR_NAMING_AT_END_OF_INTRODUCTION",
             "list_position": "FOURTH",
             "speech_act": "STATES_AS_TRUE"
           }
@@ -449,9 +353,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "requested_action": "GLEAN_AMONG_EARS_OF_GRAIN_IN_FIELD",
         "destination": "PL5",
         "qualification": "AFTER_ONE_IN_WHOSE_EYES_FAVOR_IS_FOUND",
-        "request_form": "TH_COHORTATIVE_REQUEST_PERMISSION_FORM",
-        "gleaning_action_form": "TH_GLEAN_AMONG_EARS_OF_GRAIN_FORMULATION",
-        "favor_qualification_form": "TH_FIND_FAVOR_IN_EYES_QUALIFICATION",
         "speech_act": "REQUESTS_PERMISSION_TO_DO"
       },
       "inter_proposition_links": {
@@ -470,7 +371,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "permission_recipient": "B9",
         "addressed_form": "DAUGHTER_FORM_OF_ADDRESS",
         "granted_action": "GO_AND_GLEAN_AS_REQUESTED",
-        "release_form": "TH_GRANT_PERMISSION_WITH_DAUGHTER_FORM",
         "speech_act": "GRANTS_PERMISSION_TO_DO"
       },
       "inter_proposition_links": {
@@ -490,8 +390,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "destination": "PL5",
         "gleaning_position_relation": "BEHIND_HARVESTERS_IN_INSTITUTIONAL_GLEANING_POSITION",
         "harvesters_referent": "B14",
-        "three_verb_chain_form": "TH_THREE_VERB_ARRIVAL_AND_GLEANING_CHAIN",
-        "gleaning_position_form": "TH_GLEANING_POSITION_BEHIND_REAPERS_PHRASE",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -513,8 +411,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "clan_referent_restated": "B29",
         "clan_eponym": "B2",
         "agent_named": "NONE",
-        "chance_construction_form": "TH_VAYYIQER_MIQREHA_DOUBLE_COGNATE_CONSTRUCTION",
-        "clan_frame_restatement_form": "TH_CLAN_FRAME_RESTATED_AT_CHANCE_ARRIVAL",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -534,7 +430,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "arriver": "B13",
         "origin": "PL1",
         "destination": "PL5_BOAZ_PORTION",
-        "attention_marker_form": "TH_HINNEH_ATTENTION_MARKER_AT_ARRIVAL",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -555,7 +450,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "greeter": "B13",
             "greeted_party": "B14",
             "invoked_divine_agent": "B10",
-            "greeting_form": "TH_YHWH_BE_WITH_YOU_GREETING_FORM",
             "list_position": "FIRST",
             "speech_act": "WISHES_FOR_HEARER"
           },
@@ -564,7 +458,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "blesser": "B14",
             "blessing_recipient": "B13",
             "invoked_divine_agent": "B10",
-            "return_blessing_form": "TH_YHWH_BLESS_YOU_RETURN_BLESSING_FORM",
             "list_position": "SECOND",
             "speech_act": "WISHES_FOR_HEARER"
           }
@@ -586,8 +479,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "question_asker": "B13",
         "question_addressee": "B15",
         "question_target_referent": "B9",
-        "question_form": "TH_WHOSE_YOUNG_WOMAN_KINSHIP_BELONGING_QUESTION",
-        "foreman_role_phrase_form": "TH_FOREMAN_ROLE_PHRASE_NITSAV_AL_HAQOTSRIM",
         "speech_act": "ASKS_KINSHIP_BELONGING_QUESTION"
       },
       "inter_proposition_links": {
@@ -605,12 +496,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "reporter": "B15",
         "report_addressee": "B13",
         "report_subject_referent": "B9",
-        "foreman_role_phrase_form": "TH_FOREMAN_ROLE_PHRASE_NITSAV_AL_HAQOTSRIM",
         "report_components": [
           {
             "action": "IDENTIFIED_BY_ETHNIC_EPITHET",
             "identified_party": "B9",
-            "ethnic_epithet_form": "TH_THIRD_PARTY_MOABITE_EPITHET_NAARA_MOABIYAH",
             "epithet_voice_layer": "THIRD_PARTY_FIELD_COMMUNITY_VOICE_FIRST_OCCURRENCE_IN_BETHLEHEM",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
@@ -620,14 +509,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "identified_party": "B9",
             "kinship_anchor_being": "B3",
             "return_origin": "PL2",
-            "relational_identification_form": "TH_RETURN_WITH_NAOMI_RELATIONAL_IDENTIFICATION",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
           },
           {
             "action": "REPORTED_PRIOR_REQUEST_QUOTED_SPEECH",
             "quoted_prior_speaker": "B9",
-            "quoted_prior_request_form": "TH_QUOTED_PRIOR_GLEANING_REQUEST",
             "quoted_prior_speech_act": "REQUESTS_PERMISSION_TO_DO",
             "quoted_prior_action": "GLEAN_AND_GATHER_AMONG_SHEAVES_AFTER_REAPERS",
             "list_position": "THIRD",
@@ -635,15 +522,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "REPORTED_WORK_PATTERN_PERSISTENCE",
-            "work_pattern_form": "TH_WORK_PATTERN_MORNING_UNTIL_NOW_STATEMENT",
-            "duration_form": "TH_WITHIN_DAY_DURATION_FROM_MORNING_UNTIL_NOW",
             "list_position": "FOURTH",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "REPORTED_DISPUTED_SHELTER_REST_CLAUSE",
+            "action": "REPORTED_DISPUTED_SHELTER_REST",
             "shelter_place": "PL_HA_BAYIT_FIELD_SHELTER",
-            "shelter_clause_form": "TH_DISPUTED_SHELTER_REST_CLAUSE",
             "textual_clarity_flag": true,
             "list_position": "FIFTH",
             "speech_act": "STATES_AS_TRUE"

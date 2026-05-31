@@ -121,8 +121,16 @@ npx tsx src/cli/tripod.ts lint --corpus         # Level-3/§3C content disciplin
     entries → **3 true entities**; every event/framing/pattern relocated to its proper layer (propositions /
     referential_forms / figures), insight re-homed not deleted (inline `_note`s). **`tripod lint` P01: 12→0
     clean**; validate 0-block; coverage still clean (abstract overlays 15→2); gold-diff 100% (leaner, 78→56
-    placeholders); 88 tests green. BCD unchanged (P01's TH_ codes were never registered). **Pending the project
-    lead's blessing** (vault PR #4) before rolling P02–P06.
+    placeholders); 88 tests green. BCD unchanged (P01's TH_ codes were never registered). P01 reference **blessed +
+    merged** (vault PR #4, repo PR #14).
+  - **SC-0013 — P02–P06 roll.** Applied the same discipline across P02–P06: **116 thematic §3C objects + their
+    orphaned `*_form` slots removed** (events→propositions, speech-acts/framings→referential_forms,
+    patterns→figures), maps mirrored, plain-language fixes (DIVINE_AGENT→YHWH; P06's marquee "speech-act of"/
+    "abundance triplet"/"infinitive-absolute doubling" → plain), P06 conditioning-Q&A removed. **Corpus lint
+    ~182 (56 tier-1) → 19 (0 tier-1)**; validate 6/6; coverage 6/6 block-clean; gold-diff agreement unchanged;
+    88 tests green. Lint precision: cross_ref/figure-pointer lines exempt (R5 conditioning). **Residuals (for
+    the lead):** §4 Q&A compound re-atomizing (exegetical, ~2/map) + the SPEECH_ACT closed-list "AGENT" value
+    (→ **SC-0014**, governed L1 vocab). Pending blessing (vault PR for P02–P06).
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:

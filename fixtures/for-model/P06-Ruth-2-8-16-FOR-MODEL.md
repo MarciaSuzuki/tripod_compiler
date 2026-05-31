@@ -13,7 +13,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
 
 ```json
 {
-  "sta_id": "ruth_pericope_06_v2_0",
+  "sta_id": "ruth_pericope_06_v2_0", 
   "tagset_version": "TRIPOD_STA_v2_0",
   "header": {
     "bcv": "Ruth 2:8-16",
@@ -130,28 +130,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_OPENING_ATTENTION_INTERROGATIVE",
-            "function_in_scene": "OPENS_ADDRESS_WITH_WARM_DIRECTIVE_REGISTER"
-          },
-          {
-            "object_id": "TH_MY_DAUGHTER_ELDER_TO_YOUNG_FOREIGNER_ADDRESS",
-            "function_in_scene": "ELDER_TO_YOUNG_FOREIGNER_RESPECTFUL_ADDRESS_NOT_KINSHIP_CLAIM"
-          },
-          {
-            "object_id": "TH_DABAQ_STAY_CLOSE_DIRECTIVE",
-            "function_in_scene": "LOCATES_GLEANER_SOCIALLY_WITH_FEMALE_WORKERS_IMAGE_RHYME_WITH_1_14"
-          },
-          {
-            "object_id": "TH_REPORTED_PRIOR_TOUCH_PROHIBITION_FORM",
-            "function_in_scene": "REPORTED_SPEECH_BOAZ_QUOTES_OWN_PRIOR_COMMAND_PROTECTION_ALREADY_STANDING"
-          },
-          {
-            "object_id": "TH_WATER_VESSELS_FORM",
-            "function_in_scene": "INCLUSION_GESTURE_PLACING_GLEANER_INSIDE_WORKER_COMMUNITY_PROVISION"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 5 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous within the harvest day established at P05.",
@@ -204,68 +184,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_DEEP_BOW_GESTURE_FORM",
-            "function_in_scene": "MARKS_STATUS_GAP_BETWEEN_FOREIGNER_AND_FIELD_OWNER"
-          },
-          {
-            "object_id": "TH_HEN_BE_EINEKHA_FAVOR_IDIOM",
-            "function_in_scene": "FAVOR_IN_EYES_IDIOM_USED_AT_VERSE_TEN_AND_VERSE_THIRTEEN"
-          },
-          {
-            "object_id": "TH_NAKAR_RECOGNITION_VERB",
-            "function_in_scene": "NAKAR_RECOGNITION_STANDING_AGAINST_NOKHRIYA_FOREIGNNESS_IN_SAME_BREATH"
-          },
-          {
-            "object_id": "TH_NOKHRIYA_SELF_DESIGNATION_FORM",
-            "function_in_scene": "RUTHS_OWN_MOUTH_PLACES_FOREIGNNESS_AT_RECOGNITION_MOMENT"
-          },
-          {
-            "object_id": "TH_HUGGAD_HUGGAD_FULL_KNOWLEDGE_DOUBLING",
-            "function_in_scene": "INFINITIVE_ABSOLUTE_DOUBLING_FOR_FULL_UNCONTESTED_KNOWLEDGE"
-          },
-          {
-            "object_id": "TH_LAND_OF_BIRTH_UNNAMED_FORM",
-            "function_in_scene": "NAMES_ORIGIN_WITHOUT_NAMING_MOAB_BOAZ_CHOOSES_OBLIQUE_FORM"
-          },
-          {
-            "object_id": "TH_TEMOL_SHILSHOM_BEFORE_NOW_IDIOM",
-            "function_in_scene": "TEMPORAL_IDIOM_PEOPLE_PREVIOUSLY_UNKNOWN_TO_HER"
-          },
-          {
-            "object_id": "TH_YESHALLEM_YHWH_REPAYMENT_FORM",
-            "function_in_scene": "OPENS_FORMAL_BLESSING_WITH_DIVINE_REPAYMENT_IMAGE"
-          },
-          {
-            "object_id": "TH_FULL_WAGES_TOTALITY_FORM",
-            "function_in_scene": "CONTINUES_PAYMENT_FRAME_INTENSIFIED_TO_WHOLENESS"
-          },
-          {
-            "object_id": "TH_KANAPH_WING_OF_REFUGE_FORM",
-            "function_in_scene": "WING_OF_REFUGE_IDIOM_OPENS_CROSS_PERICOPE_PAIR_TO_P09_THREE_NINE"
-          },
-          {
-            "object_id": "TH_BLESSING_FORM_VERSE_TWELVE",
-            "function_in_scene": "FORMAL_INSTITUTIONAL_BLESSING_SPEECH_ACT_CARRYING_CEREMONIAL_WEIGHT"
-          },
-          {
-            "object_id": "TH_ADONI_MY_LORD_DEFERENTIAL_FORM",
-            "function_in_scene": "RUTHS_DEFERENTIAL_ADDRESS_SHE_DOES_NOT_YET_KNOW_HIS_NAME"
-          },
-          {
-            "object_id": "TH_DIBBARTA_AL_LEV_HEART_REACHING_SPEECH_FORM",
-            "function_in_scene": "HEART_REACHING_SPEECH_IDIOM_COMFORTING_RESTORATIVE"
-          },
-          {
-            "object_id": "TH_SHIFCHAH_SELF_NAMING_FORM",
-            "function_in_scene": "LOWER_STATUS_SERVANT_GIRL_SELF_DESIGNATION_OPENS_PAIR_TO_AMAH_AT_P09"
-          },
-          {
-            "object_id": "TH_NOT_AS_ONE_OF_YOUR_SHIFCHOT_FORM",
-            "function_in_scene": "STATUS_LOWERING_QUALIFICATION_RUTH_BELOW_EVEN_HIS_SERVANT_GIRLS"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 15 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; continuous within the field day.",
@@ -277,7 +197,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_id": "S3",
       "verse_range": "2:14",
       "scene_kind": "MEAL_INCLUSION_SCENE",
-      "scene_communicative_purpose": "Records the moment of concrete bodily welcome; the abundance triplet stages the carrying-back to Naomi.",
+      "scene_communicative_purpose": "Records the moment of concrete bodily welcome; the threefold ate-then-satisfied-then-had-leftover staging the carrying-back to Naomi.",
       "beings_in_scene": {
         "entries": [
           {
@@ -308,6 +228,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
+        "_note": "§3C entities only (SC-0013): 2 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
         "entries": [
           {
             "object_id": "CB_0012",
@@ -320,14 +241,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "object_id": "O10",
             "function_in_scene": "ROASTED_GRAIN_HAND_TO_HAND_PROVISION_FROM_HOST_TO_GLEANER"
-          },
-          {
-            "object_id": "TH_BESIDE_HARVESTERS_POSITION_FORM",
-            "function_in_scene": "LOCATES_GLEANER_INSIDE_WORKING_COMMUNITY_AT_MEAL_NOT_SEGREGATED"
-          },
-          {
-            "object_id": "TH_ABUNDANCE_TRIPLET_FORM",
-            "function_in_scene": "THREE_VERB_TRIPLET_ATE_SATISFIED_LEFTOVER_REQUIRED_KEEP_IMAGE_SETS_UP_FORWARD_LINK_TO_P07"
           }
         ]
       },
@@ -380,30 +293,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
+        "_note": "§3C entities only (SC-0013): 5 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
         "entries": [
           {
             "object_id": "O11",
             "function_in_scene": "SHEAVES_AND_BUNDLES_MATERIALS_AROUND_WHICH_EXTENDED_REGIME_WORKS"
-          },
-          {
-            "object_id": "TH_LET_HER_GLEAN_AMONG_SHEAVES_PERMISSION_FORM",
-            "function_in_scene": "PERMISSION_BEYOND_ORDINARY_GLEANING_PRACTICE"
-          },
-          {
-            "object_id": "TH_SHAME_PROHIBITION_FORM",
-            "function_in_scene": "SECOND_NEGATIVE_COMMAND_PROTECTION_BY_WHAT_IS_FORBIDDEN_DIRECT_COMMAND"
-          },
-          {
-            "object_id": "TH_SHOL_TASHOLLU_DELIBERATE_PULLING_DOUBLING",
-            "function_in_scene": "INFINITIVE_ABSOLUTE_DOUBLING_MARKS_PULLING_AS_DELIBERATE_INTENTIONAL"
-          },
-          {
-            "object_id": "TH_LEAVE_THEM_FOR_HER_FORM",
-            "function_in_scene": "COMPLETES_DELIBERATE_PULLING_INSTRUCTION_EXTENDED_PROVISION_BEYOND_MINIMUM"
-          },
-          {
-            "object_id": "TH_REBUKE_PROHIBITION_FORM",
-            "function_in_scene": "THIRD_NEGATIVE_COMMAND_CLOSES_THREE_PROHIBITION_CLUSTER"
           }
         ]
       },
@@ -424,7 +318,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "speaker": "B13",
         "addressee": "B9",
         "address_form": "MY_DAUGHTER_NON_KIN_ELDER_TO_YOUNG_FOREIGNER",
-        "opening_form": "TH_OPENING_ATTENTION_INTERROGATIVE",
         "instruction_components": [
           {
             "action": "DIRECTED_GLEANER_TO_STAY_IN_THIS_FIELD",
@@ -446,7 +339,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "DIRECTED_GLEANER_TO_STAY_CLOSE_WITH_YOUNG_WOMEN",
             "companion_group": "B16",
-            "dabaq_form": "TH_DABAQ_STAY_CLOSE_DIRECTIVE",
             "list_position": "FOURTH",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
@@ -502,7 +394,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "prior_command_addressees": "B17",
         "prior_prohibition_target_party": "B9",
         "prior_prohibited_action": "TOUCH_THE_GLEANER",
-        "report_form": "TH_REPORTED_PRIOR_TOUCH_PROHIBITION_FORM",
         "speech_act": "REPORTS_OWN_PRIOR_PROHIBITION"
       },
       "inter_proposition_links": {
@@ -526,7 +417,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "instruction_components": [
           {
             "action": "DIRECTED_HEARER_TO_GO_TO_VESSELS",
-            "vessels_form": "TH_WATER_VESSELS_FORM",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
@@ -552,7 +442,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "BOWED_DEEP_TO_GROUND",
       "event_specific_slots": {
         "bower": "B9",
-        "gesture_form": "TH_DEEP_BOW_GESTURE_FORM",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -574,19 +463,16 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "exchange_components": [
           {
             "action": "ASKED_WHY_SHE_FOUND_FAVOR_IN_HIS_EYES",
-            "favor_idiom_form": "TH_HEN_BE_EINEKHA_FAVOR_IDIOM",
             "list_position": "FIRST",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
             "action": "ASKED_WHY_HE_RECOGNIZED_HER",
-            "recognition_verb_form": "TH_NAKAR_RECOGNITION_VERB",
             "list_position": "SECOND",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
             "action": "STATED_SELF_AS_FOREIGNER",
-            "self_designation_form": "TH_NOKHRIYA_SELF_DESIGNATION_FORM",
             "list_position": "THIRD",
             "speech_act": "STATES_AS_TRUE"
           }
@@ -612,7 +498,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
-        "full_knowledge_doubling_form": "TH_HUGGAD_HUGGAD_FULL_KNOWLEDGE_DOUBLING",
         "recital_components": [
           {
             "action": "STATED_FULL_KNOWLEDGE_OF_WHAT_SHE_DID",
@@ -650,7 +535,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "STATED_RUTH_LEFT_LAND_OF_HER_BIRTH",
-            "origin_left_form": "TH_LAND_OF_BIRTH_UNNAMED_FORM",
             "moab_naming_status": "WITHHELD_IN_BOAZ_SPEECH",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
@@ -658,7 +542,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "STATED_COMING_TO_UNKNOWN_PEOPLE",
             "destination_people_form": "PEOPLE_PREVIOUSLY_UNKNOWN_TO_HER",
-            "before_now_idiom_form": "TH_TEMOL_SHILSHOM_BEFORE_NOW_IDIOM",
             "list_position": "THIRD",
             "speech_act": "STATES_AS_TRUE"
           }
@@ -683,18 +566,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "blessing_recipient": "B9",
         "invoked_divine_agent": "B10",
         "invoked_divine_agent_referential_form": "YHWH_THE_GOD_OF_ISRAEL",
-        "blessing_form": "TH_BLESSING_FORM_VERSE_TWELVE",
         "blessing_components": [
           {
             "action": "WISHED_YHWH_TO_REPAY_HER_WORK",
-            "repayment_form": "TH_YESHALLEM_YHWH_REPAYMENT_FORM",
             "list_position": "FIRST",
             "speech_act": "WISHES_FOR_HEARER"
           },
           {
             "action": "WISHED_FULL_WAGES_FROM_YHWH_UNDER_WHOSE_WINGS_SHE_TOOK_REFUGE",
-            "full_wages_form": "TH_FULL_WAGES_TOTALITY_FORM",
-            "wing_of_refuge_form": "TH_KANAPH_WING_OF_REFUGE_FORM",
             "list_position": "SECOND",
             "speech_act": "WISHES_FOR_HEARER"
           }
@@ -722,9 +601,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "speaker": "B9",
         "addressee": "B13",
         "address_form": "MY_LORD_DEFERENTIAL",
-        "address_form_object": "TH_ADONI_MY_LORD_DEFERENTIAL_FORM",
         "name_known_status": "NAME_NOT_YET_KNOWN_TO_RUTH",
-        "wish_form": "TH_HEN_BE_EINEKHA_FAVOR_IDIOM",
         "wished_state": "FAVOR_IN_HIS_EYES",
         "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
@@ -747,7 +624,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B13",
-        "self_designation_form": "TH_SHIFCHAH_SELF_NAMING_FORM",
         "response_components": [
           {
             "action": "STATED_THAT_HE_COMFORTED_HER",
@@ -756,13 +632,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "STATED_THAT_HE_SPOKE_TO_HEART_OF_HIS_SHIFCHAH",
-            "heart_reaching_form": "TH_DIBBARTA_AL_LEV_HEART_REACHING_SPEECH_FORM",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
           },
           {
             "action": "STATED_SHE_IS_NOT_AS_ONE_OF_HIS_SHIFCHOT",
-            "lowering_form": "TH_NOT_AS_ONE_OF_YOUR_SHIFCHOT_FORM",
             "list_position": "THIRD",
             "speech_act": "STATES_LAMENT_OBSERVATION"
           }
@@ -826,7 +700,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "sitter": "B9",
         "sitting_position_relation": "BESIDE_THE_HARVESTERS",
         "alongside_party": "B14",
-        "position_form": "TH_BESIDE_HARVESTERS_POSITION_FORM",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -861,7 +734,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "ATE_WAS_SATISFIED_AND_HAD_LEFTOVER",
       "event_specific_slots": {
         "eater": "B9",
-        "abundance_triplet_form": "TH_ABUNDANCE_TRIPLET_FORM",
         "triplet_components": [
           {
             "action": "ATE",
@@ -884,7 +756,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "caused_by": "P14",
         "forward_link_to": "P16"
       },
-      "cross_ref": "FIG_0104 active here as required keep-image; third verb (had leftover) sets up forward link to P07 v.18 (Ruth carrying leftover to Naomi)",
+      "cross_ref": "FIG_0104 active here as required keep-image; third action (had leftover) sets up forward link to P07 v.18 (Ruth carrying leftover to Naomi)",
       "cb_flags": [],
       "figure_flags": [
         "FIG_0104"
@@ -923,13 +795,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "PERMITTED_GLEANING_AMONG_SHEAVES",
             "permitted_location": "PL_AMONG_SHEAVES",
             "material_referent": "O11",
-            "permission_form": "TH_LET_HER_GLEAN_AMONG_SHEAVES_PERMISSION_FORM",
             "list_position": "FIRST",
             "speech_act": "GRANTS_PERMISSION_TO_DO"
           },
           {
             "action": "DIRECTED_HARVESTERS_NOT_TO_SHAME_HER",
-            "shame_prohibition_form": "TH_SHAME_PROHIBITION_FORM",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           }
@@ -958,7 +828,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "for_party_to_glean": "B9",
         "material_referent": "O11",
         "manner": "DELIBERATELY_INTENTIONALLY",
-        "deliberate_pulling_doubling_form": "TH_SHOL_TASHOLLU_DELIBERATE_PULLING_DOUBLING",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
       "inter_proposition_links": {
@@ -984,14 +853,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "command_components": [
           {
             "action": "DIRECTED_HARVESTERS_TO_LEAVE_THEM_FOR_HER",
-            "leave_form": "TH_LEAVE_THEM_FOR_HER_FORM",
             "purpose": "FOR_HER_TO_GLEAN",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED_HARVESTERS_NOT_TO_REBUKE_HER",
-            "rebuke_prohibition_form": "TH_REBUKE_PROHIBITION_FORM",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           }

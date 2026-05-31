@@ -43,6 +43,18 @@ describe("lint — interpretive labels (R3) + conditioning-in-Q&A (R5) + compoun
   it("flags a compound (';' or 'and') answer as non-atomic", () => {
     expect(r.findings.some((f) => f.rule === "compound")).toBe(true);
   });
+  it("exempts cross_ref / figure-flag pointer lines (they ARE the conditioning layer, R5)", () => {
+    const md = [
+      "## 4. Level 3",
+      "",
+      "### Proposition 5 — Ruth 1:3 [Scene 2]",
+      "- **Q:** What happened? **A:** death",
+      "- **cross_ref:** [[FIG_0052-Tishaer-Residual-Rhyme]] opens here (within-pericope image-rhyme pair)",
+    ].join("\n");
+    const lr = lintMeaningMap(md);
+    expect(lr.findings.some((f) => f.match === "image-rhyme")).toBe(false); // the figure legitimately IS one
+    expect(lr.findings.some((f) => f.context.includes("death"))).toBe(false); // clean payload
+  });
 });
 
 describe("lint — FOR_MODEL", () => {

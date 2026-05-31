@@ -117,24 +117,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_BEIT_LECHEM_NAMING_ON_ARRIVAL",
-            "function_in_scene": "REACTIVATES_BREAD_HOUSE_LEXICAL_NAME_FOR_THIRD_TIME_IN_BOOK"
-          },
-          {
-            "object_id": "TH_ARRIVAL_COMPLETION_VERB",
-            "function_in_scene": "CLOSES_ROAD_BEGUN_AT_ONE_SEVEN"
-          },
-          {
-            "object_id": "TH_COMMUNAL_STIRRING_VERB",
-            "function_in_scene": "REGISTERS_COMMUNITY_SCALE_AROUSAL_AT_ARRIVAL"
-          },
-          {
-            "object_id": "TH_RECOGNITION_QUESTION_FORM",
-            "function_in_scene": "OPENS_RENAMING_DIALOGUE_NAOMI_WILL_ANSWER"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 4 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous with the journey established in P02. The barley-harvest setting is named at v.22 in S3, not here.",
@@ -176,56 +160,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_REFUSAL_OF_OWN_NAME_FORM",
-            "function_in_scene": "OPENS_RENAMING_MOVE_BY_REFUSING_SWEET_NAME"
-          },
-          {
-            "object_id": "TH_PROPOSED_RENAMING_FORM",
-            "function_in_scene": "PROPOSES_BITTER_NAME_AS_SUBSTITUTE_FOR_SWEET"
-          },
-          {
-            "object_id": "TH_MARA_NAME_FORM",
-            "function_in_scene": "PROPOSED_NEW_NAME_MEANING_BITTER"
-          },
-          {
-            "object_id": "TH_HEMAR_BITTERING_VERB_WITH_DIVINE_SUBJECT",
-            "function_in_scene": "ASCRIBES_BITTERING_TO_SHADDAI_FIRST_OF_FOUR_DIVINE_ATTRIBUTIONS"
-          },
-          {
-            "object_id": "TH_MARA_HEMAR_ROOT_PUN",
-            "function_in_scene": "ROOT_PUN_BETWEEN_PROPOSED_NAME_AND_BITTERING_VERB"
-          },
-          {
-            "object_id": "TH_FULL_STATE_DECLARATION",
-            "function_in_scene": "STATES_NAOMI_DEPARTURE_STATE_AS_FULL"
-          },
-          {
-            "object_id": "TH_RIQAM_EMPTY_LEXEME",
-            "function_in_scene": "SPECIFIC_HEBREW_EMPTY_HANDED_LEXEME_FIRST_OCCURRENCE"
-          },
-          {
-            "object_id": "TH_FULL_EMPTY_ANTITHETICAL_PAIR",
-            "function_in_scene": "FIRST_ANTITHETICAL_STATE_WORD_PAIR_IN_BOOK_ACROSS_JOURNEY_ARC"
-          },
-          {
-            "object_id": "TH_RHETORICAL_PROTEST_QUESTION_FORM",
-            "function_in_scene": "CLOSES_RENAMING_ARGUMENT_BY_PROTESTING_THE_OLD_NAME"
-          },
-          {
-            "object_id": "TH_ANAH_BI_COURTROOM_FORM",
-            "function_in_scene": "ASCRIBES_ADVERSARIAL_TESTIMONY_TO_YHWH_FIRST_COURTROOM_LEGAL_USE_IN_BOOK"
-          },
-          {
-            "object_id": "TH_SHADDAI_DID_EVIL_FORM",
-            "function_in_scene": "ASCRIBES_HARM_TO_SHADDAI_FOURTH_AND_CLOSING_DIVINE_ATTRIBUTION"
-          },
-          {
-            "object_id": "TH_DOUBLED_DIVINE_NAME_LAMENT_PATTERN",
-            "function_in_scene": "STRUCTURAL_DOUBLING_PATTERN_YHWH_TWICE_AND_SHADDAI_TWICE_ACROSS_TWO_VERSES"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 12 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; the speech occurs at the moment of arrival; time is continuous.",
@@ -267,28 +203,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_NARRATOR_SUMMARY_RETURN_VERB",
-            "function_in_scene": "REESTABLISHES_NARRATOR_NAMING_OVER_NAOMI_SELF_RENAMING"
-          },
-          {
-            "object_id": "TH_RUTH_THE_MOABITESS_NARRATOR_EPITHET",
-            "function_in_scene": "RETURNS_MOABITE_EPITHET_TO_NARRATOR_VOICE_AFTER_P02_P03_WITHHOLDING"
-          },
-          {
-            "object_id": "TH_KALLATAH_KINSHIP_FORM",
-            "function_in_scene": "KALLAH_KINSHIP_FORM_SINGULAR_FOR_RUTH_CARRY_FORWARD_FROM_P02"
-          },
-          {
-            "object_id": "TH_NARRATOR_SUMMARY_RETURN_FROM_FIELDS_OF_MOAB",
-            "function_in_scene": "BRACKETS_JOURNEY_ARC_BY_RENAMING_ORIGIN"
-          },
-          {
-            "object_id": "TH_ARRIVAL_AT_HARVEST_OPENING_FORM",
-            "function_in_scene": "ANCHORS_ARRIVAL_TO_HARVEST_FRAME_OPENING_AGAINST_FAMINE_FRAME_CLOSING"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 5 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "entries": [
@@ -313,7 +229,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           "B9"
         ],
         "destination": "PL1",
-        "arrival_completion_form": "TH_ARRIVAL_COMPLETION_VERB",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -336,7 +251,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           "B9"
         ],
         "at_arrival_to": "PL1",
-        "stirring_form": "TH_COMMUNAL_STIRRING_VERB",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -358,7 +272,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "question_addressee_party": [
           "B3"
         ],
-        "question_form": "TH_RECOGNITION_QUESTION_FORM",
         "target_being_in_question": "B3",
         "speech_act": "ASKS_RHETORICAL_QUESTION_OF_SURPRISED_RECOGNITION"
       },
@@ -385,7 +298,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "refused_name": "Naomi",
             "refused_name_meaning": "SWEET",
             "referential_form_at_verse": "SELF_REFERENCE_REFUSING_OWN_NAME",
-            "refusal_form": "TH_REFUSAL_OF_OWN_NAME_FORM",
             "list_position": "FIRST",
             "speech_act": "REFUSES_USE_OF_OWN_NAME"
           },
@@ -394,16 +306,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "proposed_name": "Mara",
             "proposed_name_meaning": "BITTER",
             "referential_form_at_verse": "PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH",
-            "proposal_form": "TH_PROPOSED_RENAMING_FORM",
             "list_position": "SECOND",
             "speech_act": "PROPOSES_NEW_NAME_FOR_SELF"
           },
           {
-            "action": "STATED_LAMENT_REASON_BITTERED_BY_DIVINE_AGENT",
+            "action": "STATED_LAMENT_REASON_BITTERED_BY_YHWH",
             "invoked_divine_agent": "B12",
             "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_FIRST_OCCURRENCE",
-            "bittering_verb_form": "TH_HEMAR_BITTERING_VERB_WITH_DIVINE_SUBJECT",
-            "root_pun_form": "TH_MARA_HEMAR_ROOT_PUN",
             "list_position": "THIRD",
             "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
           }
@@ -437,37 +346,30 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "STATED_FULL_EMPTY_ANTITHESIS",
             "state_at_departure": "FULL",
             "state_at_return": "EMPTY",
-            "empty_lexeme_form": "TH_RIQAM_EMPTY_LEXEME",
-            "full_state_form": "TH_FULL_STATE_DECLARATION",
             "agent_of_return_empty": "B10",
-            "antithetical_pair_form": "TH_FULL_EMPTY_ANTITHETICAL_PAIR",
             "list_position": "FIRST",
             "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
           },
           {
             "action": "ASKED_RHETORICAL_QUESTION_AS_PROTEST",
-            "question_form": "TH_RHETORICAL_PROTEST_QUESTION_FORM",
             "question_target_referential_form": "REFUSED_NAME_NAOMI_IN_RECALL",
             "list_position": "SECOND",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
           },
           {
-            "action": "ASCRIBED_COURTROOM_TESTIMONY_TO_DIVINE_AGENT",
+            "action": "ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH",
             "invoked_divine_agent": "B10",
-            "courtroom_form": "TH_ANAH_BI_COURTROOM_FORM",
             "list_position": "THIRD",
             "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
           },
           {
-            "action": "ASCRIBED_HARM_TO_DIVINE_AGENT",
+            "action": "ASCRIBED_HARM_TO_YHWH",
             "invoked_divine_agent": "B12",
             "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_SECOND_OCCURRENCE",
-            "harm_form": "TH_SHADDAI_DID_EVIL_FORM",
             "list_position": "FOURTH",
             "speech_act": "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
           }
-        ],
-        "doubled_divine_name_pattern_form": "TH_DOUBLED_DIVINE_NAME_LAMENT_PATTERN"
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P4",
@@ -500,10 +402,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
               "B9"
             ],
             "accompanying_referential_form": "RUTH_THE_MOABITESS_NARRATOR_EPITHET",
-            "kinship_form": "TH_KALLATAH_KINSHIP_FORM",
-            "ethnic_epithet_form": "TH_RUTH_THE_MOABITESS_NARRATOR_EPITHET",
             "origin_place": "PL2",
-            "return_summary_form": "TH_NARRATOR_SUMMARY_RETURN_FROM_FIELDS_OF_MOAB",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -515,7 +414,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             ],
             "destination": "PL1",
             "time_setting": "TM_BARLEY_HARVEST_BEGINNING",
-            "arrival_with_harvest_anchor_form": "TH_ARRIVAL_AT_HARVEST_OPENING_FORM",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
           }

@@ -136,6 +136,9 @@ export function lintMeaningMap(md: string, file = ""): LintReport {
   for (const raw of lines) {
     const line = raw.trim();
     if (!line) continue;
+    // cross_ref / figure-flag pointer lines ARE the conditioning layer (R5) — a figure legitimately
+    // IS an image-rhyme / triplet there. Skip them; the lint judges payload (Q&A answers + §3C entities).
+    if (/cross_ref/i.test(line) || /^[-*]?\s*\[\[FIG_/.test(line)) continue;
 
     // conditioning-in-Q&A (R5): meta-question prompts that are steering, not payload
     for (const c of lex.conditioning_qa) {

@@ -66,7 +66,8 @@ number bound to exactly one decision.
 | SC-0010 | Coverage recorded-exception mechanism + P06 "Israel" epithet-internal ruling | SHIPPED |
 | SC-0011 | BCD `gender` frontmatter field (authoritative; replaces the prose-guess) | SHIPPED |
 | SC-0012 | Level-3 / §3C content discipline (R1–R5) + the `tripod lint` drift-guard | SHIPPED (lint + discipline + template); map remediation follows |
-| SC-0013 | Map content remediation under SC-0012 — P01 worked reference (then roll P02–P06) | P01 APPLIED (pending project-lead blessing); P02–P06 to follow |
+| SC-0013 | Map content remediation under SC-0012 — P01 reference + P02–P06 roll | P01 SHIPPED; P02–P06 §3C+plain-language APPLIED (pending blessing); §4 dialogue re-atomizing = lead's exegetical pass |
+| SC-0014 | Clean role-theory jargon ("AGENT") from the SPEECH_ACT closed list (L1 vocab) | PROPOSED (surfaced by the lint; governed L1 change) |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -98,6 +99,35 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0014 — Clean role-theory jargon from the SPEECH_ACT closed list (L1 vocab)
+- **Date:** 2026-05-31 · **Status:** PROPOSED (governed L1 change; not yet applied).
+- **Summary:** `tripod lint` surfaced that the closed SPEECH_ACT list contains
+  `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` — "AGENT" is role-theory jargon (R4). It is used by P02/P04
+  FOR_MODELs (5 occurrences) and cannot be fixed by content edits (it's a closed-list value). Cleaning it
+  (e.g. → `ASCRIBES_CAUSE_TO_YHWH_LAMENT_FRAME`) is a governed Layer-1 change: edit `validation-rules.json`
+  + `approved-enumerations.json`, propagate to the FOR_MODELs using it, re-pin. Deferred to a dedicated SC.
+
+---
+
+## SC-0013 — Map content remediation (SC-0012): P01 reference + P02–P06 roll
+- **P02–P06 roll (2026-05-31):** applied R1/R3/R4/R5 across P02–P06 (vault + fixtures). **§3C → entities
+  only:** 116 thematic objects (events/speech-acts/framings/patterns — *_form/_verb/_formula/_directive/
+  _question/_declaration) removed from `objects_in_scene`, with their orphaned `*_form` slots (R5
+  conditioning) and the mirrored map §3C entries; only true O#/CB_ entities kept (P02–P05 had none; P06
+  keeps O9/O10/O11 + CB_*). Plain-language fixes (R4): action/referential values "DIVINE_AGENT"→"YHWH",
+  significant_absence "agent/verb" prose, P06's marquee items ("speech-act of directive instruction"→
+  "telling", "abundance triplet — three verbs"→"she ate · she was satisfied · she had leftover",
+  "infinitive-absolute doubling"→plain). P06 conditioning-Q&A (Register?/Self-form?/Forward-link?) removed (R5).
+- **Result:** corpus lint **~182 findings (56 tier-1) → 19 (0 tier-1)**; validate 6/6 clean; coverage 6/6
+  block-clean (leaner abstract overlays); gold-diff agreement unchanged (leaner placeholders); 88 tests green.
+- **Residuals (by design, surfaced for the lead):** (a) **§4 Q&A compound re-atomizing** (~2/map) — the
+  exegetical dialogue-splitting the discipline doc reserves for the project lead; (b) the **SPEECH_ACT
+  closed-list "AGENT"** value → SC-0014 (governed L1 vocab). Lint precision improved: cross_ref / figure-flag
+  pointer lines are exempt (they are the conditioning layer per R5).
+- **Pending the lead's blessing** (vault PR for P02–P06).
 
 ---
 

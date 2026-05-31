@@ -119,32 +119,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_THE_RETURN_ROAD",
-            "function_in_scene": "JOURNEY_LOCUS_CONTINUING_FROM_P02"
-          },
-          {
-            "object_id": "TH_PRESENTATIONAL_MARKER_HINNEH",
-            "function_in_scene": "OPENS_APPEAL_WITH_PRESENTATIONAL_FORCE"
-          },
-          {
-            "object_id": "TH_KINSHIP_FORM_YEBIMTEKH",
-            "function_in_scene": "NAMES_EXEMPLAR_BY_KINSHIP_RELATION_ONLY"
-          },
-          {
-            "object_id": "TH_MOABITE_PEOPLE_COLLECTIVE_REFERENCED",
-            "function_in_scene": "EXEMPLAR_RETURN_DESTINATION_AT_PEOPLE_LEVEL"
-          },
-          {
-            "object_id": "TH_MOABITE_DEITIES_COLLECTIVE_REFERENCED",
-            "function_in_scene": "EXEMPLAR_RETURN_DESTINATION_AT_DEITIES_LEVEL_UNNAMED"
-          },
-          {
-            "object_id": "TH_DIRECTIVE_GO_BACK_AFTER_SISTER_IN_LAW",
-            "function_in_scene": "CLOSES_APPEAL_WITH_FOLLOW_THE_EXEMPLAR_DIRECTIVE"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 6 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous with the journey established in P02.",
@@ -191,56 +167,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_THE_RETURN_ROAD",
-            "function_in_scene": "JOURNEY_LOCUS_CONTINUING_FROM_P02"
-          },
-          {
-            "object_id": "TH_REFUSAL_OPENING_OF_VOW",
-            "function_in_scene": "OPENS_RUTHS_SPEECH_WITH_REFUSAL_OF_NAOMIS_DIRECTIVE"
-          },
-          {
-            "object_id": "TH_INDEFINITE_PLACE_CONSTRUCTION",
-            "function_in_scene": "STRUCTURAL_FORM_HOLDING_FOUR_BINDINGS_OPEN_TO_UNNAMED_PLACES"
-          },
-          {
-            "object_id": "TH_VOW_PATH_BINDING",
-            "function_in_scene": "FIRST_BINDING_PATH_WHERE_YOU_GO_I_WILL_GO"
-          },
-          {
-            "object_id": "TH_VOW_LODGING_BINDING",
-            "function_in_scene": "SECOND_BINDING_LODGING_WHERE_YOU_LODGE_I_WILL_LODGE"
-          },
-          {
-            "object_id": "TH_NOMINAL_EQUATION_PEOPLE_AND_GOD_PAIR",
-            "function_in_scene": "STRUCTURAL_PAIR_FORM_FOR_PEOPLE_AND_GOD_BINDINGS_NO_COPULA"
-          },
-          {
-            "object_id": "TH_VOW_PEOPLE_BINDING",
-            "function_in_scene": "THIRD_BINDING_PEOPLE_YOUR_PEOPLE_MY_PEOPLE"
-          },
-          {
-            "object_id": "TH_VOW_GOD_BINDING",
-            "function_in_scene": "FOURTH_BINDING_GOD_YOUR_GOD_MY_GOD_DIVINE_NAME_NOT_YET_UTTERED"
-          },
-          {
-            "object_id": "TH_VOW_DEATH_PLACE_BINDING",
-            "function_in_scene": "FIFTH_BINDING_DEATH_PLACE_WHERE_YOU_DIE_I_WILL_DIE"
-          },
-          {
-            "object_id": "TH_VOW_BURIAL_PLACE_BINDING",
-            "function_in_scene": "SIXTH_BINDING_BURIAL_PLACE_AND_THERE_I_WILL_BE_BURIED"
-          },
-          {
-            "object_id": "TH_SELF_CURSE_OATH_FORMULA",
-            "function_in_scene": "CANONICAL_SELF_CURSE_OATH_FORMULA_INVOKING_DIVINE_NAME"
-          },
-          {
-            "object_id": "TH_OATH_CONDITIONAL_DEATH_AS_SEPARATOR",
-            "function_in_scene": "CONDITIONAL_THAT_CAN_ONLY_FAIL_THROUGH_DEATH_BINDS_BEYOND_DEATH"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 12 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame for this scene; time is continuous with the journey.",
@@ -272,26 +200,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_THE_RETURN_ROAD",
-            "function_in_scene": "JOURNEY_LOCUS_CONTINUING_FROM_S1_AND_S2"
-          },
-          {
-            "object_id": "TH_DETERMINED_HITHPAEL_PARTICIPLE",
-            "function_in_scene": "NARRATOR_INTERIOR_ACCESS_VERB_FOR_RUTHS_RESOLVE"
-          },
-          {
-            "object_id": "TH_CESSATION_OF_APPEAL",
-            "function_in_scene": "NARRATOR_REPORT_OF_NAOMI_CEASING_HER_APPEAL"
-          }
-        ]
+        "_note": "§3C entities only (SC-0013): 3 thematic item(s) relocated to their proper layers (events to propositions; speech-acts and framings to referential_forms; patterns to figures).",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "No distinct temporal frame; closing moment continuous with the journey.",
         "entries": null
       },
-      "significant_absence": "Narrator reports Naomi seeing and stopping speech but does not report her interior state. No agreement, no blessing, no further word from Naomi inside the pericope. Narrator-interior-access verb gives interior access only to Ruth's resolve, not to Naomi's response."
+      "significant_absence": "Narrator reports Naomi seeing and stopping speech but does not report her interior state. No agreement, no blessing, no further word from Naomi inside the pericope. The narrator gives interior access only to Ruth's resolve, not to Naomi's response."
     }
   ],
   "level_3_propositions": [
@@ -311,9 +227,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speaker": "B3",
             "exemplar_party": "B8",
             "exemplar_referential_form": "KINSHIP_FORM_YEBIMTEKH",
-            "exemplar_destination_people_form": "TH_MOABITE_PEOPLE_COLLECTIVE_REFERENCED",
-            "exemplar_destination_deities_form": "TH_MOABITE_DEITIES_COLLECTIVE_REFERENCED",
-            "presentational_marker_form": "TH_PRESENTATIONAL_MARKER_HINNEH",
             "speech_act": "STATES_AS_TRUE"
           },
           {
@@ -322,7 +235,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "addressee": "B9",
             "exemplar_party": "B8",
             "exemplar_referential_form": "KINSHIP_FORM_YEBIMTEKH",
-            "directive_form": "TH_DIRECTIVE_GO_BACK_AFTER_SISTER_IN_LAW",
             "speech_act": "DIRECTS_HEARER_TO_RETURN"
           }
         ]
@@ -345,7 +257,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "refuser": "B9",
         "addressee": "B3",
         "refused_action": "TURN_BACK_FROM_FOLLOWING_NAOMI",
-        "refusal_form": "TH_REFUSAL_OPENING_OF_VOW",
         "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
       },
       "inter_proposition_links": {
@@ -371,7 +282,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "bound_to_referent": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_GO",
             "matched_action_form": "I_WILL_GO",
-            "binding_phrase_form": "TH_VOW_PATH_BINDING",
             "list_position": "FIRST",
             "speech_act": "VOWS_ROAD_BINDING"
           },
@@ -381,7 +291,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "bound_to_referent": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_LODGE",
             "matched_action_form": "I_WILL_LODGE",
-            "binding_phrase_form": "TH_VOW_LODGING_BINDING",
             "list_position": "SECOND",
             "speech_act": "VOWS_RESIDENCE_BINDING"
           },
@@ -390,8 +299,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "binder": "B9",
             "bound_to_referent": "B3",
             "bound_to_collective": "B31",
-            "binding_phrase_form": "TH_VOW_PEOPLE_BINDING",
-            "nominal_equation_form": "TH_NOMINAL_EQUATION_PEOPLE_AND_GOD_PAIR",
             "nominal_equation_half": "PEOPLE_HALF",
             "list_position": "THIRD",
             "speech_act": "VOWS_PEOPLE_BINDING"
@@ -401,9 +308,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "binder": "B9",
             "bound_to_referent": "B3",
             "invoked_divine_agent": "B10",
-            "referential_form_at_verse": "UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING",
-            "binding_phrase_form": "TH_VOW_GOD_BINDING",
-            "nominal_equation_form": "TH_NOMINAL_EQUATION_PEOPLE_AND_GOD_PAIR",
+            "referential_form_at_verse": "UNNAMED_DEITY_IN_BINDING_PAIRING",
             "nominal_equation_half": "GOD_HALF",
             "list_position": "FOURTH",
             "speech_act": "VOWS_GOD_BINDING"
@@ -414,7 +319,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "bound_to_referent": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_DIE",
             "matched_action_form": "I_WILL_DIE",
-            "binding_phrase_form": "TH_VOW_DEATH_PLACE_BINDING",
             "binding_domain": "IDENTITY_AT_LIMIT_OF_EXISTENCE",
             "list_position": "FIFTH",
             "speech_act": "VOWS_IDENTITY_BINDING"
@@ -425,7 +329,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "bound_to_referent": "B3",
             "binding_demonstrative_place_form": "THERE_DEMONSTRATIVE_LINKING_TO_DEATH_PLACE",
             "matched_action_form": "I_WILL_BE_BURIED",
-            "binding_phrase_form": "TH_VOW_BURIAL_PLACE_BINDING",
             "binding_domain": "PLACE_OF_FINAL_REST",
             "list_position": "SIXTH",
             "speech_act": "VOWS_PLACE_OF_BURIAL_BINDING"
@@ -454,8 +357,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B3",
         "agent_named": "B10",
         "agent_named_referential_form": "DIVINE_NAME_FIRST_ON_RUTHS_LIPS",
-        "oath_formula_form": "TH_SELF_CURSE_OATH_FORMULA",
-        "oath_conditional_form": "TH_OATH_CONDITIONAL_DEATH_AS_SEPARATOR",
         "oath_conditional_structural_force": "BINDS_BEYOND_DEATH_VIA_INEVITABLE_CONDITION",
         "speech_act": "INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT"
       },
@@ -481,7 +382,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "SAW_DETERMINED_RESOLVE",
             "perceiver": "B3",
             "perceived": "B9",
-            "perceived_state_form": "TH_DETERMINED_HITHPAEL_PARTICIPLE",
             "narrator_interior_access_scope": "GIVEN_TO_RUTHS_RESOLVE_WITHHELD_FROM_NAOMIS_RESPONSE",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
@@ -490,7 +390,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "CEASED_SPEAKING",
             "ceaser": "B3",
             "ceased_speaking_to": "B9",
-            "cessation_form": "TH_CESSATION_OF_APPEAL",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
           }
