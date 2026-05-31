@@ -93,12 +93,21 @@ npx tsx src/cli/tripod.ts gold-diff
 - Nothing is uncommitted; no open PRs.
 
 ## Next (recommended)
-> SC-0007 (the previous #1 — L1/discourse/high-risk convergence) is **DONE** on
-> `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
-1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
-   validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
-2. **Coverage ledger (`docs/COVERAGE.md`)** + the **BHSA frozen-extract sidecar** (`docs/SOURCE_AND_SCALING.md`)
-   — the highest-value fidelity feature; lands with source ingestion (needs the vault / BHSA).
+> **Decision (2026-05-31 planning session): the Coverage slice is next — before the LLM drafter.**
+> Build plan: [`docs/COVERAGE_BUILD_PLAN.md`](COVERAGE_BUILD_PLAN.md) (the *how/when*; `docs/COVERAGE.md`
+> is the *what/why*). Rationale: deterministic-first discipline (the LLM drafter stays last), it's the
+> highest-value fidelity feature, and it becomes the drafter's anti-hallucination grader on new
+> pericopes (which have no gold FOR_MODEL). **Source-data question RESOLVED:** the full Text-Fabric
+> **BHSA 2021** dataset is **local**, so extraction is **fully offline** (point Fabric at the local
+> `bhsa/tf/2021`; no GitHub download / network allowlist). Bonus: `bhsa/ner/sheets/places.xlsx` seeds
+> the place alias table. **Build in a local Claude Code session** (repo + BHSA + Python + TS coexist).
+> (Prior #1, SC-0007 — L1/discourse/high-risk convergence — is DONE; see SPEC_CHANGES.)
+1. **Coverage ledger + BHSA extractor** — the deterministic fidelity floor: a pinned per-pericope BHSA
+   packet → `R \ M` / `M \ R` reconciliation → three-bucket ledger + one-line score. What/why in
+   [`docs/COVERAGE.md`](COVERAGE.md); how/when in [`docs/COVERAGE_BUILD_PLAN.md`](COVERAGE_BUILD_PLAN.md);
+   source doctrine in [`docs/SOURCE_AND_SCALING.md`](SOURCE_AND_SCALING.md). **Source resolved (local, offline).**
+2. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
+   validate-clean FOR_MODEL (Claude API; needs a key + cost). The "judgment half"; coverage grades its output.
 3. **Registry growth — COMPLETE for the pilot.** **P01–P06 all promoted** (registry v0.4): P02
    grandfathered (`--status ANY`), P03–P06 via the **CONFIRMED-only default gate**. The full Ruth pilot
    corpus now validates at **0 convergent drift** (descriptive/open axes remain per-pericope, by design).

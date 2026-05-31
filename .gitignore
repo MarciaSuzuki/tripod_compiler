@@ -19,5 +19,8 @@ build/
 .idea/
 .vscode/
 
+# Claude Code local session settings (personal; not shared)
+.claude/settings.local.json
+
 # Reference docs dropped in working tree (canonical copies live in docs/ or the wiki)
 *.docx
