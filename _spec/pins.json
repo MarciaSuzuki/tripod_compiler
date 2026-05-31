@@ -29,6 +29,10 @@
       "version": "0.1.0",
       "sha256": "d30775f44ae17e57999f7d2622e35a0c96f61fcfacb7b34e42acd9da06852c3e"
     },
+    "lint-lexicon.json": {
+      "version": "0.1.0",
+      "sha256": "15a67a5fe1a9e646b76efc7195fa1bdbaf8fe6e6079d186b56e269d841b7b825"
+    },
     "source/ruth/P01.json": {
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "a6a2a983f65b4f692458827173409a651c3b57b8ed39dd4277a4bedeb1081146"

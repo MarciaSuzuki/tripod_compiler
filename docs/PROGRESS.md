@@ -8,11 +8,12 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 80 tests green (46 + 34 coverage)
-npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 8 source pins (6 packets + alias + exceptions) + sync invariant
+npm install && npm run build && npm test     # 88 tests green (46 + 34 coverage + 8 lint)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 9 source pins (6 packets + alias + exceptions + lint-lexicon) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
+npx tsx src/cli/tripod.ts lint --corpus         # Level-3/§3C content discipline: ~182 drift findings across P01–P06 (pre-remediation)
 ```
 
 ## Shipped (on `main`)
@@ -108,6 +109,15 @@ npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 
     31 beings (`null` = collective/mixed). `build_aliases.py` reads it authoritatively; alias table re-pinned
     `0.1.2`. Wiki side merged (vault PR #2). Coverage block status unchanged (proper-noun matches already
     gender-immune); entity gender is now correct data.
+  - **SC-0012 — Level-3 / §3C content discipline + `tripod lint` (the drift-guard).** The content layers hold
+    only bare/atomic/plain-language **payload**; everything else is conditioning or doesn't belong (R1–R5).
+    New deterministic 4th verifier `tripod lint [--corpus]` (pinned `_spec/lint-lexicon.json`) flags forbidden
+    grammatical vocabulary, interpretive labels, conditioning-in-Q&A, compounds, and §3C-not-an-entity —
+    completing the stack **legal · complete · atomic-bare-plain · true**. Adopted the rule
+    (`_methodology/level3and3Ccontentdiscipline.md`) + remediated the meaning-map template (§3C entities-only;
+    §6.2 atomic-bare-plain-payload) — wiki PR #3. **Inventory: ~182 findings across P01–P06** (87 vocab · 48
+    §3C-not-entity · 34 labels · 10 compound · 3 conditioning). **Gated follow-on:** agent prompts + spec prose,
+    then the map remediation (P01 first; exegetical; before Slice 4).
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
