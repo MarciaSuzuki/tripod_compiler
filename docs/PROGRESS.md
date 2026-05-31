@@ -115,9 +115,14 @@ npx tsx src/cli/tripod.ts lint --corpus         # Level-3/§3C content disciplin
     grammatical vocabulary, interpretive labels, conditioning-in-Q&A, compounds, and §3C-not-an-entity —
     completing the stack **legal · complete · atomic-bare-plain · true**. Adopted the rule
     (`_methodology/level3and3Ccontentdiscipline.md`) + remediated the meaning-map template (§3C entities-only;
-    §6.2 atomic-bare-plain-payload) — wiki PR #3. **Inventory: ~182 findings across P01–P06** (87 vocab · 48
-    §3C-not-entity · 34 labels · 10 compound · 3 conditioning). **Gated follow-on:** agent prompts + spec prose,
-    then the map remediation (P01 first; exegetical; before Slice 4).
+    §6.2 atomic-bare-plain-payload) — wiki PR #3 (merged). **Inventory: ~182 findings across P01–P06** (87 vocab ·
+    48 §3C-not-entity · 34 labels · 10 compound · 3 conditioning).
+  - **SC-0013 — P01 content remediation (the worked reference).** Applied R1–R5 to P01: §3C ~17 thematic
+    entries → **3 true entities**; every event/framing/pattern relocated to its proper layer (propositions /
+    referential_forms / figures), insight re-homed not deleted (inline `_note`s). **`tripod lint` P01: 12→0
+    clean**; validate 0-block; coverage still clean (abstract overlays 15→2); gold-diff 100% (leaner, 78→56
+    placeholders); 88 tests green. BCD unchanged (P01's TH_ codes were never registered). **Pending the project
+    lead's blessing** (vault PR #4) before rolling P02–P06.
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:

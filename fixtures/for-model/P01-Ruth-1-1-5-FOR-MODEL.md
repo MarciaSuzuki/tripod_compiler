@@ -144,22 +144,15 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
+        "_note": "§3C entities only (SC-0012). Relocated: the opening 'vayhi bimei' formula → FIG_0007 (narrator frame from a later time); the Ephrathite clan identity → being B6 (P5 clan_referent).",
         "entries": [
           {
             "object_id": "O1",
             "function_in_scene": "AFFLICTION_THAT_TRIGGERS_DEPARTURE"
           },
           {
-            "object_id": "TH_WAYHI_BIMEI_FORMULA",
-            "function_in_scene": "CHRONICLE_OPENING_FORMULA_ANCHORING_ERA"
-          },
-          {
             "object_id": "CB_0030",
             "function_in_scene": "FRAMES_DEPARTURE_AS_INTENDED_TEMPORARY"
-          },
-          {
-            "object_id": "TH_EPHRATHITE_CLAN_IDENTIFIER",
-            "function_in_scene": "ANCHORS_FAMILY_IN_BETHLEHEM_FOUNDING_STOCK"
           }
         ]
       },
@@ -173,7 +166,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
 
-      "significant_absence": "YHWH not named as agent of the famine or of the family's departure."
+      "significant_absence": "YHWH not named as the one who sent the famine or who drove the family's departure."
     },
 
     {
@@ -217,20 +210,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_DEATH_OF_ELIMELECH",
-            "function_in_scene": "REMOVES_HUSBAND_AND_FATHER_FROM_HOUSEHOLD"
-          },
-          {
-            "object_id": "TH_HUSBAND_OF_NAOMI_FRAMING",
-            "function_in_scene": "PIVOTS_NARRATIVE_FRAMING_ONTO_NAOMI_AT_HEADS_DEATH"
-          },
-          {
-            "object_id": "TH_TISHAER_REMAINING_RESIDUE",
-            "function_in_scene": "FIRST_OCCURRENCE_OF_RESIDUAL_SURVIVAL_VERB"
-          }
-        ]
+        "_note": "No persistent objects (§3C entities only, SC-0012). Relocated: the death → proposition P7 (DIED); the relational re-naming 'husband of Naomi' → B2 referential_form at P7; the residual 'she remained' → FIG_0052 (P8).",
+        "entries": null
       },
 
       "times_in_scene": {
@@ -238,7 +219,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
 
-      "significant_absence": "Narrator names no agent for the death. No grief described. No mourning ritual recorded."
+      "significant_absence": "Narrator names no one as the cause of the death. No grief described. No mourning ritual recorded."
     },
 
     {
@@ -292,18 +273,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
+        "_note": "§3C entities only (SC-0012). Kept: the about-ten-years duration (a content time reference; §3C admits durations/measures). Relocated: the taking of wives → proposition P9 (TOOK_AS_WIFE); the 'for themselves' initiative → P9 for_self_marker OWN_INITIATIVE.",
         "entries": [
           {
-            "object_id": "TH_TAKING_OF_WIVES",
-            "function_in_scene": "EXTENDS_FAMILY_WITH_TWO_FOREIGN_BORN_MEMBERS"
-          },
-          {
-            "object_id": "TH_TOOK_WIVES_FOR_THEMSELVES_PHRASING",
-            "function_in_scene": "MARKS_MARRIAGES_AS_SONS_OWN_INITIATIVE"
-          },
-          {
             "object_id": "TH_TEN_YEARS_APPROXIMATELY",
-            "function_in_scene": "DURATION_OF_FOREIGN_DWELLING_COMPRESSED_AS_CONTENT_ELEMENT"
+            "function_in_scene": "DURATION_OF_FOREIGN_DWELLING_AS_CONTENT"
           }
         ]
       },
@@ -368,36 +342,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "TH_DEATH_OF_BOTH_SONS",
-            "function_in_scene": "REMOVES_BOTH_SONS_FROM_HOUSEHOLD"
-          },
-          {
-            "object_id": "TH_BOTH_OF_THEM",
-            "function_in_scene": "TOTALITY_MARKER_NOTHING_REMAINS_OF_SONS"
-          },
-          {
-            "object_id": "TH_TISHAER_REMAINING_RESIDUE",
-            "function_in_scene": "SECOND_OCCURRENCE_IMAGE_RHYME_WITH_1_3"
-          },
-          {
-            "object_id": "TH_HA_ISHAH_STRIPPED_REFERENCE",
-            "function_in_scene": "NAMING_DOWN_OF_PROTAGONIST_SIGNALING_REDUCTION"
-          },
-          {
-            "object_id": "TH_YELADIM_TENDER_CHILD_FORM",
-            "function_in_scene": "REFRAMES_LOSS_AS_LOSS_OF_CHILDREN_NOT_HEIRS"
-          },
-          {
-            "object_id": "TH_CUMULATIVE_LOSS_LISTING",
-            "function_in_scene": "SINGLE_PHRASE_COMPRESSION_TALLYING_ALL_THREE_LOSSES"
-          },
-          {
-            "object_id": "TH_DEATH_OF_ELIMELECH_REFERENCED",
-            "function_in_scene": "PRIOR_LOSS_SUMMED_INTO_CUMULATIVE_BEREAVEMENT_PHRASE"
-          }
-        ]
+        "_note": "No persistent objects (§3C entities only, SC-0012). Relocated: the deaths of both sons → proposition P12 (DIED) — 'both of them' is inherent in deceased [B4,B5]; the residual 'she remained' → FIG_0052; the stripped 'the woman' and the tender 'her children' → B3 / B4·B5 referential_forms at P13; the cumulative loss listing → P13 (its children-before-husband order is held in listing_order_form); the prior death summed in → P13's link to P7.",
+        "entries": null
       },
 
       "times_in_scene": {
@@ -418,8 +364,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "era_anchor_being": "B1",
         "era_time_id": "TM_PERIOD_OF_JUDGES",
-        "activity_invoked_by_era_name": "JUDGING",
-        "anchor_form": "TH_WAYHI_BIMEI_FORMULA"
+        "activity_invoked_by_era_name": "JUDGING"
       },
       "inter_proposition_links": {
         "forward_link_to": "P2"
@@ -516,8 +461,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "identified_household": ["B2", "B3", "B4", "B5"],
         "clan_referent": "B6",
-        "clan_anchor_place": "PL1",
-        "clan_identifier_form": "TH_EPHRATHITE_CLAN_IDENTIFIER"
+        "clan_anchor_place": "PL1"
       },
       "inter_proposition_links": {
         "forward_link_to": "P6"
@@ -561,7 +505,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "DIED",
       "event_specific_slots": {
         "deceased": "B2",
-        "referential_form_at_verse": "TH_HUSBAND_OF_NAOMI_FRAMING",
+        "referential_form_at_verse": "HUSBAND_OF_NAOMI",
         "where": "PL2",
         "agent_named": "NONE"
       },
@@ -580,8 +524,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "residual": "B3",
         "referential_form_at_verse": "SHE_PRONOMINAL",
-        "remaining_with": ["B4", "B5"],
-        "residual_verb_form": "TH_TISHAER_REMAINING_RESIDUE"
+        "remaining_with": ["B4", "B5"]
       },
       "inter_proposition_links": {
         "caused_by": "P7",
@@ -616,7 +559,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           }
         ],
-        "marriage_phrasing_form": "TH_TOOK_WIVES_FOR_THEMSELVES_PHRASING",
         "where": "PL2"
       },
       "inter_proposition_links": {
@@ -680,7 +622,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "DIED",
       "event_specific_slots": {
         "deceased": ["B4", "B5"],
-        "totality_marker": "TH_BOTH_OF_THEM",
         "where": "PL2",
         "agent_named": "NONE"
       },
@@ -700,12 +641,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "residual": "B3",
         "referential_form_at_verse": "STRIPPED_TO_HA_ISHAH",
-        "naming_down_form": "TH_HA_ISHAH_STRIPPED_REFERENCE",
-        "residual_verb_form": "TH_TISHAER_REMAINING_RESIDUE",
         "bereft_of_listing": [
           {
             "loss_target": ["B4", "B5"],
-            "referential_form": "TH_YELADIM_TENDER_CHILD_FORM",
+            "referential_form": "YELADIM_TENDER_CHILD",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -716,8 +655,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           }
         ],
-        "listing_order_form": "CHILDREN_BEFORE_HUSBAND_REVERSE_NATURAL_ORDER",
-        "compression_form": "TH_CUMULATIVE_LOSS_LISTING"
+        "listing_order_form": "CHILDREN_BEFORE_HUSBAND_REVERSE_NATURAL_ORDER"
       },
       "inter_proposition_links": {
         "caused_by": "P12",
