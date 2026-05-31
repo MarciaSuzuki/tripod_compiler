@@ -45,7 +45,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P04-D3",
       "decision": "Naomi's renaming proposal compiled as one compound FOR_MODEL proposition with three components, using more-specific closed-list speech_act values.",
-      "description": "The renaming proposal at v.20 has three illocutionary moves: refuse own name, propose new name, give reason. Compiled as one REFUSED_OWN_NAME_AND_PROPOSED_RENAMING proposition with three components. Speech_act mapping uses the more-specific closed-list values where they fit: 'Do not call me Naomi' → REFUSES_USE_OF_OWN_NAME (more specific than DIRECTS_HEARER_NOT_TO_DO); 'Call me Mara' → PROPOSES_NEW_NAME_FOR_SELF (more specific than DIRECTS_HEARER_TO_DO); 'for Shaddai has dealt very bitterly with me' → ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME (same construction as P02 R3 hand-of-YHWH). Using more-specific values where the closed list provides them keeps the no-double-negation rule trivially satisfied: there are no negative directives in the FOR_MODEL output because REFUSES_USE_OF_OWN_NAME carries the refusal-force without a negative directive."
+      "description": "The renaming proposal at v.20 has three illocutionary moves: refuse own name, propose new name, give reason. Compiled as one REFUSED_OWN_NAME_AND_PROPOSED_RENAMING proposition with three components. Speech_act mapping uses the more-specific closed-list values where they fit: 'Do not call me Naomi' → REFUSES_USE_OF_OWN_NAME (more specific than DIRECTS_HEARER_NOT_TO_DO); 'Call me Mara' → PROPOSES_NEW_NAME_FOR_SELF (more specific than DIRECTS_HEARER_TO_DO); 'for Shaddai has dealt very bitterly with me' → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (same construction as P02 R3 hand-of-YHWH). Using more-specific values where the closed list provides them keeps the no-double-negation rule trivially satisfied: there are no negative directives in the FOR_MODEL output because REFUSES_USE_OF_OWN_NAME carries the refusal-force without a negative directive."
     },
     {
       "decision_id": "P04-D4",
@@ -132,13 +132,13 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "value": "REFUSED_OWN_NAME_AND_PROPOSED_RENAMING",
         "source": "1:20 Naomi's renaming proposal",
         "status": "CONFIRMED",
-        "note": "Bounded-open; compound speech event with REFUSES_USE_OF_OWN_NAME + PROPOSES_NEW_NAME_FOR_SELF + ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME components."
+        "note": "Bounded-open; compound speech event with REFUSES_USE_OF_OWN_NAME + PROPOSES_NEW_NAME_FOR_SELF + ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT components."
       },
       {
         "value": "SPOKE_LAMENT_WITH_DOUBLED_DIVINE_ATTRIBUTION",
         "source": "1:21 Naomi's four-part lament",
         "status": "CONFIRMED",
-        "note": "Bounded-open; compound lament with four components carrying ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME and ASKS_RHETORICAL_QUESTION_AS_PROTEST."
+        "note": "Bounded-open; compound lament with four components carrying ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT and ASKS_RHETORICAL_QUESTION_AS_PROTEST."
       },
       {
         "value": "NARRATOR_FRAME_RETURN_AND_ARRIVAL_AT_HARVEST_OPENING",
@@ -540,7 +540,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "component_record_shape": {
         "action": "required - REFUSED_USE_OF_OWN_NAME | PROPOSED_NEW_NAME | STATED_LAMENT_REASON_BITTERED_BY_DIVINE_AGENT",
         "list_position": "required - FIRST | SECOND | THIRD",
-        "speech_act": "required - REFUSES_USE_OF_OWN_NAME | PROPOSES_NEW_NAME_FOR_SELF | ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME"
+        "speech_act": "required - REFUSES_USE_OF_OWN_NAME | PROPOSES_NEW_NAME_FOR_SELF | ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
       },
       "status": "PROPOSED",
       "occurrences_in_pericope": [
@@ -559,7 +559,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "component_record_shape": {
         "action": "required - STATED_FULL_EMPTY_ANTITHESIS | ASKED_RHETORICAL_QUESTION_AS_PROTEST | ASCRIBED_COURTROOM_TESTIMONY_TO_DIVINE_AGENT | ASCRIBED_HARM_TO_DIVINE_AGENT",
         "list_position": "required - FIRST through FOURTH",
-        "speech_act": "required - ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME | ASKS_RHETORICAL_QUESTION_AS_PROTEST"
+        "speech_act": "required - ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT | ASKS_RHETORICAL_QUESTION_AS_PROTEST"
       },
       "status": "PROPOSED",
       "occurrences_in_pericope": [
@@ -828,7 +828,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "ASKS_RHETORICAL_QUESTION_OF_SURPRISED_RECOGNITION",
       "REFUSES_USE_OF_OWN_NAME",
       "PROPOSES_NEW_NAME_FOR_SELF",
-      "ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME",
+      "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT",
       "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
     ],
     "negation_not_double_encoded": "N/A — no DIRECTS_HEARER_NOT_TO_DO in P04 (Naomi's refusal uses REFUSES_USE_OF_OWN_NAME, the more-specific closed-list value, sidestepping the double-negation rule)",

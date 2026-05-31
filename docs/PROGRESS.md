@@ -8,7 +8,7 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 88 tests green (46 + 34 coverage + 8 lint)
+npm install && npm run build && npm test     # 89 tests green (46 + 34 coverage + 9 lint)
 npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 9 source pins (6 packets + alias + exceptions + lint-lexicon) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
@@ -121,8 +121,29 @@ npx tsx src/cli/tripod.ts lint --corpus         # Level-3/§3C content disciplin
     entries → **3 true entities**; every event/framing/pattern relocated to its proper layer (propositions /
     referential_forms / figures), insight re-homed not deleted (inline `_note`s). **`tripod lint` P01: 12→0
     clean**; validate 0-block; coverage still clean (abstract overlays 15→2); gold-diff 100% (leaner, 78→56
-    placeholders); 88 tests green. BCD unchanged (P01's TH_ codes were never registered). **Pending the project
-    lead's blessing** (vault PR #4) before rolling P02–P06.
+    placeholders); 88 tests green. BCD unchanged (P01's TH_ codes were never registered). P01 reference **blessed +
+    merged** (vault PR #4, repo PR #14).
+  - **SC-0013 — P02–P06 roll + corrective second pass.** First roll applied the discipline but over-deleted §3C
+    on a false premise ("P02–P05 had no §3C entities"). **Corrective second pass** (this session) brought P02–P06
+    to the blessed-P01 standard per the lead's rulings: **restored the real Concept-Bank §3C entities** the first
+    pass wrongly removed — P02 (bread/hesed/blessing/rest), P04 (barley-harvest), P05 (chayil/favor/gleaning/
+    miqreh/blessing + the within-day duration), P06 (FOR_MODEL additively aligned to the map's CB_ keepers);
+    P03 §3C "None" confirmed correct. **Replaced every generic count-note with per-item relocation notes** (item →
+    named destination, matching P01) and added the relocation made-real bits (kallah/Moabite/foreman →
+    `referential_form`; mother's-house → `PL`). Per-item relocation audit: `docs/SC-0013-RELOCATION-AUDIT.md`
+    (proves relocate-never-delete; every removed item → destination, verified). **Corpus lint 19 → 14 (0 tier-1)**
+    after SC-0014; validate 6/6; coverage 6/6 block-clean (245/245, 0 unanchored); gold-diff agreement unchanged
+    (P01 100·P02 90·P03 100·P04 95·P05 98·P06 96); 89 tests green; check-drift clean. **Residuals surfaced for the
+    lead (not decided):** (a) the **§4 Q&A dialogue compounds** (13, each with a proposed atomization in the audit);
+    (b) **P04's doubled-divine-name figure** — the YHWH×2/Shaddai×2 pattern has no figure of its own (the four
+    invocations survive); a `FIG` is **proposed, not added** (STOP for the lead). Pending blessing — vault PR #5 /
+    repo PR #15 (superseded by this pass).
+  - **SC-0014 — SPEECH_ACT rename (governed L1).** `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` →
+    `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drops the "AGENT" role-theory jargon, R4; "GOD" not "YHWH" — SPEECH_ACT
+    is cross-corpus). `validation-rules.json` **v0.6 → v0.7**, `compilation-log.schema.json` **v0.4 → v0.5**
+    (enum kept in sync), both re-pinned; P02/P04 FOR_MODELs (×5) + COMPILATION-LOGs + Agent-3 prompt + Pilot-2
+    glossary migrated. Removed the 5 FOR_MODEL `«agent»` lint findings. (Incidentally re-synced the vault `_spec/`
+    schemas, which were behind the compiler at v0.3 — missing SC-0007's slots; flagged for a vault-writeback pass.)
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
