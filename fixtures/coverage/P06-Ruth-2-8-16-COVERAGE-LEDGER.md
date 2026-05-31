@@ -3,13 +3,13 @@ type: "coverage-ledger"
 pericope: "P06"
 bcv: "Ruth 2:8-16"
 source: "BHSA 2021 · extractor 0.1.0"
-status: "blocked"
+status: "valid"
 pilot: "pilot-2"
 ---
 
 # P06 — Ruth 2:8-16 — COVERAGE LEDGER
 
-> **P06 coverage: 57/58 explicit referents accounted for · 39 implied subjects flagged · 0 unanchored entities · 36 source nouns to tick**
+> **P06 coverage: 58/58 explicit referents accounted for · 39 implied subjects flagged · 0 unanchored entities · 36 source nouns to tick · 1 accepted exception**
 >
 > Gate order: conformance → **coverage (this)** → reading-quality. Coverage reconciles the BHSA
 > referent set R against the map's entity mentions M (docs/COVERAGE.md). "Nothing added" is
@@ -91,7 +91,7 @@ _`proper` = named referent absent from the map (**block**); `checklist` = source
 | 2:12b | מַשְׂכֻּרְתֵּ֜ךְ | `wage` | common_noun | checklist | tick |
 | 2:12b | מַשְׂכֻּרְתֵּ֜ךְ | `wage` | suffix | minor | minor |
 | 2:12b | אֱלֹהֵ֣י | `god(s)` | common_noun | checklist | tick |
-| 2:12b | יִשְׂרָאֵ֔ל | `Israel` | proper_noun | proper | ✗ block |
+| 2:12b | יִשְׂרָאֵ֔ל | `Israel` | proper_noun | proper | ✓ accepted (EPITHET_INTERNAL) |
 | 2:12b | תַּֽחַת | `under part` | common_noun | checklist | tick |
 | 2:12b | כְּנָפָֽיו | `wing` | common_noun | checklist | tick |
 | 2:12b | כְּנָפָֽיו | `wing` | suffix | minor | minor |
@@ -160,30 +160,30 @@ _The class a human reviewer most often misses. Confirm the participant; `vayhi`-
 
 | verse | surface | gloss | resolution |
 | --- | --- | --- | --- |
-| 2:8a | שָׁמַ֣עַתְּ | `hear` | → likely B9 |
-| 2:8a | תֵּלְכִי֙ | `walk` | → likely B9 |
-| 2:8a | תַעֲבוּרִ֖י | `pass` | → likely B9 |
-| 2:8b | תִדְבָּקִ֖ין | `cling, cleave to` | → likely B9 |
+| 2:8a | שָׁמַ֣עַתְּ | `hear` | → likely B16 |
+| 2:8a | תֵּלְכִי֙ | `walk` | → likely B16 |
+| 2:8a | תַעֲבוּרִ֖י | `pass` | → likely B16 |
+| 2:8b | תִדְבָּקִ֖ין | `cling, cleave to` | → likely B16 |
 | 2:9a | יִקְצֹרוּן֙ | `harvest` | → likely B13 |
-| 2:9a | הָלַ֣כְתְּ | `walk` | → likely B9 |
+| 2:9a | הָלַ֣כְתְּ | `walk` | → likely B16 |
 | 2:9a | צִוִּ֛יתִי | `command` | → likely B13 |
-| 2:9b | צָמִ֗ת | `be thirsty` | → likely B9 |
-| 2:9b | הָלַכְתְּ֙ | `walk` | → likely B9 |
-| 2:9b | שָׁתִ֕ית | `drink` | → likely B9 |
-| 2:10a | תִּפֹּל֙ | `fall` | → likely B10 |
-| 2:10a | תִּשְׁתַּ֖חוּ | `bow down` | → likely B10 |
-| 2:10b | תֹּ֣אמֶר | `say` | → likely B10 |
+| 2:9b | צָמִ֗ת | `be thirsty` | → likely B16 |
+| 2:9b | הָלַכְתְּ֙ | `walk` | → likely B16 |
+| 2:9b | שָׁתִ֕ית | `drink` | → likely B16 |
+| 2:10a | תִּפֹּל֙ | `fall` | → likely B3 |
+| 2:10a | תִּשְׁתַּ֖חוּ | `bow down` | → likely B3 |
+| 2:10b | תֹּ֣אמֶר | `say` | → likely B3 |
 | 2:10b | מָצָ֨אתִי | `find` | → likely B10 |
-| 2:11a | יֹּ֣אמֶר | `say` | → likely B13 |
-| 2:11a | עָשִׂית֙ | `make` | → likely B10 |
-| 2:11b | תַּֽעַזְבִ֞י | `leave` | → likely B10 |
-| 2:11b | תֵּ֣לְכִ֔י | `walk` | → likely B10 |
-| 2:11b | יָדַ֖עַתְּ | `know` | → likely B10 |
-| 2:12b | בָּ֖את | `come` | → likely B10 |
-| 2:13a | תֹּאמֶר | `say` | → likely B10 |
+| 2:11a | יֹּ֣אמֶר | `say` | → likely B10 |
+| 2:11a | עָשִׂית֙ | `make` | → likely B3 |
+| 2:11b | תַּֽעַזְבִ֞י | `leave` | → likely B3 |
+| 2:11b | תֵּ֣לְכִ֔י | `walk` | → likely B3 |
+| 2:11b | יָדַ֖עַתְּ | `know` | → likely B3 |
+| 2:12b | בָּ֖את | `come` | → likely B3 |
+| 2:13a | תֹּאמֶר | `say` | → likely B3 |
 | 2:13a | אֶמְצָא | `find` | → likely B10 |
-| 2:13a | נִֽחַמְתָּ֔נִי | `repent, console` | → likely B13 |
-| 2:13a | דִבַּ֖רְתָּ | `speak` | → likely B13 |
+| 2:13a | נִֽחַמְתָּ֔נִי | `repent, console` | → likely B10 |
+| 2:13a | דִבַּ֖רְתָּ | `speak` | → likely B10 |
 | 2:14a | גֹּ֤שִֽׁי | `approach` | → likely B9 |
 | 2:14a | אָכַ֣לְתְּ | `eat` | → likely B9 |
 | 2:14a | טָבַ֥לְתְּ | `dip` | → likely B9 |

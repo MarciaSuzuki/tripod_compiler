@@ -13,7 +13,7 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
-import { loadSourcePacket, loadAliasTable, sourcePacketPath } from "../reader/source-packet.js";
+import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions } from "../reader/source-packet.js";
 import { reconcile } from "../engine/coverage.js";
 import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
 
@@ -245,6 +245,7 @@ program
   .option("--json", "emit the structured ledger(s) as JSON")
   .action((targets: string[], opts: { book: string; fmDir: string; corpus?: boolean; out?: string; outDir?: string; json?: boolean }) => {
     const aliases = loadAliasTable(opts.book);
+    const exceptions = loadCoverageExceptions();
 
     const resolveOne = (arg: string): { pericope: string; led: ReturnType<typeof reconcile>; packet: ReturnType<typeof loadSourcePacket> } => {
       let fmPath: string;
@@ -261,7 +262,7 @@ program
       }
       const note = readArtifactNote(fmPath);
       const packet = loadSourcePacket(sourcePacketPath(opts.book, pericope));
-      return { pericope, led: reconcile(packet, note.json as any, aliases), packet };
+      return { pericope, led: reconcile(packet, note.json as any, aliases, exceptions), packet };
     };
 
     // assemble the target list (explicit args, and/or --corpus auto-discovery)
@@ -318,24 +319,27 @@ program
 
     // corpus summary
     console.log(`Coverage — ${opts.book} corpus (${results.length} pericope${results.length === 1 ? "" : "s"})\n`);
-    let accFor = 0, accTot = 0, implied = 0, unanchored = 0, withFindings = 0;
+    let accFor = 0, accTot = 0, implied = 0, unanchored = 0, accepted = 0, withFindings = 0;
     for (const { led: l } of results) {
       const s = l.score;
       accFor += s.explicit_total - s.proper_unmapped;
       accTot += s.explicit_total;
       implied += s.implied_flagged;
       unanchored += s.unanchored;
+      accepted += s.accepted;
       if (!l.ok) withFindings++;
       console.log(
         `  ${l.ok ? "✓" : "✗"} ${l.pericope}  ${(l.bcv + "").padEnd(13)} ` +
           `${s.explicit_total - s.proper_unmapped}/${s.explicit_total} explicit · ${s.implied_flagged} implied · ` +
-          `${s.unanchored} unanchored · ${s.checklist} tick` + (l.ok ? "" : `   ← ${l.blockers.length} blocker(s)`),
+          `${s.unanchored} unanchored · ${s.checklist} tick` + (s.accepted ? ` · ${s.accepted} accepted` : "") +
+          (l.ok ? "" : `   ← ${l.blockers.length} blocker(s)`),
       );
       for (const b of l.blockers) console.log(`       ✗ ${b}`);
     }
     console.log(
       `\n— corpus: ${results.length - withFindings}/${results.length} block-clean · ${withFindings} with findings · ` +
-        `${accFor}/${accTot} explicit accounted · ${implied} implied flagged · ${unanchored} unanchored —`,
+        `${accFor}/${accTot} explicit accounted · ${implied} implied flagged · ${unanchored} unanchored` +
+        (accepted ? ` · ${accepted} accepted exception${accepted === 1 ? "" : "s"}` : "") + " —",
     );
     if (opts.outDir) console.log(`  ledgers written to ${opts.outDir}/`);
     process.exitCode = withFindings ? 1 : 0;

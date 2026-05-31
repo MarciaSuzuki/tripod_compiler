@@ -15,17 +15,18 @@ pilot: "pilot-2"
 > referent set R against the map's entity mentions M (docs/COVERAGE.md). "Nothing added" is
 > near-mechanical; "nothing missing" is explicit (airtight) + implied (flagged) + interpretive (tick).
 
-## MATCHED — source expression ↔ map entity (5)
+## MATCHED — source expression ↔ map entity (6)
 
 | verse | surface | gloss | class | entity | via |
 | --- | --- | --- | --- | --- | --- |
 | 1:16a | רוּת֙ | `Ruth` | proper_noun | **B9** | name |
 | 1:16b | עַמֵּ֣ךְ | `people` | common_noun | **B31** | referential_form |
+| 1:16b | עַמֵּ֣ךְ | `people` | suffix | **B31** | referential_form |
 | 1:16b | עַמִּ֔י | `people` | common_noun | **B31** | referential_form |
 | 1:16b | עַמִּ֔י | `people` | suffix | **B3** | lexical |
 | 1:17b | יְהוָ֥ה | `YHWH` | proper_noun | **B10** | name |
 
-## UNMAPPED_SOURCE — in the text, not (yet) in the map (27)
+## UNMAPPED_SOURCE — in the text, not (yet) in the map (26)
 
 _`proper` = named referent absent from the map (**block**); `checklist` = source noun the reviewer ticks; `minor` = pronoun/suffix/adjective (bound)._
 
@@ -44,7 +45,6 @@ _`proper` = named referent absent from the map (**block**); `checklist` = source
 | 1:16a | עָזְבֵ֖ךְ | `leave` | suffix | minor | minor |
 | 1:16a | אַחֲרָ֑יִךְ | `after` | common_noun | checklist | tick |
 | 1:16a | אַחֲרָ֑יִךְ | `after` | suffix | minor | minor |
-| 1:16b | עַמֵּ֣ךְ | `people` | suffix | minor | minor |
 | 1:16b | אלֹהַ֖יִךְ | `god(s)` | common_noun | checklist | tick |
 | 1:16b | אלֹהַ֖יִךְ | `god(s)` | suffix | minor | minor |
 | 1:16b | אֱלֹהָֽי | `god(s)` | common_noun | checklist | tick |
@@ -93,14 +93,14 @@ _The class a human reviewer most often misses. Confirm the participant; `vayhi`-
 | --- | --- | --- | --- |
 | 1:15a | תֹּ֗אמֶר | `say` | → likely B3 |
 | 1:15b | שׁ֖וּבִי | `return` | → likely B3 |
-| 1:16a | תִּפְגְּעִי | `meet` | → likely B10 |
+| 1:16a | תִּפְגְּעִי | `meet` | → likely B3 |
 | 1:16b | אֵלֵ֗ךְ | `walk` | → likely B10 |
-| 1:16b | תֵּלְכִ֜י | `walk` | → likely B10 |
+| 1:16b | תֵּלְכִ֜י | `walk` | → likely B3 |
 | 1:16b | אָלִ֔ין | `lodge` | → likely B10 |
-| 1:16b | תָּלִ֨ינִי֙ | `lodge` | → likely B10 |
-| 1:17a | תָּמ֨וּתִי֙ | `die` | → likely B10 |
+| 1:16b | תָּלִ֨ינִי֙ | `lodge` | → likely B3 |
+| 1:17a | תָּמ֨וּתִי֙ | `die` | → likely B3 |
 | 1:17a | אָמ֔וּת | `die` | → likely B10 |
 | 1:17a | אֶקָּבֵ֑ר | `bury` | → likely B10 |
-| 1:17b | יֹסִ֔יף | `add` | → likely B31 |
+| 1:17b | יֹסִ֔יף | `add` | → likely B10 |
 | 1:18a | תֵּ֕רֶא | `see` | → likely B3 |
 | 1:18b | תֶּחְדַּ֖ל | `cease` | → likely B3 |

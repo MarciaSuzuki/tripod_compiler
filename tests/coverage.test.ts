@@ -258,3 +258,35 @@ describe("reconcile — implied subjects + abstract overlays", () => {
     expect(led.ok).toBe(true);
   });
 });
+
+describe("reconcile — reviewer-accepted exceptions downgrade blockers", () => {
+  it("accepts an UNMAPPED_SOURCE proper-noun omission by (gloss, verse-prefix)", () => {
+    // "man" hosts+maps B2 (so B2 isn't unanchored); Boaz is the one omission blocker.
+    const p = packet([
+      ref({ surface: "אִ֜ישׁ", gloss: "man", gender: "m", verse: "1:1" }),
+      ref({ surface: "בֹּ֫עַז", gloss: "Boaz", referent_class: "proper_noun", gender: "m", verse: "1:1" }),
+    ]);
+    const fm = { level_2_scenes: [{ scene_id: "S1", verse_range: "1:1", beings_in_scene: { entries: [{ being_id: "B2", referential_form: "UNNAMED_MAN_FROM_BETHLEHEM" }] } }], level_3_propositions: [] };
+    const blocked = reconcile(p, fm, ALIASES, []);
+    expect(blocked.ok).toBe(false);
+    expect(blocked.blockers).toHaveLength(1); // only Boaz
+    const accepted = reconcile(p, fm, ALIASES, [
+      { pericope: "PX", kind: "UNMAPPED_SOURCE", gloss: "Boaz", verse: "1:1", reason: "EPITHET_INTERNAL", accepted_by: "tester" },
+    ]);
+    expect(accepted.ok).toBe(true);
+    expect(accepted.score.accepted).toBe(1);
+    expect(accepted.score.proper_unmapped).toBe(0);
+    expect(accepted.unmapped_source.find((u) => u.gloss === "Boaz")?.accepted?.reason).toBe("EPITHET_INTERNAL");
+  });
+
+  it("accepts an UNANCHORED_ENTITY by entity_id, and ignores a non-matching exception", () => {
+    // a pronoun (minor, can't host a TIME entity, never itself a blocker) leaves TM_INVENTED as the lone blocker
+    const p = packet([ref({ surface: "ה֥וּא", gloss: "he", referent_class: "pronoun", verse: "1:2" })]);
+    const fm = { level_2_scenes: [{ scene_id: "S1", verse_range: "1:2", times_in_scene: { entries: [{ time_id: "TM_INVENTED" }] } }], level_3_propositions: [] };
+    expect(reconcile(p, fm, ALIASES, []).ok).toBe(false);
+    expect(reconcile(p, fm, ALIASES, [{ pericope: "PX", kind: "UNANCHORED_ENTITY", entity_id: "TM_OTHER", reason: "x" }]).ok).toBe(false); // wrong id
+    const accepted = reconcile(p, fm, ALIASES, [{ pericope: "PX", kind: "UNANCHORED_ENTITY", entity_id: "TM_INVENTED", reason: "ACCEPTED_SETTING" }]);
+    expect(accepted.ok).toBe(true);
+    expect(accepted.unanchored_entities.find((e) => e.entity_id === "TM_INVENTED")?.accepted?.reason).toBe("ACCEPTED_SETTING");
+  });
+});

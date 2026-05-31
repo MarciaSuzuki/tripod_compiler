@@ -15,7 +15,7 @@ pilot: "pilot-2"
 > referent set R against the map's entity mentions M (docs/COVERAGE.md). "Nothing added" is
 > near-mechanical; "nothing missing" is explicit (airtight) + implied (flagged) + interpretive (tick).
 
-## MATCHED — source expression ↔ map entity (28)
+## MATCHED — source expression ↔ map entity (29)
 
 | verse | surface | gloss | class | entity | via |
 | --- | --- | --- | --- | --- | --- |
@@ -36,6 +36,7 @@ pilot: "pilot-2"
 | 1:9a | יְהוָה֙ | `YHWH` | proper_noun | **B10** | name |
 | 1:9a | אִשָּׁ֖ה | `woman` | common_noun | **B3** | referential_form |
 | 1:10b | עַמֵּֽךְ | `people` | common_noun | **B31** | referential_form |
+| 1:10b | עַמֵּֽךְ | `people` | suffix | **B31** | referential_form |
 | 1:11a | נָעֳמִי֙ | `Naomi` | proper_noun | **B3** | name |
 | 1:11a | בְנֹתַ֔י | `daughter` | common_noun | **B9** | referential_form |
 | 1:11a | בְנֹתַ֔י | `daughter` | suffix | **B9** | referential_form |
@@ -48,7 +49,7 @@ pilot: "pilot-2"
 | 1:14b | עָרְפָּה֙ | `Orpah` | proper_noun | **B8** | name |
 | 1:14b | ר֖וּת | `Ruth` | proper_noun | **B9** | name |
 
-## UNMAPPED_SOURCE — in the text, not (yet) in the map (58)
+## UNMAPPED_SOURCE — in the text, not (yet) in the map (57)
 
 _`proper` = named referent absent from the map (**block**); `checklist` = source noun the reviewer ticks; `minor` = pronoun/suffix/adjective (bound)._
 
@@ -84,7 +85,6 @@ _`proper` = named referent absent from the map (**block**); `checklist` = source
 | 1:9b | קֹולָ֖ן | `sound` | suffix | minor | minor |
 | 1:10a | לָּ֑הּ | `to` | suffix | minor | minor |
 | 1:10b | אִתָּ֥ךְ | `together with` | suffix | minor | minor |
-| 1:10b | עַמֵּֽךְ | `people` | suffix | minor | minor |
 | 1:11b | עֹֽוד | `duration` | common_noun | checklist | tick |
 | 1:11b | לִ֤י | `to` | suffix | minor | minor |
 | 1:11b | בָנִים֙ | `son` | common_noun | checklist | tick |
@@ -152,32 +152,32 @@ _The class a human reviewer most often misses. Confirm the participant; `vayhi`-
 
 | verse | surface | gloss | resolution |
 | --- | --- | --- | --- |
-| 1:6a | תָּ֖שָׁב | `return` | → likely B10 |
-| 1:6b | שָֽׁמְעָה֙ | `hear` | → likely B10 |
-| 1:7a | תֵּצֵ֗א | `go out` | → likely B10 |
+| 1:6a | תָּ֖שָׁב | `return` | → likely B3 |
+| 1:6b | שָֽׁמְעָה֙ | `hear` | → likely B3 |
+| 1:7a | תֵּצֵ֗א | `go out` | → likely B3 |
 | 1:7a | הָיְתָה | `be` | likely impersonal — dismiss |
-| 1:7b | תֵּלַ֣כְנָה | `walk` | → likely B10 |
-| 1:8a | לֵ֣כְנָה | `walk` | → likely B10 |
-| 1:8a | שֹּׁ֔בְנָה | `return` | → likely B10 |
-| 1:8b | עֲשִׂיתֶ֛ם | `make` | → likely B2 |
-| 1:9a | מְצֶ֣אןָ | `find` | → likely B10 |
-| 1:9b | תִּשַּׁ֣ק | `kiss` | → likely B10 |
-| 1:9b | תִּשֶּׂ֥אנָה | `lift` | → likely B10 |
-| 1:9b | תִּבְכֶּֽינָה | `weep` | → likely B10 |
-| 1:10a | תֹּאמַ֖רְנָה | `say` | → likely B10 |
+| 1:7b | תֵּלַ֣כְנָה | `walk` | → likely B3 |
+| 1:8a | לֵ֣כְנָה | `walk` | → likely B3 |
+| 1:8a | שֹּׁ֔בְנָה | `return` | → likely B3 |
+| 1:8b | עֲשִׂיתֶ֛ם | `make` | → likely B10 |
+| 1:9a | מְצֶ֣אןָ | `find` | → likely B3 |
+| 1:9b | תִּשַּׁ֣ק | `kiss` | → likely B3 |
+| 1:9b | תִּשֶּׂ֥אנָה | `lift` | → likely B3 |
+| 1:9b | תִּבְכֶּֽינָה | `weep` | → likely B3 |
+| 1:10a | תֹּאמַ֖רְנָה | `say` | → likely B3 |
 | 1:10b | נָשׁ֖וּב | `return` | → likely B10 |
-| 1:11a | שֹׁ֣בְנָה | `return` | → likely B10 |
-| 1:11a | תֵלַ֖כְנָה | `walk` | → likely B10 |
+| 1:11a | שֹׁ֣בְנָה | `return` | → likely B3 |
+| 1:11a | תֵלַ֖כְנָה | `walk` | → likely B3 |
 | 1:11b | הָי֥וּ | `be` | likely impersonal — dismiss |
-| 1:12a | שֹׁ֤בְנָה | `return` | → likely B10 |
-| 1:12a | לֵ֔כְןָ | `walk` | → likely B10 |
+| 1:12a | שֹׁ֤בְנָה | `return` | → likely B3 |
+| 1:12a | לֵ֔כְןָ | `walk` | → likely B3 |
 | 1:12a | זָקַ֖נְתִּי | `be old` | → likely B10 |
 | 1:12b | אָמַ֨רְתִּי֙ | `say` | → likely B10 |
 | 1:12b | הָיִ֤יתִי | `be` | likely impersonal — dismiss |
 | 1:12b | יָלַ֥דְתִּי | `bear` | → likely B10 |
-| 1:13a | תְּשַׂבֵּ֗רְנָה | `examine` | → likely B10 |
-| 1:13a | יִגְדָּ֔לוּ | `be strong` | → likely TH_AGE_IMPOSSIBILITY_STATEMENT |
-| 1:13a | תֵּֽעָגֵ֔נָה | `withdraw` | → likely B10 |
-| 1:13b | מַר | `be bitter` | → likely TH_AGE_IMPOSSIBILITY_STATEMENT |
-| 1:14a | תִּשֶּׂ֣נָה | `lift` | → likely B10 |
-| 1:14a | תִּבְכֶּ֖ינָה | `weep` | → likely B10 |
+| 1:13a | תְּשַׂבֵּ֗רְנָה | `examine` | → likely B3 |
+| 1:13a | יִגְדָּ֔לוּ | `be strong` | → likely B10 |
+| 1:13a | תֵּֽעָגֵ֔נָה | `withdraw` | → likely B3 |
+| 1:13b | מַר | `be bitter` | → likely B10 |
+| 1:14a | תִּשֶּׂ֣נָה | `lift` | → likely B3 |
+| 1:14a | תִּבְכֶּ֖ינָה | `weep` | → likely B3 |

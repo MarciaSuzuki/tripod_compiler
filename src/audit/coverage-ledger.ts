@@ -29,10 +29,21 @@ export function formatLedgerText(led: CoverageLedger): string {
     lines.push(`   ✗ ${led.blockers.length} blocker(s):`);
     for (const b of led.blockers) lines.push(`      ✗ ${b}`);
   }
-  const proper = led.unmapped_source.filter((u) => u.subtag === "proper");
+  const proper = led.unmapped_source.filter((u) => u.subtag === "proper" && !u.accepted);
   if (proper.length) {
     lines.push(`   possible omissions (named referents absent from the map):`);
     for (const u of proper) lines.push(`      ✗ ${u.verse}  ${u.surface}  ${u.gloss}`);
+  }
+  const accepted = [
+    ...led.unmapped_source.filter((u) => u.accepted),
+    ...led.unanchored_entities.filter((e) => e.accepted),
+  ];
+  if (accepted.length) {
+    lines.push(`   accepted exceptions (reviewer signed off — not blocking):`);
+    for (const u of led.unmapped_source.filter((x) => x.accepted))
+      lines.push(`      ✓ ${u.verse}  ${u.surface} (${u.gloss})  [${u.accepted!.reason}${u.accepted!.accepted_by ? ` — ${u.accepted!.accepted_by}` : ""}]`);
+    for (const e of led.unanchored_entities.filter((x) => x.accepted))
+      lines.push(`      ✓ ${e.entity_id} (${e.kind})  [${e.accepted!.reason}${e.accepted!.accepted_by ? ` — ${e.accepted!.accepted_by}` : ""}]`);
   }
   const checklist = led.unmapped_source.filter((u) => u.subtag === "checklist");
   if (checklist.length) {
@@ -58,7 +69,9 @@ export function renderLedgerNote(led: CoverageLedger, packet: SourcePacket): str
   const matchedRows = led.matched.map((m) => [m.verse, m.surface, `\`${m.gloss}\``, m.referent_class, `**${m.entity_id}**`, m.via]);
   const unmapped = led.unmapped_source.filter((u) => u.subtag !== "implied_subject");
   const unmappedRows = unmapped.map((u) => {
-    const sev = u.subtag === "proper" ? "✗ block" : u.subtag === "checklist" ? "tick" : "minor";
+    const sev = u.accepted
+      ? `✓ accepted (${u.accepted.reason})`
+      : u.subtag === "proper" ? "✗ block" : u.subtag === "checklist" ? "tick" : "minor";
     return [u.verse, u.surface, `\`${u.gloss}\``, u.referent_class, u.subtag, sev];
   });
   const impliedRows = led.unmapped_source
@@ -69,7 +82,7 @@ export function renderLedgerNote(led: CoverageLedger, packet: SourcePacket): str
     e.kind,
     e.verses.join(", "),
     e.referential_forms.join("; ") || "—",
-    e.abstract ? "~ warn (abstract overlay)" : "✗ block",
+    e.accepted ? `✓ accepted (${e.accepted.reason})` : e.abstract ? "~ warn (abstract overlay)" : "✗ block",
   ]);
 
   return (

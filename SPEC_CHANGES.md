@@ -63,6 +63,8 @@ number bound to exactly one decision.
 | SC-0007 | Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot) | SHIPPED |
 | SC-0008 | Template relics: retire obsolete for-model/audit templates | PROPOSED |
 | SC-0009 | Merge PL_HA_ARETZ → PL_LAND_OF_JUDAH (same-referent principle, Layer-3) | SHIPPED |
+| SC-0010 | Coverage recorded-exception mechanism + P06 "Israel" epithet-internal ruling | SHIPPED |
+| SC-0011 | BCD `gender` frontmatter field (authoritative; replaces the prose-guess) | SHIPPED |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -94,6 +96,57 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0011 — BCD `gender` frontmatter field (authoritative; retires the prose-guess)
+- **Date:** 2026-05-30
+- **Decided by:** Marcia Suzuki
+- **Status:** **SHIPPED** — wiki side **merged** (vault PR [MarciaSuzuki/ruth-pilot-b-wiki#2](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/2), rebased on `main`); compiler side shipped.
+- **Type:** registry/BCD (Layer 3) — **no `validation-rules.json` change**.
+- **Summary:** The coverage matcher used entity gender to disambiguate unnamed referents, but the only
+  source was a **prose-scan guess** in `build_aliases.py` (count kinship terms in the BCD entry). It was
+  unreliable — it read **YHWH** and **the field-foreman** as feminine (off surrounding pronouns) and three
+  collectives (whole-city, clan, people-of-YHWH) as single-gendered — and a wrong gender can veto a correct
+  match (it was wrongly flagging YHWH as missing until the corpus pass made proper-noun **name** matches
+  gender-immune, SC-0010's sibling fix). Replace the guess with an **authoritative `gender` frontmatter
+  field** on every being.
+- **Spec change (exact):** BCD — add `gender: "m" | "f" | null` to all 31 being notes (after `b-code`).
+  `null` = collective / mixed / office (do not guess). `build_aliases.py` reads it authoritatively (explicit
+  `null` ⇒ no gender); the prose guess survives only as a fallback for a being lacking the field. Alias table
+  re-pinned `aliases-0.1.1 → 0.1.2` (9 gender corrections; all non-gender fields byte-identical).
+- **Artifact migration:** none (frontmatter-only; no FOR_MODEL/map/prose changes).
+- **Validator impact:** none to block status — the corpus stays 6/6 clean (the proper-noun name match is
+  already authoritative). Entity gender is now correct data for unnamed-referent disambiguation.
+- **Version:** no spec-version bump; alias-table source re-pinned `0.1.2`.
+- **Verification:** 80 tests green; `check-drift` ok; `tripod coverage --corpus` 6/6 clean; B10 (YHWH) gender = `m`.
+
+---
+
+## SC-0010 — Coverage recorded-exception mechanism + the P06 "Israel" epithet-internal ruling
+- **Date:** 2026-05-30
+- **Decided by:** Marcia Suzuki
+- **Status:** **SHIPPED**
+- **Type:** tooling/spec (coverage) + a registry ruling — **no `validation-rules.json` change**.
+- **Summary:** Coverage's "nothing missing" check blocks on a named referent the map omits. Some findings
+  are *legitimately* not entities — the reviewer must be able to **sign off** so the block is recorded as
+  accepted rather than silently suppressed (the open item in `docs/COVERAGE.md`: "how the reviewer signs off
+  on exceptions"). Add a pinned `_spec/coverage-exceptions.json`; `tripod coverage` downgrades any matched
+  finding to **ACCEPTED** (still shown in the ledger, with the reason + provenance), so it no longer fails
+  the run. **First exception:** P06 — "Israel" (יִשְׂרָאֵל, 2:12) occurs inside the divine title "the God of
+  Israel"; it qualifies the divine name, not a separately-tracked participant, so no `PL_ISRAEL` entity is
+  warranted there. Ruling: **EPITHET_INTERNAL**.
+- **Spec change (exact):** new vendored artifact `_spec/coverage-exceptions.json` (pinned in
+  `_spec/pins.json` → `sources`). Match keys: `UNMAPPED_SOURCE` → (pericope, gloss, verse-prefix);
+  `UNANCHORED_ENTITY` → (pericope, entity_id). Each entry carries `reason` + `accepted_by`/`accepted_on`/`sc_ref`.
+- **Artifact migration:** none (no FOR_MODEL/map edits — the map intentionally does **not** tag Israel at 2:12).
+- **Validator impact:** `reconcile()` gains an `exceptions` arg; accepted findings are excluded from the
+  block counts and tallied as `score.accepted`; `ok` ignores accepted findings. Ledger + CLI show an
+  "accepted exceptions" section and `· N accepted` in the score line. **Result: the full P01–P06 corpus is
+  6/6 block-clean** (245/245 explicit accounted, 1 by this sign-off, 0 unanchored).
+- **Version:** no spec-version bump; `coverage-exceptions.json` pinned at `0.1.0`.
+- **Verification:** 80 tests green (raw P06 still flags Israel; the sign-off downgrades it to accepted;
+  synthetic accept tests for both finding kinds); `check-drift` ok.
 
 ---
 

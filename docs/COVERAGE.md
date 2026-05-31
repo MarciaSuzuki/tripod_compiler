@@ -114,9 +114,10 @@ everything" to "adjudicate the exceptions."
   → `UNANCHORED_ENTITY` (non-abstract) blocks; `UNMAPPED_SOURCE` **proper noun** blocks; common-noun
   *checklist*, *implied*, *minor*, and abstract `TH_`/`CB_` overlays warn (interpretive — reviewer ticks).
 - [x] Where the ledger is stored and how the reviewer signs off on exceptions.
-  → `tripod coverage <P> --out <file>` writes a `type: "coverage-ledger"` wiki note (the three bucket
-  tables + score) alongside the COMPILATION-LOG; sign-off on the exceptions list stays human
-  (`docs/READING_QUALITY.md`, the fidelity ceiling).
+  → `tripod coverage <P> --out <file>` / `--out-dir <dir>` writes a `type: "coverage-ledger"` wiki note (the
+  three bucket tables + score) alongside the COMPILATION-LOG. **Sign-off is now mechanized (SC-0010):** a
+  reviewer records an accepted finding in the pinned `_spec/coverage-exceptions.json` (with reason +
+  provenance), and coverage downgrades it from block to **ACCEPTED** — recorded, re-pinned, never silent.
 - [x] **`PL_HA_ARETZ` ("the land", 1:1) resolved — SC-0009.** Merged into `PL_LAND_OF_JUDAH` as the same
   referent (the famine-land of 1:1 = the land of Judah of 1:6–7), distinguished by `referential_form`, not a
   second PL-code. The BCD entry gained `hebrew_aliases` הָאָרֶץ/אֶרֶץ; "the land" now reconciles to MATCHED.
@@ -128,8 +129,9 @@ everything" to "adjudicate the exceptions."
   near-airtight "nothing added" claim, corpus-wide). Engine hardening from the run: a proper-noun **name
   match is authoritative, not vetoed by the heuristic alias gender** (the BCD prose-scan mis-guessed YHWH as
   feminine, which had been wrongly blocking YHWH → B10).
-- [ ] **Adjudicate the one genuine finding — P06 "Israel" (2:12).** The text names יִשְׂרָאֵל ("the God of
-  Israel") but the map tags no Israel entity (`PL_ISRAEL` exists in the BCD, unused at 2:12). Project-lead
-  call: tag `PL_ISRAEL` there, or rule the divine epithet needs no separate entity (and record the exception).
+- [x] **P06 "Israel" (2:12) adjudicated — SC-0010.** Ruled **epithet-internal**: יִשְׂרָאֵל occurs inside the
+  divine title "the God of Israel", qualifying the divine name, not a separately-tracked participant — no
+  `PL_ISRAEL` at 2:12. Recorded as the first signed-off exception in `_spec/coverage-exceptions.json`; coverage
+  downgrades it from block to ACCEPTED. Corpus is now 6/6 block-clean (245/245 accounted, 1 by sign-off).
 - [ ] **P07–P14:** not compiled yet (no FOR_MODEL, no decided verse ranges) — extend `extractor/pericopes.json`
   and run coverage as each is mapped.

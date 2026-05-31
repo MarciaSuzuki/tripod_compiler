@@ -1,0 +1,19 @@
+{
+  "schema": "tripod-coverage-exceptions",
+  "schema_version": "0.1.0",
+  "book": "RUTH",
+  "_doc": "Reviewer sign-off on coverage findings (docs/COVERAGE.md §'how the reviewer signs off on exceptions'). A finding matched here is downgraded from BLOCK to ACCEPTED by `tripod coverage`: it still appears in the ledger (tagged accepted, with the reason), but no longer fails the run. Governed: every entry carries provenance (accepted_by/on + sc_ref); this file is pinned in _spec/pins.json, so accepting an exception is a recorded, re-pinned edit — not a silent suppression. Match keys: UNMAPPED_SOURCE → (pericope, kind, gloss, verse-prefix); UNANCHORED_ENTITY → (pericope, kind, entity_id).",
+  "exceptions": [
+    {
+      "pericope": "P06",
+      "kind": "UNMAPPED_SOURCE",
+      "gloss": "Israel",
+      "verse": "2:12",
+      "reason": "EPITHET_INTERNAL",
+      "note": "'Israel' (יִשְׂרָאֵל) occurs inside the divine title 'the God of Israel' (אֱלֹהֵי יִשְׂרָאֵל) at 2:12. It qualifies the divine name, not a separately-tracked participant, so no PL_ISRAEL entity is warranted at this verse.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-30",
+      "sc_ref": "SC-0010"
+    }
+  ]
+}

@@ -8,11 +8,11 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 78 tests green (46 + 32 coverage)
-npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 7 source pins (6 packets + alias) + sync invariant
+npm install && npm run build && npm test     # 80 tests green (46 + 34 coverage)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 8 source pins (6 packets + alias + exceptions) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
-npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 244/245 explicit · 0 unanchored · 1 finding (Israel@P06)
+npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
 ```
 
 ## Shipped (on `main`)
@@ -97,10 +97,17 @@ npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 
     pericope (`fixtures/coverage/`). **Result: 244/245 explicit accounted · 0 unanchored across the whole
     corpus (zero hallucinated entities) · 1 genuine finding.** Engine fix: a proper-noun **name match is
     authoritative and not vetoed by the heuristic alias gender** (the BCD prose-scan mis-guessed YHWH as
-    `f`, which was wrongly blocking YHWH→B10 in P02/P04/P05/P06). **Open finding (for the project lead):**
-    P06 — "Israel" (יִשְׂרָאֵל) is named at 2:12 ("the God of Israel") but the map tags no Israel entity
-    (`PL_ISRAEL` exists in the BCD, unused here). Decide: tag `PL_ISRAEL` at 2:12, or rule the epithet
-    needs no separate entity. Until then P06 coverage is `ok=false` by design (`tests/coverage-corpus.test.ts`).
+    `f`, which was wrongly blocking YHWH→B10 in P02/P04/P05/P06).
+  - **SC-0010 — recorded-exception mechanism + Israel ruling.** Reviewer sign-off is mechanized: a pinned
+    `_spec/coverage-exceptions.json` downgrades a matched finding from **block** to **ACCEPTED** (shown in
+    the ledger with reason + provenance; `score.accepted`). The P06 "Israel" (2:12) finding is ruled
+    **epithet-internal** ("the God of Israel" qualifies the divine name, not a participant) — recorded as
+    the first exception. **Corpus is now 6/6 block-clean** (245/245 accounted, 1 by sign-off, 0 unanchored).
+  - **SC-0011 — authoritative BCD `gender` field.** Replaced the unreliable prose-scan gender guess (it read
+    YHWH/foreman as `f` and mis-gendered three collectives) with an explicit `gender` frontmatter field on all
+    31 beings (`null` = collective/mixed). `build_aliases.py` reads it authoritatively; alias table re-pinned
+    `0.1.2`. Wiki side merged (vault PR #2). Coverage block status unchanged (proper-noun matches already
+    gender-immune); entity gender is now correct data.
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
@@ -138,11 +145,11 @@ npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 
 > `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
 1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
-2. **Coverage ledger + BHSA frozen-extract sidecar — SHIPPED across the compiled corpus P01–P06** (see
-   Shipped above). Remaining: (a) **adjudicate the P06 "Israel" finding** (tag `PL_ISRAEL` at 2:12 or rule
-   it epithet-internal); (b) **extract P07–P14 when those pericopes are compiled** — they have no FOR_MODEL
-   or decided verse ranges yet, so coverage can't run on them (the `extractor/pericopes.json` ranges stop at
-   P06); (c) wire coverage into the gate order after conformance (conformance → **coverage** → reading-quality).
+2. **Coverage ledger + BHSA frozen-extract sidecar — SHIPPED across the compiled corpus P01–P06, 6/6
+   block-clean** (see Shipped above; Israel adjudicated as SC-0010, gender hardened as SC-0011). Remaining:
+   (a) **extract P07–P14 when those pericopes are compiled** — they have no FOR_MODEL or decided verse ranges
+   yet, so coverage can't run on them (the `extractor/pericopes.json` ranges stop at P06); (b) wire coverage
+   into the gate order after conformance (conformance → **coverage** → reading-quality).
 3. **Registry growth — COMPLETE for the pilot.** **P01–P06 all promoted** (registry v0.4): P02
    grandfathered (`--status ANY`), P03–P06 via the **CONFIRMED-only default gate**. The full Ruth pilot
    corpus now validates at **0 convergent drift** (descriptive/open axes remain per-pericope, by design).

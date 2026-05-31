@@ -75,4 +75,32 @@ export function loadAliasTable(book = "ruth"): AliasTable {
   return loadSpecJson<AliasTable>(join("registry", `${book.toLowerCase()}.aliases.json`));
 }
 
+/** A reviewer-signed-off coverage exception: downgrades a matched finding from BLOCK to ACCEPTED. */
+export interface CoverageException {
+  pericope: string;
+  kind: "UNMAPPED_SOURCE" | "UNANCHORED_ENTITY";
+  gloss?: string; // UNMAPPED_SOURCE match key
+  verse?: string; // UNMAPPED_SOURCE match key (prefix, e.g. "2:12")
+  entity_id?: string; // UNANCHORED_ENTITY match key
+  reason: string;
+  note?: string;
+  accepted_by?: string;
+  accepted_on?: string;
+  sc_ref?: string;
+}
+
+export interface CoverageExceptions {
+  book: string;
+  exceptions: CoverageException[];
+}
+
+/** Load the pinned coverage-exceptions ledger (empty list if absent). */
+export function loadCoverageExceptions(): CoverageException[] {
+  try {
+    return loadSpecJson<CoverageExceptions>("coverage-exceptions.json").exceptions ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export { SPEC_DIR };

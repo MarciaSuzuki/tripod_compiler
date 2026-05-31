@@ -35,7 +35,7 @@
         "P13"
       ],
       "english": "YHWH",
-      "gender": "f",
+      "gender": "m",
       "hebrew": "יְהוָה",
       "hebrew_cons": "יהוה",
       "kind": "PERSON",
@@ -107,7 +107,7 @@
         "P05"
       ],
       "english": "The Foreman",
-      "gender": "f",
+      "gender": "m",
       "hebrew": "נַעַר הַנִּצָּב עַל הַקּוֹצְרִים",
       "hebrew_cons": "נערהנצבעלהקוצרים",
       "kind": "PERSON",
@@ -121,7 +121,7 @@
         "P07"
       ],
       "english": "Young Women",
-      "gender": null,
+      "gender": "f",
       "hebrew": "נַעֲרוֹת",
       "hebrew_cons": "נערות",
       "kind": "PERSON",
@@ -133,7 +133,7 @@
         "P07"
       ],
       "english": "Young Men",
-      "gender": null,
+      "gender": "m",
       "hebrew": "נְעָרִים",
       "hebrew_cons": "נערים",
       "kind": "PERSON",
@@ -195,7 +195,7 @@
         "P12"
       ],
       "english": "Elders",
-      "gender": null,
+      "gender": "m",
       "hebrew": "זְקֵנִים",
       "hebrew_cons": "זקנים",
       "kind": "PERSON",
@@ -208,7 +208,7 @@
         "P12"
       ],
       "english": "All the People at the Gate",
-      "gender": "m",
+      "gender": null,
       "hebrew": "כָּל הָעָם אֲשֶׁר בַּשַּׁעַר",
       "hebrew_cons": "כלהעםאשרבשער",
       "kind": "PERSON",
@@ -291,7 +291,7 @@
         "P04"
       ],
       "english": "The Whole City",
-      "gender": "f",
+      "gender": null,
       "hebrew": "הָעִיר",
       "hebrew_cons": "העיר",
       "kind": "PERSON",
@@ -305,7 +305,7 @@
         "P12"
       ],
       "english": "The Clan of Elimelech",
-      "gender": "m",
+      "gender": null,
       "hebrew": "מִשְׁפַּחַת אֱלִימֶלֶךְ",
       "hebrew_cons": "משפחתאלימלך",
       "kind": "PERSON",
@@ -354,7 +354,7 @@
         "P03"
       ],
       "english": "His People / People of YHWH",
-      "gender": "m",
+      "gender": null,
       "hebrew": "עַמּוֹ / עַם יְהוָה",
       "hebrew_cons": "עמועםיהוה",
       "kind": "PERSON",

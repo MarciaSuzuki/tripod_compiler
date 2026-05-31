@@ -103,8 +103,8 @@ _The class a human reviewer most often misses. Confirm the participant; `vayhi`-
 | --- | --- | --- | --- |
 | 1:19b | יְהִ֗י | `be` | likely impersonal — dismiss |
 | 1:19b | תֹּאמַ֖רְנָה | `say` | → likely B24 |
-| 1:20a | תֹּ֣אמֶר | `say` | → likely B10 |
-| 1:20a | תִּקְרֶ֥אנָה | `call` | → likely B10 |
-| 1:20b | קְרֶ֤אןָ | `call` | → likely B10 |
-| 1:21b | תִקְרֶ֤אנָה | `call` | → likely B10 |
+| 1:20a | תֹּ֣אמֶר | `say` | → likely B24 |
+| 1:20a | תִּקְרֶ֥אנָה | `call` | → likely B24 |
+| 1:20b | קְרֶ֤אןָ | `call` | → likely B24 |
+| 1:21b | תִקְרֶ֤אנָה | `call` | → likely B24 |
 | 1:22a | שָּׁ֖בָה | `return` | → likely B3 |

@@ -9,17 +9,18 @@ pilot: "pilot-2"
 
 # P05 — Ruth 2:1-7 — COVERAGE LEDGER
 
-> **P05 coverage: 48/48 explicit referents accounted for · 17 implied subjects flagged · 0 unanchored entities · 21 source nouns to tick**
+> **P05 coverage: 48/48 explicit referents accounted for · 17 implied subjects flagged · 0 unanchored entities · 20 source nouns to tick**
 >
 > Gate order: conformance → **coverage (this)** → reading-quality. Coverage reconciles the BHSA
 > referent set R against the map's entity mentions M (docs/COVERAGE.md). "Nothing added" is
 > near-mechanical; "nothing missing" is explicit (airtight) + implied (flagged) + interpretive (tick).
 
-## MATCHED — source expression ↔ map entity (31)
+## MATCHED — source expression ↔ map entity (32)
 
 | verse | surface | gloss | class | entity | via |
 | --- | --- | --- | --- | --- | --- |
 | 2:1a | נָעֳמִ֞י | `Naomi` | proper_noun | **B3** | name |
+| 2:1a | מִּשְׁפַּ֖חַת | `clan` | common_noun | **B29** | lexical |
 | 2:1a | אֱלִימֶ֑לֶךְ | `Elimelech` | proper_noun | **B2** | name |
 | 2:1b | בֹּֽעַז | `Boaz` | proper_noun | **B13** | name |
 | 2:2a | ר֨וּת | `Ruth` | proper_noun | **B9** | name |
@@ -32,6 +33,7 @@ pilot: "pilot-2"
 | 2:3b | חֶלְקַ֤ת | `plot of land` | common_noun | **PL5_BOAZ_PORTION** | lexical |
 | 2:3b | שָּׂדֶה֙ | `open field` | common_noun | **PL5** | lexical |
 | 2:3b | בֹ֔עַז | `Boaz` | proper_noun | **B13** | name |
+| 2:3b | מִּשְׁפַּ֥חַת | `clan` | common_noun | **B29** | lexical |
 | 2:3b | אֱלִימֶֽלֶךְ | `Elimelech` | proper_noun | **B2** | name |
 | 2:4a | בֹ֗עַז | `Boaz` | proper_noun | **B13** | name |
 | 2:4a | בֵּ֣ית לֶ֔חֶם | `Bethlehem` | proper_noun | **PL1** | name |
@@ -40,18 +42,17 @@ pilot: "pilot-2"
 | 2:4a | עִמָּכֶ֑ם | `with` | suffix | **B13** | referential_form |
 | 2:4b | יְהוָֽה | `YHWH` | proper_noun | **B10** | name |
 | 2:5a | בֹּ֨עַז֙ | `Boaz` | proper_noun | **B13** | name |
-| 2:5a | קֹּֽוצְרִ֑ים | `harvest` | participle_substantival | **B14** | lexical |
+| 2:5a | קֹּֽוצְרִ֑ים | `harvest` | participle_substantival | **B15** | lexical |
 | 2:5b | מִ֖י | `who` | pronoun | **B3** | lexical |
-| 2:5b | נַּעֲרָ֥ה | `girl` | common_noun | **B15** | lexical |
-| 2:6a | קֹּוצְרִ֖ים | `harvest` | participle_substantival | **B14** | lexical |
-| 2:6b | נַעֲרָ֤ה | `girl` | common_noun | **B15** | lexical |
+| 2:6a | נַּ֛עַר | `boy` | common_noun | **B15** | lexical |
+| 2:6a | קֹּוצְרִ֖ים | `harvest` | participle_substantival | **B15** | lexical |
 | 2:6b | נָעֳמִ֖י | `Naomi` | proper_noun | **B3** | name |
 | 2:6b | שְּׂדֵ֥ה | `open field` | common_noun | **PL5_BOAZ_PORTION** | lexical |
 | 2:6b | מֹואָֽב | `Moab` | proper_noun | **PL2** | name |
-| 2:7a | קֹּוצְרִ֑ים | `harvest` | participle_substantival | **B14** | lexical |
+| 2:7a | קֹּוצְרִ֑ים | `harvest` | participle_substantival | **B15** | lexical |
 | 2:7b | בַּ֖יִת | `house` | common_noun | **PL_HA_BAYIT_FIELD_SHELTER** | lexical |
 
-## UNMAPPED_SOURCE — in the text, not (yet) in the map (33)
+## UNMAPPED_SOURCE — in the text, not (yet) in the map (32)
 
 _`proper` = named referent absent from the map (**block**); `checklist` = source noun the reviewer ticks; `minor` = pronoun/suffix/adjective (bound)._
 
@@ -63,7 +64,6 @@ _`proper` = named referent absent from the map (**block**); `checklist` = source
 | 2:1a | אִ֚ישׁ | `man` | common_noun | checklist | tick |
 | 2:1a | גִּבֹּ֣ור | `vigorous` | common_noun | checklist | tick |
 | 2:1a | חַ֔יִל | `power` | common_noun | checklist | tick |
-| 2:1a | מִּשְׁפַּ֖חַת | `clan` | common_noun | checklist | tick |
 | 2:1b | שְׁמֹ֖ו | `name` | common_noun | checklist | tick |
 | 2:1b | שְׁמֹ֖ו | `name` | suffix | minor | minor |
 | 2:2a | שִּׁבֳּלִ֔ים | `grain` | common_noun | checklist | tick |
@@ -76,13 +76,13 @@ _`proper` = named referent absent from the map (**block**); `checklist` = source
 | 2:3a | קֹּצְרִ֑ים | `harvest` | participle_substantival | checklist | tick |
 | 2:3b | מִקְרֶ֔הָ | `accident` | common_noun | checklist | tick |
 | 2:3b | מִקְרֶ֔הָ | `accident` | suffix | minor | minor |
-| 2:3b | מִּשְׁפַּ֥חַת | `clan` | common_noun | checklist | tick |
 | 2:4b | לֹ֖ו | `to` | suffix | minor | minor |
 | 2:4b | יְבָרֶכְךָ֥ | `bless` | suffix | minor | minor |
 | 2:5a | נַעֲרֹ֔ו | `boy` | common_noun | checklist | tick |
 | 2:5a | נַעֲרֹ֔ו | `boy` | suffix | minor | minor |
+| 2:5b | נַּעֲרָ֥ה | `girl` | common_noun | checklist | tick |
 | 2:5b | זֹּֽאת | `this` | pronoun | minor | minor |
-| 2:6a | נַּ֛עַר | `boy` | common_noun | checklist | tick |
+| 2:6b | נַעֲרָ֤ה | `girl` | common_noun | checklist | tick |
 | 2:6b | הִ֔יא | `she` | pronoun | minor | minor |
 | 2:7a | עֳמָרִ֔ים | `cut grain` | common_noun | checklist | tick |
 | 2:7a | אַחֲרֵ֖י | `after` | common_noun | checklist | tick |
@@ -133,15 +133,15 @@ _The class a human reviewer most often misses. Confirm the participant; `vayhi`-
 | 2:2a | אֶמְצָא | `find` | → likely B3 |
 | 2:2b | תֹּ֥אמֶר | `say` | → likely B3 |
 | 2:2b | לְכִ֥י | `walk` | → likely B3 |
-| 2:3a | תֵּ֤לֶךְ | `walk` | → likely B10 |
-| 2:3a | תָּבֹוא֙ | `come` | → likely B10 |
-| 2:3a | תְּלַקֵּ֣ט | `gather` | → likely B10 |
-| 2:4a | יֹּ֥אמֶר | `say` | → likely B13 |
-| 2:4b | יֹּ֥אמְרוּ | `say` | → likely B13 |
+| 2:3a | תֵּ֤לֶךְ | `walk` | → likely B9 |
+| 2:3a | תָּבֹוא֙ | `come` | → likely B9 |
+| 2:3a | תְּלַקֵּ֣ט | `gather` | → likely B9 |
+| 2:4a | יֹּ֥אמֶר | `say` | → likely B10 |
+| 2:4b | יֹּ֥אמְרוּ | `say` | → likely B10 |
 | 2:6a | יֹּאמַ֑ר | `say` | → likely B13 |
-| 2:6b | שָּׁ֥בָה | `return` | → likely B15 |
-| 2:7a | תֹּ֗אמֶר | `say` | → likely B15 |
+| 2:6b | שָּׁ֥בָה | `return` | → likely B3 |
+| 2:7a | תֹּ֗אמֶר | `say` | → likely B3 |
 | 2:7a | אֲלַקֳטָה | `gather` | → likely B13 |
 | 2:7a | אָסַפְתִּ֣י | `gather` | → likely B13 |
-| 2:7b | תָּבֹ֣וא | `come` | → likely B15 |
-| 2:7b | תַּעֲמֹ֗וד | `stand` | → likely B15 |
+| 2:7b | תָּבֹ֣וא | `come` | → likely B3 |
+| 2:7b | תַּעֲמֹ֗וד | `stand` | → likely B3 |

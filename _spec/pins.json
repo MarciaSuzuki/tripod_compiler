@@ -23,8 +23,12 @@
       "sha256": "309e5fa71e170b5df52b33c982b630e0fe6eaabb416d0ee12fb317903e9e4de1"
     }
   },
-  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md). Generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD; pinned by sha256 so coverage reconciliation is reproducible (same Hebrew source ⇒ same R set). Regenerate only via the recorded extractor/build commands, then re-pin.",
+  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. All pinned by sha256 so coverage reconciliation is reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off — edits are recorded (SC-ref + provenance) and re-pinned.",
   "sources": {
+    "coverage-exceptions.json": {
+      "version": "0.1.0",
+      "sha256": "d30775f44ae17e57999f7d2622e35a0c96f61fcfacb7b34e42acd9da06852c3e"
+    },
     "source/ruth/P01.json": {
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "a6a2a983f65b4f692458827173409a651c3b57b8ed39dd4277a4bedeb1081146"
@@ -50,8 +54,8 @@
       "sha256": "5228a78e3deacbe21af8a48b6fc56d2fdda4d0aa3f31598f00ffe5926ac15239"
     },
     "registry/ruth.aliases.json": {
-      "version": "aliases-0.1.1",
-      "sha256": "9eba86f63c0859df39b5f0ecf057fda8efdf56f4267f5f102ffed1cd9b12eff9"
+      "version": "aliases-0.1.2",
+      "sha256": "c470b904ff8bd4b574f07e6a4870eb9178f0c56a69898657be71252413c80cae"
     }
   }
 }

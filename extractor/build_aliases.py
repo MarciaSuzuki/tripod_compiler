@@ -79,6 +79,16 @@ def guess_gender(text):
     return None
 
 
+def resolve_gender(fm, text, kind):
+    """Authoritative frontmatter `gender` if present (even explicit null ⇒ no gender); else a
+    best-effort prose guess for PERSON entities. The prose guess is unreliable (it mis-read divine
+    entities like YHWH as feminine off Naomi's pronouns) — an explicit `gender` field overrides it (SC-0011)."""
+    if "gender" in fm:
+        g = fm.get("gender")
+        return g if g in ("m", "f") else None
+    return guess_gender(text) if kind == "PERSON" else None
+
+
 def harvest_bcd(bcd_dir):
     table = {}
     for sub, (code_key, kind) in SECTIONS.items():
@@ -110,7 +120,7 @@ def harvest_bcd(bcd_dir):
                 "hebrew": hebrew,
                 "hebrew_cons": consonantal(hebrew),
                 "referential_forms": [str(a) for a in aliases],
-                "gender": guess_gender(text) if kind == "PERSON" else None,
+                "gender": resolve_gender(fm, text, kind),
                 "appears_in": fm.get("appears-in") or [],
             }
             if heb_cons_aliases:

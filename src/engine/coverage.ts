@@ -1,4 +1,4 @@
-import type { Referent, SourcePacket, AliasTable, AliasEntry, CoarseKind, Concern } from "../reader/source-packet.js";
+import type { Referent, SourcePacket, AliasTable, AliasEntry, CoarseKind, Concern, CoverageException } from "../reader/source-packet.js";
 
 /**
  * Coverage reconciliation (docs/COVERAGE.md). Reconciles the BHSA referent set R (the finite
@@ -264,6 +264,13 @@ export interface MatchedRow {
 
 export type UnmappedSubtag = "proper" | "checklist" | "implied_subject" | "minor";
 
+/** A reviewer-accepted exception attached to a finding (downgrades it from block to accepted). */
+export interface AcceptedException {
+  reason: string;
+  note?: string;
+  accepted_by?: string;
+}
+
 export interface UnmappedRow {
   ref_id: string;
   verse: string;
@@ -274,6 +281,7 @@ export interface UnmappedRow {
   subtag: UnmappedSubtag;
   likely_impersonal?: boolean;
   best_guess_entity?: string; // for implied subjects / pronouns: closest compatible entity at the verse
+  accepted?: AcceptedException; // reviewer signed off (coverage-exceptions.json) ⇒ not a blocker
 }
 
 export interface EntityRow {
@@ -285,6 +293,7 @@ export interface EntityRow {
   presences: string[];
   anchored: boolean;
   host_refs: string[]; // ref_ids that can host it
+  accepted?: AcceptedException; // a reviewer-accepted unanchored entity ⇒ not a blocker
 }
 
 export interface CoverageLedger {
@@ -296,10 +305,11 @@ export interface CoverageLedger {
   score: {
     explicit_total: number;
     explicit_matched: number;
-    proper_unmapped: number; // high-concern omissions (block)
+    proper_unmapped: number; // high-concern omissions (block) — excludes reviewer-accepted ones
     checklist: number; // common/participle source nouns to tick (warn)
     implied_flagged: number;
     minor: number;
+    accepted: number; // findings a reviewer signed off (coverage-exceptions.json)
     entities_total: number;
     entities_anchored: number;
     unanchored: number; // non-abstract (block)
@@ -329,7 +339,14 @@ function bestEntityFor(
   return best;
 }
 
-export function reconcile(packet: SourcePacket, forModel: any, aliases: AliasTable): CoverageLedger {
+function matchesException(e: CoverageException, pericope: string, kind: CoverageException["kind"], keys: { gloss?: string; verse?: string; entity_id?: string }): boolean {
+  if (e.pericope !== pericope || e.kind !== kind) return false;
+  if (kind === "UNMAPPED_SOURCE") return e.gloss === keys.gloss && (!e.verse || (keys.verse ?? "").startsWith(e.verse));
+  return e.entity_id === keys.entity_id;
+}
+
+export function reconcile(packet: SourcePacket, forModel: any, aliases: AliasTable, exceptions: CoverageException[] = []): CoverageLedger {
+  const exForPericope = exceptions.filter((e) => e.pericope === packet.pericope);
   const mentions = extractMentions(forModel);
   const byVerse = new Map<string, EntityMention[]>();
   for (const m of mentions) for (const v of m.verses) (byVerse.get(v) ?? byVerse.set(v, []).get(v)!).push(m);
@@ -393,21 +410,37 @@ export function reconcile(packet: SourcePacket, forModel: any, aliases: AliasTab
     .sort((a, b) => a.entity_id.localeCompare(b.entity_id));
   const unanchored_entities = entities.filter((e) => !e.anchored);
 
-  // scoring
+  // apply reviewer sign-offs (coverage-exceptions.json): a matched finding is tagged `accepted`
+  // and no longer blocks. UNMAPPED_SOURCE/proper by (gloss, verse-prefix); UNANCHORED_ENTITY by id.
+  const applyAccepted = (e: CoverageException): AcceptedException => ({ reason: e.reason, note: e.note, accepted_by: e.accepted_by });
+  for (const u of unmapped) {
+    if (u.subtag !== "proper") continue;
+    const ex = exForPericope.find((e) => matchesException(e, packet.pericope, "UNMAPPED_SOURCE", { gloss: u.gloss, verse: u.verse }));
+    if (ex) u.accepted = applyAccepted(ex);
+  }
+  for (const e of unanchored_entities) {
+    if (e.abstract) continue;
+    const ex = exForPericope.find((x) => matchesException(x, packet.pericope, "UNANCHORED_ENTITY", { entity_id: e.entity_id }));
+    if (ex) e.accepted = applyAccepted(ex);
+  }
+
+  // scoring (accepted findings are excluded from the block-counts but tallied separately)
   const explicit = packet.referents.filter((r) => r.concern === "explicit");
   const explicitMatched = matched.filter((m) => m.concern === "explicit").length;
-  const properUnmapped = unmapped.filter((u) => u.subtag === "proper").length;
+  const properUnmapped = unmapped.filter((u) => u.subtag === "proper" && !u.accepted).length;
   const checklist = unmapped.filter((u) => u.subtag === "checklist").length;
   const impliedFlagged = unmapped.filter((u) => u.subtag === "implied_subject").length;
   const minor = unmapped.filter((u) => u.subtag === "minor").length;
-  const nonAbstractUnanchored = unanchored_entities.filter((e) => !e.abstract);
+  const nonAbstractUnanchored = unanchored_entities.filter((e) => !e.abstract && !e.accepted);
   const abstractUnanchored = unanchored_entities.filter((e) => e.abstract);
+  const accepted =
+    unmapped.filter((u) => u.accepted).length + unanchored_entities.filter((e) => e.accepted).length;
 
   const blockers: string[] = [];
   for (const e of nonAbstractUnanchored) blockers.push(`UNANCHORED_ENTITY ${e.entity_id} (${e.kind}) at ${e.verses.join(",")} — no source expression can host it`);
-  for (const u of unmapped.filter((x) => x.subtag === "proper")) blockers.push(`UNMAPPED_SOURCE proper noun '${u.surface}' (${u.gloss}) at ${u.verse} — named referent absent from the map`);
+  for (const u of unmapped.filter((x) => x.subtag === "proper" && !x.accepted)) blockers.push(`UNMAPPED_SOURCE proper noun '${u.surface}' (${u.gloss}) at ${u.verse} — named referent absent from the map`);
 
-  const accountedFor = explicit.length - properUnmapped; // everything but genuine proper-noun omissions
+  const accountedFor = explicit.length - properUnmapped; // everything but genuine (un-accepted) proper-noun omissions
   const score = {
     explicit_total: explicit.length,
     explicit_matched: explicitMatched,
@@ -415,6 +448,7 @@ export function reconcile(packet: SourcePacket, forModel: any, aliases: AliasTab
     checklist,
     implied_flagged: impliedFlagged,
     minor,
+    accepted,
     entities_total: entities.length,
     entities_anchored: entities.filter((e) => e.anchored).length,
     unanchored: nonAbstractUnanchored.length,
@@ -424,7 +458,8 @@ export function reconcile(packet: SourcePacket, forModel: any, aliases: AliasTab
     `${packet.pericope} coverage: ${accountedFor}/${explicit.length} explicit referents accounted for · ` +
     `${impliedFlagged} implied subject${impliedFlagged === 1 ? "" : "s"} flagged · ` +
     `${nonAbstractUnanchored.length} unanchored entit${nonAbstractUnanchored.length === 1 ? "y" : "ies"}` +
-    (checklist ? ` · ${checklist} source noun${checklist === 1 ? "" : "s"} to tick` : "");
+    (checklist ? ` · ${checklist} source noun${checklist === 1 ? "" : "s"} to tick` : "") +
+    (accepted ? ` · ${accepted} accepted exception${accepted === 1 ? "" : "s"}` : "");
 
   return {
     pericope: packet.pericope, bcv: packet.bcv, bhsa_version: packet.bhsa_version,
