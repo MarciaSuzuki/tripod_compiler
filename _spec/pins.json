@@ -22,5 +22,16 @@
       "version": "v0.4",
       "sha256": "309e5fa71e170b5df52b33c982b630e0fe6eaabb416d0ee12fb317903e9e4de1"
     }
+  },
+  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md). Generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD; pinned by sha256 so coverage reconciliation is reproducible (same Hebrew source ⇒ same R set). Regenerate only via the recorded extractor/build commands, then re-pin.",
+  "sources": {
+    "source/ruth/P01.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "a6a2a983f65b4f692458827173409a651c3b57b8ed39dd4277a4bedeb1081146"
+    },
+    "registry/ruth.aliases.json": {
+      "version": "aliases-0.1.0",
+      "sha256": "4440d890f55320cb53a967e29980e5da7c709fc9259397a72ad95821e89e717e"
+    }
   }
 }

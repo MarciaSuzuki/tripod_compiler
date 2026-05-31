@@ -13,6 +13,9 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
+import { loadSourcePacket, loadAliasTable, sourcePacketPath } from "../reader/source-packet.js";
+import { reconcile } from "../engine/coverage.js";
+import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
 
 const program = new Command();
 program
@@ -228,6 +231,62 @@ program
       writeFileSync(opts.out, JSON.stringify(diffs, null, 2) + "\n");
       console.log(`baseline written to ${opts.out}`);
     }
+  });
+
+program
+  .command("coverage")
+  .description("reconcile a FOR_MODEL against the frozen BHSA referent set (docs/COVERAGE.md): MATCHED / UNMAPPED_SOURCE / UNANCHORED_ENTITY + coverage score")
+  .argument("<pericope-or-for-model>", "a pericope id (e.g. P01) or a FOR_MODEL .md note path")
+  .option("--book <book>", "book whose pinned packet + alias table to use", "ruth")
+  .option("--fm-dir <dir>", "where to find the FOR_MODEL note when a pericope id is given", "fixtures/for-model")
+  .option("--out <file>", "write the full coverage ledger as a wiki-fileable note (the audit trail)")
+  .option("--json", "emit the structured ledger as JSON")
+  .action((arg: string, opts: { book: string; fmDir: string; out?: string; json?: boolean }) => {
+    // resolve the FOR_MODEL note + pericope id
+    let fmPath: string;
+    let pericope: string;
+    if (/^P\d+$/i.test(arg)) {
+      pericope = arg.toUpperCase();
+      const f = readdirSync(opts.fmDir).find((x) => x.startsWith(pericope) && x.endsWith(".md"));
+      if (!f) {
+        console.error(`no FOR_MODEL note for ${pericope} in ${opts.fmDir} (use --fm-dir or pass the note path)`);
+        process.exit(2);
+      }
+      fmPath = join(opts.fmDir, f);
+    } else {
+      fmPath = arg;
+      pericope = (readArtifactNote(fmPath).frontmatter.pericope ?? "").toUpperCase();
+      if (!pericope) {
+        console.error(`cannot determine pericope from ${fmPath} frontmatter; pass a pericope id instead`);
+        process.exit(2);
+      }
+    }
+    const note = readArtifactNote(fmPath);
+    let packet;
+    try {
+      packet = loadSourcePacket(sourcePacketPath(opts.book, pericope));
+    } catch {
+      console.error(
+        `no frozen source packet for ${pericope} (${sourcePacketPath(opts.book, pericope)}). ` +
+          `Extract it offline first:\n  python3 extractor/extract_bhsa.py ${pericope} --tf-path <local bhsa tf/2021>`,
+      );
+      process.exit(2);
+    }
+    const aliases = loadAliasTable(opts.book);
+    const led = reconcile(packet, note.json as any, aliases);
+
+    if (opts.json) {
+      console.log(JSON.stringify(led, null, 2));
+    } else {
+      console.log(formatLedgerText(led));
+      if (opts.out) {
+        writeFileSync(opts.out, renderLedgerNote(led, packet));
+        console.log(`  ledger written to ${opts.out}`);
+      } else {
+        console.log(`  → --out <file> to write the full reconciliation ledger into the audit trail`);
+      }
+    }
+    process.exitCode = led.ok ? 0 : 1;
   });
 
 program.parseAsync(process.argv);

@@ -21,3 +21,7 @@ build/
 
 # Reference docs dropped in working tree (canonical copies live in docs/ or the wiki)
 *.docx
+
+# Python sidecar cache
+__pycache__/
+*.pyc

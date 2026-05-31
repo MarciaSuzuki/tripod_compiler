@@ -8,10 +8,11 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 46 tests green
-npx tsx src/cli/tripod.ts check-drift          # 5 pins + closed-list sync invariant
+npm install && npm run build && npm test     # 71 tests green (46 + 25 coverage)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 2 source pins + closed-list sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
+npx tsx src/cli/tripod.ts coverage P01          # BHSA coverage reconciliation: 47/47 explicit · 0 unanchored
 ```
 
 ## Shipped (on `main`)
@@ -61,9 +62,32 @@ npx tsx src/cli/tripod.ts gold-diff
     layer; committed `fixtures/gold-diff-baseline.json` is the regression baseline. Gold agreement:
     P01/P03 **100%**, P05 98%, P04/P06 95–96%, P02 90%. Residual divergences are **MM↔FOR_MODEL
     coverage differences** (the MM scene lists off-stage referents the gold omits), not extractor errors.
-- **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor),
-  `READING_QUALITY.md` (human review gate, fidelity ceiling), `SOURCE_AND_SCALING.md` (BHSA frozen
-  extract + per-book BCD-by-delta). Gate order: conformance → coverage → reading-quality.
+- **Coverage reconciliation (`docs/COVERAGE.md`) — SHIPPED for P01.** The fidelity floor: does the map
+  match the **text**, not just the schema? Built fully **offline** on a frozen BHSA extract.
+  - **Extractor sidecar** (`extractor/*.py`, the Python escape-hatch). `extract_bhsa.py` points
+    Text-Fabric at a **local** `tf/2021` dir (`tf.fabric.Fabric`, no GitHub) and freezes the referent
+    set **R** — proper/common nouns, substantival participles ("the judges"), pronouns, pronominal
+    suffixes, and **implied verb-morphology subjects** (the class a reviewer most often misses;
+    `vayhi` existentials flagged `likely_impersonal`) — into the pinned `_spec/source/ruth/P01.json`.
+    `build_aliases.py` freezes the entity↔surface bridge (BCD frontmatter + the places NER sheet) into
+    the pinned `_spec/registry/ruth.aliases.json`. Both pinned in `_spec/pins.json` → `sources` and
+    verified by `check-drift`.
+  - **Engine** (`src/engine/coverage.ts`) reconciles R vs the map's entity mentions M into three
+    buckets — **MATCHED / UNMAPPED_SOURCE / UNANCHORED_ENTITY** — preserving the doc's confidence
+    asymmetry: anchoring ("nothing added") is permissive (kind + gender, near-airtight); mapping
+    ("nothing missing") needs evidence (consonantal Hebrew — Kilion↔Chilion — or a whole-word
+    `referential_form` keyword); proper-noun omissions and non-abstract hallucinations **block**,
+    while the common-noun checklist, implied subjects, pronouns/suffixes, and abstract `TH_`/`CB_`
+    overlays **warn** (reviewer ticks). `tripod coverage <P> [--out ledger.md] [--json]`; the ledger
+    note (`src/audit/coverage-ledger.ts`) files into the audit trail.
+  - **P01 acceptance:** `47/47 explicit referents accounted for · 5 implied subjects flagged ·
+    0 unanchored entities · 15 source nouns to tick` — block-clean (`fixtures/coverage/`,
+    `tests/coverage-p01.test.ts`; a dropped scene → Orpah/Ruth omission block, an out-of-pericope
+    entity → hallucination block).
+- **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
+  now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
+  `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
+  conformance → coverage → reading-quality.
 - **Git:** PRs #1–#8 merged; `main` is the single coherent branch. The wiki vault is **local-only
   git** (no remote); governed spec edits are committed there locally (SC-0001/0003/0004/0005/0006).
 
@@ -97,8 +121,11 @@ npx tsx src/cli/tripod.ts gold-diff
 > `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
 1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
-2. **Coverage ledger (`docs/COVERAGE.md`)** + the **BHSA frozen-extract sidecar** (`docs/SOURCE_AND_SCALING.md`)
-   — the highest-value fidelity feature; lands with source ingestion (needs the vault / BHSA).
+2. **Coverage ledger (`docs/COVERAGE.md`) + BHSA frozen-extract sidecar — SHIPPED for P01** (see Shipped
+   above). Remaining: **extract P02–P14** (`python3 extractor/extract_bhsa.py P0n --tf-path <local tf/2021>`),
+   pin each packet, and run `tripod coverage` across the corpus; add `PL_HA_ARETZ` + any other
+   map-referenced-but-BCD-absent codes to the BCD so "the land" leaves the tick list. Wire coverage into
+   the gate order after conformance (conformance → **coverage** → reading-quality).
 3. **Registry growth — COMPLETE for the pilot.** **P01–P06 all promoted** (registry v0.4): P02
    grandfathered (`--status ANY`), P03–P06 via the **CONFIRMED-only default gate**. The full Ruth pilot
    corpus now validates at **0 convergent drift** (descriptive/open axes remain per-pericope, by design).

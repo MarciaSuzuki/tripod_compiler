@@ -1,9 +1,22 @@
 # Coverage reconciliation — participant / place / object completeness
 
-> **Status:** fidelity check. **Needs the BHSA source packet** (`docs/SOURCE_AND_SCALING.md`),
-> so it lands with source ingestion — **Slice 2/3, not Slice 1.** Pilot-2 lane.
-> This is the single highest-value fidelity feature: it's where the discipline machinery buys
-> **truth** (does the map match the text?), not just **legality** (is the map schema-valid?).
+> **Status: SHIPPED for P01 (the proving ground).** Built on the offline BHSA frozen extract
+> (`docs/SOURCE_AND_SCALING.md`). This is the single highest-value fidelity feature: it's where the
+> discipline machinery buys **truth** (does the map match the text?), not just **legality** (is the
+> map schema-valid?). Pilot-2 lane.
+>
+> **Run it:** `tripod coverage P01` (text) · `tripod coverage P01 --out <ledger.md>` (full ledger
+> into the audit trail) · `--json` for the structured ledger. Acceptance proven in
+> `tests/coverage-p01.test.ts` against the real pinned packet; engine unit tests in
+> `tests/coverage.test.ts`.
+>
+> **Implementation:** the offline extractor `extractor/extract_bhsa.py` freezes R into the pinned
+> `_spec/source/ruth/P01.json`; `extractor/build_aliases.py` freezes the entity↔surface bridge into
+> `_spec/registry/ruth.aliases.json` (BCD frontmatter + the places NER sheet). The TS engine is
+> `src/engine/coverage.ts`; the ledger renderer is `src/audit/coverage-ledger.ts`.
+>
+> **P01 result:** `47/47 explicit referents accounted for · 5 implied subjects flagged · 0 unanchored
+> entities · 15 source nouns to tick` — block-clean.
 
 ## The core idea
 
@@ -85,7 +98,23 @@ everything" to "adjudicate the exceptions."
   checked against the BCD/spec, not ground truth.
 
 ## Open items (when source ingestion lands)
-- [ ] Define `R`-record extraction from the BHSA packet (which features; how implied subjects are detected).
-- [ ] Define referential_form ↔ surface-form compatibility (the matching key).
-- [ ] Decide block vs warn thresholds (recommend: `UNANCHORED_ENTITY` blocks; `UNMAPPED_SOURCE/explicit` blocks; implied/minor warn).
-- [ ] Where the ledger is stored and how the reviewer signs off on exceptions.
+- [x] Define `R`-record extraction from the BHSA packet (which features; how implied subjects are detected).
+  → `extractor/extract_bhsa.py`: proper/common nouns (`sp=nmpr/subs`), substantival participles
+  (`sp=verb,pdp=subs`, e.g. "the judges") + adjectives, pronouns, pronominal suffixes (`prs`), and
+  **implied subjects** = a clause with no `Subj` phrase whose finite predicate verb carries person
+  morphology (`vayhi` existentials flagged `likely_impersonal`).
+- [x] Define referential_form ↔ surface-form compatibility (the matching key).
+  → `src/engine/coverage.ts matchScore()`: proper nouns match **only** their named entity via
+  **consonantal Hebrew** (Kilion↔Chilion via כליון) or Latin fallback; unnamed common nouns map via a
+  Hebrew lexical hit or a **whole-word** `referential_form`/alias keyword (`UNNAMED_MAN`⊇"man"), under
+  gender non-contradiction. Two thresholds: permissive *anchoring* (≥10) vs evidence-based *mapping* (≥30).
+- [x] Decide block vs warn thresholds.
+  → `UNANCHORED_ENTITY` (non-abstract) blocks; `UNMAPPED_SOURCE` **proper noun** blocks; common-noun
+  *checklist*, *implied*, *minor*, and abstract `TH_`/`CB_` overlays warn (interpretive — reviewer ticks).
+- [x] Where the ledger is stored and how the reviewer signs off on exceptions.
+  → `tripod coverage <P> --out <file>` writes a `type: "coverage-ledger"` wiki note (the three bucket
+  tables + score) alongside the COMPILATION-LOG; sign-off on the exceptions list stays human
+  (`docs/READING_QUALITY.md`, the fidelity ceiling).
+- [ ] **Scale beyond P01:** extract P02–P14 packets (`extractor/extract_bhsa.py P0n`) and run coverage
+  across the corpus; add `PL_HA_ARETZ` (and any other map-referenced but BCD-absent codes) to the BCD so
+  "the land" stops landing on the tick list.

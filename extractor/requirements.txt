@@ -1,0 +1,4 @@
+# BHSA extractor sidecar — offline once installed.
+# text-fabric loads the local BHSA tf/2021 features (no GitHub fetch; we use tf.fabric.Fabric).
+text-fabric>=12,<14
+pyyaml>=6
