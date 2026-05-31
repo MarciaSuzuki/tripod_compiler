@@ -39,7 +39,8 @@ extracted/deterministic fields), then validate (Slice 1) + grade vs gold. Extrac
   FOR_MODEL schema + P01 worked example; cache_control on last block), `buildUserTurn()`, `SUBMIT_FILLS_TOOL`
   (requires location/value/reason).
 - `src/drafter/client.ts` — `callDrafter()` (adaptive thinking + submit_fills tool, stream, forced-tool retry),
-  `requireApiKey()`, `DrafterError`, `estimateCostUsd()`, `Usage`. **NOTE: imports `@anthropic-ai/sdk` at module top.**
+  `requireApiKey()`, `DrafterError`, `estimateCostUsd()`, `Usage`. SDK is imported **lazily** inside `callDrafter`
+  (`await import("@anthropic-ai/sdk")`) so non-draft CLI commands never load it.
 - `src/drafter/draft.ts` — `draft()` orchestrator (skeleton→call→merge→traceCheck→validate→1 repair→surface),
   `validateForModel()` (in-memory Slice-1 validation), returns `fills` (with reasons) + DraftResult.
 - `src/compiler/judgmentdiff.ts` — `judgmentDiff(candidate, gold)` → `divergences: Divergence[]`
@@ -52,24 +53,23 @@ extracted/deterministic fields), then validate (Slice 1) + grade vs gold. Extrac
   granularity split; in-memory validation). NO API needed.
 - `package.json` — added `@anthropic-ai/sdk@^0.100.1` dependency (+ package-lock churn).
 
-## Verified state
-- `npm run build` = exit 0 (clean). `npm test` = exit 0, **56 tests passed** (46 prior + 10 drafter), 4 files.
-- CLI confirmed: diagnose=2, printDiagnostic=2, granularityNotes=0, a.details=0, "--ab"=0.
+## Verified state (branch tip = green)
+- From a CLEAN tree with `dist/` removed: `npm run build` = exit 0, 0 TS errors; `npm test` = exit 0,
+  **56 tests passed** (46 prior + 10 drafter), 4 files; `check-drift` = exit 0 (all 5 pins ok + sync invariant);
+  `validate fixtures/for-model/` = exit 0; `draft` with no API key = exit 2 with a clear message (graceful).
+- The lazy-import fix landed in `ef5eb7c`; the earlier check-drift crash is resolved.
 
-## OPEN ISSUE (resolve before commit)
-- `npx tsx src/cli/tripod.ts check-drift` exited **2** (a crash, not 0/1). Tests pass (same import chain via
-  vitest), so the likely cause is the **top-level `@anthropic-ai/sdk` import in client.ts** crashing under `tsx`
-  for every CLI command. **FIX: make the SDK import lazy** — `const Anthropic = (await import("@anthropic-ai/sdk")).default`
-  inside `callDrafter`, remove the top import. Then re-verify `check-drift` = 0 and `validate fixtures/for-model/` works.
-  (If check-drift was just garbled output and is actually fine, still prefer the lazy import — it keeps the SDK off
-  the hot path of non-draft commands.)
+## Branch history note (decision: leave broken WIP, squash on merge)
+- `9feccad` is a **broken WIP commit** (a test imported drafter files that an interrupt had cancelled; it was
+  pushed before a clean verify). It is **fixed-forward**: `d24c9a2 → 9feccad (broken) → ef5eb7c (repair) →
+  430f0d8 (docs) → …`. The branch **tip is green**; `9feccad` is NOT on `main` (main tip `8559e57`, PR #11).
+- **Ruling (Marcia): leave it in branch history and SQUASH-MERGE the Slice 4 PR** so the broken commit never
+  reaches main. Do not force-push/rewrite the branch. **At PR time: choose squash-merge, not a merge commit.**
 
 ## Remaining TODO to finish Slice 4
-1. Apply the lazy-import fix; re-verify build/test/check-drift/validate all green.
-2. Update `docs/PROGRESS.md` (Slice 4 in-flight: drafter built, deterministic seam tested; P02 diagnostic run
-   PENDING on ANTHROPIC_API_KEY) and note Sonnet A/B deferred.
-3. Commit + push to `claude/friendly-edison-TGdmt`. (Do NOT open a PR unless asked.)
-4. When the user provides ANTHROPIC_API_KEY: run
+1. (DONE) Lazy-import fix + clean re-verify; `docs/PROGRESS.md` marked Slice-4-in-flight; pushed.
+2. When the user provides `ANTHROPIC_API_KEY`, run the P02 diagnostic learning loop:
    `npx tsx src/cli/tripod.ts draft fixtures/meaning-map/P02-Ruth-1-6-14.md --grade fixtures/for-model/P02-Ruth-1-6-14-FOR-MODEL.md --diagnose`
    → read the per-divergence reasons → calibrate `SYSTEM_INSTRUCTIONS` in prompt.ts → re-run → then P03/P04 for human review.
-- Cost (corrected, Opus $5/$25): first cut P02 ~ a few cents–$1; whole Ruth pilot < ~$8. Negligible.
+3. Open the Slice 4 PR only when asked; **squash-merge** it (see ruling above).
+- Cost (Opus $5/$25 in/out): P02 first cut ~ cents–$1; whole Ruth pilot < ~$8. Negligible.
