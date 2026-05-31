@@ -13,6 +13,9 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
+import { draft } from "../drafter/draft.js";
+import { DrafterError, type DrafterModel } from "../drafter/client.js";
+import { judgmentDiff, type JudgmentDiff } from "../compiler/judgmentdiff.js";
 
 const program = new Command();
 program
@@ -229,6 +232,69 @@ program
       console.log(`baseline written to ${opts.out}`);
     }
   });
+
+program
+  .command("draft")
+  .description("LLM drafter (Slice 4, Opus 4.8): fill a Meaning Map skeleton's judgment gaps into a validate-clean FOR_MODEL (needs ANTHROPIC_API_KEY)")
+  .argument("<meaning-map>", "a pericope Meaning Map .md note")
+  .option("--model <id>", "claude-opus-4-8 (pilot) | claude-sonnet-4-6 (deferred future-scale A/B)", "claude-opus-4-8")
+  .option("--effort <level>", "low | medium | high", "high")
+  .option("--grade <gold>", "grade the draft's judgment fields against a gold FOR_MODEL (token vs granularity split)")
+  .option("--diagnose", "learning loop: print EVERY divergence from --grade gold paired with the model's reasoning")
+  .option("--out <file>", "write the drafted FOR_MODEL note")
+  .action(async (mmPath: string, opts: { model: DrafterModel; effort: "low" | "medium" | "high"; grade?: string; diagnose?: boolean; out?: string }) => {
+    const gold = opts.grade ? (readArtifactNote(opts.grade).json as any) : null;
+    try {
+      const res = await draft(mmPath, opts.model, { effort: opts.effort });
+      console.log(`\n=== ${opts.model} . ${res.pericope} ===`);
+      console.log(`  fills: applied ${res.merge.applied} . rejected ${res.merge.rejected.length} . unfilled ${res.merge.unfilled.length} . proposed-new ${res.merge.proposedNew.length}`);
+      console.log(`  validation: ${res.blocked ? "BLOCKED" : "clean"} (${res.validation.counts.block} block . ${res.validation.counts.drift} drift) . trace-violations ${res.traceViolations.length} . repaired:${res.repaired}`);
+      console.log(`  usage: in ${res.usage.input_tokens} . cache-read ${res.usage.cache_read_input_tokens} . out ${res.usage.output_tokens} . ~$${res.costUsd}`);
+      if (res.blocked)
+        for (const f of res.validation.findings.filter((x) => x.severity === "block")) console.log(`     x ${f.location}: ${f.message}`);
+      if (gold) {
+        const jd = judgmentDiff(res.forModel, gold, res.pericope);
+        printJudgment(jd);
+        if (opts.diagnose) printDiagnostic(jd, res.fills);
+      }
+      if (opts.out) {
+        const note = `---\ntype: "sta-for-model"\npericope: "${res.pericope ?? ""}"\nstatus: "${res.blocked ? "draft-blocked" : "draft"}"\npilot: "pilot-2"\ndrafted-by: "${opts.model}"\n---\n\n# ${res.pericope ?? ""} - FOR_MODEL (DRAFT - ${opts.model})\n\n\`\`\`json\n${JSON.stringify(res.forModel, null, 2)}\n\`\`\`\n`;
+        writeFileSync(opts.out, note);
+        console.log(`  draft written to ${opts.out}`);
+      }
+    } catch (e) {
+      if (e instanceof DrafterError) {
+        console.error(`\n${e.message}`);
+        process.exitCode = 2;
+        return;
+      }
+      throw e;
+    }
+  });
+
+function printJudgment(jd: JudgmentDiff): void {
+  console.log(`  judgment agreement vs gold: ${jd.tokenAgreementPct}% (${jd.tokenMatched}/${jd.tokenTotal} tokens) . ${jd.granularityDivergences} granularity divergence(s) . ${jd.unresolvedTodo} unresolved __TODO__`);
+  for (const a of jd.axes) console.log(`     ${a.axis}: ${a.matched} ok / ${a.tokenMismatch} mismatch`);
+}
+
+/** The learning loop: every divergence from gold, paired with the model's stated reason for that fill. */
+function printDiagnostic(jd: JudgmentDiff, fills: { location: string; reason?: string }[]): void {
+  const reasonByLoc = new Map(fills.map((f) => [f.location, f.reason ?? "(no reason given)"]));
+  const tokens = jd.divergences.filter((d) => d.kind !== "granularity");
+  const gran = jd.divergences.filter((d) => d.kind === "granularity");
+  console.log(`\n  -- DIAGNOSTIC: ${tokens.length} token divergence(s) + ${gran.length} granularity divergence(s) --`);
+  for (const d of tokens) {
+    console.log(`  * [${d.axis}] ${d.location ?? "(gold-only)"}`);
+    if (d.kind === "token") console.log(`      draft: ${JSON.stringify(d.candidate)}   gold: ${JSON.stringify(d.gold)}`);
+    else if (d.kind === "token-extra") console.log(`      draft added: ${JSON.stringify(d.candidate)}   (not in gold)`);
+    else console.log(`      gold has: ${JSON.stringify(d.gold)}   (draft omitted)`);
+    console.log(`      reason: ${reasonByLoc.get(d.location ?? "") ?? "(no reason at this location)"}`);
+  }
+  if (gran.length) {
+    console.log(`\n  granularity (structural - the draft split/merged or anchored differently; NOT token errors):`);
+    for (const d of gran) console.log(`  * [${d.axis}] ${d.location ?? "(gold-only)"} - ${d.note ?? ""}  draft:${JSON.stringify(d.candidate)} gold:${JSON.stringify(d.gold)}`);
+  }
+}
 
 program.parseAsync(process.argv);
 
