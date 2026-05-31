@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { readdirSync, statSync, writeFileSync, appendFileSync, mkdirSync } from "node:fs";
+import { readdirSync, statSync, writeFileSync, appendFileSync, mkdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { validateArtifact } from "../engine/validate.js";
 import { formatReport } from "../engine/report.js";
@@ -16,6 +16,7 @@ import { planPromotion, applyPromotion } from "../compiler/promote.js";
 import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions } from "../reader/source-packet.js";
 import { reconcile } from "../engine/coverage.js";
 import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
+import { lintForModel, lintMeaningMap, type LintReport } from "../engine/lint.js";
 
 const program = new Command();
 program
@@ -343,6 +344,57 @@ program
     );
     if (opts.outDir) console.log(`  ledgers written to ${opts.outDir}/`);
     process.exitCode = withFindings ? 1 : 0;
+  });
+
+program
+  .command("lint")
+  .description("Level-3 / §3C content-discipline lint (the drift-guard): flag forbidden grammatical vocabulary, interpretive labels, conditioning-in-Q&A, compounds, and §3C-not-an-entity. Surfaces drift; the human judges.")
+  .argument("[paths...]", "meaning-map and/or FOR_MODEL .md notes (auto-detected) and/or directories")
+  .option("--corpus", "lint fixtures/meaning-map/ + fixtures/for-model/")
+  .option("--mm-dir <dir>", "meaning-map dir for --corpus", "fixtures/meaning-map")
+  .option("--fm-dir <dir>", "FOR_MODEL dir for --corpus", "fixtures/for-model")
+  .option("--tier1", "show only high-confidence (tier-1) findings")
+  .option("--json", "emit the structured reports as JSON")
+  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; fmDir: string; tier1?: boolean; json?: boolean }) => {
+    const files = [...expandPaths(paths)];
+    if (opts.corpus) {
+      for (const d of [opts.mmDir, opts.fmDir]) for (const f of readdirSync(d)) if (f.endsWith(".md")) files.push(join(d, f));
+    }
+    if (files.length === 0) {
+      console.error("no targets. Pass .md note(s)/dir(s), or --corpus.");
+      process.exit(2);
+    }
+    const lintOne = (file: string): LintReport => {
+      const raw = readFileSync(file, "utf8");
+      const isForModel = /type:\s*["']?sta-for-model/.test(raw) || /"sta_id"\s*:/.test(raw);
+      if (isForModel) return lintForModel(readArtifactNote(file).json as any, file);
+      return lintMeaningMap(raw, file);
+    };
+    const reports = [...new Set(files)].sort().map(lintOne).map((r) => ({
+      ...r,
+      findings: opts.tier1 ? r.findings.filter((f) => f.tier === 1) : r.findings,
+    }));
+
+    if (opts.json) {
+      console.log(JSON.stringify(reports, null, 2));
+      process.exitCode = reports.some((r) => r.findings.length) ? 1 : 0;
+      return;
+    }
+    let total = 0, t1 = 0;
+    for (const r of reports) {
+      if (r.findings.length === 0) continue;
+      total += r.findings.length;
+      t1 += r.findings.filter((f) => f.tier === 1).length;
+      console.log(`\n${r.artifact}  ${r.file}  — ${r.findings.length} finding(s)`);
+      for (const f of r.findings.sort((a, b) => a.tier - b.tier)) {
+        console.log(`  ${f.tier === 1 ? "✗" : "~"} [${f.rule}] ${f.location}  «${f.match}»  ${f.context ? `— ${f.context}` : ""}`);
+      }
+    }
+    console.log(
+      `\n— lint: ${reports.length} artifact(s) · ${total} finding(s) (${t1} tier-1, ${total - t1} tier-2) · ` +
+        `${reports.filter((r) => r.findings.length === 0).length} clean. Surfaces drift; the human judges (relocate insight, never delete). —`,
+    );
+    process.exitCode = total ? 1 : 0;
   });
 
 program.parseAsync(process.argv);

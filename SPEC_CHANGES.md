@@ -65,6 +65,7 @@ number bound to exactly one decision.
 | SC-0009 | Merge PL_HA_ARETZ → PL_LAND_OF_JUDAH (same-referent principle, Layer-3) | SHIPPED |
 | SC-0010 | Coverage recorded-exception mechanism + P06 "Israel" epithet-internal ruling | SHIPPED |
 | SC-0011 | BCD `gender` frontmatter field (authoritative; replaces the prose-guess) | SHIPPED |
+| SC-0012 | Level-3 / §3C content discipline (R1–R5) + the `tripod lint` drift-guard | SHIPPED (lint + discipline + template); map remediation follows |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -96,6 +97,40 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0012 — Level-3 / §3C content discipline (R1–R5) + the `tripod lint` drift-guard
+- **Date:** 2026-05-31
+- **Decided by:** Marcia Suzuki
+- **Status:** **SHIPPED** (the rule, the lint, and the template remediation); the **map remediation is a
+  gated follow-on** (P01 first). Wiki side: vault PR [ruth-pilot-b-wiki#3](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/3).
+- **Type:** methodology + tooling — **no `validation-rules.json` change**.
+- **Summary:** The content layers — Level 3 propositions and §3C — must hold only the **bare, atomic,
+  plain-language payload**; everything else (interpretation, classification, grammatical analysis,
+  register, links, figures, cross-refs) is **conditioning** (its own field/layer) or doesn't belong.
+  Five rules: **R1** §3C = entities only (events→propositions, framings→`referential_form`,
+  patterns→figures); **R2** atomic; **R3** bare (content, not a label for it); **R4** plain-language (no
+  grammatical/linguistic jargon — *the locked anti-colonial-frame commitment*: a map that says
+  "wayyiqtol" or "patient" teaches downstream models the source grammar and imposes it on unknown target
+  languages); **R5** payload-only (conditioning separated).
+- **Spec change (exact):** new vendored **`_spec/lint-lexicon.json`** (forbidden vocabulary tiered,
+  interpretive labels, conditioning-Q&A patterns, compound markers, substitutions — sourced from the
+  methodology doc), pinned in `_spec/pins.json` → `sources`. New engine `src/engine/lint.ts` + CLI
+  `tripod lint [paths…] [--corpus] [--tier1]`. Wiki: `_methodology/level3and3Ccontentdiscipline.md` (the
+  rule) + `_templates/meaning-map-template.md` remediated (§3C entities-only; §6.2 atomic-bare-plain-payload).
+- **Validator impact:** a **4th deterministic verifier** beside validate/coverage — it *surfaces* drift
+  (the human judges + relocates insight, never deletes). Completes the stack: **legal (validate) ·
+  complete (coverage) · atomic-bare-plain (lint) · true (human review).**
+- **Inventory (drives the map remediation):** `tripod lint --corpus` over P01–P06 ⇒ **~182 findings** —
+  87 forbidden-vocabulary, 48 §3C-not-an-entity (TH_ objects that are events/framings/patterns), 34
+  interpretive labels, 10 compounds, 3 conditioning-in-Q&A. None block; all are review signal.
+- **Version:** no spec-version bump; `lint-lexicon.json` pinned `0.1.0`.
+- **Verification:** 88 tests green (+8 lint: whole-word discipline so "verb"⊄"adverb" and controlled
+  slot-names aren't flagged; R1/label/conditioning/compound detection); `check-drift` ok.
+- **Follow-on (gated):** remediate the agent system-prompts + spec vocab prose; then the **map remediation**
+  (P01–P06 §3C + Level 3) — exegetical, the project lead adjudicates; P01 first → confirm leaner & truer →
+  roll P02–P06; re-validate + re-baseline gold-diff/coverage; **before Slice 4** (clean supervision in, clean drafts out).
 
 ---
 
