@@ -66,6 +66,7 @@ number bound to exactly one decision.
 | SC-0010 | Coverage recorded-exception mechanism + P06 "Israel" epithet-internal ruling | SHIPPED |
 | SC-0011 | BCD `gender` frontmatter field (authoritative; replaces the prose-guess) | SHIPPED |
 | SC-0012 | Level-3 / §3C content discipline (R1–R5) + the `tripod lint` drift-guard | SHIPPED (lint + discipline + template); map remediation follows |
+| SC-0013 | Map content remediation under SC-0012 — P01 worked reference (then roll P02–P06) | P01 APPLIED (pending project-lead blessing); P02–P06 to follow |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -97,6 +98,26 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0013 — Map content remediation (SC-0012): P01 worked reference
+- **Date:** 2026-05-31
+- **Decided by:** Marcia Suzuki
+- **Status:** **P01 APPLIED — pending the project lead's blessing** (vault PR for P01 map + FOR_MODEL);
+  P02–P06 roll once P01 is blessed. The worked reference calibrates the rest.
+- **Type:** artifact remediation (no schema/spec change).
+- **Summary:** Apply R1–R5 to P01's §3C + Level 3. §3C shrinks from ~17 thematic entries to **3 true
+  entities** (O1 famine · CB_0030 sojourn · the about-ten-years duration). Every relocated item's insight
+  is re-homed (never deleted), documented inline in `_note`s:
+  - **events → propositions:** death of Elimelech→P7, taking of wives→P9, deaths of both sons→P12, prior-death-referenced→P13 link;
+  - **framings → referential_forms:** "husband of Naomi"→B2@P7, "the woman"→B3@P13, "her children" (yeladim)→B4·B5@P13, "for themselves"→P9 OWN_INITIATIVE, Ephrathite identity→being B6;
+  - **patterns → figures / inherent / order-constraint:** vayhi formula→FIG_0007, residual "she remained"→FIG_0052, "both of them"→inherent in deceased[B4,B5], cumulative listing→P13 listing_order_form (no new figures, per the lead's call).
+  - **plain-language (R4):** significant_absence "agent of the famine" → "the one who sent the famine".
+- **Artifact migration:** **P01.** Vault `stas/P01-…-FOR-MODEL.md` (objects_in_scene + slot cleanups) and
+  `pericopes/P01-…md` (§3C) — mirrored to `fixtures/`. **BCD unchanged** (P01's TH_ codes were never registered).
+- **Verification:** `tripod lint` P01 **12 findings → 0 (clean)**; `validate` 0-block; `coverage` P01 still
+  block-clean (abstract overlays 15→2); `gold-diff` P01 **100%**, leaner (78→56 placeholders); 88 tests green.
 
 ---
 
