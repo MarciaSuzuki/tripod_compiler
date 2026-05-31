@@ -2,9 +2,11 @@
 
 > The live state of `tripod_compiler`. Read this first; it overrides the brief where they differ.
 > `CLAUDE.md` is the original scoping handoff and is now partly **stale** — see "Decisions that
-> refined CLAUDE.md" below. `main` is green through **PR #10** (P03 promotion). The **P04–P06 batch
-> promotion** (`approved-enumerations` v0.4; full Ruth corpus P01–P06 now 0 convergent drift) is on
-> branch `claude/friendly-edison-TGdmt`, pending merge.
+> refined CLAUDE.md" below. `main` is green through **PR #11** (full Ruth corpus P01–P06 at 0 convergent
+> drift, `approved-enumerations` v0.4). **Slice 4 (the LLM drafter) is in-flight** on branch
+> `claude/friendly-edison-TGdmt`: the deterministic seam is built + tested (56 tests green), but the
+> P02 diagnostic RUN is **pending an `ANTHROPIC_API_KEY`** (not set in this env). See
+> [`docs/SLICE4_PROGRESS.md`](SLICE4_PROGRESS.md) to resume.
 
 ## How to verify the state
 ```
