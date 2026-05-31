@@ -200,10 +200,6 @@ export function matchScore(r: Referent, m: EntityMention, a: AliasEntry | undefi
   if (!r.kind_candidates.includes(mKind) && !(mKind === "INSTITUTION" && r.kind_candidates.includes("PERSON"))) {
     return null;
   }
-  // gender non-contradiction (only when both are known)
-  if (a?.gender && r.gender && (r.gender === "m" || r.gender === "f") && a.gender !== r.gender) {
-    return null;
-  }
 
   const rc = consonantal(r.surface);
   // match the referent's consonantal surface against the entity's primary Hebrew OR any surface alias
@@ -215,10 +211,18 @@ export function matchScore(r: Referent, m: EntityMention, a: AliasEntry | undefi
   const latinMatch = !!(rl && el && rl.length >= 3 && (el.includes(rl) || rl.includes(el)));
 
   if (r.referent_class === "proper_noun") {
-    // a named referent realizes ONLY the entity bearing that name (specificity).
+    // a named referent realizes ONLY the entity bearing that name (specificity). The name match is
+    // AUTHORITATIVE and is NOT vetoed by gender: alias gender is a heuristic hint (e.g. YHWH is
+    // grammatically masculine in the text, so a mis-guessed alias gender must not block its name match).
     if (hebMatch) return { score: 108, via: "name" };
     if (latinMatch) return { score: 80, via: "name" };
     return null; // named, but no present entity bears this name ⇒ possible omission
+  }
+
+  // gender non-contradiction — applies only to UNNAMED referents (disambiguates among present
+  // candidates, e.g. "his wife" f vs the men). Both genders must be known to fire.
+  if (a?.gender && r.gender && (r.gender === "m" || r.gender === "f") && a.gender !== r.gender) {
+    return null;
   }
 
   // unnamed referent (common noun / participle / pronoun / suffix / implied): any kind- and

@@ -8,11 +8,11 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 71 tests green (46 + 25 coverage)
-npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 2 source pins + closed-list sync invariant
+npm install && npm run build && npm test     # 78 tests green (46 + 32 coverage)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 7 source pins (6 packets + alias) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
-npx tsx src/cli/tripod.ts coverage P01          # BHSA coverage reconciliation: 47/47 explicit · 0 unanchored
+npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 244/245 explicit · 0 unanchored · 1 finding (Israel@P06)
 ```
 
 ## Shipped (on `main`)
@@ -90,6 +90,16 @@ npx tsx src/cli/tripod.ts coverage P01          # BHSA coverage reconciliation: 
     "the land" now reconciles MATCHED → `PL_LAND_OF_JUDAH`. Wiki side: vault PR
     [ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1) (pending review);
     compiler side shipped (alias table re-pinned `0.1.1`; gold-diff P01 43→44). See SPEC_CHANGES SC-0009.
+  - **Corpus coverage — full compiled pilot P01–P06.** Packets extracted + pinned for P02–P06 (`_spec/
+    source/ruth/`, `_spec/pins.json` → `sources`). `tripod coverage --corpus` (and variadic targets) runs
+    all pericopes with a packet + FOR_MODEL and prints a summary; `--out-dir` writes one ledger per
+    pericope (`fixtures/coverage/`). **Result: 244/245 explicit accounted · 0 unanchored across the whole
+    corpus (zero hallucinated entities) · 1 genuine finding.** Engine fix: a proper-noun **name match is
+    authoritative and not vetoed by the heuristic alias gender** (the BCD prose-scan mis-guessed YHWH as
+    `f`, which was wrongly blocking YHWH→B10 in P02/P04/P05/P06). **Open finding (for the project lead):**
+    P06 — "Israel" (יִשְׂרָאֵל) is named at 2:12 ("the God of Israel") but the map tags no Israel entity
+    (`PL_ISRAEL` exists in the BCD, unused here). Decide: tag `PL_ISRAEL` at 2:12, or rule the epithet
+    needs no separate entity. Until then P06 coverage is `ok=false` by design (`tests/coverage-corpus.test.ts`).
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
@@ -127,12 +137,11 @@ npx tsx src/cli/tripod.ts coverage P01          # BHSA coverage reconciliation: 
 > `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
 1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
-2. **Coverage ledger (`docs/COVERAGE.md`) + BHSA frozen-extract sidecar — SHIPPED for P01** (see Shipped
-   above; P01's "the land" registry gap closed by SC-0009). Remaining: **extract P02–P14**
-   (`python3 extractor/extract_bhsa.py P0n --tf-path <local tf/2021>`), pin each packet, and run `tripod
-   coverage` across the corpus; surface any other map-referenced-but-BCD-absent codes via the same-referent
-   principle (merge or add). Wire coverage into the gate order after conformance (conformance → **coverage**
-   → reading-quality).
+2. **Coverage ledger + BHSA frozen-extract sidecar — SHIPPED across the compiled corpus P01–P06** (see
+   Shipped above). Remaining: (a) **adjudicate the P06 "Israel" finding** (tag `PL_ISRAEL` at 2:12 or rule
+   it epithet-internal); (b) **extract P07–P14 when those pericopes are compiled** — they have no FOR_MODEL
+   or decided verse ranges yet, so coverage can't run on them (the `extractor/pericopes.json` ranges stop at
+   P06); (c) wire coverage into the gate order after conformance (conformance → **coverage** → reading-quality).
 3. **Registry growth — COMPLETE for the pilot.** **P01–P06 all promoted** (registry v0.4): P02
    grandfathered (`--status ANY`), P03–P06 via the **CONFIRMED-only default gate**. The full Ruth pilot
    corpus now validates at **0 convergent drift** (descriptive/open axes remain per-pericope, by design).

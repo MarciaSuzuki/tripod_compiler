@@ -29,6 +29,26 @@
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "a6a2a983f65b4f692458827173409a651c3b57b8ed39dd4277a4bedeb1081146"
     },
+    "source/ruth/P02.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "75c193537c5d94a5047ad59a368d96ab9fb346b93f8702ff446508c2720590e9"
+    },
+    "source/ruth/P03.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "e94a8ed9e62d2113ac24a00a96abb65633973800dce13418462868e51d6023de"
+    },
+    "source/ruth/P04.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "88b510e9aa7606cd70283870f39a56caf51ae41c4654c9ac2866c13400add25e"
+    },
+    "source/ruth/P05.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "ab90d6f4be65f529def0301423e5ccff9556e99ef7b4dfe4615c76d8eeefe4bd"
+    },
+    "source/ruth/P06.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "5228a78e3deacbe21af8a48b6fc56d2fdda4d0aa3f31598f00ffe5926ac15239"
+    },
     "registry/ruth.aliases.json": {
       "version": "aliases-0.1.1",
       "sha256": "9eba86f63c0859df39b5f0ecf057fda8efdf56f4267f5f102ffed1cd9b12eff9"

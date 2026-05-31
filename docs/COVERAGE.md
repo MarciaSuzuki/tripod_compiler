@@ -5,9 +5,10 @@
 > discipline machinery buys **truth** (does the map match the text?), not just **legality** (is the
 > map schema-valid?). Pilot-2 lane.
 >
-> **Run it:** `tripod coverage P01` (text) · `tripod coverage P01 --out <ledger.md>` (full ledger
-> into the audit trail) · `--json` for the structured ledger. Acceptance proven in
-> `tests/coverage-p01.test.ts` against the real pinned packet; engine unit tests in
+> **Run it:** `tripod coverage P01` (one pericope, detailed) · `tripod coverage --corpus` (summary over
+> P01–P06) · `--out <ledger.md>` / `--out-dir <dir>` to write the ledger note(s) into the audit trail ·
+> `--json` for the structured ledger. Acceptance proven in `tests/coverage-p01.test.ts` (P01) and
+> `tests/coverage-corpus.test.ts` (P01–P06) against the real pinned packets; engine unit tests in
 > `tests/coverage.test.ts`.
 >
 > **Implementation:** the offline extractor `extractor/extract_bhsa.py` freezes R into the pinned
@@ -121,6 +122,14 @@ everything" to "adjudicate the exceptions."
   second PL-code. The BCD entry gained `hebrew_aliases` הָאָרֶץ/אֶרֶץ; "the land" now reconciles to MATCHED.
   This established the **same-referent principle** (one referent ⇒ one Layer-3 code; surface variation rides
   on `referential_form`) — see SPEC_CHANGES SC-0009.
-- [ ] **Scale beyond P01:** extract P02–P14 packets (`extractor/extract_bhsa.py P0n`) and run coverage
-  across the corpus; surface any other map-referenced-but-BCD-absent codes the same way (merge or add per the
-  same-referent principle).
+- [x] **Scaled across the compiled corpus P01–P06.** Packets pinned for P02–P06; `tripod coverage --corpus`
+  runs all six (`fixtures/coverage/` holds one ledger each; `tests/coverage-corpus.test.ts` locks it).
+  **244/245 explicit accounted · 0 unanchored across the corpus** (zero hallucinated entities — the
+  near-airtight "nothing added" claim, corpus-wide). Engine hardening from the run: a proper-noun **name
+  match is authoritative, not vetoed by the heuristic alias gender** (the BCD prose-scan mis-guessed YHWH as
+  feminine, which had been wrongly blocking YHWH → B10).
+- [ ] **Adjudicate the one genuine finding — P06 "Israel" (2:12).** The text names יִשְׂרָאֵל ("the God of
+  Israel") but the map tags no Israel entity (`PL_ISRAEL` exists in the BCD, unused at 2:12). Project-lead
+  call: tag `PL_ISRAEL` there, or rule the divine epithet needs no separate entity (and record the exception).
+- [ ] **P07–P14:** not compiled yet (no FOR_MODEL, no decided verse ranges) — extend `extractor/pericopes.json`
+  and run coverage as each is mapped.
