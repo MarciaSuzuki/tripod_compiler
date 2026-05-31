@@ -129,7 +129,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL_HA_ARETZ",
+            "place_id": "PL_LAND_OF_JUDAH",
             "role_in_scene": "LAND_AFFLICTED_BY_FAMINE"
           },
           {
@@ -434,7 +434,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "verse_anchor": "1:1a",
       "proposition_kind": "FAMINE_OCCURRED",
       "event_specific_slots": {
-        "afflicted_place": "PL_HA_ARETZ",
+        "afflicted_place": "PL_LAND_OF_JUDAH",
         "afflicting_event": "O1",
         "agent_named": "NONE"
       },

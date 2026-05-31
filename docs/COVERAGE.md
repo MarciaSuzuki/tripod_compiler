@@ -16,7 +16,8 @@
 > `src/engine/coverage.ts`; the ledger renderer is `src/audit/coverage-ledger.ts`.
 >
 > **P01 result:** `47/47 explicit referents accounted for · 5 implied subjects flagged · 0 unanchored
-> entities · 15 source nouns to tick` — block-clean.
+> entities · 14 source nouns to tick` — block-clean. ("the land" אָרֶץ at 1:1 now resolves to
+> `PL_LAND_OF_JUDAH` after the SC-0009 same-referent merge.)
 
 ## The core idea
 
@@ -115,6 +116,11 @@ everything" to "adjudicate the exceptions."
   → `tripod coverage <P> --out <file>` writes a `type: "coverage-ledger"` wiki note (the three bucket
   tables + score) alongside the COMPILATION-LOG; sign-off on the exceptions list stays human
   (`docs/READING_QUALITY.md`, the fidelity ceiling).
+- [x] **`PL_HA_ARETZ` ("the land", 1:1) resolved — SC-0009.** Merged into `PL_LAND_OF_JUDAH` as the same
+  referent (the famine-land of 1:1 = the land of Judah of 1:6–7), distinguished by `referential_form`, not a
+  second PL-code. The BCD entry gained `hebrew_aliases` הָאָרֶץ/אֶרֶץ; "the land" now reconciles to MATCHED.
+  This established the **same-referent principle** (one referent ⇒ one Layer-3 code; surface variation rides
+  on `referential_form`) — see SPEC_CHANGES SC-0009.
 - [ ] **Scale beyond P01:** extract P02–P14 packets (`extractor/extract_bhsa.py P0n`) and run coverage
-  across the corpus; add `PL_HA_ARETZ` (and any other map-referenced but BCD-absent codes) to the BCD so
-  "the land" stops landing on the tick list.
+  across the corpus; surface any other map-referenced-but-BCD-absent codes the same way (merge or add per the
+  same-referent principle).

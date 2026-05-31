@@ -62,6 +62,7 @@ number bound to exactly one decision.
 | SC-0006 | Drift convergence: convergent/descriptive split + approved-enumerations registry | SHIPPED |
 | SC-0007 | Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot) | SHIPPED |
 | SC-0008 | Template relics: retire obsolete for-model/audit templates | PROPOSED |
+| SC-0009 | Merge PL_HA_ARETZ → PL_LAND_OF_JUDAH (same-referent principle, Layer-3) | APPROVED (compiler shipped; vault PR #1) |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -93,6 +94,46 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0009 — Merge PL_HA_ARETZ into PL_LAND_OF_JUDAH (the same-referent principle)
+- **Date:** 2026-05-30
+- **Decided by:** Marcia Suzuki
+- **Status:** APPROVED — compiler side **shipped**; wiki side is **vault PR [MarciaSuzuki/ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1)** pending the project lead's review/merge.
+- **Type:** registry/BCD (Layer 3) — **no `validation-rules.json` change**.
+- **Summary:** "the land" (הָאָרֶץ, Ruth 1:1) and "the land of Judah" (אֶרֶץ יְהוּדָה, 1:6–7) are the
+  **same geographic referent** (the covenant territory) seen at two moments — the famine that empties it
+  and the bread/return that fills it. The P01 working code `PL_HA_ARETZ` is **merged into the existing
+  `PL_LAND_OF_JUDAH`** and retired; the two moments are distinguished by **referential_form**, not by a
+  second PL-code. (Closes the item `PL_LAND_OF_JUDAH` had flagged: *"pending formal PL-code assignment,
+  parallel to P01's PL_HA_ARETZ handling."*)
+- **Same-referent principle (new, reusable — the reason this is logged):** when the source text refers to
+  one place / being / object under different surface forms across the book, it gets **one** Layer-3 code;
+  the load-bearing surface distinctions are carried by `referential_form` (and per-scene `role_in_scene`),
+  **never** by minting a second code. Splitting one referent across two codes is **registry drift** — the
+  same failure class the compiler exists to prevent (training paper §12), now stated for Layer 3.
+- **Spec change (exact):** none to `validation-rules.json`. **BCD `PL_LAND_OF_JUDAH`:** add
+  `hebrew_aliases: [הָאָרֶץ, אֶרֶץ]`; `aliases` (referential forms) → `[THE_LAND_AFFLICTED_BY_FAMINE` (1:1)`,
+  LAND_OF_RETURN_AND_PROVISION` (1:6–7)`]`; `first-appearance P02→P01`; `appears-in [P02,P03]→[P01,P02,P03]`.
+  **`PL_HA_ARETZ`** retired (it never had a BCD file — a P01 working code only).
+- **Artifact migration:** **P01.** Vault `stas/P01-…-FOR-MODEL.md`: `PL_HA_ARETZ → PL_LAND_OF_JUDAH` in
+  scene S1 `places_in_scene` and proposition P2 `afflicted_place` (`role_in_scene: LAND_AFFLICTED_BY_FAMINE`
+  carries the 1:1 referential sense — the schema's `scene_places_container` is `additionalProperties:false`,
+  so places take no `referential_form` field; only beings do). Vault `pericopes/P01-…md`: scene-1 "the land"
+  → `[[PL_LAND_OF_JUDAH]]`. Mirrored into `fixtures/` (kept byte-identical to the vault). No other pericope
+  references `PL_HA_ARETZ` as a live code.
+- **Validator / tooling impact:** the FOR_MODEL re-validates **0-block** (`PL_LAND_OF_JUDAH` matches the
+  `place_id` pattern). `extractor/build_aliases.py` now reads `hebrew_aliases` → `hebrew_cons_aliases`;
+  `src/engine/coverage.ts matchScore()` tests the referent against the entity's primary Hebrew **plus** any
+  surface alias. `gold-diff` P01: 43→44 matched (the now-coded place extracts deterministically). `tripod
+  coverage P01`: "the land" (אָרֶץ, 1:1) now **MATCHED → PL_LAND_OF_JUDAH** (`via lexical`), where it was
+  previously on the reviewer tick-list because `PL_HA_ARETZ` had no BCD entry.
+- **Version:** **no spec-version bump** (`validation-rules.json` stays `v0.6`). Layer-3 source re-pinned:
+  `_spec/registry/ruth.aliases.json` `aliases-0.1.0 → 0.1.1` (sha `9eba86f6…`).
+- **Verification:** 73 tests green (incl. a synthetic `hebrew_cons_aliases` match test + the P01 acceptance
+  assertion that "the land" → `PL_LAND_OF_JUDAH` and `PL_HA_ARETZ` is gone); `check-drift` ok; coverage P01
+  block-clean (`47/47 explicit · 5 implied · 0 unanchored · 14 ticks`).
 
 ---
 

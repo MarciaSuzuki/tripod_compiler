@@ -30,8 +30,8 @@
       "sha256": "a6a2a983f65b4f692458827173409a651c3b57b8ed39dd4277a4bedeb1081146"
     },
     "registry/ruth.aliases.json": {
-      "version": "aliases-0.1.0",
-      "sha256": "4440d890f55320cb53a967e29980e5da7c709fc9259397a72ad95821e89e717e"
+      "version": "aliases-0.1.1",
+      "sha256": "9eba86f63c0859df39b5f0ecf057fda8efdf56f4267f5f102ffed1cd9b12eff9"
     }
   }
 }

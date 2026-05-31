@@ -100,6 +100,10 @@ def harvest_bcd(bcd_dir):
             aliases = fm.get("aliases") or []
             if not isinstance(aliases, list):
                 aliases = [aliases]
+            heb_aliases = fm.get("hebrew_aliases") or []
+            if not isinstance(heb_aliases, list):
+                heb_aliases = [heb_aliases]
+            heb_cons_aliases = sorted({c for c in (consonantal(h) for h in heb_aliases) if c})
             entry = {
                 "kind": kind,
                 "english": fm.get("english"),
@@ -109,6 +113,8 @@ def harvest_bcd(bcd_dir):
                 "gender": guess_gender(text) if kind == "PERSON" else None,
                 "appears_in": fm.get("appears-in") or [],
             }
+            if heb_cons_aliases:
+                entry["hebrew_cons_aliases"] = heb_cons_aliases
             table[str(code)] = entry
     return table
 

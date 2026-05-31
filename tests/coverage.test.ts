@@ -108,6 +108,14 @@ describe("matchScore", () => {
     const famine = ref({ surface: "רָעָב", gloss: "hunger", verse: "1:1" });
     expect(matchScore(famine, mention("O1"), ALIASES.entities.O1)!.via).toBe("lexical");
   });
+  it("matches a referent against a surface hebrew alias, not just the primary hebrew (SC-0009)", () => {
+    // PL_LAND_OF_JUDAH primary = אֶרֶץ יְהוּדָה; "the land" (אָרֶץ) matches only via the אֶרֶץ alias
+    const land = ref({ surface: "אָ֑רֶץ", gloss: "earth", verse: "1:1" });
+    const alias = { kind: "PLACE" as const, english: "the land of Judah", hebrew: "אֶרֶץ יְהוּדָה", hebrew_cons: "ארץיהודה", hebrew_cons_aliases: ["ארץ", "הארץ"], referential_forms: ["THE_LAND_AFFLICTED_BY_FAMINE"], gender: null };
+    const s = matchScore(land, mention("PL_LAND_OF_JUDAH"), alias);
+    expect(s!.via).toBe("lexical");
+    expect(s!.score).toBeGreaterThanOrEqual(30);
+  });
 });
 
 // ───────────────────────── M-extraction ─────────────────────────

@@ -206,8 +206,10 @@ export function matchScore(r: Referent, m: EntityMention, a: AliasEntry | undefi
   }
 
   const rc = consonantal(r.surface);
-  const heb = a?.hebrew_cons ?? "";
-  const hebMatch = !!(rc && heb && (heb.includes(rc) || rc.includes(heb)));
+  // match the referent's consonantal surface against the entity's primary Hebrew OR any surface alias
+  // (e.g. "the land" אָרֶץ ↔ PL_LAND_OF_JUDAH via the alias אֶרֶץ, not just the primary אֶרֶץ יְהוּדָה).
+  const hebForms = [a?.hebrew_cons ?? "", ...(a?.hebrew_cons_aliases ?? [])].filter(Boolean);
+  const hebMatch = !!(rc && hebForms.some((h) => h.includes(rc) || rc.includes(h)));
   const rl = latin(r.gloss);
   const el = latin(a?.english);
   const latinMatch = !!(rl && el && rl.length >= 3 && (el.includes(rl) || rl.includes(el)));

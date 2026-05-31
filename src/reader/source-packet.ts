@@ -50,6 +50,8 @@ export interface AliasEntry {
   english: string | null;
   hebrew: string;
   hebrew_cons: string;
+  /** consonantal skeletons of any surface `hebrew_aliases` (e.g. הָאָרֶץ/אֶרֶץ for PL_LAND_OF_JUDAH). */
+  hebrew_cons_aliases?: string[];
   referential_forms: string[];
   gender: string | null;
 }

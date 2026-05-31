@@ -9,19 +9,20 @@ pilot: "pilot-2"
 
 # P01 — Ruth 1:1-5 — COVERAGE LEDGER
 
-> **P01 coverage: 47/47 explicit referents accounted for · 5 implied subjects flagged · 0 unanchored entities · 15 source nouns to tick**
+> **P01 coverage: 47/47 explicit referents accounted for · 5 implied subjects flagged · 0 unanchored entities · 14 source nouns to tick**
 >
 > Gate order: conformance → **coverage (this)** → reading-quality. Coverage reconciles the BHSA
 > referent set R against the map's entity mentions M (docs/COVERAGE.md). "Nothing added" is
 > near-mechanical; "nothing missing" is explicit (airtight) + implied (flagged) + interpretive (tick).
 
-## MATCHED — source expression ↔ map entity (36)
+## MATCHED — source expression ↔ map entity (37)
 
 | verse | surface | gloss | class | entity | via |
 | --- | --- | --- | --- | --- | --- |
 | 1:1a | ימֵי֙ | `day` | common_noun | **TM_PERIOD_OF_JUDGES** | lexical |
 | 1:1a | שֹּׁפְטִ֔ים | `judge` | participle_substantival | **B1** | lexical |
 | 1:1a | רָעָ֖ב | `hunger` | common_noun | **O1** | lexical |
+| 1:1a | אָ֑רֶץ | `earth` | common_noun | **PL_LAND_OF_JUDAH** | lexical |
 | 1:1b | אִ֜ישׁ | `man` | common_noun | **B2** | referential_form |
 | 1:1b | בֵּ֧ית לֶ֣חֶם | `Bethlehem` | proper_noun | **PL1** | name |
 | 1:1b | יְהוּדָ֗ה | `Judah` | proper_noun | **PL1** | name |
@@ -56,13 +57,12 @@ pilot: "pilot-2"
 | 1:5b | אִשָּׁ֔ה | `woman` | common_noun | **B3** | referential_form |
 | 1:5b | אִישָֽׁהּ | `man` | common_noun | **B2** | referential_form |
 
-## UNMAPPED_SOURCE — in the text, not (yet) in the map (24)
+## UNMAPPED_SOURCE — in the text, not (yet) in the map (23)
 
 _`proper` = named referent absent from the map (**block**); `checklist` = source noun the reviewer ticks; `minor` = pronoun/suffix/adjective (bound)._
 
 | verse | surface | gloss | class | tag | severity |
 | --- | --- | --- | --- | --- | --- |
-| 1:1a | אָ֑רֶץ | `earth` | common_noun | checklist | tick |
 | 1:1b | ה֥וּא | `he` | pronoun | minor | minor |
 | 1:1b | אִשְׁתֹּ֖ו | `woman` | suffix | minor | minor |
 | 1:1b | שְׁנֵ֥י | `two` | common_noun | checklist | tick |

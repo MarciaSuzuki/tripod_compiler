@@ -1014,6 +1014,7 @@
     },
     "PL_LAND_OF_JUDAH": {
       "appears_in": [
+        "P01",
         "P02",
         "P03"
       ],
@@ -1021,8 +1022,15 @@
       "gender": null,
       "hebrew": "אֶרֶץ יְהוּדָה",
       "hebrew_cons": "ארץיהודה",
+      "hebrew_cons_aliases": [
+        "ארץ",
+        "הארץ"
+      ],
       "kind": "PLACE",
-      "referential_forms": []
+      "referential_forms": [
+        "THE_LAND_AFFLICTED_BY_FAMINE",
+        "LAND_OF_RETURN_AND_PROVISION"
+      ]
     },
     "PL_NAOMIS_DWELLING": {
       "appears_in": [

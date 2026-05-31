@@ -81,9 +81,15 @@ npx tsx src/cli/tripod.ts coverage P01          # BHSA coverage reconciliation: 
     overlays **warn** (reviewer ticks). `tripod coverage <P> [--out ledger.md] [--json]`; the ledger
     note (`src/audit/coverage-ledger.ts`) files into the audit trail.
   - **P01 acceptance:** `47/47 explicit referents accounted for · 5 implied subjects flagged ·
-    0 unanchored entities · 15 source nouns to tick` — block-clean (`fixtures/coverage/`,
+    0 unanchored entities · 14 source nouns to tick` — block-clean (`fixtures/coverage/`,
     `tests/coverage-p01.test.ts`; a dropped scene → Orpah/Ruth omission block, an out-of-pericope
     entity → hallucination block).
+  - **SC-0009 (same-referent merge):** "the land" (אָרֶץ, 1:1) and "the land of Judah" (1:6–7) are one
+    referent — `PL_HA_ARETZ` merged into `PL_LAND_OF_JUDAH`, distinguished by `referential_form`. Added
+    `hebrew_aliases` support (BCD `hebrew_aliases` → alias-table `hebrew_cons_aliases` → matcher), so
+    "the land" now reconciles MATCHED → `PL_LAND_OF_JUDAH`. Wiki side: vault PR
+    [ruth-pilot-b-wiki#1](https://github.com/MarciaSuzuki/ruth-pilot-b-wiki/pull/1) (pending review);
+    compiler side shipped (alias table re-pinned `0.1.1`; gold-diff P01 43→44). See SPEC_CHANGES SC-0009.
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
@@ -122,10 +128,11 @@ npx tsx src/cli/tripod.ts coverage P01          # BHSA coverage reconciliation: 
 1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
    validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
 2. **Coverage ledger (`docs/COVERAGE.md`) + BHSA frozen-extract sidecar — SHIPPED for P01** (see Shipped
-   above). Remaining: **extract P02–P14** (`python3 extractor/extract_bhsa.py P0n --tf-path <local tf/2021>`),
-   pin each packet, and run `tripod coverage` across the corpus; add `PL_HA_ARETZ` + any other
-   map-referenced-but-BCD-absent codes to the BCD so "the land" leaves the tick list. Wire coverage into
-   the gate order after conformance (conformance → **coverage** → reading-quality).
+   above; P01's "the land" registry gap closed by SC-0009). Remaining: **extract P02–P14**
+   (`python3 extractor/extract_bhsa.py P0n --tf-path <local tf/2021>`), pin each packet, and run `tripod
+   coverage` across the corpus; surface any other map-referenced-but-BCD-absent codes via the same-referent
+   principle (merge or add). Wire coverage into the gate order after conformance (conformance → **coverage**
+   → reading-quality).
 3. **Registry growth — COMPLETE for the pilot.** **P01–P06 all promoted** (registry v0.4): P02
    grandfathered (`--status ANY`), P03–P06 via the **CONFIRMED-only default gate**. The full Ruth pilot
    corpus now validates at **0 convergent drift** (descriptive/open axes remain per-pericope, by design).

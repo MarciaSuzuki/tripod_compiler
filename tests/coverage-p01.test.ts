@@ -38,9 +38,17 @@ describe("coverage acceptance — real P01 (Ruth 1:1-5), known-good FOR_MODEL", 
     const concreteUnanchored = led.unanchored_entities.filter((e) => !e.abstract);
     expect(concreteUnanchored).toEqual([]);
     // the 9 beings + 3 places + 1 object + 1 time are all hosted
-    for (const id of ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "PL1", "PL2", "PL_HA_ARETZ", "O1", "TM_PERIOD_OF_JUDGES"]) {
+    for (const id of ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "PL1", "PL2", "PL_LAND_OF_JUDAH", "O1", "TM_PERIOD_OF_JUDGES"]) {
       expect(led.entities.find((e) => e.entity_id === id)?.anchored, id).toBe(true);
     }
+  });
+
+  it("resolves 'the land' (אָרֶץ, 1:1) to PL_LAND_OF_JUDAH via its אֶרֶץ alias — SC-0009 same-referent merge", () => {
+    const land = led.matched.find((m) => m.gloss === "earth" && m.verse === "1:1a");
+    expect(land?.entity_id).toBe("PL_LAND_OF_JUDAH");
+    expect(land?.via).toBe("lexical");
+    // PL_HA_ARETZ is retired — it must not appear anywhere in the reconciliation
+    expect(led.entities.find((e) => e.entity_id === "PL_HA_ARETZ")).toBeUndefined();
   });
 
   it("routes the proper nouns to the right beings/places — incl. Kilion↔Chilion via consonantal Hebrew", () => {
