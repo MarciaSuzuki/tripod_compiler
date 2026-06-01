@@ -70,7 +70,7 @@ number bound to exactly one decision.
 | SC-0014 | Rename SPEECH_ACT `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` → `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drop "AGENT" jargon) | APPLIED (pending the lead's blessing) |
 | SC-0015 | Extend the Level-3 lint to enforce the operating test: flag cross_ref/inter-proposition-link lines + meta/analytical questions in §4, scan questions (not just answers) incl. same-line Q&A, add comma compounds with an entity-list guard; lint-lexicon v0.1.0→v0.2.0 (re-pinned) | APPLIED |
 | SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (7 ruled keeps) | SHIPPED (fixtures + vault, blessed + merged 2026-06-01) |
-| SC-0017 | De-leak: strip process-commentary (SC-IDs, "per the content discipline", "§3C entities only", "X → Proposition N" relocation trails) from the content layers — maps §3C + FOR_MODEL `objects_in_scene._note` — keeping entities + plain considered-absence; + template/discipline-doc hygiene so P07–P14 are born clean | APPLIED (fixtures; **ruled by Marcia 2026-06-01**; vault writeback is a separate pending pass) |
+| SC-0017 | De-leak: strip process-commentary (SC-IDs, "per the content discipline", "§3C entities only", "X → Proposition N" relocation trails) from the content layers — maps §3C + FOR_MODEL `objects_in_scene._note` — keeping entities + plain considered-absence; + template/discipline-doc hygiene so P07–P14 are born clean | SHIPPED (fixtures + vault — both PRs merged 2026-06-01); **blessed by Marcia 2026-06-01** |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -108,8 +108,10 @@ number bound to exactly one decision.
 ## SC-0017 — De-leak: strip process-commentary from the content layers
 - **Date:** 2026-06-01
 - **Decided by:** Marcia Suzuki (the principle + scope); the compiler applied + verified it.
-- **Status:** **APPLIED (fixtures) — ruled by Marcia 2026-06-01.** Vault writeback (`pericopes/` + `stas/` +
-  the template + discipline-doc edits) is a separate pending pass (the careful cross-repo flow).
+- **Status:** **SHIPPED — BLESSED by Marcia 2026-06-01.** Fixtures applied + Architect-verified, then the
+  **vault writeback DONE** (both PRs merged 2026-06-01 — compiler #17 `ebe7847`, vault #7 `6210b3b`). Vault
+  `pericopes/` + `stas/` are byte-identical to the deleaked fixtures; the template + discipline-doc (R6) edits
+  landed in the vault. See the vault-writeback record at the end of this entry.
 - **Type:** artifact remediation + docs/template hygiene (no schema/spec change; no closed-list change).
 - **Principle:** a meaning map and a FOR_MODEL describe the **passage**, never the **project**. The
   relocation audit-trail SC-0013/SC-0016 left inline in §3C (`SC-XXXX`, "Relocated per the content
@@ -156,6 +158,19 @@ number bound to exactly one decision.
   measure — baseline re-written) · `npm test` **97 green** · `check-drift` clean. Removal-only: 21 insertions
   (all minimal-note normalizations) / 101 deletions; no entity, proposition, §4, flag, figure, or
   significant_absence touched.
+
+### SC-0017 vault writeback (2026-06-01) — DONE
+The blessed §3C/`_note` de-leak was propagated to the canonical vault (`ruth-pilot-b-wiki`), and the guidance
+edits (which don't exist in the compiler repo — the meaning-map template + the discipline doc's new **R6**)
+landed there too. Delivered on vault branch `sc-0017-deleak-vault` via **reviewed vault PR #7**, merged to vault
+`main` (`6210b3b`); compiler **PR #17** merged to compiler `main` (`ebe7847`). **Architect-verified after
+merge:** vault `pericopes/P01–P06` + `stas/*-FOR-MODEL` are **byte-identical** (`cmp`, 12/12) to the deleaked
+compiler `fixtures/`; **zero-grep clean** across both trees; `validate` 6/6 · `lint --corpus` 0 drift / 7
+accepted · `coverage --corpus` 6/6 · `gold-diff` agreement unchanged · `check-drift` clean · 97 tests green.
+The vault working copy was returned to clean `main` and both merged branches deleted. **Process artifacts
+intentionally retained provenance** — P04's BCD-DELTA `audit_note` (`SC-0016`) and the COMPILATION-LOG
+compilation prose are the audit/governance layer, deliberately out of the content-only scope. This closes the
+§3C / Level-3 content-discipline arc (SC-0012 → SC-0017).
 
 ---
 

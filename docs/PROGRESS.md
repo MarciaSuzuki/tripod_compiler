@@ -179,8 +179,10 @@ npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-
     **Zero-grep across both trees** (union `relocat|SC-00\d\d|→ Prop|content discipline|§3C entities only`);
     validate 6/6 · lint 0 drift/7 accepted · coverage 6/6 · gold-diff agreement UNCHANGED (only the
     informational `judgmentPlaceholders` count fell, baseline re-written) · 97 tests · check-drift clean.
-    Removal-only (21 ins / 101 del). Record preserved in the SC-0013/SC-0016 audit docs. **Fixtures applied
-    (compiler PR); vault `pericopes/`+`stas/` writeback + the template/discipline-doc hygiene = separate pass.**
+    Removal-only (21 ins / 101 del). Record preserved in the SC-0013/SC-0016 audit docs. **SHIPPED + vault-synced
+    (both PRs merged 2026-06-01 — compiler #17, vault #7): vault `pericopes/`+`stas/` byte-identical to the
+    deleaked fixtures, the template + discipline-doc (R6) hygiene landed in the vault, both branches deleted.
+    The §3C / Level-3 content-discipline arc SC-0012 → SC-0017 is closed.**
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
