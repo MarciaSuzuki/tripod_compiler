@@ -8,13 +8,13 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 113 tests green (was 97; +16 SC-0018 id-align)
+npm install && npm run build && npm test     # 133 tests green (97 → +16 SC-0018 → +13 SC-0018-refine → +7 SC-0020 id-align tweaks)
 npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 11 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions + id-alignment-exceptions) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
 npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-1, 0 tier-2) · 7 accepted (signed off) · exit 0 — the operating-test bar
-npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018 (5th check, ALIGNED): cross-artifact entity-ID alignment over P01–P06 — DIAGNOSTIC inventory; the human rules it
+npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, ALIGNED): 2 clean · deferred B31 name-binding (P02/P03) + pre-existing §3A-prose REFERENCED-being gaps surfaced for the lead · 6 accepted · 1 withheld INFO (B?)
 ```
 
 ## Shipped (on `main`)
@@ -232,7 +232,17 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018 (5th check, ALIGNED): 
   drafter (Slice 4)**, deliberately not built yet (deterministic-first discipline). The seam is
   defined: `compile` emits the skeleton + the per-field gap (with source-prose span) that the drafter
   fills, then the result re-validates via Slice 1.
-- Nothing is uncommitted; no open PRs.
+- **SC-0019 + SC-0020 — P01 worked reference, fixtures-only (branch `sc-0019-0020-p01`, open PR).**
+  The first, bounded chunk of the combined P01–P06 remediation. **SC-0020 (entity-ID reconciliation):** two
+  `id-check` engine tweaks (`<NS>?` → INFO `WITHHELD_REFERENT`; note-title-safe slug normalization) + 6 ruled
+  signed-off `id-alignment-exceptions.json` entries (re-pinned 0.2.0) + the P01 map TM_→TH_ alignment + the P01
+  AUDIT-relic removal. **SC-0019 (prose standard):** P01 conditioning prose re-voiced to the Common-Reader
+  register as the worked reference + 2 proposed calibration examples + the matched FM `significant_absence`
+  free-text. Gates green (133 tests · validate 6/6 · lint 0 drift · coverage 6/6 · gold-diff byte-identical).
+  **STOPPED at P01 for the lead's blessing.** DEFERRED (post-blessing): the B31 BCD alias (A2, vault), the
+  P02–P06 roll, the template/methodology/prompt seeding, the vault writeback. **Surfaced for the lead:** the A4
+  vault-note situation (orphaned `TM_TEN_YEARS` BCD note — relocate-never-delete, not touched); the 8 pre-existing
+  §3A-prose REFERENCED-being misalignments NOT in the four ruled exception categories.
 
 ## Next (recommended)
 > SC-0007 (the previous #1 — L1/discourse/high-risk convergence) is **DONE** on

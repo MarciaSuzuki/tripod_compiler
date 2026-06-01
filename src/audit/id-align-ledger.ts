@@ -18,6 +18,7 @@ export function formatIdAlignText(r: IdAlignReport): string {
     `   ${c.refErrors} ref-integrity error(s) · ${c.nameErrors} name-binding error(s) · ` +
       `${c.misalign} misalignment(s) (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.flagMismatch} flag-mismatch(es) · ${c.dangling} dangling note(s)` +
       (c.unverifiable ? ` · ${c.unverifiable} unverifiable` : "") +
+      (c.withheld ? ` · ${c.withheld} withheld-referent` : "") +
       (c.accepted ? ` · ${c.accepted} accepted` : ""),
   );
 
@@ -56,7 +57,11 @@ export function formatIdAlignText(r: IdAlignReport): string {
     for (const f of r.unverifiable) (byCode.get(f.code) ?? byCode.set(f.code, []).get(f.code)!).push(f.side);
     lines.push(`      ${[...byCode.keys()].sort().join(" · ")}`);
   }
-  if (r.referenceIntegrity.length + r.nameBinding.length + r.misalignments.length + r.flagMismatches.length + r.danglingNotes.length + r.unverifiable.length === 0)
+  if (r.withheldReferents.length) {
+    lines.push(`   withheld referents (INFO — intentional \`<NS>?\` gaps, e.g. B?; never an error):`);
+    for (const f of r.withheldReferents) lines.push(`      ⓘ [${f.side}] ${f.code}  @${f.where}  — ${f.reason} (${f.detail})`);
+  }
+  if (r.referenceIntegrity.length + r.nameBinding.length + r.misalignments.length + r.flagMismatches.length + r.danglingNotes.length + r.unverifiable.length + r.withheldReferents.length === 0)
     lines.push(`   — clean: every entity code aligns and resolves.`);
   return lines.join("\n");
 }
@@ -97,6 +102,7 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     const sides = [...new Set(r.unverifiable.filter((f) => f.code === code).map((f) => f.side))].join(", ");
     return [`\`${code}\``, sides];
   });
+  const whRows = r.withheldReferents.map((f) => [`\`${f.code}\``, f.side, f.where, f.reason]);
 
   return (
     `---\n` +
@@ -109,7 +115,7 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     `sc_ref: "SC-0018"\n` +
     `---\n\n` +
     `# ${r.pericope} — CROSS-ARTIFACT ID-ALIGNMENT LEDGER\n\n` +
-    `> **${c.refErrors} ref-integrity · ${c.nameErrors} name-binding · ${c.misalign} misalignment (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.flagMismatch} flag-mismatch · ${c.dangling} dangling · ${c.unverifiable} unverifiable · ${c.accepted} accepted.**\n>\n` +
+    `> **${c.refErrors} ref-integrity · ${c.nameErrors} name-binding · ${c.misalign} misalignment (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.flagMismatch} flag-mismatch · ${c.dangling} dangling · ${c.unverifiable} unverifiable · ${c.withheld} withheld-referent · ${c.accepted} accepted.**\n>\n` +
     `> SC-0018, the 5th deterministic check (legal · complete · atomic-bare-plain · **aligned** · true).\n` +
     `> DIAGNOSTIC ONLY — the prose map and the FOR_MODEL are two halves of one training pair; an entity\n` +
     `> named in one must be the same canonical code the other uses. This inventory is ruled by a human; it fixes nothing.\n\n` +
@@ -130,7 +136,10 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     table(["note", "where", "detail", "severity"], dnRows) +
     `\n## Unverifiable codes — schema-legal, no vendored registry tracks them (${uvRows.length})\n\n` +
     `_\`TH_\` (thematic overlay): legal per the schema, but vendored in no registry, so reference-integrity cannot verify it here. Surfaced, not errored. (\`CB_\`/\`FIG_\` are now verifiable — see above.)_\n\n` +
-    table(["code", "sides"], uvRows)
+    table(["code", "sides"], uvRows) +
+    `\n## Withheld referents — intentional \`<NS>?\` gaps (${whRows.length})\n\n` +
+    `_A schema-legal code ending in \`?\` (e.g. \`B?\`, the \`b_code\` pattern \`^B(\\d+|\\?)$\`) is an INTENTIONAL withheld referent — the artifact declines to bind the slot to a registered entity (P06's deceased-husband, "her husband (pair withheld; see P01-D2)"). INFO only: it cannot resolve in a registry and cannot align across artifacts, so it is excluded from reference-integrity and the structural symmetric difference._\n\n` +
+    table(["code", "side", "where", "reason"], whRows)
   );
 }
 

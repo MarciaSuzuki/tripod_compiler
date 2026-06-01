@@ -8,6 +8,8 @@ import {
   assertNoHyphenInCodePatterns,
   parseWikilink,
   slugify,
+  normalizeSlug,
+  isWithheldReferent,
   extractForModelCodes,
   extractForModelFlags,
   harvestMapFlags,
@@ -160,6 +162,73 @@ describe("slugify", () => {
     expect(slugify("Bethlehem of Judah")).toBe("Bethlehem-of-Judah");
     expect(slugify("About Ten Years")).toBe("About-Ten-Years");
     expect(slugify("In the Days When the Judges Judged")).toBe("In-the-Days-When-the-Judges-Judged");
+  });
+});
+
+// ───────────────────────── SC-0020 A1.2 — note-title-safe slug normalization ─────────────────────────
+
+describe("normalizeSlug (SC-0020) — note-title-safe name-binding comparison", () => {
+  it("strips apostrophes so a note-title-safe slug matches an apostrophe'd BCD name", () => {
+    // BCD: "Naomi's Dwelling in Bethlehem" → slugify keeps the apostrophe; the map slug can't carry it.
+    expect(normalizeSlug(slugify("Naomi's Dwelling in Bethlehem"))).toBe(normalizeSlug("Naomis-Dwelling-in-Bethlehem"));
+    expect(normalizeSlug(slugify("Boaz's Portion of the Field"))).toBe(normalizeSlug("Boazs-Portion-of-the-Field"));
+  });
+  it("collapses '/' (a char a note title can't hold) to the '-' separator, then collapses repeats", () => {
+    expect(normalizeSlug(slugify("His People / People of YHWH"))).toBe(normalizeSlug("His-People-People-of-YHWH"));
+  });
+  it("is a no-op on already-clean slugs (no apostrophe / slash)", () => {
+    expect(normalizeSlug("Bethlehem-of-Judah")).toBe("Bethlehem-of-Judah");
+    expect(normalizeSlug("About-Ten-Years")).toBe("About-Ten-Years");
+  });
+  it("name-binding accepts the apostrophe-dropped map slug (no ERROR)", () => {
+    const al: AliasTable = { book: "ruth", entities: { PL9: { kind: "PLACE", english: "Naomi's Dwelling in Bethlehem", hebrew: "", hebrew_cons: "", referential_forms: [], gender: null } } };
+    const map = writeMap("apos-map", scene(1, { places: ["[[PL9-Naomis-Dwelling-in-Bethlehem]]"] }));
+    const fm = writeFm("apos-fm", { level_2_scenes: [fmScene(1, { places: ["PL9"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, fm, hermetic({ aliases: al }));
+    expect(r.nameBinding.some((f) => f.code === "PL9")).toBe(false);
+    expect(r.counts.nameErrors).toBe(0);
+  });
+});
+
+// ───────────────────────── SC-0020 A1.1 — withheld referent (<NS>?) is INFO, not an error ─────────────────────────
+
+describe("isWithheldReferent + WITHHELD_REFERENT (SC-0020)", () => {
+  it("isWithheldReferent: a schema-legal code whose tail is exactly '?' (B?) — not B12, not PL_AMONG_SHEAVES", () => {
+    expect(isWithheldReferent("B?", ns)).toBe(true);
+    expect(isWithheldReferent("B12", ns)).toBe(false);
+    expect(isWithheldReferent("PL_AMONG_SHEAVES", ns)).toBe(false);
+    expect(isWithheldReferent("TM_TEN_YEARS", ns)).toBe(false);
+    expect(isWithheldReferent("CB_0030", ns)).toBe(false);
+    expect(isWithheldReferent("ZZZ?", ns)).toBe(false); // not a schema-legal entity code at all
+  });
+  it("B? on the FOR_MODEL → WITHHELD_REFERENT INFO, NOT a ref-integrity error, NOT a misalignment", () => {
+    // B3 is declared on both sides; B? is an intentional withheld referent in the FM scene only.
+    const map = writeMap("wh-map", scene(1, { beings: ["[[B3-Naomi]]"] }));
+    const fm = writeFm("wh-fm", { level_2_scenes: [fmScene(1, { beings: ["B3", "B?"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, fm, hermetic());
+    expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false); // not an UNKNOWN_CODE
+    expect(r.counts.refErrors).toBe(0);
+    expect(r.withheldReferents).toHaveLength(1);
+    expect(r.withheldReferents[0]).toMatchObject({ side: "FOR_MODEL", code: "B?", reason: "WITHHELD_REFERENT" });
+    expect(r.counts.withheld).toBe(1);
+    expect(r.misalignments.some((m) => m.code === "B?")).toBe(false); // excluded from the structural diff
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true); // INFO never fails the run
+  });
+  it("B? declared as a scene being AND used as a slot value (the real P06 shape) → one withheld INFO, never an error/misalignment", () => {
+    // Mirrors P06: B? is a scene-container being_id (which surfaces the withheld INFO) and also appears
+    // as the `wife_taken` slot value. (The slot-value collector keys on concrete `^B\d+$`, so the slot
+    // occurrence alone is not separately collected — the scene-container occurrence carries the INFO.)
+    const map = writeMap("wh2-map", scene(1, { beings: ["[[B3-Naomi]]"] }));
+    const fm = writeFm("wh2-fm", {
+      level_2_scenes: [fmScene(1, { beings: ["B3", "B?"] })],
+      level_3_propositions: [{ prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K", event_specific_slots: { wife_taken: "B?" }, inter_proposition_links: {}, cb_flags: [], figure_flags: [] }],
+    });
+    const r = checkIdAlignment(map, fm, hermetic());
+    expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false);
+    expect(r.withheldReferents.filter((w) => w.code === "B?")).toHaveLength(1); // surfaced once
+    expect(r.misalignments.some((m) => m.code === "B?")).toBe(false);
+    expect(r.ok).toBe(true);
   });
 });
 
@@ -465,20 +534,25 @@ const real = (pid: string, bcv: string) =>
   checkIdAlignment(`${MM}/${pid}-${bcv}.md`, `${FM}/${pid}-${bcv}-FOR-MODEL.md`, { noteResolveDirs: [MM, FM] });
 
 describe("integration — real fixtures (locks the refined headline findings)", () => {
-  it("P01: LIKELY_SAME_REFERENT TM_TEN_YEARS ↔ TH_TEN_YEARS_APPROXIMATELY survives; AUDIT still dangles; flags align; no CB/FIG noise", () => {
+  it("P01 (post-SC-0020): TM_/TH_ now ALIGN (A4 map edit); AUDIT no longer dangles (A5); flags align; no CB/FIG noise", () => {
     const r = real("P01", "Ruth-1-1-5");
-    const lsr = r.misalignments.find((m) => m.direction === "MAP_NOT_FM" && m.code === "TM_TEN_YEARS");
-    expect(lsr?.likelySameReferent?.otherCode).toBe("TH_TEN_YEARS_APPROXIMATELY");
-    expect(r.danglingNotes.some((d) => d.raw === "P01-Ruth-1-1-5-AUDIT" && d.severity === "FLAG")).toBe(true);
-    expect(r.counts.refErrors).toBe(0); // P01 has no unknown codes (CB/FIG now resolve)
+    // SC-0020 A4: the map §3C code was aligned TM_TEN_YEARS → TH_TEN_YEARS_APPROXIMATELY, so the
+    // former LIKELY_SAME_REFERENT split is resolved — neither side carries the un-paired code now.
+    expect(r.misalignments.some((m) => m.code === "TM_TEN_YEARS")).toBe(false);
+    expect(r.misalignments.some((m) => m.code === "TH_TEN_YEARS_APPROXIMATELY")).toBe(false);
+    expect(r.counts.likelySameReferent).toBe(0);
+    // SC-0020 A5: the [[…-AUDIT]] relic was removed from the map frontmatter — no dangling note now.
+    expect(r.danglingNotes.length).toBe(0);
+    expect(r.counts.refErrors).toBe(0); // P01 has no unknown codes (CB/FIG resolve)
     expect(r.counts.flagMismatch).toBe(0); // P01 CB/FIG flags align map↔FM
     expect(r.flagMismatches.length).toBe(0);
-    // R1: no CB_/FIG_ code appears as a structural misalignment any more
+    // R1: no CB_/FIG_ code appears as a structural misalignment
     expect(r.misalignments.some((m) => m.code.startsWith("CB_") || m.code.startsWith("FIG_"))).toBe(false);
-    // R3: the COMPILATION-LOG/BCD-DELTA/VERIFICATION-INPUT false danglings are gone (P01 has only AUDIT)
-    expect(r.danglingNotes.length).toBe(1);
-    // R2: CB_/FIG_ are no longer "unverifiable"; only TH_ remains
+    // TH_TEN_YEARS_APPROXIMATELY is now the aligned object code; it stays UNVERIFIABLE (no TH_ registry) — acceptable.
+    expect(r.unverifiable.some((u) => u.code === "TH_TEN_YEARS_APPROXIMATELY")).toBe(true);
     expect(r.unverifiable.every((u) => u.code.startsWith("TH_"))).toBe(true);
+    // The remaining un-accepted misalignments are the pre-existing REFERENCED-being-in-§3A-prose gaps (B2/B8/B9 @S4).
+    expect(r.misalignments.filter((m) => m.severity === "MISALIGN").map((m) => m.code).sort()).toEqual(["B2", "B8", "B9"]);
   });
 
   it("P03: PL_LAND_OF_JUDAH gap survives; B31 name-binding ERROR survives; T7 thread + artifact siblings resolve", () => {
@@ -497,15 +571,24 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     expect(r.danglingNotes.length).toBe(0);
   });
 
-  it("P05: PL_NAOMIS_DWELLING + PL5_BOAZ_PORTION name-binding ERRORs survive", () => {
+  it("P05 (post-SC-0020): PL_NAOMIS_DWELLING + PL5_BOAZ_PORTION name-binding ERRORs are RESOLVED by slug normalization", () => {
     const r = real("P05", "Ruth-2-1-7");
-    expect(r.nameBinding.some((f) => f.code === "PL_NAOMIS_DWELLING" && f.severity === "ERROR")).toBe(true);
-    expect(r.nameBinding.some((f) => f.code === "PL5_BOAZ_PORTION" && f.severity === "ERROR")).toBe(true);
+    // SC-0020 A1 slug normalization: the map slugs (note-title-safe: no apostrophe) now match the BCD
+    // names ("Naomi's Dwelling…", "Boaz's Portion…") after stripping `'` on both sides — no longer ERRORs.
+    expect(r.nameBinding.some((f) => f.code === "PL_NAOMIS_DWELLING")).toBe(false);
+    expect(r.nameBinding.some((f) => f.code === "PL5_BOAZ_PORTION")).toBe(false);
+    expect(r.counts.nameErrors).toBe(0);
   });
 
-  it("P06: 'B?' ref-integrity ERROR + PL_AMONG_SHEAVES gap survive; FIG_0131 (cross-ref narration) is NOT a flag mismatch", () => {
+  it("P06 (post-SC-0020): 'B?' is a WITHHELD_REFERENT (INFO, not ERROR, not a misalignment); PL_AMONG_SHEAVES gap survives; FIG_0131 not a flag mismatch", () => {
     const r = real("P06", "Ruth-2-8-16");
-    expect(r.referenceIntegrity.some((f) => f.code === "B?" && f.severity === "ERROR")).toBe(true);
+    // SC-0020 A1: B? is an INTENTIONAL withheld referent (the deceased-husband, pair withheld per P01-D2).
+    // It is surfaced as INFO, never a ref-integrity ERROR, and never enters the structural symmetric diff.
+    expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false);
+    expect(r.counts.refErrors).toBe(0);
+    expect(r.withheldReferents.some((w) => w.code === "B?" && w.side === "FOR_MODEL" && w.reason === "WITHHELD_REFERENT")).toBe(true);
+    expect(r.counts.withheld).toBe(1);
+    expect(r.misalignments.some((m) => m.code === "B?")).toBe(false);
     expect(r.misalignments.some((m) => m.code === "PL_AMONG_SHEAVES")).toBe(true);
     // FIG_0131 is mentioned only inside a §5A bullet's parenthetical (cross-pericope ref) and in an FM
     // cross_ref string — not a flag on this pericope on either side, so it must NOT surface as a mismatch.

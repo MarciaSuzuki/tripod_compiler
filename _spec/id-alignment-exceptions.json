@@ -2,6 +2,79 @@
   "schema": "tripod-id-alignment-exceptions",
   "schema_version": "0.1.0",
   "book": "RUTH",
-  "_doc": "Reviewer sign-off on cross-artifact entity-ID alignment findings (SC-0018, the analogue of coverage-exceptions.json / lint-exceptions.json). A finding whose keys match an entry here is downgraded by `tripod id-check` from ERROR/MISALIGN/FLAG to ✓ ACCEPTED: it still appears in the inventory (marked accepted, with the reason), but is excluded from the failure count and does not fail the run. It exists for the legitimate cases — e.g. a map that declares an off-stage referent the FOR_MODEL omits (already documented as a coverage difference by `tripod gold-diff`), or a deliberate surface variant — ruled by the project lead, NOT silently suppressed. The engine stays pure (it always surfaces the finding); acceptance is applied as a recorded downgrade, exactly as `tripod coverage` applies coverage-exceptions. Governed: every entry carries provenance (accepted_by/on + sc_ref); pinned in _spec/pins.json, so accepting an exception is a recorded, re-pinned edit. EMPTY at first by design — the SC-0018 first run is the raw, complete inventory Marcia rules. Match keys: pericope = map basename stem (e.g. 'P01-Ruth-1-1-5'); kind ∈ {REFERENCE_INTEGRITY, NAME_BINDING, MISALIGNMENT, DANGLING_NOTE}; then code (entity findings) | note_title (dangling) | (scope, direction) also for MISALIGNMENT.",
-  "exceptions": []
+  "_doc": "Reviewer sign-off on cross-artifact entity-ID alignment findings (SC-0018, the analogue of coverage-exceptions.json / lint-exceptions.json). A finding whose keys match an entry here is downgraded by `tripod id-check` from ERROR/MISALIGN/FLAG to ✓ ACCEPTED: it still appears in the inventory (marked accepted, with the reason), but is excluded from the failure count and does not fail the run. It exists for the legitimate cases — e.g. a map that declares an off-stage referent the FOR_MODEL omits (already documented as a coverage difference by `tripod gold-diff`), or a deliberate surface variant — ruled by the project lead, NOT silently suppressed. The engine stays pure (it always surfaces the finding); acceptance is applied as a recorded downgrade, exactly as `tripod coverage` applies coverage-exceptions. Governed: every entry carries provenance (accepted_by/on + sc_ref); pinned in _spec/pins.json, so accepting an exception is a recorded, re-pinned edit. Match keys: pericope = map basename stem (e.g. 'P01-Ruth-1-1-5'); kind ∈ {REFERENCE_INTEGRITY, NAME_BINDING, MISALIGNMENT, FLAG_MISMATCH, DANGLING_NOTE}; then code (entity/flag findings) | note_title (dangling) | (scope, direction) also for MISALIGNMENT/FLAG_MISMATCH. SC-0020 adds the first signed-off entries: the ruled place/time coverage-difference one-siders (off-stage/contextual referents the FOR_MODEL carries structurally but the map declares only contextually, or vice-versa — already-documented MM↔gold coverage differences).",
+  "exceptions": [
+    {
+      "pericope": "P03-Ruth-1-15-18",
+      "kind": "MISALIGNMENT",
+      "code": "PL_LAND_OF_JUDAH",
+      "scope": "S1",
+      "direction": "FM_NOT_MAP",
+      "reason": "COVERAGE_DIFFERENCE_OFFSTAGE_REFERENT",
+      "note": "The covenant land they are returning *to* — referenced, not scene-present in the map's §3B. The FOR_MODEL carries it as a structural place; a legitimate map↔FM coverage difference.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P03-Ruth-1-15-18",
+      "kind": "MISALIGNMENT",
+      "code": "PL_LAND_OF_JUDAH",
+      "scope": "S2",
+      "direction": "FM_NOT_MAP",
+      "reason": "COVERAGE_DIFFERENCE_OFFSTAGE_REFERENT",
+      "note": "The covenant land they are returning *to* — referenced, not scene-present in the map's §3B. The FOR_MODEL carries it as a structural place; a legitimate map↔FM coverage difference.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P04-Ruth-1-19-22",
+      "kind": "MISALIGNMENT",
+      "code": "TM_BARLEY_HARVEST_BEGINNING",
+      "scope": "S3",
+      "direction": "FM_NOT_MAP",
+      "reason": "COVERAGE_DIFFERENCE_FM_STRUCTURAL_ONLY",
+      "note": "The harvest frame named at the close; FOR_MODEL-structural only. A legitimate map↔FM coverage difference.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P06-Ruth-2-8-16",
+      "kind": "MISALIGNMENT",
+      "code": "PL_AMONG_SHEAVES",
+      "scope": "S4",
+      "direction": "FM_NOT_MAP",
+      "reason": "COVERAGE_DIFFERENCE_FM_STRUCTURAL_ONLY",
+      "note": "The gleaning locus in Boaz's command; FOR_MODEL-structural only. A legitimate map↔FM coverage difference.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P04-Ruth-1-19-22",
+      "kind": "MISALIGNMENT",
+      "code": "PL1",
+      "scope": "S2",
+      "direction": "MAP_NOT_FM",
+      "reason": "COVERAGE_DIFFERENCE_DOCUMENTED_MM_GOLD",
+      "note": "The already-documented MM↔gold coverage difference (the P04 95% gold-diff): the map declares PL1, the gold FOR_MODEL omits it.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P04-Ruth-1-19-22",
+      "kind": "MISALIGNMENT",
+      "code": "PL2",
+      "scope": "S1",
+      "direction": "MAP_NOT_FM",
+      "reason": "COVERAGE_DIFFERENCE_DOCUMENTED_MM_GOLD",
+      "note": "The already-documented MM↔gold coverage difference (the P04 95% gold-diff): the map declares PL2, the gold FOR_MODEL omits it.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    }
+  ]
 }
