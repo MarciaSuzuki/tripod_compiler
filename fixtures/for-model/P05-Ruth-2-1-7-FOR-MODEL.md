@@ -117,7 +117,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). Kept: chayil CB_0032 (Boaz's standing, named at 2:1). Relocated: the kinship-anchor through Naomi's late husband → P1 (POSITIONED_THROUGH_KINSHIP_ANCHOR); the clan-of-Elimelech locator → P1 (PLACED_IN_LEGAL_RELATIONAL_KIN_GROUP); the delayed naming 'Boaz' → P1 (NAMED_AT_END_OF_INTRODUCTION).",
         "entries": [
           {
             "object_id": "CB_0032",
@@ -165,7 +164,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). Kept: favor CB_0033, gleaning CB_0034 (the grace Ruth seeks and the gleaning institution she proposes, 2:2). Relocated: Ruth's request → P2 (REQUESTED_PERMISSION_TO_GLEAN); Naomi's granting with the 'my daughter' address → P3 (GRANTED_PERMISSION_TO_GLEAN).",
         "entries": [
           {
             "object_id": "CB_0033",
@@ -236,7 +234,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). Kept: providence/miqreh CB_0035, blessing CB_0008 (the chance-construction that lands Ruth in Boaz's portion, 2:3, and the field greeting in YHWH's name, 2:4). Relocated: the went-came-gleaned sequence → P4 (WENT_AND_GLEANED_BEHIND_HARVESTERS); the gleaning position behind the harvesters → P4; the clan-frame restated at the chance-arrival → P5 (clan_referent_restated B29); 'behold' Boaz coming from Bethlehem → P6 (ARRIVED_AT_FIELD_FROM_HOMETOWN).",
         "entries": [
           {
             "object_id": "CB_0035",
@@ -308,7 +305,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). Kept: the within-day work-span 'from morning until now' (a content duration, per the P01 TM_TEN_YEARS precedent). Relocated: Boaz's belonging-question → P8 (ASKED_KINSHIP_AND_SOCIAL_COVER_QUESTION); the foreman-role naming (nitsav al haqotsrim) → B15 referential_form (cb_flag CB_0036); the third-party Moabite epithet → B9 referential_form (cb_flag CB_0004); the return-with-Naomi identification → P9; the quoted prior gleaning-request → P9; the work-pattern persistence → P9; the disputed shelter-rest → P9 (REPORTED_DISPUTED_SHELTER_REST).",
         "entries": [
           {
             "object_id": "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW",

@@ -144,7 +144,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0012). Relocated: the opening 'vayhi bimei' formula → FIG_0007 (narrator frame from a later time); the Ephrathite clan identity → being B6 (P5 clan_referent).",
         "entries": [
           {
             "object_id": "O1",
@@ -210,7 +209,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
-        "_note": "No persistent objects (§3C entities only, SC-0012). Relocated: the death → proposition P7 (DIED); the relational re-naming 'husband of Naomi' → B2 referential_form at P7; the residual 'she remained' → FIG_0052 (P8).",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
 
@@ -273,7 +272,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0012). Kept: the about-ten-years duration (a content time reference; §3C admits durations/measures). Relocated: the taking of wives → proposition P9 (TOOK_AS_WIFE); the 'for themselves' initiative → P9 for_self_marker OWN_INITIATIVE.",
         "entries": [
           {
             "object_id": "TH_TEN_YEARS_APPROXIMATELY",
@@ -342,7 +340,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       },
 
       "objects_in_scene": {
-        "_note": "No persistent objects (§3C entities only, SC-0012). Relocated: the deaths of both sons → proposition P12 (DIED) — 'both of them' is inherent in deceased [B4,B5]; the residual 'she remained' → FIG_0052; the stripped 'the woman' and the tender 'her children' → B3 / B4·B5 referential_forms at P13; the cumulative loss listing → P13 (its children-before-husband order is held in listing_order_form); the prior death summed in → P13's link to P7.",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
 

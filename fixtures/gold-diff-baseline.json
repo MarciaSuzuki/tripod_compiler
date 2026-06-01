@@ -4,7 +4,7 @@
     "matched": 44,
     "divergent": 0,
     "agreementPct": 100,
-    "judgmentPlaceholders": 56,
+    "judgmentPlaceholders": 50,
     "divergences": []
   },
   {
@@ -12,7 +12,7 @@
     "matched": 35,
     "divergent": 4,
     "agreementPct": 90,
-    "judgmentPlaceholders": 65,
+    "judgmentPlaceholders": 63,
     "divergences": [
       {
         "field": "S1/being/B10",
@@ -45,7 +45,7 @@
     "matched": 38,
     "divergent": 2,
     "agreementPct": 95,
-    "judgmentPlaceholders": 37,
+    "judgmentPlaceholders": 36,
     "divergences": [
       {
         "field": "S1/place/PL2",
@@ -62,7 +62,7 @@
     "matched": 49,
     "divergent": 1,
     "agreementPct": 98,
-    "judgmentPlaceholders": 63,
+    "judgmentPlaceholders": 56,
     "divergences": [
       {
         "field": "S3/being/B13",
@@ -75,7 +75,7 @@
     "matched": 45,
     "divergent": 2,
     "agreementPct": 96,
-    "judgmentPlaceholders": 93,
+    "judgmentPlaceholders": 85,
     "divergences": [
       {
         "field": "S3/being/B14",
