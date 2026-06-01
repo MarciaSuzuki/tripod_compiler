@@ -107,11 +107,14 @@ number bound to exactly one decision.
 ## SC-0016 — Level-3 §4 content sweep (operating test) under SC-0012/SC-0013
 - **Date:** 2026-05-31
 - **Decided by:** Marcia Suzuki (per-row rulings 2026-05-31; the compiler applied + verified them)
-- **Status:** **SHIPPED (fixtures) — BLESSED by Marcia Suzuki 2026-05-31** after an Architect fidelity pass
-  (relocate-never-delete verified on the high-stakes drops: P04 lament divine-agency atoms "YHWH has testified
-  against me" / "Shaddai has done evil to me" survive; P05 miqreh + verb-chain + working-time-code payloads
-  survive; gold-diff independently UNCHANGED). **Vault writeback** (`pericopes/*.md` + `figures/FIG_*.md`) is a
-  separate pending pass (`docs/sc-0016/FIG-span-relocations.proposed.md`).
+- **Status:** **SHIPPED + VAULT-SYNCED — BLESSED by Marcia Suzuki 2026-05-31.** Fixtures shipped after an
+  Architect fidelity pass (relocate-never-delete verified on the high-stakes drops: P04 lament divine-agency
+  atoms "YHWH has testified against me" / "Shaddai has done evil to me" survive; P05 miqreh + verb-chain +
+  working-time-code payloads survive; gold-diff independently UNCHANGED). **Vault writeback DONE** (2026-05-31,
+  vault branch `sc-0016-vault-writeback`): vault `pericopes/P01–P06` now **byte-identical** to compiler
+  `fixtures/meaning-map/` (the §4 sweep), and the figure spans are recorded in the vault `figures/` registry
+  (additive proposition-span enrichment, 32 files, 96 insertions / 0 deletions). See the vault-writeback record
+  at the end of this entry.
 - **Type:** artifact remediation (no schema/spec change) + a new pinned reviewer-sign-off ledger (governed).
 - **Summary:** The §4-proposition counterpart to SC-0013's §3C sweep. SC-0015 made the lint *see* the §4 blind
   spots; this acted on the full true inventory (**150 findings** across P01–P06). For every finding, the
@@ -149,9 +152,36 @@ number bound to exactly one decision.
   `docs/sc-0016/FIG-span-relocations.proposed.md`. No FOR_MODEL / §3C / Levels 1–2 / §5-flag content touched.
 - **Verification (achieved, at blessing):** `tripod lint --corpus` → **0 drift (0 tier-1, 0 tier-2) · 7
   accepted (signed off) · exit 0** — the operating-test bar, mechanized. `validate` 6/6 · `coverage --corpus`
-  6/6 block-clean (245/245, 0 unanchored, 1 accepted) · `gold-diff` **UNCHANGED** (P01 100 · P02 90 · P03 100 ·
-  P04 95 · P05 98 · P06 96 — proof the entities/flags/structure layer did not move) · `check-drift` clean
-  (15 pins) · **97 tests green**.
+  6/6 block-clean (245/245, 0 unanchored, 1 accepted) · `gold-diff` **UNCHANGED at blessing** (P01 100 · P02 90 ·
+  P03 100 · P04 95 · P05 98 · P06 96 — proof the entities/flags/structure layer did not move) · `check-drift`
+  clean (15 pins) · **97 tests green**.
+
+### SC-0016 vault writeback (2026-05-31) — the deferred canonical sync
+The blessed §4 sweep + figure spans were propagated from the compiler fixtures into the canonical vault
+(`ruth-pilot-b-wiki`), on a fresh branch `sc-0016-vault-writeback` off `origin/main`. **Faithful transcription,
+not authoring** — no §4 answer re-edited.
+- **Branch hygiene (verified, not assumed):** the vault working copy's prior branch
+  `claude/p02-p06-content-remediation` was **1 empty auto-backup commit** ahead of `origin/main` (`git diff`
+  empty); all substantive content (SC-0013 `636feba`) was already merged via PR #5 (`e2fc80f` = origin/main).
+  Nothing substantive stranded → based the writeback on `origin/main`.
+- **§4 transcription (diff-first, no clobber):** for each P01–P06, confirmed the ONLY delta vs the blessed
+  `fixtures/meaning-map/` was inside §4 (frontmatter + §1–3 + §5 Flags byte-identical before edit; §3C already
+  shared from SC-0013), then synced. Vault `pericopes/P01–P06` now **byte-identical (`cmp`)** to the fixtures.
+- **Figure spans (additive):** each figure that carried a §4 cross_ref span now records it in its own entry —
+  `opens-at-proposition`/`closes-at-proposition` frontmatter + one Appearances bullet, from the §5B Figure-Flag.
+  32 figure files, 96 insertions, **0 deletions** (verified purely additive). §5B flags + FOR_MODEL cross_ref
+  fields unchanged. (Worklist: `docs/sc-0016/FIG-span-enrichment-worklist.md`.)
+- **Safety rail:** Marcia paused the Obsidian Git auto-backup for the duration (re-enabled after merge), so the
+  edits could not be swept onto the branch before review.
+- **Folded-in ruled tasks (separate commits):** **Task A** — created figure **FIG_0195** (Fourfold Divine
+  Naming in Lament; the pattern complementing FIG_0006 + FIG_0086) in both vault + fixtures: figure file +
+  P04 BCD-DELTA `to_figures_registry` + map §5B/active-figures + FOR_MODEL P4/P5 `figure_flags`; gold-diff
+  re-baselined (P04 matched 37→38, the only line changed). **Task B** — this entry's SC-0014 forward-pointer
+  (above): the old value still in the Pilot-3 Layer-2 seed CSV, to reconcile at Pilot-3 lock (pointer only,
+  no CSV edit).
+- **Delivered via** a reviewed vault PR (`sc-0016-vault-writeback` → vault `main`); on merge the vault working
+  copy returns to clean `main`, the auto-backup is re-enabled tracking `main`, and the stale
+  `claude/p02-p06-content-remediation` branch is removed.
 
 ---
 
@@ -260,6 +290,12 @@ number bound to exactly one decision.
   `_templates/sta-vocabulary.md`. **Deliberately NOT touched** (out of Pilot-2 scope): `_pilot-3-design/`, the
   bible-wide Layer-2 seed (`tripod-bible-wide-layer-2-vocabulary-seed-*` + `.csv`, `sta-vocabulary-general.md`)
   where it is a `PENDING_PILOT3_LOCK` candidate, and `_archive/` + `_working/` (historical audit trail).
+- **⚠ FORWARD-POINTER (Pilot-3 lock) — added under SC-0016 vault writeback (2026-05-31):** the **old**
+  `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` value still lives in the bible-wide Layer-2 **seed CSV** (×2 rows,
+  Pilot-3 lane) as a `PENDING_PILOT3_LOCK` candidate. It was intentionally left there (no CSV edit — Pilot-3 is
+  out of this lane's scope). **At Pilot-3 lock this must be reconciled** to the renamed `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT`,
+  or SC-0014's de-jargoning is silently reversed when the seed is promoted. Recorded as a pointer only; do not
+  cross into Pilot-3 to fix it now.
 - **Validator impact:** `tripod validate` blocks the old value (no longer in the closed list) and accepts the
   new one. The 5 FOR_MODEL `[forbidden_vocabulary] «agent»` lint findings disappear (corpus lint **19 → 14**,
   the residual 14 being the §4 Q&A dialogue reserved for the lead).

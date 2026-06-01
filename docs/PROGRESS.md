@@ -157,10 +157,19 @@ npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-
     rephrased **19 jargon** hits, bared **11 §4-answer labels**. **6 genuinely-exegetical keeps** (vocative,
     discourse-opener, oath formula, party-pair, withholding-note) signed off in a new pinned
     `_spec/lint-exceptions.json` (the SC-0010 coverage-exceptions analogue — `tripod lint` shows them `✓ ACCEPTED`,
-    excluded from drift). **`lint --corpus` → 0 drift · 6 accepted · exit 0** (the operating-test bar, mechanized).
-    `validate` 6/6 · `coverage` 6/6 · `gold-diff` **unchanged** (P01 100·P02 90·P03 100·P04 95·P05 98·P06 96) ·
-    97 tests. Per-proposition relocate-never-delete proof: `docs/SC-0016-LEVEL3-SWEEP-AUDIT.md`. **Fixtures only;
-    vault `pericopes/` + `figures/` writeback deferred** (`docs/sc-0016/FIG-span-relocations.proposed.md`).
+    excluded from drift). **`lint --corpus` → 0 drift · 7 accepted · exit 0** (the operating-test bar, mechanized;
+    the 7th keep "her father and her mother" added at the blessing pass). `validate` 6/6 · `coverage` 6/6 ·
+    `gold-diff` (P01 100·P02 90·P03 100·P04 95·P05 98·P06 96) · 97 tests. **BLESSED by Marcia 2026-05-31.**
+    Per-proposition relocate-never-delete proof: `docs/SC-0016-LEVEL3-SWEEP-AUDIT.md`.
+  - **SC-0016 vault writeback — DONE (2026-05-31).** The deferred canonical sync: vault `pericopes/P01–P06`
+    now **byte-identical** to compiler `fixtures/meaning-map/` (faithful §4 transcription, diff-first/no-clobber,
+    based on a fresh branch off `origin/main` after verifying the old vault branch held only an empty auto-backup
+    commit); figure proposition-spans recorded additively in vault `figures/` (32 files, 96 insertions / 0 del).
+    **Task A:** new figure **FIG_0195** (Fourfold Divine Naming in Lament — the pattern, complementing FIG_0006 +
+    FIG_0086) wired into vault + fixtures (figure file + P04 BCD-DELTA + map §5B/active-figures + FOR_MODEL
+    P4/P5 figure_flags); gold-diff re-baselined (P04 37→38). **Task B:** SC-0014 forward-pointer recorded (old
+    value still in the Pilot-3 Layer-2 seed CSV → reconcile at Pilot-3 lock; pointer only). Delivered via a
+    reviewed vault PR; vault returns to clean `main` on merge. invariant restored: vault `pericopes/` ≡ fixtures.
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
