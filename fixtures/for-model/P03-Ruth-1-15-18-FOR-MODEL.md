@@ -85,7 +85,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_id": "S1",
       "verse_range": "1:15",
       "scene_kind": "APPEAL_WITH_EXEMPLAR_POINTING_SCENE",
-      "scene_communicative_purpose": "Naomi's final release-attempt presents Orpah's return to her people and her gods as the example Ruth should follow.",
+      "scene_communicative_purpose": "Records Naomi's last try to send Ruth away, holding up Orpah's going-back to her people and her gods as the example Ruth should follow.",
       "beings_in_scene": {
         "entries": [
           {
@@ -126,13 +126,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is continuous with the journey established in P02.",
         "entries": null
       },
-      "significant_absence": "Naomi names no proper place; she names Orpah's trajectory only by people and gods. Moabite gods are unnamed at v.15; YHWH is named only at v.17 (Scene 2). The asymmetric naming is structurally significant."
+      "significant_absence": "Naomi names no place; she speaks of where Orpah went only as 'her people' and 'her gods.' The gods of Moab go unnamed at v.15; YHWH is named only at v.17 (Scene 2). The unnamed gods stand against the named God."
     },
     {
       "scene_id": "S2",
       "verse_range": "1:16-17",
       "scene_kind": "VOW_AND_RATIFICATION_SCENE",
-      "scene_communicative_purpose": "Ruth refuses Naomi's directive and binds herself to Naomi in a six-step ladder closed by a self-curse oath invoking YHWH by name.",
+      "scene_communicative_purpose": "Ruth refuses to turn back and binds herself to Naomi in six rising steps, sealed with an oath that calls down a curse on herself and names YHWH out loud.",
       "beings_in_scene": {
         "entries": [
           {
@@ -174,13 +174,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is continuous with the journey.",
         "entries": null
       },
-      "significant_absence": "Narrator does not label Ruth with the Moabite epithet (FIG_0001) anywhere in this scene. Ruth does not name Bethlehem or any other proper place inside the vow. Ruth says 'your God' at v.16 without naming YHWH; the divine name appears only inside the self-curse formula at v.17. Ruth gives no reasons for her binding outside the binding itself."
+      "significant_absence": "Narrator never calls Ruth 'the Moabite' (FIG_0001) anywhere in this scene. Ruth names no place inside the vow — not Bethlehem, not anywhere. She says 'your God' at v.16 without naming him; God's name comes only in the oath at v.17. And she gives no reasons for the bond beyond the bond itself."
     },
     {
       "scene_id": "S3",
       "verse_range": "1:18",
       "scene_kind": "SEEING_AND_FALLING_SILENT_SCENE",
-      "scene_communicative_purpose": "Marks the failure of Naomi's release-attempt and the moment after which the two continue together. Closes the road dialogue.",
+      "scene_communicative_purpose": "Marks the failure of Naomi's last try to send Ruth away, and the moment from which the two go on together. Ends the talk on the road.",
       "beings_in_scene": {
         "entries": [
           {
@@ -207,7 +207,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame; closing moment continuous with the journey.",
         "entries": null
       },
-      "significant_absence": "Narrator reports Naomi seeing and stopping speech but does not report her interior state. No agreement, no blessing, no further word from Naomi inside the pericope. The narrator gives interior access only to Ruth's resolve, not to Naomi's response."
+      "significant_absence": "Narrator tells us Naomi sees and stops speaking, but nothing of what is going on inside her. No agreement, no blessing, no further word from Naomi in this passage. We are let into Ruth's resolve, but not into how Naomi takes it."
     }
   ],
   "level_3_propositions": [

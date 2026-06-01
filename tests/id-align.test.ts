@@ -8,6 +8,8 @@ import {
   assertNoHyphenInCodePatterns,
   parseWikilink,
   slugify,
+  normalizeSlug,
+  isWithheldReferent,
   extractForModelCodes,
   extractForModelFlags,
   harvestMapFlags,
@@ -17,6 +19,7 @@ import {
   type IdAlignException,
 } from "../src/engine/id-align.js";
 import type { AliasTable, CodeRegistry } from "../src/reader/source-packet.js";
+import { loadIdAlignmentExceptions } from "../src/reader/source-packet.js";
 
 /**
  * SC-0018 — the cross-artifact entity-ID alignment checker. Tests the brief's required cases on
@@ -163,6 +166,73 @@ describe("slugify", () => {
   });
 });
 
+// ───────────────────────── SC-0020 A1.2 — note-title-safe slug normalization ─────────────────────────
+
+describe("normalizeSlug (SC-0020) — note-title-safe name-binding comparison", () => {
+  it("strips apostrophes so a note-title-safe slug matches an apostrophe'd BCD name", () => {
+    // BCD: "Naomi's Dwelling in Bethlehem" → slugify keeps the apostrophe; the map slug can't carry it.
+    expect(normalizeSlug(slugify("Naomi's Dwelling in Bethlehem"))).toBe(normalizeSlug("Naomis-Dwelling-in-Bethlehem"));
+    expect(normalizeSlug(slugify("Boaz's Portion of the Field"))).toBe(normalizeSlug("Boazs-Portion-of-the-Field"));
+  });
+  it("collapses '/' (a char a note title can't hold) to the '-' separator, then collapses repeats", () => {
+    expect(normalizeSlug(slugify("His People / People of YHWH"))).toBe(normalizeSlug("His-People-People-of-YHWH"));
+  });
+  it("is a no-op on already-clean slugs (no apostrophe / slash)", () => {
+    expect(normalizeSlug("Bethlehem-of-Judah")).toBe("Bethlehem-of-Judah");
+    expect(normalizeSlug("About-Ten-Years")).toBe("About-Ten-Years");
+  });
+  it("name-binding accepts the apostrophe-dropped map slug (no ERROR)", () => {
+    const al: AliasTable = { book: "ruth", entities: { PL9: { kind: "PLACE", english: "Naomi's Dwelling in Bethlehem", hebrew: "", hebrew_cons: "", referential_forms: [], gender: null } } };
+    const map = writeMap("apos-map", scene(1, { places: ["[[PL9-Naomis-Dwelling-in-Bethlehem]]"] }));
+    const fm = writeFm("apos-fm", { level_2_scenes: [fmScene(1, { places: ["PL9"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, fm, hermetic({ aliases: al }));
+    expect(r.nameBinding.some((f) => f.code === "PL9")).toBe(false);
+    expect(r.counts.nameErrors).toBe(0);
+  });
+});
+
+// ───────────────────────── SC-0020 A1.1 — withheld referent (<NS>?) is INFO, not an error ─────────────────────────
+
+describe("isWithheldReferent + WITHHELD_REFERENT (SC-0020)", () => {
+  it("isWithheldReferent: a schema-legal code whose tail is exactly '?' (B?) — not B12, not PL_AMONG_SHEAVES", () => {
+    expect(isWithheldReferent("B?", ns)).toBe(true);
+    expect(isWithheldReferent("B12", ns)).toBe(false);
+    expect(isWithheldReferent("PL_AMONG_SHEAVES", ns)).toBe(false);
+    expect(isWithheldReferent("TM_TEN_YEARS", ns)).toBe(false);
+    expect(isWithheldReferent("CB_0030", ns)).toBe(false);
+    expect(isWithheldReferent("ZZZ?", ns)).toBe(false); // not a schema-legal entity code at all
+  });
+  it("B? on the FOR_MODEL → WITHHELD_REFERENT INFO, NOT a ref-integrity error, NOT a misalignment", () => {
+    // B3 is declared on both sides; B? is an intentional withheld referent in the FM scene only.
+    const map = writeMap("wh-map", scene(1, { beings: ["[[B3-Naomi]]"] }));
+    const fm = writeFm("wh-fm", { level_2_scenes: [fmScene(1, { beings: ["B3", "B?"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, fm, hermetic());
+    expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false); // not an UNKNOWN_CODE
+    expect(r.counts.refErrors).toBe(0);
+    expect(r.withheldReferents).toHaveLength(1);
+    expect(r.withheldReferents[0]).toMatchObject({ side: "FOR_MODEL", code: "B?", reason: "WITHHELD_REFERENT" });
+    expect(r.counts.withheld).toBe(1);
+    expect(r.misalignments.some((m) => m.code === "B?")).toBe(false); // excluded from the structural diff
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true); // INFO never fails the run
+  });
+  it("B? declared as a scene being AND used as a slot value (the real P06 shape) → one withheld INFO, never an error/misalignment", () => {
+    // Mirrors P06: B? is a scene-container being_id (which surfaces the withheld INFO) and also appears
+    // as the `wife_taken` slot value. (The slot-value collector keys on concrete `^B\d+$`, so the slot
+    // occurrence alone is not separately collected — the scene-container occurrence carries the INFO.)
+    const map = writeMap("wh2-map", scene(1, { beings: ["[[B3-Naomi]]"] }));
+    const fm = writeFm("wh2-fm", {
+      level_2_scenes: [fmScene(1, { beings: ["B3", "B?"] })],
+      level_3_propositions: [{ prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K", event_specific_slots: { wife_taken: "B?" }, inter_proposition_links: {}, cb_flags: [], figure_flags: [] }],
+    });
+    const r = checkIdAlignment(map, fm, hermetic());
+    expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false);
+    expect(r.withheldReferents.filter((w) => w.code === "B?")).toHaveLength(1); // surfaced once
+    expect(r.misalignments.some((m) => m.code === "B?")).toBe(false);
+    expect(r.ok).toBe(true);
+  });
+});
+
 // ───────────────────────── the six required cases ─────────────────────────
 
 describe("checkIdAlignment — the brief's six cases", () => {
@@ -210,6 +280,41 @@ describe("checkIdAlignment — the brief's six cases", () => {
     expect(r.counts.misalign).toBe(0);
     // and B2 still passes reference-integrity (it resolves) — prose refs are checked by steps 2–3 only
     expect(r.referenceIntegrity.some((f) => f.code === "B2")).toBe(false);
+  });
+
+  it("SC-0020 parity bar: an FM scene-being the map references in THAT scene's §3 prose is ALIGNED (one declares, one narrates)", () => {
+    // The FM declares B2 structurally in S1; the map declares B3 in S1's 3A and references B2 only in
+    // B3's relationship line (PROSE) within the SAME scene. The two artifacts agree B2 is present in S1 —
+    // so B2 must NOT be a misalignment (the lead's ruling), even though the map doesn't declare it in 3A.
+    const beingBlock = "[[B3-Naomi]]\n- Role: widow\n- Relationship: widow of [[B2-Elimelech]] Elimelech";
+    const map = writeMap("parity-same-map", `### Scene 1 — Test (v.1)\n\n**3A — Beings**\n${beingBlock}\n\n**3B — Places**\n- None\n\n**3C — Objects and Elements**\n- None\n\n**3D — Times**\n- None\n\n**3E — What Happens**\nx.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`);
+    const fm = writeFm("parity-same-fm", { level_2_scenes: [fmScene(1, { beings: ["B2", "B3"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, fm, hermetic());
+    expect(r.misalignments.some((m) => m.code === "B2")).toBe(false); // aligned by same-scene prose, dropped from the diff
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true);
+  });
+
+  it("SC-0020 parity bar is SCENE-SCOPED: an FM scene-entity the map references only in a DIFFERENT scene is still a misalignment (annotated cross-scene)", () => {
+    // The FM declares PL1 in S2; the map declares+narrates PL1 in S1 (a §3E prose wikilink) but references
+    // it nowhere in S2. A prose mention in ANOTHER scene must NOT align it in S2 (mirrors the real P05 PL5:
+    // FM declares it in S2, but the map's PL5 wikilink lives in S3). S1 here has PL1 in its What-Happens prose.
+    const s1 =
+      `### Scene 1 — Test (v.1)\n\n**3A — Beings**\n[[B3-Naomi]]\n- Role: r\n\n**3B — Places**\n- None\n\n` +
+      `**3C — Objects and Elements**\n- None\n\n**3D — Times**\n- None\n\n` +
+      `**3E — What Happens**\nNaomi leaves [[PL1-Bethlehem-of-Judah]] the town.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`;
+    const map = writeMap("parity-cross-map", s1 + scene(2, { beings: ["[[B2-Elimelech]]"] }));
+    // FM: S1 declares B3 (aligns), S2 declares B2 (aligns) + PL1 (the cross-scene gap under test).
+    const fm = writeFm("parity-cross-fm", {
+      level_2_scenes: [fmScene(1, { beings: ["B3"] }), fmScene(2, { beings: ["B2"], places: ["PL1"] })],
+      level_3_propositions: [],
+    });
+    const r = checkIdAlignment(map, fm, hermetic());
+    const s2 = r.misalignments.find((m) => m.code === "PL1" && m.scope === "S2" && m.direction === "FM_NOT_MAP");
+    expect(s2).toBeDefined();
+    expect(s2!.severity).toBe("MISALIGN"); // not resolved — PL1 is map-referenced only in S1, not S2
+    expect(s2!.presentElsewhere).toMatch(/S1/); // scene-accurate: the prose home is labelled with its scene
+    expect(r.ok).toBe(false);
   });
 
   it("unknown code → reference-integrity ERROR (registered namespace, no BCD entry)", () => {
@@ -461,30 +566,46 @@ describe("extractForModelCodes", () => {
 
 const MM = "fixtures/meaning-map";
 const FM = "fixtures/for-model";
+// Integration runs mirror the real `tripod id-check`: they load the PINNED id-alignment exceptions, so a
+// signed-off coverage difference surfaces as ✓ ACCEPTED (still in the inventory, excluded from the failure
+// count) exactly as the CLI reports it.
+const idExceptions = loadIdAlignmentExceptions();
 const real = (pid: string, bcv: string) =>
-  checkIdAlignment(`${MM}/${pid}-${bcv}.md`, `${FM}/${pid}-${bcv}-FOR-MODEL.md`, { noteResolveDirs: [MM, FM] });
+  checkIdAlignment(`${MM}/${pid}-${bcv}.md`, `${FM}/${pid}-${bcv}-FOR-MODEL.md`, { noteResolveDirs: [MM, FM], exceptions: idExceptions });
 
 describe("integration — real fixtures (locks the refined headline findings)", () => {
-  it("P01: LIKELY_SAME_REFERENT TM_TEN_YEARS ↔ TH_TEN_YEARS_APPROXIMATELY survives; AUDIT still dangles; flags align; no CB/FIG noise", () => {
+  it("P01 (post-SC-0020): TM_/TH_ now ALIGN (A4 map edit); AUDIT no longer dangles (A5); flags align; no CB/FIG noise", () => {
     const r = real("P01", "Ruth-1-1-5");
-    const lsr = r.misalignments.find((m) => m.direction === "MAP_NOT_FM" && m.code === "TM_TEN_YEARS");
-    expect(lsr?.likelySameReferent?.otherCode).toBe("TH_TEN_YEARS_APPROXIMATELY");
-    expect(r.danglingNotes.some((d) => d.raw === "P01-Ruth-1-1-5-AUDIT" && d.severity === "FLAG")).toBe(true);
-    expect(r.counts.refErrors).toBe(0); // P01 has no unknown codes (CB/FIG now resolve)
+    // SC-0020 A4: the map §3C code was aligned TM_TEN_YEARS → TH_TEN_YEARS_APPROXIMATELY, so the
+    // former LIKELY_SAME_REFERENT split is resolved — neither side carries the un-paired code now.
+    expect(r.misalignments.some((m) => m.code === "TM_TEN_YEARS")).toBe(false);
+    expect(r.misalignments.some((m) => m.code === "TH_TEN_YEARS_APPROXIMATELY")).toBe(false);
+    expect(r.counts.likelySameReferent).toBe(0);
+    // SC-0020 A5: the [[…-AUDIT]] relic was removed from the map frontmatter — no dangling note now.
+    expect(r.danglingNotes.length).toBe(0);
+    expect(r.counts.refErrors).toBe(0); // P01 has no unknown codes (CB/FIG resolve)
     expect(r.counts.flagMismatch).toBe(0); // P01 CB/FIG flags align map↔FM
     expect(r.flagMismatches.length).toBe(0);
-    // R1: no CB_/FIG_ code appears as a structural misalignment any more
+    // R1: no CB_/FIG_ code appears as a structural misalignment
     expect(r.misalignments.some((m) => m.code.startsWith("CB_") || m.code.startsWith("FIG_"))).toBe(false);
-    // R3: the COMPILATION-LOG/BCD-DELTA/VERIFICATION-INPUT false danglings are gone (P01 has only AUDIT)
-    expect(r.danglingNotes.length).toBe(1);
-    // R2: CB_/FIG_ are no longer "unverifiable"; only TH_ remains
+    // TH_TEN_YEARS_APPROXIMATELY is now the aligned object code; it stays UNVERIFIABLE (no TH_ registry) — acceptable.
+    expect(r.unverifiable.some((u) => u.code === "TH_TEN_YEARS_APPROXIMATELY")).toBe(true);
     expect(r.unverifiable.every((u) => u.code.startsWith("TH_"))).toBe(true);
+    // SC-0020 parity bar (the lead's ruling): the former REFERENCED-being-in-§3A-prose gaps (B2/B8/B9 @S4)
+    // are now ALIGNED — the FOR_MODEL declares them in S4 and the map references each in S4's own §3A
+    // relationship lines (B2 in the sons' "son of …" lines; B8/B9 in Naomi's "mother-in-law of … " line).
+    // P01 is fully clean: zero un-accepted misalignments.
+    expect(r.misalignments.filter((m) => m.severity === "MISALIGN")).toHaveLength(0);
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true);
   });
 
-  it("P03: PL_LAND_OF_JUDAH gap survives; B31 name-binding ERROR survives; T7 thread + artifact siblings resolve", () => {
+  it("P03 (post-SC-0020 writeback): PL_LAND_OF_JUDAH gap survives; B31 name-binding RESOLVED via registered alias; T7 thread + artifact siblings resolve", () => {
     const r = real("P03", "Ruth-1-15-18");
     expect(r.misalignments.some((m) => m.code === "PL_LAND_OF_JUDAH")).toBe(true);
-    expect(r.nameBinding.some((f) => f.code === "B31" && f.severity === "ERROR")).toBe(true);
+    // SC-0020 writeback: the map slug "People-of-YHWH" now matches B31's registered referential_form
+    // (BCD `aliases:`), so name-binding accepts it — canonical "His People / People of YHWH" preserved.
+    expect(r.nameBinding.some((f) => f.code === "B31")).toBe(false);
     expect(r.danglingNotes.length).toBe(0); // all of P03's note links resolve now
   });
 
@@ -497,15 +618,44 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     expect(r.danglingNotes.length).toBe(0);
   });
 
-  it("P05: PL_NAOMIS_DWELLING + PL5_BOAZ_PORTION name-binding ERRORs survive", () => {
+  it("P05 (post-SC-0020): PL_NAOMIS_DWELLING + PL5_BOAZ_PORTION name-binding ERRORs are RESOLVED by slug normalization", () => {
     const r = real("P05", "Ruth-2-1-7");
-    expect(r.nameBinding.some((f) => f.code === "PL_NAOMIS_DWELLING" && f.severity === "ERROR")).toBe(true);
-    expect(r.nameBinding.some((f) => f.code === "PL5_BOAZ_PORTION" && f.severity === "ERROR")).toBe(true);
+    // SC-0020 A1 slug normalization: the map slugs (note-title-safe: no apostrophe) now match the BCD
+    // names ("Naomi's Dwelling…", "Boaz's Portion…") after stripping `'` on both sides — no longer ERRORs.
+    expect(r.nameBinding.some((f) => f.code === "PL_NAOMIS_DWELLING")).toBe(false);
+    expect(r.nameBinding.some((f) => f.code === "PL5_BOAZ_PORTION")).toBe(false);
+    expect(r.counts.nameErrors).toBe(0);
   });
 
-  it("P06: 'B?' ref-integrity ERROR + PL_AMONG_SHEAVES gap survive; FIG_0131 (cross-ref narration) is NOT a flag mismatch", () => {
+  it("P05 (SC-0020 parity bar): the 3 cross-scene/FM-only gaps are NOT prose-resolved — they survive as signed-off ✓ ACCEPTED, not misalignments", () => {
+    const r = real("P05", "Ruth-2-1-7");
+    // The parity bar is SCENE-SCOPED: PL5 (FM S2) is map-referenced only in S3, B2 (FM S3 clan_eponym
+    // slot) only in S1, TH_WITHIN_DAY (FM S4) never wikilinked — so none is resolved by same-scene prose.
+    // All three are ruled ACCEPTED coverage differences (id-alignment-exceptions.json, SC-0020).
+    const pl5 = r.misalignments.find((m) => m.code === "PL5" && m.scope === "S2");
+    const b2 = r.misalignments.find((m) => m.code === "B2" && m.scope === "S3");
+    const th = r.misalignments.find((m) => m.code === "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW" && m.scope === "S4");
+    expect(pl5?.severity).toBe("ACCEPTED");
+    expect(b2?.severity).toBe("ACCEPTED");
+    expect(th?.severity).toBe("ACCEPTED");
+    // the cross-scene prose home is reported scene-accurately (so the inventory doesn't mislead)
+    expect(pl5?.presentElsewhere).toMatch(/S3/);
+    expect(b2?.presentElsewhere).toMatch(/S1/);
+    expect(th?.presentElsewhere).toBeUndefined(); // never referenced anywhere in the map
+    // zero UN-accepted misalignments; the run is clean (the name-binding B31 is P02/P03, not P05)
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true);
+  });
+
+  it("P06 (post-SC-0020): 'B?' is a WITHHELD_REFERENT (INFO, not ERROR, not a misalignment); PL_AMONG_SHEAVES gap survives; FIG_0131 not a flag mismatch", () => {
     const r = real("P06", "Ruth-2-8-16");
-    expect(r.referenceIntegrity.some((f) => f.code === "B?" && f.severity === "ERROR")).toBe(true);
+    // SC-0020 A1: B? is an INTENTIONAL withheld referent (the deceased-husband, pair withheld per P01-D2).
+    // It is surfaced as INFO, never a ref-integrity ERROR, and never enters the structural symmetric diff.
+    expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false);
+    expect(r.counts.refErrors).toBe(0);
+    expect(r.withheldReferents.some((w) => w.code === "B?" && w.side === "FOR_MODEL" && w.reason === "WITHHELD_REFERENT")).toBe(true);
+    expect(r.counts.withheld).toBe(1);
+    expect(r.misalignments.some((m) => m.code === "B?")).toBe(false);
     expect(r.misalignments.some((m) => m.code === "PL_AMONG_SHEAVES")).toBe(true);
     // FIG_0131 is mentioned only inside a §5A bullet's parenthetical (cross-pericope ref) and in an FM
     // cross_ref string — not a flag on this pericope on either side, so it must NOT surface as a mismatch.

@@ -347,10 +347,35 @@ function collectBeingSlotValues(node: unknown, acc: Set<string>, beingRe: RegExp
  * Observed gold slugs this reproduces: "Bethlehem of Judah"→"Bethlehem-of-Judah",
  * "Fields of Moab"→"Fields-of-Moab", "About Ten Years"→"About-Ten-Years",
  * "In the Days When the Judges Judged"→"In-the-Days-When-the-Judges-Judged".
- * (Punctuation in a name is preserved verbatim — none occurs in the Ruth registry names.)
+ * (Punctuation in a name is preserved verbatim — the note-title-safe normalization for name-binding
+ * lives in `normalizeSlug`, applied to BOTH sides of the comparison, not here.)
  */
 export function slugify(name: string): string {
   return name.trim().replace(/\s+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+/**
+ * SC-0020 — note-title-safe slug normalization for name-binding. Obsidian note titles (hence the
+ * wikilink slug a map can carry) cannot contain an apostrophe `'` or a forward slash `/`; the BCD
+ * canonical English names DO ("Naomi's Dwelling in Bethlehem", "His People / People of YHWH"). So a
+ * map slug is a legitimate match for a canonical name when they agree AFTER dropping the chars a note
+ * title can't hold. Comparing on this normalized form (applied to BOTH the found slug and the
+ * expected slug) accepts `Naomis-Dwelling-in-Bethlehem` ↔ "Naomi's Dwelling…" and
+ * `Boazs-Portion-of-the-Field` ↔ "Boaz's Portion…" without any slug/content edit — the right fix,
+ * since editing the slug would break the wikilink unless the note were also renamed.
+ *
+ * Rules (the chars a note title can't carry):
+ *  - strip apostrophes `'` outright (so "Naomi's"→"Naomis", matching the title-safe slug);
+ *  - collapse `/` to the same `-` word-separator slugify uses, then collapse any run of `-` to one
+ *    and trim leading/trailing `-` (so "His-People-/-People…" normalizes the same as a title-safe
+ *    "His-People-People…" would).
+ */
+export function normalizeSlug(slug: string): string {
+  return slug
+    .replace(/'/g, "")
+    .replace(/\//g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 // ───────────────────────── flag codes (CB_/FIG_) — registry + identity ─────────────────────────
@@ -363,6 +388,25 @@ export function slugify(name: string): string {
  */
 export function isFlagCode(code: string): boolean {
   return code.startsWith("CB_") || code.startsWith("FIG_");
+}
+
+/**
+ * SC-0020 — a schema-legal entity code whose numeric part is the withheld marker `?` (e.g. `B?` from
+ * the `b_code` pattern `^B(\d+|\?)$`) is an INTENTIONAL withheld referent, not an error: the artifact
+ * is deliberately declining to bind this slot to a registered being (P06's deceased-husband, the
+ * SC-0016-blessed "her husband (pair withheld; see P01-D2)"). It can never resolve in a registry (it
+ * names no specific entity) and can never align across artifacts (the other side intentionally lacks
+ * it), so it is pulled OUT of reference-integrity and the structural symmetric difference and surfaced
+ * as INFO (`WITHHELD_REFERENT`) instead. A code counts as withheld when its tail after the namespace
+ * prefix is exactly `?` (so `B?` qualifies; `B12` does not; `PL_AMONG_SHEAVES` does not).
+ */
+export function isWithheldReferent(code: string, ns: SchemaNamespaces): boolean {
+  if (!ns.isEntityCode(code)) return false;
+  const def = ns.namespaceOf(code);
+  if (!def) return false;
+  const prefix = ns.byDef[def]!.prefixes.find((p) => code.startsWith(p));
+  if (prefix === undefined) return false;
+  return code.slice(prefix.length) === "?";
 }
 
 /**
@@ -476,6 +520,19 @@ export interface UnverifiableFinding {
   detail: string;
 }
 
+/**
+ * SC-0020 — an INTENTIONAL withheld-referent code (`<NS>?`, e.g. `B?`). INFO, never an error: the
+ * artifact deliberately declines to bind the slot to a registered entity. Surfaced for the inventory,
+ * counted nowhere in the failure totals, and excluded from the structural misalignment diff.
+ */
+export interface WithheldReferentFinding {
+  side: "MAP" | "FOR_MODEL";
+  code: string;
+  where: string;
+  reason: "WITHHELD_REFERENT";
+  detail: string;
+}
+
 export interface NameBindingFinding {
   code: string;
   where: string;
@@ -531,6 +588,7 @@ export interface IdAlignReport {
   fmPath: string;
   referenceIntegrity: RefIntegrityFinding[];
   unverifiable: UnverifiableFinding[]; // codes in namespaces no vendored registry tracks (now: TH_ only)
+  withheldReferents: WithheldReferentFinding[]; // SC-0020: intentional `<NS>?` withheld referents (INFO)
   nameBinding: NameBindingFinding[];
   misalignments: MisalignFinding[]; // structural entity symmetric difference (B/PL/O/TM/I/TH)
   flagMismatches: FlagMismatchFinding[]; // CB_/FIG_ flag-set symmetric difference (R1)
@@ -543,6 +601,7 @@ export interface IdAlignReport {
     likelySameReferent: number;
     dangling: number; // un-accepted
     unverifiable: number;
+    withheld: number; // SC-0020: intentional withheld referents (INFO, never a failure)
     accepted: number;
   };
   ok: boolean; // no un-accepted ERROR/MISALIGN/FLAG findings
@@ -719,11 +778,24 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   // surfaced as UNVERIFIABLE, not errored.
   const referenceIntegrity: RefIntegrityFinding[] = [];
   const unverifiable: UnverifiableFinding[] = [];
+  const withheldReferents: WithheldReferentFinding[] = [];
   const seenRi = new Set<string>();
+  const seenWithheld = new Set<string>();
   const checkRef = (code: string, side: "MAP" | "FOR_MODEL", where: string) => {
     const key = `${side}|${code}`;
     if (seenRi.has(key)) return;
     seenRi.add(key);
+    // SC-0020: a `<NS>?` withheld referent (e.g. B?) is INTENTIONAL — INFO, not UNKNOWN_CODE.
+    if (isWithheldReferent(code, ns)) {
+      if (!seenWithheld.has(key)) {
+        seenWithheld.add(key);
+        withheldReferents.push({
+          side, code, where, reason: "WITHHELD_REFERENT",
+          detail: `intentional withheld referent — the ${prefixOf(code) ?? "?"}? marker declines to bind this slot to a registered entity (a deliberate gap, not a missing code)`,
+        });
+      }
+      return;
+    }
     if (isFlagCode(code)) {
       if (flagReg.has(code)) return; // resolves in the CB/FIG registry — fine
       const acc = exMatch("REFERENCE_INTEGRITY", { code });
@@ -766,7 +838,15 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     const entry = aliases.entities[l.code];
     if (!entry || !entry.english) continue; // unknown / unnamed code handled by ref-integrity
     const expected = slugify(entry.english);
-    if (l.slug === expected) continue;
+    // SC-0020: compare on the note-title-safe normalized form (strip `'`, collapse `/`) on BOTH
+    // sides — a map slug can't carry chars a note title forbids, but the BCD name keeps them.
+    const foundNorm = normalizeSlug(l.slug);
+    if (foundNorm === normalizeSlug(expected)) continue;
+    // SC-0020 (writeback): a registered referential_form (the BCD note's `aliases:`) is also a
+    // legitimate slug — a map may name an entity by a short/alternate registered form (e.g. B31
+    // "People-of-YHWH" for canonical "His People / People of YHWH"). Mirrors the CB_/FIG_ alias
+    // acceptance in (b); compared on the same note-title-safe normalized form. Canonical preserved.
+    if ((entry.referential_forms ?? []).some((a) => normalizeSlug(slugify(a)) === foundNorm)) continue;
     const key = `${l.code}|${l.slug}`;
     if (seenNb.has(key)) continue;
     seenNb.add(key);
@@ -798,22 +878,74 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
 
   // ── Step 4: cross-artifact alignment ──
   const misalignments: MisalignFinding[] = [];
+  // SC-0020: a `<NS>?` withheld referent (B?) is an intentional gap — surfaced as INFO above, never a
+  // misalignment. Exclude it from BOTH the map and FM working sets so it can't enter the symmetric
+  // difference (the other side legitimately lacks it; that is the point of withholding).
+  const isWithheld = (code: string) => isWithheldReferent(code, ns);
+  const mapRefsAligned = mapEntityRefs.filter((l) => !isWithheld(l.code));
+  const fmCodesAligned = fmCodes.filter((c) => !isWithheld(c.code));
   // scene scopes present in BOTH artifacts → per-scene; everything else folds into a pericope scope.
-  const mapScenes = new Set(mapEntityRefs.map((l) => l.scene).filter((s): s is string => !!s));
-  const fmScenes = new Set(fmCodes.map((c) => c.scene).filter((s): s is string => !!s));
+  const mapScenes = new Set(mapRefsAligned.map((l) => l.scene).filter((s): s is string => !!s));
+  const fmScenes = new Set(fmCodesAligned.map((c) => c.scene).filter((s): s is string => !!s));
   const alignedScenes = [...mapScenes].filter((s) => fmScenes.has(s)).sort(numericScene);
 
   // "present-elsewhere" context: a code flagged map-not-FM (resp. FM-not-map) may still appear on the
   // OTHER artifact, just not in its STRUCTURAL set. We record where, so the inventory distinguishes
   // "truly absent" from "present, non-structurally" (the latter is the common, easily-ruled case).
-  const mapProseCodes = new Map<string, string>(); // code → a representative non-structural map section
-  for (const l of mapEntityRefs) if (l.refKind === "PROSE" && !mapProseCodes.has(l.code)) mapProseCodes.set(l.code, l.section === "frontmatter" ? "frontmatter" : l.section === "flags" ? "§5 flags" : l.section.startsWith("3") ? `§${l.section} prose` : l.section);
+  // code → a representative non-structural map location, keyed by scene so the "present-elsewhere"
+  // annotation is scene-accurate. A FM-not-map code reported at scene S is only "present as §3 prose"
+  // when the map prose-references it IN scene S; a prose mention in a different scene is recorded under
+  // that other scene's key (and labelled "in §… prose" so the inventory doesn't mislead). A non-scene
+  // prose home (frontmatter / §5 flags) keys to "pericope". (After the SC-0020 parity bar a same-scene
+  // prose match no longer reaches this annotation — it is dropped as ALIGNED upstream — so this label
+  // now describes only the genuinely cross-scene / non-scene prose case.)
+  const mapProseByScope = new Map<string, Map<string, string>>(); // scope → (code → label)
+  const labelFor = (l: MapWikilink): string =>
+    l.section === "frontmatter" ? "frontmatter" : l.section === "flags" ? "§5 flags" : l.section.startsWith("3") ? `§${l.section} prose` : l.section;
+  for (const l of mapRefsAligned) {
+    if (l.refKind !== "PROSE") continue;
+    const scope = l.scene ?? "pericope";
+    let m = mapProseByScope.get(scope);
+    if (!m) mapProseByScope.set(scope, (m = new Map<string, string>()));
+    if (!m.has(l.code)) m.set(l.code, l.scene ? labelFor(l) : `${labelFor(l)} (pericope)`);
+  }
+  /** scene-accurate "present-elsewhere" label for an FM-not-map code at `scope`: the map's same-scope
+   *  prose home if any, else the first cross-scene prose home found (labelled with that scene). */
+  const presentElsewhereLabel = (code: string, scope: string): string | undefined => {
+    const here = mapProseByScope.get(scope)?.get(code);
+    if (here) return here;
+    for (const [sc, m] of mapProseByScope) {
+      const lbl = m.get(code);
+      if (lbl) return sc === "pericope" ? lbl : `${lbl} in ${sc}`;
+    }
+    return undefined;
+  };
   const fmSourceByCode = new Map<string, string>(); // code → its FM source (slot/flag) when not a scene container
-  for (const c of fmCodes) if (c.source !== "scene_container" && !fmSourceByCode.has(c.code)) fmSourceByCode.set(c.code, c.source === "pericope_flag" ? "cb/figure flag" : "proposition slot");
+  for (const c of fmCodesAligned) if (c.source !== "scene_container" && !fmSourceByCode.has(c.code)) fmSourceByCode.set(c.code, c.source === "pericope_flag" ? "cb/figure flag" : "proposition slot");
+
+  // SC-0020 parity bar (the lead's ruling, 2026-06-01): a FOR_MODEL scene-entity the map references in
+  // THAT SCENE's §3 prose (any wikilink in the scene's narration / role / relationship / What-Happens
+  // lines — the PROSE bucket, not just the §3A–3D declared-entity header) is ALIGNED: the two artifacts
+  // agree the entity is present in the scene — one DECLARES it structurally, the other NARRATES it. It is
+  // a misalignment ONLY if the map never references it in that scene. So we index the map's PROSE-bucket
+  // entity refs BY SCENE; a same-scene prose match removes the code from the structural symmetric
+  // difference entirely (it never becomes a finding). This is scene-scoped on purpose: a prose mention of
+  // the code in a DIFFERENT scene does NOT align it here (e.g. P05 B2 narrated in S1 ≠ declared in S3).
+  const mapProseByScene = new Map<string, Set<string>>(); // scene → entity codes referenced in that scene's prose
+  for (const l of mapRefsAligned) {
+    if (l.refKind !== "PROSE" || !l.scene) continue;
+    let set = mapProseByScene.get(l.scene);
+    if (!set) mapProseByScene.set(l.scene, (set = new Set<string>()));
+    set.add(l.code);
+  }
+  /** Is FOR_MODEL code `fc` (at scene `scope`) referenced in the map's same-scene §3 prose? */
+  const proseAlignedInScene = (fc: string, scope: string): boolean => (scope === "pericope" ? false : (mapProseByScene.get(scope)?.has(fc) ?? false));
 
   const addMisalign = (scope: string, mapSet: Set<string>, fmSet: Set<string>) => {
     const mapOnly = [...mapSet].filter((c) => !fmSet.has(c)).sort();
-    const fmOnly = [...fmSet].filter((c) => !mapSet.has(c)).sort();
+    // SC-0020 parity bar: an FM-only code the map prose-references in THIS scene is aligned (one
+    // declares, one narrates) — drop it from the symmetric difference before it can become a finding.
+    const fmOnly = [...fmSet].filter((c) => !mapSet.has(c) && !proseAlignedInScene(c, scope)).sort();
     // pair up likely-same-referent across the symmetric difference
     const pairedFm = new Set<string>();
     for (const mc of mapOnly) {
@@ -838,7 +970,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
       misalignments.push({
         scope, direction: "FM_NOT_MAP", code: fc,
         likelySameReferent: partner ? { otherCode: partner.code, sharedStem: partner.likelySameReferent!.sharedStem } : undefined,
-        presentElsewhere: mapProseCodes.get(fc), // in the map, just not in a §3A–3D structural block
+        presentElsewhere: presentElsewhereLabel(fc, scope), // scene-accurate: same-scope or labelled cross-scene prose home
         severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc,
       });
     }
@@ -846,18 +978,18 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
 
   if (alignedScenes.length > 0) {
     for (const s of alignedScenes) {
-      const mapSet = new Set(mapEntityRefs.filter((l) => l.refKind === "STRUCTURAL" && l.scene === s).map((l) => l.code));
-      const fmSet = new Set(fmCodes.filter((c) => c.scene === s).map((c) => c.code));
+      const mapSet = new Set(mapRefsAligned.filter((l) => l.refKind === "STRUCTURAL" && l.scene === s).map((l) => l.code));
+      const fmSet = new Set(fmCodesAligned.filter((c) => c.scene === s).map((c) => c.code));
       addMisalign(s, mapSet, fmSet);
     }
     // codes outside any aligned scene (e.g. map structural refs in a scene the FM lacks) → pericope bucket
     const mapInAligned = new Set(alignedScenes);
-    const leftoverMap = new Set(mapEntityRefs.filter((l) => l.refKind === "STRUCTURAL" && (!l.scene || !mapInAligned.has(l.scene))).map((l) => l.code));
-    const leftoverFm = new Set(fmCodes.filter((c) => !c.scene || !mapInAligned.has(c.scene)).map((c) => c.code));
+    const leftoverMap = new Set(mapRefsAligned.filter((l) => l.refKind === "STRUCTURAL" && (!l.scene || !mapInAligned.has(l.scene))).map((l) => l.code));
+    const leftoverFm = new Set(fmCodesAligned.filter((c) => !c.scene || !mapInAligned.has(c.scene)).map((c) => c.code));
     if (leftoverMap.size || leftoverFm.size) addMisalign("pericope", leftoverMap, leftoverFm);
   } else {
-    const mapSet = new Set(mapEntityRefs.filter((l) => l.refKind === "STRUCTURAL").map((l) => l.code));
-    const fmSet = new Set(fmCodes.map((c) => c.code));
+    const mapSet = new Set(mapRefsAligned.filter((l) => l.refKind === "STRUCTURAL").map((l) => l.code));
+    const fmSet = new Set(fmCodesAligned.map((c) => c.code));
     addMisalign("pericope", mapSet, fmSet);
   }
 
@@ -916,8 +1048,8 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
 
   return {
     pericope, mapPath, fmPath,
-    referenceIntegrity, unverifiable, nameBinding, misalignments, flagMismatches, danglingNotes,
-    counts: { refErrors, nameErrors, misalign, flagMismatch, likelySameReferent, dangling, unverifiable: unverifiable.length, accepted },
+    referenceIntegrity, unverifiable, withheldReferents, nameBinding, misalignments, flagMismatches, danglingNotes,
+    counts: { refErrors, nameErrors, misalign, flagMismatch, likelySameReferent, dangling, unverifiable: unverifiable.length, withheld: withheldReferents.length, accepted },
     ok: refErrors + nameErrors + misalign + flagMismatch + dangling === 0,
   };
 }

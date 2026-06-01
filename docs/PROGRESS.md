@@ -8,13 +8,13 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 113 tests green (was 97; +16 SC-0018 id-align)
-npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 11 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions + id-alignment-exceptions) + sync invariant
+npm install && npm run build && npm test     # 136 tests green (97 → +16 SC-0018 → +13 SC-0018-refine → +7 SC-0020 id-align tweaks → +3 SC-0020 parity-bar)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 11 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions + id-alignment-exceptions 0.3.0) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
 npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-1, 0 tier-2) · 7 accepted (signed off) · exit 0 — the operating-test bar
-npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018 (5th check, ALIGNED): cross-artifact entity-ID alignment over P01–P06 — DIAGNOSTIC inventory; the human rules it
+npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, ALIGNED): 4 clean (P01/P04/P05/P06) · 0 misalignment (8 standing → 5 prose-resolved + 3 signed off) · deferred B31 name-binding (P02/P03) · 3 unverifiable (TH_) · 9 accepted · 1 withheld INFO (B?)
 ```
 
 ## Shipped (on `main`)
@@ -232,7 +232,24 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018 (5th check, ALIGNED): 
   drafter (Slice 4)**, deliberately not built yet (deterministic-first discipline). The seam is
   defined: `compile` emits the skeleton + the per-field gap (with source-prose span) that the drafter
   fills, then the result re-validates via Slice 1.
-- Nothing is uncommitted; no open PRs.
+- **SC-0019 + SC-0020 — P01–P06 combined remediation, fixtures-only (branch `sc-0019-0020-p01`, PR #21).**
+  P01 is the BLESSED worked reference (voice + structure); this chunk rolled **P02–P06 + a parity-bar engine
+  refinement**, compiler-side only, STOPPING before the vault writeback for the lead's per-map review.
+  **SC-0020 (entity-ID reconciliation):** the two earlier `id-check` engine tweaks + **a third — the scene-scoped
+  prose-reference parity bar** (the lead's ruling: an FM scene-entity the map narrates in *that scene's* §3 prose
+  is ALIGNED). It drove the **8 standing REFERENCED-being/place/object misalignments → 0**: 5 resolved by the bar
+  (P01 S4 B2/B8/B9; P02 S2 B4/B5), 3 signed off as cross-scene/FM-only coverage differences (P05 S2 PL5, S3 B2,
+  S4 TH_WITHIN_DAY). `id-alignment-exceptions.json` 6→9 entries, re-pinned **0.2.0 → 0.3.0**.
+  **SC-0019 (prose standard):** P02–P06 conditioning prose re-voiced to the blessed P01 register + the matched FM
+  `scene_communicative_purpose`/`significant_absence` free-text. Plain≠flat held throughout (P04 lament/fourfold
+  divine naming + full↔empty; P05 miqreh luck-vs-providence; P02 hesed; P06 wing-of-refuge / amah-shifchah).
+  Gates green (**136 tests** · validate 6/6 0 drift · lint 0 drift / 7 accepted · coverage 6/6 · gold-diff
+  **byte-identical** · id-check clean except deferred). **STOPPED before the writeback** for the lead's per-map
+  voice blessing. DEFERRED (post-blessing writeback): the **B31 BCD alias** (A2, vault); the
+  **TM_TEN_YEARS→TH_TEN_YEARS_APPROXIMATELY vault-note rename + TH_ registration** (surfaced, not touched —
+  relocate-never-delete); the **template/methodology/agent-prompt seeding**. Interim `id-check` still shows B31
+  name-binding (P02/P03) + TH_ unverifiable — expected. **NO vault touch this chunk (vault `git status` clean).**
+  The prose is a PROPOSAL for the lead's sign-off; not final, not yet in the writeback.
 
 ## Next (recommended)
 > SC-0007 (the previous #1 — L1/discourse/high-risk convergence) is **DONE** on

@@ -481,14 +481,16 @@ program
         ref: a.ref + r.counts.refErrors, name: a.name + r.counts.nameErrors, mis: a.mis + r.counts.misalign,
         flag: a.flag + r.counts.flagMismatch,
         lsr: a.lsr + r.counts.likelySameReferent, dang: a.dang + r.counts.dangling, uv: a.uv + r.counts.unverifiable,
+        wh: a.wh + r.counts.withheld,
         acc: a.acc + r.counts.accepted, withFindings: a.withFindings + (r.ok ? 0 : 1),
       }),
-      { ref: 0, name: 0, mis: 0, flag: 0, lsr: 0, dang: 0, uv: 0, acc: 0, withFindings: 0 },
+      { ref: 0, name: 0, mis: 0, flag: 0, lsr: 0, dang: 0, uv: 0, wh: 0, acc: 0, withFindings: 0 },
     );
     console.log(
       `— id-check: ${reports.length} pericope(s) · ${reports.length - sum.withFindings} clean · ${sum.withFindings} with findings · ` +
         `${sum.ref} ref-integrity · ${sum.name} name-binding · ${sum.mis} misalignment (${sum.lsr} LIKELY_SAME_REFERENT) · ` +
-        `${sum.flag} flag-mismatch · ${sum.dang} dangling · ${sum.uv} unverifiable` + (sum.acc ? ` · ${sum.acc} accepted` : "") +
+        `${sum.flag} flag-mismatch · ${sum.dang} dangling · ${sum.uv} unverifiable` +
+        (sum.wh ? ` · ${sum.wh} withheld-referent` : "") + (sum.acc ? ` · ${sum.acc} accepted` : "") +
         `. Diagnostic only — the human rules the inventory. —`,
     );
     if (opts.outDir) console.log(`  ledgers written to ${opts.outDir}/`);

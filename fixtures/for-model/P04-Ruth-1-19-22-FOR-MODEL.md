@@ -83,7 +83,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_id": "S1",
       "verse_range": "1:19",
       "scene_kind": "PUBLIC_ARRIVAL_AND_RECOGNITION_SCENE",
-      "scene_communicative_purpose": "Stages the public arrival in Bethlehem; community recognition fails; the women's question opens the dialogue Naomi will answer in Scene 2.",
+      "scene_communicative_purpose": "Shows the arrival in Bethlehem out in the open; the town can hardly recognize Naomi; the women's question opens the exchange Naomi answers in Scene 2.",
       "beings_in_scene": {
         "entries": [
           {
@@ -124,13 +124,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is continuous with the journey established in P02. The barley-harvest setting is named at v.22 in S3, not here.",
         "entries": null
       },
-      "significant_absence": "The narrator does not say why the women cannot recognize Naomi (grief, age, demeanor, appearance — all withheld). The narrator records no specific recognition or reaction toward Ruth at the arrival moment; no one greets either of them."
+      "significant_absence": "Narrator never says why the women can hardly recognize Naomi — grief, age, the look on her, how worn she is, all left unsaid. He says nothing of anyone noticing or reacting to Ruth as they come in; no one greets either of them."
     },
     {
       "scene_id": "S2",
       "verse_range": "1:20-21",
       "scene_kind": "PUBLIC_LAMENT_AND_RENAMING_SCENE",
-      "scene_communicative_purpose": "Establishes Naomi's public account of her state — bitter, brought back empty, testified-against, dealt-evil-to. Refuses her given name and proposes a substitute. Names YHWH twice and Shaddai twice as divine agents of her bitterness.",
+      "scene_communicative_purpose": "Gives Naomi's own public account of how she stands — bitter, brought home empty, testified against, treated harshly. She refuses her own name and asks for a new one. She names YHWH twice and Shaddai twice as the ones who did this to her.",
       "beings_in_scene": {
         "entries": [
           {
@@ -167,13 +167,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; the speech occurs at the moment of arrival; time is continuous.",
         "entries": null
       },
-      "significant_absence": "The women do not respond to Naomi's lament — no comfort, no blessing, no further question, no acknowledgement of the proposed renaming. Naomi gives no greeting on arrival, does not bless the women, does not introduce Ruth, does not name her dead husband or sons (only 'I went out full' as oblique reference). The narrator gives no assessment of Naomi's account."
+      "significant_absence": "The women say nothing back to Naomi's lament — no comfort, no welcome, nothing more asked, no taking up the new name. Naomi gives no greeting as she arrives, does not bless the women, does not introduce Ruth, does not name her dead husband or sons (only 'I went out full' hints at them). And the narrator passes no judgment on what she says."
     },
     {
       "scene_id": "S3",
       "verse_range": "1:22",
       "scene_kind": "NARRATOR_FRAMING_CLOSE_SCENE",
-      "scene_communicative_purpose": "Closes the pericope with a narrator-frame summary that returns the narrator's naming over Naomi's proposed renaming, reactivates the Moabite epithet on Ruth at the public-arrival moment, and opens the harvest-frame against which Naomi's lament has just been spoken.",
+      "scene_communicative_purpose": "Closes the passage with the narrator's own summing-up: he goes on calling her Naomi over the new name she asked for, calls Ruth 'the Moabite' again at the moment of their public arrival, and opens the harvest season — the very harvest against which Naomi has just called herself empty.",
       "beings_in_scene": {
         "entries": [
           {
@@ -218,7 +218,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           }
         ]
       },
-      "significant_absence": "The narrator does not preview what the harvest will bring; does not say whether anyone in the city responds further to Naomi after her speech; does not give Ruth any voice or further action at the arrival; does not name Naomi's dead husband or sons in the return-summary. Ruth has been silent through the entire pericope."
+      "significant_absence": "Narrator gives no hint of what the harvest will bring; does not say whether anyone in the town answers Naomi after her speech; gives Ruth no word and no further act as they arrive; does not name Naomi's dead husband or sons in the closing summary. Ruth has been silent through the whole passage."
     }
   ],
   "level_3_propositions": [

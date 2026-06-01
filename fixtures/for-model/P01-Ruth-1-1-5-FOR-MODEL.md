@@ -165,7 +165,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
 
-      "significant_absence": "YHWH not named as the one who sent the famine or who drove the family's departure."
+      "significant_absence": "Narrator never says YHWH sent the famine or drove the family out; the book opens with no word of God acting."
     },
 
     {
@@ -218,7 +218,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
 
-      "significant_absence": "Narrator names no one as the cause of the death. No grief described. No mourning ritual recorded."
+      "significant_absence": "Narrator points to no one as the cause of the death. No grief described. No funeral or mourning mentioned."
     },
 
     {
@@ -285,7 +285,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
 
-      "significant_absence": "No children born to either marriage during ten years of dwelling."
+      "significant_absence": "No children born to either marriage in the ten years they live there; narrator gives the length but names no child."
     },
 
     {
@@ -349,7 +349,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
 
-      "significant_absence": "Narrator records no grief, no mourning rituals, no successor, and no divine action. The losses are reported and the line stops there."
+      "significant_absence": "Narrator tells of no grief, no funeral, no one left to carry on the line, and no act of God. The losses are reported and the line simply stops there."
     }
   ],
 
