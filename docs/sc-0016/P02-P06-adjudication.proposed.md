@@ -1,3 +1,9 @@
+> **SUPERSEDED (2026-05-31) → see [`docs/SC-0016-LEVEL3-SWEEP-AUDIT.md`](../SC-0016-LEVEL3-SWEEP-AUDIT.md).**
+> This was the *proposal* doc, built on the pre-dedup-fix collapsed counts; Marcia ruled it (bless P01, C1/C2,
+> the 6 keeps, split the P06 doublings) and the sweep is now APPLIED. The audit is the authoritative per-
+> proposition record (incl. the few findings this doc under-counted, each flagged there for the fidelity pass).
+> Kept here for provenance.
+
 # SC-0016 — P02–P06 §4 adjudication list (PROPOSED — for Marcia's ruling)
 
 > The operating test applied to every §4 finding the extended lint surfaces. **Mechanical** items I will

@@ -69,7 +69,7 @@ number bound to exactly one decision.
 | SC-0013 | Map content remediation under SC-0012 — P01 reference + P02–P06 roll | P01 SHIPPED; P02–P06 §3C+plain-language APPLIED (pending blessing); §4 dialogue re-atomizing = lead's exegetical pass |
 | SC-0014 | Rename SPEECH_ACT `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` → `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drop "AGENT" jargon) | APPLIED (pending the lead's blessing) |
 | SC-0015 | Extend the Level-3 lint to enforce the operating test: flag cross_ref/inter-proposition-link lines + meta/analytical questions in §4, scan questions (not just answers) incl. same-line Q&A, add comma compounds with an entity-list guard; lint-lexicon v0.1.0→v0.2.0 (re-pinned) | APPLIED |
-| SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06 | PROPOSED |
+| SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (6 ruled keeps) | APPLIED (fixtures; vault writeback deferred; pending the lead's blessing) |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -106,29 +106,41 @@ number bound to exactly one decision.
 
 ## SC-0016 — Level-3 §4 content sweep (operating test) under SC-0012/SC-0013
 - **Date:** 2026-05-31
-- **Decided by:** (pending — Marcia Suzuki)
-- **Status:** **PROPOSED** — human-gated, exegetical, **not performed here.**
-- **Type:** artifact remediation (no schema/spec change).
-- **Summary:** SC-0015 made the lint *see* the §4 blind spots; this entry is the **content** follow-up that
-  acts on what it now surfaces — the §4-proposition layer counterpart to SC-0013's §3C sweep. Scope (per the
-  SC-0015 inventory): (a) the inline **`cross_ref` / inter-proposition-link lines** that don't belong in a
-  Level-3 payload block (exactly 1 per map across P01–P06) → relocate the figure span into the figure-registry
-  entry (`figures/FIG_*.md`: "opens at P#, closes at P#" + keep-image guidance), de-duplicating not deleting;
-  (b) the **meta/analytical questions** ("Construction form?", "Verb root?",
-  "Arrival completion marker?", …) → rewrite as payload Q or move the analysis to conditioning; (c) the
-  **compound / non-atomic answers** → atomize into one-act-per-pair; (d) the residual question/answer-side
-  **forbidden vocabulary** ("verb", "agent", "lexeme", "clause", "subject") the question-scan now catches.
-- **Why deferred:** every one of these is an exegetical judgment (where an insight re-homes, how a clause
-  atomizes) that is the project lead's call, exactly as SC-0013's §4-dialogue re-atomizing was reserved. The
-  lint **surfaces**; the human **relocates (never deletes)**. The order mirrors SC-0013: **P01 worked reference
-  first**, then the P02–P06 roll calibrated to it.
-- **Spec change (exact):** none. (`tripod lint` already enforces the test as of SC-0015.)
-- **Artifact migration:** pending — P01 then P02–P06 `fixtures/meaning-map/*` + the mirrored vault maps; out of
-  scope for SC-0015 (which is tooling only and touches **no** fixture content).
-- **Verification (target):** after the sweep, `tripod lint --corpus` reaches the operating-test bar on §4
-  across P01–P06 — **0 cross_ref/links, 0 meta-questions, 0 jargon, 0 interpretive labels, 0 compounds, 0
-  conditioning-questions** (the few genuinely-exegetical residuals are resolved by the lead's ruling, not left
-  as drift); `validate` 6/6, `coverage` 6/6, `gold-diff` unchanged still hold.
+- **Decided by:** Marcia Suzuki (per-row rulings 2026-05-31; the compiler applied + verified them)
+- **Status:** **APPLIED — fixtures only; vault writeback deferred; pending the lead's blessing + Architect review.**
+- **Type:** artifact remediation (no schema/spec change) + a new pinned reviewer-sign-off ledger (governed).
+- **Summary:** The §4-proposition counterpart to SC-0013's §3C sweep. SC-0015 made the lint *see* the §4 blind
+  spots; this acted on the full true inventory (**150 findings** across P01–P06). For every finding, the
+  operating test was applied (*would the model SAY this in the translation? if no, it is conditioning and
+  leaves §4*): (a) **60 inline `cross_ref`/link lines** removed (P01 2 · P02 2 · P03 5 · P04 19 · P05 21 ·
+  P06 13) — the figure span survives in each map's §5A/§5B flags (verified present before removal) and is
+  enriched into the figure registry by the deferred vault patch; (b) **21 meta/analytical questions**
+  converted to payload questions or dropped where the payload already lived in a sibling Q&A (form-analysis →
+  the CB_/FIG_ flag); (c) **39 compound answers** atomized one-act-per-pair; (d) **19 question/answer-side
+  forbidden-vocabulary** hits rephrased in plain language; (e) **11 §4-answer interpretive labels** bared to
+  the act. Per-proposition ledger + relocate-never-delete verification: `docs/SC-0016-LEVEL3-SWEEP-AUDIT.md`.
+- **Rulings applied (Marcia):** bless P01; **C1** drop bracketed glosses (nuance rides on the flag); **C2**
+  form-questions → payload (or drop when redundant); **C3** entity-list/party-pairs are payload; split the P06
+  prostration doubling, "deliberately, intentionally" → "on purpose"; two batch rewrites (P05 P1 narrator-pause
+  → introduction content; P02 P8 keep "(none)" as asserted payload).
+- **Recorded reviewer sign-off (the analogue of SC-0010 coverage-exceptions):** 6 §4 lines were ruled **KEEP**
+  — genuinely-exegetical false-positives for the compound heuristic (a vocative, a discourse opener, a single
+  directive, a fixed oath formula, a me/you party-pair, a withholding-note). Rather than reword the text to
+  dodge the regex, they are signed off in a new pinned **`_spec/lint-exceptions.json`** (v0.1.0, provenance per
+  entry): `tripod lint` downgrades a matched finding to **ACCEPTED** (shown `✓` with reason, excluded from the
+  drift count). New code: `applyLintExceptions()` + `recount()` + `loadLintExceptions()` + CLI wiring + tests;
+  the engine stays pure (always surfaces the finding; acceptance is a recorded downgrade).
+- **Spec change (exact):** no closed-list / schema-shape change. New vendored+pinned governed file
+  `_spec/lint-exceptions.json` (sha256 `8c8dbd493640d0f9f790818ea30d1203028fa4bcc5312f215ba83be092b8d38f`),
+  added to `_spec/pins.json` → `sources` and verified by `check-drift`.
+- **Artifact migration:** `fixtures/meaning-map/P01–P06` §4 swept (this repo). The **vault** `pericopes/*.md`
+  + `figures/FIG_*.md` writeback is **deferred** per the lead's routing ruling — recorded as a patch in
+  `docs/sc-0016/FIG-span-relocations.proposed.md`. No FOR_MODEL / §3C / Levels 1–2 / §5-flag content touched.
+- **Verification (achieved):** `tripod lint --corpus` → **0 drift (0 tier-1, 0 tier-2) · 6 accepted (signed
+  off) · exit 0** — the operating-test bar, mechanized. `validate` 6/6 · `coverage --corpus` 6/6 block-clean
+  (245/245, 0 unanchored, 1 accepted) · `gold-diff` **UNCHANGED** (P01 100 · P02 90 · P03 100 · P04 95 ·
+  P05 98 · P06 96 — proof the entities/flags/structure layer did not move) · `check-drift` clean (15 pins) ·
+  **97 tests green**.
 
 ---
 
