@@ -37,6 +37,10 @@
       "version": "0.1.1",
       "sha256": "2d756b6c0374e54598a6084b3fcb4b3c7fa74f56c656d6b0eae79f28533f4279"
     },
+    "id-alignment-exceptions.json": {
+      "version": "0.1.0",
+      "sha256": "7197ca55ce3bf0940555c011682d904be7bde478003d32ac06f6e4809132a412"
+    },
     "source/ruth/P01.json": {
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "a6a2a983f65b4f692458827173409a651c3b57b8ed39dd4277a4bedeb1081146"

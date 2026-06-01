@@ -71,6 +71,7 @@ number bound to exactly one decision.
 | SC-0015 | Extend the Level-3 lint to enforce the operating test: flag cross_ref/inter-proposition-link lines + meta/analytical questions in §4, scan questions (not just answers) incl. same-line Q&A, add comma compounds with an entity-list guard; lint-lexicon v0.1.0→v0.2.0 (re-pinned) | APPLIED |
 | SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (7 ruled keeps) | SHIPPED (fixtures + vault, blessed + merged 2026-06-01) |
 | SC-0017 | De-leak: strip process-commentary (SC-IDs, "per the content discipline", "§3C entities only", "X → Proposition N" relocation trails) from the content layers — maps §3C + FOR_MODEL `objects_in_scene._note` — keeping entities + plain considered-absence; + template/discipline-doc hygiene so P07–P14 are born clean | SHIPPED (fixtures + vault — both PRs merged 2026-06-01); **blessed by Marcia 2026-06-01** |
+| SC-0018 | Cross-artifact entity-ID alignment: the locked convention (canonical ID = the bare code; the map carries it in the wikilink target up to the first hyphen) + the `tripod id-check` diagnostic verifier (the 5th deterministic check — aligned) + the empty pinned `id-alignment-exceptions.json`. Diagnostic only; fixes no content. The P01–P06 reconciliation of what it surfaces is a separate later human-gated pass. | PROPOSED |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -102,6 +103,102 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0018 — Cross-artifact entity-ID alignment: the locked convention + the `tripod id-check` checker
+- **Date:** 2026-06-01
+- **Decided by:** Marcia Suzuki (the convention + the diagnostic mandate, 2026-06-01); the compiler implemented + verified it.
+- **Status:** **PROPOSED.** The convention is recorded and enforced by a new deterministic verifier; the
+  **reconciliation** of whatever the checker surfaces over P01–P06 is a **separate, later, human-gated pass**
+  (it rides with the SC-0019 prose-standard pass — not this entry). Add-only tooling: no content/schema/vocab
+  edit; the one spec-side change is a new empty pinned exceptions file.
+- **Type:** verifier / tooling + a locked methodology convention (the canonical entity-ID form). No spec-version bump.
+- **The principle:** the prose Meaning Map and the FOR_MODEL are the two halves of **one training pair**. An
+  entity named in one must be the **same canonical code** the other uses — verifiable by machine, not by a
+  human's eye. Today the map writes `[[B2-Elimelech]]` and the FOR_MODEL writes `B2` (recoverable), but in
+  places it is a genuine mismatch (P01's "about ten years" is `TM_TEN_YEARS` in the map's §3C but
+  `TH_TEN_YEARS_APPROXIMATELY` in the FOR_MODEL — different code *and* namespace). This SC makes the alignment
+  mechanical. It is **diagnostic only** — it fixes nothing; it produces the inventory, Marcia rules it, a later
+  pass aligns.
+- **The locked convention (recorded; the checker enforces it):**
+  - **Canonical entity ID = the bare code** (`B2`, `O1`, `PL_LAND_OF_JUDAH`, `CB_0012`, `TM_*`, `FIG_*`, `I*`) —
+    what the FOR_MODEL + BCD use and what the schema *patterns* enforce (`being_id` = `^B(\d+|\?)$`, etc.; a name
+    like `B2-Elimelech` is schema-illegal in a FOR_MODEL).
+  - **Maps carry the code in the wikilink target:** `[[CODE-Slug]]`, `[[CODE-Slug|Display]]`, or `[[CODE]]`. **The
+    code = the wikilink target (the part before any `|`), taken up to but NOT including the first hyphen `-`; if
+    there is no hyphen, the whole target is the code.** Sound because **codes never contain a hyphen** (the schema
+    id patterns are `[A-Z0-9_]`-only). The checker **asserts this invariant from the pinned schema patterns at
+    startup** (`assertNoHyphenInCodePatterns`) and fails loudly if any future pattern admits a `-`.
+- **The checker (`tripod id-check [paths… | --corpus] [--json] [--out <ledger.md>] [--out-dir <dir>]`):** per
+  pericope (the map + its paired FOR_MODEL), runs five steps. The entity-code **namespaces are derived from the
+  pinned validation-rules schema `$defs`** (`b_code`/`place_id`/`object_id`/`time_id`/`cb_id`/`figure_id`), never
+  hardcoded; map wikilink→code parsing reuses the reader's rule.
+  1. **Extract.** MAP: every `[[…]]` whose code matches an entity namespace, tagged **STRUCTURAL** (declared in a
+     §3A–§3D per-scene entity block — confirmed section labels `**3A — Beings**`/`**3B — Places**`/`**3C — Objects
+     and Elements**/`**3D — Times**`) vs **PROSE** (a relationship/role bullet, §3E "What Happens", §4, §5, or
+     frontmatter). A code on a `- Relationship:`/`- Role:` bullet is PROSE, exactly as the reader declares an entry
+     only on a non-bullet, wikilink-led line. A wikilink whose code matches no namespace is a **note link** (kept
+     for step 5). FOR_MODEL: scene-container ids + pericope `cb_flags`/`figure_flags`; secondary, being-codes used
+     as `event_specific_slots` *values* (`^B\d+$`); excludes referential_form / role / function / action / speech_act.
+  2. **Reference integrity (both sides).** Every code must resolve to a real BCD entry — consumes the pinned
+     `_spec/registry/ruth.aliases.json`. Unknown code in a **tracked namespace** (B/PL/O/TM/I) ⇒ **ERROR**.
+  3. **Name-binding (map slugs).** The slug must equal `slugify(BCD canonical name)`, where **slugify = trim ·
+     collapse internal whitespace to a single `-` · preserve the source Title-Case (no lowercasing) · drop a
+     leading/trailing `-`** (e.g. `Bethlehem of Judah`→`Bethlehem-of-Judah`, `About Ten Years`→`About-Ten-Years`,
+     `In the Days When the Judges Judged`→`In-the-Days-When-the-Judges-Judged`). Mismatch ⇒ **ERROR** (catches a
+     typo'd slug and a right-name-wrong-code).
+  4. **Cross-artifact alignment (the core).** Per scene where scene IDs align (map §3 scene ↔ FOR_MODEL
+     `level_2_scenes[].scene_id`, both `S1`/`S2`…), else per pericope: `MAP_STRUCTURAL` (structural codes) vs
+     `FM_STRUCTURAL` (scene-container codes + pericope cb/figure flags); report the **symmetric difference**
+     (map-not-FM, FM-not-map). Where an unmatched map code and FM code **share a stem**, tag them
+     **LIKELY_SAME_REFERENT** (the highest-value finding — the `TM_/TH_` class). PROSE-only mentions are NOT
+     required in the FOR_MODEL (checked by steps 2–3 only).
+  5. **Dangling note links (secondary).** A map non-entity `[[Note-Title]]` resolving to no existing note ⇒ flag
+     (catches stale `[[…-AUDIT]]`/`[[…-COMPILATION-LOG]]`/`[[…-BCD-DELTA]]` links; pilot-2 has no AUDIT). Reported
+     separately.
+- **Namespaces the vendored registry does not track (decision, flagged for review):** `ruth.aliases.json` covers
+  only the concrete coverage namespaces **B/PL/O/TM/I** — it has **no `CB_`/`FIG_`/`TH_` entries** (those live in
+  the Concept Bank / Figure Registry / are thematic overlays, not vendored here). Applying "unknown ⇒ ERROR"
+  literally to them would flood the inventory with dozens of false errors for schema-legal codes. So
+  reference-integrity (step 2) and name-binding (step 3) run **only** for tracked namespaces; a schema-legal code
+  in an untracked namespace is surfaced separately as **UNVERIFIABLE_NO_REGISTRY** (shown, not errored). Each
+  cross-artifact finding also records whether the code is **present on the other artifact non-structurally**
+  (map: frontmatter/§5-flag/prose; FM: a proposition slot) — so "absent" is distinguished from "present, not in
+  the structural block".
+- **Exceptions (recorded sign-off, the SC-0010 mechanism):** new pinned **`_spec/id-alignment-exceptions.json`**
+  (**0.1.0**, **EMPTY**), added to `_spec/pins.json` → `sources`, covered by `check-drift`. Same shape/mechanism
+  as `coverage-exceptions.json` / `lint-exceptions.json`: a signed-off entry (keyed by pericope stem · kind ∈
+  {REFERENCE_INTEGRITY, NAME_BINDING, MISALIGNMENT, DANGLING_NOTE} · code | note_title | scope/direction)
+  downgrades a finding to **✓ ACCEPTED** (shown with reason, excluded from the failure count). **No exceptions
+  added in this build** — the first run is the raw, complete inventory.
+- **Spec change (exact):** no closed-list / schema-shape change. One new vendored+pinned governed file
+  `_spec/id-alignment-exceptions.json` (**0.1.0**, sha256
+  `7197ca55ce3bf0940555c011682d904be7bde478003d32ac06f6e4809132a412`), added to `_spec/pins.json` → `sources` and
+  verified by `check-drift`.
+- **Code:** `src/engine/id-align.ts` (namespace derivation + invariant + the five-step checker),
+  `src/audit/id-align-ledger.ts` (CLI text + wiki ledger note), `id-check` CLI verb, `loadIdAlignmentExceptions()`,
+  `tests/id-align.test.ts` (16 tests: the invariant; slugify; the six required cases — clean→0, typo'd slug→ERROR,
+  wrong-code→ERROR, TM_/TH_→LIKELY_SAME_REFERENT, off-stage PROSE→not-flagged, unknown→ERROR, seeded exception→
+  ACCEPTED; the unverifiable-namespace rule; dangling-note resolution; FM code extraction; + a real-fixture
+  integration lock on P01's TM_/TH_ pair and P06's `B?` placeholder).
+- **First-run inventory (P01–P06, the deliverable Marcia rules):** 6/6 pericopes have findings · **1
+  reference-integrity ERROR** (P06 FOR_MODEL `B?` — an unresolved `wife_taken` slot placeholder; legal per
+  `^B(\d+|\?)$`, no BCD entry) · **5 name-binding ERRORs** (`B31` slug `People-of-YHWH` vs BCD `His People /
+  People of YHWH` in P02+P03; `PL5_BOAZ_PORTION` slug `Boazs-…` vs `Boaz's-…` in P05+P06; `PL_NAOMIS_DWELLING`
+  slug `Naomis-…` vs `Naomi's-…` in P05) · **87 cross-artifact misalignments** of which the **1
+  LIKELY_SAME_REFERENT** is P01 `TM_TEN_YEARS` ↔ `TH_TEN_YEARS_APPROXIMATELY` (the headline) — the rest are
+  largely cb/figure flags that sit in the map's frontmatter/§5 (not §3 structural) and REFERENCED scene-beings the
+  map declares in prose but not §3A · **16 dangling note links** (stale `[[…-AUDIT]]`/`[[…-COMPILATION-LOG]]`/
+  `[[…-BCD-DELTA]]`/`[[…-VERIFICATION-INPUT-en]]` frontmatter links + P04's `[[T7-Harvest-Provision]]`, a
+  non-namespace code that is neither a valid entity nor a real note — a likely typo) · 157 unverifiable
+  (CB_/FIG_/TH_). The reconciliation is the later SC-0019-rider pass.
+- **Boundaries:** touched no map / FOR_MODEL / BCD / schema / vocabulary / pin content **except** adding the empty
+  exceptions file. No `|Display` additions, no code reconciliation, no template/methodology edit, no vault touch.
+- **Gates:** `npm test` **113 green** (97 prior + 16 new); `check-drift` clean (the new exceptions file pinned at
+  0.1.0); `validate` 6/6 · `lint --corpus` 0 drift / 7 accepted · `coverage --corpus` 6/6 (245/245) · `gold-diff`
+  agreement **UNCHANGED** — confirmed (no content touched).
+- **Delivery:** compiler PR only (no vault). Marcia receives the P01–P06 inventory to rule.
 
 ---
 

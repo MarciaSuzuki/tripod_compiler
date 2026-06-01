@@ -1,6 +1,7 @@
 import { join } from "node:path";
 import { SPEC_DIR, loadSpecJson } from "../spec/load.js";
 import type { LintException } from "../engine/lint.js";
+import type { IdAlignException } from "../engine/id-align.js";
 
 /**
  * Readers + types for the frozen, pinned BHSA artifacts the coverage reconciliation consumes
@@ -108,6 +109,15 @@ export function loadCoverageExceptions(): CoverageException[] {
 export function loadLintExceptions(): LintException[] {
   try {
     return loadSpecJson<{ exceptions: LintException[] }>("lint-exceptions.json").exceptions ?? [];
+  } catch {
+    return [];
+  }
+}
+
+/** Load the pinned id-alignment-exceptions ledger (reviewer sign-offs on SC-0018 findings; empty if absent). */
+export function loadIdAlignmentExceptions(): IdAlignException[] {
+  try {
+    return loadSpecJson<{ exceptions: IdAlignException[] }>("id-alignment-exceptions.json").exceptions ?? [];
   } catch {
     return [];
   }
