@@ -1,0 +1,85 @@
+{
+  "schema": "tripod-lint-exceptions",
+  "schema_version": "0.1.0",
+  "book": "RUTH",
+  "_doc": "Reviewer sign-off on Level-3 lint findings (the lint analogue of coverage-exceptions.json, SC-0010). A §4 finding whose (pericope, rule, match, context_prefix) matches an entry here is downgraded from drift to ACCEPTED by `tripod lint`: it still appears in the report (marked ✓ ACCEPTED, with the reason), but is excluded from the drift count and does not fail the run. These are the genuinely exegetical KEEPS the lint's heuristics cannot auto-distinguish — vocatives, discourse openers, fixed oath formulas, party-pairs, and a withholding-note — ruled by the project lead, NOT silently suppressed. Governed: every entry carries provenance (accepted_by/on + sc_ref); pinned in _spec/pins.json, so accepting an exception is a recorded, re-pinned edit. The engine stays pure (it always surfaces the finding); acceptance is applied as a recorded downgrade, exactly as `tripod coverage` applies coverage-exceptions. We do NOT reword the text to dodge the regex — the line is kept verbatim and signed off.",
+  "exceptions": [
+    {
+      "pericope": "P03-Ruth-1-15-18",
+      "rule": "compound",
+      "match": ",",
+      "context_prefix": "look, your sister-in-law has gone back",
+      "reason": "DISCOURSE_OPENER",
+      "note": "The comma follows the presentational opener 'look' (hinneh) — a single discourse-marked payload, not two joined acts. Splitting would fragment the presentational gesture.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "P03-Ruth-1-15-18",
+      "rule": "compound",
+      "match": ",",
+      "context_prefix": "go back, after your sister-in-law",
+      "reason": "SINGLE_DIRECTIVE",
+      "note": "One directive ('go back') with its exemplar tag ('after your sister-in-law'); the comma is not an act-join. Kept as one payload per ruling.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "P03-Ruth-1-15-18",
+      "rule": "compound",
+      "match": "and",
+      "context_prefix": "may YHWH do thus to me and worse",
+      "reason": "FIXED_OATH_FORMULA",
+      "note": "The canonical self-curse oath formula (koh ya'aseh … wekoh yosif). 'and worse' is part of the fixed formula, not a second act — splitting would break the oath. Kept whole per ruling.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "P03-Ruth-1-15-18",
+      "rule": "compound",
+      "match": "and",
+      "context_prefix": "if death itself separates between me and you",
+      "reason": "PARTY_PAIR",
+      "note": "The 'and' joins the two parties (me / you) of the separation, not two acts — the entity-pair class (C3) that the auto-guard misses because they are pronouns, not wikilinked IDs. One conditional payload.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "P05-Ruth-2-1-7",
+      "rule": "compound",
+      "match": ",",
+      "context_prefix": "\"go, my daughter\"",
+      "reason": "VOCATIVE",
+      "note": "The comma sets off the vocative address ('my daughter'), not a second act. One payload ('go') with its address. Kept per ruling.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "P06-Ruth-2-8-16",
+      "rule": "compound",
+      "match": ";",
+      "context_prefix": "her husband (pair withheld; see P01-D2)",
+      "reason": "WITHHOLDING_NOTE",
+      "note": "The ';' is inside a parenthetical cross-pericope withholding-note ('pair withheld; see P01-D2'), not an act-join in the payload. The payload is the bare 'her husband'; the note flags a deliberate narrative withholding tracked from P01. Kept per ruling.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "P06-Ruth-2-8-16",
+      "rule": "compound",
+      "match": "and",
+      "context_prefix": "her father and her mother",
+      "reason": "ENTITY_PAIR",
+      "note": "The 'and' joins the two parents (father / mother) of what Ruth left — an entity-pair (C3), like 'his two sons Mahlon and Chilion', not two acts. A first cut split it into two atoms; Marcia ruled KEEP as one. The auto-guard missed it because the parents are bare common nouns, not wikilinked IDs. Kept verbatim per ruling, not reworded.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
+    }
+  ]
+}

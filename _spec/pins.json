@@ -30,8 +30,12 @@
       "sha256": "d30775f44ae17e57999f7d2622e35a0c96f61fcfacb7b34e42acd9da06852c3e"
     },
     "lint-lexicon.json": {
-      "version": "0.1.0",
-      "sha256": "15a67a5fe1a9e646b76efc7195fa1bdbaf8fe6e6079d186b56e269d841b7b825"
+      "version": "0.2.0",
+      "sha256": "5bfa0e3fa9afdb8b90912865185a95c8596a7e1c3c58f90000ed748e2f3bb8f2"
+    },
+    "lint-exceptions.json": {
+      "version": "0.1.1",
+      "sha256": "2d756b6c0374e54598a6084b3fcb4b3c7fa74f56c656d6b0eae79f28533f4279"
     },
     "source/ruth/P01.json": {
       "version": "extractor-0.1.0/bhsa-2021",

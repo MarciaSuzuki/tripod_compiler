@@ -8,12 +8,12 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 89 tests green (46 + 34 coverage + 9 lint)
-npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 9 source pins (6 packets + alias + exceptions + lint-lexicon) + sync invariant
+npm install && npm run build && npm test     # 97 tests green (was 89; +8 SC-0015/SC-0016 lint + exception)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 10 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
-npx tsx src/cli/tripod.ts lint --corpus         # Level-3/§3C content discipline: ~182 drift findings across P01–P06 (pre-remediation)
+npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-1, 0 tier-2) · 6 accepted (signed off) · exit 0 — the operating-test bar
 ```
 
 ## Shipped (on `main`)
@@ -144,6 +144,32 @@ npx tsx src/cli/tripod.ts lint --corpus         # Level-3/§3C content disciplin
     (enum kept in sync), both re-pinned; P02/P04 FOR_MODELs (×5) + COMPILATION-LOGs + Agent-3 prompt + Pilot-2
     glossary migrated. Removed the 5 FOR_MODEL `«agent»` lint findings. (Incidentally re-synced the vault `_spec/`
     schemas, which were behind the compiler at v0.3 — missing SC-0007's slots; flagged for a vault-writeback pass.)
+  - **SC-0015 — extend the Level-3 lint to the §4 operating test.** The SC-0012 lint was blind on §4: it skipped
+    every `cross_ref` line, scanned only answers, and missed meta-questions + comma-compounds + collapsed counts.
+    Extended `lintMeaningMap`: new `link_in_level3` (flag inline cross_ref/links) + `meta_question` rules;
+    question-side scan incl. same-line `**Q:**…**A:**`; comma compounds with an **entity-list guard**; §4-answer-only
+    `answer_labels` (scoped so they never fire on a governed `speech_act` enum or §3C note); `+hifil`; truthful
+    per-proposition reporting (location + context in the dedup key). lint-lexicon **0.1.0→0.2.0** re-pinned.
+    Corpus lint **14 (collapsed) → 150 (true)**. `lintForModel` untouched (0 FOR_MODEL findings).
+  - **SC-0016 — the §4 content sweep (operating test, P01–P06).** Applied Marcia's per-row rulings to the 150
+    findings: removed **60 inline cross_refs** (spans kept in §5A/§5B; figure-registry enrichment = deferred vault
+    patch), converted **21 meta-questions** to payload (or dropped where redundant), atomized **39 compounds**,
+    rephrased **19 jargon** hits, bared **11 §4-answer labels**. **6 genuinely-exegetical keeps** (vocative,
+    discourse-opener, oath formula, party-pair, withholding-note) signed off in a new pinned
+    `_spec/lint-exceptions.json` (the SC-0010 coverage-exceptions analogue — `tripod lint` shows them `✓ ACCEPTED`,
+    excluded from drift). **`lint --corpus` → 0 drift · 7 accepted · exit 0** (the operating-test bar, mechanized;
+    the 7th keep "her father and her mother" added at the blessing pass). `validate` 6/6 · `coverage` 6/6 ·
+    `gold-diff` (P01 100·P02 90·P03 100·P04 95·P05 98·P06 96) · 97 tests. **BLESSED by Marcia 2026-05-31.**
+    Per-proposition relocate-never-delete proof: `docs/SC-0016-LEVEL3-SWEEP-AUDIT.md`.
+  - **SC-0016 vault writeback — DONE (2026-05-31).** The deferred canonical sync: vault `pericopes/P01–P06`
+    now **byte-identical** to compiler `fixtures/meaning-map/` (faithful §4 transcription, diff-first/no-clobber,
+    based on a fresh branch off `origin/main` after verifying the old vault branch held only an empty auto-backup
+    commit); figure proposition-spans recorded additively in vault `figures/` (32 files, 96 insertions / 0 del).
+    **Task A:** new figure **FIG_0195** (Fourfold Divine Naming in Lament — the pattern, complementing FIG_0006 +
+    FIG_0086) wired into vault + fixtures (figure file + P04 BCD-DELTA + map §5B/active-figures + FOR_MODEL
+    P4/P5 figure_flags); gold-diff re-baselined (P04 37→38). **Task B:** SC-0014 forward-pointer recorded (old
+    value still in the Pilot-3 Layer-2 seed CSV → reconcile at Pilot-3 lock; pointer only). Delivered via a
+    reviewed vault PR; vault returns to clean `main` on merge. invariant restored: vault `pericopes/` ≡ fixtures.
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:
