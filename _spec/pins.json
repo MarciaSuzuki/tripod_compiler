@@ -33,6 +33,10 @@
       "version": "0.2.0",
       "sha256": "5bfa0e3fa9afdb8b90912865185a95c8596a7e1c3c58f90000ed748e2f3bb8f2"
     },
+    "lint-exceptions.json": {
+      "version": "0.1.0",
+      "sha256": "8c8dbd493640d0f9f790818ea30d1203028fa4bcc5312f215ba83be092b8d38f"
+    },
     "source/ruth/P01.json": {
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "a6a2a983f65b4f692458827173409a651c3b57b8ed39dd4277a4bedeb1081146"

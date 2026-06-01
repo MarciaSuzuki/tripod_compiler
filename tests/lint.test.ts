@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { lintForModel, lintMeaningMap } from "../src/engine/lint.js";
+import { lintForModel, lintMeaningMap, applyLintExceptions, type LintException } from "../src/engine/lint.js";
 
 /**
  * The Level-3 / §3C content-discipline lint (drift-guard). Tests the four drift classes from
@@ -101,6 +101,36 @@ describe("lint — interpretive labels (R3) + conditioning-in-Q&A (R5) + compoun
       ["## 4. Level 3", "", "### Proposition 1 — Ruth 1:2 [Scene 1]", "- **Q:** With whom? **A:** his two sons [[B4-Mahlon]] Mahlon and [[B5-Chilion]] Chilion"].join("\n"),
     );
     expect(entityAnd.findings.some((f) => f.rule === "compound")).toBe(false);
+  });
+});
+
+describe("lint — reviewer sign-off (lint-exceptions, SC-0010 pattern)", () => {
+  const mk = () =>
+    lintMeaningMap(
+      ["## 4. Level 3", "", "### Proposition 3 — Ruth 2:2b [Scene 2]", '- **Q:** What did she say? **A:** "go, my daughter"'].join("\n"),
+      "fixtures/meaning-map/P05-Ruth-2-1-7.md",
+    );
+  const ex: LintException[] = [
+    { pericope: "P05-Ruth-2-1-7", rule: "compound", match: ",", context_prefix: '"go, my daughter"', reason: "VOCATIVE", accepted_by: "Marcia Suzuki" },
+  ];
+  it("surfaces the finding as drift before sign-off (engine stays pure)", () => {
+    const r = mk();
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((f) => f.rule === "compound" && !f.accepted)).toBe(true);
+  });
+  it("downgrades a matched finding to accepted (kept in report, excluded from drift)", () => {
+    const r = applyLintExceptions(mk(), ex);
+    expect(r.ok).toBe(true); // no un-accepted drift
+    expect(r.counts.accepted).toBe(1);
+    expect(r.counts.tier2).toBe(0);
+    const f = r.findings.find((x) => x.rule === "compound");
+    expect(f?.accepted?.reason).toBe("VOCATIVE");
+  });
+  it("does NOT downgrade when pericope or context_prefix doesn't match (no over-broad suppression)", () => {
+    const wrongPericope = applyLintExceptions(mk(), [{ ...ex[0]!, pericope: "P02-Ruth-1-6-14" }]);
+    expect(wrongPericope.ok).toBe(false);
+    const wrongContext = applyLintExceptions(mk(), [{ ...ex[0]!, context_prefix: "some other line" }]);
+    expect(wrongContext.ok).toBe(false);
   });
 });
 

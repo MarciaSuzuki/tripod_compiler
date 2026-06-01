@@ -13,10 +13,10 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
-import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions } from "../reader/source-packet.js";
+import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions, loadLintExceptions } from "../reader/source-packet.js";
 import { reconcile } from "../engine/coverage.js";
 import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
-import { lintForModel, lintMeaningMap, type LintReport } from "../engine/lint.js";
+import { lintForModel, lintMeaningMap, applyLintExceptions, type LintReport } from "../engine/lint.js";
 
 const program = new Command();
 program
@@ -364,11 +364,12 @@ program
       console.error("no targets. Pass .md note(s)/dir(s), or --corpus.");
       process.exit(2);
     }
+    const lintExceptions = loadLintExceptions();
     const lintOne = (file: string): LintReport => {
       const raw = readFileSync(file, "utf8");
       const isForModel = /type:\s*["']?sta-for-model/.test(raw) || /"sta_id"\s*:/.test(raw);
-      if (isForModel) return lintForModel(readArtifactNote(file).json as any, file);
-      return lintMeaningMap(raw, file);
+      const base = isForModel ? lintForModel(readArtifactNote(file).json as any, file) : lintMeaningMap(raw, file);
+      return applyLintExceptions(base, lintExceptions); // recorded reviewer sign-offs (SC-0010 pattern)
     };
     const reports = [...new Set(files)].sort().map(lintOne).map((r) => ({
       ...r,
@@ -380,19 +381,26 @@ program
       process.exitCode = reports.some((r) => r.findings.length) ? 1 : 0;
       return;
     }
-    let total = 0, t1 = 0;
+    let total = 0, t1 = 0, accepted = 0;
     for (const r of reports) {
       if (r.findings.length === 0) continue;
-      total += r.findings.length;
-      t1 += r.findings.filter((f) => f.tier === 1).length;
-      console.log(`\n${r.artifact}  ${r.file}  — ${r.findings.length} finding(s)`);
-      for (const f of r.findings.sort((a, b) => a.tier - b.tier)) {
-        console.log(`  ${f.tier === 1 ? "✗" : "~"} [${f.rule}] ${f.location}  «${f.match}»  ${f.context ? `— ${f.context}` : ""}`);
+      const drift = r.findings.filter((f) => !f.accepted);
+      const acc = r.findings.filter((f) => f.accepted);
+      total += drift.length;
+      t1 += drift.filter((f) => f.tier === 1).length;
+      accepted += acc.length;
+      console.log(`\n${r.artifact}  ${r.file}  — ${drift.length} finding(s)${acc.length ? ` · ${acc.length} accepted` : ""}`);
+      for (const f of r.findings.sort((a, b) => Number(!!a.accepted) - Number(!!b.accepted) || a.tier - b.tier)) {
+        const mark = f.accepted ? "✓" : f.tier === 1 ? "✗" : "~";
+        const tag = f.accepted ? ` [ACCEPTED: ${f.accepted.reason}]` : "";
+        console.log(`  ${mark} [${f.rule}] ${f.location}  «${f.match}»${tag}  ${f.context ? `— ${f.context}` : ""}`);
       }
     }
+    const clean = reports.filter((r) => r.findings.every((f) => f.accepted)).length;
     console.log(
-      `\n— lint: ${reports.length} artifact(s) · ${total} finding(s) (${t1} tier-1, ${total - t1} tier-2) · ` +
-        `${reports.filter((r) => r.findings.length === 0).length} clean. Surfaces drift; the human judges (relocate insight, never delete). —`,
+      `\n— lint: ${reports.length} artifact(s) · ${total} finding(s) (${t1} tier-1, ${total - t1} tier-2)` +
+        `${accepted ? ` · ${accepted} accepted (signed off)` : ""} · ` +
+        `${clean} clean. Surfaces drift; the human judges (relocate insight, never delete). —`,
     );
     process.exitCode = total ? 1 : 0;
   });

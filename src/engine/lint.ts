@@ -21,20 +21,59 @@ export type LintRule =
   | "meta_question"
   | "link_in_level3";
 
+/** A reviewer-accepted lint exception attached to a finding (downgrades it from drift to accepted). */
+export interface AcceptedLintException {
+  reason: string;
+  note?: string;
+  accepted_by?: string;
+}
+
 export interface LintFinding {
   rule: LintRule;
   tier: number; // 1 = high-confidence; 2 = judge-in-context
   location: string;
   match: string;
   context: string;
+  accepted?: AcceptedLintException; // reviewer signed off (lint-exceptions.json) ⇒ not drift
 }
 
 export interface LintReport {
   file: string;
   artifact: string; // "MEANING_MAP" | "FOR_MODEL"
   findings: LintFinding[];
-  counts: { tier1: number; tier2: number; byRule: Record<string, number> };
-  ok: boolean; // true iff no findings
+  counts: { tier1: number; tier2: number; accepted: number; byRule: Record<string, number> };
+  ok: boolean; // true iff no UN-ACCEPTED findings (reviewer-signed-off exceptions don't count as drift)
+}
+
+/** A reviewer sign-off keyed to one specific lint finding (mirrors coverage-exceptions, SC-0010). */
+export interface LintException {
+  pericope: string; // map basename stem, e.g. "P05-Ruth-2-1-7"
+  rule: LintRule;
+  match: string;
+  context_prefix: string; // a prefix of the finding's context, enough to pin the exact line
+  reason: string;
+  note?: string;
+  accepted_by?: string;
+  accepted_on?: string;
+  sc_ref?: string;
+}
+
+/**
+ * Apply reviewer sign-offs to a report: a finding whose (pericope, rule, match, context-prefix) matches
+ * an exception is tagged `accepted` (kept in the ledger, with reason) and excluded from the drift count.
+ * The engine itself stays pure — it always surfaces every finding; acceptance is a recorded downgrade,
+ * exactly as `tripod coverage` applies coverage-exceptions.json. `pericope` is derived from the file stem.
+ */
+export function applyLintExceptions(report: LintReport, exceptions: LintException[]): LintReport {
+  if (!exceptions.length) return report;
+  const stem = report.file.split("/").pop()?.replace(/\.md$/, "") ?? "";
+  const findings = report.findings.map((f) => {
+    const ex = exceptions.find(
+      (e) => e.pericope === stem && e.rule === f.rule && e.match === f.match && f.context.startsWith(e.context_prefix),
+    );
+    return ex ? { ...f, accepted: { reason: ex.reason, note: ex.note, accepted_by: ex.accepted_by } } : f;
+  });
+  return recount({ ...report, findings });
 }
 
 interface Lexicon {
@@ -248,13 +287,18 @@ function finalize(findings: LintFinding[], file: string, artifact: string): Lint
     seen.add(k);
     return true;
   });
+  return recount({ file, artifact, findings: uniq, counts: { tier1: 0, tier2: 0, accepted: 0, byRule: {} }, ok: true });
+}
+
+/** (Re)compute a report's counts + ok flag from its findings. Accepted (signed-off) findings are
+ *  tallied separately and excluded from the tier counts + the ok flag — they are not drift. */
+function recount(report: LintReport): LintReport {
   const byRule: Record<string, number> = {};
-  for (const f of uniq) byRule[f.rule] = (byRule[f.rule] ?? 0) + 1;
-  return {
-    file,
-    artifact,
-    findings: uniq,
-    counts: { tier1: uniq.filter((f) => f.tier === 1).length, tier2: uniq.filter((f) => f.tier === 2).length, byRule },
-    ok: uniq.length === 0,
-  };
+  let tier1 = 0, tier2 = 0, accepted = 0;
+  for (const f of report.findings) {
+    if (f.accepted) { accepted++; continue; }
+    byRule[f.rule] = (byRule[f.rule] ?? 0) + 1;
+    if (f.tier === 1) tier1++; else tier2++;
+  }
+  return { ...report, counts: { tier1, tier2, accepted, byRule }, ok: tier1 + tier2 === 0 };
 }
