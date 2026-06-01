@@ -69,6 +69,17 @@
       "accepted_by": "Marcia Suzuki",
       "accepted_on": "2026-05-31",
       "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "P06-Ruth-2-8-16",
+      "rule": "compound",
+      "match": "and",
+      "context_prefix": "her father and her mother",
+      "reason": "ENTITY_PAIR",
+      "note": "The 'and' joins the two parents (father / mother) of what Ruth left — an entity-pair (C3), like 'his two sons Mahlon and Chilion', not two acts. A first cut split it into two atoms; Marcia ruled KEEP as one. The auto-guard missed it because the parents are bare common nouns, not wikilinked IDs. Kept verbatim per ruling, not reworded.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-05-31",
+      "sc_ref": "SC-0016"
     }
   ]
 }

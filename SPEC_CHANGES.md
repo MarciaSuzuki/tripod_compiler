@@ -69,7 +69,7 @@ number bound to exactly one decision.
 | SC-0013 | Map content remediation under SC-0012 — P01 reference + P02–P06 roll | P01 SHIPPED; P02–P06 §3C+plain-language APPLIED (pending blessing); §4 dialogue re-atomizing = lead's exegetical pass |
 | SC-0014 | Rename SPEECH_ACT `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` → `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drop "AGENT" jargon) | APPLIED (pending the lead's blessing) |
 | SC-0015 | Extend the Level-3 lint to enforce the operating test: flag cross_ref/inter-proposition-link lines + meta/analytical questions in §4, scan questions (not just answers) incl. same-line Q&A, add comma compounds with an entity-list guard; lint-lexicon v0.1.0→v0.2.0 (re-pinned) | APPLIED |
-| SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (6 ruled keeps) | APPLIED (fixtures; vault writeback deferred; pending the lead's blessing) |
+| SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (7 ruled keeps) | SHIPPED (fixtures; **blessed by Marcia 2026-05-31**; vault writeback is a separate pending pass) |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -107,7 +107,11 @@ number bound to exactly one decision.
 ## SC-0016 — Level-3 §4 content sweep (operating test) under SC-0012/SC-0013
 - **Date:** 2026-05-31
 - **Decided by:** Marcia Suzuki (per-row rulings 2026-05-31; the compiler applied + verified them)
-- **Status:** **APPLIED — fixtures only; vault writeback deferred; pending the lead's blessing + Architect review.**
+- **Status:** **SHIPPED (fixtures) — BLESSED by Marcia Suzuki 2026-05-31** after an Architect fidelity pass
+  (relocate-never-delete verified on the high-stakes drops: P04 lament divine-agency atoms "YHWH has testified
+  against me" / "Shaddai has done evil to me" survive; P05 miqreh + verb-chain + working-time-code payloads
+  survive; gold-diff independently UNCHANGED). **Vault writeback** (`pericopes/*.md` + `figures/FIG_*.md`) is a
+  separate pending pass (`docs/sc-0016/FIG-span-relocations.proposed.md`).
 - **Type:** artifact remediation (no schema/spec change) + a new pinned reviewer-sign-off ledger (governed).
 - **Summary:** The §4-proposition counterpart to SC-0013's §3C sweep. SC-0015 made the lint *see* the §4 blind
   spots; this acted on the full true inventory (**150 findings** across P01–P06). For every finding, the
@@ -123,24 +127,31 @@ number bound to exactly one decision.
   form-questions → payload (or drop when redundant); **C3** entity-list/party-pairs are payload; split the P06
   prostration doubling, "deliberately, intentionally" → "on purpose"; two batch rewrites (P05 P1 narrator-pause
   → introduction content; P02 P8 keep "(none)" as asserted payload).
-- **Recorded reviewer sign-off (the analogue of SC-0010 coverage-exceptions):** 6 §4 lines were ruled **KEEP**
-  — genuinely-exegetical false-positives for the compound heuristic (a vocative, a discourse opener, a single
-  directive, a fixed oath formula, a me/you party-pair, a withholding-note). Rather than reword the text to
-  dodge the regex, they are signed off in a new pinned **`_spec/lint-exceptions.json`** (v0.1.0, provenance per
-  entry): `tripod lint` downgrades a matched finding to **ACCEPTED** (shown `✓` with reason, excluded from the
-  drift count). New code: `applyLintExceptions()` + `recount()` + `loadLintExceptions()` + CLI wiring + tests;
-  the engine stays pure (always surfaces the finding; acceptance is a recorded downgrade).
+- **Recorded reviewer sign-off (the analogue of SC-0010 coverage-exceptions):** **7** §4 lines were ruled
+  **KEEP** — genuinely-exegetical false-positives for the compound heuristic (a vocative, a discourse opener, a
+  single directive, a fixed oath formula, a me/you party-pair, a withholding-note, and an entity-pair "her
+  father and her mother"). Rather than reword the text to dodge the regex, they are signed off in a new pinned
+  **`_spec/lint-exceptions.json`** (provenance per entry): `tripod lint` downgrades a matched finding to
+  **ACCEPTED** (shown `✓` with reason, excluded from the drift count). New code: `applyLintExceptions()` +
+  `recount()` + `loadLintExceptions()` + CLI wiring + tests; the engine stays pure (always surfaces the
+  finding; acceptance is a recorded downgrade).
+- **Blessing-pass rulings (Marcia, 2026-05-31):** (a) **"her father and her mother"** ruled KEEP as one (an
+  entity-pair, like "his two sons Mahlon and Chilion"; an earlier cut wrongly split it) → un-split + recorded as
+  the **7th** sign-off (`ENTITY_PAIR`); lint-exceptions re-pinned **0.1.0 → 0.1.1**. (b) **Politeness particles
+  ("na"/please) = register, not payload** — confirmed as a **standing precedent** for deference markers
+  ("please / your servant / my lord") through P07–P14 (so e.g. P05's "let me glean, please" → atom "let me
+  glean", the particle conditioning).
 - **Spec change (exact):** no closed-list / schema-shape change. New vendored+pinned governed file
-  `_spec/lint-exceptions.json` (sha256 `8c8dbd493640d0f9f790818ea30d1203028fa4bcc5312f215ba83be092b8d38f`),
+  `_spec/lint-exceptions.json` (**v0.1.1**, sha256 `2d756b6c0374e54598a6084b3fcb4b3c7fa74f56c656d6b0eae79f28533f4279`),
   added to `_spec/pins.json` → `sources` and verified by `check-drift`.
 - **Artifact migration:** `fixtures/meaning-map/P01–P06` §4 swept (this repo). The **vault** `pericopes/*.md`
   + `figures/FIG_*.md` writeback is **deferred** per the lead's routing ruling — recorded as a patch in
   `docs/sc-0016/FIG-span-relocations.proposed.md`. No FOR_MODEL / §3C / Levels 1–2 / §5-flag content touched.
-- **Verification (achieved):** `tripod lint --corpus` → **0 drift (0 tier-1, 0 tier-2) · 6 accepted (signed
-  off) · exit 0** — the operating-test bar, mechanized. `validate` 6/6 · `coverage --corpus` 6/6 block-clean
-  (245/245, 0 unanchored, 1 accepted) · `gold-diff` **UNCHANGED** (P01 100 · P02 90 · P03 100 · P04 95 ·
-  P05 98 · P06 96 — proof the entities/flags/structure layer did not move) · `check-drift` clean (15 pins) ·
-  **97 tests green**.
+- **Verification (achieved, at blessing):** `tripod lint --corpus` → **0 drift (0 tier-1, 0 tier-2) · 7
+  accepted (signed off) · exit 0** — the operating-test bar, mechanized. `validate` 6/6 · `coverage --corpus`
+  6/6 block-clean (245/245, 0 unanchored, 1 accepted) · `gold-diff` **UNCHANGED** (P01 100 · P02 90 · P03 100 ·
+  P04 95 · P05 98 · P06 96 — proof the entities/flags/structure layer did not move) · `check-drift` clean
+  (15 pins) · **97 tests green**.
 
 ---
 

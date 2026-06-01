@@ -5,7 +5,8 @@
 > surfaced was acted on under a ruling by the project lead (Marcia Suzuki, 2026-05-31); this records what
 > changed and where each relocated insight now lives (verified present). Calibrated to the blessed P01.
 >
-> **Acceptance bar met:** `tripod lint --corpus` → **0 drift (0 tier-1, 0 tier-2) · 6 accepted (signed off)**.
+> **BLESSED by Marcia Suzuki 2026-05-31** (SC-0016 SHIPPED, fixtures; vault writeback a separate pending pass).
+> **Acceptance bar met:** `tripod lint --corpus` → **0 drift (0 tier-1, 0 tier-2) · 7 accepted (signed off)**.
 > `validate` 6/6 · `coverage --corpus` 6/6 block-clean (245/245, 0 unanchored, 1 accepted) ·
 > `gold-diff` UNCHANGED (P01 100 · P02 90 · P03 100 · P04 95 · P05 98 · P06 96) · `check-drift` clean ·
 > 97 tests green. Gold-diff + coverage unchanged is the proof the entities/flags/structure layer did not
@@ -126,19 +127,19 @@ Result: lint 44→0 drift (1 accepted). gold-diff 98% (unchanged). coverage 48/4
 | "fell on her face and bowed to the ground" (P5) | split (ruling) → fell on her face · bowed to the ground | — | ✓ |
 | "Boaz answers with full-knowledge declaration" (P7) | bare → telling | full-knowledge doubling → FIG_0100 | ✓ |
 | "Boaz recites what Ruth did" (P8) | bare → telling | — | ✓ |
-| "her father and her mother" (P8) | split → her father · her mother | — | ✓ |
+| **Accepted (kept):** "her father and her mother" (P8) | sign-off ENTITY_PAIR (un-split at blessing) | — | ✓ |
 | "come here, eat from the bread, dip your morsel in the vinegar" (P12) | split → 3 atoms | — | ✓ |
 | "First/Second/Third verb? she ate/…satisfied/…leftover" (P15) | C2 → "What did she do?/What next?" | abundance-triplet → FIG_0104 | ✓ |
 | "further command about deliberate pulling" (P18) | bare → commanding | — | ✓ |
 | "deliberately, intentionally" (P18) | → "on purpose" (ruling) | the doubling's plain sense | ✓ |
 | "further command and prohibition" (P19) | bare → commanding | — | ✓ |
 | **Accepted (kept):** "her husband (pair withheld; see P01-D2)" (P7) | sign-off WITHHOLDING_NOTE | the withholding flag is tracked from P01 | ✓ |
-Result: lint 37→0 drift (1 accepted). gold-diff 96% (unchanged). coverage 58/58.
+Result: lint 37→0 drift (2 accepted: WITHHOLDING_NOTE + ENTITY_PAIR). gold-diff 96% (unchanged). coverage 58/58.
 
 ---
 
-## Accepted exceptions (the 6 recorded sign-offs)
-Pinned in `_spec/lint-exceptions.json` (v0.1.0), shown by `tripod lint` as `✓ [ACCEPTED: reason]`, excluded
+## Accepted exceptions (the 7 recorded sign-offs)
+Pinned in `_spec/lint-exceptions.json` (v0.1.1), shown by `tripod lint` as `✓ [ACCEPTED: reason]`, excluded
 from the drift count. These are the genuinely-exegetical keeps the heuristic cannot auto-distinguish; kept
 **verbatim** (we did not reword to dodge the regex) and signed off by the lead.
 
@@ -150,6 +151,7 @@ from the drift count. These are the genuinely-exegetical keeps the heuristic can
 | P03 P4 | "if death itself separates between me and you" | PARTY_PAIR (C3) |
 | P05 P3 | "go, my daughter" | VOCATIVE |
 | P06 P7 | "her husband (pair withheld; see P01-D2)" | WITHHOLDING_NOTE |
+| P06 P8 | "her father and her mother" | ENTITY_PAIR (C3) — un-split at the blessing pass |
 
 ## Newly-surfaced calls (flagged for the lead's fidelity pass — none guessed)
 The per-proposition lint (after SC-0015's dedup fix) surfaced findings the first adjudication doc — built on
@@ -161,11 +163,14 @@ already ruled (C1/C2/C3/split/bare), and is recorded here for the fidelity read:
 - **P04 P6** "Working time-code? TM_BARLEY_HARVEST_BEGINNING (…)" → dropped; payload "at the beginning of the
   barley harvest" retained one line up. *Confirm: dropping the registration note loses no payload.*
 - **P05 P9** "Let me glean, please, …" → the politeness particle "please" (na) treated as register/conditioning,
-  not a separate act (so the atom is "let me glean"). *Confirm this register call.*
+  not a separate act (so the atom is "let me glean"). **RULED CONFIRMED (Marcia, 2026-05-31): "na"/please =
+  register — a standing precedent for deference markers (please / your servant / my lord) through P07–P14.**
 - **P05 P9** shelter text-critical note: kept with an em-dash instead of a semicolon (so it is not a compound).
-  *Confirm: the "held open" text-critical flag should remain inline as conditioning.*
-- **P06 P8** "her father and her mother" → split into two atoms (rather than treated as a C3 entity-pair).
-  *Either reading is defensible; split chosen to match the P06 "split both" lean.*
+  *Confirm: the "held open" text-critical flag should remain inline as conditioning.* (Not separately re-raised
+  at the blessing pass; the em-dash form stands.)
+- **P06 P8** "her father and her mother" → first cut split into two atoms. **RULED REVERSED (Marcia,
+  2026-05-31): KEEP as one — it is a C3 entity-pair, like "his two sons Mahlon and Chilion".** Un-split and
+  recorded as the 7th sign-off (ENTITY_PAIR); see the accepted-exceptions table.
 
 ## Deferred (per the lead's routing ruling, 2026-05-31)
 - **Vault writeback** (`pericopes/*.md` + `figures/FIG_*.md`) is **deferred**; the figure-span relocation is
