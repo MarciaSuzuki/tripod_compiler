@@ -8,12 +8,13 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 97 tests green (was 89; +8 SC-0015/SC-0016 lint + exception)
-npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 10 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions) + sync invariant
+npm install && npm run build && npm test     # 113 tests green (was 97; +16 SC-0018 id-align)
+npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 11 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions + id-alignment-exceptions) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
-npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-1, 0 tier-2) · 6 accepted (signed off) · exit 0 — the operating-test bar
+npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-1, 0 tier-2) · 7 accepted (signed off) · exit 0 — the operating-test bar
+npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018 (5th check, ALIGNED): cross-artifact entity-ID alignment over P01–P06 — DIAGNOSTIC inventory; the human rules it
 ```
 
 ## Shipped (on `main`)
@@ -183,6 +184,24 @@ npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-
     (both PRs merged 2026-06-01 — compiler #17, vault #7): vault `pericopes/`+`stas/` byte-identical to the
     deleaked fixtures, the template + discipline-doc (R6) hygiene landed in the vault, both branches deleted.
     The §3C / Level-3 content-discipline arc SC-0012 → SC-0017 is closed.**
+  - **SC-0018 — `tripod id-check`, the cross-artifact entity-ID alignment checker (the 5th deterministic
+    check).** The verification stack is now **legal (validate) · complete (coverage) · atomic-bare-plain (lint) ·
+    aligned (id-check) · true (human)**. The prose Meaning Map and the FOR_MODEL are two halves of one training
+    pair, so an entity named in one must be the **same canonical code** the other uses — verifiable by machine.
+    Locked convention: canonical ID = the **bare code**; the map carries it in the wikilink target up to the first
+    hyphen (codes never contain one — the invariant is asserted from the pinned schema patterns at startup).
+    Namespaces are **derived from the pinned schema `$defs`** (not hardcoded); map wikilink→code parsing reuses the
+    reader. Five steps: extract (STRUCTURAL §3A–§3D vs PROSE) · reference integrity (vs pinned `ruth.aliases.json`,
+    tracked namespaces only) · name-binding (slug == slugify(BCD name)) · cross-artifact symmetric difference with
+    **LIKELY_SAME_REFERENT** stem-sharing (the `TM_/TH_` class) · dangling note links. **DIAGNOSTIC ONLY** — it
+    fixes no content; it produces the inventory, the human rules it, a later SC-0019-rider pass reconciles. New
+    empty pinned `_spec/id-alignment-exceptions.json` (0.1.0). `tripod id-check [paths… | --corpus] [--json]
+    [--out|--out-dir]`. **First P01–P06 inventory:** 1 ref-integrity ERROR (P06 `B?` slot placeholder) · 5
+    name-binding ERRORs (slug typos/apostrophes: `B31`, `PL5_BOAZ_PORTION`, `PL_NAOMIS_DWELLING`) · 87
+    misalignments (1 LIKELY_SAME_REFERENT: P01 `TM_TEN_YEARS` ↔ `TH_TEN_YEARS_APPROXIMATELY`) · 16 dangling
+    (stale `[[…-AUDIT]]`/`[[…-COMPILATION-LOG]]`/etc. + P04 `[[T7-Harvest-Provision]]`) · 157 unverifiable
+    (CB_/FIG_/TH_, not in the vendored registry). 16 new tests; 113 green; validate/lint/coverage/gold-diff
+    UNCHANGED. **PROPOSED** (SC-0018); the reconciliation is the later human-gated pass.
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:

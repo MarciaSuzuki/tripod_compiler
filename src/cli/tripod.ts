@@ -13,10 +13,12 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
-import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions, loadLintExceptions } from "../reader/source-packet.js";
+import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions, loadLintExceptions, loadIdAlignmentExceptions } from "../reader/source-packet.js";
 import { reconcile } from "../engine/coverage.js";
 import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
 import { lintForModel, lintMeaningMap, applyLintExceptions, type LintReport } from "../engine/lint.js";
+import { checkIdAlignment, type IdAlignReport } from "../engine/id-align.js";
+import { formatIdAlignText, renderIdAlignNote } from "../audit/id-align-ledger.js";
 
 const program = new Command();
 program
@@ -403,6 +405,94 @@ program
         `${clean} clean. Surfaces drift; the human judges (relocate insight, never delete). —`,
     );
     process.exitCode = total ? 1 : 0;
+  });
+
+program
+  .command("id-check")
+  .description(
+    "SC-0018 cross-artifact entity-ID alignment (the 5th deterministic check: legal · complete · atomic-bare-plain · ALIGNED · true). " +
+      "Diagnostic only — surfaces where the prose map and the FOR_MODEL disagree on which canonical code names an entity; fixes nothing.",
+  )
+  .argument("[paths...]", "meaning-map .md note(s) and/or directories; each is paired with its FOR_MODEL by P0# prefix")
+  .option("--corpus", "check every map in --mm-dir that has a paired FOR_MODEL in --fm-dir")
+  .option("--mm-dir <dir>", "meaning-map dir", "fixtures/meaning-map")
+  .option("--fm-dir <dir>", "FOR_MODEL dir", "fixtures/for-model")
+  .option("--book <book>", "book whose pinned alias registry to use", "ruth")
+  .option("--json", "emit the structured inventory as JSON")
+  .option("--out <file>", "write the full inventory as a wiki ledger note (single-target only)")
+  .option("--out-dir <dir>", "write each pericope's ledger note into this dir (batch)")
+  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; fmDir: string; book: string; json?: boolean; out?: string; outDir?: string }) => {
+    const exceptions = loadIdAlignmentExceptions();
+    const fmFiles = readdirSync(opts.fmDir).filter((f) => f.endsWith(".md"));
+    const noteResolveDirs = [...new Set([opts.mmDir, opts.fmDir])];
+
+    // assemble the map list: explicit map paths (auto-detected from dirs) and/or --corpus.
+    const mapPaths: string[] = [];
+    for (const p of paths) {
+      const st = statSync(p);
+      if (st.isDirectory()) for (const f of readdirSync(p)) { if (f.endsWith(".md")) mapPaths.push(join(p, f)); }
+      else mapPaths.push(p);
+    }
+    if (opts.corpus) for (const f of readdirSync(opts.mmDir)) if (f.endsWith(".md")) mapPaths.push(join(opts.mmDir, f));
+    const maps = [...new Set(mapPaths)].sort();
+    if (maps.length === 0) {
+      console.error("no targets. Pass map .md note(s)/dir(s), or --corpus.");
+      process.exit(2);
+    }
+
+    const reports: IdAlignReport[] = [];
+    for (const mapPath of maps) {
+      const pid = (mapPath.split("/").pop() ?? "").slice(0, 3); // P0#
+      const fm = fmFiles.find((f) => f.startsWith(pid));
+      if (!fm) {
+        console.error(`✗ ${mapPath}: no paired FOR_MODEL (prefix ${pid}) in ${opts.fmDir}`);
+        process.exitCode = 2;
+        continue;
+      }
+      try {
+        reports.push(checkIdAlignment(mapPath, join(opts.fmDir, fm), { exceptions, noteResolveDirs, aliases: loadAliasTable(opts.book) }));
+      } catch (e) {
+        console.error(`✗ ${mapPath}: ${(e as Error).message}`);
+        process.exitCode = 2;
+      }
+    }
+    if (reports.length === 0) process.exit(2);
+
+    if (opts.outDir) {
+      mkdirSync(opts.outDir, { recursive: true });
+      for (const r of reports) writeFileSync(join(opts.outDir, `${r.pericope}-ID-ALIGNMENT-LEDGER.md`), renderIdAlignNote(r));
+    }
+
+    if (opts.json) {
+      console.log(JSON.stringify(reports.length === 1 ? reports[0] : reports, null, 2));
+      process.exitCode = reports.some((r) => !r.ok) ? 1 : 0;
+      return;
+    }
+
+    for (const r of reports) console.log(formatIdAlignText(r), "\n");
+    if (reports.length === 1 && opts.out) {
+      writeFileSync(opts.out, renderIdAlignNote(reports[0]!));
+      console.log(`  ledger written to ${opts.out}`);
+    }
+
+    // corpus / multi summary
+    const sum = reports.reduce(
+      (a, r) => ({
+        ref: a.ref + r.counts.refErrors, name: a.name + r.counts.nameErrors, mis: a.mis + r.counts.misalign,
+        flag: a.flag + r.counts.flagMismatch,
+        lsr: a.lsr + r.counts.likelySameReferent, dang: a.dang + r.counts.dangling, uv: a.uv + r.counts.unverifiable,
+        acc: a.acc + r.counts.accepted, withFindings: a.withFindings + (r.ok ? 0 : 1),
+      }),
+      { ref: 0, name: 0, mis: 0, flag: 0, lsr: 0, dang: 0, uv: 0, acc: 0, withFindings: 0 },
+    );
+    console.log(
+      `— id-check: ${reports.length} pericope(s) · ${reports.length - sum.withFindings} clean · ${sum.withFindings} with findings · ` +
+        `${sum.ref} ref-integrity · ${sum.name} name-binding · ${sum.mis} misalignment (${sum.lsr} LIKELY_SAME_REFERENT) · ` +
+        `${sum.flag} flag-mismatch · ${sum.dang} dangling · ${sum.uv} unverifiable` + (sum.acc ? ` · ${sum.acc} accepted` : "") +
+        `. Diagnostic only — the human rules the inventory. —`,
+    );
+    if (opts.outDir) console.log(`  ledgers written to ${opts.outDir}/`);
+    process.exitCode = sum.withFindings ? 1 : 0;
   });
 
 program.parseAsync(process.argv);

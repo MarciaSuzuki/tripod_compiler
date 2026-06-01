@@ -1,0 +1,7 @@
+{
+  "schema": "tripod-id-alignment-exceptions",
+  "schema_version": "0.1.0",
+  "book": "RUTH",
+  "_doc": "Reviewer sign-off on cross-artifact entity-ID alignment findings (SC-0018, the analogue of coverage-exceptions.json / lint-exceptions.json). A finding whose keys match an entry here is downgraded by `tripod id-check` from ERROR/MISALIGN/FLAG to ✓ ACCEPTED: it still appears in the inventory (marked accepted, with the reason), but is excluded from the failure count and does not fail the run. It exists for the legitimate cases — e.g. a map that declares an off-stage referent the FOR_MODEL omits (already documented as a coverage difference by `tripod gold-diff`), or a deliberate surface variant — ruled by the project lead, NOT silently suppressed. The engine stays pure (it always surfaces the finding); acceptance is applied as a recorded downgrade, exactly as `tripod coverage` applies coverage-exceptions. Governed: every entry carries provenance (accepted_by/on + sc_ref); pinned in _spec/pins.json, so accepting an exception is a recorded, re-pinned edit. EMPTY at first by design — the SC-0018 first run is the raw, complete inventory Marcia rules. Match keys: pericope = map basename stem (e.g. 'P01-Ruth-1-1-5'); kind ∈ {REFERENCE_INTEGRITY, NAME_BINDING, MISALIGNMENT, DANGLING_NOTE}; then code (entity findings) | note_title (dangling) | (scope, direction) also for MISALIGNMENT.",
+  "exceptions": []
+}
