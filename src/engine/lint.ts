@@ -17,7 +17,9 @@ export type LintRule =
   | "interpretive_label"
   | "conditioning_in_qa"
   | "compound"
-  | "section_3c_not_entity";
+  | "section_3c_not_entity"
+  | "meta_question"
+  | "link_in_level3";
 
 export interface LintFinding {
   rule: LintRule;
@@ -40,6 +42,12 @@ interface Lexicon {
   interpretive_labels: string[];
   conditioning_qa: string[];
   compound_markers: string[];
+  link_markers?: string[];
+  meta_questions?: string[];
+  // Softer interpretive phrasings ("declaration", "recites", …) that are drift ONLY in a §4 Q&A
+  // answer. Deliberately NOT in scanProse (which also runs on FOR_MODEL fields + §3C notes), so they
+  // never fire on a closed-list speech_act value or a relocation note — both out of scope for the sweep.
+  answer_labels?: string[];
 }
 
 let _lex: Lexicon | undefined;
@@ -71,6 +79,37 @@ function scanProse(text: string, location: string): LintFinding[] {
     if (lc.includes(label.toLowerCase())) out.push({ rule: "interpretive_label", tier: 1, location, match: label, context: text.trim().slice(0, 80) });
   }
   return out;
+}
+
+/** Split a §4 / §3C line into its question and answer parts (handles same-line and split formats). */
+function qaParts(line: string): { q?: string; a?: string } {
+  const aMatch = line.match(/\*\*A:\*\*\s*(.+)$/);
+  const a = aMatch ? aMatch[1]!.trim() : undefined;
+  const qMatch = line.match(/\*\*Q:\*\*\s*(.+?)(?:\s*\*\*A:\*\*|$)/);
+  const q = qMatch ? qMatch[1]!.trim() : undefined;
+  return { q, a };
+}
+
+/**
+ * Compound-of-acts (R2). `;` always counts. For ' and ' / ', ' first strip wikilinks, entity-id
+ * tokens and proper names, so an answer that merely NAMES several entities ("his two sons [[B4]]
+ * Mahlon and [[B5]] Chilion", "the family A, B, C") is NOT flagged — only a connector still joining
+ * word-groups after stripping (two acts/clauses) is.
+ */
+function compoundMarker(a: string): string | null {
+  if (a.includes(";")) return ";";
+  const stripped = a
+    .replace(/\[\[[^\]]+\]\]/g, " ")
+    .replace(/\b(?:B\d+|PL[\w]*|O\d+|TM_[\w]+|CB_\d+|FIG_\d+|I\d+)\b/g, " ")
+    .replace(/\b[A-Z][a-z]+\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  // The connector must still JOIN two non-empty word-groups after stripping. A dangling
+  // connector left by a removed entity ("his two sons … and" → "his two sons and") does NOT
+  // count, so an answer that merely names several entities is not flagged.
+  if (/\S+\s+and\s+\S+/.test(stripped)) return "and";
+  if (/[a-z],\s+[a-z]/i.test(stripped)) return ",";
+  return null;
 }
 
 // ───────────────────────── FOR_MODEL ─────────────────────────
@@ -128,42 +167,83 @@ export function lintMeaningMap(md: string, file = ""): LintReport {
   const findings: LintFinding[] = [];
   const lex = lexicon();
 
-  // §3C "Objects and Elements" blocks + Level 3 proposition Q&A — the authored content layers
+  // §3C "Objects and Elements" blocks + Level 3 proposition Q&A — the authored content layers.
+  // Operating test: a Level-3 block must contain ONLY payload Q&A pairs (+ §3C entities); flag
+  // every line that isn't one. We inspect BOTH question and answer sides, and FLAG (not skip)
+  // cross_ref / inter-proposition-link lines and analytical meta-questions.
   const level3 = section(md, /##\s*4\.\s*Level 3[^\n]*/i);
   const objectsBlocks = [...md.matchAll(/\*\*3C\s*[—-]\s*Objects[^\n]*\*\*([\s\S]*?)(?=\n\*\*3D|\n###|\n##|$)/gi)].map((m) => m[1] ?? "").join("\n");
 
+  const metaRes = (lex.meta_questions ?? []).map((p) => new RegExp(p, "i"));
+  const linkRes = (lex.link_markers ?? []).map((m) => ({ m, re: new RegExp(`\\b${m}\\b`, "i") }));
+
+  // Track the current Level-3 block so each finding's location names its proposition. Without this,
+  // de-dup by (rule, location, match) would collapse every same-type finding in a map to ONE line
+  // (e.g. 21 inline cross_refs → "1"), under-reporting the true inventory the sweep must clear.
+  let block = "§3C";
   const lines = (objectsBlocks + "\n" + level3).split(/\r?\n/);
   for (const raw of lines) {
     const line = raw.trim();
     if (!line) continue;
-    // cross_ref / figure-flag pointer lines ARE the conditioning layer (R5) — a figure legitimately
-    // IS an image-rhyme / triplet there. Skip them; the lint judges payload (Q&A answers + §3C entities).
-    if (/cross_ref/i.test(line) || /^[-*]?\s*\[\[FIG_/.test(line)) continue;
 
-    // conditioning-in-Q&A (R5): meta-question prompts that are steering, not payload
-    for (const c of lex.conditioning_qa) {
-      if (line.toLowerCase().includes(c.toLowerCase())) findings.push({ rule: "conditioning_in_qa", tier: 1, location: "§3C/§4", match: c, context: line.slice(0, 80) });
+    // Heading → switch block (e.g. "### Proposition 5 — Ruth 1:3 [Scene 2]" ⇒ "§4 Prop 5").
+    const head = line.match(/^#{1,6}\s*Proposition\s+(\S+)/i);
+    if (head) { block = `§4 Prop ${head[1]}`; continue; }
+
+    // 1) Inter-proposition-link / cross_ref lines do not belong inline in a Level-3 block —
+    //    they are FOR_MODEL structural fields. Flag and move on (one finding/line).
+    const link = linkRes.find(({ re }) => re.test(line));
+    if (link) {
+      findings.push({ rule: "link_in_level3", tier: 1, location: block, match: link.m, context: line.slice(0, 90) });
+      continue;
     }
 
-    // a Q&A answer line: "- **A:** …" or "**A:** …"
-    const ans = line.match(/\*\*A:\*\*\s*(.+)$/);
-    if (ans) {
-      const a = ans[1]!.trim();
-      if (a.includes(";") || /\b and \b/.test(` ${a} `)) findings.push({ rule: "compound", tier: 2, location: "§4 Q&A", match: a.includes(";") ? ";" : "and", context: a.slice(0, 80) });
-      findings.push(...scanProse(a, "§4 Q&A answer"));
-    } else {
-      // §3C entry prose (What it is / Function / Signals)
-      findings.push(...scanProse(line, "§3C entry"));
+    const { q, a } = qaParts(line);
+
+    // 2) Question side — conditioning bleed, analytical meta-questions, forbidden vocab.
+    if (q !== undefined) {
+      const ql = ` ${q.toLowerCase()} `;
+      const cond = lex.conditioning_qa.find((c) => ql.includes(` ${c.toLowerCase()} `));
+      if (cond) findings.push({ rule: "conditioning_in_qa", tier: 1, location: `${block} · Q`, match: cond, context: q.slice(0, 90) });
+      metaRes.forEach((re, i) => {
+        if (re.test(q)) findings.push({ rule: "meta_question", tier: 2, location: `${block} · Q`, match: lex.meta_questions![i]!, context: q.slice(0, 90) });
+      });
+      findings.push(...scanProse(q, `${block} · Q`));
+    }
+
+    // 3) Answer side — compounds (entity-list-aware) + forbidden vocab / labels. The softer
+    //    answer_labels apply HERE ONLY (a label is drift when it stands in for the act in an answer;
+    //    the same word in a governed speech_act value or a §3C note is not in scope).
+    if (a !== undefined) {
+      const cm = compoundMarker(a);
+      if (cm) findings.push({ rule: "compound", tier: 2, location: `${block} · A`, match: cm, context: a.slice(0, 90) });
+      findings.push(...scanProse(a, `${block} · A`));
+      const al = ` ${snake(a)} `;
+      for (const label of lex.answer_labels ?? []) {
+        if (al.includes(label.toLowerCase())) findings.push({ rule: "interpretive_label", tier: 2, location: `${block} · A`, match: label, context: a.trim().slice(0, 80) });
+      }
+    }
+
+    // 4) Lines that are neither a question nor an answer (a §3C entry, or stray prose in §4):
+    //    conditioning bleed on the whole line + scan §3C entry prose.
+    if (q === undefined && a === undefined) {
+      const ll = ` ${line.toLowerCase()} `;
+      const cond = lex.conditioning_qa.find((c) => ll.includes(` ${c.toLowerCase()} `));
+      if (cond) findings.push({ rule: "conditioning_in_qa", tier: 1, location: block === "§3C" ? "§3C entry" : block, match: cond, context: line.slice(0, 90) });
+      findings.push(...scanProse(line, block === "§3C" ? "§3C entry" : block));
     }
   }
   return finalize(findings, file, "MEANING_MAP");
 }
 
 function finalize(findings: LintFinding[], file: string, artifact: string): LintReport {
-  // de-dup identical (rule, location, match)
+  // de-dup identical (rule, location, match, context). Context is in the key so that distinct
+  // lines sharing a rule+location+match — e.g. several inline cross_refs in one proposition, each a
+  // separate relocation — are counted separately (the true inventory), while a genuine re-scan of
+  // the exact same string (FOR_MODEL walkStrings) still collapses to one.
   const seen = new Set<string>();
   const uniq = findings.filter((f) => {
-    const k = `${f.rule}|${f.location}|${f.match}`;
+    const k = `${f.rule}|${f.location}|${f.match}|${f.context}`;
     if (seen.has(k)) return false;
     seen.add(k);
     return true;

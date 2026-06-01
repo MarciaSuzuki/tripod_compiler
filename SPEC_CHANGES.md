@@ -68,6 +68,8 @@ number bound to exactly one decision.
 | SC-0012 | Level-3 / §3C content discipline (R1–R5) + the `tripod lint` drift-guard | SHIPPED (lint + discipline + template); map remediation follows |
 | SC-0013 | Map content remediation under SC-0012 — P01 reference + P02–P06 roll | P01 SHIPPED; P02–P06 §3C+plain-language APPLIED (pending blessing); §4 dialogue re-atomizing = lead's exegetical pass |
 | SC-0014 | Rename SPEECH_ACT `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` → `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drop "AGENT" jargon) | APPLIED (pending the lead's blessing) |
+| SC-0015 | Extend the Level-3 lint to enforce the operating test: flag cross_ref/inter-proposition-link lines + meta/analytical questions in §4, scan questions (not just answers) incl. same-line Q&A, add comma compounds with an entity-list guard; lint-lexicon v0.1.0→v0.2.0 (re-pinned) | APPLIED |
+| SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06 | PROPOSED |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -99,6 +101,113 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0016 — Level-3 §4 content sweep (operating test) under SC-0012/SC-0013
+- **Date:** 2026-05-31
+- **Decided by:** (pending — Marcia Suzuki)
+- **Status:** **PROPOSED** — human-gated, exegetical, **not performed here.**
+- **Type:** artifact remediation (no schema/spec change).
+- **Summary:** SC-0015 made the lint *see* the §4 blind spots; this entry is the **content** follow-up that
+  acts on what it now surfaces — the §4-proposition layer counterpart to SC-0013's §3C sweep. Scope (per the
+  SC-0015 inventory): (a) the inline **`cross_ref` / inter-proposition-link lines** that don't belong in a
+  Level-3 payload block (exactly 1 per map across P01–P06) → relocate the figure span into the figure-registry
+  entry (`figures/FIG_*.md`: "opens at P#, closes at P#" + keep-image guidance), de-duplicating not deleting;
+  (b) the **meta/analytical questions** ("Construction form?", "Verb root?",
+  "Arrival completion marker?", …) → rewrite as payload Q or move the analysis to conditioning; (c) the
+  **compound / non-atomic answers** → atomize into one-act-per-pair; (d) the residual question/answer-side
+  **forbidden vocabulary** ("verb", "agent", "lexeme", "clause", "subject") the question-scan now catches.
+- **Why deferred:** every one of these is an exegetical judgment (where an insight re-homes, how a clause
+  atomizes) that is the project lead's call, exactly as SC-0013's §4-dialogue re-atomizing was reserved. The
+  lint **surfaces**; the human **relocates (never deletes)**. The order mirrors SC-0013: **P01 worked reference
+  first**, then the P02–P06 roll calibrated to it.
+- **Spec change (exact):** none. (`tripod lint` already enforces the test as of SC-0015.)
+- **Artifact migration:** pending — P01 then P02–P06 `fixtures/meaning-map/*` + the mirrored vault maps; out of
+  scope for SC-0015 (which is tooling only and touches **no** fixture content).
+- **Verification (target):** after the sweep, `tripod lint --corpus` reaches the operating-test bar on §4
+  across P01–P06 — **0 cross_ref/links, 0 meta-questions, 0 jargon, 0 interpretive labels, 0 compounds, 0
+  conditioning-questions** (the few genuinely-exegetical residuals are resolved by the lead's ruling, not left
+  as drift); `validate` 6/6, `coverage` 6/6, `gold-diff` unchanged still hold.
+
+---
+
+## SC-0015 — Extend the Level-3 lint (operating test on §4 blocks)
+- **Date:** 2026-05-31
+- **Decided by:** Marcia Suzuki
+- **Status:** **APPLIED** (repo PR for the lint engine + lexicon + tests; no vault artifact touched).
+- **Type:** tooling / drift-guard (no closed-list change; no schema-shape change).
+- **Summary:** The SC-0013 relocation audit found the SC-0012 `lintMeaningMap` was **blind in three ways** on
+  the Level-3 §4 layer, so the operating test (*a Level-3 block contains ONLY payload Q&A pairs — flag every
+  line that isn't one*) was only half-enforced. This extends the lint with **six** changes:
+  1. **`link_in_level3` (new rule, tier-1).** The old code `continue`d past every line matching `cross_ref`
+     (and `[[FIG_…]]` pointer lines), so inline cross_refs/inter-proposition links in §4 were never flagged.
+     That skip is **removed**; such lines are now FLAGGED via a new `link_markers` lexicon list
+     (`cross_ref`, `caused_by`, `paired_with`, `forward_link[-]`, `back_reference[-]`,
+     `back_reference_to_proposition`). The link rule short-circuits the line, so a `[[FIG_…]]` cross_ref is
+     reported **once** (as the link), never double-counted as an interpretive_label.
+  2. **Question-side scanning.** The old code looked only at `**A:**` answers. The loop now splits each line
+     into `{q, a}` (new `qaParts`, handles same-line `**Q:** … **A:** …` and split forms) and runs the
+     forbidden-vocabulary / interpretive-label scan over the **question** too (this is what surfaces
+     `«verb»`/`«agent»`/`«lexeme»`/`«clause»`/`«subject»` in analytical prompts).
+  3. **`meta_question` (new rule, tier-2).** A new `meta_questions` lexicon list (regex sources:
+     `construction`, `verb[- ]chain`, `pattern?`, `stylistic`, `texture?`, `effect?`, `closure label`,
+     `root?`, `…-marker`/`marker?`, ordinal `… part?`, `…-form?`) flags analytical/meta questions about
+     form/structure/style that aren't payload.
+  4. **Comma compounds + entity-list guard.** `compound_markers` gains `", "`; the compound check moves into a
+     new `compoundMarker(a)` helper that, for `, ` / ` and `, first strips wikilinks, entity-id tokens and
+     proper names, so an answer that merely **names** several entities ("his two sons [[B4]] Mahlon and [[B5]]
+     Chilion"; "the family [[B2]] Elimelech, [[B3]] Naomi") is **not** flagged — only a connector still
+     joining two word-groups after stripping (two acts/clauses) is.
+  5. **Conditioning bleed on the question side** (new `conditioning_qa` values `tone?`, `pace?`, `genre?`,
+     `scene-kind?`, `proposition-kind?`) is matched as a whitespace-bounded substring on the question (and on
+     stray non-Q&A lines), not a naïve whole-line `includes`.
+  6. **More §4-answer labels (scoped, not shared).** The softer dialogue-paraphrase labels the SC-0013 audit
+     listed (`declaration`, `full[- ]knowledge`, `instruction about`, `further command`/`further instruction`,
+     `reports a`, `recites`/`recital`, `answers with`) go in a **new `answer_labels` lexicon list applied to
+     meaning-map §4 ANSWERS ONLY** — deliberately *not* added to the shared `interpretive_labels` (which
+     `scanProse` also runs over FOR_MODEL fields and §3C notes). This keeps them from false-positiving on a
+     governed closed-list `speech_act` value (e.g. `REFUSES_REQUEST_WITH_COUNTER_DECLARATION` contains
+     "DECLARATION") or a §3C relocation `_note` — both **out of scope** for the §4 content sweep and not
+     fixable by it. (A first cut merged them into `interpretive_labels`; that surfaced 6 FOR_MODEL findings on
+     exactly those governed enums/notes and was corrected to the scoped list.) Also added the **`hifil`**
+     spelling to `forbidden_vocabulary` (the list had `hiphil` only; R4 names "hifil/qal/piel").
+  7. **Truthful per-proposition reporting.** The finding `location` now carries the current Level-3 block
+     (`§4 Prop 5 · A`, etc.) and `finalize`'s de-dup key includes `context`, so distinct lines that share a
+     rule+match (e.g. 21 inline cross_refs in P05, each its own relocation) are counted **separately** instead
+     of collapsing to one. A genuine re-scan of the identical string (FOR_MODEL `walkStrings`) still collapses.
+     This makes `lint --corpus` the true §4 inventory the sweep is measured against, not a coarse undercount.
+  `lintForModel`, `scanProse`, `walkStrings`, `section`, `R1_NOT_ENTITY`, `snake` are unchanged
+  (FOR_MODEL `cross_ref`/link fields are intentionally left alone), so **no FOR_MODEL finding count changes**.
+- **Files touched:** `src/engine/lint.ts` (rule union + `Lexicon` fields incl. `answer_labels` +
+  `qaParts`/`compoundMarker` helpers + rewritten `lintMeaningMap` per-line loop, answer_labels applied
+  answer-side only); `_spec/lint-lexicon.json` (`schema_version` 0.1.0→0.2.0; `+link_markers`,
+  `+meta_questions`, `+answer_labels` (10, §4-answers-only), `+hifil`, `compound_markers += ", "`,
+  `conditioning_qa +=` 5, `interpretive_labels` left at its original 15, `_doc` refreshed); `tests/lint.test.ts`
+  (rewrote the old "exempts cross_ref" test to assert the new FLAG behavior + once-not-twice count; added
+  meta-question, question-side-jargon, comma-compound + entity-list-guard, answer-label-in-§4, and a
+  FOR_MODEL scope-guard test proving a soft label inside a closed-list `speech_act`/§3C note is NOT flagged);
+  `_spec/pins.json` (re-pin, below); this log.
+- **Lexicon re-pin:** `lint-lexicon.json` **0.1.0 → 0.2.0**;
+  sha256 `15a67a5fe1a9e646b76efc7195fa1bdbaf8fe6e6079d186b56e269d841b7b825` →
+  `5bfa0e3fa9afdb8b90912865185a95c8596a7e1c3c58f90000ed748e2f3bb8f2`. `tripod check-drift` green at the new pin.
+- **Relation to SC-0012/SC-0013:** completes SC-0012's drift-guard by closing the cross_ref-skip and
+  answer-only blind spots the SC-0013 audit found; it does **not** touch artifact content — the content sweep
+  those findings call for is reserved as **SC-0016** (human-gated).
+- **Validator impact (corpus lint, before → after):** `tripod lint --corpus` **14 → 150** findings
+  (**0 → 62 tier-1**, 88 tier-2); **7 artifacts clean** (P01 meaning-map after its cross_ref removal under
+  SC-0016, + all six FOR_MODELs — unchanged from baseline). All newly-surfaced findings are in the
+  previously-invisible meaning-map §4/§3C layer; the true per-rule corpus tally is **60 `link_in_level3`**
+  (inline cross_refs: P02 2 · P03 5 · P04 19 · P05 21 · P06 13), **21 `meta_question`** (P03 1 · P04 9 ·
+  P05 9 · P06 2), **39 `compound`** (P02 7 · P03 5 · P04 8 · P05 10 · P06 9), **19 question/answer-side
+  `forbidden_vocabulary`** (`verb`/`agent`/`lexeme`/`clause`/`subject`/`hifil`: P02 5 · P04 7 · P05 4 · P06 3),
+  **11 §4-answer `interpretive_label`** (P02 1 · P06 10). (The pre-truthful-reporting view collapsed these to
+  54 by de-duping per coarse location.) No FOR_MODEL count changed (lintForModel untouched; answer_labels are
+  §4-answer-scoped).
+- **Verification:** `npm test` 94/94 green (lint.test.ts 14/14); `tripod check-drift` clean incl.
+  lint-lexicon at v0.2.0 + the closed-list sync invariant; `tripod validate fixtures/for-model/` 6/6 valid;
+  `tripod gold-diff` unchanged (P01 100 · P02 90 · P03 100 · P04 95 · P05 98 · P06 96);
+  `tripod coverage --corpus` 6/6 block-clean (245/245). No fixture content edited.
 
 ---
 

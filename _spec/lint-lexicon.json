@@ -1,8 +1,8 @@
 {
   "schema": "tripod-lint-lexicon",
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "source": "_methodology/level3and3Ccontentdiscipline.md — the Level-3 & §3C content discipline (R1–R5)",
-  "_doc": "The Level-3 lint (a 4th verifier beside validate/coverage) flags these in Level 3 Q&A answers and §3C entries — the authored content layers — and the FOR_MODEL prose fields compiled from them. It SURFACES drift; the human judges. Forbidden vocabulary is matched WHOLE-WORD in prose only (not controlled slot-names). tier 1 = unambiguous jargon; tier 2 = common words that are jargon only in this context (more false positives — judge in context).",
+  "_doc": "The Level-3 lint (a 4th verifier beside validate/coverage) enforces the operating test on the authored content layers — Level 3 §4 propositions and §3C entries (and the FOR_MODEL prose fields compiled from them): a Level-3 block must contain ONLY payload Q&A pairs; flag every line that isn't one. It scans BOTH questions and answers, including the same-line '**Q:** … **A:** …' format. Rules: link_markers = cross_ref / inter-proposition-link lines that don't belong in §4 payload (relocate to the figure/links layer); meta_questions = analytical questions about form/structure/style rather than payload; forbidden_vocabulary = grammatical/linguistic jargon (WHOLE-WORD in prose only, not controlled slot-names); interpretive_labels; conditioning_qa = steering questions (Register?/Self-form?/…); compound = non-atomic answers (';'/','/' and ') with an entity-list guard so a single answer naming several entities is NOT flagged. It SURFACES drift; the human judges. tier 1 = unambiguous; tier 2 = judge-in-context.",
   "forbidden_vocabulary": [
     { "term": "wayyiqtol", "category": "verb_morphology", "tier": 1 },
     { "term": "qatal", "category": "verb_morphology", "tier": 1 },
@@ -19,6 +19,7 @@
     { "term": "qal", "category": "verb_morphology", "tier": 1 },
     { "term": "piel", "category": "verb_morphology", "tier": 1 },
     { "term": "hiphil", "category": "verb_morphology", "tier": 1 },
+    { "term": "hifil", "category": "verb_morphology", "tier": 1 },
     { "term": "niphal", "category": "verb_morphology", "tier": 1 },
     { "term": "hophal", "category": "verb_morphology", "tier": 1 },
     { "term": "hitpael", "category": "verb_morphology", "tier": 1 },
@@ -58,11 +59,32 @@
     "doubling", "speech-act of", "speech act of", "totality marker", "totality-marker",
     "subtraction pattern", "naming-down", "naming down", "image-rhyme pair"
   ],
+  "_answer_labels_doc": "Softer interpretive phrasings that are drift ONLY in a §4 Q&A answer (where they label an act instead of stating it). Applied to meaning-map §4 ANSWERS ONLY — never to FOR_MODEL fields, closed-list speech_act values, §3C entries/notes, or questions — so they cannot false-positive on a governed enum (e.g. REFUSES_REQUEST_WITH_COUNTER_DECLARATION) or a §3C relocation note, both of which are out of scope for the §4 content sweep.",
+  "answer_labels": [
+    "declaration", "full-knowledge", "full knowledge", "instruction about", "further command",
+    "further instruction", "reports a", "recites", "recital", "answers with"
+  ],
   "conditioning_qa": [
     "register?", "self-form?", "self form?", "forward-link?", "forward link?", "back-reference?",
-    "cross-ref?", "speech-act?", "speech act?", "figure?", "keep:", "presence?", "referential form?"
+    "cross-ref?", "speech-act?", "speech act?", "figure?", "keep:", "presence?", "referential form?",
+    "tone?", "pace?", "genre?", "scene-kind?", "proposition-kind?"
   ],
-  "compound_markers": [";", " and ", " · "],
+  "compound_markers": [";", " and ", ", ", " · "],
+  "link_markers": ["cross_ref", "caused_by", "paired_with", "forward_link", "forward-link", "back_reference", "back-reference", "back_reference_to_proposition"],
+  "meta_questions": [
+    "\\bconstruction\\b",
+    "\\bverb[- ]?chain\\b",
+    "\\bpattern\\?",
+    "\\bstylistic\\b",
+    "\\btexture\\?",
+    "\\beffect\\?",
+    "\\bclosure label\\b",
+    "\\broot\\?",
+    "[a-z]+[- ]marker\\b",
+    "\\bmarker\\?",
+    "\\b(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|\\d+(?:st|nd|rd|th)?)\\s+part\\?",
+    "[a-z]+[- ]?form\\?"
+  ],
   "substitutions": [
     { "jargon": "speech-act of directive instruction", "plain": "he tells her to…" },
     { "jargon": "infinitive-absolute doubling", "plain": "on purpose / deliberately" },
