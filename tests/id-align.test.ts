@@ -600,10 +600,12 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     expect(r.ok).toBe(true);
   });
 
-  it("P03: PL_LAND_OF_JUDAH gap survives; B31 name-binding ERROR survives; T7 thread + artifact siblings resolve", () => {
+  it("P03 (post-SC-0020 writeback): PL_LAND_OF_JUDAH gap survives; B31 name-binding RESOLVED via registered alias; T7 thread + artifact siblings resolve", () => {
     const r = real("P03", "Ruth-1-15-18");
     expect(r.misalignments.some((m) => m.code === "PL_LAND_OF_JUDAH")).toBe(true);
-    expect(r.nameBinding.some((f) => f.code === "B31" && f.severity === "ERROR")).toBe(true);
+    // SC-0020 writeback: the map slug "People-of-YHWH" now matches B31's registered referential_form
+    // (BCD `aliases:`), so name-binding accepts it — canonical "His People / People of YHWH" preserved.
+    expect(r.nameBinding.some((f) => f.code === "B31")).toBe(false);
     expect(r.danglingNotes.length).toBe(0); // all of P03's note links resolve now
   });
 

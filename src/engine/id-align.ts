@@ -840,7 +840,13 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     const expected = slugify(entry.english);
     // SC-0020: compare on the note-title-safe normalized form (strip `'`, collapse `/`) on BOTH
     // sides — a map slug can't carry chars a note title forbids, but the BCD name keeps them.
-    if (normalizeSlug(l.slug) === normalizeSlug(expected)) continue;
+    const foundNorm = normalizeSlug(l.slug);
+    if (foundNorm === normalizeSlug(expected)) continue;
+    // SC-0020 (writeback): a registered referential_form (the BCD note's `aliases:`) is also a
+    // legitimate slug — a map may name an entity by a short/alternate registered form (e.g. B31
+    // "People-of-YHWH" for canonical "His People / People of YHWH"). Mirrors the CB_/FIG_ alias
+    // acceptance in (b); compared on the same note-title-safe normalized form. Canonical preserved.
+    if ((entry.referential_forms ?? []).some((a) => normalizeSlug(slugify(a)) === foundNorm)) continue;
     const key = `${l.code}|${l.slug}`;
     if (seenNb.has(key)) continue;
     seenNb.add(key);

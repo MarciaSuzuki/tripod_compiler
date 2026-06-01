@@ -6,9 +6,9 @@
       "PERSON": 31,
       "PLACE": 17,
       "THING": 24,
-      "TIME": 10
+      "TIME": 9
     },
-    "entities": 91
+    "entities": 90
   },
   "entities": {
     "B1": {
@@ -360,7 +360,9 @@
       "kind": "PERSON",
       "referential_forms": [
         "his people (1:6)",
-        "your people (Naomi's people, 1:10)"
+        "your people (Naomi's people, 1:10)",
+        "People-of-YHWH",
+        "People of YHWH"
       ]
     },
     "B4": {
@@ -1147,17 +1149,6 @@
       "gender": null,
       "hebrew": "בִּימֵי שְׁפֹט הַשֹּׁפְטִים",
       "hebrew_cons": "בימישפטהשפטים",
-      "kind": "TIME",
-      "referential_forms": []
-    },
-    "TM_TEN_YEARS": {
-      "appears_in": [
-        "P01"
-      ],
-      "english": "About Ten Years",
-      "gender": null,
-      "hebrew": "כְּעֶשֶׂר שָׁנִים",
-      "hebrew_cons": "כעשרשנים",
       "kind": "TIME",
       "referential_forms": []
     },
