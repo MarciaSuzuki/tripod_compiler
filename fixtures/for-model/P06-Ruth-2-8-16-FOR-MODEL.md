@@ -90,7 +90,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_id": "S1",
       "verse_range": "2:8-9",
       "scene_kind": "PROTECTIVE_INSTRUCTION_SCENE",
-      "scene_communicative_purpose": "Boaz establishes the protective regime by directives and reported prior command.",
+      "scene_communicative_purpose": "Boaz sets up his protection of Ruth, through his instructions and the order he says he has already given his men.",
       "beings_in_scene": {
         "entries": [
           {
@@ -141,13 +141,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is continuous within the harvest day established at P05.",
         "entries": null
       },
-      "significant_absence": "Boaz does not name himself to Ruth. Ruth says nothing; the entire scene is Boaz's directives."
+      "significant_absence": "Boaz never tells Ruth his name. Ruth says nothing; the whole scene is Boaz giving instructions."
     },
     {
       "scene_id": "S2",
       "verse_range": "2:10-13",
       "scene_kind": "RECOGNITION_AND_BLESSING_SCENE",
-      "scene_communicative_purpose": "Recognition exchange that names Ruth's loyalty in Boaz's voice and blesses her in YHWH's name.",
+      "scene_communicative_purpose": "The moment Ruth is noticed: Boaz puts her loyalty into words and blesses her in YHWH's name.",
       "beings_in_scene": {
         "entries": [
           {
@@ -211,13 +211,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; continuous within the field day.",
         "entries": null
       },
-      "significant_absence": "Moab is not named by Boaz; he uses 'the land of your birth' instead. Ruth's deceased husband is not paired with a specific son; the wife-pairing is withheld per P01-D2. Boaz does not name himself; Ruth still addresses him as 'my lord.'"
+      "significant_absence": "Boaz never names Moab; he says 'the land of your birth' instead. Ruth's dead husband is not tied to one son or the other; the pairing is withheld per P01-D2. Boaz never names himself; Ruth still calls him 'my lord.'"
     },
     {
       "scene_id": "S3",
       "verse_range": "2:14",
       "scene_kind": "MEAL_INCLUSION_SCENE",
-      "scene_communicative_purpose": "Records the moment of concrete bodily welcome; the threefold ate-then-satisfied-then-had-leftover staging the carrying-back to Naomi.",
+      "scene_communicative_purpose": "Records the plain, bodily welcome of the meal; that she ate, was satisfied, and had some left over sets up the food she will carry back to Naomi.",
       "beings_in_scene": {
         "entries": [
           {
@@ -277,7 +277,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_id": "S4",
       "verse_range": "2:15-16",
       "scene_kind": "HARVESTER_PROTOCOL_SCENE",
-      "scene_communicative_purpose": "Closes the pericope with extended-gleaning protocol that locks the protective regime into harvester practice.",
+      "scene_communicative_purpose": "Closes the passage with Boaz's order for extra-generous gleaning, which builds his protection of Ruth right into how the harvesters work.",
       "beings_in_scene": {
         "entries": [
           {
@@ -327,7 +327,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; continuous within the field day; the rising to glean follows the meal.",
         "entries": null
       },
-      "significant_absence": "Ruth is not in the addressee group; the young men are commanded about her, not to her. The narrator does not say Ruth hears the instruction."
+      "significant_absence": "Ruth is not among those Boaz speaks to; the young men are told about her, not her. Narrator never says Ruth hears the order."
     }
   ],
   "level_3_propositions": [

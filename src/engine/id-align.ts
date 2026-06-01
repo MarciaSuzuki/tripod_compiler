@@ -886,14 +886,60 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   // "present-elsewhere" context: a code flagged map-not-FM (resp. FM-not-map) may still appear on the
   // OTHER artifact, just not in its STRUCTURAL set. We record where, so the inventory distinguishes
   // "truly absent" from "present, non-structurally" (the latter is the common, easily-ruled case).
-  const mapProseCodes = new Map<string, string>(); // code → a representative non-structural map section
-  for (const l of mapRefsAligned) if (l.refKind === "PROSE" && !mapProseCodes.has(l.code)) mapProseCodes.set(l.code, l.section === "frontmatter" ? "frontmatter" : l.section === "flags" ? "§5 flags" : l.section.startsWith("3") ? `§${l.section} prose` : l.section);
+  // code → a representative non-structural map location, keyed by scene so the "present-elsewhere"
+  // annotation is scene-accurate. A FM-not-map code reported at scene S is only "present as §3 prose"
+  // when the map prose-references it IN scene S; a prose mention in a different scene is recorded under
+  // that other scene's key (and labelled "in §… prose" so the inventory doesn't mislead). A non-scene
+  // prose home (frontmatter / §5 flags) keys to "pericope". (After the SC-0020 parity bar a same-scene
+  // prose match no longer reaches this annotation — it is dropped as ALIGNED upstream — so this label
+  // now describes only the genuinely cross-scene / non-scene prose case.)
+  const mapProseByScope = new Map<string, Map<string, string>>(); // scope → (code → label)
+  const labelFor = (l: MapWikilink): string =>
+    l.section === "frontmatter" ? "frontmatter" : l.section === "flags" ? "§5 flags" : l.section.startsWith("3") ? `§${l.section} prose` : l.section;
+  for (const l of mapRefsAligned) {
+    if (l.refKind !== "PROSE") continue;
+    const scope = l.scene ?? "pericope";
+    let m = mapProseByScope.get(scope);
+    if (!m) mapProseByScope.set(scope, (m = new Map<string, string>()));
+    if (!m.has(l.code)) m.set(l.code, l.scene ? labelFor(l) : `${labelFor(l)} (pericope)`);
+  }
+  /** scene-accurate "present-elsewhere" label for an FM-not-map code at `scope`: the map's same-scope
+   *  prose home if any, else the first cross-scene prose home found (labelled with that scene). */
+  const presentElsewhereLabel = (code: string, scope: string): string | undefined => {
+    const here = mapProseByScope.get(scope)?.get(code);
+    if (here) return here;
+    for (const [sc, m] of mapProseByScope) {
+      const lbl = m.get(code);
+      if (lbl) return sc === "pericope" ? lbl : `${lbl} in ${sc}`;
+    }
+    return undefined;
+  };
   const fmSourceByCode = new Map<string, string>(); // code → its FM source (slot/flag) when not a scene container
   for (const c of fmCodesAligned) if (c.source !== "scene_container" && !fmSourceByCode.has(c.code)) fmSourceByCode.set(c.code, c.source === "pericope_flag" ? "cb/figure flag" : "proposition slot");
 
+  // SC-0020 parity bar (the lead's ruling, 2026-06-01): a FOR_MODEL scene-entity the map references in
+  // THAT SCENE's §3 prose (any wikilink in the scene's narration / role / relationship / What-Happens
+  // lines — the PROSE bucket, not just the §3A–3D declared-entity header) is ALIGNED: the two artifacts
+  // agree the entity is present in the scene — one DECLARES it structurally, the other NARRATES it. It is
+  // a misalignment ONLY if the map never references it in that scene. So we index the map's PROSE-bucket
+  // entity refs BY SCENE; a same-scene prose match removes the code from the structural symmetric
+  // difference entirely (it never becomes a finding). This is scene-scoped on purpose: a prose mention of
+  // the code in a DIFFERENT scene does NOT align it here (e.g. P05 B2 narrated in S1 ≠ declared in S3).
+  const mapProseByScene = new Map<string, Set<string>>(); // scene → entity codes referenced in that scene's prose
+  for (const l of mapRefsAligned) {
+    if (l.refKind !== "PROSE" || !l.scene) continue;
+    let set = mapProseByScene.get(l.scene);
+    if (!set) mapProseByScene.set(l.scene, (set = new Set<string>()));
+    set.add(l.code);
+  }
+  /** Is FOR_MODEL code `fc` (at scene `scope`) referenced in the map's same-scene §3 prose? */
+  const proseAlignedInScene = (fc: string, scope: string): boolean => (scope === "pericope" ? false : (mapProseByScene.get(scope)?.has(fc) ?? false));
+
   const addMisalign = (scope: string, mapSet: Set<string>, fmSet: Set<string>) => {
     const mapOnly = [...mapSet].filter((c) => !fmSet.has(c)).sort();
-    const fmOnly = [...fmSet].filter((c) => !mapSet.has(c)).sort();
+    // SC-0020 parity bar: an FM-only code the map prose-references in THIS scene is aligned (one
+    // declares, one narrates) — drop it from the symmetric difference before it can become a finding.
+    const fmOnly = [...fmSet].filter((c) => !mapSet.has(c) && !proseAlignedInScene(c, scope)).sort();
     // pair up likely-same-referent across the symmetric difference
     const pairedFm = new Set<string>();
     for (const mc of mapOnly) {
@@ -918,7 +964,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
       misalignments.push({
         scope, direction: "FM_NOT_MAP", code: fc,
         likelySameReferent: partner ? { otherCode: partner.code, sharedStem: partner.likelySameReferent!.sharedStem } : undefined,
-        presentElsewhere: mapProseCodes.get(fc), // in the map, just not in a §3A–3D structural block
+        presentElsewhere: presentElsewhereLabel(fc, scope), // scene-accurate: same-scope or labelled cross-scene prose home
         severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc,
       });
     }

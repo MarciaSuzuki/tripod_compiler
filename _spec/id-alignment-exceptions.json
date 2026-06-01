@@ -1,6 +1,6 @@
 {
   "schema": "tripod-id-alignment-exceptions",
-  "schema_version": "0.1.0",
+  "schema_version": "0.3.0",
   "book": "RUTH",
   "_doc": "Reviewer sign-off on cross-artifact entity-ID alignment findings (SC-0018, the analogue of coverage-exceptions.json / lint-exceptions.json). A finding whose keys match an entry here is downgraded by `tripod id-check` from ERROR/MISALIGN/FLAG to ✓ ACCEPTED: it still appears in the inventory (marked accepted, with the reason), but is excluded from the failure count and does not fail the run. It exists for the legitimate cases — e.g. a map that declares an off-stage referent the FOR_MODEL omits (already documented as a coverage difference by `tripod gold-diff`), or a deliberate surface variant — ruled by the project lead, NOT silently suppressed. The engine stays pure (it always surfaces the finding); acceptance is applied as a recorded downgrade, exactly as `tripod coverage` applies coverage-exceptions. Governed: every entry carries provenance (accepted_by/on + sc_ref); pinned in _spec/pins.json, so accepting an exception is a recorded, re-pinned edit. Match keys: pericope = map basename stem (e.g. 'P01-Ruth-1-1-5'); kind ∈ {REFERENCE_INTEGRITY, NAME_BINDING, MISALIGNMENT, FLAG_MISMATCH, DANGLING_NOTE}; then code (entity/flag findings) | note_title (dangling) | (scope, direction) also for MISALIGNMENT/FLAG_MISMATCH. SC-0020 adds the first signed-off entries: the ruled place/time coverage-difference one-siders (off-stage/contextual referents the FOR_MODEL carries structurally but the map declares only contextually, or vice-versa — already-documented MM↔gold coverage differences).",
   "exceptions": [
@@ -72,6 +72,42 @@
       "direction": "MAP_NOT_FM",
       "reason": "COVERAGE_DIFFERENCE_DOCUMENTED_MM_GOLD",
       "note": "The already-documented MM↔gold coverage difference (the P04 95% gold-diff): the map declares PL2, the gold FOR_MODEL omits it.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P05-Ruth-2-1-7",
+      "kind": "MISALIGNMENT",
+      "code": "PL5",
+      "scope": "S2",
+      "direction": "FM_NOT_MAP",
+      "reason": "COVERAGE_DIFFERENCE_CROSS_SCENE_PROSE_ONLY",
+      "note": "The field Ruth proposes to glean in. The FOR_MODEL declares PL5 in S2 (Ruth's gleaning initiative); the map's S2 names it only generically ('the field', untagged) and reserves the [[PL5-Field]] wikilink for S3, where Ruth actually arrives. After the SC-0020 parity bar, this is not resolved by prose (the map references PL5 only in S3, not S2) — a legitimate cross-scene coverage difference, not a code disagreement.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P05-Ruth-2-1-7",
+      "kind": "MISALIGNMENT",
+      "code": "B2",
+      "scope": "S3",
+      "direction": "FM_NOT_MAP",
+      "reason": "COVERAGE_DIFFERENCE_FM_SLOT_ONLY",
+      "note": "Elimelech as clan-eponym. The FOR_MODEL carries B2 in S3 only as the `clan_eponym` slot value behind the restated clan-frame; the map's S3 names the clan as [[B29-The-Clan-of-Elimelech]] and references B2 itself only in S1's introduction. After the SC-0020 parity bar this is not prose-resolved (no [[B2]] wikilink in S3) — a legitimate FM-slot-only coverage difference.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-01",
+      "sc_ref": "SC-0020"
+    },
+    {
+      "pericope": "P05-Ruth-2-1-7",
+      "kind": "MISALIGNMENT",
+      "code": "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW",
+      "scope": "S4",
+      "direction": "FM_NOT_MAP",
+      "reason": "COVERAGE_DIFFERENCE_FM_STRUCTURAL_ONLY",
+      "note": "The within-day duration 'from morning until now' in the foreman's report. The FOR_MODEL carries it as a structural §3C object; the map records the same content in its S4 §3C block as bare Hebrew+gloss text (no [[TH_…]] wikilink, following the P01 about-ten-years precedent that this is content, not a scene-setting frame). The map genuinely never wikilinks the code, so the parity bar leaves it — an FM-structural-only coverage difference; remains UNVERIFIABLE (no TH_ registry), which is acceptable.",
       "accepted_by": "Marcia Suzuki",
       "accepted_on": "2026-06-01",
       "sc_ref": "SC-0020"

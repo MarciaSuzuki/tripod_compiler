@@ -19,6 +19,7 @@ import {
   type IdAlignException,
 } from "../src/engine/id-align.js";
 import type { AliasTable, CodeRegistry } from "../src/reader/source-packet.js";
+import { loadIdAlignmentExceptions } from "../src/reader/source-packet.js";
 
 /**
  * SC-0018 — the cross-artifact entity-ID alignment checker. Tests the brief's required cases on
@@ -281,6 +282,41 @@ describe("checkIdAlignment — the brief's six cases", () => {
     expect(r.referenceIntegrity.some((f) => f.code === "B2")).toBe(false);
   });
 
+  it("SC-0020 parity bar: an FM scene-being the map references in THAT scene's §3 prose is ALIGNED (one declares, one narrates)", () => {
+    // The FM declares B2 structurally in S1; the map declares B3 in S1's 3A and references B2 only in
+    // B3's relationship line (PROSE) within the SAME scene. The two artifacts agree B2 is present in S1 —
+    // so B2 must NOT be a misalignment (the lead's ruling), even though the map doesn't declare it in 3A.
+    const beingBlock = "[[B3-Naomi]]\n- Role: widow\n- Relationship: widow of [[B2-Elimelech]] Elimelech";
+    const map = writeMap("parity-same-map", `### Scene 1 — Test (v.1)\n\n**3A — Beings**\n${beingBlock}\n\n**3B — Places**\n- None\n\n**3C — Objects and Elements**\n- None\n\n**3D — Times**\n- None\n\n**3E — What Happens**\nx.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`);
+    const fm = writeFm("parity-same-fm", { level_2_scenes: [fmScene(1, { beings: ["B2", "B3"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, fm, hermetic());
+    expect(r.misalignments.some((m) => m.code === "B2")).toBe(false); // aligned by same-scene prose, dropped from the diff
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true);
+  });
+
+  it("SC-0020 parity bar is SCENE-SCOPED: an FM scene-entity the map references only in a DIFFERENT scene is still a misalignment (annotated cross-scene)", () => {
+    // The FM declares PL1 in S2; the map declares+narrates PL1 in S1 (a §3E prose wikilink) but references
+    // it nowhere in S2. A prose mention in ANOTHER scene must NOT align it in S2 (mirrors the real P05 PL5:
+    // FM declares it in S2, but the map's PL5 wikilink lives in S3). S1 here has PL1 in its What-Happens prose.
+    const s1 =
+      `### Scene 1 — Test (v.1)\n\n**3A — Beings**\n[[B3-Naomi]]\n- Role: r\n\n**3B — Places**\n- None\n\n` +
+      `**3C — Objects and Elements**\n- None\n\n**3D — Times**\n- None\n\n` +
+      `**3E — What Happens**\nNaomi leaves [[PL1-Bethlehem-of-Judah]] the town.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`;
+    const map = writeMap("parity-cross-map", s1 + scene(2, { beings: ["[[B2-Elimelech]]"] }));
+    // FM: S1 declares B3 (aligns), S2 declares B2 (aligns) + PL1 (the cross-scene gap under test).
+    const fm = writeFm("parity-cross-fm", {
+      level_2_scenes: [fmScene(1, { beings: ["B3"] }), fmScene(2, { beings: ["B2"], places: ["PL1"] })],
+      level_3_propositions: [],
+    });
+    const r = checkIdAlignment(map, fm, hermetic());
+    const s2 = r.misalignments.find((m) => m.code === "PL1" && m.scope === "S2" && m.direction === "FM_NOT_MAP");
+    expect(s2).toBeDefined();
+    expect(s2!.severity).toBe("MISALIGN"); // not resolved — PL1 is map-referenced only in S1, not S2
+    expect(s2!.presentElsewhere).toMatch(/S1/); // scene-accurate: the prose home is labelled with its scene
+    expect(r.ok).toBe(false);
+  });
+
   it("unknown code → reference-integrity ERROR (registered namespace, no BCD entry)", () => {
     const map = writeMap("unknown-map", scene(1, { beings: ["[[B2-Elimelech]]"] }));
     const fm = writeFm("unknown-fm", { level_2_scenes: [fmScene(1, { beings: ["B2", "B99"] })], level_3_propositions: [] });
@@ -530,8 +566,12 @@ describe("extractForModelCodes", () => {
 
 const MM = "fixtures/meaning-map";
 const FM = "fixtures/for-model";
+// Integration runs mirror the real `tripod id-check`: they load the PINNED id-alignment exceptions, so a
+// signed-off coverage difference surfaces as ✓ ACCEPTED (still in the inventory, excluded from the failure
+// count) exactly as the CLI reports it.
+const idExceptions = loadIdAlignmentExceptions();
 const real = (pid: string, bcv: string) =>
-  checkIdAlignment(`${MM}/${pid}-${bcv}.md`, `${FM}/${pid}-${bcv}-FOR-MODEL.md`, { noteResolveDirs: [MM, FM] });
+  checkIdAlignment(`${MM}/${pid}-${bcv}.md`, `${FM}/${pid}-${bcv}-FOR-MODEL.md`, { noteResolveDirs: [MM, FM], exceptions: idExceptions });
 
 describe("integration — real fixtures (locks the refined headline findings)", () => {
   it("P01 (post-SC-0020): TM_/TH_ now ALIGN (A4 map edit); AUDIT no longer dangles (A5); flags align; no CB/FIG noise", () => {
@@ -551,8 +591,13 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     // TH_TEN_YEARS_APPROXIMATELY is now the aligned object code; it stays UNVERIFIABLE (no TH_ registry) — acceptable.
     expect(r.unverifiable.some((u) => u.code === "TH_TEN_YEARS_APPROXIMATELY")).toBe(true);
     expect(r.unverifiable.every((u) => u.code.startsWith("TH_"))).toBe(true);
-    // The remaining un-accepted misalignments are the pre-existing REFERENCED-being-in-§3A-prose gaps (B2/B8/B9 @S4).
-    expect(r.misalignments.filter((m) => m.severity === "MISALIGN").map((m) => m.code).sort()).toEqual(["B2", "B8", "B9"]);
+    // SC-0020 parity bar (the lead's ruling): the former REFERENCED-being-in-§3A-prose gaps (B2/B8/B9 @S4)
+    // are now ALIGNED — the FOR_MODEL declares them in S4 and the map references each in S4's own §3A
+    // relationship lines (B2 in the sons' "son of …" lines; B8/B9 in Naomi's "mother-in-law of … " line).
+    // P01 is fully clean: zero un-accepted misalignments.
+    expect(r.misalignments.filter((m) => m.severity === "MISALIGN")).toHaveLength(0);
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true);
   });
 
   it("P03: PL_LAND_OF_JUDAH gap survives; B31 name-binding ERROR survives; T7 thread + artifact siblings resolve", () => {
@@ -578,6 +623,26 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     expect(r.nameBinding.some((f) => f.code === "PL_NAOMIS_DWELLING")).toBe(false);
     expect(r.nameBinding.some((f) => f.code === "PL5_BOAZ_PORTION")).toBe(false);
     expect(r.counts.nameErrors).toBe(0);
+  });
+
+  it("P05 (SC-0020 parity bar): the 3 cross-scene/FM-only gaps are NOT prose-resolved — they survive as signed-off ✓ ACCEPTED, not misalignments", () => {
+    const r = real("P05", "Ruth-2-1-7");
+    // The parity bar is SCENE-SCOPED: PL5 (FM S2) is map-referenced only in S3, B2 (FM S3 clan_eponym
+    // slot) only in S1, TH_WITHIN_DAY (FM S4) never wikilinked — so none is resolved by same-scene prose.
+    // All three are ruled ACCEPTED coverage differences (id-alignment-exceptions.json, SC-0020).
+    const pl5 = r.misalignments.find((m) => m.code === "PL5" && m.scope === "S2");
+    const b2 = r.misalignments.find((m) => m.code === "B2" && m.scope === "S3");
+    const th = r.misalignments.find((m) => m.code === "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW" && m.scope === "S4");
+    expect(pl5?.severity).toBe("ACCEPTED");
+    expect(b2?.severity).toBe("ACCEPTED");
+    expect(th?.severity).toBe("ACCEPTED");
+    // the cross-scene prose home is reported scene-accurately (so the inventory doesn't mislead)
+    expect(pl5?.presentElsewhere).toMatch(/S3/);
+    expect(b2?.presentElsewhere).toMatch(/S1/);
+    expect(th?.presentElsewhere).toBeUndefined(); // never referenced anywhere in the map
+    // zero UN-accepted misalignments; the run is clean (the name-binding B31 is P02/P03, not P05)
+    expect(r.counts.misalign).toBe(0);
+    expect(r.ok).toBe(true);
   });
 
   it("P06 (post-SC-0020): 'B?' is a WITHHELD_REFERENT (INFO, not ERROR, not a misalignment); PL_AMONG_SHEAVES gap survives; FIG_0131 not a flag mismatch", () => {

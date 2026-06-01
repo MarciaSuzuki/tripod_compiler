@@ -72,8 +72,8 @@ number bound to exactly one decision.
 | SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (7 ruled keeps) | SHIPPED (fixtures + vault, blessed + merged 2026-06-01) |
 | SC-0017 | De-leak: strip process-commentary (SC-IDs, "per the content discipline", "§3C entities only", "X → Proposition N" relocation trails) from the content layers — maps §3C + FOR_MODEL `objects_in_scene._note` — keeping entities + plain considered-absence; + template/discipline-doc hygiene so P07–P14 are born clean | SHIPPED (fixtures + vault — both PRs merged 2026-06-01); **blessed by Marcia 2026-06-01** |
 | SC-0018 | Cross-artifact entity-ID alignment: the locked convention (canonical ID = the bare code; the map carries it in the wikilink target up to the first hyphen) + the `tripod id-check` diagnostic verifier (the 5th deterministic check — aligned) + the empty pinned `id-alignment-exceptions.json`. Diagnostic only; fixes no content. The P01–P06 reconciliation of what it surfaces is a separate later human-gated pass. | PROPOSED |
-| SC-0019 | Common-Reader Prose Standard: re-voice the conditioning prose (Level 1, scene descriptions, significant-absence notes, register-tagging block) of P01–P06 to the blessed "good study-Bible note for ordinary readers" register (S1–S4; plain ≠ flat). No spec-version bump (free-text + guidance only). | P01 worked reference APPLIED (pending the lead's voice blessing); P02–P06 roll + template/methodology/prompt seeding + vault writeback pending |
-| SC-0020 | Entity-ID reconciliation under SC-0018: two `id-check` engine tweaks (`<NS>?` withheld-referent → INFO `WITHHELD_REFERENT`; note-title-safe slug normalization, strip `'` / collapse `/`) + the ruled signed-off `id-alignment-exceptions.json` coverage-difference one-siders + the P01 map TM_→TH_ alignment + AUDIT-relic removal. No spec-version bump (a validation-rule tweak + exceptions data + artifact edits). | P01 worked reference + engine + exceptions APPLIED (pending blessing); B31 BCD alias (A2) + P02–P06 roll + vault writeback DEFERRED |
+| SC-0019 | Common-Reader Prose Standard: re-voice the conditioning prose (Level 1, scene descriptions, significant-absence notes, register-tagging block) of P01–P06 to the blessed "good study-Bible note for ordinary readers" register (S1–S4; plain ≠ flat). No spec-version bump (free-text + guidance only). | P01 worked reference BLESSED; **P02–P06 APPLIED compiler-side (pending the lead's per-map voice blessing)**; template/methodology/prompt seeding + vault writeback DEFERRED |
+| SC-0020 | Entity-ID reconciliation under SC-0018: three `id-check` engine refinements (`<NS>?` withheld-referent → INFO; note-title-safe slug normalization; **scene-scoped prose-reference parity bar** — an FM scene-entity the map narrates in that scene's §3 prose is ALIGNED) + the ruled signed-off `id-alignment-exceptions.json` coverage-difference one-siders (now incl. 3 P05 cross-scene/FM-only) + the P01 map TM_→TH_ alignment + AUDIT-relic removal. No spec-version bump (validation-rule tweaks + exceptions data + artifact edits). | P01 + engine + exceptions APPLIED; **parity-bar refinement APPLIED (8 standing misalignments → 0: 5 prose-resolved, 3 signed off)**; B31 BCD alias (A2) + TM/TH vault-note + vault writeback DEFERRED |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -185,6 +185,50 @@ number bound to exactly one decision.
 - **Boundaries:** fixtures-only. No vault edit (vault `git status` clean). No schema/closed-list/vocabulary change.
   No B31 alias, no template/methodology/prompt seeding, no writeback — all deferred to the post-blessing roll.
 
+## SC-0020 (continued) — the parity-bar refinement + the 8 standing misalignments resolved
+- **Date:** 2026-06-01 (the combined P01–P06 roll chunk, on `sc-0019-0020-p01`).
+- **Decided by:** Marcia Suzuki (the parity-bar ruling); the compiler implemented + verified it.
+- **Status:** **APPLIED (compiler-side).** Resolves the 8 standing misalignments the prior entry surfaced for the
+  lead's disposition.
+- **A6 — scene-scoped prose-reference parity bar (`src/engine/id-align.ts`).** The lead's ruling: a FOR_MODEL
+  scene-being/place/object that the map **references in that scene's §3 prose** (any wikilink in the scene's
+  narration / role / relationship / What-Happens lines — the PROSE bucket, not just the §3A–3D declared-entity
+  header) counts as **ALIGNED** — the two artifacts agree the entity is in the scene; one DECLARES it structurally,
+  the other NARRATES it. It is a misalignment **only** if the map never references it in that scene. Implemented as
+  `mapProseByScene` (scene → entity codes referenced in that scene's prose) + `proseAlignedInScene(code, scope)`;
+  an FM-only code with a same-scene prose match is dropped from the symmetric difference before it can become a
+  finding. **Scene-scoped on purpose:** a prose mention in a *different* scene does NOT align it here. Also made the
+  "present-elsewhere" annotation scene-accurate (`mapProseByScope` + `presentElsewhereLabel`), so a cross-scene
+  prose home is labelled with its scene (e.g. "present on other side as §3B prose **in S3**") and never misreads as
+  same-scene.
+- **The 8 standing misalignments → 0 un-accepted:**
+  - **5 resolved by the parity bar (same-scene prose-reference):** P01 S4 `B2`/`B8`/`B9` (B2 in the sons' "son of
+    …" relationship lines; B8/B9 in Naomi's "mother-in-law of … Orpah and … Ruth" line, all in S4 §3A); P02 S2
+    `B4`/`B5` (in S2's "[[B2]], [[B4]], [[B5]] — collectively 'the dead'" line). After the bar, **P01 is fully
+    clean** and P02's only finding is the deferred B31 name-binding.
+  - **3 signed off as exceptions (genuinely not same-scene-prose-referenced):** all P05, all FM_NOT_MAP, added to
+    `_spec/id-alignment-exceptions.json` with `accepted_by:"Marcia Suzuki"`, `accepted_on:"2026-06-01"`,
+    `sc_ref:"SC-0020"`:
+    - `PL5` @S2 (`COVERAGE_DIFFERENCE_CROSS_SCENE_PROSE_ONLY`) — the FM declares PL5 in S2, but the map's S2 names
+      the field only generically ("the field", untagged) and reserves the `[[PL5-Field]]` wikilink for S3, where
+      Ruth actually arrives.
+    - `B2` @S3 (`COVERAGE_DIFFERENCE_FM_SLOT_ONLY`) — the FM carries B2 in S3 only as the `clan_eponym` slot value;
+      the map's S3 names the clan as `[[B29-The-Clan-of-Elimelech]]` and references B2 itself only in S1.
+    - `TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW` @S4 (`COVERAGE_DIFFERENCE_FM_STRUCTURAL_ONLY`) — the FM carries it as a
+      structural §3C object; the map records the same content in S4 §3C as bare Hebrew+gloss text (no `[[TH_…]]`
+      wikilink, following the P01 about-ten-years precedent), so the map genuinely never wikilinks the code. Remains
+      `unverifiable` (no TH_ registry) — acceptable.
+  - The exceptions file goes **6 → 9 entries**; re-pinned **0.2.0 → 0.3.0** (sha256
+    `5b2760572a0cb1fda20ce7c1e188b835a60468813acd88614d6b2af947b5a29a`) in `_spec/pins.json`; `check-drift` clean.
+- **Tests:** `tests/id-align.test.ts` 36 → **39** — the P01 integration lock flipped (B2/B8/B9 @S4 now ALIGNED,
+  P01 fully clean); a new P05 integration lock (the 3 gaps survive as ✓ ACCEPTED, scene-accurate annotation); two
+  new hermetic parity-bar units (same-scene prose → ALIGNED; cross-scene prose → still MISALIGN, annotated). The
+  `real()` integration helper now loads the pinned exceptions, mirroring the CLI.
+- **`id-check --corpus` after the refinement:** **4 clean (P01, P04, P05, P06) · 2 with findings · 0 ref-integrity
+  · 0 misalignment · 0 flag · 0 dangling · 2 name-binding (the deferred B31, P02+P03) · 3 unverifiable (TH_) · 1
+  withheld INFO (P06 B?) · 9 accepted**. Clean except the explicitly-deferred B31 + the TH_-unverifiable, exactly
+  as the chunk gate required.
+
 ## SC-0019 — Common-Reader Prose Standard: P01 conditioning-prose re-voicing (worked reference)
 - **Date:** 2026-06-01
 - **Decided by:** Marcia Suzuki (the register target, blessed 2026-05-31: "good study-Bible note for ordinary
@@ -227,6 +271,51 @@ number bound to exactly one decision.
   `npm test` 133 green.
 - **Boundaries:** fixtures-only; P01 only. No P02–P06 prose, no seeding, no vault edit. Drafts are PROPOSALS for the
   lead's voice sign-off.
+
+## SC-0019 (continued) — P02–P06 conditioning-prose roll (matching the blessed P01 register)
+- **Date:** 2026-06-01 (the combined P01–P06 roll chunk, on `sc-0019-0020-p01`).
+- **Decided by:** Marcia Suzuki blessed the P01 worked reference (voice + structure) as the calibration anchor; the
+  compiler drafts the per-map voice for P02–P06, **the lead reviews per map** (the SC-0013 cadence).
+- **Status:** **APPLIED compiler-side — a PROPOSAL pending the lead's per-map voice blessing.** Do not treat as
+  final; do not roll into the writeback until blessed.
+- **B3-P02..P06 — conditioning prose re-voiced** in `fixtures/meaning-map/P02..P06`, matching the blessed P01
+  register ("held-in and plain"): the multi-level register-tagging block, Level 1 (Arc / Context / Tone / Pace /
+  Communicative Function), the §3A–3D scene descriptions (Role / Type / Meaning / Effect / What-it-is / Function /
+  Signals), and the significant-absence notes. **Not touched:** the `register` token, the Level-3 §4 payload (the
+  Q/A inventory), the framework headings, the §3 entity codes/wikilinks/presence tokens, schemas/vocabulary.
+- **Plain ≠ flat — the load-bearing nuances kept (the lead's flagged cases):**
+  - **P02:** hesed glossed once as "loyal, covenant kindness" (matching P01); the two-wave road argument; the
+    womb/husband/hand-of-YHWH grounding; Orpah's kiss vs Ruth's holding-on.
+  - **P03:** the six-step binding vow and the self-curse oath (kept the binding ladder + "calls down a curse on
+    herself"); the unnamed-gods (v.15) vs YHWH-named (v.17) contrast; the withheld Moabite epithet at the binding;
+    the four open "where" places.
+  - **P04 (lament / fourfold naming):** §2.3 uses the lead's blessed calibration "after" verbatim ("…sets the full
+    life she left against the empty one she's come back to and names God over and over…"); the **full↔empty**
+    antithesis kept throughout (the "out full / back empty" bracket, Mara = "bitter" vs Naomi = "sweet"); the
+    **fourfold divine naming** kept precise (Shaddai ×2, YHWH ×2 — "named twice … named twice"); the Moabite epithet
+    returning in narrator voice; the narrator passing no verdict on Naomi's God-claim.
+  - **P05 (miqreh):** §2.1 uses the lead's blessed calibration "after" verbatim ("…happens to end up in Boaz's field
+    — and the narrator tells it so you can't quite tell whether it was luck or God's quiet hand"); the luck-vs-
+    providence ambiguity kept at every occurrence (§2.1, §2.3, §2.4, §3C miqreh, S3 absence — never collapsed to
+    plain "by chance"); the chayil "worth" thread; the textually-disputed v.7b shelter ("read different ways across
+    the major commentaries").
+  - **P06:** the wing-of-refuge image (kept "take refuge under his wings", "like a bird sheltering its young");
+    the amah/shifchah status-shift (kept "from a lowly servant-girl here to something nearer at 3:9"); the three
+    "do not" commands (touch / shame / rebuke); the abundance triplet (eat / be satisfied / have leftover → carry
+    back to Naomi); the SC-0016-blessed "her husband (pair withheld; see P01-D2)" note left intact.
+- **Mechanical tie (the FM free-text):** in `fixtures/for-model/P02..P06`, the `scene_communicative_purpose` and
+  `significant_absence` fields that mirror the map's §3F / absence prose were matched to the new wording (in the
+  FM's terser "Narrator…" register), preserving load-bearing parentheticals (e.g. P03 `(FIG_0001)`, P06 "per
+  P01-D2"). **gold-diff re-confirmed byte-identical** to the committed baseline: gold-diff compares
+  header/classification/scene-IDs/entity-sets/flag-sets, **not** the free-text fields, so the prose + matched
+  free-text edits move the file text (a git diff) but **no gold-diff number**. (One incidental edit to a §3A
+  `Presence:` parenthetical — which *does* feed the comparable layer via the `being:presence` key — was reverted to
+  keep the structural layer truly untouched; the gold-diff baseline did not need re-writing.)
+- **Gates:** `validate` 6/6 (0 drift) · `lint --corpus` **0 drift / 7 accepted / 12 clean** (the re-voicing
+  introduced NO forbidden vocabulary — R4/S4 aligned) · `coverage --corpus` 6/6 (245/245) · `gold-diff`
+  byte-identical · `id-check --corpus` clean except deferred · `npm test` **136 green**.
+- **Boundaries:** fixtures-only. **No vault edit (vault `git status` clean).** No seeding (methodology/template/
+  agent-prompt) — DEFERRED to the post-blessing writeback. Drafts are PROPOSALS for the lead's per-map voice sign-off.
 
 ---
 

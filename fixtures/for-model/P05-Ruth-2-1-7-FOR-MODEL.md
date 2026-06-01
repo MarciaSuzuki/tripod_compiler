@@ -86,7 +86,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_id": "S1",
       "verse_range": "2:1",
       "scene_kind": "NARRATOR_PARENTHETICAL_INTRODUCTION_SCENE",
-      "scene_communicative_purpose": "Introduces Boaz to the audience before he enters the storyline. Anchors him in the kin-network through Naomi's relation to her dead husband and through the clan-frame.",
+      "scene_communicative_purpose": "Introduces Boaz to the audience before he steps into the story. Places him among the family through Naomi's tie to her dead husband and through the clan.",
       "beings_in_scene": {
         "entries": [
           {
@@ -128,13 +128,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; the narrator-parenthetical is given outside the storyline's time-flow.",
         "entries": null
       },
-      "significant_absence": "Narrator does not say where Boaz is or what he is doing. No interior state given — no motive, no inclination toward the women, no awareness of their return."
+      "significant_absence": "Narrator never says where Boaz is, or what he is doing. Nothing of what is in him — no aim, no leaning toward the women, no awareness that they have come back."
     },
     {
       "scene_id": "S2",
       "verse_range": "2:2",
       "scene_kind": "INTERIOR_INITIATIVE_AND_RELEASE_SCENE",
-      "scene_communicative_purpose": "Establishes that the gleaning move comes from Ruth's own initiative, not Naomi's. Naomi releases without amending the proposal. The exchange is short, intimate, and consequential.",
+      "scene_communicative_purpose": "Shows that the gleaning is Ruth's own idea, not Naomi's. Naomi lets her go without changing a word of it. The exchange is short and close, and it matters.",
       "beings_in_scene": {
         "entries": [
           {
@@ -179,13 +179,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is continuous with the previous pericope's arrival.",
         "entries": null
       },
-      "significant_absence": "Naomi does not name Boaz to Ruth even though the narrator has just named Boaz to the audience at v.1. Naomi does not name a specific field, does not bless Ruth, does not warn of any danger, does not suggest a kinsman. Audience-knows-character-doesn't gap is structurally meaningful."
+      "significant_absence": "Naomi does not name Boaz to Ruth, even though the narrator has just named Boaz to the audience one verse before at v.1. She names no particular field, does not bless Ruth, does not warn her of any danger, does not point her to a kinsman. The audience knows the very thing Naomi does not yet say."
     },
     {
       "scene_id": "S3",
       "verse_range": "2:3-4",
       "scene_kind": "FIELD_ARRIVAL_CHANCE_PROVIDENCE_AND_GREETING_SCENE",
-      "scene_communicative_purpose": "Lands Ruth in Boaz's portion through the chance-providence construction the narrator deliberately holds open. Stages Boaz's arrival from Bethlehem. Establishes the covenant-blessing register of the field-community through the greeting exchange. Restates the clan-frame at the moment of chance-arrival.",
+      "scene_communicative_purpose": "Brings Ruth into Boaz's field by a turn the narrator tells so you can't tell if it is chance or God's hand. Shows Boaz arriving from Bethlehem. Sets the field-community's covenant-blessing tone through the greeting they trade. Names the clan again at the very moment of her chance arrival.",
       "beings_in_scene": {
         "entries": [
           {
@@ -249,13 +249,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; the barley-harvest setting from P04 v.22 is the active frame and is not lexically named here.",
         "entries": null
       },
-      "significant_absence": "Narrator does not say YHWH led Ruth to Boaz's portion; the miqreh-construction deliberately withholds the one who led her. Narrator does not say Boaz notices Ruth on arrival. Ruth says nothing in this scene. Naomi is offstage and is not mentioned by anyone in the scene."
+      "significant_absence": "Narrator never says God led Ruth to Boaz's field; the 'chance' wording leaves the one who led her there unnamed on purpose. He never says Boaz notices Ruth when he arrives. Ruth says nothing in this scene. Naomi is off the scene, and no one in it so much as mentions her."
     },
     {
       "scene_id": "S4",
       "verse_range": "2:5-7",
       "scene_kind": "FIELD_OWNER_FOREMAN_REPORT_SCENE",
-      "scene_communicative_purpose": "Stages the first public identification of the outsider gleaner in the field-community. Field owner asks under whose cover this young woman is; foreman reports ethnic identity, relation to mother-in-law, quoted gleaning-request, and work-pattern from morning until now.",
+      "scene_communicative_purpose": "Shows the first time the outsider gleaner is named out loud among the field-workers. The field's owner asks whose young woman this is; the foreman tells him where she is from, how she is tied to her mother-in-law, what she asked when she came to glean, and how she has worked from morning until now.",
       "beings_in_scene": {
         "entries": [
           {
@@ -316,7 +316,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; the within-day duration 'from morning until now' is a content element inside the foreman's quoted report, encoded in objects_in_scene, not as a scene-setting time frame. Follows P01 TM_TEN_YEARS approximate-duration precedent.",
         "entries": null
       },
-      "significant_absence": "Foreman does not give Ruth's personal name; identification is by ethnic-epithet, by relation to Naomi, by work-pattern. Narrator does not give Boaz's interior at the question — no surprise, no recognition, no inclination is attributed. No marked emotional weight on the question itself."
+      "significant_absence": "Foreman never gives Ruth's own name; he places her by where she is from, by her tie to Naomi, by how she has worked. Narrator tells us nothing of what is in Boaz as he asks — no surprise, no recognition, no leaning toward her. In the way it is framed, the question carries no particular feeling."
     }
   ],
   "level_3_propositions": [

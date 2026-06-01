@@ -147,13 +147,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is the moment of news-hearing and immediate departure, continuous within the Moabite location.",
         "entries": null
       },
-      "significant_absence": "Narrator does not say how Naomi heard the news or from whom. Narrator does not describe Naomi's emotional response to the news. Narrator does not state that YHWH brought Naomi home; YHWH's act is toward his people in Judah, and Naomi responds."
+      "significant_absence": "Narrator never says how Naomi heard the news, or who told her. He never tells us what she felt when she heard it — only what she did. And he does not say God brought Naomi home: what God does is give bread to his people in Judah, and Naomi gets up and goes on her own."
     },
     {
       "scene_id": "S2",
       "verse_range": "1:8-10",
       "scene_kind": "FIRST_APPEAL_AND_REFUSAL_SCENE",
-      "scene_communicative_purpose": "Records Naomi's first appeal — a directive grounded in a double blessing — and the daughters-in-law's first vocal refusal. Opens the hesed thread and the rest-in-husband-house thread by name.",
+      "scene_communicative_purpose": "Records Naomi's first plea — a command to go home, wrapped in a double blessing — and the daughters-in-law's first out-loud refusal. Names two threads the book will follow: loyal kindness, and rest in a home of one's own.",
       "beings_in_scene": {
         "entries": [
           {
@@ -227,13 +227,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is the speech-and-response moment on the road, continuous with Scene 1.",
         "entries": null
       },
-      "significant_absence": "Narrator does not name what hesed the daughters-in-law practiced toward the dead and toward Naomi; that history is presupposed but not narrated. Narrator does not record any interior state for Orpah or Ruth at the refusal moment — only the collective 'they said.'"
+      "significant_absence": "Narrator never tells us what kindness the daughters-in-law had actually shown the dead and Naomi; it is taken for granted but never spelled out. And he gives us nothing of what Orpah or Ruth felt as they refused — only the two of them together saying 'no.'"
     },
     {
       "scene_id": "S3",
       "verse_range": "1:11-14",
       "scene_kind": "SECOND_APPEAL_AND_DIVISION_SCENE",
-      "scene_communicative_purpose": "Records Naomi's argued second appeal — directives, rhetorical dissuasions, hypothetical sequence, and lament with divine attribution — and the split between the two daughters-in-law. Establishes Ruth's clinging as the defining act that distinguishes her from Orpah.",
+      "scene_communicative_purpose": "Records Naomi's second plea — this time argued: she tells them to turn back, asks the hard questions that leave them no reason to follow, walks through the impossible hope of more sons, and ends by laying her bitterness on God — and then the parting of the two daughters-in-law. Sets Ruth's holding-on as the act that marks her off from Orpah.",
       "beings_in_scene": {
         "entries": [
           {
@@ -271,7 +271,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No distinct temporal frame for this scene; time is continuous with the road-side moment of Scene 2. 'Tonight' at 1:12 is content inside Naomi's hypothetical, carried in objects_in_scene.",
         "entries": null
       },
-      "significant_absence": "Narrator does not say what Orpah felt as she turned back, only that she kissed Naomi. Narrator does not say what Ruth felt as she clung, only that she clung. Narrator does not say where Orpah went; turning back closes her presence in the book without a destination scene. Narrator does not directly answer Naomi's lament-attribution to YHWH; the speech ends, and the action splits."
+      "significant_absence": "Narrator never says what Orpah felt as she turned back — only that she kissed Naomi. He never says what Ruth felt as she held on — only that she held on. He never says where Orpah went; she turns back, and that is the last we see of her, with no scene to send her home to. And he never answers Naomi's charge that God is against her; her speech simply ends, and the company splits."
     }
   ],
   "level_3_propositions": [
