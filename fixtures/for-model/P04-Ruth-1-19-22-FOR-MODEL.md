@@ -117,7 +117,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the Bethlehem 'house of bread' naming on arrival → FIG_0013 (bread-house-in-famine, active at P1/P2); the arrival → P1 (WALKING_AND_ARRIVAL); the communal stirring of the whole city → P2 (COMMUNAL_STIRRING_AT_ARRIVAL); the women's recognition-question → P3 (ASKED_RHETORICAL_RECOGNITION_QUESTION).",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
       "times_in_scene": {
@@ -160,7 +160,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the refusal of her own name → P4 (REFUSED_USE_OF_OWN_NAME); the proposed renaming to Mara → P4 (PROPOSED_NEW_NAME; B3 referential_form; cb_flag CB_0023; FIG_0082); the Mara/hemar root-pun → FIG_0083; the bittering ascription to Shaddai → P4 (FIG_0006 Shaddai-name); 'I went out full' and the riqam 'empty' → P5 (STATED_FULL_EMPTY_ANTITHESIS; FIG_0084; cb_flags CB_0024, CB_0044); the rhetorical protest-question → P5 (ASKED_RHETORICAL_QUESTION_AS_PROTEST); the anah-bi courtroom testimony → P5 (ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH; cb_flag CB_0025); the Shaddai-did-evil harm → P5 (FIG_0086). The fourfold divine naming across 1:20–21 (Shaddai · YHWH · YHWH · Shaddai) is now its own figure FIG_0195, flagged at P4 and P5 — it marks the pattern, complementing FIG_0006 (the Shaddai name) and FIG_0086 (the single Shaddai-did-evil invocation), which mark single occurrences (ruled + created under SC-0016).",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
       "times_in_scene": {
@@ -203,7 +203,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). Kept: barley-harvest CB_0026 (the harvest-frame opening at v.22). Relocated: the narrator return-summary → P6 (RETURNED); the 'Ruth the Moabitess' epithet → B9 referential_form (FIG_0001; cb_flag CB_0004); the daughter-in-law (kallatah) kinship naming → B9 referential_form (cb_flag CB_0017); the arrival at the harvest-opening → P6 (ARRIVED_AT; time_setting TM_BARLEY_HARVEST_BEGINNING).",
         "entries": [
           {
             "object_id": "CB_0026",

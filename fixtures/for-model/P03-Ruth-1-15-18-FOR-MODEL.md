@@ -119,7 +119,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the presentational opener (hinneh) → P1 (SPOKE_DISSUASIVE_APPEAL_WITH_EXEMPLAR); Orpah's return to her people and to her gods → P1 (STATED_EXEMPLAR_RETURN); the directive to follow the exemplar → P1 (DIRECTED_HEARER_TO_FOLLOW_EXEMPLAR; cb_flags CB_0019 levirate, CB_0004); the sister-in-law kinship naming (yebimtekh) → B8 referential_form; the return-road locus → continuing from P02.",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
       "times_in_scene": {
@@ -167,7 +167,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the refusal that opens the vow → P2 (REFUSED_DIRECTIVE_AS_OPENING_OF_VOW); the 'wherever you…' indefinite-place form holding four bindings → P3 (binding_indefinite_place_form); the six bindings (path, lodging, people, god, death-place, burial-place) → P3 vow_components; the people-and-god pairing → P3 (cb_flag CB_0021; FIG_0072, FIG_0074); the self-curse oath and its death-only conditional → P4 (SEALED_VOW_WITH_SELF_CURSE_OATH; cb_flag CB_0020; FIG_0075); the return-road locus → continuing.",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
       "times_in_scene": {
@@ -200,7 +200,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: Ruth's determined resolve → P5 (SAW_DETERMINED_RESOLVE); Naomi's ceasing to speak → P5 (CEASED_SPEAKING); the return-road locus → continuing from S1 and S2.",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
       "times_in_scene": {

@@ -136,7 +136,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). Kept: bread CB_0012 (covenant provision named in the news at 1:6). Relocated: YHWH's visiting (paqad) → P2 (VISITED_AND_PROVIDED; cb_flag CB_0016); the news-hearing → P1 (HEARD_REPORT); the arising-and-going-out → P3 (RETURNED_FROM_FOREIGN_RESIDENCE); the road they walk → P3 (WALKED_ON_RETURN_ROAD); the daughters-in-law kinship naming (kallah) → B8/B9 referential_form (CB_0017).",
         "entries": [
           {
             "object_id": "CB_0012",
@@ -209,7 +208,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ]
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). Kept: hesed CB_0011, blessing CB_0008, rest/menucha CB_0014 (the loyalty, the performative blessing, and the settled security Naomi invokes at 1:8–9). Relocated: the directive to go back → P4 (SPOKE_DIRECTIVE_TO_RETURN); the mother's-house destination → place PL_EACH_HER_MOTHERS_HOUSE (CB_0013); the grounding in the daughters' prior hesed → P5 prior_hesed_targets; the kiss → P7 (KISSED_AND_WEPT_FAREWELL); the first weeping → P7; the refusal-with-counter → P8 (REFUSED_WITH_COUNTER_DECLARATION); the road they speak on → continuing from S1 (P3).",
         "entries": [
           {
             "object_id": "CB_0011",
@@ -266,7 +264,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": []
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the repeated turn-back directive → P9/P10 (REPEATED_DIRECTIVE); the womb dissuasion-question → P9; the personal-impossibility statement → P10; the hypothetical husband-tonight and imagined sons → P10 (GRANTED_HYPOTHETICAL_CONCESSION); the twin waiting/restraining questions → P11; the bitterness comparison → P12; the hand-of-YHWH attribution → P12 (cb_flag CB_0015); the second weeping → P13 (WEPT_AGAIN); Orpah's farewell kiss → P14 (KISSED_AND_DEPARTED); Ruth's clinging (davqah) → P15 (CLUNG_TO; cb_flag CB_0018; FIG_0012); the road they stand on → continuing from S1 (P3).",
+        "_note": "No persistent objects in this scene.",
         "entries": null
       },
       "times_in_scene": {

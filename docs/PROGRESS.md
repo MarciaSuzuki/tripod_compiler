@@ -170,6 +170,17 @@ npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-
     P4/P5 figure_flags); gold-diff re-baselined (P04 37→38). **Task B:** SC-0014 forward-pointer recorded (old
     value still in the Pilot-3 Layer-2 seed CSV → reconcile at Pilot-3 lock; pointer only). Delivered via a
     reviewed vault PR; vault returns to clean `main` on merge. invariant restored: vault `pericopes/` ≡ fixtures.
+  - **SC-0017 — the §3C de-leak (2026-06-01).** Stripped process-commentary (SC-IDs, "per the content
+    discipline", "§3C entities only", "X → Proposition N" relocation trails) from the content layers —
+    maps §3C **and** FOR_MODEL `objects_in_scene._note` (the leak was in both trees, phrased differently;
+    P01's FOR_MODEL used `(SC-0012)` an earlier narrow grep missed). Kept entities + the plain
+    considered-absence; removed the stale P04 `- PENDING (doubled-divine-name)` bullet (FIG_0195 now captures
+    it). `_note` rule: drop the key where the scene has entries; reduce to minimal where `entries: null`.
+    **Zero-grep across both trees** (union `relocat|SC-00\d\d|→ Prop|content discipline|§3C entities only`);
+    validate 6/6 · lint 0 drift/7 accepted · coverage 6/6 · gold-diff agreement UNCHANGED (only the
+    informational `judgmentPlaceholders` count fell, baseline re-written) · 97 tests · check-drift clean.
+    Removal-only (21 ins / 101 del). Record preserved in the SC-0013/SC-0016 audit docs. **Fixtures applied
+    (compiler PR); vault `pericopes/`+`stas/` writeback + the template/discipline-doc hygiene = separate pass.**
 - **Forward-looking docs** in `docs/`: `COVERAGE.md` (BHSA coverage-reconciliation, fidelity floor —
   now shipped for P01), `READING_QUALITY.md` (human review gate, fidelity ceiling),
   `SOURCE_AND_SCALING.md` (BHSA frozen extract + per-book BCD-by-delta). Gate order:

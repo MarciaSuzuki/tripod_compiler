@@ -69,7 +69,8 @@ number bound to exactly one decision.
 | SC-0013 | Map content remediation under SC-0012 — P01 reference + P02–P06 roll | P01 SHIPPED; P02–P06 §3C+plain-language APPLIED (pending blessing); §4 dialogue re-atomizing = lead's exegetical pass |
 | SC-0014 | Rename SPEECH_ACT `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` → `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drop "AGENT" jargon) | APPLIED (pending the lead's blessing) |
 | SC-0015 | Extend the Level-3 lint to enforce the operating test: flag cross_ref/inter-proposition-link lines + meta/analytical questions in §4, scan questions (not just answers) incl. same-line Q&A, add comma compounds with an entity-list guard; lint-lexicon v0.1.0→v0.2.0 (re-pinned) | APPLIED |
-| SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (7 ruled keeps) | SHIPPED (fixtures; **blessed by Marcia 2026-05-31**; vault writeback is a separate pending pass) |
+| SC-0016 | Level-3 §4 content sweep under SC-0012/SC-0013 (remove cross_ref/link lines → relocate figure spans; convert meta-questions to payload; atomize compounds) — P01 reference then P02–P06; + `lint-exceptions.json` recorded sign-off (7 ruled keeps) | SHIPPED (fixtures + vault, blessed + merged 2026-06-01) |
+| SC-0017 | De-leak: strip process-commentary (SC-IDs, "per the content discipline", "§3C entities only", "X → Proposition N" relocation trails) from the content layers — maps §3C + FOR_MODEL `objects_in_scene._note` — keeping entities + plain considered-absence; + template/discipline-doc hygiene so P07–P14 are born clean | APPLIED (fixtures; **ruled by Marcia 2026-06-01**; vault writeback is a separate pending pass) |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -101,6 +102,60 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0017 — De-leak: strip process-commentary from the content layers
+- **Date:** 2026-06-01
+- **Decided by:** Marcia Suzuki (the principle + scope); the compiler applied + verified it.
+- **Status:** **APPLIED (fixtures) — ruled by Marcia 2026-06-01.** Vault writeback (`pericopes/` + `stas/` +
+  the template + discipline-doc edits) is a separate pending pass (the careful cross-repo flow).
+- **Type:** artifact remediation + docs/template hygiene (no schema/spec change; no closed-list change).
+- **Principle:** a meaning map and a FOR_MODEL describe the **passage**, never the **project**. The
+  relocation audit-trail SC-0013/SC-0016 left inline in §3C (`SC-XXXX`, "Relocated per the content
+  discipline", "§3C entities only", "X → Proposition N") is a worklog leaking into the source artifact. It
+  comes out. The relocate-never-delete record already lives, durably, in `docs/SC-0013-RELOCATION-AUDIT.md`
+  + `docs/SC-0016-LEVEL3-SWEEP-AUDIT.md` (confirmed present before stripping) — removing the inline notes
+  loses nothing.
+- **Verified scope — the leak was in BOTH trees, phrased differently:**
+  - **Maps** (`fixtures/meaning-map/P0*.md`): §3C blockquotes (`> §3C lists entities only … Relocated per the
+    content discipline: …`) and `- None: … Relocated per the content discipline[ (SC-XXXX)]: X → Proposition N; …`
+    trails (single- or multi-line bulleted). Stripped to the bare considered-absence / the header above the entities.
+  - **FOR_MODELs** (`fixtures/for-model/P0*-FOR-MODEL.md`): inside `objects_in_scene._note` as
+    `"§3C entities only (SC-00XX). [No persistent objects.] Relocated: … → P# (…); … → B# referential_form; …"`.
+    A literal-string grep for the map phrasing finds nothing here — this is the trap; targeted by pattern.
+    **P01's FOR_MODEL used `(SC-0012)` phrasing** an earlier narrower grep had missed; caught + stripped.
+- **Strip vs keep (the cut boundary):** STRIP every span matching the union pattern (case-insensitive)
+  `relocat` · `SC-00[0-9][0-9]` · `→ Prop`/`→ Proposition` · `content discipline` · `§3C entities only`.
+  KEEP: entity entries (`[[O#]]`/`[[CB_]]`/`[[TM_]]` + What-it-is/Function/Signals; FOR_MODEL `entries[]`);
+  the plain considered-absence (`- None: no persistent objects in this scene.` / `_note: "No persistent
+  objects in this scene."` where `entries: null`); and every passage-describing note (`times_in_scene`
+  "No distinct temporal frame…", `register_overrides._note`, `significant_absence`, and the §3C reasoning that
+  the about-ten-years/within-day duration is content carried in §3C — these describe the *text*, not the cleanup).
+- **`_note` handling rule (FOR_MODEL):** if a scene has real `objects_in_scene.entries`, the whole `_note`
+  was scaffolding → **remove the `_note` key** (the entities carry the content; `_note` is optional, stays
+  schema-legal). If `entries: null`, reduce `_note` to the minimal considered-absence
+  `"No persistent objects in this scene."`. (10 keys removed; 7 reduced to minimal across P01–P06.)
+- **Also removed (ruled by the lead, 2026-06-01):** a stale **`- PENDING (the lead's ruling): the
+  doubled-divine-name pattern …`** bullet in P04 §3C — process-commentary that is now false: FIG_0195 captures
+  that pattern and is flagged at P04 §5B + active-figures + FOR_MODEL P4/P5 `figure_flags` (SC-0016), so nothing
+  is lost. (Its FOR_MODEL twin was already cleaned by the `_note` rule.)
+- **Guidance fix (vault-only, in the writeback pass):** the meaning-map template
+  (`_templates/meaning-map-template.md`) — §3C = entities or a plain "None: <reason>" only, the
+  relocate-never-delete record goes to the SC audit doc, never inline; and the discipline doc
+  (`_methodology/level3and3Ccontentdiscipline.md`) — add the principle (the map describes the passage, not
+  the project; no process-commentary in the content layers; same family as R5). Neither file exists in the
+  compiler repo, so these land in the vault writeback.
+- **Verification (achieved):** **zero-grep across both trees** — the union pattern returns 0 matches in
+  `fixtures/meaning-map/` and `fixtures/for-model/`. `validate` 6/6 (confirms the `_note`-key removals are
+  schema-legal) · `lint --corpus` **0 drift / 7 accepted** (second-order gate held: the 7 §4 keeps resolve by
+  `(pericope, rule, match, context_prefix)`, not line number, so the §3C strip did not orphan them) ·
+  `coverage --corpus` 6/6 block-clean (245/245, 0 unanchored) · `gold-diff` **agreement layer UNCHANGED**
+  (matched/divergent/agreementPct byte-identical pre/post; only the informational `judgmentPlaceholders`
+  count fell — the removed §3C prose carried skeleton `__TODO__` spans the compiler enumerated, not a fidelity
+  measure — baseline re-written) · `npm test` **97 green** · `check-drift` clean. Removal-only: 21 insertions
+  (all minimal-note normalizations) / 101 deletions; no entity, proposition, §4, flag, figure, or
+  significant_absence touched.
 
 ---
 
