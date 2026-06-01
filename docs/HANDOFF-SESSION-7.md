@@ -1,5 +1,10 @@
 # Session 7 build brief — doubled-divine-name figure + §4 fixes + SC-0014 forward-pointer
 
+> **⚠ SUPERSEDED (2026-05-31) — do not execute as-is.** Task 2 (the §4 atomizations) was done in the SC-0016
+> sweep. Task 1 (the doubled-divine-name figure) + Task 3 (the SC-0014 forward-pointer) are folded into
+> `docs/HANDOFF-VAULT-WRITEBACK.md` (which corrects the FIG-code estimate: the registry runs to FIG_0194).
+> Kept only for the figure spec in Task 1, referenced by the writeback brief.
+
 > Authored by the Tripod Architect session; all judgment calls **ruled by Marcia Suzuki (2026-05-31)**.
 > Small, well-scoped follow-up to the **merged** SC-0013 corrective pass (now on `main`, both repos).
 > Execute the rulings; surface anything genuinely new.

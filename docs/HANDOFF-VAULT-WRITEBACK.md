@@ -56,8 +56,30 @@ while it's live.
    **re-enable the Obsidian Git auto-backup** (now tracking clean `main`), and delete the stale
    `claude/p02-p06-content-remediation` branch once confirmed redundant.
 
+## Additional ruled tasks folded into this pass (Marcia, 2026-05-31)
+Two separately-ruled items ride this pass because they touch the same files. **Keep each as its own commit** —
+they are NOT part of the byte-identical §4 transcription, so review stays clean.
+
+**A. Create the doubled-divine-name figure** (Marcia ruled "create the flag"). This *is* authoring a registry
+entry — distinct from the transcription. Full spec in `docs/HANDOFF-SESSION-7.md` Task 1; one correction: the
+figure registry runs to **FIG_0194** (not the ~134 that brief assumed), so allocate the next free code (mind gaps).
+- The figure: the doubled/fourfold divine naming in Naomi's lament — Shaddai (1:20b) · YHWH (1:21a) · YHWH
+  (1:21c) · Shaddai (1:21d) — a doubled-Shaddai / doubled-YHWH bracketing that hammers her emptying onto God.
+  Complements FIG_0006 (Shaddai-name) + FIG_0086 (Shaddai-did-evil), which mark single invocations; this marks
+  the *pattern*. Keep: **PREFERRED** (confirm at review).
+- Wire into **both** vault and fixtures so the invariant holds: figure file + a **BCD-DELTA** (vault `figures/`);
+  the flag on **P04 P4 and P5** in the map (§5B + active-figures) **and** the FOR_MODEL `figure_flags`.
+- **Re-baseline gold-diff** (figure_flags are in its compared layer) and re-gate. Lint trap: if the name
+  contains "Doubling", reference it by **bare code** in any scanned prose, not a wikilink.
+
+**B. SC-0014 forward-pointer.** One line on the SC-0014 entry in `SPEC_CHANGES.md`: the old
+`ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` still lives in the bible-wide Layer-2 seed CSV (×2, Pilot-3 lane) —
+**reconcile at Pilot-3 lock** so SC-0014's de-jargoning isn't silently reversed. No CSV edit (don't cross into
+Pilot-3); just the recorded pointer.
+
 ## Boundaries
 - **Transcription, not authoring.** The §4 must end **byte-identical** to the blessed fixtures. No re-editing.
+  *(The two ruled tasks above are the explicit exceptions — separately committed.)*
 - **No clobber.** Diff-first per pericope; STOP on any unexpected vault-only delta.
 - **Figure enrichment is additive** (spans only); never alter existing figure content.
 - Leave `stas/`, §3C, Levels 1–2, §5 flags untouched.
