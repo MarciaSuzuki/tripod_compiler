@@ -200,6 +200,66 @@ number bound to exactly one decision.
   agreement **UNCHANGED** — confirmed (no content touched).
 - **Delivery:** compiler PR only (no vault). Marcia receives the P01–P06 inventory to rule.
 
+### SC-0018 refinement (2026-06-01) — low-noise standing gate (R1/R2/R3)
+- **Status:** **PROPOSED** (rides with SC-0018). The v1 checker was GOOD — it found every genuine issue — but
+  over-reported from three scoping limits. This refinement removes the noise **without losing any genuine
+  finding**. Still **diagnostic / add-only**: no map / FOR_MODEL / BCD / schema / vocabulary content touched; the
+  `id-alignment-exceptions.json` stays **EMPTY** (unchanged, same pin). The clean inventory is the deliverable.
+- **R1 — CB_/FIG_ codes are FLAGS; compare them in their real homes.** v1 looked for codes only in the map's §3
+  entity blocks, so every `CB_`/`FIG_` code (which the map carries in **frontmatter `active-concepts`/`active-figures`
+  + the §5 Flags section**, NOT §3) read as a false "FM-not-map" misalignment. Now `CB_`/`FIG_` codes are pulled
+  out of the §3-block ↔ scene-container structural diff and compared as **flag SETS**: the map's flag set (the
+  frontmatter `active-*` list items + the **first wikilink on each §5 bullet**, mirroring the reader's `applyFlags`
+  rule) vs the FOR_MODEL's `cb_flags` + `figure_flags`. Aligned flags never report; only a genuinely one-sided flag
+  does (new finding type `FlagMismatchFinding`, kind ∈ {CONCEPT, FIGURE}). A `CB_`/`FIG_` wikilink that appears only
+  inside a §5 bullet's *narration* (e.g. P06 §5A's parenthetical cross-pericope ref to `FIG_0131`) is **not** a flag —
+  matched by the FOR_MODEL keeping such a code in `cross_ref` free-text, not in `figure_flags`. **Removes ~70 false
+  misalignments** (the P01–P06 CB/FIG placement noise → 0 flag mismatches).
+- **R2 — vendor + pin a Concept-Bank and Figure-Registry index so `CB_`/`FIG_` are verifiable.** v1 had no `CB_`/`FIG_`
+  registry (the alias table covers only B/PL/O/TM/I), so 157 legal codes were "UNVERIFIABLE." New offline extractor
+  **`extractor/build_concept_figure_registry.py`** harvests the wiki `concepts/*.md` (frontmatter `cb-code:`, optional
+  `aliases:`) — 50 files — and `figures/*.md` (frontmatter `fig-code:`, optional `aliases:`) — 115 files — into two
+  vendored, pinned registries, each entry `{code, name_slug (= filename minus the `CODE-` prefix), aliases[]}`:
+  - `_spec/registry/ruth.concepts.json` (**registry-0.1.0**, sha256 `788d2f10bda81ac6b1a12e9d7cfc2904a3e42d65e744affd92bb48ff3ce817ff`) — 50 entries.
+  - `_spec/registry/ruth.figures.json` (**registry-0.1.0**, sha256 `56ebf4d450099ca1ed58ef2771cfec783d192b1dca8a8b1738a9aae34e9d3803`) — 115 entries.
+  Both added to `_spec/pins.json` → `sources` and covered by `tripod check-drift` (the same vendor+pin discipline as
+  `ruth.aliases.json`). Reference-integrity + name-binding now apply to `CB_`/`FIG_`: a `CB_`/`FIG_` code with no
+  registry entry ⇒ **ERROR**; a map slug matching neither the `name_slug` nor any `alias` ⇒ **name-binding ERROR**.
+  Over P01–P06 this surfaces **no new genuine CB/FIG findings** (every map/FM flag code resolves; every map CB/FIG
+  slug matches its `name_slug`) — but the machinery is now in place and `unverifiable` drops 157 → 2 (only the two
+  `TH_` thematic-overlay codes remain, by design — `TH_` has no registry).
+- **R3 — note-resolution knows the real pilot-2 artifact suffixes + discourse-thread refs.** v1 flagged
+  `COMPILATION-LOG`/`BCD-DELTA`/`VERIFICATION-INPUT[-en]` links and `[[T7-Harvest-Provision]]` as "dangling" only
+  because they live in the vault (`stas/`, `bcd/discourse-threads/`), not the compiler fixtures dir — 15 false flags.
+  Now `-FOR-MODEL`/`-COMPILATION-LOG`/`-BCD-DELTA`/`-VERIFICATION-INPUT`/`-VERIFICATION-INPUT-en`/`-COVERAGE-LEDGER`
+  are recognized as **valid pilot-2 sibling-artifact suffixes that resolve**, and `T#-…` **discourse-thread** refs
+  resolve (a documented biblical-only namespace whose notes live in `bcd/discourse-threads/`; `[[T7-Harvest-Provision]]`
+  was a real note, NOT the typo the v1 note guessed). **`-AUDIT` is deliberately NOT a valid pilot-2 artifact** → it
+  still flags. **Dangling drops 16 → 1** (only P01's `[[…-AUDIT]]`, the one true relic).
+- **Refined inventory (P01–P06):** **1 ref-integrity** (P06 `B?`) · **5 name-binding** (`B31` P02+P03;
+  `PL5_BOAZ_PORTION` P05+P06; `PL_NAOMIS_DWELLING` P05) · **17 cross-artifact misalignments** (the genuine entity
+  gaps only — the P01 `TM_TEN_YEARS`↔`TH_TEN_YEARS_APPROXIMATELY` **LIKELY_SAME_REFERENT**; place/time gaps
+  `PL_LAND_OF_JUDAH` P03, `TM_BARLEY_HARVEST_BEGINNING` P04, `PL_AMONG_SHEAVES` P06, P04 `PL1`/`PL2`; REFERENCED
+  scene-beings the map declares in §3A-prose but not the §3A header; P05 `TH_WITHIN_DAY…`; P06 `B?`) · **0 flag
+  mismatches** (all CB/FIG flags align) · **1 dangling** (P01 AUDIT) · **2 unverifiable** (`TH_` only). Was
+  1/5/87(1 LSR)/16/157; now 1/5/17(1 LSR)/0-flag/1/2. Every genuine v1 finding survives; the ~70 CB/FIG placement
+  misalignments + 15 false danglings are gone.
+- **Code (refinement):** `src/engine/id-align.ts` — `isFlagCode`, `harvestMapFlags` (map flag-set), `extractForModelFlags`
+  (FM flag-set), `buildFlagRegistry` + `loadConceptRegistry`/`loadFigureRegistry` (R2), `FlagMismatchFinding` + the
+  flag-set comparison step (R1), `isKnownPilot2Sibling` + the refined dangling resolution (R3), CB/FIG branches in
+  reference-integrity + name-binding (R2). `src/reader/source-packet.ts` — `CodeRegistry` types + loaders.
+  `src/audit/id-align-ledger.ts` — the flag-mismatch section + updated counts/labels. `id-check` CLI summary gains
+  `flag-mismatch`. `extractor/build_concept_figure_registry.py` + `extractor/README.md`. `tests/id-align.test.ts`
+  grows 16 → **29** (R1 flag-set comparison incl. the §5-narration exclusion; R2 CB/FIG ref-integrity + name-binding
+  + alias tolerance; R3 suffix/thread resolve + AUDIT-still-flags; unit tests for the new helpers; + the refined
+  real-fixture integration locks across P01/P03/P04/P05/P06).
+- **Note (exceptions `_doc`):** a new exception **kind `FLAG_MISMATCH`** is supported by the engine for signing off a
+  one-sided flag; the `id-alignment-exceptions.json` `_doc` comment still lists only the original four kinds. The file
+  is left **byte-for-byte unchanged** (still EMPTY, pin intact) per the add-only mandate — re-pinning it is out of scope.
+- **Gates (refinement):** `npm test` **126 green** (113 prior + 13 new); `check-drift` clean **incl. the two new
+  registry pins**; `validate` 6/6 · `lint --corpus` 0 drift / 7 accepted / 12 clean · `coverage --corpus` 6/6
+  (245/245) · `gold-diff` agreement **UNCHANGED** (95/98/96% — no content touched).
+
 ---
 
 ## SC-0017 — De-leak: strip process-commentary from the content layers

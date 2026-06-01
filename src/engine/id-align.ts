@@ -1,7 +1,13 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { loadValidationRules } from "../spec/load.js";
-import { loadAliasTable, type AliasTable } from "../reader/source-packet.js";
+import {
+  loadAliasTable,
+  loadConceptRegistry,
+  loadFigureRegistry,
+  type AliasTable,
+  type CodeRegistry,
+} from "../reader/source-packet.js";
 import { readMeaningMap, type MeaningMap } from "../reader/meaning-map.js";
 import { readArtifactNote } from "../reader/obsidian.js";
 
@@ -307,6 +313,22 @@ export function extractForModelCodes(forModel: any): FmCode[] {
   return out;
 }
 
+/**
+ * The FOR_MODEL's declared flag set — the real home of CB_/FIG_ codes on the machine side
+ * (SC-0018 R1): the union of every proposition's `cb_flags[]` / `figure_flags[]`. NOT scene-container
+ * `object_id`s and NOT `cross_ref` free-text (a CB_/FIG_ code mentioned only in a `cross_ref` string —
+ * e.g. P06's "…closes at P09 with FIG_0131…" — is a cross-reference, not a flag on this pericope).
+ */
+export function extractForModelFlags(forModel: any): { cb: Set<string>; fig: Set<string> } {
+  const cb = new Set<string>();
+  const fig = new Set<string>();
+  for (const prop of forModel.level_3_propositions ?? []) {
+    for (const f of prop.cb_flags ?? []) if (typeof f === "string") cb.add(f);
+    for (const f of prop.figure_flags ?? []) if (typeof f === "string") fig.add(f);
+  }
+  return { cb, fig };
+}
+
 function collectBeingSlotValues(node: unknown, acc: Set<string>, beingRe: RegExp): void {
   if (typeof node === "string") {
     if (beingRe.test(node)) acc.add(node);
@@ -329,6 +351,107 @@ function collectBeingSlotValues(node: unknown, acc: Set<string>, beingRe: RegExp
  */
 export function slugify(name: string): string {
   return name.trim().replace(/\s+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+// ───────────────────────── flag codes (CB_/FIG_) — registry + identity ─────────────────────────
+
+/**
+ * CB_/FIG_ codes are FLAGS, not §3 structural entities (SC-0018 R1). They live in the map's
+ * frontmatter `active-concepts`/`active-figures` + the §5 Flags section, and in the FOR_MODEL's
+ * `cb_flags`/`figure_flags` — NOT in the §3 entity blocks / scene containers. So they are pulled out
+ * of the structural symmetric-difference and compared as flag SETS (map flag-set ↔ FM flag-set).
+ */
+export function isFlagCode(code: string): boolean {
+  return code.startsWith("CB_") || code.startsWith("FIG_");
+}
+
+/**
+ * The vendored Concept-Bank + Figure-Registry indices, merged into one lookup keyed by bare code
+ * (SC-0018 R2). Each value carries the canonical `name_slug` (the slug the map should write after the
+ * code) and the legacy frontmatter `aliases` a slug may also legitimately match.
+ */
+export interface FlagRegistry {
+  byCode: Record<string, { code: string; name_slug: string; aliases: string[]; kind: "CONCEPT" | "FIGURE" }>;
+  has(code: string): boolean;
+}
+
+export function buildFlagRegistry(concepts: CodeRegistry, figures: CodeRegistry): FlagRegistry {
+  const byCode: FlagRegistry["byCode"] = {};
+  for (const reg of [concepts, figures]) {
+    for (const [code, e] of Object.entries(reg.entries)) {
+      byCode[code] = { code: e.code, name_slug: e.name_slug, aliases: e.aliases ?? [], kind: reg.kind };
+    }
+  }
+  return { byCode, has: (code) => byCode[code] !== undefined };
+}
+
+// ───────────────────────── map flag-set harvesting (frontmatter active-* + §5) ─────────────────────────
+
+export interface MapFlagSet {
+  /** every CB_ flag declared on this pericope (frontmatter active-concepts + §5 bullet leads). */
+  cb: Set<string>;
+  /** every FIG_ flag declared on this pericope (frontmatter active-figures + §5 bullet leads). */
+  fig: Set<string>;
+  /** code → the slug the map wrote for it (first occurrence), for CB_/FIG_ name-binding. null = bare [[CODE]]. */
+  slugByCode: Map<string, string | null>;
+  /** code → a representative location label ("frontmatter" | "§5 flags"), for the report. */
+  whereByCode: Map<string, string>;
+}
+
+/**
+ * Harvest the map's declared flag set — the real home of CB_/FIG_ codes (SC-0018 R1). A code counts
+ * as flagged when it is:
+ *   - a list item under frontmatter `active-concepts:` / `active-figures:`, or
+ *   - the FIRST wikilink on a `- …` bullet in the §5 Flags section.
+ * This mirrors the meaning-map reader's flag rule (`applyFlags` uses the bullet's first wikilink), so
+ * a CB_/FIG_ wikilink that only appears inside a flag bullet's *narration* (e.g. P06 §5A's parenthetical
+ * "…closes at P09 where [[FIG_0131-…]] fires") is NOT counted — it is a cross-reference, not a flag,
+ * exactly as the FOR_MODEL keeps it in `cross_ref` free-text, not in `figure_flags`.
+ */
+export function harvestMapFlags(raw: string): MapFlagSet {
+  const cb = new Set<string>();
+  const fig = new Set<string>();
+  const slugByCode = new Map<string, string | null>();
+  const whereByCode = new Map<string, string>();
+
+  const add = (inner: string, where: string) => {
+    const { code, slug } = parseWikilink(inner);
+    if (!isFlagCode(code)) return;
+    (code.startsWith("CB_") ? cb : fig).add(code);
+    if (!slugByCode.has(code)) slugByCode.set(code, slug);
+    if (!whereByCode.has(code)) whereByCode.set(code, where);
+  };
+  const firstWl = (line: string): string | null => line.match(/\[\[([^\]]+)\]\]/)?.[1] ?? null;
+
+  const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  const fm = fmMatch?.[1] ?? "";
+  const body = fmMatch ? raw.slice(fmMatch[0].length) : raw;
+
+  // frontmatter: only the active-concepts / active-figures YAML lists (one wikilink per list item).
+  let inList = false;
+  for (const line of fm.split(/\r?\n/)) {
+    if (/^(active-concepts|active-figures)\s*:/.test(line)) {
+      inList = true;
+      continue;
+    }
+    if (/^\S/.test(line) && !/^\s*-/.test(line)) inList = false; // a new top-level key closes the list
+    if (inList) {
+      const wl = firstWl(line);
+      if (wl) add(wl, "frontmatter");
+    }
+  }
+
+  // §5 Flags: the first wikilink on each bullet line (the declared flag; later links are narration).
+  let inFlags = false;
+  for (const line of body.split(/\r?\n/)) {
+    const h2 = line.match(/^##\s+(\d+)\./);
+    if (h2) inFlags = h2[1] === "5";
+    if (!inFlags || !/^\s*-/.test(line)) continue;
+    const wl = firstWl(line);
+    if (wl) add(wl, "§5 flags");
+  }
+
+  return { cb, fig, slugByCode, whereByCode };
 }
 
 // ───────────────────────── the report ─────────────────────────
@@ -375,6 +498,19 @@ export interface MisalignFinding {
   accepted?: AcceptedIdException;
 }
 
+/**
+ * A CB_/FIG_ flag present on one artifact but not the other (SC-0018 R1). Flags are compared in their
+ * real homes — the map's frontmatter+§5 flag set vs the FOR_MODEL's cb_flags+figure_flags — so an
+ * aligned flag never reports; only a genuine one-sided flag does.
+ */
+export interface FlagMismatchFinding {
+  kind: "CONCEPT" | "FIGURE";
+  direction: "MAP_NOT_FM" | "FM_NOT_MAP";
+  code: string;
+  severity: "MISALIGN" | "ACCEPTED";
+  accepted?: AcceptedIdException;
+}
+
 export interface DanglingNoteFinding {
   raw: string; // the note title (wikilink inner, before any |)
   where: string;
@@ -394,14 +530,16 @@ export interface IdAlignReport {
   mapPath: string;
   fmPath: string;
   referenceIntegrity: RefIntegrityFinding[];
-  unverifiable: UnverifiableFinding[]; // codes in namespaces the registry doesn't track (CB_/FIG_/TH_)
+  unverifiable: UnverifiableFinding[]; // codes in namespaces no vendored registry tracks (now: TH_ only)
   nameBinding: NameBindingFinding[];
-  misalignments: MisalignFinding[];
+  misalignments: MisalignFinding[]; // structural entity symmetric difference (B/PL/O/TM/I/TH)
+  flagMismatches: FlagMismatchFinding[]; // CB_/FIG_ flag-set symmetric difference (R1)
   danglingNotes: DanglingNoteFinding[];
   counts: {
     refErrors: number; // un-accepted
     nameErrors: number; // un-accepted
-    misalign: number; // un-accepted
+    misalign: number; // un-accepted (structural)
+    flagMismatch: number; // un-accepted (CB_/FIG_ flag-set)
     likelySameReferent: number;
     dangling: number; // un-accepted
     unverifiable: number;
@@ -413,11 +551,11 @@ export interface IdAlignReport {
 /** A reviewer sign-off keyed to one id-align finding (mirrors coverage/lint exceptions, SC-0010). */
 export interface IdAlignException {
   pericope: string; // map basename stem, e.g. "P01-Ruth-1-1-5"
-  kind: "REFERENCE_INTEGRITY" | "NAME_BINDING" | "MISALIGNMENT" | "DANGLING_NOTE";
-  code?: string; // the entity code (ref-integrity / name-binding / misalignment)
+  kind: "REFERENCE_INTEGRITY" | "NAME_BINDING" | "MISALIGNMENT" | "FLAG_MISMATCH" | "DANGLING_NOTE";
+  code?: string; // the entity/flag code (ref-integrity / name-binding / misalignment / flag-mismatch)
   note_title?: string; // the dangling note title (DANGLING_NOTE)
   scope?: string; // scene scope for a misalignment ("S1" | "pericope")
-  direction?: MisalignFinding["direction"];
+  direction?: MisalignFinding["direction"]; // MISALIGNMENT / FLAG_MISMATCH direction
   reason: string;
   note?: string;
   accepted_by?: string;
@@ -472,7 +610,39 @@ function sharedStem(a: string, b: string, prefixes: string[]): string | null {
 
 // ───────────────────────── the checker ─────────────────────────
 
-const NOTE_SUFFIX_RE = /-(FOR-MODEL|AUDIT|COVERAGE-LEDGER|COMPILATION-LOG|BCD-DELTA)$/i;
+/**
+ * Valid pilot-2 sibling-artifact suffixes (SC-0018 R3). A map note-link ending in one of these names a
+ * real pilot-2 artifact that lives in the vault `stas/` (not the compiler fixtures dir), so it resolves
+ * and is NOT flagged. Order longest-first so `-VERIFICATION-INPUT-en` is tried before `-VERIFICATION-INPUT`.
+ * **`-AUDIT` is deliberately ABSENT** — pilot-2 produces no AUDIT, so a `[[…-AUDIT]]` link is a true relic
+ * and must still flag. (`-COVERAGE-LEDGER` is a real pilot-2 artifact too; kept resolvable.)
+ */
+const PILOT2_ARTIFACT_SUFFIXES = [
+  "-VERIFICATION-INPUT-en",
+  "-VERIFICATION-INPUT",
+  "-FOR-MODEL",
+  "-COMPILATION-LOG",
+  "-BCD-DELTA",
+  "-COVERAGE-LEDGER",
+] as const;
+
+/** The discourse-thread namespace (`T#-Slug`, frontmatter `dt-code`) — notes live in the vault
+ *  `bcd/discourse-threads/`. A biblical-only namespace the entity-id schema doesn't track; a map
+ *  reference to one is a real vault note, not a dangling link (SC-0018 R3). `T#` ≠ `TM_`/`TH_`. */
+const DISCOURSE_THREAD_RE = /^T\d+-/;
+
+/** `-AUDIT` (case-insensitive) — the one artifact suffix pilot-2 does NOT produce; must still flag. */
+const AUDIT_SUFFIX_RE = /-AUDIT$/i;
+
+/**
+ * A map note-link names a real pilot-2 sibling artifact (resolves, don't flag) when its title ends in a
+ * known pilot-2 artifact suffix, OR is a discourse-thread reference. `-AUDIT` is excluded by construction.
+ */
+export function isKnownPilot2Sibling(title: string): boolean {
+  if (DISCOURSE_THREAD_RE.test(title)) return true;
+  const upper = title.toUpperCase();
+  return PILOT2_ARTIFACT_SUFFIXES.some((suf) => upper.endsWith(suf.toUpperCase()));
+}
 
 export interface CheckOpts {
   /** dir(s) to resolve a map note-link target to an existing file (for dangling-note detection). */
@@ -480,8 +650,10 @@ export interface CheckOpts {
   exceptions?: IdAlignException[];
   /** override the namespace derivation (tests) */
   namespaces?: SchemaNamespaces;
-  /** override the registry (tests) */
+  /** override the entity registry (tests) */
   aliases?: AliasTable;
+  /** override the CB_/FIG_ flag registry (tests). Default: the pinned concept + figure registries. */
+  flagRegistry?: FlagRegistry;
 }
 
 /**
@@ -491,6 +663,7 @@ export interface CheckOpts {
 export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpts = {}): IdAlignReport {
   const ns = opts.namespaces ?? loadSchemaNamespaces();
   const aliases = opts.aliases ?? loadAliasTable();
+  const flagReg = opts.flagRegistry ?? buildFlagRegistry(loadConceptRegistry(), loadFigureRegistry());
   const exceptions = opts.exceptions ?? [];
 
   const rawMap = readFileSync(mapPath, "utf8");
@@ -518,8 +691,13 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
 
   // ── Step 1: extract ──
   const mapLinks = harvestMapWikilinks(rawMap, ns);
-  const mapEntityRefs = mapLinks.filter((l) => l.isEntity);
-  const fmCodes = extractForModelCodes(fm);
+  // Structural/prose ENTITY refs exclude CB_/FIG_ flag codes — those are compared as flag SETS (R1),
+  // not in the §3-block ↔ scene-container symmetric difference.
+  const mapEntityRefs = mapLinks.filter((l) => l.isEntity && !isFlagCode(l.code));
+  const fmCodes = extractForModelCodes(fm).filter((c) => !isFlagCode(c.code));
+  // CB_/FIG_ flag sets in their real homes (R1): map frontmatter active-* + §5; FM cb_flags/figure_flags.
+  const mapFlags = harvestMapFlags(rawMap);
+  const fmFlags = extractForModelFlags(fm);
 
   // ── exception matching helper ──
   const exMatch = (kind: IdAlignException["kind"], keys: { code?: string; note_title?: string; scope?: string; direction?: string }): AcceptedIdException | undefined => {
@@ -536,6 +714,9 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   };
 
   // ── Step 2: reference integrity (both sides) ──
+  // B/PL/O/TM/I resolve via the entity alias table; CB_/FIG_ now resolve via the vendored Concept-Bank
+  // + Figure-Registry indices (SC-0018 R2). A legal code in neither (today: TH_ thematic overlay) is
+  // surfaced as UNVERIFIABLE, not errored.
   const referenceIntegrity: RefIntegrityFinding[] = [];
   const unverifiable: UnverifiableFinding[] = [];
   const seenRi = new Set<string>();
@@ -543,6 +724,16 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     const key = `${side}|${code}`;
     if (seenRi.has(key)) return;
     seenRi.add(key);
+    if (isFlagCode(code)) {
+      if (flagReg.has(code)) return; // resolves in the CB/FIG registry — fine
+      const acc = exMatch("REFERENCE_INTEGRITY", { code });
+      referenceIntegrity.push({
+        side, code, where, reason: "UNKNOWN_CODE",
+        detail: `no registry entry in ruth.${code.startsWith("CB_") ? "concepts" : "figures"}.json (the ${code.startsWith("CB_") ? "Concept Bank" : "Figure Registry"} is vendored)`,
+        severity: acc ? "ACCEPTED" : "ERROR", accepted: acc,
+      });
+      return;
+    }
     if (aliases.entities[code]) return; // resolves — fine
     if (isRegisteredNs(code)) {
       const acc = exMatch("REFERENCE_INTEGRITY", { code });
@@ -552,19 +743,24 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
         severity: acc ? "ACCEPTED" : "ERROR", accepted: acc,
       });
     } else if (ns.isEntityCode(code)) {
-      // legal entity code in a namespace the vendored registry doesn't track (CB_/FIG_/TH_)
+      // legal entity code in a namespace no vendored registry tracks (TH_ thematic overlay)
       unverifiable.push({
         side, code, where, reason: "UNVERIFIABLE_NO_REGISTRY",
-        detail: `${prefixOf(code) ?? "?"} namespace is schema-legal but not in ruth.aliases.json (Concept Bank / Figure Registry / thematic overlay not vendored)`,
+        detail: `${prefixOf(code) ?? "?"} namespace is schema-legal but vendored in no registry (thematic overlay TH_ is not vendored)`,
       });
     }
   };
   for (const l of mapEntityRefs) checkRef(l.code, "MAP", `${l.scene ?? l.section}`);
   for (const c of fmCodes) checkRef(c.code, "FOR_MODEL", c.scene ?? c.source);
+  // CB_/FIG_ flag codes also flow from the map's flag homes (frontmatter active-* + §5) and the FM's
+  // cb_flags/figure_flags — reference-integrity covers those too.
+  for (const code of [...mapFlags.cb, ...mapFlags.fig]) checkRef(code, "MAP", mapFlags.whereByCode.get(code) ?? "flags");
+  for (const code of [...fmFlags.cb, ...fmFlags.fig]) checkRef(code, "FOR_MODEL", "cb/figure flag");
 
   // ── Step 3: name-binding (map slugs) ──
   const nameBinding: NameBindingFinding[] = [];
   const seenNb = new Set<string>();
+  // (a) B/PL/O/TM/I — the slug must equal slugify(BCD canonical English name).
   for (const l of mapEntityRefs) {
     if (l.slug === null) continue; // bare [[CODE]] — no slug to bind
     const entry = aliases.entities[l.code];
@@ -578,6 +774,24 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     nameBinding.push({
       code: l.code, where: `${l.scene ?? l.section}`,
       slugFound: l.slug, slugExpected: expected, canonicalName: entry.english,
+      severity: acc ? "ACCEPTED" : "ERROR", accepted: acc,
+    });
+  }
+  // (b) CB_/FIG_ — the map slug must match the registry `name_slug` OR a frontmatter alias (R2). The
+  //     map writes the slug after the code in the wikilink ([[CB_0030-Sojourn-Gur]] → "Sojourn-Gur");
+  //     it should equal the note's name_slug, but a known legacy alias is also accepted (not flagged).
+  for (const [code, slug] of mapFlags.slugByCode) {
+    if (slug === null) continue; // bare [[CODE]] — no slug to bind
+    const entry = flagReg.byCode[code];
+    if (!entry) continue; // unknown code handled by ref-integrity
+    if (slug === entry.name_slug || entry.aliases.includes(slug)) continue;
+    const key = `${code}|${slug}`;
+    if (seenNb.has(key)) continue;
+    seenNb.add(key);
+    const acc = exMatch("NAME_BINDING", { code });
+    nameBinding.push({
+      code, where: mapFlags.whereByCode.get(code) ?? "flags",
+      slugFound: slug, slugExpected: entry.name_slug, canonicalName: entry.name_slug.replace(/-/g, " "),
       severity: acc ? "ACCEPTED" : "ERROR", accepted: acc,
     });
   }
@@ -647,22 +861,41 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     addMisalign("pericope", mapSet, fmSet);
   }
 
+  // ── Step 4b: CB_/FIG_ flag-set alignment (R1) ──
+  // Flags are pericope-level on both sides, so they are compared as sets in their real homes — NOT in
+  // the §3-block ↔ scene-container structural diff. An aligned flag never reports; a one-sided flag does.
+  const flagMismatches: FlagMismatchFinding[] = [];
+  const addFlagDiff = (kind: "CONCEPT" | "FIGURE", mapSet: Set<string>, fmSet: Set<string>) => {
+    for (const code of [...mapSet].filter((c) => !fmSet.has(c)).sort()) {
+      const acc = exMatch("FLAG_MISMATCH", { code, direction: "MAP_NOT_FM" });
+      flagMismatches.push({ kind, direction: "MAP_NOT_FM", code, severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc });
+    }
+    for (const code of [...fmSet].filter((c) => !mapSet.has(c)).sort()) {
+      const acc = exMatch("FLAG_MISMATCH", { code, direction: "FM_NOT_MAP" });
+      flagMismatches.push({ kind, direction: "FM_NOT_MAP", code, severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc });
+    }
+  };
+  addFlagDiff("CONCEPT", mapFlags.cb, fmFlags.cb);
+  addFlagDiff("FIGURE", mapFlags.fig, fmFlags.fig);
+
   // ── Step 5: dangling note links (non-entity map wikilinks that resolve to no file) ──
   const danglingNotes: DanglingNoteFinding[] = [];
   const resolveDirs = opts.noteResolveDirs ?? defaultNoteDirs(mapPath, fmPath);
   const seenNote = new Set<string>();
   for (const l of mapLinks) {
     if (l.isEntity) continue;
-    const title = parseWikilink(l.raw).code === l.raw ? l.raw : l.raw.split("|")[0]!.trim();
     // a note link is the whole target-before-pipe (notes have hyphens, so parseWikilink's "code" is partial)
     const noteTitle = l.raw.split("|")[0]!.trim();
     if (seenNote.has(noteTitle)) continue;
     seenNote.add(noteTitle);
-    if (resolvesToFile(noteTitle, resolveDirs)) continue;
+    if (resolvesToFile(noteTitle, resolveDirs)) continue; // a real file in the resolve dirs
+    if (isKnownPilot2Sibling(noteTitle)) continue; // a real pilot-2 sibling (vault stas/ or discourse-threads/) — R3
     const acc = exMatch("DANGLING_NOTE", { note_title: noteTitle });
     danglingNotes.push({
       raw: noteTitle, where: l.scene ?? l.section,
-      detail: NOTE_SUFFIX_RE.test(noteTitle) ? "no such artifact note (pilot-2 may not produce it, e.g. AUDIT)" : "no such note found in the resolve dirs",
+      detail: AUDIT_SUFFIX_RE.test(noteTitle)
+        ? "no such artifact note — pilot-2 produces no AUDIT (true relic)"
+        : "no such note found in the resolve dirs, and not a known pilot-2 sibling artifact",
       severity: acc ? "ACCEPTED" : "FLAG", accepted: acc,
     });
   }
@@ -671,19 +904,21 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   const refErrors = referenceIntegrity.filter((f) => f.severity === "ERROR").length;
   const nameErrors = nameBinding.filter((f) => f.severity === "ERROR").length;
   const misalign = misalignments.filter((f) => f.severity === "MISALIGN").length;
+  const flagMismatch = flagMismatches.filter((f) => f.severity === "MISALIGN").length;
   const likelySameReferent = misalignments.filter((f) => f.severity !== "ACCEPTED" && f.direction === "MAP_NOT_FM" && f.likelySameReferent).length;
   const dangling = danglingNotes.filter((f) => f.severity === "FLAG").length;
   const accepted =
     referenceIntegrity.filter((f) => f.severity === "ACCEPTED").length +
     nameBinding.filter((f) => f.severity === "ACCEPTED").length +
     misalignments.filter((f) => f.severity === "ACCEPTED").length +
+    flagMismatches.filter((f) => f.severity === "ACCEPTED").length +
     danglingNotes.filter((f) => f.severity === "ACCEPTED").length;
 
   return {
     pericope, mapPath, fmPath,
-    referenceIntegrity, unverifiable, nameBinding, misalignments, danglingNotes,
-    counts: { refErrors, nameErrors, misalign, likelySameReferent, dangling, unverifiable: unverifiable.length, accepted },
-    ok: refErrors + nameErrors + misalign + dangling === 0,
+    referenceIntegrity, unverifiable, nameBinding, misalignments, flagMismatches, danglingNotes,
+    counts: { refErrors, nameErrors, misalign, flagMismatch, likelySameReferent, dangling, unverifiable: unverifiable.length, accepted },
+    ok: refErrors + nameErrors + misalign + flagMismatch + dangling === 0,
   };
 }
 

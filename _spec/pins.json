@@ -23,7 +23,7 @@
       "sha256": "309e5fa71e170b5df52b33c982b630e0fe6eaabb416d0ee12fb317903e9e4de1"
     }
   },
-  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. All pinned by sha256 so coverage reconciliation is reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off — edits are recorded (SC-ref + provenance) and re-pinned.",
+  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. The Concept-Bank + Figure-Registry indices (registry/ruth.concepts.json + ruth.figures.json) are vendored OFFLINE by extractor/build_concept_figure_registry.py from the wiki concepts/ + figures/ notes (SC-0018 refinement R2) so `tripod id-check` can verify CB_/FIG_ reference-integrity + name-binding. All pinned by sha256 so coverage reconciliation + id-check are reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off — edits are recorded (SC-ref + provenance) and re-pinned.",
   "sources": {
     "coverage-exceptions.json": {
       "version": "0.1.0",
@@ -68,6 +68,14 @@
     "registry/ruth.aliases.json": {
       "version": "aliases-0.1.2",
       "sha256": "c470b904ff8bd4b574f07e6a4870eb9178f0c56a69898657be71252413c80cae"
+    },
+    "registry/ruth.concepts.json": {
+      "version": "registry-0.1.0",
+      "sha256": "788d2f10bda81ac6b1a12e9d7cfc2904a3e42d65e744affd92bb48ff3ce817ff"
+    },
+    "registry/ruth.figures.json": {
+      "version": "registry-0.1.0",
+      "sha256": "56ebf4d450099ca1ed58ef2771cfec783d192b1dca8a8b1738a9aae34e9d3803"
     }
   }
 }

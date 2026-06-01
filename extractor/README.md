@@ -15,6 +15,8 @@ calls `tf.app.use()` and never reaches GitHub.
 |---|---|---|
 | `_spec/source/ruth/P01.json` | `extract_bhsa.py` | the **source linguistic packet**: per-verse word checklist + the **R set** (referring expressions — proper/common nouns, pronouns, pronominal suffixes, and **implied verb-morphology subjects**) |
 | `_spec/registry/ruth.aliases.json` | `build_aliases.py` | entity→surface **alias table** (consonantal Hebrew + English + referential forms), harvested from the wiki BCD frontmatter, augmented by the ETCBC places NER sheet |
+| `_spec/registry/ruth.concepts.json` | `build_concept_figure_registry.py` | **Concept-Bank index** — `{code, name_slug, aliases[]}` per `CB_*`, harvested from the wiki `concepts/CODE-Slug.md` notes (SC-0018 R2: lets `tripod id-check` verify `CB_` reference-integrity + name-binding) |
+| `_spec/registry/ruth.figures.json` | `build_concept_figure_registry.py` | **Figure-Registry index** — `{code, name_slug, aliases[]}` per `FIG_*`, harvested from the wiki `figures/CODE-Slug.md` notes (SC-0018 R2: the `FIG_` counterpart) |
 
 ## Reproduce (the exact pinned commands)
 
@@ -32,6 +34,12 @@ python3 extractor/build_aliases.py \
   --bcd ~/Dropbox/Mac/Downloads/ruth-pilot-b-wiki/bcd \
   --places-ner ~/Dropbox/Mac/Downloads/bhsa/ner/sheets/places.yaml \
   --out _spec/registry/ruth.aliases.json
+
+# 3) Concept + Figure notes → CB/FIG registries (SC-0018 R2). Vault holds concepts/ + figures/.
+python3 extractor/build_concept_figure_registry.py \
+  --vault ~/Github/ruth-pilot-b-wiki \
+  --out-concepts _spec/registry/ruth.concepts.json \
+  --out-figures  _spec/registry/ruth.figures.json
 ```
 
 Each script prints the output's `sha256`; the file hash (incl. trailing newline) is what

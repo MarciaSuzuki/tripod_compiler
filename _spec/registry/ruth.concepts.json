@@ -1,0 +1,391 @@
+{
+  "book": "RUTH",
+  "counts": {
+    "entries": 50
+  },
+  "entries": {
+    "CB_0001": {
+      "aliases": [
+        "CB_KINSMAN_REDEEMER",
+        "CB_REDEEMER",
+        "CB_GOEL",
+        "CB_GOEL_REDEEMER",
+        "CB_GOEL_KINSMAN_REDEEMER"
+      ],
+      "code": "CB_0001",
+      "name_slug": "Kinsman-Redeemer"
+    },
+    "CB_0002": {
+      "aliases": [
+        "CB_LEVIRATE_STYLE_OBLIGATION",
+        "CB_LEVIRATE_INSTITUTIONAL_SHADOW"
+      ],
+      "code": "CB_0002",
+      "name_slug": "Levirate-Style-Obligation"
+    },
+    "CB_0003": {
+      "aliases": [
+        "CB_INHERITANCE"
+      ],
+      "code": "CB_0003",
+      "name_slug": "Inheritance"
+    },
+    "CB_0004": {
+      "aliases": [
+        "CB_MOABITE_OUTSIDER",
+        "CB_MOABITESS",
+        "CB_NAARAH_MOAVIYYAH",
+        "CB_MOAB_MOABITE",
+        "CB_MOABITE_WOMEN_MARRIAGE_POOL"
+      ],
+      "code": "CB_0004",
+      "name_slug": "Moabite-Outsider"
+    },
+    "CB_0005": {
+      "aliases": [
+        "CB_NAME_PRESERVATION",
+        "CB_OBED_NAME",
+        "CB_DAVID_NAME",
+        "CB_GENEALOGICAL_LINEAGE_PRESERVATION",
+        "CB_PEREZ_AS_TAMAR_LINEAGE_FOUNDER"
+      ],
+      "code": "CB_0005",
+      "name_slug": "Name-Preservation"
+    },
+    "CB_0006": {
+      "aliases": [
+        "CB_GATE_LEGAL_VENUE",
+        "CB_GATE_CIVIC_COMMUNITY"
+      ],
+      "code": "CB_0006",
+      "name_slug": "Gate-Legal-Venue"
+    },
+    "CB_0007": {
+      "aliases": [
+        "CB_ATTESTATION_CUSTOM"
+      ],
+      "code": "CB_0007",
+      "name_slug": "Attestation-Custom"
+    },
+    "CB_0008": {
+      "aliases": [
+        "CB_BLESSING",
+        "CB_BLESSING_FORMULA"
+      ],
+      "code": "CB_0008",
+      "name_slug": "Blessing"
+    },
+    "CB_0009": {
+      "aliases": [
+        "CB_DIVINE_NAME",
+        "CB_YHWH",
+        "CB_LORD",
+        "CB_SHADDAI"
+      ],
+      "code": "CB_0009",
+      "name_slug": "Divine-Name"
+    },
+    "CB_0010": {
+      "aliases": [
+        "CB_HOUSE_OF_ISRAEL"
+      ],
+      "code": "CB_0010",
+      "name_slug": "House-of-Israel"
+    },
+    "CB_0011": {
+      "aliases": [
+        "CB_HESED",
+        "CB_HESED_ENACTED"
+      ],
+      "code": "CB_0011",
+      "name_slug": "Hesed"
+    },
+    "CB_0012": {
+      "aliases": [
+        "CB_BREAD"
+      ],
+      "code": "CB_0012",
+      "name_slug": "Bread"
+    },
+    "CB_0013": {
+      "aliases": [
+        "CB_MOTHERS_HOUSE"
+      ],
+      "code": "CB_0013",
+      "name_slug": "Mothers-House"
+    },
+    "CB_0014": {
+      "aliases": [
+        "CB_MENUCHA",
+        "CB_MANOACH"
+      ],
+      "code": "CB_0014",
+      "name_slug": "Rest-Menucha"
+    },
+    "CB_0015": {
+      "aliases": [
+        "CB_HAND_OF_YHWH"
+      ],
+      "code": "CB_0015",
+      "name_slug": "Hand-of-YHWH"
+    },
+    "CB_0016": {
+      "aliases": [
+        "CB_PAQAD"
+      ],
+      "code": "CB_0016",
+      "name_slug": "Paqad-Visited"
+    },
+    "CB_0017": {
+      "aliases": [
+        "CB_DAUGHTER_IN_LAW_KALLA"
+      ],
+      "code": "CB_0017",
+      "name_slug": "Daughter-in-Law-Kallah"
+    },
+    "CB_0018": {
+      "aliases": [
+        "CB_DEVEK_CLINGING"
+      ],
+      "code": "CB_0018",
+      "name_slug": "Devek-Clinging"
+    },
+    "CB_0019": {
+      "aliases": [
+        "CB_YEBIMTEKH_KINSHIP"
+      ],
+      "code": "CB_0019",
+      "name_slug": "Yebimtekh-Sister-in-law"
+    },
+    "CB_0020": {
+      "aliases": [
+        "CB_OATH_FORMULA",
+        "CB_OATH_BY_DIVINE_LIFE"
+      ],
+      "code": "CB_0020",
+      "name_slug": "Oath-Formula-Self-curse"
+    },
+    "CB_0021": {
+      "aliases": [
+        "CB_PEOPLE_AND_GOD_PAIRING"
+      ],
+      "code": "CB_0021",
+      "name_slug": "People-and-God-Pairing"
+    },
+    "CB_0022": {
+      "aliases": [
+        "CB_NAOMI_NAME_MEANING"
+      ],
+      "code": "CB_0022",
+      "name_slug": "Naomi-Name-Meaning"
+    },
+    "CB_0023": {
+      "aliases": [
+        "CB_MARA_NAME_MEANING"
+      ],
+      "code": "CB_0023",
+      "name_slug": "Mara-Name-Meaning"
+    },
+    "CB_0024": {
+      "aliases": [
+        "CB_RIQAM"
+      ],
+      "code": "CB_0024",
+      "name_slug": "Full-and-Empty"
+    },
+    "CB_0025": {
+      "aliases": [
+        "CB_TESTIFY_AGAINST_LEGAL_IDIOM"
+      ],
+      "code": "CB_0025",
+      "name_slug": "Testify-Against-Anah-Bi"
+    },
+    "CB_0026": {
+      "aliases": [
+        "CB_BARLEY_HARVEST_SEASON_FRAME",
+        "CB_BARLEY_MEASURE"
+      ],
+      "code": "CB_0026",
+      "name_slug": "Barley-Harvest-Harvest-Frame"
+    },
+    "CB_0027": {
+      "aliases": [
+        "CB_BETHLEHEM_OF_JUDAH"
+      ],
+      "code": "CB_0027",
+      "name_slug": "Bethlehem-of-Judah"
+    },
+    "CB_0028": {
+      "aliases": [
+        "CB_FAMINE"
+      ],
+      "code": "CB_0028",
+      "name_slug": "Famine"
+    },
+    "CB_0029": {
+      "aliases": [
+        "CB_JUDGES_ERA"
+      ],
+      "code": "CB_0029",
+      "name_slug": "Judges-Era"
+    },
+    "CB_0030": {
+      "aliases": [
+        "CB_SOJOURN"
+      ],
+      "code": "CB_0030",
+      "name_slug": "Sojourn-Gur"
+    },
+    "CB_0031": {
+      "aliases": [
+        "CB_EPHRATHITE"
+      ],
+      "code": "CB_0031",
+      "name_slug": "Ephrathite"
+    },
+    "CB_0032": {
+      "aliases": [
+        "CB_CHAYIL",
+        "CB_GIBBOR_CHAYIL_PHRASE",
+        "CB_ESHET_CHAYIL"
+      ],
+      "code": "CB_0032",
+      "name_slug": "Chayil"
+    },
+    "CB_0033": {
+      "aliases": [
+        "CB_HEN",
+        "CB_GRACE"
+      ],
+      "code": "CB_0033",
+      "name_slug": "Hen-Favor"
+    },
+    "CB_0034": {
+      "aliases": [
+        "CB_LEKET",
+        "CB_GLEANING"
+      ],
+      "code": "CB_0034",
+      "name_slug": "Leket-Gleaning"
+    },
+    "CB_0035": {
+      "aliases": [
+        "CB_MIQREH"
+      ],
+      "code": "CB_0035",
+      "name_slug": "Miqreh-Chance-providence"
+    },
+    "CB_0036": {
+      "aliases": [
+        "CB_NAAR_NITSAV_AL_HAQOTSRIM"
+      ],
+      "code": "CB_0036",
+      "name_slug": "Foreman-Role-phrase"
+    },
+    "CB_0037": {
+      "aliases": [
+        "CB_REFUGE_UNDER_WINGS",
+        "CB_KANAPH_WING_OF_REFUGE",
+        "CB_WING_OF_REFUGE"
+      ],
+      "code": "CB_0037",
+      "name_slug": "Refuge-Under-Wings-Kanaph"
+    },
+    "CB_0038": {
+      "aliases": [
+        "CB_NOKHRIYA_FOREIGNER",
+        "CB_SOJOURNER"
+      ],
+      "code": "CB_0038",
+      "name_slug": "Nokhriya-Foreigner"
+    },
+    "CB_0039": {
+      "aliases": [
+        "CB_LIVING_AND_DEAD",
+        "CB_LIVING_AND_DEAD_FORMULA"
+      ],
+      "code": "CB_0039",
+      "name_slug": "Living-and-Dead-Formula"
+    },
+    "CB_0040": {
+      "aliases": [
+        "CB_EPHAH",
+        "CB_EPHAH_FIRST_OCCURRENCE"
+      ],
+      "code": "CB_0040",
+      "name_slug": "Ephah"
+    },
+    "CB_0041": {
+      "aliases": [
+        "CB_HAND_THRESHING_CHAVAT"
+      ],
+      "code": "CB_0041",
+      "name_slug": "Hand-Threshing-Chavat"
+    },
+    "CB_0042": {
+      "aliases": [
+        "CB_UNCOVER_FEET_MARGELOT"
+      ],
+      "code": "CB_0042",
+      "name_slug": "Uncover-Feet-Margelot"
+    },
+    "CB_0043": {
+      "aliases": [
+        "CB_MOTHER_IN_LAW"
+      ],
+      "code": "CB_0043",
+      "name_slug": "Mother-in-Law-Chamot"
+    },
+    "CB_0044": {
+      "aliases": [
+        "CB_RIQAM"
+      ],
+      "code": "CB_0044",
+      "name_slug": "Riqam-Empty"
+    },
+    "CB_0045": {
+      "aliases": [
+        "CB_NEARER_REDEEMER"
+      ],
+      "code": "CB_0045",
+      "name_slug": "Nearer-Redeemer"
+    },
+    "CB_0046": {
+      "aliases": [
+        "CB_SEVEN_SONS_AS_CANONICAL_FULLNESS_IDEAL"
+      ],
+      "code": "CB_0046",
+      "name_slug": "Seven-Sons-Shibah-Banim"
+    },
+    "CB_0047": {
+      "aliases": [
+        "CB_OBED_NAME"
+      ],
+      "code": "CB_0047",
+      "name_slug": "Obed-Name"
+    },
+    "CB_0048": {
+      "aliases": [
+        "CB_DAVID_NAME"
+      ],
+      "code": "CB_0048",
+      "name_slug": "David-Name"
+    },
+    "CB_0049": {
+      "aliases": [
+        "CB_PEREZ_AS_TAMAR_LINEAGE_FOUNDER"
+      ],
+      "code": "CB_0049",
+      "name_slug": "Perez-as-Lineage-Founder"
+    },
+    "CB_0050": {
+      "aliases": [],
+      "code": "CB_0050",
+      "name_slug": "Stirred-Hom"
+    }
+  },
+  "kind": "CONCEPT",
+  "schema": "tripod-concept-bank",
+  "schema_version": "0.1.0",
+  "source": "ruth-pilot-b-wiki/concepts frontmatter (code + name_slug + aliases)"
+}

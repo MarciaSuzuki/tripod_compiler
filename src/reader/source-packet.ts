@@ -77,6 +77,34 @@ export function loadAliasTable(book = "ruth"): AliasTable {
   return loadSpecJson<AliasTable>(join("registry", `${book.toLowerCase()}.aliases.json`));
 }
 
+/**
+ * One Concept-Bank / Figure-Registry entry (vendored from the wiki `concepts/` + `figures/`
+ * notes by `extractor/build_concept_figure_registry.py`). `name_slug` = the note filename minus
+ * its `CODE-` prefix (the slug the map carries after the bare code); `aliases` are the legacy
+ * named forms from the note's frontmatter (e.g. `CB_GATE_LEGAL_VENUE`). SC-0018 refinement R2.
+ */
+export interface CodeRegistryEntry {
+  code: string;
+  name_slug: string;
+  aliases: string[];
+}
+
+export interface CodeRegistry {
+  book: string;
+  kind: "CONCEPT" | "FIGURE";
+  entries: Record<string, CodeRegistryEntry>;
+}
+
+/** Load the pinned Concept-Bank index (`_spec/registry/<book>.concepts.json`). */
+export function loadConceptRegistry(book = "ruth"): CodeRegistry {
+  return loadSpecJson<CodeRegistry>(join("registry", `${book.toLowerCase()}.concepts.json`));
+}
+
+/** Load the pinned Figure-Registry index (`_spec/registry/<book>.figures.json`). */
+export function loadFigureRegistry(book = "ruth"): CodeRegistry {
+  return loadSpecJson<CodeRegistry>(join("registry", `${book.toLowerCase()}.figures.json`));
+}
+
 /** A reviewer-signed-off coverage exception: downgrades a matched finding from BLOCK to ACCEPTED. */
 export interface CoverageException {
   pericope: string;

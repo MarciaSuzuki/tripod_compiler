@@ -16,7 +16,7 @@ export function formatIdAlignText(r: IdAlignReport): string {
   lines.push(`${r.ok ? "✓" : "✗"} ID-CHECK  ${r.pericope}  (map ${baseName(r.mapPath)} ↔ FM ${baseName(r.fmPath)})`);
   lines.push(
     `   ${c.refErrors} ref-integrity error(s) · ${c.nameErrors} name-binding error(s) · ` +
-      `${c.misalign} misalignment(s) (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.dangling} dangling note(s)` +
+      `${c.misalign} misalignment(s) (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.flagMismatch} flag-mismatch(es) · ${c.dangling} dangling note(s)` +
       (c.unverifiable ? ` · ${c.unverifiable} unverifiable` : "") +
       (c.accepted ? ` · ${c.accepted} accepted` : ""),
   );
@@ -41,17 +41,22 @@ export function formatIdAlignText(r: IdAlignReport): string {
       lines.push(`      ${mark(f.severity)} [${f.scope}] ${dir(f.direction)}: ${f.code}${lsr}${pe}${acc(f.accepted)}`);
     }
   }
+  if (r.flagMismatches.length) {
+    lines.push(`   CB_/FIG_ flag mismatch (flag-set symmetric difference — map active-concepts/§5 ↔ FM cb/figure_flags):`);
+    for (const f of r.flagMismatches)
+      lines.push(`      ${mark(f.severity)} [${f.kind}] ${dir(f.direction)}: ${f.code}${acc(f.accepted)}`);
+  }
   if (r.danglingNotes.length) {
     lines.push(`   dangling note links (non-entity [[…]] resolving to no note):`);
     for (const f of r.danglingNotes) lines.push(`      ${mark(f.severity)} [[${f.raw}]]  @${f.where}  — ${f.detail}${acc(f.accepted)}`);
   }
   if (r.unverifiable.length) {
-    lines.push(`   unverifiable (schema-legal codes in namespaces the vendored registry doesn't track — CB_/FIG_/TH_):`);
+    lines.push(`   unverifiable (schema-legal codes in namespaces no vendored registry tracks — TH_ thematic overlay):`);
     const byCode = new Map<string, string[]>();
     for (const f of r.unverifiable) (byCode.get(f.code) ?? byCode.set(f.code, []).get(f.code)!).push(f.side);
     lines.push(`      ${[...byCode.keys()].sort().join(" · ")}`);
   }
-  if (r.referenceIntegrity.length + r.nameBinding.length + r.misalignments.length + r.danglingNotes.length + r.unverifiable.length === 0)
+  if (r.referenceIntegrity.length + r.nameBinding.length + r.misalignments.length + r.flagMismatches.length + r.danglingNotes.length + r.unverifiable.length === 0)
     lines.push(`   — clean: every entity code aligns and resolves.`);
   return lines.join("\n");
 }
@@ -86,6 +91,7 @@ export function renderIdAlignNote(r: IdAlignReport): string {
       : f.presentElsewhere ? `present on other side as ${f.presentElsewhere}` : "—",
     severityCell(f.severity, f.accepted),
   ]);
+  const fmiRows = r.flagMismatches.map((f) => [f.kind, dir(f.direction), `\`${f.code}\``, severityCell(f.severity, f.accepted)]);
   const dnRows = r.danglingNotes.map((f) => [`[[${f.raw}]]`, f.where, f.detail, severityCell(f.severity, f.accepted)]);
   const uvRows = [...new Set(r.unverifiable.map((f) => f.code))].sort().map((code) => {
     const sides = [...new Set(r.unverifiable.filter((f) => f.code === code).map((f) => f.side))].join(", ");
@@ -103,24 +109,27 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     `sc_ref: "SC-0018"\n` +
     `---\n\n` +
     `# ${r.pericope} — CROSS-ARTIFACT ID-ALIGNMENT LEDGER\n\n` +
-    `> **${c.refErrors} ref-integrity · ${c.nameErrors} name-binding · ${c.misalign} misalignment (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.dangling} dangling · ${c.unverifiable} unverifiable · ${c.accepted} accepted.**\n>\n` +
+    `> **${c.refErrors} ref-integrity · ${c.nameErrors} name-binding · ${c.misalign} misalignment (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.flagMismatch} flag-mismatch · ${c.dangling} dangling · ${c.unverifiable} unverifiable · ${c.accepted} accepted.**\n>\n` +
     `> SC-0018, the 5th deterministic check (legal · complete · atomic-bare-plain · **aligned** · true).\n` +
     `> DIAGNOSTIC ONLY — the prose map and the FOR_MODEL are two halves of one training pair; an entity\n` +
     `> named in one must be the same canonical code the other uses. This inventory is ruled by a human; it fixes nothing.\n\n` +
     `## Reference integrity — code with no registry entry (${r.referenceIntegrity.length})\n\n` +
-    `_Checked only for namespaces the vendored \`ruth.aliases.json\` tracks (B/PL/O/TM/I). Unknown ⇒ **ERROR**._\n\n` +
+    `_B/PL/O/TM/I resolve via \`ruth.aliases.json\`; \`CB_\`/\`FIG_\` via the vendored \`ruth.concepts.json\`/\`ruth.figures.json\`. Unknown ⇒ **ERROR**._\n\n` +
     table(["side", "code", "where", "reason", "severity"], riRows) +
-    `\n## Name-binding — map slug ≠ slugify(BCD canonical name) (${r.nameBinding.length})\n\n` +
-    `_Catches typos and wrong-code-on-name. slugify = trim · whitespace→\`-\` · Title-Case preserved._\n\n` +
-    table(["code", "where", "slug found", "slug expected", "BCD name", "severity"], nbRows) +
+    `\n## Name-binding — map slug ≠ canonical name (${r.nameBinding.length})\n\n` +
+    `_B/PL/O/TM/I: slug = slugify(BCD English name) (trim · whitespace→\`-\` · Title-Case preserved). \`CB_\`/\`FIG_\`: slug = the registry \`name_slug\` or a known alias. Catches typos and wrong-code-on-name._\n\n` +
+    table(["code", "where", "slug found", "slug expected", "canonical name", "severity"], nbRows) +
     `\n## Cross-artifact misalignment — structural symmetric difference (${r.misalignments.length})\n\n` +
-    `_Per aligned scene (map §3 ↔ FOR_MODEL scene_id). \`LIKELY_SAME_REFERENT\` = an unmatched map code + FM code sharing a stem (the highest-value finding, e.g. \`TM_TEN_YEARS\` ↔ \`TH_TEN_YEARS_APPROXIMATELY\`)._\n\n` +
+    `_Per aligned scene (map §3 ↔ FOR_MODEL scene_id), entities only (B/PL/O/TM/I/TH). \`LIKELY_SAME_REFERENT\` = an unmatched map code + FM code sharing a stem (the highest-value finding, e.g. \`TM_TEN_YEARS\` ↔ \`TH_TEN_YEARS_APPROXIMATELY\`)._\n\n` +
     table(["scope", "direction", "code", "tag", "severity"], maRows) +
+    `\n## CB_/FIG_ flag mismatch — flag-set symmetric difference (${r.flagMismatches.length})\n\n` +
+    `_Flags are compared in their real homes: the map's frontmatter \`active-concepts\`/\`active-figures\` + §5 Flags vs the FOR_MODEL's \`cb_flags\`/\`figure_flags\`. An aligned flag never reports; only a genuinely one-sided flag does._\n\n` +
+    table(["kind", "direction", "code", "severity"], fmiRows) +
     `\n## Dangling note links (${r.danglingNotes.length})\n\n` +
-    `_A non-entity map \`[[Note-Title]]\` that resolves to no existing note (e.g. a stale \`[[…-AUDIT]]\` — pilot-2 has no AUDIT)._\n\n` +
+    `_A non-entity map \`[[Note-Title]]\` that names no real note. Known pilot-2 sibling artifacts (\`-FOR-MODEL\`/\`-COMPILATION-LOG\`/\`-BCD-DELTA\`/\`-VERIFICATION-INPUT[-en]\`/\`-COVERAGE-LEDGER\`) and discourse-thread refs (\`T#-…\`) resolve; a stale \`[[…-AUDIT]]\` still flags — pilot-2 has no AUDIT._\n\n` +
     table(["note", "where", "detail", "severity"], dnRows) +
-    `\n## Unverifiable codes — schema-legal, registry doesn't track them (${uvRows.length})\n\n` +
-    `_\`CB_\` (Concept Bank) / \`FIG_\` (Figure Registry) / \`TH_\` (thematic overlay): legal per the schema, but not in the vendored \`ruth.aliases.json\`, so reference-integrity cannot verify them here. Surfaced, not errored._\n\n` +
+    `\n## Unverifiable codes — schema-legal, no vendored registry tracks them (${uvRows.length})\n\n` +
+    `_\`TH_\` (thematic overlay): legal per the schema, but vendored in no registry, so reference-integrity cannot verify it here. Surfaced, not errored. (\`CB_\`/\`FIG_\` are now verifiable — see above.)_\n\n` +
     table(["code", "sides"], uvRows)
   );
 }
