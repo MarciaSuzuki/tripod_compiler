@@ -160,7 +160,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": null
       },
       "objects_in_scene": {
-        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the refusal of her own name → P4 (REFUSED_USE_OF_OWN_NAME); the proposed renaming to Mara → P4 (PROPOSED_NEW_NAME; B3 referential_form; cb_flag CB_0023; FIG_0082); the Mara/hemar root-pun → FIG_0083; the bittering ascription to Shaddai → P4 (FIG_0006 Shaddai-name); 'I went out full' and the riqam 'empty' → P5 (STATED_FULL_EMPTY_ANTITHESIS; FIG_0084; cb_flags CB_0024, CB_0044); the rhetorical protest-question → P5 (ASKED_RHETORICAL_QUESTION_AS_PROTEST); the anah-bi courtroom testimony → P5 (ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH; cb_flag CB_0025); the Shaddai-did-evil harm → P5 (FIG_0086). PENDING (the lead's ruling): the doubled-divine-name pattern (YHWH twice and Shaddai twice across 1:20–21) has no figure of its own — its four invocations survive at P4/P5 (Shaddai → FIG_0006; YHWH → P5 slots + CB_0025), but the pattern as a figure was dropped in the first pass; a new figure is proposed for it (see handoff). Not added here pending the ruling.",
+        "_note": "§3C entities only (SC-0013). No persistent objects. Relocated: the refusal of her own name → P4 (REFUSED_USE_OF_OWN_NAME); the proposed renaming to Mara → P4 (PROPOSED_NEW_NAME; B3 referential_form; cb_flag CB_0023; FIG_0082); the Mara/hemar root-pun → FIG_0083; the bittering ascription to Shaddai → P4 (FIG_0006 Shaddai-name); 'I went out full' and the riqam 'empty' → P5 (STATED_FULL_EMPTY_ANTITHESIS; FIG_0084; cb_flags CB_0024, CB_0044); the rhetorical protest-question → P5 (ASKED_RHETORICAL_QUESTION_AS_PROTEST); the anah-bi courtroom testimony → P5 (ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH; cb_flag CB_0025); the Shaddai-did-evil harm → P5 (FIG_0086). The fourfold divine naming across 1:20–21 (Shaddai · YHWH · YHWH · Shaddai) is now its own figure FIG_0195, flagged at P4 and P5 — it marks the pattern, complementing FIG_0006 (the Shaddai name) and FIG_0086 (the single Shaddai-did-evil invocation), which mark single occurrences (ruled + created under SC-0016).",
         "entries": null
       },
       "times_in_scene": {
@@ -333,7 +333,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "figure_flags": [
         "FIG_0082",
         "FIG_0083",
-        "FIG_0006"
+        "FIG_0006",
+        "FIG_0195"
       ]
     },
     {
@@ -389,7 +390,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "FIG_0084",
         "FIG_0086",
         "FIG_0006",
-        "FIG_0088"
+        "FIG_0088",
+        "FIG_0195"
       ]
     },
     {
