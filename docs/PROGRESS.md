@@ -14,10 +14,11 @@ npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
 npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-1, 0 tier-2) · 7 accepted (signed off) · exit 0 — the operating-test bar
-npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, ALIGNED): 4 clean (P01/P04/P05/P06) · 0 misalignment (8 standing → 5 prose-resolved + 3 signed off) · deferred B31 name-binding (P02/P03) · 3 unverifiable (TH_) · 9 accepted · 1 withheld INFO (B?)
+npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, ALIGNED): **6 clean / 0 findings** (B31 resolved via registered alias; TM_TEN_YEARS retired) · 3 unverifiable (TH_) · 9 accepted · 1 withheld INFO (B?)
 ```
 
 ## Shipped (on `main`)
+- **SC-0019 + SC-0020 — Common-Reader Prose Standard + entity-ID reconciliation (P01–P06), SHIPPED 2026-06-01.** Conditioning prose re-voiced (blessed) + entity-IDs reconciled; `id-check` (the 5th gate) at **6 clean / 0 findings**. B31 binds via a registered alias (canonical preserved); `TM_TEN_YEARS` retired (TH_ unverifiable). Both conventions seeded into the vault meaning-map template + Agent-2/3 prompts → **P07–P14 born clean**. Compiler PR #21 + vault PR #8 (`fixtures ≡ vault`).
 - **Slice 1 — validator.** TS/Node (ESM). `tripod validate <note|dir>` over the **pinned** locked
   schemas: Layer 1 = ajv structure + closed-list **block**; Layer 2 = bounded-open **drift**;
   Layer 3 = referential integrity + registry refs; register-critical presence. `tripod check-drift`
