@@ -23,10 +23,7 @@ export interface CanonicalP01Enumerations {
   tone_element: string[];
   pace_element: string[];
   communicative_function_element: string[];
-  role_in_scene_examples_being: string[];
-  role_in_scene_examples_place: string[];
-  role_in_scene_examples_time: string[];
-  function_in_scene_examples_object: string[];
+  role_in_scene_being: string[];
   [k: string]: string[];
 }
 

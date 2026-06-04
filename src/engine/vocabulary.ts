@@ -60,23 +60,23 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
     sceneEntries(sc?.beings_in_scene).forEach((e, i) => {
       if (typeof e?.being_id === "string") declared.add(e.being_id);
       drift(e?.presence, "presence_value", `${at}/beings_in_scene/entries/${i}/presence`);
-      drift(e?.role_in_scene, "role_in_scene_examples_being", `${at}/beings_in_scene/entries/${i}/role_in_scene`);
+      drift(e?.role_in_scene, "role_in_scene_being", `${at}/beings_in_scene/entries/${i}/role_in_scene`);
       if (typeof e?.referential_form === "string") {
         referentialFormCount++;
         drift(e.referential_form, "referential_form", `${at}/beings_in_scene/entries/${i}/referential_form`);
       }
     });
-    sceneEntries(sc?.places_in_scene).forEach((e, i) => {
+    // SC-0022: place/object/time entries are id-only (role_in_scene/function_in_scene dropped from
+    // the schema — their meaning is owned by registry-kind + statement slots + figures/threads).
+    // The loops remain to collect declared entity ids for the referential-integrity check below.
+    sceneEntries(sc?.places_in_scene).forEach((e) => {
       if (typeof e?.place_id === "string") declared.add(e.place_id);
-      drift(e?.role_in_scene, "role_in_scene_examples_place", `${at}/places_in_scene/entries/${i}/role_in_scene`);
     });
-    sceneEntries(sc?.objects_in_scene).forEach((e, i) => {
+    sceneEntries(sc?.objects_in_scene).forEach((e) => {
       if (typeof e?.object_id === "string") declared.add(e.object_id);
-      drift(e?.function_in_scene, "function_in_scene_examples_object", `${at}/objects_in_scene/entries/${i}/function_in_scene`);
     });
-    sceneEntries(sc?.times_in_scene).forEach((e, i) => {
+    sceneEntries(sc?.times_in_scene).forEach((e) => {
       if (typeof e?.time_id === "string") declared.add(e.time_id);
-      drift(e?.role_in_scene, "role_in_scene_examples_time", `${at}/times_in_scene/entries/${i}/role_in_scene`);
     });
     const absence = sc?.significant_absence;
     if (typeof absence === "string" && absence.trim() !== "") scenesWithAbsence++;

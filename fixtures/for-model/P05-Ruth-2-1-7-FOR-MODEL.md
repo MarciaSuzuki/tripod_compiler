@@ -71,43 +71,42 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "SETTLES"
     ],
     "communicative_function_elements": [
-      "OPENS_CHAPTER_TWO",
-      "INTRODUCES_SECOND_MALE_PROTAGONIST_BEFORE_ACTION",
-      "ANCHORS_KINSMAN_REDEEMER_FRAME_AT_AUDIENCE_LEVEL",
-      "POSITIONS_RUTH_AND_BOAZ_IN_SAME_FIELD_THROUGH_CHANCE_CONSTRUCTION",
-      "OPENS_CHAYIL_CROSS_PERICOPE_PAIR",
-      "REACTIVATES_MOABITE_EPITHET_IN_THIRD_PARTY_VOICE",
-      "STAGES_GLEANING_INSTITUTION_AS_LEGAL_CUSTOMARY_FRAME",
-      "WITHHOLDS_DIVINE_AGENCY_BEHIND_MIQREH_CONSTRUCTION"
+      "OPENS",
+      "INTRODUCES",
+      "ANCHORS",
+      "POSITIONS",
+      "REACTIVATES",
+      "STAGES",
+      "WITHHOLDS"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "2:1",
-      "scene_kind": "NARRATOR_PARENTHETICAL_INTRODUCTION_SCENE",
+      "scene_kind": "NARRATOR_INTRODUCTION_SCENE",
       "scene_communicative_purpose": "Introduces Boaz to the audience before he steps into the story. Places him among the family through Naomi's tie to her dead husband and through the clan.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B13",
-            "role_in_scene": "KINSMAN_INTRODUCED_BY_NARRATOR_BEFORE_ACTION",
+            "role_in_scene": "KINSMAN",
             "presence": "REFERENCED",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "KINSHIP_ANCHOR_THROUGH_WHOM_KINSMAN_IS_POSITIONED",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B2",
-            "role_in_scene": "DECEASED_ANCESTOR_FRAME_FOR_KINSHIP_AND_CLAN",
+            "role_in_scene": "ANCESTOR",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B29",
-            "role_in_scene": "LEGAL_RELATIONAL_KIN_GROUP_OF_THE_DECEASED_ANCESTOR",
+            "role_in_scene": "REDEEMER_KIN",
             "presence": "REFERENCED"
           }
         ]
@@ -119,8 +118,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0032",
-            "function_in_scene": "STANDING_AND_CAPABILITY_BY_WHICH_THE_NARRATOR_INTRODUCES_BOAZ"
+            "object_id": "CB_0032"
           }
         ]
       },
@@ -133,19 +131,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "2:2",
-      "scene_kind": "INTERIOR_INITIATIVE_AND_RELEASE_SCENE",
+      "scene_kind": "INITIATIVE_SCENE",
       "scene_communicative_purpose": "Shows that the gleaning is Ruth's own idea, not Naomi's. Naomi lets her go without changing a word of it. The exchange is short and close, and it matters.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B9",
-            "role_in_scene": "DAUGHTER_IN_LAW_PROPOSING_GLEANING_INITIATIVE",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "MOTHER_IN_LAW_GRANTING_PERMISSION",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           }
@@ -154,24 +152,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL_NAOMIS_DWELLING",
-            "role_in_scene": "PRIVATE_INTERIOR_SETTING_OF_INITIATIVE_AND_RELEASE_DIALOGUE"
+            "place_id": "PL_NAOMIS_DWELLING"
           },
           {
-            "place_id": "PL5",
-            "role_in_scene": "REFERENCED_PROPOSED_DESTINATION_OF_GLEANING_INITIATIVE"
+            "place_id": "PL5"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0033",
-            "function_in_scene": "GRACE_RUTH_HOPES_TO_FIND_IN_THE_EYES_OF_A_FIELD_OWNER"
+            "object_id": "CB_0033"
           },
           {
-            "object_id": "CB_0034",
-            "function_in_scene": "GLEANING_INSTITUTION_FOR_THE_POOR_AND_FOREIGNER_RUTH_PROPOSES_TO_ENTER"
+            "object_id": "CB_0034"
           }
         ]
       },
@@ -184,35 +178,35 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "2:3-4",
-      "scene_kind": "FIELD_ARRIVAL_CHANCE_PROVIDENCE_AND_GREETING_SCENE",
+      "scene_kind": "ARRIVAL_SCENE",
       "scene_communicative_purpose": "Brings Ruth into Boaz's field by a turn the narrator tells so you can't tell if it is chance or God's hand. Shows Boaz arriving from Bethlehem. Sets the field-community's covenant-blessing tone through the greeting they trade. Names the clan again at the very moment of her chance arrival.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B9",
-            "role_in_scene": "GLEANER_ARRIVING_THROUGH_CHANCE_CONSTRUCTION",
+            "role_in_scene": "GLEANER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B13",
-            "role_in_scene": "FIELD_OWNER_ARRIVING_FROM_HOMETOWN_AT_MID_SCENE",
+            "role_in_scene": "FIELD_OWNER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B14",
-            "role_in_scene": "FIELD_WORKING_COMMUNITY_GLEANER_FOLLOWS_AND_OWNER_GREETS",
+            "role_in_scene": "HARVESTERS",
             "presence": "PRESENT_COLLECTIVE"
           },
           {
             "being_id": "B10",
-            "role_in_scene": "INVOKED_DIVINE_AGENT_OF_GREETING_AND_RETURN_BLESSING",
+            "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B29",
-            "role_in_scene": "LEGAL_RELATIONAL_KIN_GROUP_RESTATED_AT_CHANCE_ARRIVAL_MOMENT",
+            "role_in_scene": "REDEEMER_KIN",
             "presence": "REFERENCED"
           }
         ]
@@ -220,28 +214,23 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5",
-            "role_in_scene": "AGRICULTURAL_FIELD_HARVEST_LOCUS_GENERAL"
+            "place_id": "PL5"
           },
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "OWNED_PORTION_REACHED_THROUGH_CHANCE_CONSTRUCTION"
+            "place_id": "PL5_BOAZ_PORTION"
           },
           {
-            "place_id": "PL1",
-            "role_in_scene": "HOMETOWN_FROM_WHICH_FIELD_OWNER_ARRIVES"
+            "place_id": "PL1"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0035",
-            "function_in_scene": "CHANCE_THAT_LANDS_RUTH_IN_BOAZ_PORTION_WITH_THE_ONE_WHO_LEADS_HER_WITHHELD"
+            "object_id": "CB_0035"
           },
           {
-            "object_id": "CB_0008",
-            "function_in_scene": "FIELD_GREETING_AND_ANSWERING_BLESSING_EXCHANGED_IN_YHWHS_NAME"
+            "object_id": "CB_0008"
           }
         ]
       },
@@ -254,36 +243,36 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S4",
       "verse_range": "2:5-7",
-      "scene_kind": "FIELD_OWNER_FOREMAN_REPORT_SCENE",
+      "scene_kind": "REPORT_SCENE",
       "scene_communicative_purpose": "Shows the first time the outsider gleaner is named out loud among the field-workers. The field's owner asks whose young woman this is; the foreman tells him where she is from, how she is tied to her mother-in-law, what she asked when she came to glean, and how she has worked from morning until now.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B13",
-            "role_in_scene": "FIELD_OWNER_ASKING_KINSHIP_BELONGING_QUESTION",
+            "role_in_scene": "FIELD_OWNER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B15",
-            "role_in_scene": "FOREMAN_ANSWERING_WITH_IDENTITY_AND_WORK_PATTERN_REPORT",
+            "role_in_scene": "FOREMAN",
             "presence": "PRESENT",
             "referential_form": "NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "REFERENT_OF_QUESTION_AND_REPORT_IDENTIFIED_BY_ETHNIC_EPITHET_AND_KIN_RELATION",
+            "role_in_scene": "GLEANER",
             "presence": "REFERENCED",
             "referential_form": "NAARA_MOABIYAH_THIRD_PARTY_EPITHET"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "KINSHIP_ANCHOR_THROUGH_WHOM_GLEANER_IS_IDENTIFIED_IN_FOREMAN_REPORT",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B14",
-            "role_in_scene": "FIELD_WORKING_COMMUNITY_POSITION_ANCHOR_FOR_FOREMAN_ROLE_NAMING",
+            "role_in_scene": "HARVESTERS",
             "presence": "REFERENCED"
           }
         ]
@@ -291,24 +280,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "OWNED_PORTION_CONTINUING_FROM_PREVIOUS_SCENE"
+            "place_id": "PL5_BOAZ_PORTION"
           },
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_NAMED_AS_ORIGIN_IN_FOREMAN_REPORT"
+            "place_id": "PL2"
           },
           {
-            "place_id": "PL_HA_BAYIT_FIELD_SHELTER",
-            "role_in_scene": "FIELD_SHELTER_NAMED_IN_FOREMAN_REPORT_WITH_TEXTUAL_UNCERTAINTY"
+            "place_id": "PL_HA_BAYIT_FIELD_SHELTER"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW",
-            "function_in_scene": "WITHIN_DAY_WORK_SPAN_AS_CONTENT_IN_THE_FOREMANS_QUOTED_REPORT"
+            "object_id": "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW"
           }
         ]
       },
@@ -324,7 +309,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "2:1",
-      "proposition_kind": "NARRATOR_INTRODUCES_KINSMAN_BEFORE_ACTION",
+      "proposition_kind": "NARRATOR_INTRODUCES",
       "event_specific_slots": {
         "introduction_components": [
           {
@@ -371,7 +356,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S2",
       "verse_anchor": "2:2a",
-      "proposition_kind": "REQUESTED_PERMISSION_TO_GLEAN",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "requester": "B9",
         "addressee": "B3",
@@ -390,7 +375,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S2",
       "verse_anchor": "2:2b",
-      "proposition_kind": "GRANTED_PERMISSION_TO_GLEAN",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "permission_granter": "B3",
         "permission_recipient": "B9",
@@ -409,7 +394,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S3",
       "verse_anchor": "2:3a",
-      "proposition_kind": "WENT_AND_GLEANED_BEHIND_HARVESTERS",
+      "proposition_kind": "GLEANED",
       "event_specific_slots": {
         "gleaner": "B9",
         "destination": "PL5",
@@ -428,7 +413,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S3",
       "verse_anchor": "2:3b",
-      "proposition_kind": "CHANCE_ARRIVED_AT_KINSMAN_PORTION_WITH_CLAN_FRAME_RESTATED",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "gleaner": "B9",
         "arrived_at_portion": "PL5_BOAZ_PORTION",
@@ -450,7 +435,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S3",
       "verse_anchor": "2:4a",
-      "proposition_kind": "ARRIVED_AT_FIELD_FROM_HOMETOWN",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "arriver": "B13",
         "origin": "PL1",
@@ -467,7 +452,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S3",
       "verse_anchor": "2:4b",
-      "proposition_kind": "EXCHANGED_GREETING_AND_RETURN_BLESSING",
+      "proposition_kind": "BLESSING",
       "event_specific_slots": {
         "greeting_components": [
           {
@@ -499,7 +484,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S4",
       "verse_anchor": "2:5",
-      "proposition_kind": "ASKED_KINSHIP_AND_SOCIAL_COVER_QUESTION",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "question_asker": "B13",
         "question_addressee": "B15",
@@ -516,7 +501,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S4",
       "verse_anchor": "2:6-7",
-      "proposition_kind": "FOREMAN_REPORTED_IDENTITY_AND_WORK_PATTERN",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "reporter": "B15",
         "report_addressee": "B13",

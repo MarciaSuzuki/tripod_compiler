@@ -71,12 +71,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "QUIETLY_ACCELERATING"
     ],
     "communicative_function_elements": [
-      "OPENS_BOOK",
-      "ESTABLISHES_PARTICIPANTS",
-      "ESTABLISHES_CONDITION",
-      "PLANTS_OPEN_QUESTION",
-      "TRANSMITS_COMMUNITY_MEMORY",
-      "WITHHOLDS_DIVINE_AGENCY"
+      "OPENS",
+      "ESTABLISHES",
+      "PLANTS",
+      "TRANSMITS",
+      "WITHHOLDS"
     ]
   },
 
@@ -91,36 +90,36 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B2",
-            "role_in_scene": "HOUSEHOLD_HEAD_LEADING_DEPARTURE",
+            "role_in_scene": "HUSBAND",
             "presence": "PRESENT",
             "referential_form": "UNNAMED_MAN_FROM_BETHLEHEM"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "WIFE_ACCOMPANYING_HEAD",
+            "role_in_scene": "WIFE",
             "presence": "PRESENT",
             "referential_form": "UNNAMED_WIFE_OF_HEAD"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "ELDER_SON_ACCOMPANYING_FAMILY",
+            "role_in_scene": "SON",
             "presence": "PRESENT",
             "referential_form": "UNNAMED_FIRST_SON"
           },
           {
             "being_id": "B5",
-            "role_in_scene": "YOUNGER_SON_ACCOMPANYING_FAMILY",
+            "role_in_scene": "SON",
             "presence": "PRESENT",
             "referential_form": "UNNAMED_SECOND_SON"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "ERA_ANCHOR_REFERENT",
+            "role_in_scene": "ERA_REFERENT",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B6",
-            "role_in_scene": "CLAN_IDENTITY_OF_HOUSEHOLD",
+            "role_in_scene": "CLAN",
             "presence": "REFERENCED"
           }
         ]
@@ -129,16 +128,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL_LAND_OF_JUDAH",
-            "role_in_scene": "LAND_AFFLICTED_BY_FAMINE"
+            "place_id": "PL_LAND_OF_JUDAH"
           },
           {
-            "place_id": "PL1",
-            "role_in_scene": "HOMETOWN_DEPARTED_FROM"
+            "place_id": "PL1"
           },
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_DESTINATION_OF_SOJOURN"
+            "place_id": "PL2"
           }
         ]
       },
@@ -146,12 +142,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "O1",
-            "function_in_scene": "AFFLICTION_THAT_TRIGGERS_DEPARTURE"
+            "object_id": "O1"
           },
           {
-            "object_id": "CB_0030",
-            "function_in_scene": "FRAMES_DEPARTURE_AS_INTENDED_TEMPORARY"
+            "object_id": "CB_0030"
           }
         ]
       },
@@ -159,8 +153,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "times_in_scene": {
         "entries": [
           {
-            "time_id": "TM_PERIOD_OF_JUDGES",
-            "role_in_scene": "HISTORICAL_ERA_ANCHOR"
+            "time_id": "TM_PERIOD_OF_JUDGES"
           }
         ]
       },
@@ -178,22 +171,22 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B2",
-            "role_in_scene": "DECEASED_HOUSEHOLD_HEAD",
+            "role_in_scene": "HUSBAND",
             "presence": "PRESENT_BECOMES_DECEASED"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "WIDOW_REMAINING_AS_RESIDUE",
+            "role_in_scene": "WIDOW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SURVIVING_SON_WITH_MOTHER",
+            "role_in_scene": "SON",
             "presence": "PRESENT"
           },
           {
             "being_id": "B5",
-            "role_in_scene": "SURVIVING_SON_WITH_MOTHER",
+            "role_in_scene": "SON",
             "presence": "PRESENT"
           }
         ]
@@ -202,8 +195,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_WHERE_FIRST_DEATH_OCCURS"
+            "place_id": "PL2"
           }
         ]
       },
@@ -224,39 +216,39 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "1:4",
-      "scene_kind": "FOREIGN_MARRIAGE_AND_EXTENDED_RESIDENCE_SCENE",
+      "scene_kind": "MARRIAGE_SCENE",
       "scene_communicative_purpose": "Extends the family in foreign territory across a decade.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "SON_TAKING_FOREIGN_WIFE",
+            "role_in_scene": "SON",
             "presence": "PRESENT"
           },
           {
             "being_id": "B5",
-            "role_in_scene": "SON_TAKING_FOREIGN_WIFE",
+            "role_in_scene": "SON",
             "presence": "PRESENT"
           },
           {
             "being_id": "B7",
-            "role_in_scene": "SOURCE_POOL_FROM_WHICH_WIVES_ARE_TAKEN",
+            "role_in_scene": "SOURCE_GROUP",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B8",
-            "role_in_scene": "FOREIGN_BRIDE_INCORPORATED_INTO_HOUSEHOLD",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "FOREIGN_BRIDE_INCORPORATED_INTO_HOUSEHOLD",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "MATRIARCH_OF_EXTENDED_HOUSEHOLD",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT"
           }
         ]
@@ -265,8 +257,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_OF_MARRIAGES_AND_DECADE_OF_DWELLING"
+            "place_id": "PL2"
           }
         ]
       },
@@ -274,8 +265,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "TH_TEN_YEARS_APPROXIMATELY",
-            "function_in_scene": "DURATION_OF_FOREIGN_DWELLING_AS_CONTENT"
+            "object_id": "TH_TEN_YEARS_APPROXIMATELY"
           }
         ]
       },
@@ -298,33 +288,33 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "DECEASED_SON",
+            "role_in_scene": "SON",
             "presence": "PRESENT_BECOMES_DECEASED"
           },
           {
             "being_id": "B5",
-            "role_in_scene": "DECEASED_SON",
+            "role_in_scene": "SON",
             "presence": "PRESENT_BECOMES_DECEASED"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "DOUBLY_BEREAVED_WIDOW_REDUCED_TO_RESIDUE",
+            "role_in_scene": "WIDOW",
             "presence": "PRESENT",
             "referential_form": "STRIPPED_TO_HA_ISHAH"
           },
           {
             "being_id": "B2",
-            "role_in_scene": "PREVIOUSLY_DECEASED_HUSBAND_INVOKED_IN_CUMULATIVE_LOSS",
+            "role_in_scene": "HUSBAND",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B8",
-            "role_in_scene": "FOREIGN_DAUGHTER_IN_LAW_NOW_ALSO_BEREAVED",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "FOREIGN_DAUGHTER_IN_LAW_NOW_ALSO_BEREAVED",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "REFERENCED"
           }
         ]
@@ -333,8 +323,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_THAT_HAS_CONSUMED_ENTIRE_MALE_LINE"
+            "place_id": "PL2"
           }
         ]
       },
@@ -455,7 +444,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "1:2a",
-      "proposition_kind": "IDENTIFIED_AS_CLAN_MEMBERS",
+      "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
         "identified_household": ["B2", "B3", "B4", "B5"],
         "clan_referent": "B6",
@@ -472,7 +461,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S1",
       "verse_anchor": "1:2b",
-      "proposition_kind": "ARRIVED_AT_AND_BEGAN_DWELLING",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "arrival_components": [
           {
@@ -518,7 +507,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S2",
       "verse_anchor": "1:3",
-      "proposition_kind": "LEFT_AS_RESIDUAL",
+      "proposition_kind": "REMAINED",
       "event_specific_slots": {
         "residual": "B3",
         "referential_form_at_verse": "SHE_PRONOMINAL",
@@ -537,7 +526,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S3",
       "verse_anchor": "1:4a",
-      "proposition_kind": "TOOK_AS_WIFE",
+      "proposition_kind": "TOOK",
       "event_specific_slots": {
         "marriage_components": [
           {
@@ -635,7 +624,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S4",
       "verse_anchor": "1:5b",
-      "proposition_kind": "LEFT_AS_RESIDUAL",
+      "proposition_kind": "REMAINED",
       "event_specific_slots": {
         "residual": "B3",
         "referential_form_at_verse": "STRIPPED_TO_HA_ISHAH",
