@@ -119,6 +119,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       }
     ],
     "presence_values": [],
+    "role_in_scene_beings": [],
     "arc_elements": [
       { "value": "RELEASE_ATTEMPT", "source": "S1 1:15 Naomi's final appeal pointing to Orpah's return", "status": "CONFIRMED" },
       { "value": "REFUSAL_OF_RELEASE", "source": "S2 1:16a Ruth refuses to turn back", "status": "CONFIRMED" },

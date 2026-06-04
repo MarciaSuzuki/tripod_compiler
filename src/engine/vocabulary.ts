@@ -60,7 +60,7 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
     sceneEntries(sc?.beings_in_scene).forEach((e, i) => {
       if (typeof e?.being_id === "string") declared.add(e.being_id);
       drift(e?.presence, "presence_value", `${at}/beings_in_scene/entries/${i}/presence`);
-      drift(e?.role_in_scene, "role_in_scene_examples_being", `${at}/beings_in_scene/entries/${i}/role_in_scene`);
+      drift(e?.role_in_scene, "role_in_scene_being", `${at}/beings_in_scene/entries/${i}/role_in_scene`);
       if (typeof e?.referential_form === "string") {
         referentialFormCount++;
         drift(e.referential_form, "referential_form", `${at}/beings_in_scene/entries/${i}/referential_form`);

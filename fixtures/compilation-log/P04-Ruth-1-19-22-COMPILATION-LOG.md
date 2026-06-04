@@ -151,6 +151,13 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "note": "Already in v0.4 canonical seed; confirmed for collective subjects."
       }
     ],
+    "role_in_scene_beings": [
+      {
+        "value": "TOWNSPEOPLE",
+        "source": "B28 @S1",
+        "status": "CONFIRMED"
+      }
+    ],
     "referential_forms": [
       {
         "value": "SELF_REFERENCE_REFUSING_OWN_NAME",

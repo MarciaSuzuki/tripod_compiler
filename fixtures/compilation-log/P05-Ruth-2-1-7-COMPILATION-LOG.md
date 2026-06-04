@@ -146,6 +146,43 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "note": "Already in v0.4 canonical seed; confirmed for collective subjects."
       }
     ],
+    "role_in_scene_beings": [
+      {
+        "value": "ANCESTOR",
+        "source": "B2 @S1",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "FIELD_OWNER",
+        "source": "B13 @S3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "FOREMAN",
+        "source": "B15 @S4",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "GLEANER",
+        "source": "B9 @S3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "HARVESTERS",
+        "source": "B14 @S3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "KINSMAN",
+        "source": "B13 @S1",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "REDEEMER_KIN",
+        "source": "B29 @S1",
+        "status": "CONFIRMED"
+      }
+    ],
     "referential_forms": [
       {
         "value": "NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE",

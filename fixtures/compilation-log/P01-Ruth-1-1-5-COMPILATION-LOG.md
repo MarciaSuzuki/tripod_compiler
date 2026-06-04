@@ -135,6 +135,53 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     "presence_values": [
       { "value": "PRESENT_BECOMES_DECEASED", "source": "Elimelech S2; Mahlon and Chilion S4", "status": "CONFIRMED", "note": "Captures within-scene transition from living-and-present to deceased." }
     ],
+    "role_in_scene_beings": [
+      {
+        "value": "CLAN",
+        "source": "B6 @S1",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "DAUGHTER_IN_LAW",
+        "source": "B8 @S3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "ERA_REFERENT",
+        "source": "B1 @S1",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "HUSBAND",
+        "source": "B2 @S1",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "MOTHER_IN_LAW",
+        "source": "B3 @S3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "SON",
+        "source": "B4 @S1",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "SOURCE_GROUP",
+        "source": "B7 @S3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "WIDOW",
+        "source": "B3 @S2",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "WIFE",
+        "source": "B3 @S1",
+        "status": "CONFIRMED"
+      }
+    ],
     "referential_forms": [
       { "value": "UNNAMED_MAN_FROM_BETHLEHEM", "source": "B2 at 1:1b before naming", "status": "CONFIRMED" },
       { "value": "UNNAMED_WIFE_OF_HEAD", "source": "B3 at 1:1b", "status": "CONFIRMED" },

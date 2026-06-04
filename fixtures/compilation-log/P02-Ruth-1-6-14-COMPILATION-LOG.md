@@ -164,6 +164,18 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       }
     ],
     "presence_values": [],
+    "role_in_scene_beings": [
+      {
+        "value": "DIVINE_AGENT",
+        "source": "B10 @S1",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "PEOPLE",
+        "source": "B31 @S1",
+        "status": "PROPOSED"
+      }
+    ],
     "arc_elements": [
       { "value": "NEWS_RECEPTION", "source": "S1 1:6a Naomi hears in Moab that YHWH gave bread", "status": "PROPOSED" },
       { "value": "RETURN_INITIATED", "source": "S1 1:6b-7 arising to return from the fields of Moab", "status": "PROPOSED" },

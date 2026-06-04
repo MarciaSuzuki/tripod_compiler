@@ -150,6 +150,18 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "status": "CONFIRMED"
       }
     ],
+    "role_in_scene_beings": [
+      {
+        "value": "FEMALE_WORKERS",
+        "source": "B16 @S1",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "MALE_WORKERS",
+        "source": "B17 @S1",
+        "status": "CONFIRMED"
+      }
+    ],
     "referential_forms": [],
     "other": [],
     "arc_elements": [

@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-7.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-8.json",
   "title": "Ruth Pilot 2 - FOR_MODEL Validation Rules + Closed Lists + Drift Detector",
   "description": "Three-section document. (1) for_model_schema: JSON Schema for FOR_MODEL artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
-  "version": "v0.7",
+  "version": "v0.8",
   "tagset_version": "TRIPOD_STA_v2_0",
-  "date_locked": "2026-05-31",
-  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md.",
+  "date_locked": "2026-06-04",
+  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md. v0.8 (SC-0022, 2026-06-04): reclassified the beings participant-role drift axis from descriptive (role_in_scene_examples_being) to convergent (role_in_scene_being) and seeded it with the 21 ruled relations — the slot is now an enforced controlled relation set, not convention. (Step 3 of SC-0022 also drops the place/object/time role/function fields from the scene-entry schemas; see SPEC_CHANGES.md.)",
 
   "sibling_schemas": {
     "compilation_log": "compilation-log.schema.json v0.5",
@@ -16,7 +16,7 @@
 
   "for_model_schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-7.schema.json",
+    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-8.schema.json",
     "title": "FOR_MODEL",
     "description": "Structural tag artifact derived from an approved meaning map. Trained on by the Seed Model alongside the meaning map.",
     "type": "object",
@@ -559,24 +559,16 @@
         "TRANSMITS_COMMUNITY_MEMORY",
         "WITHHOLDS_DIVINE_AGENCY"
       ],
-      "role_in_scene_examples_being": [
-        "HOUSEHOLD_HEAD_LEADING_DEPARTURE",
-        "WIFE_ACCOMPANYING_HEAD",
-        "ELDER_SON_ACCOMPANYING_FAMILY",
-        "YOUNGER_SON_ACCOMPANYING_FAMILY",
-        "ERA_ANCHOR_REFERENT",
-        "CLAN_IDENTITY_OF_HOUSEHOLD",
-        "DECEASED_HOUSEHOLD_HEAD",
-        "WIDOW_REMAINING_AS_RESIDUE",
-        "SURVIVING_SON_WITH_MOTHER",
-        "SON_TAKING_FOREIGN_WIFE",
-        "SOURCE_POOL_FROM_WHICH_WIVES_ARE_TAKEN",
-        "FOREIGN_BRIDE_INCORPORATED_INTO_HOUSEHOLD",
-        "MATRIARCH_OF_EXTENDED_HOUSEHOLD",
-        "DECEASED_SON",
-        "DOUBLY_BEREAVED_WIDOW_REDUCED_TO_RESIDUE",
-        "PREVIOUSLY_DECEASED_HUSBAND_INVOKED_IN_CUMULATIVE_LOSS",
-        "FOREIGN_DAUGHTER_IN_LAW_NOW_ALSO_BEREAVED"
+      "role_in_scene_being": [
+        "CLAN",
+        "DAUGHTER_IN_LAW",
+        "ERA_REFERENT",
+        "HUSBAND",
+        "MOTHER_IN_LAW",
+        "SON",
+        "SOURCE_GROUP",
+        "WIDOW",
+        "WIFE"
       ],
       "role_in_scene_examples_place": [
         "LAND_AFFLICTED_BY_FAMINE",
