@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-9.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-10.json",
   "title": "Ruth Pilot 2 - FOR_MODEL Validation Rules + Closed Lists + Drift Detector",
   "description": "Three-section document. (1) for_model_schema: JSON Schema for FOR_MODEL artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
-  "version": "v0.9",
+  "version": "v0.10",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date_locked": "2026-06-04",
-  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md. v0.8 (SC-0022, 2026-06-04): reclassified the beings participant-role drift axis from descriptive (role_in_scene_examples_being) to convergent (role_in_scene_being) and seeded it with the 21 ruled relations — the slot is now an enforced controlled relation set, not convention. v0.9 (SC-0022, 2026-06-04): dropped the place/object/time role_in_scene/function_in_scene fields from the scene-entry schemas (removed from required + properties — entries are now id-only) and removed their drift-detector example seeds; proven content-free per the cleanup-log per-value tables (role/function meaning is owned by registry-kind + statement slots + figures/threads). See SPEC_CHANGES.md.",
+  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md. v0.8 (SC-0022, 2026-06-04): reclassified the beings participant-role drift axis from descriptive (role_in_scene_examples_being) to convergent (role_in_scene_being) and seeded it with the 21 ruled relations — the slot is now an enforced controlled relation set, not convention. v0.9 (SC-0022, 2026-06-04): dropped the place/object/time role_in_scene/function_in_scene fields from the scene-entry schemas (removed from required + properties — entries are now id-only) and removed their drift-detector example seeds; proven content-free per the cleanup-log per-value tables (role/function meaning is owned by registry-kind + statement slots + figures/threads). See SPEC_CHANGES.md. v0.10 (SC-0022 tidy, 2026-06-04): refreshed the inert drift-detector `canonical_p01_enumerations` seed (scene_kind/proposition_kind/communicative_function_element) to P01's cleaned values so the never-consulted fallback no longer names deprecated forms. See SPEC_CHANGES.md.",
 
   "sibling_schemas": {
     "compilation_log": "compilation-log.schema.json v0.5",
@@ -16,7 +16,7 @@
 
   "for_model_schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-9.schema.json",
+    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-10.schema.json",
     "title": "FOR_MODEL",
     "description": "Structural tag artifact derived from an approved meaning map. Trained on by the Seed Model alongside the meaning map.",
     "type": "object",
@@ -494,17 +494,17 @@
         "FAMINE_OCCURRED",
         "MIGRATED",
         "NAMED",
-        "IDENTIFIED_AS_CLAN_MEMBERS",
-        "ARRIVED_AT_AND_BEGAN_DWELLING",
+        "IDENTIFIED",
+        "ARRIVED_AT",
         "DIED",
-        "LEFT_AS_RESIDUAL",
-        "TOOK_AS_WIFE",
+        "REMAINED",
+        "TOOK",
         "DWELT_AT"
       ],
       "scene_kind": [
         "OPENING_CHRONICLE_SCENE",
         "BEREAVEMENT_SCENE",
-        "FOREIGN_MARRIAGE_AND_EXTENDED_RESIDENCE_SCENE"
+        "MARRIAGE_SCENE"
       ],
       "presence_value": [
         "PRESENT",
@@ -549,12 +549,11 @@
         "QUIETLY_ACCELERATING"
       ],
       "communicative_function_element": [
-        "OPENS_BOOK",
-        "ESTABLISHES_PARTICIPANTS",
-        "ESTABLISHES_CONDITION",
-        "PLANTS_OPEN_QUESTION",
-        "TRANSMITS_COMMUNITY_MEMORY",
-        "WITHHOLDS_DIVINE_AGENCY"
+        "OPENS",
+        "ESTABLISHES",
+        "PLANTS",
+        "TRANSMITS",
+        "WITHHOLDS"
       ],
       "role_in_scene_being": [
         "CLAN",
