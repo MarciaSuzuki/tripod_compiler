@@ -73,34 +73,33 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "PAUSED"
     ],
     "communicative_function_elements": [
-      "ESTABLISHES_RUTHS_COVENANT_BINDING_TO_NAOMI",
-      "ADVANCES_MOABITE_OUTSIDER_INCORPORATION",
-      "PLACES_DIVINE_NAME_ON_MOABITE_OUTSIDER_LIPS",
-      "WITHHOLDS_NAOMIS_INTERIOR_RESPONSE",
-      "WITHHOLDS_ETHNIC_EPITHET_AT_INCORPORATION_MOMENT"
+      "ESTABLISHES",
+      "ADVANCES",
+      "PLACES",
+      "WITHHOLDS"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "1:15",
-      "scene_kind": "APPEAL_WITH_EXEMPLAR_POINTING_SCENE",
+      "scene_kind": "APPEAL_SCENE",
       "scene_communicative_purpose": "Records Naomi's last try to send Ruth away, holding up Orpah's going-back to her people and her gods as the example Ruth should follow.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "SPEAKER_MAKING_LAST_APPEAL",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "ADDRESSEE_OF_LAST_APPEAL",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B8",
-            "role_in_scene": "EXEMPLAR_NAMED_BY_KINSHIP_FORM_ONLY",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "REFERENCED",
             "referential_form": "KINSHIP_FORM_YEBIMTEKH"
           }
@@ -131,28 +130,28 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "1:16-17",
-      "scene_kind": "VOW_AND_RATIFICATION_SCENE",
+      "scene_kind": "VOW_SCENE",
       "scene_communicative_purpose": "Ruth refuses to turn back and binds herself to Naomi in six rising steps, sealed with an oath that calls down a curse on herself and names YHWH out loud.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B9",
-            "role_in_scene": "SPEAKER_BINDING_HERSELF_BY_VOW",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "ADDRESSEE_AND_BINDING_REFERENT",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B10",
-            "role_in_scene": "INVOKED_AS_OATH_ENFORCER_AT_VERSE_17",
+            "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B31",
-            "role_in_scene": "COLLECTIVE_BOUND_TO_BY_PEOPLE_BINDING",
+            "role_in_scene": "PEOPLE",
             "presence": "REFERENCED"
           }
         ]
@@ -179,18 +178,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "1:18",
-      "scene_kind": "SEEING_AND_FALLING_SILENT_SCENE",
+      "scene_kind": "RATIFICATION_SCENE",
       "scene_communicative_purpose": "Marks the failure of Naomi's last try to send Ruth away, and the moment from which the two go on together. Ends the talk on the road.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "PERCEIVER_THEN_SILENT_AFTER_VOW",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "PERCEIVED_AS_DETERMINED",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT"
           }
         ]
@@ -215,7 +214,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "1:15",
-      "proposition_kind": "SPOKE_DISSUASIVE_APPEAL_WITH_EXEMPLAR",
+      "proposition_kind": "APPEAL",
       "event_specific_slots": {
         "speaker": "B3",
         "addressees": [
@@ -252,7 +251,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S2",
       "verse_anchor": "1:16a",
-      "proposition_kind": "REFUSED_DIRECTIVE_AS_OPENING_OF_VOW",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "refuser": "B9",
         "addressee": "B3",
@@ -270,7 +269,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S2",
       "verse_anchor": "1:16b-17a",
-      "proposition_kind": "UTTERED_COVENANT_BINDING_VOW",
+      "proposition_kind": "VOW",
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B3",
@@ -351,7 +350,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S2",
       "verse_anchor": "1:17b",
-      "proposition_kind": "SEALED_VOW_WITH_SELF_CURSE_OATH",
+      "proposition_kind": "VOW",
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B3",
@@ -375,7 +374,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S3",
       "verse_anchor": "1:18",
-      "proposition_kind": "WITNESSED_RESOLVE_AND_CEASED_SPEECH",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "narrator_report_components": [
           {

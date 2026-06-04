@@ -111,84 +111,31 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   "vocabulary_additions": {
     "proposition_kinds": [
       {
-        "value": "NARRATOR_INTRODUCES_KINSMAN_BEFORE_ACTION",
-        "source": "P1 v.1 narrator-parenthetical introduction of Boaz",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; compound narrator-economical introduction (relation + attribute + clan + name)."
+        "value": "GLEANED",
+        "source": "P4 2:3a",
+        "status": "CONFIRMED"
       },
       {
-        "value": "REQUESTED_PERMISSION_TO_GLEAN",
-        "source": "P2 v.2a Ruth's gleaning-initiative request",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; carries speech_act REQUESTS_PERMISSION_TO_DO."
-      },
-      {
-        "value": "GRANTED_PERMISSION_TO_GLEAN",
-        "source": "P3 v.2b Naomi's release",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; carries speech_act GRANTS_PERMISSION_TO_DO."
-      },
-      {
-        "value": "WENT_AND_GLEANED_BEHIND_HARVESTERS",
-        "source": "P4 v.3a three-verb chain plus institutional position",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; chronicle-compressed verb sequence with gleaning-institutional position."
-      },
-      {
-        "value": "CHANCE_ARRIVED_AT_KINSMAN_PORTION_WITH_CLAN_FRAME_RESTATED",
-        "source": "P5 v.3b vayyiqer-miqreha plus clan-frame restatement",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; double-cognate chance-providence construction with clan-frame bracket."
-      },
-      {
-        "value": "ARRIVED_AT_FIELD_FROM_HOMETOWN",
-        "source": "P6 v.4a Boaz's arrival from Bethlehem",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; chronicle arrival with hinneh attention-marker."
-      },
-      {
-        "value": "EXCHANGED_GREETING_AND_RETURN_BLESSING",
-        "source": "P7 v.4b YHWH-greeting exchange",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; compound speech event with two WISHES_FOR_HEARER components."
-      },
-      {
-        "value": "ASKED_KINSHIP_AND_SOCIAL_COVER_QUESTION",
-        "source": "P8 v.5 Boaz's whose-young-woman question",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; carries speech_act ASKS_KINSHIP_BELONGING_QUESTION."
-      },
-      {
-        "value": "FOREMAN_REPORTED_IDENTITY_AND_WORK_PATTERN",
-        "source": "P9 v.6-7 four-five component foreman report",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; compound speech event with STATES_AS_TRUE + REPORTS_PRIOR_SPEECH_REQUEST components."
+        "value": "NARRATOR_INTRODUCES",
+        "source": "P1 2:1",
+        "status": "CONFIRMED"
       }
     ],
     "scene_kinds": [
       {
-        "value": "NARRATOR_PARENTHETICAL_INTRODUCTION_SCENE",
-        "source": "S1 at 2:1",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; introduction-before-action narrator-parenthetical scene type."
+        "value": "INITIATIVE_SCENE",
+        "source": "S2 2:2",
+        "status": "CONFIRMED"
       },
       {
-        "value": "INTERIOR_INITIATIVE_AND_RELEASE_SCENE",
-        "source": "S2 at 2:2",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; daughter-in-law / mother-in-law interior dialogue scene type."
+        "value": "NARRATOR_INTRODUCTION_SCENE",
+        "source": "S1 2:1",
+        "status": "CONFIRMED"
       },
       {
-        "value": "FIELD_ARRIVAL_CHANCE_PROVIDENCE_AND_GREETING_SCENE",
-        "source": "S3 at 2:3-4",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; compound chance-arrival plus owner-arrival plus greeting exchange scene type."
-      },
-      {
-        "value": "FIELD_OWNER_FOREMAN_REPORT_SCENE",
-        "source": "S4 at 2:5-7",
-        "status": "CONFIRMED",
-        "note": "Bounded-open; owner-and-overseer exchange about outsider gleaner scene type."
+        "value": "REPORT_SCENE",
+        "source": "S4 2:5-7",
+        "status": "CONFIRMED"
       }
     ],
     "presence_values": [
@@ -460,43 +407,18 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "communicative_function_elements": [
       {
-        "value": "ANCHORS_KINSMAN_REDEEMER_FRAME_AT_AUDIENCE_LEVEL",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "value": "ANCHORS",
+        "source": "level_1 communicative_function_elements",
         "status": "CONFIRMED"
       },
       {
-        "value": "INTRODUCES_SECOND_MALE_PROTAGONIST_BEFORE_ACTION",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "value": "INTRODUCES",
+        "source": "level_1 communicative_function_elements",
         "status": "CONFIRMED"
       },
       {
-        "value": "OPENS_CHAPTER_TWO",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "OPENS_CHAYIL_CROSS_PERICOPE_PAIR",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "POSITIONS_RUTH_AND_BOAZ_IN_SAME_FIELD_THROUGH_CHANCE_CONSTRUCTION",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "REACTIVATES_MOABITE_EPITHET_IN_THIRD_PARTY_VOICE",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "STAGES_GLEANING_INSTITUTION_AS_LEGAL_CUSTOMARY_FRAME",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "WITHHOLDS_DIVINE_AGENCY_BEHIND_MIQREH_CONSTRUCTION",
-        "source": "P05 level_1.communicative_function_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
+        "value": "POSITIONS",
+        "source": "level_1 communicative_function_elements",
         "status": "CONFIRMED"
       }
     ]

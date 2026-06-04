@@ -19,8 +19,8 @@
       "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
     },
     "approved-enumerations.json": {
-      "version": "v0.5",
-      "sha256": "c7d32fb4e8004913406bab4f8e543e6ca43443911585581c3212431235b94258"
+      "version": "v0.6",
+      "sha256": "44012961941512f9e30bbcc7b496ed35d6b185858c297a670ea9b8c357dee879"
     }
   },
   "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. The Concept-Bank + Figure-Registry indices (registry/ruth.concepts.json + ruth.figures.json) are vendored OFFLINE by extractor/build_concept_figure_registry.py from the wiki concepts/ + figures/ notes (SC-0018 refinement R2) so `tripod id-check` can verify CB_/FIG_ reference-integrity + name-binding. All pinned by sha256 so coverage reconciliation + id-check are reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off — edits are recorded (SC-ref + provenance) and re-pinned.",

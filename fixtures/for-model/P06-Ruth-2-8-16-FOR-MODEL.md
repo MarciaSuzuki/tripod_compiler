@@ -73,44 +73,42 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "STEADY"
     ],
     "communicative_function_elements": [
-      "ESTABLISHES_PROTECTIVE_REGIME",
-      "RECITES_RUTH_LOYALTY_IN_BOAZ_VOICE",
-      "OPENS_WING_OF_REFUGE_CROSS_PERICOPE_PAIR",
-      "OPENS_SHIFCHAH_AMAH_CROSS_PERICOPE_PAIR",
-      "DISTRIBUTES_THREE_PROHIBITION_CLUSTER",
-      "ADVANCES_HARVEST_PROVISION_THREAD_FIRST_MAJOR",
-      "ADVANCES_OUTSIDER_INCORPORATION_THREAD",
-      "WITHHOLDS_MOAB_NAMING_IN_BOAZ_SPEECH"
+      "ESTABLISHES",
+      "RECITES",
+      "OPENS",
+      "DISTRIBUTES",
+      "ADVANCES",
+      "WITHHOLDS"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "2:8-9",
-      "scene_kind": "PROTECTIVE_INSTRUCTION_SCENE",
+      "scene_kind": "INSTRUCTION_SCENE",
       "scene_communicative_purpose": "Boaz sets up his protection of Ruth, through his instructions and the order he says he has already given his men.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B13",
-            "role_in_scene": "FIELD_OWNER_SPEAKING_PROTECTIVE_INSTRUCTIONS",
+            "role_in_scene": "FIELD_OWNER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "GLEANER_ADDRESSED_BY_FIELD_OWNER",
+            "role_in_scene": "GLEANER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B16",
-            "role_in_scene": "FEMALE_WORKERS_WITH_WHOM_GLEANER_IS_TO_STAY_CLOSE",
+            "role_in_scene": "FEMALE_WORKERS",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "MALE_WORKERS_OBJECT_OF_REPORTED_TOUCH_PROHIBITION_AND_WATER_DRAWERS",
+            "role_in_scene": "MALE_WORKERS",
             "presence": "REFERENCED"
           }
         ]
@@ -144,35 +142,35 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "2:10-13",
-      "scene_kind": "RECOGNITION_AND_BLESSING_SCENE",
+      "scene_kind": "BLESSING_SCENE",
       "scene_communicative_purpose": "The moment Ruth is noticed: Boaz puts her loyalty into words and blesses her in YHWH's name.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B9",
-            "role_in_scene": "FOREIGNER_WHO_BOWS_AND_ASKS_WHY_SHE_IS_RECOGNIZED",
+            "role_in_scene": "GLEANER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B13",
-            "role_in_scene": "SPEAKER_RECITING_AND_BLESSING",
+            "role_in_scene": "FIELD_OWNER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "MOTHER_IN_LAW_REFERENT_OF_RUTHS_LOYALTY",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B?",
-            "role_in_scene": "DECEASED_HUSBAND_REFERENT_PAIRING_WITHHELD_PER_P01_D2",
+            "role_in_scene": "HUSBAND",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B10",
-            "role_in_scene": "INVOKED_AS_REPAYER_AND_REFUGE_GIVER_AT_VERSE_TWELVE",
+            "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED"
           }
         ]
@@ -214,25 +212,25 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "2:14",
-      "scene_kind": "MEAL_INCLUSION_SCENE",
+      "scene_kind": "MEAL_SCENE",
       "scene_communicative_purpose": "Records the plain, bodily welcome of the meal; that she ate, was satisfied, and had some left over sets up the food she will carry back to Naomi.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B13",
-            "role_in_scene": "HOST_INVITING_GLEANER_AND_HANDING_GRAIN",
+            "role_in_scene": "FIELD_OWNER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "GLEANER_INVITED_TO_SIT_AND_EAT_WITH_HARVESTERS",
+            "role_in_scene": "GLEANER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B14",
-            "role_in_scene": "WORKING_COMMUNITY_GLEANER_SITS_BESIDE",
+            "role_in_scene": "HARVESTERS",
             "presence": "PRESENT_COLLECTIVE"
           }
         ]
@@ -274,24 +272,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S4",
       "verse_range": "2:15-16",
-      "scene_kind": "HARVESTER_PROTOCOL_SCENE",
+      "scene_kind": "INSTRUCTION_SCENE",
       "scene_communicative_purpose": "Closes the passage with Boaz's order for extra-generous gleaning, which builds his protection of Ruth right into how the harvesters work.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B13",
-            "role_in_scene": "FIELD_OWNER_COMMANDING_HARVESTERS_ABOUT_GLEANER",
+            "role_in_scene": "FIELD_OWNER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "ADDRESSEES_OF_EXTENDED_GLEANING_INSTRUCTIONS",
+            "role_in_scene": "MALE_WORKERS",
             "presence": "PRESENT_COLLECTIVE"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "GLEANER_RISING_AND_OBJECT_OF_INSTRUCTIONS_NOT_ADDRESSEE",
+            "role_in_scene": "GLEANER",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           }
@@ -333,7 +331,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "2:8",
-      "proposition_kind": "SPOKE_PROTECTIVE_INSTRUCTION",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
@@ -376,7 +374,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "2:9a",
-      "proposition_kind": "SPOKE_PROTECTIVE_INSTRUCTION",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
@@ -406,7 +404,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "2:9b",
-      "proposition_kind": "REPORTED_OWN_PRIOR_PROHIBITION",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
@@ -430,7 +428,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S1",
       "verse_anchor": "2:9c",
-      "proposition_kind": "SPOKE_WATER_PROVISION_INSTRUCTION",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
@@ -459,7 +457,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S2",
       "verse_anchor": "2:10a",
-      "proposition_kind": "BOWED_DEEP_TO_GROUND",
+      "proposition_kind": "PROSTRATED",
       "event_specific_slots": {
         "bower": "B9",
         "speech_act": "STATES_AS_TRUE"
@@ -475,7 +473,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "2:10b",
-      "proposition_kind": "ASKED_RECOGNITION_QUESTION_AND_SELF_NAMED_AS_FOREIGNER",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B13",
@@ -514,7 +512,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "2:11a",
-      "proposition_kind": "ANSWERED_WITH_FULL_KNOWLEDGE_RECITAL",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
@@ -542,7 +540,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S2",
       "verse_anchor": "2:11b",
-      "proposition_kind": "RECITED_RUTH_LEAVING_AND_COMING",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
@@ -580,7 +578,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "2:12",
-      "proposition_kind": "PRONOUNCED_FORMAL_BLESSING_UNDER_WINGS_OF_REFUGE",
+      "proposition_kind": "BLESSING",
       "event_specific_slots": {
         "blesser": "B13",
         "blessing_recipient": "B9",
@@ -616,7 +614,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S2",
       "verse_anchor": "2:13a",
-      "proposition_kind": "RESPONDED_WITH_FAVOR_WISH",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B13",
@@ -640,7 +638,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S2",
       "verse_anchor": "2:13b",
-      "proposition_kind": "DESCRIBED_BOAZ_EFFECT_AND_LOWER_SELF_NAMED",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B13",
@@ -677,7 +675,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S3",
       "verse_anchor": "2:14a",
-      "proposition_kind": "INVITED_TO_MEAL",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
@@ -715,7 +713,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "2:14b",
-      "proposition_kind": "SAT_BESIDE_HARVESTERS",
+      "proposition_kind": "SAT",
       "event_specific_slots": {
         "sitter": "B9",
         "sitting_position_relation": "BESIDE_THE_HARVESTERS",
@@ -733,7 +731,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S3",
       "verse_anchor": "2:14c",
-      "proposition_kind": "HANDED_ROASTED_GRAIN",
+      "proposition_kind": "HANDED",
       "event_specific_slots": {
         "giver": "B13",
         "given_party": "B9",
@@ -751,7 +749,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S3",
       "verse_anchor": "2:14d",
-      "proposition_kind": "ATE_WAS_SATISFIED_AND_HAD_LEFTOVER",
+      "proposition_kind": "ATE",
       "event_specific_slots": {
         "eater": "B9",
         "triplet_components": [
@@ -786,7 +784,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P16",
       "scene_link": "S4",
       "verse_anchor": "2:15a",
-      "proposition_kind": "ROSE_TO_GLEAN",
+      "proposition_kind": "ROSE",
       "event_specific_slots": {
         "riser": "B9",
         "purpose": "TO_GLEAN",
@@ -805,7 +803,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P17",
       "scene_link": "S4",
       "verse_anchor": "2:15b",
-      "proposition_kind": "COMMANDED_HARVESTERS_PERMISSION_AND_SHAME_PROHIBITION",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
         "addressees": "B17",
@@ -841,7 +839,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P18",
       "scene_link": "S4",
       "verse_anchor": "2:16a",
-      "proposition_kind": "COMMANDED_DELIBERATE_PULLING_FROM_BUNDLES",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
         "addressees": "B17",
@@ -865,7 +863,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P19",
       "scene_link": "S4",
       "verse_anchor": "2:16b",
-      "proposition_kind": "COMMANDED_LEAVING_AND_REBUKE_PROHIBITION",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
         "addressees": "B17",

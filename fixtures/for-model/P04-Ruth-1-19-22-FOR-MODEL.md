@@ -70,40 +70,39 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "SETTLES"
     ],
     "communicative_function_elements": [
-      "CLOSES_CHAPTER_ONE_EMPTYING_ARC",
-      "ESTABLISHES_PUBLIC_LAMENT_ACCOUNT",
-      "REACTIVATES_MOABITE_EPITHET_ON_RUTH_IN_NARRATOR_VOICE",
-      "CLOSES_BREAD_HOUSE_IN_FAMINE_CROSS_PERICOPE_FIGURE",
-      "OPENS_HARVEST_PROVISION_DISCOURSE_THREAD",
-      "STAGES_STRUCTURAL_IRONY_HARVEST_OPENS_AS_EMPTY_LAMENT_ENDS"
+      "CLOSES",
+      "ESTABLISHES",
+      "REACTIVATES",
+      "OPENS",
+      "STAGES"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "1:19",
-      "scene_kind": "PUBLIC_ARRIVAL_AND_RECOGNITION_SCENE",
+      "scene_kind": "ARRIVAL_SCENE",
       "scene_communicative_purpose": "Shows the arrival in Bethlehem out in the open; the town can hardly recognize Naomi; the women's question opens the exchange Naomi answers in Scene 2.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "PROTAGONIST_ARRIVING_AT_HOMETOWN",
+            "role_in_scene": "WIDOW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "ACCOMPANYING_DAUGHTER_IN_LAW_ARRIVING_SILENT",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B28",
-            "role_in_scene": "COLLECTIVE_SUBJECT_OF_COMMUNAL_STIRRING",
+            "role_in_scene": "TOWNSPEOPLE",
             "presence": "PRESENT_COLLECTIVE"
           },
           {
             "being_id": "B24",
-            "role_in_scene": "SPEAKING_SUBSET_ASKING_RECOGNITION_QUESTION",
+            "role_in_scene": "TOWNSPEOPLE",
             "presence": "PRESENT_COLLECTIVE"
           }
         ]
@@ -129,28 +128,28 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "1:20-21",
-      "scene_kind": "PUBLIC_LAMENT_AND_RENAMING_SCENE",
+      "scene_kind": "LAMENT_SCENE",
       "scene_communicative_purpose": "Gives Naomi's own public account of how she stands — bitter, brought home empty, testified against, treated harshly. She refuses her own name and asks for a new one. She names YHWH twice and Shaddai twice as the ones who did this to her.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "SPEAKER_OF_PUBLIC_RENAMING_LAMENT",
+            "role_in_scene": "WIDOW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B24",
-            "role_in_scene": "SILENT_COLLECTIVE_ADDRESSEE_OF_LAMENT",
+            "role_in_scene": "TOWNSPEOPLE",
             "presence": "PRESENT_COLLECTIVE"
           },
           {
             "being_id": "B10",
-            "role_in_scene": "INVOKED_DIVINE_AGENT_OF_RETURN_EMPTY_AND_COURTROOM_TESTIMONY",
+            "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B12",
-            "role_in_scene": "INVOKED_DIVINE_AGENT_OF_BITTERING_AND_HARM",
+            "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED"
           }
         ]
@@ -178,13 +177,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "RETURNING_PROTAGONIST_NAMED_AGAIN_BY_NARRATOR_AFTER_SELF_REJECTION",
+            "role_in_scene": "WIDOW",
             "presence": "PRESENT",
             "referential_form": "NAMED"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "ACCOMPANYING_DAUGHTER_IN_LAW_REACTIVATING_NARRATOR_EPITHET_RUTH_THE_MOABITESS",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
             "referential_form": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW_NARRATOR_EPITHET"
           }
@@ -226,7 +225,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "1:19a",
-      "proposition_kind": "WALKING_AND_ARRIVAL",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "walkers": [
           "B3",
@@ -247,7 +246,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "1:19b",
-      "proposition_kind": "COMMUNAL_STIRRING_AT_ARRIVAL",
+      "proposition_kind": "CITY_STIRRED",
       "event_specific_slots": {
         "stirred_collective": "B28",
         "about_whom": [
@@ -270,7 +269,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "1:19c",
-      "proposition_kind": "ASKED_RHETORICAL_RECOGNITION_QUESTION",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "question_speakers": "B24",
         "question_addressee_party": [
@@ -290,7 +289,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S2",
       "verse_anchor": "1:20",
-      "proposition_kind": "REFUSED_OWN_NAME_AND_PROPOSED_RENAMING",
+      "proposition_kind": "RENAMING",
       "event_specific_slots": {
         "speaker": "B3",
         "addressees": [
@@ -340,7 +339,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S2",
       "verse_anchor": "1:21",
-      "proposition_kind": "SPOKE_LAMENT_WITH_DOUBLED_DIVINE_ATTRIBUTION",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "speaker": "B3",
         "addressees": [
@@ -397,7 +396,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S3",
       "verse_anchor": "1:22",
-      "proposition_kind": "NARRATOR_FRAME_RETURN_AND_ARRIVAL_AT_HARVEST_OPENING",
+      "proposition_kind": "NARRATOR_FRAME",
       "event_specific_slots": {
         "return_components": [
           {

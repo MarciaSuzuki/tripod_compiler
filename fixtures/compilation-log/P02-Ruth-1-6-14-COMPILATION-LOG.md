@@ -96,108 +96,71 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   "vocabulary_additions": {
     "proposition_kinds": [
       {
-        "value": "HEARD_REPORT",
-        "source": "1:6a Naomi hears that YHWH gave bread",
-        "status": "PROPOSED",
-        "note": "Bounded-open; first dialogue-pericope perception event. No fit in canonical P01 seed."
+        "value": "APPEAL",
+        "source": "P4 1:8a",
+        "status": "PROPOSED"
       },
       {
-        "value": "VISITED_AND_PROVIDED",
-        "source": "1:6b YHWH visits his people in giving them bread",
-        "status": "PROPOSED",
-        "note": "Structural inverse of P01 FAMINE_OCCURRED; first non-NONE agent_named in the pilot. Bounded-open."
-      },
-      {
-        "value": "RETURNED_FROM_FOREIGN_RESIDENCE",
-        "source": "1:6b-7 arising and going out from the fields of Moab",
-        "status": "PROPOSED",
-        "note": "Counterpart to P01's MIGRATED for the return direction. Bounded-open."
-      },
-      {
-        "value": "SPOKE_DIRECTIVE_TO_RETURN",
-        "source": "1:8a Naomi's first directive",
-        "status": "PROPOSED",
-        "note": "Speech event carrying speech_act DIRECTS_HEARER_TO_RETURN. Bounded-open."
-      },
-      {
-        "value": "PRONOUNCED_BLESSING",
-        "source": "1:8b hesed blessing; 1:9a rest blessing",
-        "status": "PROPOSED",
-        "note": "Used at P5 and P6. Speech event carrying speech_act WISHES_FOR_HEARER. Bounded-open."
-      },
-      {
-        "value": "KISSED_AND_WEPT_FAREWELL",
-        "source": "1:9b paired farewell gesture and weeping",
-        "status": "PROPOSED",
-        "note": "Compound action analogous to P01's ARRIVED_AT_AND_BEGAN_DWELLING. Bounded-open."
-      },
-      {
-        "value": "REFUSED_WITH_COUNTER_DECLARATION",
-        "source": "1:10 daughters' joint refusal",
-        "status": "PROPOSED",
-        "note": "Speech event carrying speech_act REFUSES_REQUEST_WITH_COUNTER_DECLARATION. Bounded-open."
-      },
-      {
-        "value": "SPOKE_DISSUASIVE_APPEAL",
-        "source": "1:11 Naomi's first counter-move",
-        "status": "PROPOSED",
-        "note": "Compound speech event combining DIRECTS_HEARER_TO_RETURN and ASKS_RHETORICAL_QUESTION_AS_DISSUASION. Bounded-open."
-      },
-      {
-        "value": "SPOKE_HYPOTHETICAL_DISSUASION",
-        "source": "1:12-13a Naomi's expanded appeal with hypothetical",
-        "status": "PROPOSED",
-        "note": "Compound speech event. Bounded-open."
-      },
-      {
-        "value": "ASKED_TWIN_DISSUASIVE_QUESTIONS",
-        "source": "1:13a-c twin rhetorical questions",
-        "status": "PROPOSED",
-        "note": "Speech event with paired ASKS_RHETORICAL_QUESTION_AS_DISSUASION components. Bounded-open."
-      },
-      {
-        "value": "SPOKE_LAMENT_WITH_DIVINE_ATTRIBUTION",
-        "source": "1:13d Naomi's lament with hand-of-YHWH ascription",
-        "status": "PROPOSED",
-        "note": "Compound speech event combining STATES_LAMENT_OBSERVATION and ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT. Bounded-open."
-      },
-      {
-        "value": "WEPT_AGAIN",
-        "source": "1:14a second weeping formula",
-        "status": "PROPOSED",
-        "note": "Marked-repetition action paralleling P7. Bounded-open."
-      },
-      {
-        "value": "KISSED_AND_DEPARTED",
-        "source": "1:14b Orpah's exit kiss and turning back",
-        "status": "PROPOSED",
-        "note": "Compound exit action. Bounded-open."
+        "value": "BLESSING",
+        "source": "P5 1:8b",
+        "status": "PROPOSED"
       },
       {
         "value": "CLUNG_TO",
-        "source": "1:14c Ruth's davqah clinging",
-        "status": "PROPOSED",
-        "note": "Simple action; first occurrence of dabaq root. Bounded-open."
+        "source": "P15 1:14c",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "DEPARTED",
+        "source": "P14 1:14b",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "GAVE",
+        "source": "P2 1:6b",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "HEARD_REPORT",
+        "source": "P1 1:6a",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "KISSED",
+        "source": "P7 1:9b",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "LAMENT",
+        "source": "P12 1:13d",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "RETURNED",
+        "source": "P3 1:6b-7",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "SPOKE",
+        "source": "P8 1:10",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "WEPT",
+        "source": "P13 1:14a",
+        "status": "PROPOSED"
       }
     ],
     "scene_kinds": [
       {
-        "value": "OPENING_HEARING_AND_DEPARTURE_SCENE",
-        "source": "S1 at 1:6-7",
-        "status": "PROPOSED",
-        "note": "Bounded-open."
+        "value": "APPEAL_SCENE",
+        "source": "S2 1:8-10",
+        "status": "PROPOSED"
       },
       {
-        "value": "FIRST_APPEAL_AND_REFUSAL_SCENE",
-        "source": "S2 at 1:8-10",
-        "status": "PROPOSED",
-        "note": "Bounded-open."
-      },
-      {
-        "value": "SECOND_APPEAL_AND_DIVISION_SCENE",
-        "source": "S3 at 1:11-14",
-        "status": "PROPOSED",
-        "note": "Bounded-open."
+        "value": "DEPARTURE_SCENE",
+        "source": "S1 1:6-7",
+        "status": "PROPOSED"
       }
     ],
     "presence_values": [],
@@ -218,13 +181,16 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       { "value": "SLOWED", "source": "S2-S3 1:8-14 extended dialogue slows the pace", "status": "CONFIRMED" }
     ],
     "communicative_function_elements": [
-      { "value": "ANSWERS_OPENING_CRISIS", "source": "1:6 YHWH's provision answers the P01 famine", "status": "PROPOSED" },
-      { "value": "ESTABLISHES_DIVINE_AGENCY", "source": "1:6 first non-NONE agent_named (B10 YHWH)", "status": "PROPOSED" },
-      { "value": "OPENS_HESED_QUESTION", "source": "1:8 hesed blessing opens thread T4", "status": "PROPOSED" },
-      { "value": "OPENS_REST_QUESTION", "source": "1:9 rest blessing opens thread T3", "status": "PROPOSED" },
-      { "value": "ESTABLISHES_OUTSIDER_DEFINING_CHOICE", "source": "1:14 Ruth's clinging vs Orpah's return", "status": "PROPOSED" },
-      { "value": "PLANTS_LAMENT_QUESTION", "source": "1:13 Naomi's lament-frame ascription", "status": "PROPOSED" },
-      { "value": "CLOSES_BREAD_HOUSE_IRONY", "source": "1:6 bread given closes FIG_0013 opened at 1:1", "status": "PROPOSED" }
+      {
+        "value": "ANSWERS",
+        "source": "level_1 communicative_function_elements",
+        "status": "PROPOSED"
+      },
+      {
+        "value": "CLOSES",
+        "source": "level_1 communicative_function_elements",
+        "status": "PROPOSED"
+      }
     ],
     "high_risk_register_kinds": [
       { "value": "STRUCTURAL_DIVINE_AGENCY_FIRST_NAMED", "source": "R1: agent_named B10 on P2 (1:6)", "status": "PROPOSED" },

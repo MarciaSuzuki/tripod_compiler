@@ -64,21 +64,73 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
 
   "vocabulary_additions": {
     "proposition_kinds": [
-      { "value": "TIME_ANCHOR_ESTABLISHED", "source": "1:1a wayhi bimei opening", "status": "CONFIRMED" },
-      { "value": "FAMINE_OCCURRED", "source": "1:1a famine in the land", "status": "CONFIRMED" },
-      { "value": "MIGRATED", "source": "1:1b family departs Bethlehem to sojourn", "status": "CONFIRMED" },
-      { "value": "NAMED", "source": "1:2a family naming; 1:4a brides naming", "status": "CONFIRMED" },
-      { "value": "IDENTIFIED_AS_CLAN_MEMBERS", "source": "1:2a Ephrathite identifier", "status": "CONFIRMED" },
-      { "value": "ARRIVED_AT_AND_BEGAN_DWELLING", "source": "1:2b arrival and dwelling onset", "status": "CONFIRMED" },
-      { "value": "DIED", "source": "1:3 Elimelech; 1:5 Mahlon and Chilion", "status": "CONFIRMED" },
-      { "value": "LEFT_AS_RESIDUAL", "source": "1:3 Naomi; 1:5 the woman", "status": "CONFIRMED" },
-      { "value": "TOOK_AS_WIFE", "source": "1:4a sons take Moabite wives", "status": "CONFIRMED" },
-      { "value": "DWELT_AT", "source": "1:4b ten years of dwelling", "status": "CONFIRMED" }
+      {
+        "value": "ARRIVED_AT",
+        "source": "P6 1:2b",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "DIED",
+        "source": "P7 1:3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "DWELT_AT",
+        "source": "P11 1:4b",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "FAMINE_OCCURRED",
+        "source": "P2 1:1a",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "IDENTIFIED",
+        "source": "P5 1:2a",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "MIGRATED",
+        "source": "P3 1:1b",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "NAMED",
+        "source": "P4 1:2a",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "REMAINED",
+        "source": "P8 1:3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "TIME_ANCHOR_ESTABLISHED",
+        "source": "P1 1:1a",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "TOOK",
+        "source": "P9 1:4a",
+        "status": "CONFIRMED"
+      }
     ],
     "scene_kinds": [
-      { "value": "OPENING_CHRONICLE_SCENE", "source": "S1 at 1:1-2", "status": "CONFIRMED" },
-      { "value": "BEREAVEMENT_SCENE", "source": "S2 at 1:3; S4 at 1:5", "status": "CONFIRMED" },
-      { "value": "FOREIGN_MARRIAGE_AND_EXTENDED_RESIDENCE_SCENE", "source": "S3 at 1:4", "status": "CONFIRMED", "note": "Compound scene-kind covering two events sharing one scene block." }
+      {
+        "value": "BEREAVEMENT_SCENE",
+        "source": "S2 1:3",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "MARRIAGE_SCENE",
+        "source": "S3 1:4",
+        "status": "CONFIRMED"
+      },
+      {
+        "value": "OPENING_CHRONICLE_SCENE",
+        "source": "S1 1:1-2",
+        "status": "CONFIRMED"
+      }
     ],
     "presence_values": [
       { "value": "PRESENT_BECOMES_DECEASED", "source": "Elimelech S2; Mahlon and Chilion S4", "status": "CONFIRMED", "note": "Captures within-scene transition from living-and-present to deceased." }
