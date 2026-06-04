@@ -37,11 +37,11 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 | Schema | Version | sha256 |
 | --- | --- | --- |
-| `validation-rules.json` | `v0.7` | `8c436b261178517108cb44e39408bca2c99dfd8674fb4954ccf2e72197cadcbe` |
+| `validation-rules.json` | `v0.9` | `f3e2bbc91a2d5ccb863d72126a85ee0b6ff977da3f51f91a56dae0f0f9fc6192` |
 | `compilation-log.schema.json` | `v0.5` | `f009b32781f8a0e4d4d40e4f7500dd64396bdeeb06e3fe16d9ff2214033c36ca` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
-| `approved-enumerations.json` | `v0.4` | `309e5fa71e170b5df52b33c982b630e0fe6eaabb416d0ee12fb317903e9e4de1` |
+| `approved-enumerations.json` | `v0.8` | `aa1a62d00b442d5841a3966309a131e50a581f0eba2ba973a7729a38a6e79eee` |
 
 Routine vocabulary promotions (growing `approved-enumerations.json`) are logged in [`VOCABULARY_LOG.md`](VOCABULARY_LOG.md), not as a new SC each time (SC-0006 establishes the mechanism); each promotion re-pins the registry above.
 
@@ -75,6 +75,7 @@ number bound to exactly one decision.
 | SC-0019 | Common-Reader Prose Standard: re-voice the conditioning prose (Level 1, scene descriptions, significant-absence notes, register-tagging block) of P01–P06 to the blessed "good study-Bible note for ordinary readers" register (S1–S4; plain ≠ flat). No spec-version bump (free-text + guidance only). | **SHIPPED 2026-06-01** — P01–P06 prose BLESSED + written back (vault PR #8, squash-merged); methodology note + template + Agent-2/3 prompts seeded so P07–P14 are born in-register |
 | SC-0020 | Entity-ID reconciliation under SC-0018: three `id-check` engine refinements (`<NS>?` withheld-referent → INFO; note-title-safe slug normalization; **scene-scoped prose-reference parity bar** — an FM scene-entity the map narrates in that scene's §3 prose is ALIGNED) + the ruled signed-off `id-alignment-exceptions.json` coverage-difference one-siders (now incl. 3 P05 cross-scene/FM-only) + the P01 map TM_→TH_ alignment + AUDIT-relic removal. No spec-version bump (validation-rule tweaks + exceptions data + artifact edits). | **SHIPPED 2026-06-01** — + B31 alias & name-binding engine tweak (beings consult `referential_forms`; canonical preserved) + TM_TEN_YEARS retired (TH_ unverifiable) + written back (vault PR #8); `id-check` **6 clean / 0 findings** |
 | SC-0021 | Vocabulary consolidation (corpus-independent triage): promote the 11 cleaned tone/pace bares into `approved-enumerations.json` (tone `RISING/STILLED/URGENT`; pace `BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS` — locus-stripped, `NARROW` unified into `NARROWS`), restore `fixtures/for-model ≡ vault` (the tone/pace/`LAMENT_FRAMED` triage), and re-point the COMPILATION-LOG `vocabulary_additions` tone/pace to the bares (SC-0007 intake invariant). `approved-enumerations v0.4 → v0.5`, re-pinned. | **SHIPPED 2026-06-03** — gate board green (validate 12/12 · lint 6 clean · coverage 6/6 · check-drift · 136/136 tests); tone/pace convergent drift across P01–P06 = 0 |
+| SC-0022 | Vocabulary consolidation (reuse-dependent triage — the enforcement gate): **promote** 56 cleaned bares (13 `scene_kind` + 27 `proposition_kind` + 16 `communicative_function_element`); **enforce** beings `role_in_scene` descriptive→convergent + seed the 21 ruled relations (controlled slot); **schema-drop** place/object/time `role_in_scene`/`function_in_scene` (entries id-only); **deprecate** 133 orphaned superseded values. `approved-enumerations v0.5→v0.8`, `validation-rules v0.7→v0.9`, re-pinned. | **APPLIED (compiler, gate board green)** 2026-06-04 — PR open; merge + vault writeback (remove place/object/time fields from vault `stas/`) pending Marcia |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -106,6 +107,25 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0022 — Vocabulary consolidation: enforce the cleaned interlingua (promote · enforce beings · schema-drop · deprecate)
+- **Date:** 2026-06-04
+- **Decided by:** Marcia Suzuki (the reuse-dependent triage rulings 2026-06-03/04 — the `scene_kind`/`proposition_kind`/`communicative_function` collapses, the 21 beings relations, the place/object/time role-drop "loses nothing", and the deprecation = **delete** ruling 2026-06-04); the compiler implemented + verified them.
+- **Status:** APPLIED (compiler-side; gate board green; PR open) — merge + vault writeback pending Marcia.
+- **Type:** bounded-list change + axis reclassification + schema-shape (one consolidation PR, staged in 5 commits)
+- **Summary:** Make the reuse-dependent vocabulary triage real — promote the cleaned values, enforce the beings participant-role as a controlled 21-relation slot, drop the redundant place/object/time role/function fields, and deprecate the orphaned old forms. The slots P07–P14 are measured against become a constraint, not a convention. Sits on top of SC-0021 (#23 merged first; SC-0022's promote list deliberately excludes tone/pace).
+- **Rationale:** The vault triage (`tripod_cleanup_log.md`) collapsed the low-reuse one-off bounded-open values into reusable types a model can generalize, reduced the beings role gloss to 21 standing relations, and proved the place/object/time role/function glosses content-free (their meaning is owned by registry-kind + the level-3 statement slots + figures/threads). Until promoted + enforced these were a convention nothing stopped the unwritten pericopes from regenerating; SC-0022 is the gate that makes them enforced.
+- **Spec change (exact), staged:**
+  - **(1) Promote** — `approved-enumerations.json` += 56 values (`scene_kind`×13, `proposition_kind`×27, `communicative_function_element`×16), `sc_ref: SC-0022`, provenance = first-seen FOR_MODEL; re-derived from live `validate` drift (106 instances). COMPILATION-LOG `vocabulary_additions` re-pointed (SC-0007 intake invariant). `v0.5 → v0.6`.
+  - **(2) Enforce beings** — drift-detector seed key `role_in_scene_examples_being → role_in_scene_being` (axisClass keys off the `_examples` suffix → flips descriptive→convergent), reseeded with P01's relations; new `role_in_scene_being` axis in `approved-enumerations.json` seeded with all 21 ruled relations; `vocabulary.ts` drifts beings role against it; `promote.ts` `VA_KEY_TO_AXIS` += `role_in_scene_beings`; each CL declares its `approved_in` roles. `validation-rules v0.7 → v0.8`; `approved-enumerations v0.6 → v0.7`.
+  - **(3) Schema-drop** — scene_places/scene_objects/scene_times entry schemas now id-only (`role_in_scene`/`function_in_scene` removed from `required` + `properties`; entries stay `additionalProperties:false` → the fields are forbidden); removed the 3 orphaned drift-detector `_examples` seeds; `vocabulary.ts` drops the 3 drift() calls (loops kept for referential integrity); `skeleton.ts` emits id-only entries. `validation-rules v0.8 → v0.9`.
+  - **(4) Deprecate** — removed 133 orphaned superseded values unused by any pericope (scene_kind 33→16 · proposition_kind 89→35 · communicative_function_element 56→16 · tone_element 26→17 · pace_element 24→11; arc/context/presence/role unchanged). `approved-enumerations v0.7 → v0.8`. Old→new mapping preserved in `tripod_cleanup_log.md` + git history (Marcia ruled delete over a deprecated-flag crosswalk).
+- **Artifact migration:** `fixtures/for-model/` P01–P06 synced byte-identical to the triaged vault (cleaned scene/prop/comm-func + the 21 beings relations), then the place/object/time role/function fields stripped (56 fields) — so `fixtures` now intentionally **lead** the vault on the field-drop. COMPILATION-LOGs re-pointed (scene/prop/comm-func + the new `role_in_scene_beings` intake; P02 stays the grandfathered PROPOSED exception). `gold-diff-baseline.json` re-baselined (agreement unchanged — P01 100/P02 90/P03 100/P04 95/P05 98/P06 96; only judgment-placeholder counts fall as the role gaps go). **Vault writeback** (remove the place/object/time fields from the vault `stas/` FOR_MODELs, restoring `fixtures ≡ vault`) is the **human-gated follow-up** — pause Obsidian auto-backup, reviewed vault PR — NOT done here.
+- **Validator impact:** beings `role_in_scene` outside the 21 → convergent drift (review signal); place/object/time `role_in_scene`/`function_in_scene` now **BLOCK** (additionalProperties); reusing a deprecated old value → drift. Descriptive (open) findings across P01–P06 fall **158 → 22** (only `referential_form` remains open by design).
+- **Version:** `approved-enumerations.json` `v0.5 → v0.8` (sha256 `aa1a62d00b442d5841a3966309a131e50a581f0eba2ba973a7729a38a6e79eee`); `validation-rules.json` `v0.7 → v0.9` (sha256 `f3e2bbc91a2d5ccb863d72126a85ee0b6ff977da3f51f91a56dae0f0f9fc6192`). Sibling schemas (compilation-log v0.5, bcd-delta v0.4, verification-input v1.1) unchanged.
+- **Verification:** full gate board green at each stage — `validate` 6/6 (0 block · 0 drift) · `lint --corpus` 0 drift / 7 accepted · `coverage --corpus` 6/6 block-clean (245/245) · `id-check --corpus` 6 clean · `gold-diff` baseline match · `check-drift` clean · **`vitest` 136/136**. Promote list independently re-derived from live drift; every removed value asserted unused (no FOR_MODEL, no CL) before deprecation.
 
 ---
 

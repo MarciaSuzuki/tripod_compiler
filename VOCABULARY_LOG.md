@@ -65,4 +65,27 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
   pericope. Registry `v0.4 → v0.5`, re-pinned. COMPILATION-LOG `vocabulary_additions` tone/pace re-pointed
   to the bares (SC-0007 intake invariant — each CL declares exactly its `approved_in` set). **Result:
   P01–P06 validate with 0 tone/pace convergent drift.** (Old locus values left as orphaned-historical in
-  the registry; a deprecation sweep is a separate later pass.)
+  the registry; a deprecation sweep is a separate later pass — done in SC-0022 below.)
+- 2026-06-04 — **SC-0022 consolidation — promote (reuse-dependent triage):** promoted **56 cleaned
+  bounded-open values** (the collapsed reusable types from the scene_kind/proposition_kind/
+  communicative_function triage). By axis: `scene_kind`×13, `proposition_kind`×27,
+  `communicative_function_element`×16. All `sc_ref: SC-0022`; `approved_in` = each value's first-seen
+  pericope; provenance = FOR_MODEL (mirrors SC-0021). Re-derived from live `validate` drift (106 instances).
+  COMPILATION-LOG `vocabulary_additions` scene/prop/comm-func re-pointed to the cleaned values (SC-0007
+  intake invariant; P02 stays the grandfathered PROPOSED exception). Registry `v0.5 → v0.6`, re-pinned.
+  **Result: P01–P06 validate with 0 scene/prop/comm-func convergent drift.**
+- 2026-06-04 — **SC-0022 consolidation — enforce beings `role_in_scene` (axis reclassification):** added the
+  new **convergent** axis `role_in_scene_being`, seeded with the **21 ruled relations** (kinship HUSBAND/WIFE/
+  WIDOW/MOTHER_IN_LAW/SON/DAUGHTER_IN_LAW/KINSMAN/ANCESTOR/CLAN/REDEEMER_KIN/PEOPLE; DIVINE_AGENT; activity
+  GLEANER/FIELD_OWNER/FOREMAN/HARVESTERS/FEMALE_WORKERS/MALE_WORKERS/TOWNSPEOPLE; referenced SOURCE_GROUP/
+  ERA_REFERENT). `sc_ref: SC-0022`; `approved_in` = first-seen pericope. The participant-role slot is now
+  ENFORCED — a 22nd relation drifts (review signal). New CL intake `role_in_scene_beings`. Registry
+  `v0.6 → v0.7` (+ `validation-rules v0.7 → v0.8`, seed-key rename), re-pinned. Governed axis change —
+  recorded as SC-0022 in SPEC_CHANGES.md, not a routine promotion.
+- 2026-06-04 — **SC-0022 consolidation — deprecate (delete orphaned values):** removed **133 superseded
+  values** unused by any pericope — `scene_kind` 33→16, `proposition_kind` 89→35,
+  `communicative_function_element` 56→16, `tone_element` 26→17, `pace_element` 24→11 (the locus-stripped
+  tone/pace forms SC-0021 left, incl. `NARROW` unified into `NARROWS`). Each verified unused (no FOR_MODEL,
+  no COMPILATION-LOG) before removal. Registry `v0.7 → v0.8`, re-pinned. The registry is now exactly the
+  cleaned canonical set; the old→new mapping lives in `tripod_cleanup_log.md` + git history (Marcia ruled
+  delete over a deprecated-flag crosswalk). **Result: reusing a deprecated old form now drifts.**
