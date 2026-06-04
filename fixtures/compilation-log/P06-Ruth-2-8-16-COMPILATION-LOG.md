@@ -252,34 +252,9 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       }
     ],
     "tone_elements": [
-      {
-        "value": "CEREMONIAL_AT_BLESSING",
-        "source": "P06 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "RELATIONALLY_CLOSE",
-        "source": "P06 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "WARM",
-        "source": "P06 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      }
+      { "value": "WARM", "source": "P06 level_1.tone_elements convergent value (Gate-F 2026-05-30)", "status": "CONFIRMED" }
     ],
-    "pace_elements": [
-      {
-        "value": "SLOWED_THROUGH_SPEECHES",
-        "source": "P06 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "STEADY_AT_MEAL_AND_PROTOCOL",
-        "source": "P06 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      }
-    ],
+    "pace_elements": [],
     "communicative_function_elements": [
       {
         "value": "ADVANCES_HARVEST_PROVISION_THREAD_FIRST_MAJOR",

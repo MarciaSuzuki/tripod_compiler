@@ -65,10 +65,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "CHRONICLE"
     ],
     "pace_elements": [
-      "NARROWS_AT_NARRATOR_PARENTHETICAL",
-      "HOLDS_AT_INTERIOR_DIALOGUE",
-      "WIDENS_AT_CHANCE_PROVIDENCE_FRAMING",
-      "SETTLES_AT_CHRONICLE_REPORT"
+      "NARROWS",
+      "HOLDS",
+      "WIDENS",
+      "SETTLES"
     ],
     "communicative_function_elements": [
       "OPENS_CHAPTER_TWO",

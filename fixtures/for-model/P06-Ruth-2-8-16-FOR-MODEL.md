@@ -66,13 +66,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     "tone_elements": [
       "WARM",
       "RESTRAINED",
-      "WEIGHTED",
-      "RELATIONALLY_CLOSE",
-      "CEREMONIAL_AT_BLESSING"
+      "WEIGHTED"
     ],
     "pace_elements": [
-      "SLOWED_THROUGH_SPEECHES",
-      "STEADY_AT_MEAL_AND_PROTOCOL"
+      "SLOWED",
+      "STEADY"
     ],
     "communicative_function_elements": [
       "ESTABLISHES_PROTECTIVE_REGIME",

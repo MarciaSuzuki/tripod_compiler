@@ -64,13 +64,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "INTIMATE",
       "WEIGHTED",
       "SLOWED",
-      "RISING_THROUGH_LADDER",
+      "RISING",
       "UNSETTLED_AT_CLOSE"
     ],
     "pace_elements": [
-      "NARROW",
+      "NARROWS",
       "DELIBERATE",
-      "PAUSED_AT_SILENCE"
+      "PAUSED"
     ],
     "communicative_function_elements": [
       "ESTABLISHES_RUTHS_COVENANT_BINDING_TO_NAOMI",

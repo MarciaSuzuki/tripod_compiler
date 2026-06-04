@@ -66,15 +66,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     "tone_elements": [
       "RESTRAINED",
       "CHRONICLE",
-      "INTIMATE_DIALOGUE",
-      "URGENT_APPEAL",
-      "GRIEF_LADEN",
-      "LAMENT_FRAMED",
+      "INTIMATE",
+      "URGENT",
       "WEIGHTED"
     ],
     "pace_elements": [
-      "BRISK_CHRONICLE_OPENING",
-      "SLOWED_DIALOGUE"
+      "BRISK",
+      "SLOWED"
     ],
     "communicative_function_elements": [
       "ANSWERS_OPENING_CRISIS",
