@@ -211,14 +211,11 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "context_elements": [],
     "tone_elements": [
-      { "value": "INTIMATE_DIALOGUE", "source": "S2/S3 roadside mother / daughters-in-law dialogue (INTIMATE scene override)", "status": "PROPOSED" },
-      { "value": "URGENT_APPEAL", "source": "S2-S3 1:8-13 Naomi's repeated directives to return", "status": "PROPOSED" },
-      { "value": "GRIEF_LADEN", "source": "1:9b, 1:14a weeping formulae", "status": "PROPOSED" },
-      { "value": "LAMENT_FRAMED", "source": "1:13d hand-of-YHWH lament ascription", "status": "PROPOSED" }
+      { "value": "URGENT", "source": "S2-S3 1:8-13 Naomi's repeated directives to return", "status": "CONFIRMED" }
     ],
     "pace_elements": [
-      { "value": "BRISK_CHRONICLE_OPENING", "source": "S1 1:6-7 compressed hearing-and-departure", "status": "PROPOSED" },
-      { "value": "SLOWED_DIALOGUE", "source": "S2-S3 1:8-14 extended dialogue slows the pace", "status": "PROPOSED" }
+      { "value": "BRISK", "source": "S1 1:6-7 compressed hearing-and-departure", "status": "CONFIRMED" },
+      { "value": "SLOWED", "source": "S2-S3 1:8-14 extended dialogue slows the pace", "status": "CONFIRMED" }
     ],
     "communicative_function_elements": [
       { "value": "ANSWERS_OPENING_CRISIS", "source": "1:6 YHWH's provision answers the P01 famine", "status": "PROPOSED" },

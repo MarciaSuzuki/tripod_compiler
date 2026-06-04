@@ -74,6 +74,7 @@ number bound to exactly one decision.
 | SC-0018 | Cross-artifact entity-ID alignment: the locked convention (canonical ID = the bare code; the map carries it in the wikilink target up to the first hyphen) + the `tripod id-check` diagnostic verifier (the 5th deterministic check — aligned) + the empty pinned `id-alignment-exceptions.json`. Diagnostic only; fixes no content. The P01–P06 reconciliation of what it surfaces is a separate later human-gated pass. | PROPOSED |
 | SC-0019 | Common-Reader Prose Standard: re-voice the conditioning prose (Level 1, scene descriptions, significant-absence notes, register-tagging block) of P01–P06 to the blessed "good study-Bible note for ordinary readers" register (S1–S4; plain ≠ flat). No spec-version bump (free-text + guidance only). | **SHIPPED 2026-06-01** — P01–P06 prose BLESSED + written back (vault PR #8, squash-merged); methodology note + template + Agent-2/3 prompts seeded so P07–P14 are born in-register |
 | SC-0020 | Entity-ID reconciliation under SC-0018: three `id-check` engine refinements (`<NS>?` withheld-referent → INFO; note-title-safe slug normalization; **scene-scoped prose-reference parity bar** — an FM scene-entity the map narrates in that scene's §3 prose is ALIGNED) + the ruled signed-off `id-alignment-exceptions.json` coverage-difference one-siders (now incl. 3 P05 cross-scene/FM-only) + the P01 map TM_→TH_ alignment + AUDIT-relic removal. No spec-version bump (validation-rule tweaks + exceptions data + artifact edits). | **SHIPPED 2026-06-01** — + B31 alias & name-binding engine tweak (beings consult `referential_forms`; canonical preserved) + TM_TEN_YEARS retired (TH_ unverifiable) + written back (vault PR #8); `id-check` **6 clean / 0 findings** |
+| SC-0021 | Vocabulary consolidation (corpus-independent triage): promote the 11 cleaned tone/pace bares into `approved-enumerations.json` (tone `RISING/STILLED/URGENT`; pace `BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS` — locus-stripped, `NARROW` unified into `NARROWS`), restore `fixtures/for-model ≡ vault` (the tone/pace/`LAMENT_FRAMED` triage), and re-point the COMPILATION-LOG `vocabulary_additions` tone/pace to the bares (SC-0007 intake invariant). `approved-enumerations v0.4 → v0.5`, re-pinned. | **SHIPPED 2026-06-03** — gate board green (validate 12/12 · lint 6 clean · coverage 6/6 · check-drift · 136/136 tests); tone/pace convergent drift across P01–P06 = 0 |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -105,6 +106,21 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0021 — Vocabulary consolidation: promote the cleaned tone/pace bares + restore fixtures ≡ vault
+- **Date:** 2026-06-03
+- **Decided by:** Marcia Suzuki (the triage rulings — tone/pace locus-strip, the `NARROW`↔`NARROWS` UNIFY, `scene_communicative_purpose` no-op, `LAMENT_FRAMED` removal; 2026-06-02/03); the compiler implemented + verified them.
+- **Status:** SHIPPED
+- **Type:** bounded-list change (convergent L1-element promotion)
+- **Summary:** Promote the 11 corpus-independent triage bares into `approved-enumerations.json` and re-establish the `fixtures ≡ vault` + COMPILATION-LOG intake coherence the triage deferred.
+- **Rationale:** The tone/pace triage (vault `tripod_cleanup_log.md`) stripped locus suffixes from the L1 mood axes (`BRISK_CHRONICLE_OPENING → BRISK`, `NARROWS_AT_RECOGNITION_FAILURE → NARROWS`, …), dropped redundancies, and — Marcia's UNIFY ruling — merged the `NARROW`(state)/`NARROWS`(movement) split into one bare `NARROWS` (zero full-14 attestation that the contrast does any work). The cleaned bares were convergent drift pending promotion; this is the single governed consolidation that promotes them, re-pins, and runs the full gate board (deferred per-batch to avoid governance churn).
+- **Spec change (exact):** `axes.tone_element` += `RISING`(P03), `STILLED`(P04), `URGENT`(P02); `axes.pace_element` += `BRISK`(P02), `SLOWED`(P02), `PAUSED`(P03), `NARROWS`(P03), `RISES`(P04), `SETTLES`(P04), `HOLDS`(P05), `WIDENS`(P05) — all `sc_ref: SC-0021`, provenance = each value's first-seen FOR_MODEL. `version v0.4 → v0.5`, `date → 2026-06-03`, `growth_log` appended. Old locus values (`BRISK_CHRONICLE_OPENING`, …) left in the registry as orphaned-historical (a deprecation sweep is a separate later pass).
+- **Artifact migration:** `fixtures/for-model/` P02–P06 synced byte-identical to the triaged vault (tone/pace + `LAMENT_FRAMED` removal). COMPILATION-LOG `vocabulary_additions` tone/pace re-pointed to the bares (CONFIRMED) so the **SC-0007 intake invariant** holds — each pericope's CL declares exactly its `approved_in` convergent values (`drift.test.ts` guards this). The vault canonical FOR_MODELs were already triaged (vault `main`, per-batch approved); the vault's reduced CLs (tone/pace dropped) + the stale vault `_spec/approved-enumerations.json` `v0.1` are a separate deferred `--vault` reconcile.
+- **Validator impact:** none (no rule change). The 11 bares move from convergent-drift → approved; P01–P06 now validate with **0 tone/pace convergent drift**.
+- **Version:** `approved-enumerations.json` `v0.4 → v0.5` (sha256 `c7d32fb4e8004913406bab4f8e543e6ca43443911585581c3212431235b94258`). `validation-rules.json` unchanged (`v0.7`).
+- **Verification:** full gate board green — `validate` 12/12 (0 block · 0 drift) · `lint` 6 clean · `coverage --corpus` 6/6 block-clean · `check-drift` (19 pins; approved-enumerations pin `v0.5`) · `gold-diff` baseline unchanged · **`vitest` 136/136**.
 
 ---
 

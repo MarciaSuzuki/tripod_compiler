@@ -58,16 +58,16 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "AUDIENCE_KNOWLEDGE_CONTEXT"
     ],
     "tone_elements": [
-      "STILLED_AT_ARRIVAL",
+      "STILLED",
       "WEIGHTED",
       "DECLARATIVE",
-      "RESTRAINED_LAMENT",
+      "RESTRAINED",
       "UNRESOLVED_AT_CLOSE"
     ],
     "pace_elements": [
-      "NARROWS_AT_RECOGNITION_FAILURE",
-      "RISES_THROUGH_LAMENT",
-      "SETTLES_AT_NARRATOR_FRAME_CLOSE"
+      "NARROWS",
+      "RISES",
+      "SETTLES"
     ],
     "communicative_function_elements": [
       "CLOSES_CHAPTER_ONE_EMPTYING_ARC",

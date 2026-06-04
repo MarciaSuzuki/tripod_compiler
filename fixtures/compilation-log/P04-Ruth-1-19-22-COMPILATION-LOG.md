@@ -417,43 +417,13 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       }
     ],
     "tone_elements": [
-      {
-        "value": "DECLARATIVE",
-        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "RESTRAINED_LAMENT",
-        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "STILLED_AT_ARRIVAL",
-        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "UNRESOLVED_AT_CLOSE",
-        "source": "P04 level_1.tone_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      }
+      { "value": "STILLED", "source": "P04 level_1.tone_elements - SC-0021 locus-strip from STILLED_AT_ARRIVAL", "status": "CONFIRMED" },
+      { "value": "DECLARATIVE", "source": "P04 level_1.tone_elements convergent value (Gate-F 2026-05-30)", "status": "CONFIRMED" },
+      { "value": "UNRESOLVED_AT_CLOSE", "source": "P04 level_1.tone_elements convergent value (Gate-F 2026-05-30)", "status": "CONFIRMED" }
     ],
     "pace_elements": [
-      {
-        "value": "NARROWS_AT_RECOGNITION_FAILURE",
-        "source": "P04 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "RISES_THROUGH_LAMENT",
-        "source": "P04 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "SETTLES_AT_NARRATOR_FRAME_CLOSE",
-        "source": "P04 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      }
+      { "value": "RISES", "source": "P04 level_1.pace_elements - SC-0021 locus-strip from RISES_THROUGH_LAMENT", "status": "CONFIRMED" },
+      { "value": "SETTLES", "source": "P04 level_1.pace_elements - SC-0021 locus-strip from SETTLES_AT_NARRATOR_FRAME_CLOSE", "status": "CONFIRMED" }
     ],
     "communicative_function_elements": [
       {

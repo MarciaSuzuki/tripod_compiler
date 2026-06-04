@@ -57,3 +57,12 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
   Registry `v0.3 → v0.4`, re-pinned. **Result: the full Ruth pilot corpus (P01–P06) now validates with
   0 convergent drift** — controlled-vocabulary convergence complete for the pilot. (Descriptive/open
   axes remain per-pericope, by design.)
+- 2026-06-03 — **SC-0021 vocabulary consolidation (tone/pace triage promotion):** the corpus-independent
+  triage (vault `tripod_cleanup_log.md`) locus-stripped the L1 mood axes and unified `NARROW → NARROWS`;
+  this promotes the 11 resulting convergent bares. By axis: `tone_element`×3 (`RISING` P03, `STILLED` P04,
+  `URGENT` P02), `pace_element`×8 (`BRISK` P02, `SLOWED` P02, `PAUSED` P03, `NARROWS` P03, `RISES` P04,
+  `SETTLES` P04, `HOLDS` P05, `WIDENS` P05). All `sc_ref: SC-0021`; `approved_in` = each value's first-seen
+  pericope. Registry `v0.4 → v0.5`, re-pinned. COMPILATION-LOG `vocabulary_additions` tone/pace re-pointed
+  to the bares (SC-0007 intake invariant — each CL declares exactly its `approved_in` set). **Result:
+  P01–P06 validate with 0 tone/pace convergent drift.** (Old locus values left as orphaned-historical in
+  the registry; a deprecation sweep is a separate later pass.)

@@ -455,26 +455,8 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       }
     ],
     "pace_elements": [
-      {
-        "value": "HOLDS_AT_INTERIOR_DIALOGUE",
-        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "NARROWS_AT_NARRATOR_PARENTHETICAL",
-        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "SETTLES_AT_CHRONICLE_REPORT",
-        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "WIDENS_AT_CHANCE_PROVIDENCE_FRAMING",
-        "source": "P05 level_1.pace_elements — convergent value (Gate-F CONFIRMED 2026-05-30)",
-        "status": "CONFIRMED"
-      }
+      { "value": "HOLDS", "source": "P05 level_1.pace_elements - SC-0021 locus-strip from HOLDS_AT_INTERIOR_DIALOGUE", "status": "CONFIRMED" },
+      { "value": "WIDENS", "source": "P05 level_1.pace_elements - SC-0021 locus-strip from WIDENS_AT_CHANCE_PROVIDENCE_FRAMING", "status": "CONFIRMED" }
     ],
     "communicative_function_elements": [
       {

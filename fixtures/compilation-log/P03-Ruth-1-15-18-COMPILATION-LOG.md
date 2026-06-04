@@ -160,14 +160,14 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "tone_elements": [
       { "value": "INTIMATE", "source": "S2 mother / daughter-in-law vow exchange", "status": "CONFIRMED" },
-      { "value": "RISING_THROUGH_LADDER", "source": "1:16-17 the vow's ascending ladder of bindings", "status": "CONFIRMED" },
       { "value": "SLOWED", "source": "deliberate pacing through the vow", "status": "CONFIRMED" },
+      { "value": "RISING", "source": "1:16-17 the vow's ascending ladder of bindings", "status": "CONFIRMED" },
       { "value": "UNSETTLED_AT_CLOSE", "source": "1:18 Naomi's withheld interior response", "status": "CONFIRMED" }
     ],
     "pace_elements": [
+      { "value": "NARROWS", "source": "tight focus on the two women", "status": "CONFIRMED" },
       { "value": "DELIBERATE", "source": "the vow uttered deliberately", "status": "CONFIRMED" },
-      { "value": "NARROW", "source": "tight focus on the two women", "status": "CONFIRMED" },
-      { "value": "PAUSED_AT_SILENCE", "source": "1:18 the pause at Naomi's silence", "status": "CONFIRMED" }
+      { "value": "PAUSED", "source": "1:18 the pause at Naomi's silence", "status": "CONFIRMED" }
     ],
     "communicative_function_elements": [
       { "value": "ESTABLISHES_RUTHS_COVENANT_BINDING_TO_NAOMI", "source": "1:16-17 the covenant vow", "status": "CONFIRMED" },
