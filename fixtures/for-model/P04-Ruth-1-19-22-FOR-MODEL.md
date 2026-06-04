@@ -110,8 +110,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL1",
-            "role_in_scene": "DESTINATION_REACHED_AND_PUBLIC_ARRIVAL_LOCUS"
+            "place_id": "PL1"
           }
         ]
       },
@@ -192,28 +191,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL1",
-            "role_in_scene": "ARRIVAL_POINT_NAMED_AGAIN_AGAINST_HARVEST_FRAME"
+            "place_id": "PL1"
           },
           {
-            "place_id": "PL2",
-            "role_in_scene": "REFERENCED_AS_JOURNEY_ORIGIN_IN_NARRATOR_SUMMARY"
+            "place_id": "PL2"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0026",
-            "function_in_scene": "HARVEST_FRAME_THAT_OPENS_THE_PROVISION_CONTEXT_AGAINST_NAOMIS_EMPTY_LAMENT"
+            "object_id": "CB_0026"
           }
         ]
       },
       "times_in_scene": {
         "entries": [
           {
-            "time_id": "TM_BARLEY_HARVEST_BEGINNING",
-            "role_in_scene": "AGRICULTURAL_SEASON_FRAME_OPENING_THAT_CLOSES_AT_P07"
+            "time_id": "TM_BARLEY_HARVEST_BEGINNING"
           }
         ]
       },

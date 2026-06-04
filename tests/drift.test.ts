@@ -29,7 +29,7 @@ describe("axis classification (convergent vs descriptive)", () => {
       expect(axisClass(k), k).toBe("convergent");
   });
   it("descriptive axes (_examples + referential_form)", () => {
-    for (const k of ["role_in_scene_examples_place", "function_in_scene_examples_object", "object_kind_examples", "referential_form"])
+    for (const k of ["object_kind_examples", "referential_form"])
       expect(axisClass(k), k).toBe("descriptive");
   });
 });
@@ -47,7 +47,7 @@ describe("drift report split (against a pre-P06 baseline)", () => {
       if (f.severity === "descriptive") expect(axisClass(f.axis!)).toBe("descriptive");
     }
     const driftAxes = new Set(findings.filter((f) => f.severity === "drift" && f.axis).map((f) => f.axis));
-    for (const open of ["function_in_scene_examples_object", "referential_form"])
+    for (const open of ["referential_form"])
       expect(driftAxes.has(open)).toBe(false);
   });
 });

@@ -107,23 +107,22 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
       if (!b.presence) gap(`${at}/beings_in_scene/entries/${i}/presence`, "presence", "no Presence line in MM", b.label);
       return { being_id: b.code ?? todo(b.label), role_in_scene: todo(b.roleProse ?? b.label), presence: b.presence ?? todo() };
     });
+    // SC-0022: place/object/time scene entries are id-only (role_in_scene/function_in_scene dropped
+    // from the schema). The skeleton still gaps a missing place/object code; times carry no judgment gap.
     const placeEntries = sc.places.map((p, i) => {
       if (!p.code) gap(`${at}/places_in_scene/entries/${i}/place_id`, "place_id", "no wikilink in MM — assign/register a PL code", p.label);
-      gap(`${at}/places_in_scene/entries/${i}/role_in_scene`, "role_in_scene", "tokenize from MM role prose (judgment)", p.roleProse ?? p.label);
-      return { place_id: p.code ?? todo(p.label), role_in_scene: todo(p.roleProse ?? p.label) };
+      return { place_id: p.code ?? todo(p.label) };
     });
     const objectEntries = sc.objects.map((o, i) => {
       if (!o.code) gap(`${at}/objects_in_scene/entries/${i}/object_id`, "object_id", "no wikilink in MM — assign an O#/TH_ code (FOR_MODEL coding may differ from MM)", o.label);
-      gap(`${at}/objects_in_scene/entries/${i}/function_in_scene`, "function_in_scene", "tokenize from MM prose (judgment)", o.roleProse ?? o.label);
-      return { object_id: o.code ?? todo(o.label), function_in_scene: todo(o.roleProse ?? o.label) };
+      return { object_id: o.code ?? todo(o.label) };
     });
     const times =
       sc.times === null
         ? { _note: "no distinct temporal frame for this scene (per meaning map)", entries: null }
         : {
-            entries: sc.times.map((t, i) => {
-              gap(`${at}/times_in_scene/entries/${i}/role_in_scene`, "role_in_scene", "tokenize from MM prose (judgment)", t.roleProse ?? t.label);
-              return { time_id: t.code ?? todo(t.label), role_in_scene: todo(t.roleProse ?? t.label) };
+            entries: sc.times.map((t) => {
+              return { time_id: t.code ?? todo(t.label) };
             }),
           };
 

@@ -3,8 +3,8 @@
   "tagset_version": "TRIPOD_STA_v2_0",
   "schemas": {
     "validation-rules.json": {
-      "version": "v0.8",
-      "sha256": "dc0f06e5821a1fbca37ef0c06d43c8e4bd928a3919007d66e87c77b92784a1cb"
+      "version": "v0.9",
+      "sha256": "f3e2bbc91a2d5ccb863d72126a85ee0b6ff977da3f51f91a56dae0f0f9fc6192"
     },
     "compilation-log.schema.json": {
       "version": "v0.5",

@@ -128,16 +128,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL_LAND_OF_JUDAH",
-            "role_in_scene": "LAND_AFFLICTED_BY_FAMINE"
+            "place_id": "PL_LAND_OF_JUDAH"
           },
           {
-            "place_id": "PL1",
-            "role_in_scene": "HOMETOWN_DEPARTED_FROM"
+            "place_id": "PL1"
           },
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_DESTINATION_OF_SOJOURN"
+            "place_id": "PL2"
           }
         ]
       },
@@ -145,12 +142,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "O1",
-            "function_in_scene": "AFFLICTION_THAT_TRIGGERS_DEPARTURE"
+            "object_id": "O1"
           },
           {
-            "object_id": "CB_0030",
-            "function_in_scene": "FRAMES_DEPARTURE_AS_INTENDED_TEMPORARY"
+            "object_id": "CB_0030"
           }
         ]
       },
@@ -158,8 +153,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "times_in_scene": {
         "entries": [
           {
-            "time_id": "TM_PERIOD_OF_JUDGES",
-            "role_in_scene": "HISTORICAL_ERA_ANCHOR"
+            "time_id": "TM_PERIOD_OF_JUDGES"
           }
         ]
       },
@@ -201,8 +195,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_WHERE_FIRST_DEATH_OCCURS"
+            "place_id": "PL2"
           }
         ]
       },
@@ -264,8 +257,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_OF_MARRIAGES_AND_DECADE_OF_DWELLING"
+            "place_id": "PL2"
           }
         ]
       },
@@ -273,8 +265,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "TH_TEN_YEARS_APPROXIMATELY",
-            "function_in_scene": "DURATION_OF_FOREIGN_DWELLING_AS_CONTENT"
+            "object_id": "TH_TEN_YEARS_APPROXIMATELY"
           }
         ]
       },
@@ -332,8 +323,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_THAT_HAS_CONSUMED_ENTIRE_MALE_LINE"
+            "place_id": "PL2"
           }
         ]
       },

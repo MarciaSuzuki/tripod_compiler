@@ -108,12 +108,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "REFERENCED_AS_PLACE_OF_RETURN_OF_EXEMPLAR"
+            "place_id": "PL2"
           },
           {
-            "place_id": "PL_LAND_OF_JUDAH",
-            "role_in_scene": "IMPLIED_DESTINATION_OF_ONWARD_ROAD"
+            "place_id": "PL_LAND_OF_JUDAH"
           }
         ]
       },
@@ -160,8 +158,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "_note": "No proper place is named inside the vow. Ruth uses four indefinite-place constructions across the binding ladder (where you go / where you lodge / where you die / there I will be buried) without naming any PL-coded place. PL_LAND_OF_JUDAH continues as implicit onward destination of the road. No PL-coded place is anchored to a specific binding.",
         "entries": [
           {
-            "place_id": "PL_LAND_OF_JUDAH",
-            "role_in_scene": "IMPLIED_ONWARD_DESTINATION_OF_BINDING_PATH"
+            "place_id": "PL_LAND_OF_JUDAH"
           }
         ]
       },

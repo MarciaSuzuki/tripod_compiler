@@ -122,20 +122,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL2",
-            "role_in_scene": "DEPARTURE_POINT_AND_LOCUS_OF_NEWS_HEARING"
+            "place_id": "PL2"
           },
           {
-            "place_id": "PL_LAND_OF_JUDAH",
-            "role_in_scene": "DESTINATION_OF_RETURN_AND_LOCUS_OF_DIVINE_PROVISION"
+            "place_id": "PL_LAND_OF_JUDAH"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0012",
-            "function_in_scene": "COVENANT_PROVISION_OF_BREAD_NAMED_IN_THE_NEWS_THAT_TURNS_NAOMI_HOMEWARD"
+            "object_id": "CB_0012"
           }
         ]
       },
@@ -198,24 +195,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL_EACH_HER_MOTHERS_HOUSE",
-            "role_in_scene": "DISTRIBUTIVE_DESTINATION_OF_NAOMIS_DIRECTIVE"
+            "place_id": "PL_EACH_HER_MOTHERS_HOUSE"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0011",
-            "function_in_scene": "COVENANT_LOYALTY_NAOMI_ASKS_YHWH_TO_REPAY_THE_DAUGHTERS"
+            "object_id": "CB_0011"
           },
           {
-            "object_id": "CB_0008",
-            "function_in_scene": "PERFORMATIVE_BLESSING_NAOMI_CALLS_DOWN_IN_YHWHS_NAME"
+            "object_id": "CB_0008"
           },
           {
-            "object_id": "CB_0014",
-            "function_in_scene": "SETTLED_SECURITY_OF_A_HOME_NAOMI_WISHES_FOR_THE_DAUGHTERS"
+            "object_id": "CB_0014"
           }
         ]
       },

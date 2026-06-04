@@ -116,20 +116,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "FIELD_WHERE_PROTECTIVE_REGIME_APPLIES"
+            "place_id": "PL5_BOAZ_PORTION"
           },
           {
-            "place_id": "PL_OTHER_FIELD",
-            "role_in_scene": "HYPOTHETICAL_DANGER_PLACE_OUTSIDE_PROTECTIVE_COVER"
+            "place_id": "PL_OTHER_FIELD"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0034",
-            "function_in_scene": "GLEANING_INSTITUTION_UNDER_WHICH_RUTH_WORKS_IN_BOAZ_FIELD"
+            "object_id": "CB_0034"
           }
         ]
       },
@@ -178,28 +175,23 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "LOCUS_OF_BOWING_AND_RECOGNITION_EXCHANGE"
+            "place_id": "PL5_BOAZ_PORTION"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0033",
-            "function_in_scene": "FAVOR_RUTH_ASKS_WHY_SHE_HAS_FOUND_IN_BOAZ_EYES"
+            "object_id": "CB_0033"
           },
           {
-            "object_id": "CB_0038",
-            "function_in_scene": "FOREIGNER_SELF_DESIGNATION_RUTH_PLACES_IN_HER_OWN_MOUTH"
+            "object_id": "CB_0038"
           },
           {
-            "object_id": "CB_0037",
-            "function_in_scene": "WING_OF_REFUGE_UNDER_WHICH_RUTH_HAS_COME_TO_SHELTER"
+            "object_id": "CB_0037"
           },
           {
-            "object_id": "CB_0008",
-            "function_in_scene": "INSTITUTIONAL_BLESSING_BOAZ_PRONOUNCES_AT_VERSE_TWELVE"
+            "object_id": "CB_0008"
           }
         ]
       },
@@ -238,32 +230,27 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "FIELD_LOCATION_OF_MEAL_GLEANER_PLACED_BESIDE_HARVESTERS"
+            "place_id": "PL5_BOAZ_PORTION"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0012",
-            "function_in_scene": "BREAD_OF_FIELD_MEAL_CLOSES_BREAD_THREAD_FROM_BETHLEHEM_IN_FAMINE_TO_BOAZ_TABLE"
+            "object_id": "CB_0012"
           },
           {
-            "object_id": "O9",
-            "function_in_scene": "VINEGAR_FOR_DIPPING_CONCRETE_BODILY_WELCOME_AT_MEAL"
+            "object_id": "O9"
           },
           {
-            "object_id": "O10",
-            "function_in_scene": "ROASTED_GRAIN_HAND_TO_HAND_PROVISION_FROM_HOST_TO_GLEANER"
+            "object_id": "O10"
           }
         ]
       },
       "times_in_scene": {
         "entries": [
           {
-            "time_id": "TM_MEALTIME",
-            "role_in_scene": "WITHIN_DAY_POINT_AT_WHICH_HOST_INVITES_GLEANER_TO_EAT"
+            "time_id": "TM_MEALTIME"
           }
         ]
       },
@@ -298,24 +285,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "LOCUS_OF_EXTENDED_GLEANING_REGIME"
+            "place_id": "PL5_BOAZ_PORTION"
           },
           {
-            "place_id": "PL_AMONG_SHEAVES",
-            "role_in_scene": "PLACE_GLEANER_NOW_PERMITTED_TO_GLEAN_BEYOND_LEGAL_MINIMUM"
+            "place_id": "PL_AMONG_SHEAVES"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0034",
-            "function_in_scene": "GLEANING_FRAME_EXTENDED_IN_BOAZ_COMMAND_BEYOND_LEGAL_MINIMUM"
+            "object_id": "CB_0034"
           },
           {
-            "object_id": "O11",
-            "function_in_scene": "SHEAVES_AND_BUNDLES_MATERIALS_AROUND_WHICH_EXTENDED_REGIME_WORKS"
+            "object_id": "O11"
           }
         ]
       },

@@ -118,8 +118,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0032",
-            "function_in_scene": "STANDING_AND_CAPABILITY_BY_WHICH_THE_NARRATOR_INTRODUCES_BOAZ"
+            "object_id": "CB_0032"
           }
         ]
       },
@@ -153,24 +152,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL_NAOMIS_DWELLING",
-            "role_in_scene": "PRIVATE_INTERIOR_SETTING_OF_INITIATIVE_AND_RELEASE_DIALOGUE"
+            "place_id": "PL_NAOMIS_DWELLING"
           },
           {
-            "place_id": "PL5",
-            "role_in_scene": "REFERENCED_PROPOSED_DESTINATION_OF_GLEANING_INITIATIVE"
+            "place_id": "PL5"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0033",
-            "function_in_scene": "GRACE_RUTH_HOPES_TO_FIND_IN_THE_EYES_OF_A_FIELD_OWNER"
+            "object_id": "CB_0033"
           },
           {
-            "object_id": "CB_0034",
-            "function_in_scene": "GLEANING_INSTITUTION_FOR_THE_POOR_AND_FOREIGNER_RUTH_PROPOSES_TO_ENTER"
+            "object_id": "CB_0034"
           }
         ]
       },
@@ -219,28 +214,23 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5",
-            "role_in_scene": "AGRICULTURAL_FIELD_HARVEST_LOCUS_GENERAL"
+            "place_id": "PL5"
           },
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "OWNED_PORTION_REACHED_THROUGH_CHANCE_CONSTRUCTION"
+            "place_id": "PL5_BOAZ_PORTION"
           },
           {
-            "place_id": "PL1",
-            "role_in_scene": "HOMETOWN_FROM_WHICH_FIELD_OWNER_ARRIVES"
+            "place_id": "PL1"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0035",
-            "function_in_scene": "CHANCE_THAT_LANDS_RUTH_IN_BOAZ_PORTION_WITH_THE_ONE_WHO_LEADS_HER_WITHHELD"
+            "object_id": "CB_0035"
           },
           {
-            "object_id": "CB_0008",
-            "function_in_scene": "FIELD_GREETING_AND_ANSWERING_BLESSING_EXCHANGED_IN_YHWHS_NAME"
+            "object_id": "CB_0008"
           }
         ]
       },
@@ -290,24 +280,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "PL5_BOAZ_PORTION",
-            "role_in_scene": "OWNED_PORTION_CONTINUING_FROM_PREVIOUS_SCENE"
+            "place_id": "PL5_BOAZ_PORTION"
           },
           {
-            "place_id": "PL2",
-            "role_in_scene": "FOREIGN_LAND_NAMED_AS_ORIGIN_IN_FOREMAN_REPORT"
+            "place_id": "PL2"
           },
           {
-            "place_id": "PL_HA_BAYIT_FIELD_SHELTER",
-            "role_in_scene": "FIELD_SHELTER_NAMED_IN_FOREMAN_REPORT_WITH_TEXTUAL_UNCERTAINTY"
+            "place_id": "PL_HA_BAYIT_FIELD_SHELTER"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW",
-            "function_in_scene": "WITHIN_DAY_WORK_SPAN_AS_CONTENT_IN_THE_FOREMANS_QUOTED_REPORT"
+            "object_id": "TH_WITHIN_DAY_FROM_MORNING_UNTIL_NOW"
           }
         ]
       },
