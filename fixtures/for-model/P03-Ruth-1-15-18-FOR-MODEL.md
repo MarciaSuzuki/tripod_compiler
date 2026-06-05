@@ -219,14 +219,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ],
         "appeal_components": [
           {
-            "action": "STATED_EXEMPLAR_RETURN",
+            "action": "STATED",
             "speaker": "B3",
             "exemplar_party": "B8",
             "exemplar_referential_form": "KINSHIP_FORM_YEBIMTEKH",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "DIRECTED_HEARER_TO_FOLLOW_EXEMPLAR",
+            "action": "DIRECTED",
             "speaker": "B3",
             "addressee": "B9",
             "exemplar_party": "B8",
@@ -273,61 +273,61 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "vow_structural_form": "SIX_STEP_LADDER_PATH_LODGING_PEOPLE_GOD_DEATH_BURIAL",
         "vow_components": [
           {
-            "action": "VOWED_PATH_BINDING",
+            "action": "VOWED",
             "binder": "B9",
             "bound_to_referent": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_GO",
             "matched_action_form": "I_WILL_GO",
             "list_position": "FIRST",
-            "speech_act": "VOWS_ROAD_BINDING"
+            "speech_act": "VOWS"
           },
           {
-            "action": "VOWED_LODGING_BINDING",
+            "action": "VOWED",
             "binder": "B9",
             "bound_to_referent": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_LODGE",
             "matched_action_form": "I_WILL_LODGE",
             "list_position": "SECOND",
-            "speech_act": "VOWS_RESIDENCE_BINDING"
+            "speech_act": "VOWS"
           },
           {
-            "action": "VOWED_PEOPLE_BINDING",
+            "action": "VOWED",
             "binder": "B9",
             "bound_to_referent": "B3",
             "bound_to_collective": "B31",
             "nominal_equation_half": "PEOPLE_HALF",
             "list_position": "THIRD",
-            "speech_act": "VOWS_PEOPLE_BINDING"
+            "speech_act": "VOWS"
           },
           {
-            "action": "VOWED_GOD_BINDING",
+            "action": "VOWED",
             "binder": "B9",
             "bound_to_referent": "B3",
             "invoked_divine_agent": "B10",
             "referential_form_at_verse": "UNNAMED_DEITY_IN_BINDING_PAIRING",
             "nominal_equation_half": "GOD_HALF",
             "list_position": "FOURTH",
-            "speech_act": "VOWS_GOD_BINDING"
+            "speech_act": "VOWS"
           },
           {
-            "action": "VOWED_DEATH_PLACE_BINDING",
+            "action": "VOWED",
             "binder": "B9",
             "bound_to_referent": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_DIE",
             "matched_action_form": "I_WILL_DIE",
             "binding_domain": "IDENTITY_AT_LIMIT_OF_EXISTENCE",
             "list_position": "FIFTH",
-            "speech_act": "VOWS_IDENTITY_BINDING"
+            "speech_act": "VOWS"
           },
           {
-            "action": "VOWED_BURIAL_PLACE_BINDING",
+            "action": "VOWED",
             "binder": "B9",
             "bound_to_referent": "B3",
             "binding_demonstrative_place_form": "THERE_DEMONSTRATIVE_LINKING_TO_DEATH_PLACE",
             "matched_action_form": "I_WILL_BE_BURIED",
             "binding_domain": "PLACE_OF_FINAL_REST",
             "list_position": "SIXTH",
-            "speech_act": "VOWS_PLACE_OF_BURIAL_BINDING"
+            "speech_act": "VOWS"
           }
         ]
       },
@@ -375,7 +375,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "narrator_report_components": [
           {
-            "action": "SAW_DETERMINED_RESOLVE",
+            "action": "SAW",
             "perceiver": "B3",
             "perceived": "B9",
             "narrator_interior_access_scope": "GIVEN_TO_RUTHS_RESOLVE_WITHHELD_FROM_NAOMIS_RESPONSE",

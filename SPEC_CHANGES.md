@@ -37,8 +37,8 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 | Schema | Version | sha256 |
 | --- | --- | --- |
-| `validation-rules.json` | `v0.10` | `2d141a58513fe520e81148fd05f8340003fceececd0f3a05e2df3cc9c937cb4e` |
-| `compilation-log.schema.json` | `v0.5` | `f009b32781f8a0e4d4d40e4f7500dd64396bdeeb06e3fe16d9ff2214033c36ca` |
+| `validation-rules.json` | `v0.11` | `bf25ebb116e4e564a5e546304e38838e0321ac4c6de2403e4b3e69b700ed3179` |
+| `compilation-log.schema.json` | `v0.6` | `cb9c5c8c1a031b468597dcae601f3334f6e70bea393f19dfb88f4d421e3889e0` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
 | `approved-enumerations.json` | `v0.9` | `56444d9bc43b00d523461ade1d44db8b8f7204b56465e4f0a30ae3c0000a4610` |
@@ -79,6 +79,8 @@ number bound to exactly one decision.
 | SC-0021 | Vocabulary consolidation (corpus-independent triage): promote the 11 cleaned tone/pace bares into `approved-enumerations.json` (tone `RISING/STILLED/URGENT`; pace `BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS` — locus-stripped, `NARROW` unified into `NARROWS`), restore `fixtures/for-model ≡ vault` (the tone/pace/`LAMENT_FRAMED` triage), and re-point the COMPILATION-LOG `vocabulary_additions` tone/pace to the bares (SC-0007 intake invariant). `approved-enumerations v0.4 → v0.5`, re-pinned. | **SHIPPED 2026-06-03** — gate board green (validate 12/12 · lint 6 clean · coverage 6/6 · check-drift · 136/136 tests); tone/pace convergent drift across P01–P06 = 0 |
 | SC-0023 | Quarantined-vocabulary mechanism: un-settle the 8 used-once `communicative_function_element` coin-flips SC-0022 erroneously promoted (`TRANSMITS/ANSWERS/PLACES/ANCHORS/INTRODUCES/POSITIONS/DISTRIBUTES/RECITES`) into a pinned `quarantined-vocabulary.json`; new `quarantined` finding severity + corpus `quarantine watch` that surfaces a RECURRENCE (value in ≥2 pericopes) as an explicit notice (not silent exclusion); `promote` gains a `skippedByQuarantine` guard. `approved-enumerations v0.8→v0.9`, `quarantined-vocabulary 0.1.0`, re-pinned. | **APPLIED (compiler, gate board green)** 2026-06-04 — PR open; merge pending Marcia. UNSETTLED/UNRESOLVED_AT_CLOSE tone-pair unify left as a separate Marcia ruling |
 | SC-0022 | Vocabulary consolidation (reuse-dependent triage — the enforcement gate): **promote** 56 cleaned bares (13 `scene_kind` + 27 `proposition_kind` + 16 `communicative_function_element`); **enforce** beings `role_in_scene` descriptive→convergent + seed the 21 ruled relations (controlled slot); **schema-drop** place/object/time `role_in_scene`/`function_in_scene` (entries id-only); **deprecate** 133 orphaned superseded values. `approved-enumerations v0.5→v0.8`, `validation-rules v0.7→v0.9`, re-pinned. | **APPLIED (compiler, gate board green)** 2026-06-04 — PR open; merge + vault writeback (remove place/object/time fields from vault `stas/`) pending Marcia |
+| SC-0024 | Thread A — nested component `action`/`speech_act` collapse: **closed-list** — collapse the six `VOWS_*_BINDING` SPEECH_ACT values to a single `VOWS` (31→26), synced across `validation-rules.json` + `compilation-log.schema.json`; **content** — reduce ~57 sentence-shaped `action` values across P01–P06 to a small reusable verb set (DIRECTED/STATED/VOWED/ASKED/REPORTED/ASCRIBED/IDENTIFIED + bare verbs), each proven by a per-value survival table (sibling slot or map §4 home); **route** the load-bearing vessels detail to a new `drink_source` sibling slot; **hold** 7 load-bearing labels for Thread B; **migrate** P03 (incl. a P03-D3 supersession note). `action` stays uncontrolled (enforcement = SC-0025). `validation-rules v0.10→v0.11`, `compilation-log.schema v0.5→v0.6`, re-pinned. | **APPLIED (compiler, gate board green: 142 tests · validate 6/6 · lint 0/7 · coverage 6/6 · id-check 6 clean · gold-diff baseline)** 2026-06-04 — PR open; merge + vault writeback pending Marcia |
+| SC-0025 | Action-slot enforcement (the SC-0024 durability follow-on): reclassify the nested component `action` slot from uncontrolled free-text to a controlled bounded-open axis, seeded with the verb set SC-0024 produced, so P07–P14 cannot re-introduce sentence-shaped action values (drift→review→promote-with-provenance). Clean-then-enforce, the same shape as triage→SC-0022. **SC-0024's `action` cleanup is only durable once this lands.** | PROPOSED |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -112,6 +114,38 @@ number bound to exactly one decision.
 ```
 
 ---
+
+## SC-0024 — Thread A: nested component `action` / `speech_act` collapse (REDUCE, not promote)
+- **Date:** 2026-06-04
+- **Decided by:** Marcia Suzuki (ruled the whole Thread A set: vow collapse; keep the speech_act suffix-variants — same-act-vs-different-act; hold 7 load-bearing labels for Thread B; D1 split — route the load-bearing vessels detail to a sibling slot, collapse the incidental map-only ones; vessels option (a) descriptive slot + the registry gap flagged for a future BCD-delta; courtroom-lament held on the *ʿanah b-* legal/affliction split; audit-log handling option (a); escalate `action` enforcement to a named SC-0025). The compiler implemented + verified.
+- **Status:** APPLIED (compiler-side; gate board green; PR open) — merge + vault writeback pending Marcia.
+- **Type:** closed-list change (`speech_act`) + content edit (`action`, uncontrolled)
+- **Summary:** The SC-0021/0022 triage cleaned the top-level bounded-open slots but never reached the `action`/`speech_act` slots **nested inside proposition `*_components` arrays**. SC-0024 collapses them: the six `VOWS_*_BINDING` SPEECH_ACT values → one closed-list `VOWS` (31→26), and ~57 sentence-shaped `action` values across P01–P06 → a small reusable verb set, each reduction proven by a per-value **survival table** (the dropped detail must survive in a named sibling slot or map §4 line, else it is held).
+- **Rationale:** A sentence-shaped value is never a reusable type; the nested slots were the last uncollapsed layer. Because `action` is free text, the gates **cannot** verify these collapses — so the proof is the survival table (`docs/THREAD-A-PROPOSAL.md`), not gate-green. The vow's six speech-acts are the *same* act (vowing) differing only by domain → collapse; the rhetorical-question suffix-variants are *different* illocutionary acts → kept. 7 labels where preserve-meaning/preserve-form come apart (courtroom lament; wings-of-refuge blessing; *shifchah/shifchot*; *nokhriya*) are **held** as the Thread B starter corpus.
+- **Spec change (exact):**
+  - `validation-rules.json` `closed_lists.SPEECH_ACT`: remove `VOWS_IDENTITY_BINDING`, `VOWS_ROAD_BINDING`, `VOWS_RESIDENCE_BINDING`, `VOWS_PEOPLE_BINDING`, `VOWS_GOD_BINDING`, `VOWS_PLACE_OF_BURIAL_BINDING`; add `VOWS`. 31 → 26.
+  - `compilation-log.schema.json` `speech_act_value.enum`: same edit (kept in sync — SC-0014 precedent).
+  - `action` is **uncontrolled free text** → no enum/schema change; the reductions are content edits. (Making `action` controlled = SC-0025.)
+- **Artifact migration:**
+  - **P03 FOR_MODEL:** vow `speech_act` ×6 → `VOWS`; vow `action` ×6 → `VOWED`.
+  - **P01–P06 FOR_MODELs:** ~57 `action` reductions to the reusable verb set (DIRECTED/STATED/VOWED/ASKED/REPORTED/ASCRIBED/IDENTIFIED/REFUSED/PROPOSED/GREETED/BLESSED/PERMITTED/POSITIONED/INTRODUCED/PLACED/NAMED/SAW/WENT_OUT/WALKED + pre-existing bare verbs). 7 held labels untouched.
+  - **P06 P4 FOR_MODEL:** vessels routed to a new `drink_source: WATER_VESSELS` sibling slot (the vessels are an unregistered referent — a registry gap flagged for a future BCD-delta, not in scope here).
+  - **P03 COMPILATION-LOG:** `speech_act_values_used` six → `VOWS`; a **supersession note** appended to decision P03-D3 recording that the collapse incurs no loss (FIG_0074 + `vow_structural_form` + `list_position` carry the six-way distinction; verified FIG_0074 fires independently of speech_act values). Original P03-D3 reasoning retained as provenance.
+  - The CLs' descriptive `action` gap-hints are a frozen compile-time record (already divergent from the FMs, e.g. `DIVINE_AGENT` vs `YHWH`; nothing validates them against FM actions) — left as historical.
+- **Validator impact:** none new — the FM validator already enforces SPEECH_ACT as a closed list; `VOWS` now passes, the six `VOWS_*_BINDING` now block (correct).
+- **Version:** `validation-rules.json v0.10 → v0.11` (sha256 `bf25ebb116e4e564a5e546304e38838e0321ac4c6de2403e4b3e69b700ed3179`); `compilation-log.schema.json v0.5 → v0.6` (sha256 `cb9c5c8c1a031b468597dcae601f3334f6e70bea393f19dfb88f4d421e3889e0`). Both re-pinned.
+- **Verification:** 142 tests · validate 6/6 (0 block · 0 drift · 8 quarantined unchanged) · lint 0/7 accepted · coverage 6/6 (245/245) · id-check 6 clean · gold-diff baseline (exit 0) · check-drift clean. The `action` slot went from ~50 one-offs to a reusable set with exactly the 7 held labels remaining sentence-shaped (verifiable: `grep '"action"'`).
+- **Discovered (pre-existing, OUT OF SCOPE — flagged for a governed follow-on):** all 6 COMPILATION-LOGs carry `vocabulary_additions.role_in_scene_beings`, but `compilation-log.schema.json` (`additionalProperties:false`) lacks that property → every CL is invalid against its own schema. An SC-0022 residue (the role_in_scene_being intake slot was never added to the CL schema); latent because the gate board does not validate CLs. Not touched by SC-0024.
+
+## SC-0025 — Action-slot enforcement (the SC-0024 durability follow-on)
+- **Date:** 2026-06-04
+- **Decided by:** Marcia Suzuki (escalated from a "note for later" to a named, scoped follow-on).
+- **Status:** PROPOSED
+- **Type:** axis reclassification (uncontrolled → bounded-open)
+- **Summary:** Reclassify the nested component `action` slot from uncontrolled free-text to a **controlled bounded-open axis**, seeded with the verb set SC-0024 produced, drift-detected like the other bounded-open slots.
+- **Rationale:** SC-0024 *reduces* `action` but the slot stays uncontrolled, so P07–P14 could re-introduce sentence-shaped values and the slot would re-dirty — the exact failure enforcement prevents. **SC-0024's `action` cleanup is only durable once SC-0025 lands.** Clean-then-enforce, the same shape as triage → SC-0022. Flagged in the handoff so the next architect treats the clean `action` set as load-bearing.
+- **Spec change (exact):** TBD — add `action` to the bounded-open drift detector seeded with the SC-0024 verb set; a COMPILATION-LOG `vocabulary_additions.action_values` intake slot (SC-0007 pattern); promote-with-provenance flow.
+- **Verification:** TBD when applied.
 
 ## SC-0023 — Quarantined-vocabulary mechanism: un-settle the 8 used-once comm-func coin-flips (surface recurrence)
 - **Date:** 2026-06-04

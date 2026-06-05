@@ -321,24 +321,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "address_form": "MY_DAUGHTER_NON_KIN_ELDER_TO_YOUNG_FOREIGNER",
         "instruction_components": [
           {
-            "action": "DIRECTED_GLEANER_TO_STAY_IN_THIS_FIELD",
+            "action": "DIRECTED",
             "field_to_stay_in": "PL5_BOAZ_PORTION",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
-            "action": "DIRECTED_GLEANER_NOT_TO_GLEAN_IN_ANOTHER_FIELD",
+            "action": "DIRECTED",
             "alternative_field": "PL_OTHER_FIELD",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           },
           {
-            "action": "DIRECTED_GLEANER_NOT_TO_PASS_ON",
+            "action": "DIRECTED",
             "list_position": "THIRD",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           },
           {
-            "action": "DIRECTED_GLEANER_TO_STAY_CLOSE_WITH_YOUNG_WOMEN",
+            "action": "DIRECTED",
             "companion_group": "B16",
             "list_position": "FOURTH",
             "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -363,13 +363,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B9",
         "instruction_components": [
           {
-            "action": "DIRECTED_HEARER_TO_KEEP_EYES_ON_REAPED_FIELD",
+            "action": "DIRECTED",
             "field_to_watch": "PL5_BOAZ_PORTION",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
-            "action": "DIRECTED_HEARER_TO_GO_AFTER_YOUNG_WOMEN",
+            "action": "DIRECTED",
             "companion_group": "B16",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -417,12 +417,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B9",
         "instruction_components": [
           {
-            "action": "DIRECTED_HEARER_TO_GO_TO_VESSELS",
+            "action": "DIRECTED",
+            "drink_source": "WATER_VESSELS",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
-            "action": "DIRECTED_HEARER_TO_DRINK_FROM_WHAT_YOUNG_MEN_DRAW",
+            "action": "DIRECTED",
             "water_drawers": "B17",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -463,12 +464,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "name_known_status": "NAME_NOT_YET_KNOWN_TO_RUTH",
         "exchange_components": [
           {
-            "action": "ASKED_WHY_SHE_FOUND_FAVOR_IN_HIS_EYES",
+            "action": "ASKED",
             "list_position": "FIRST",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
-            "action": "ASKED_WHY_HE_RECOGNIZED_HER",
+            "action": "ASKED",
             "list_position": "SECOND",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
@@ -501,7 +502,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B9",
         "recital_components": [
           {
-            "action": "STATED_FULL_KNOWLEDGE_OF_WHAT_SHE_DID",
+            "action": "STATED",
             "loyalty_act_toward_party": "B3",
             "loyalty_act_toward_referential_form": "YOUR_MOTHER_IN_LAW_KINSHIP_FORM",
             "after_whose_death": "B?",
@@ -529,19 +530,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B9",
         "recital_components": [
           {
-            "action": "STATED_RUTH_LEFT_FATHER_AND_MOTHER",
+            "action": "STATED",
             "left_parties": "PARENTS_OF_ADDRESSEE",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "STATED_RUTH_LEFT_LAND_OF_HER_BIRTH",
+            "action": "STATED",
             "moab_naming_status": "WITHHELD_IN_BOAZ_SPEECH",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "STATED_COMING_TO_UNKNOWN_PEOPLE",
+            "action": "STATED",
             "destination_people_form": "PEOPLE_PREVIOUSLY_UNKNOWN_TO_HER",
             "list_position": "THIRD",
             "speech_act": "STATES_AS_TRUE"
@@ -665,18 +666,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "when": "TM_MEALTIME",
         "invitation_components": [
           {
-            "action": "DIRECTED_HEARER_TO_COME_HERE",
+            "action": "DIRECTED",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
-            "action": "DIRECTED_HEARER_TO_EAT_FROM_BREAD",
+            "action": "DIRECTED",
             "food_item": "CB_0012",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
-            "action": "DIRECTED_HEARER_TO_DIP_MORSEL_IN_VINEGAR",
+            "action": "DIRECTED",
             "dipping_item": "O9",
             "list_position": "THIRD",
             "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -793,14 +794,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "about_party": "B9",
         "command_components": [
           {
-            "action": "PERMITTED_GLEANING_AMONG_SHEAVES",
+            "action": "PERMITTED",
             "permitted_location": "PL_AMONG_SHEAVES",
             "material_referent": "O11",
             "list_position": "FIRST",
             "speech_act": "GRANTS_PERMISSION_TO_DO"
           },
           {
-            "action": "DIRECTED_HARVESTERS_NOT_TO_SHAME_HER",
+            "action": "DIRECTED",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           }
@@ -853,13 +854,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "for_party_to_glean": "B9",
         "command_components": [
           {
-            "action": "DIRECTED_HARVESTERS_TO_LEAVE_THEM_FOR_HER",
+            "action": "DIRECTED",
             "purpose": "FOR_HER_TO_GLEAN",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
-            "action": "DIRECTED_HARVESTERS_NOT_TO_REBUKE_HER",
+            "action": "DIRECTED",
             "list_position": "SECOND",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           }
