@@ -442,23 +442,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       { "value": "HOLDS", "source": "P05 level_1.pace_elements - SC-0021 locus-strip from HOLDS_AT_INTERIOR_DIALOGUE", "status": "CONFIRMED" },
       { "value": "WIDENS", "source": "P05 level_1.pace_elements - SC-0021 locus-strip from WIDENS_AT_CHANCE_PROVIDENCE_FRAMING", "status": "CONFIRMED" }
     ],
-    "communicative_function_elements": [
-      {
-        "value": "ANCHORS",
-        "source": "level_1 communicative_function_elements",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "INTRODUCES",
-        "source": "level_1 communicative_function_elements",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "POSITIONS",
-        "source": "level_1 communicative_function_elements",
-        "status": "CONFIRMED"
-      }
-    ]
+    "communicative_function_elements": []
   },
   "proposition_kind_slot_sets": [
     {

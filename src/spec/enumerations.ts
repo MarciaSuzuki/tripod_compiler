@@ -19,6 +19,34 @@ export function loadApprovedEnumerations(): ApprovedEnumerations {
   return loadSpecJson<ApprovedEnumerations>("approved-enumerations.json");
 }
 
+export interface QuarantinedValue {
+  value: string;
+  first_seen?: string;
+  reason?: string;
+  sc_ref?: string;
+}
+export interface QuarantinedVocabulary {
+  version: string;
+  tagset_version: string;
+  axes: Record<string, QuarantinedValue[]>;
+  [k: string]: unknown;
+}
+
+export function loadQuarantinedVocabulary(): QuarantinedVocabulary {
+  return loadSpecJson<QuarantinedVocabulary>("quarantined-vocabulary.json");
+}
+
+/**
+ * Per-axis sets of quarantined values (SC-0023): convergent bounded-open values deliberately NOT
+ * promoted (used-once coin-flips). A value here is surfaced as a `quarantined` notice, never `drift`,
+ * never silently-approved. Pure of approved-enumerations — the two sets must stay disjoint.
+ */
+export function quarantineSets(reg = loadQuarantinedVocabulary()): Record<string, Set<string>> {
+  const out: Record<string, Set<string>> = {};
+  for (const [axis, vals] of Object.entries(reg.axes ?? {})) out[axis] = new Set(vals.map((v) => v.value));
+  return out;
+}
+
 /**
  * The live drift baseline per axis (replaces the frozen P01-only baseline — SC-0006):
  *  - convergent axes → the GROWING `approved-enumerations.json` registry (seeded from P01, grown by

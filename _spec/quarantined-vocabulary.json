@@ -1,0 +1,18 @@
+{
+  "_comment": "Quarantined bounded-open values (SC-0023). Used-once coin-flips with no frequency data: deliberately NOT promoted into approved-enumerations.json (so they are NOT settled types), but NOT silently excluded either. The validator surfaces every use as a `quarantined` NOTICE (severity `quarantined`, not `drift`, not silently-approved), and a RECURRENCE — the same value appearing in two or more pericopes — as an explicit RECURS notice in the corpus `quarantine watch`. A RECURS is the signal that frequency data has arrived and the value should be revisited: promote-with-provenance (it is a real type) or collapse (confirmed a one-off). Vendored + pinned (check-drift); edits are governed (SC-ref + provenance), like coverage-exceptions.json / lint-exceptions.json. Provenance: the SC-0022 comm-func triage kept all 16 leading verbs but Marcia quarantined the 8 used-once near-synonyms for the P08–P14 revisit; SC-0022 erroneously promoted them as settled; SC-0023 un-settles them here.",
+  "version": "0.1.0",
+  "tagset_version": "TRIPOD_STA_v2_0",
+  "sc_ref": "SC-0023",
+  "axes": {
+    "communicative_function_element": [
+      { "value": "TRANSMITS", "first_seen": "P01", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
+      { "value": "ANSWERS", "first_seen": "P02", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
+      { "value": "PLACES", "first_seen": "P03", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
+      { "value": "ANCHORS", "first_seen": "P05", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
+      { "value": "INTRODUCES", "first_seen": "P05", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
+      { "value": "POSITIONS", "first_seen": "P05", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
+      { "value": "DISTRIBUTES", "first_seen": "P06", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
+      { "value": "RECITES", "first_seen": "P06", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" }
+    ]
+  }
+}

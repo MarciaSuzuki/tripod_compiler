@@ -207,18 +207,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       { "value": "WARM", "source": "P06 level_1.tone_elements convergent value (Gate-F 2026-05-30)", "status": "CONFIRMED" }
     ],
     "pace_elements": [],
-    "communicative_function_elements": [
-      {
-        "value": "DISTRIBUTES",
-        "source": "level_1 communicative_function_elements",
-        "status": "CONFIRMED"
-      },
-      {
-        "value": "RECITES",
-        "source": "level_1 communicative_function_elements",
-        "status": "CONFIRMED"
-      }
-    ]
+    "communicative_function_elements": []
   },
   "proposition_kind_slot_sets": [
     {

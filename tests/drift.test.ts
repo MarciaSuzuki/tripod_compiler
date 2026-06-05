@@ -2,9 +2,10 @@ import { describe, it, expect } from "vitest";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { axisClass } from "../src/spec/load.js";
-import { driftBaseline, loadApprovedEnumerations, type ApprovedEnumerations } from "../src/spec/enumerations.js";
+import { driftBaseline, loadApprovedEnumerations, quarantineSets, type ApprovedEnumerations } from "../src/spec/enumerations.js";
 import { vocabularyFindings } from "../src/engine/vocabulary.js";
 import { validateArtifact } from "../src/engine/validate.js";
+import { quarantineWatch, tally, type ValidationReport } from "../src/engine/report.js";
 import { readArtifactNote } from "../src/reader/obsidian.js";
 import { planPromotion, applyPromotion, UNCOVERED_CONVERGENT_AXES } from "../src/compiler/promote.js";
 
@@ -110,6 +111,84 @@ describe("corpus convergence (P01–P06 all promoted)", () => {
       const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
       expect(r.counts.block, stem).toBe(0);
       expect(r.counts.drift, stem).toBe(0); // fully converged — descriptive (open) axes may remain
+    }
+  });
+});
+
+const QUAR_COMM = ["TRANSMITS", "ANSWERS", "PLACES", "ANCHORS", "INTRODUCES", "POSITIONS", "DISTRIBUTES", "RECITES"];
+
+describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence surfaced, not silently excluded)", () => {
+  const QUAR = quarantineSets()["communicative_function_element"]!;
+  const approvedComm = () => new Set((loadApprovedEnumerations().axes["communicative_function_element"] ?? []).map((e) => e.value));
+
+  it("the 8 quarantined comm-func verbs are quarantined AND absent from approved-enumerations", () => {
+    const approved = approvedComm();
+    for (const v of QUAR_COMM) {
+      expect(QUAR.has(v), `${v} in quarantine set`).toBe(true);
+      expect(approved.has(v), `${v} absent from approved`).toBe(false);
+    }
+  });
+
+  it("approved and quarantined comm-func sets are disjoint", () => {
+    const approved = approvedComm();
+    for (const v of QUAR) expect(approved.has(v), v).toBe(false);
+  });
+
+  it("a quarantined value validates as a `quarantined` notice, never `drift` (the gate stays 0-drift)", () => {
+    let totalQuar = 0;
+    for (const stem of ALL_FM) {
+      const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
+      expect(r.counts.drift, stem).toBe(0);
+      for (const f of r.findings.filter((f) => f.severity === "quarantined")) {
+        expect(f.axis).toBe("communicative_function_element");
+        expect(QUAR.has(f.value!), f.value).toBe(true);
+      }
+      totalQuar += r.counts.quarantined;
+    }
+    expect(totalQuar).toBe(8); // each of the 8 used exactly once across P01–P06
+  });
+
+  it("quarantineWatch parks each value once in P01–P06 (no recurrence yet)", () => {
+    const reports = ALL_FM.map((stem) => validateArtifact(FM(`${stem}-FOR-MODEL.md`)));
+    const watch = quarantineWatch(reports);
+    expect(watch.length).toBe(8);
+    expect(watch.every((w) => !w.recurs)).toBe(true);
+  });
+
+  it("RECURS is computed from the real producer on a genuinely distinct 2nd artifact (not a relabeled clone)", () => {
+    // P02 really uses ANSWERS (a quarantined verb) → its report carries a real `quarantined` finding.
+    const p02 = validateArtifact(FM("P02-Ruth-1-6-14-FOR-MODEL.md"));
+    expect(p02.findings.some((f) => f.severity === "quarantined" && f.value === "ANSWERS")).toBe(true);
+    // A DISTINCT P08 that reuses ANSWERS: run the SAME engine producer (vocabularyFindings) on its OWN
+    // content — this is the per-artifact path a real authored P08 takes, NOT a copy of P02's findings.
+    const p08json = {
+      level_1: { arc_elements: [], context_elements: [], tone_elements: [], pace_elements: [], communicative_function_elements: ["ANSWERS"] },
+      level_2_scenes: [],
+      level_3_propositions: [],
+    };
+    const p08findings = vocabularyFindings(p08json, driftBaseline());
+    expect(p08findings.some((f) => f.severity === "quarantined" && f.value === "ANSWERS"), "producer flags a fresh P08's ANSWERS").toBe(true);
+    const p08: ValidationReport = {
+      file: "P08-Ruth-3-1-5-FOR-MODEL.md",
+      artifact: "FOR_MODEL",
+      specVersion: p02.specVersion,
+      ok: true,
+      findings: p08findings,
+      counts: tally(p08findings),
+    };
+    expect(p08.findings).not.toBe(p02.findings); // distinct findings arrays — the recurrence is computed, not fed
+    // Only on the corpus aggregation (≥2 reports) does the 2nd occurrence count.
+    expect(quarantineWatch([p02]).find((w) => w.value === "ANSWERS")?.recurs, "alone → not recurring").toBe(false);
+    const ans = quarantineWatch([p02, p08]).find((w) => w.value === "ANSWERS");
+    expect(ans?.recurs, "P02 + a fresh P08 both using ANSWERS → RECURS").toBe(true);
+    expect(ans?.pericopes).toEqual(["P02", "P08"]);
+    expect(ans?.occurrences).toBe(2);
+  });
+
+  it("promote never auto-promotes a quarantined value (the skippedByQuarantine guard)", () => {
+    for (const stem of ALL_FM) {
+      const plan = planPromotion(CL(`${stem}-COMPILATION-LOG.md`), { status: "ANY", reg: loadApprovedEnumerations() });
+      for (const c of plan.promote) expect(QUAR.has(c.value), `${stem}: ${c.value}`).toBe(false);
     }
   });
 });

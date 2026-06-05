@@ -3,7 +3,7 @@ import { Command } from "commander";
 import { readdirSync, statSync, writeFileSync, appendFileSync, mkdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { validateArtifact } from "../engine/validate.js";
-import { formatReport } from "../engine/report.js";
+import { formatReport, quarantineWatch, formatQuarantineWatch } from "../engine/report.js";
 import { checkDrift, closedListSyncIssues } from "../spec/pins.js";
 import { readMeaningMap } from "../reader/meaning-map.js";
 import { compileSkeleton } from "../compiler/skeleton.js";
@@ -45,11 +45,14 @@ program
     } else {
       for (const r of reports) console.log(formatReport(r), "\n");
       const drift = reports.reduce((n, r) => n + r.counts.drift, 0);
+      const quarantined = reports.reduce((n, r) => n + r.counts.quarantined, 0);
       const descr = reports.reduce((n, r) => n + r.counts.descriptive, 0);
       const propose = reports.reduce((n, r) => n + r.counts.propose, 0);
       console.log(
-        `— ${reports.length} artifact(s): ${reports.length - invalid} valid, ${invalid} invalid · ${drift} drift (convergent) · ${descr} descr (open) · ${propose} propose —`,
+        `— ${reports.length} artifact(s): ${reports.length - invalid} valid, ${invalid} invalid · ${drift} drift (convergent) · ${quarantined} quarantined · ${descr} descr (open) · ${propose} propose —`,
       );
+      const watch = formatQuarantineWatch(quarantineWatch(reports));
+      if (watch) console.log("\n" + watch);
     }
     // Set exitCode (don't process.exit) so large stdout flushes before exit.
     process.exitCode = invalid ? 1 : 0;

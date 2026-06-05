@@ -147,11 +147,6 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "value": "ADVANCES",
         "source": "level_1 communicative_function_elements",
         "status": "CONFIRMED"
-      },
-      {
-        "value": "PLACES",
-        "source": "level_1 communicative_function_elements",
-        "status": "CONFIRMED"
       }
     ],
     "referential_forms": [

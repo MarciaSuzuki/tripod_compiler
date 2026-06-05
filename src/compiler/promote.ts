@@ -1,6 +1,6 @@
 import { basename } from "node:path";
 import { readArtifactNote } from "../reader/obsidian.js";
-import { loadApprovedEnumerations, type ApprovedEnumerations, type ApprovedValue } from "../spec/enumerations.js";
+import { loadApprovedEnumerations, quarantineSets, type ApprovedEnumerations, type ApprovedValue } from "../spec/enumerations.js";
 
 /**
  * Promote approved bounded-open values from a pericope's COMPILATION-LOG `vocabulary_additions`
@@ -44,6 +44,7 @@ export interface PromotionPlan {
   promote: PromotionCandidate[]; // new + passing the status gate
   alreadyApproved: PromotionCandidate[]; // present in vocab_additions, already in the registry
   skippedByStatus: PromotionCandidate[]; // failed the status gate
+  skippedByQuarantine: PromotionCandidate[]; // in quarantined-vocabulary.json (SC-0023) — never auto-promote
   uncoveredAxes: string[];
 }
 
@@ -53,10 +54,12 @@ export function planPromotion(compilationLogPath: string, opts: { status?: strin
   const pericope: string | null = j?.pericope_id ?? null;
   const va = j?.vocabulary_additions ?? {};
   const reg = opts.reg ?? loadApprovedEnumerations();
+  const quarantine = quarantineSets();
 
   const promote: PromotionCandidate[] = [];
   const alreadyApproved: PromotionCandidate[] = [];
   const skippedByStatus: PromotionCandidate[] = [];
+  const skippedByQuarantine: PromotionCandidate[] = [];
 
   for (const [vaKey, axis] of Object.entries(VA_KEY_TO_AXIS)) {
     const known = new Set((reg.axes[axis] ?? []).map((e) => e.value));
@@ -65,7 +68,10 @@ export function planPromotion(compilationLogPath: string, opts: { status?: strin
       const value = item?.value;
       if (typeof value !== "string") continue;
       const cand: PromotionCandidate = { axis, value, source: item?.source, status: item?.status };
-      if (known.has(value)) alreadyApproved.push(cand);
+      // SC-0023: a quarantined value is never auto-promoted, regardless of status — its recurrence is
+      // the revisit signal, and lifting it out of quarantine is a governed decision, not a promote.
+      if (quarantine[axis]?.has(value)) skippedByQuarantine.push(cand);
+      else if (known.has(value)) alreadyApproved.push(cand);
       else if (statusFilter !== "ANY" && String(item?.status ?? "").toUpperCase() !== statusFilter) skippedByStatus.push(cand);
       else promote.push(cand);
     }
@@ -77,6 +83,7 @@ export function planPromotion(compilationLogPath: string, opts: { status?: strin
     promote,
     alreadyApproved,
     skippedByStatus,
+    skippedByQuarantine,
     uncoveredAxes: UNCOVERED_CONVERGENT_AXES,
   };
 }
