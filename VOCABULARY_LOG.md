@@ -89,3 +89,11 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
   no COMPILATION-LOG) before removal. Registry `v0.7 → v0.8`, re-pinned. The registry is now exactly the
   cleaned canonical set; the old→new mapping lives in `tripod_cleanup_log.md` + git history (Marcia ruled
   delete over a deprecated-flag crosswalk). **Result: reusing a deprecated old form now drifts.**
+- 2026-06-04 — **SC-0023 un-settle (quarantine correction):** **removed 8** `communicative_function_element`
+  values from the approved set — the used-once coin-flips `TRANSMITS`/`ANSWERS`/`PLACES`/`ANCHORS`/
+  `INTRODUCES`/`POSITIONS`/`DISTRIBUTES`/`RECITES` that SC-0022 erroneously promoted as settled. They move
+  to the new pinned `quarantined-vocabulary.json` (`0.1.0`). Registry `v0.8 → v0.9` (comm-func approved 16 → 8
+  recurring), re-pinned. The validator now surfaces each use as a `quarantined` notice and a recurrence (≥2
+  pericopes) as an explicit RECURS in the corpus quarantine watch; `promote` skips quarantined values. **A
+  quarantined value is no longer a settled type — its recurrence in P07–P14 is the revisit signal.** (Lifting
+  a value OUT of quarantine — promote or collapse — is a future governed decision, logged here when it happens.)

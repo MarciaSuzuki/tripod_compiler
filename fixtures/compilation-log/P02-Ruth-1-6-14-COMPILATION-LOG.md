@@ -194,11 +194,6 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "communicative_function_elements": [
       {
-        "value": "ANSWERS",
-        "source": "level_1 communicative_function_elements",
-        "status": "PROPOSED"
-      },
-      {
         "value": "CLOSES",
         "source": "level_1 communicative_function_elements",
         "status": "PROPOSED"

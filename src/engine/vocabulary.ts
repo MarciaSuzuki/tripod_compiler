@@ -1,5 +1,6 @@
 import type { Finding } from "./report.js";
 import { axisClass } from "../spec/load.js";
+import { quarantineSets } from "../spec/enumerations.js";
 
 /** Entity-registry code shapes (Layer 3). CB_/FIG_ are handled separately (flag arrays). */
 const ENTITY_CODE = /^(B\d+|PL\d+|PL_[A-Z0-9_]+|O\d+|TH_[A-Z0-9_]+|TM_[A-Z0-9_]+|I\d+)$/;
@@ -19,17 +20,33 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
   const findings: Finding[] = [];
   const seedSets: Record<string, Set<string>> = {};
   for (const [k, v] of Object.entries(seeds)) seedSets[k] = new Set(v as string[]);
+  const quarantine = quarantineSets();
 
   const drift = (value: unknown, seedKey: string, location: string) => {
     if (typeof value !== "string") return;
     const set = seedSets[seedKey];
     if (!set || set.has(value)) return;
+    // SC-0023: a convergent value that is quarantined is a NOTICE, never a settled approval and never
+    // a failing drift. Recurrence across pericopes is surfaced by the corpus quarantineWatch.
+    const q = quarantine[seedKey];
+    if (q && q.has(value)) {
+      findings.push({
+        severity: "quarantined",
+        code: "quarantined",
+        location,
+        axis: seedKey,
+        value,
+        message: `'${value}' is QUARANTINED on ${seedKey} (used-once coin-flip, deliberately unpromoted — this use is the revisit signal, not a settled type; recurrence across pericopes → promote or collapse)`,
+      });
+      return;
+    }
     const convergent = axisClass(seedKey) === "convergent";
     findings.push({
       severity: convergent ? "drift" : "descriptive",
       code: convergent ? "drift" : "descriptive",
       location,
       axis: seedKey,
+      value,
       message: convergent
         ? `'${value}' not in the approved ${seedKey} enumeration — convergent axis, review → promote-with-provenance`
         : `'${value}' on open axis ${seedKey} — descriptive (per-pericope; not a review signal)`,

@@ -2,9 +2,10 @@ import { describe, it, expect } from "vitest";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { axisClass } from "../src/spec/load.js";
-import { driftBaseline, loadApprovedEnumerations, type ApprovedEnumerations } from "../src/spec/enumerations.js";
+import { driftBaseline, loadApprovedEnumerations, quarantineSets, type ApprovedEnumerations } from "../src/spec/enumerations.js";
 import { vocabularyFindings } from "../src/engine/vocabulary.js";
 import { validateArtifact } from "../src/engine/validate.js";
+import { quarantineWatch } from "../src/engine/report.js";
 import { readArtifactNote } from "../src/reader/obsidian.js";
 import { planPromotion, applyPromotion, UNCOVERED_CONVERGENT_AXES } from "../src/compiler/promote.js";
 
@@ -110,6 +111,62 @@ describe("corpus convergence (P01–P06 all promoted)", () => {
       const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
       expect(r.counts.block, stem).toBe(0);
       expect(r.counts.drift, stem).toBe(0); // fully converged — descriptive (open) axes may remain
+    }
+  });
+});
+
+const QUAR_COMM = ["TRANSMITS", "ANSWERS", "PLACES", "ANCHORS", "INTRODUCES", "POSITIONS", "DISTRIBUTES", "RECITES"];
+
+describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence surfaced, not silently excluded)", () => {
+  const QUAR = quarantineSets()["communicative_function_element"]!;
+  const approvedComm = () => new Set((loadApprovedEnumerations().axes["communicative_function_element"] ?? []).map((e) => e.value));
+
+  it("the 8 quarantined comm-func verbs are quarantined AND absent from approved-enumerations", () => {
+    const approved = approvedComm();
+    for (const v of QUAR_COMM) {
+      expect(QUAR.has(v), `${v} in quarantine set`).toBe(true);
+      expect(approved.has(v), `${v} absent from approved`).toBe(false);
+    }
+  });
+
+  it("approved and quarantined comm-func sets are disjoint", () => {
+    const approved = approvedComm();
+    for (const v of QUAR) expect(approved.has(v), v).toBe(false);
+  });
+
+  it("a quarantined value validates as a `quarantined` notice, never `drift` (the gate stays 0-drift)", () => {
+    let totalQuar = 0;
+    for (const stem of ALL_FM) {
+      const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
+      expect(r.counts.drift, stem).toBe(0);
+      for (const f of r.findings.filter((f) => f.severity === "quarantined")) {
+        expect(f.axis).toBe("communicative_function_element");
+        expect(QUAR.has(f.value!), f.value).toBe(true);
+      }
+      totalQuar += r.counts.quarantined;
+    }
+    expect(totalQuar).toBe(8); // each of the 8 used exactly once across P01–P06
+  });
+
+  it("quarantineWatch parks each value once in P01–P06 (no recurrence yet)", () => {
+    const reports = ALL_FM.map((stem) => validateArtifact(FM(`${stem}-FOR-MODEL.md`)));
+    const watch = quarantineWatch(reports);
+    expect(watch.length).toBe(8);
+    expect(watch.every((w) => !w.recurs)).toBe(true);
+  });
+
+  it("quarantineWatch flags RECURS the moment a quarantined value appears in a 2nd pericope", () => {
+    const p05 = validateArtifact(FM("P05-Ruth-2-1-7-FOR-MODEL.md"));
+    const asP08 = { ...p05, file: "P08-Ruth-3-x-FOR-MODEL.md" }; // same quarantined verbs, a new pericope
+    const recurring = quarantineWatch([p05, asP08]).filter((w) => w.recurs);
+    expect(recurring.length).toBeGreaterThan(0);
+    expect(recurring.every((w) => w.pericopes.length >= 2)).toBe(true);
+  });
+
+  it("promote never auto-promotes a quarantined value (the skippedByQuarantine guard)", () => {
+    for (const stem of ALL_FM) {
+      const plan = planPromotion(CL(`${stem}-COMPILATION-LOG.md`), { status: "ANY", reg: loadApprovedEnumerations() });
+      for (const c of plan.promote) expect(QUAR.has(c.value), `${stem}: ${c.value}`).toBe(false);
     }
   });
 });

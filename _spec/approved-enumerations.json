@@ -1,10 +1,10 @@
 {
   "$comment": "Growing registry of APPROVED convergent bounded-open enumeration values, with provenance. Seeded from canonical P01 (SC-0006); grows by governed promotion (tripod promote) as pericope COMPILATION-LOG vocabulary_additions are CONFIRMED. Replaces drift_detector.canonical_p01_enumerations as the live drift baseline for convergent axes. Descriptive/open axes (role/function/_kind _examples, referential_form) are NOT tracked here — they never converge. Vendored + pinned into the compiler; promotions are logged in VOCABULARY_LOG.md and re-pinned.",
-  "version": "v0.8",
+  "version": "v0.9",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date": "2026-06-04",
   "seeded_from": "validation-rules.json drift_detector.canonical_p01_enumerations (convergent axes only)",
-  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots — see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) — P03 now validates with zero convergent drift. v0.4 (2026-05-30): batch-promoted P04 (31), P05 (33), P06 (40) convergent values via the CONFIRMED-only flow — the full Ruth pilot corpus (P01–P06) now validates with zero convergent drift. v0.5 (2026-06-03, SC-0021): promoted 11 corpus-independent triage bares — tone RISING/STILLED/URGENT; pace BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS — the locus-stripped/cleaned forms from the tone+pace triage (NARROW unified into NARROWS); tone/pace convergent drift across P01-P06 remains zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.6 (2026-06-04, SC-0022): promoted 56 reuse-dependent triage bares — 13 scene_kind (APPEAL/ARRIVAL/BLESSING/DEPARTURE/INITIATIVE/INSTRUCTION/LAMENT/MARRIAGE/MEAL/NARRATOR_INTRODUCTION/RATIFICATION/REPORT/VOW _SCENE), 27 proposition_kind (action-verbs + SPOKE + move-labels APPEAL/LAMENT/VOW/INSTRUCTION/RENAMING/BLESSING), 16 communicative_function_element (leading verbs) — the collapsed reusable types from the scene_kind/proposition_kind/communicative_function triage; convergent drift across P01-P06 returns to zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.7 (2026-06-04, SC-0022): added the role_in_scene_being axis — beings' participant role reclassified descriptive→convergent and seeded with the 21 ruled relations (kinship HUSBAND/WIFE/WIDOW/MOTHER_IN_LAW/SON/DAUGHTER_IN_LAW/KINSMAN/ANCESTOR/CLAN/REDEEMER_KIN/PEOPLE; DIVINE_AGENT; activity GLEANER/FIELD_OWNER/FOREMAN/HARVESTERS/FEMALE_WORKERS/MALE_WORKERS/TOWNSPEOPLE; referenced SOURCE_GROUP/ERA_REFERENT). The slot is now an enforced controlled relation set, not convention. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.8 (2026-06-04, SC-0022 deprecation): removed 133 orphaned superseded values no longer used by any pericope — 17 scene_kind + 54 proposition_kind + 40 communicative_function_element (the wordy forms collapsed by the triage) + 9 tone_element + 13 pace_element (the locus-stripped forms SC-0021 left behind, incl. NARROW unified into NARROWS). The old→new mapping is preserved in tripod_cleanup_log.md + git history; the registry is now exactly the cleaned canonical set, so reusing an old form drifts. See SPEC_CHANGES.md.",
+  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots — see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) — P03 now validates with zero convergent drift. v0.4 (2026-05-30): batch-promoted P04 (31), P05 (33), P06 (40) convergent values via the CONFIRMED-only flow — the full Ruth pilot corpus (P01–P06) now validates with zero convergent drift. v0.5 (2026-06-03, SC-0021): promoted 11 corpus-independent triage bares — tone RISING/STILLED/URGENT; pace BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS — the locus-stripped/cleaned forms from the tone+pace triage (NARROW unified into NARROWS); tone/pace convergent drift across P01-P06 remains zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.6 (2026-06-04, SC-0022): promoted 56 reuse-dependent triage bares — 13 scene_kind (APPEAL/ARRIVAL/BLESSING/DEPARTURE/INITIATIVE/INSTRUCTION/LAMENT/MARRIAGE/MEAL/NARRATOR_INTRODUCTION/RATIFICATION/REPORT/VOW _SCENE), 27 proposition_kind (action-verbs + SPOKE + move-labels APPEAL/LAMENT/VOW/INSTRUCTION/RENAMING/BLESSING), 16 communicative_function_element (leading verbs) — the collapsed reusable types from the scene_kind/proposition_kind/communicative_function triage; convergent drift across P01-P06 returns to zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.7 (2026-06-04, SC-0022): added the role_in_scene_being axis — beings' participant role reclassified descriptive→convergent and seeded with the 21 ruled relations (kinship HUSBAND/WIFE/WIDOW/MOTHER_IN_LAW/SON/DAUGHTER_IN_LAW/KINSMAN/ANCESTOR/CLAN/REDEEMER_KIN/PEOPLE; DIVINE_AGENT; activity GLEANER/FIELD_OWNER/FOREMAN/HARVESTERS/FEMALE_WORKERS/MALE_WORKERS/TOWNSPEOPLE; referenced SOURCE_GROUP/ERA_REFERENT). The slot is now an enforced controlled relation set, not convention. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.8 (2026-06-04, SC-0022 deprecation): removed 133 orphaned superseded values no longer used by any pericope — 17 scene_kind + 54 proposition_kind + 40 communicative_function_element (the wordy forms collapsed by the triage) + 9 tone_element + 13 pace_element (the locus-stripped forms SC-0021 left behind, incl. NARROW unified into NARROWS). The old→new mapping is preserved in tripod_cleanup_log.md + git history; the registry is now exactly the cleaned canonical set, so reusing an old form drifts. See SPEC_CHANGES.md. v0.9 (2026-06-04, SC-0023): un-settled the 8 quarantined communicative_function_element used-once coin-flips (TRANSMITS/ANSWERS/PLACES/ANCHORS/INTRODUCES/POSITIONS/DISTRIBUTES/RECITES) — moved out of the approved set into the pinned quarantined-vocabulary.json. They were erroneously promoted as settled in SC-0022; they are NOT settled types. The validator now surfaces each use as a `quarantined` notice and a recurrence (≥2 pericopes) as an explicit RECURS in the corpus quarantine watch. comm-func approved set 16 → 8 (the recurring verbs). See SPEC_CHANGES.md SC-0023.",
   "axes": {
     "proposition_kind": [
       {
@@ -925,24 +925,10 @@
         "sc_ref": "SC-0022"
       },
       {
-        "value": "TRANSMITS",
-        "first_seen": "P01",
-        "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
         "value": "WITHHOLDS",
         "first_seen": "P01",
         "approved_in": "P01",
         "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
-        "value": "ANSWERS",
-        "first_seen": "P02",
-        "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
         "sc_ref": "SC-0022"
       },
       {
@@ -960,13 +946,6 @@
         "sc_ref": "SC-0022"
       },
       {
-        "value": "PLACES",
-        "first_seen": "P03",
-        "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
         "value": "REACTIVATES",
         "first_seen": "P04",
         "approved_in": "P04",
@@ -978,41 +957,6 @@
         "first_seen": "P04",
         "approved_in": "P04",
         "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
-        "value": "ANCHORS",
-        "first_seen": "P05",
-        "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
-        "value": "INTRODUCES",
-        "first_seen": "P05",
-        "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
-        "value": "POSITIONS",
-        "first_seen": "P05",
-        "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
-        "value": "DISTRIBUTES",
-        "first_seen": "P06",
-        "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
-        "sc_ref": "SC-0022"
-      },
-      {
-        "value": "RECITES",
-        "first_seen": "P06",
-        "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
         "sc_ref": "SC-0022"
       }
     ],
