@@ -292,7 +292,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ],
         "renaming_components": [
           {
-            "action": "REFUSED_USE_OF_OWN_NAME",
+            "action": "REFUSED",
             "refused_name": "Naomi",
             "refused_name_meaning": "SWEET",
             "referential_form_at_verse": "SELF_REFERENCE_REFUSING_OWN_NAME",
@@ -300,7 +300,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "REFUSES_USE_OF_OWN_NAME"
           },
           {
-            "action": "PROPOSED_NEW_NAME",
+            "action": "PROPOSED",
             "proposed_name": "Mara",
             "proposed_name_meaning": "BITTER",
             "referential_form_at_verse": "PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH",
@@ -308,7 +308,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "PROPOSES_NEW_NAME_FOR_SELF"
           },
           {
-            "action": "STATED_LAMENT_REASON_BITTERED_BY_YHWH",
+            "action": "STATED",
             "invoked_divine_agent": "B12",
             "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_FIRST_OCCURRENCE",
             "list_position": "THIRD",
@@ -342,7 +342,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         ],
         "lament_components": [
           {
-            "action": "STATED_FULL_EMPTY_ANTITHESIS",
+            "action": "STATED",
             "state_at_departure": "FULL",
             "state_at_return": "EMPTY",
             "agent_of_return_empty": "B10",
@@ -350,7 +350,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           },
           {
-            "action": "ASKED_RHETORICAL_QUESTION_AS_PROTEST",
+            "action": "ASKED",
             "question_target_referential_form": "REFUSED_NAME_NAOMI_IN_RECALL",
             "list_position": "SECOND",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
@@ -362,7 +362,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           },
           {
-            "action": "ASCRIBED_HARM_TO_YHWH",
+            "action": "ASCRIBED",
             "invoked_divine_agent": "B12",
             "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_SECOND_OCCURRENCE",
             "list_position": "FOURTH",

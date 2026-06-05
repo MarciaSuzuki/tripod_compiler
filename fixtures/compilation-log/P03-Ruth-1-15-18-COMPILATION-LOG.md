@@ -45,7 +45,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P03-D3",
       "decision": "Death-place binding mapped to VOWS_IDENTITY_BINDING; burial-place binding mapped to VOWS_PLACE_OF_BURIAL_BINDING.",
-      "description": "Closed-list speech_act values in validation-rules v0.4 include six VOWS_* tokens that map 1:1 to the six bindings in Ruth's ladder. The mapping is required, not optional: pairing death-place and burial-place under one speech_act would collapse FIG_0074 (the death-and-burial pair) into a single binding and contradict the Step A direction carried through Step C ('do not collapse death and burial into a single binding'). The death-place binding is structurally identity-at-the-limit ('where you die I will die' names no position and binds Ruth's mortality to Naomi's), which fits VOWS_IDENTITY_BINDING; the burial-place binding names a future shared resting-place (\"and there I will be buried\"), which fits VOWS_PLACE_OF_BURIAL_BINDING."
+      "description": "Closed-list speech_act values in validation-rules v0.4 include six VOWS_* tokens that map 1:1 to the six bindings in Ruth's ladder. The mapping is required, not optional: pairing death-place and burial-place under one speech_act would collapse FIG_0074 (the death-and-burial pair) into a single binding and contradict the Step A direction carried through Step C ('do not collapse death and burial into a single binding'). The death-place binding is structurally identity-at-the-limit ('where you die I will die' names no position and binds Ruth's mortality to Naomi's), which fits VOWS_IDENTITY_BINDING; the burial-place binding names a future shared resting-place (\"and there I will be buried\"), which fits VOWS_PLACE_OF_BURIAL_BINDING. — SUPERSEDED by SC-0024 (2026-06-04): the six VOWS_* values are collapsed to a single closed-list VOWS (Thread A nested-slot reduction). P03-D3's stated concern — that collapse would lose FIG_0074 — does NOT apply to this collapse: FIG_0074 (the death-and-burial pair) fires on proposition P3 via figure_flags, a verse-span-keyed layer independent of the speech_act values (verified: FIG_0074 is not referenced inside event_specific_slots and no engine couples figures to speech_act), and the six-way binding distinction is retained by vow_structural_form (SIX_STEP_LADDER_PATH_LODGING_PEOPLE_GOD_DEATH_BURIAL) + per-component list_position (FIRST–SIXTH) + binding_domain. The collapse moves the distinction out of the closed, cross-corpus speech_act layer into the figure/structure layer where it belongs; it is not lost. Original P03-D3 reasoning retained above as provenance. See SPEC_CHANGES SC-0024."
     },
     {
       "decision_id": "P03-D4",
@@ -548,12 +548,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "STATES_AS_TRUE",
       "DIRECTS_HEARER_TO_RETURN",
       "REFUSES_REQUEST_WITH_COUNTER_DECLARATION",
-      "VOWS_ROAD_BINDING",
-      "VOWS_RESIDENCE_BINDING",
-      "VOWS_PEOPLE_BINDING",
-      "VOWS_GOD_BINDING",
-      "VOWS_IDENTITY_BINDING",
-      "VOWS_PLACE_OF_BURIAL_BINDING",
+      "VOWS",
       "INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT"
     ],
     "negation_not_double_encoded": "N/A — no DIRECTS_HEARER_NOT_TO_DO in P03 (no negative directives)",

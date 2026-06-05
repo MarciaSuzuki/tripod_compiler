@@ -313,14 +313,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "WENT_OUT_FROM_PLACE_OF_RESIDENCE",
+            "action": "WENT_OUT",
             "subject": "B3",
             "accompanying_household": ["B8", "B9"],
             "from_place": "PL2",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "WALKED_ON_RETURN_ROAD",
+            "action": "WALKED",
             "subjects": ["B3", "B8", "B9"],
             "destination": "PL_LAND_OF_JUDAH",
             "speech_act": "STATES_AS_TRUE"
@@ -451,17 +451,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "address_form": "MY_DAUGHTERS_INTIMATE",
         "appeal_components": [
           {
-            "action": "REPEATED_DIRECTIVE",
+            "action": "DIRECTED",
             "speech_act": "DIRECTS_HEARER_TO_RETURN"
           },
           {
-            "action": "ASKED_DISSUASIVE_QUESTION",
+            "action": "ASKED",
             "question_subject": "DAUGHTERS_GOING_WITH_NAOMI",
             "question_form": "WHY_WOULD_YOU_GO_WITH_ME",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           },
           {
-            "action": "ASKED_DISSUASIVE_QUESTION",
+            "action": "ASKED",
             "question_subject": "SONS_IN_NAOMIS_WOMB",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           }
@@ -486,15 +486,15 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "address_form": "MY_DAUGHTERS_INTIMATE",
         "appeal_components": [
           {
-            "action": "REPEATED_DIRECTIVE",
+            "action": "DIRECTED",
             "speech_act": "DIRECTS_HEARER_TO_RETURN"
           },
           {
-            "action": "STATED_PERSONAL_IMPOSSIBILITY",
+            "action": "STATED",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "GRANTED_HYPOTHETICAL_CONCESSION",
+            "action": "STATED",
             "speech_act": "STATES_AS_TRUE"
           }
         ]
@@ -546,12 +546,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "address_form": "MY_DAUGHTERS_INTIMATE",
         "lament_components": [
           {
-            "action": "STATED_BITTERNESS_COMPARISON",
+            "action": "STATED",
             "comparison_summary": "NAOMI_MORE_BITTER_THAN_DAUGHTERS",
             "speech_act": "STATES_LAMENT_OBSERVATION"
           },
           {
-            "action": "ASCRIBED_BITTERNESS_TO_YHWH",
+            "action": "ASCRIBED",
             "agent_named": "B10",
             "ascription_summary": "HAND_OF_YHWH_AGAINST_NAOMI",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"

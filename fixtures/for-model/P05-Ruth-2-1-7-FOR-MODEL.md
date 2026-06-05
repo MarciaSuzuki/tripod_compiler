@@ -313,7 +313,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "introduction_components": [
           {
-            "action": "POSITIONED_THROUGH_KINSHIP_ANCHOR",
+            "action": "POSITIONED",
             "kinsman": "B13",
             "kinship_anchor_being": "B3",
             "kinship_anchor_relation": "WIDOW_OF_DECEASED_ANCESTOR",
@@ -322,7 +322,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "INTRODUCED_AS_PERSON_OF_STANDING",
+            "action": "INTRODUCED",
             "introduced_party": "B13",
             "introduction_attribute": "PERSON_OF_STANDING",
             "chayil_lexeme": "CB_0032",
@@ -330,7 +330,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "PLACED_IN_LEGAL_RELATIONAL_KIN_GROUP",
+            "action": "PLACED",
             "placed_party": "B13",
             "clan_referent": "B29",
             "clan_eponym": "B2",
@@ -338,7 +338,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "NAMED_AT_END_OF_INTRODUCTION",
+            "action": "NAMED",
             "named_party": "B13",
             "given_name": "Boaz",
             "list_position": "FOURTH",
@@ -456,7 +456,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "greeting_components": [
           {
-            "action": "GREETED_WITH_DIVINE_INVOCATION",
+            "action": "GREETED",
             "greeter": "B13",
             "greeted_party": "B14",
             "invoked_divine_agent": "B10",
@@ -464,7 +464,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "WISHES_FOR_HEARER"
           },
           {
-            "action": "RETURNED_BLESSING_WITH_DIVINE_INVOCATION",
+            "action": "BLESSED",
             "blesser": "B14",
             "blessing_recipient": "B13",
             "invoked_divine_agent": "B10",
@@ -508,14 +508,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "report_subject_referent": "B9",
         "report_components": [
           {
-            "action": "IDENTIFIED_BY_ETHNIC_EPITHET",
+            "action": "IDENTIFIED",
             "identified_party": "B9",
             "epithet_voice_layer": "THIRD_PARTY_FIELD_COMMUNITY_VOICE_FIRST_OCCURRENCE_IN_BETHLEHEM",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "IDENTIFIED_BY_RETURN_WITH_KINSHIP_ANCHOR",
+            "action": "IDENTIFIED",
             "identified_party": "B9",
             "kinship_anchor_being": "B3",
             "return_origin": "PL2",
@@ -523,7 +523,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "REPORTED_PRIOR_REQUEST_QUOTED_SPEECH",
+            "action": "REPORTED",
             "quoted_prior_speaker": "B9",
             "quoted_prior_speech_act": "REQUESTS_PERMISSION_TO_DO",
             "quoted_prior_action": "GLEAN_AND_GATHER_AMONG_SHEAVES_AFTER_REAPERS",
@@ -531,12 +531,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "REPORTS_PRIOR_SPEECH_REQUEST"
           },
           {
-            "action": "REPORTED_WORK_PATTERN_PERSISTENCE",
+            "action": "REPORTED",
             "list_position": "FOURTH",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "REPORTED_DISPUTED_SHELTER_REST",
+            "action": "REPORTED",
             "shelter_place": "PL_HA_BAYIT_FIELD_SHELTER",
             "textual_clarity_flag": true,
             "list_position": "FIFTH",
