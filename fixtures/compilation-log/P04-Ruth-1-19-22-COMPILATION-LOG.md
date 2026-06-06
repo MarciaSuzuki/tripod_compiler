@@ -109,6 +109,11 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     }
   ],
   "vocabulary_additions": {
+    "action_values": [
+      { "value": "PROPOSED", "source": "first introduced in P04 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "REFUSED", "source": "first introduced in P04 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "RETURNED", "source": "first introduced in P04 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" }
+    ],
     "proposition_kinds": [
       {
         "value": "CITY_STIRRED",

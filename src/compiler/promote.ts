@@ -18,6 +18,8 @@ const VA_KEY_TO_AXIS: Record<string, string> = {
   presence_values: "presence_value",
   // SC-0022: beings' participant role reclassified descriptive→convergent (the enforced 21-relation slot)
   role_in_scene_beings: "role_in_scene_being",
+  // SC-0025: nested-component action slot reclassified free-text→convergent bounded-open
+  action_values: "action",
   // SC-0007: L1-element / discourse / high-risk convergent axes
   arc_elements: "arc_element",
   context_elements: "context_element",

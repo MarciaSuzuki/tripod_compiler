@@ -109,6 +109,16 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     }
   ],
   "vocabulary_additions": {
+    "action_values": [
+      { "value": "BLESSED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "GREETED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "IDENTIFIED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "INTRODUCED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "NAMED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "PLACED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "POSITIONED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "REPORTED", "source": "first introduced in P05 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" }
+    ],
     "proposition_kinds": [
       {
         "value": "GLEANED",

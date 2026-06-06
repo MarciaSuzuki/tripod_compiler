@@ -94,6 +94,18 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     }
   ],
   "vocabulary_additions": {
+    "action_values": [
+      { "value": "AROSE_TO_RETURN", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "ASCRIBED", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "ASKED", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "DIRECTED", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "KISSED", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "STATED", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "TURNED_BACK", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "WALKED", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "WENT_OUT", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "WEPT_ALOUD", "source": "first introduced in P02 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" }
+    ],
     "proposition_kinds": [
       {
         "value": "APPEAL",

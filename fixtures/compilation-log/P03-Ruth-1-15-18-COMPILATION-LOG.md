@@ -94,6 +94,11 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     }
   ],
   "vocabulary_additions": {
+    "action_values": [
+      { "value": "CEASED_SPEAKING", "source": "first introduced in P03 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "SAW", "source": "first introduced in P03 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "VOWED", "source": "first introduced in P03 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" }
+    ],
     "proposition_kinds": [
       {
         "value": "PERCEIVED",

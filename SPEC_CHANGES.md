@@ -37,13 +37,13 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 | Schema | Version | sha256 |
 | --- | --- | --- |
-| `validation-rules.json` | `v0.11` | `bf25ebb116e4e564a5e546304e38838e0321ac4c6de2403e4b3e69b700ed3179` |
-| `compilation-log.schema.json` | `v0.6` | `cb9c5c8c1a031b468597dcae601f3334f6e70bea393f19dfb88f4d421e3889e0` |
+| `validation-rules.json` | `v0.12` | `61bcbb3b75b5d5fdd6adf161e89e0bc193764ae081b6606b7aa0cf31727464bc` |
+| `compilation-log.schema.json` | `v0.7` | `0d7f17d1dc203ae72b4459857ce0135c2ec8f05e044faaabfbb372bd6ad94161` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
-| `approved-enumerations.json` | `v0.9` | `56444d9bc43b00d523461ade1d44db8b8f7204b56465e4f0a30ae3c0000a4610` |
+| `approved-enumerations.json` | `v0.10` | `8c3c64f9eaf49958c8453d169ce231565d6bdefc307f699abaf4188cc813dec6` |
 
-Governance data files pinned in `pins.json` sources (not schemas): `coverage-exceptions.json`, `lint-exceptions.json`, `id-alignment-exceptions.json`, **`quarantined-vocabulary.json` (`0.1.0`, SC-0023)**.
+Governance data files pinned in `pins.json` sources (not schemas): `coverage-exceptions.json`, `lint-exceptions.json`, `id-alignment-exceptions.json`, **`quarantined-vocabulary.json` (`0.2.0`, SC-0023 + SC-0025)**.
 
 Routine vocabulary promotions (growing `approved-enumerations.json`) are logged in [`VOCABULARY_LOG.md`](VOCABULARY_LOG.md), not as a new SC each time (SC-0006 establishes the mechanism); each promotion re-pins the registry above.
 
@@ -138,14 +138,25 @@ number bound to exactly one decision.
 - **Discovered (pre-existing, OUT OF SCOPE — flagged for a governed follow-on):** all 6 COMPILATION-LOGs carry `vocabulary_additions.role_in_scene_beings`, but `compilation-log.schema.json` (`additionalProperties:false`) lacks that property → every CL is invalid against its own schema. An SC-0022 residue (the role_in_scene_being intake slot was never added to the CL schema); latent because the gate board does not validate CLs. Not touched by SC-0024.
 
 ## SC-0025 — Action-slot enforcement (the SC-0024 durability follow-on)
-- **Date:** 2026-06-04
-- **Decided by:** Marcia Suzuki (escalated from a "note for later" to a named, scoped follow-on).
-- **Status:** PROPOSED
-- **Type:** axis reclassification (uncontrolled → bounded-open)
-- **Summary:** Reclassify the nested component `action` slot from uncontrolled free-text to a **controlled bounded-open axis**, seeded with the verb set SC-0024 produced, drift-detected like the other bounded-open slots.
-- **Rationale:** SC-0024 *reduces* `action` but the slot stays uncontrolled, so P07–P14 could re-introduce sentence-shaped values and the slot would re-dirty — the exact failure enforcement prevents. **SC-0024's `action` cleanup is only durable once SC-0025 lands.** Clean-then-enforce, the same shape as triage → SC-0022. Flagged in the handoff so the next architect treats the clean `action` set as load-bearing.
-- **Spec change (exact):** TBD — add `action` to the bounded-open drift detector seeded with the SC-0024 verb set; a COMPILATION-LOG `vocabulary_additions.action_values` intake slot (SC-0007 pattern); promote-with-provenance flow.
-- **Verification:** TBD when applied.
+- **Date:** 2026-06-05
+- **Decided by:** Marcia Suzuki (approved option A: held-7 **quarantined** not seeded; restore the SC-0007 intake invariant by declaring `action_values` in all 6 CLs; the SC-0025/SC-0026 seam holds — declaring provenance in a CL is *schema-says*, not *gate-checks*). The compiler implemented + verified.
+- **Status:** APPLIED (compiler-side; gate board green; PR open) — merge + vault writeback pending Marcia.
+- **Type:** axis reclassification (`action` uncontrolled → bounded-open convergent) + compilation-log schema gap fix (`role_in_scene_beings`)
+- **Summary:** Reclassify the nested component `action` slot from uncontrolled free-text to a **controlled bounded-open convergent axis**, seeded with the 31 SC-0024-cleaned verbs; the 7 held sentence-shaped labels are **quarantined** (the Thread B corpus — deliberately unsettled, not seeded as types). The drift engine now reaches the nested `event_specific_slots.*_components[].action` values. Also fixes the `role_in_scene_beings` schema gap SC-0024 flagged. **Does NOT** turn on gate-board CL validation — that stays SC-0026 (one concern per gate cycle).
+- **Rationale:** SC-0024 *reduces* `action` but the slot stays uncontrolled, so P07–P14 could re-introduce sentence-shaped values and the slot would re-dirty — enforcement prevents that. The held-7 are quarantined, not seeded, because seeding would re-bless sentence-shaped values into the cleaned slot; quarantine hands them to Thread B intact and **pre-judges nothing** (the reason names the meaning/form divergence, not a fate). Clean-then-enforce, the SC-0021/0022 shape.
+- **Spec change (exact):**
+  - `validation-rules.json` `drift_detector.canonical_p01_enumerations`: add `action` (P01 seed ARRIVED_AT/TOOK_AS_WIFE/WERE_AT). No closed-list change — `action` is bounded-open. `v0.11 → v0.12`.
+  - `approved-enumerations.json`: add the `action` axis (31 verbs, P01–P06; `axisClass` auto-classifies non-`_examples`/non-`referential_form` as convergent). `v0.9 → v0.10`.
+  - `quarantined-vocabulary.json`: add the `action` axis (the 7 held). `0.1.0 → 0.2.0`.
+  - `compilation-log.schema.json` `vocabulary_additions`: add `action_values` (intake slot) **and** `role_in_scene_beings` (the SC-0024-flagged gap fix). Additive, optional; required set unchanged. `v0.6 → v0.7`.
+  - Engine (`vocabulary.ts`): fold the `action` drift check into the existing `event_specific_slots` walk — one walk, one added key-targeted leaf rule, `typeof`-string-guarded. `promote.ts`: map `action_values → action`. Quarantine display message made axis-neutral (it called every quarantined value a "used-once coin-flip" — wrong for the action held-7). Skeleton (`complog.ts`) unchanged — both new CL properties are optional; the skeleton emits required-only.
+- **Artifact migration:**
+  - **All 6 COMPILATION-LOGs:** declare `action_values` (each pericope's first-introduced verbs, 31 total) to restore the SC-0007 intake invariant — the registry must be reconstructible from the CLs (P01's canonical seed *is* CL-declared, so `action` must be too; precedent SC-0021/0022 re-pointed CLs when adding axes). Surgical insert; **P03's pre-existing `*_elements` divergence left untouched** (SC-0026's).
+  - **FOR_MODELs:** none — the 31 seeded approved + 7 quarantined cover the whole corpus → **0 new drift**.
+- **Validator impact:** `action` now drift-checked (bounded-open); the 7 held surface as `quarantined` notices (never block, never silently approved); recurrence in P07–P14 flags RECURS.
+- **Version:** `validation-rules.json v0.11 → v0.12` (sha `61bcbb3b75b5d5fdd6adf161e89e0bc193764ae081b6606b7aa0cf31727464bc`); `approved-enumerations.json v0.9 → v0.10` (sha `8c3c64f9eaf49958c8453d169ce231565d6bdefc307f699abaf4188cc813dec6`); `quarantined-vocabulary.json 0.1.0 → 0.2.0` (sha `dab5f57ba152d83686181c4d56281c07e5fb5cc9299c54426b3a4522f00eecf8`); `compilation-log.schema.json v0.6 → v0.7` (sha `0d7f17d1dc203ae72b4459857ce0135c2ec8f05e044faaabfbb372bd6ad94161`). All re-pinned.
+- **Verification:** 147 tests · validate 6/6 (0 block · 0 drift · **15 quarantined** = 8 comm-func + 7 action) · lint 0/7 · coverage 6/6 (245/245) · id-check 6 clean · gold-diff baseline (exit 0) · check-drift clean. Three merge checks green: the SC-0007 convergence test (invariant **restored** by the CL declarations, not silenced); the predicted 8→15 quarantine count; and the load-bearing bare-verb fact now a **gated** test (79 `action` occurrences, all `^[A-Z_]+$`, parsed not grepped).
+- **Vault writeback (pending):** the 6 CLs (FMs unchanged) — same no-clobber discipline as SC-0024's `66c58f1` (diff-first byte-identity, let the cron land it, no manual push to vault `main`); the P03 CL writeback must be surgical (only `action_values`, leave the `*_elements` divergence for SC-0026).
 
 ## SC-0023 — Quarantined-vocabulary mechanism: un-settle the 8 used-once comm-func coin-flips (surface recurrence)
 - **Date:** 2026-06-04

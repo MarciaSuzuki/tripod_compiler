@@ -36,7 +36,7 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
         location,
         axis: seedKey,
         value,
-        message: `'${value}' is QUARANTINED on ${seedKey} (used-once coin-flip, deliberately unpromoted — this use is the revisit signal, not a settled type; recurrence across pericopes → promote or collapse)`,
+        message: `'${value}' is QUARANTINED on ${seedKey} (deliberately unpromoted, not a settled type — this use is the revisit signal; recurrence across pericopes → promote or collapse; per-value reason in quarantined-vocabulary.json)`,
       });
       return;
     }
@@ -112,13 +112,22 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
   const usedEntities = new Map<string, string>();
   const registryRefs = new Set<string>();
 
+  // Single recursive walk of a proposition's event_specific_slots, doing two jobs:
+  //  (1) collect Layer-3 entity codes used in slots (the referential-integrity check below);
+  //  (2) SC-0025: drift-check the nested-component `action` axis (bounded-open convergent).
+  // `action` is always a bare verb string under an `action` key, at any depth — including every
+  // *_components[] nest. The typeof-string guard means a non-string `action` value would simply be
+  // skipped here (never misfire); recurrence is still surfaced by the same walk.
   const collectCodes = (val: unknown, location: string) => {
     if (typeof val === "string") {
       if (ENTITY_CODE.test(val) && !usedEntities.has(val)) usedEntities.set(val, location);
     } else if (Array.isArray(val)) {
       val.forEach((x, i) => collectCodes(x, `${location}/${i}`));
     } else if (val && typeof val === "object") {
-      for (const [k, v] of Object.entries(val)) collectCodes(v, `${location}/${k}`);
+      for (const [k, v] of Object.entries(val)) {
+        if (k === "action" && typeof v === "string") drift(v, "action", `${location}/${k}`);
+        collectCodes(v, `${location}/${k}`);
+      }
     }
   };
 
