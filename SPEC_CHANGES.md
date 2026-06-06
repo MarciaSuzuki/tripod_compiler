@@ -24,6 +24,17 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
   layer, not a convenience.) **Implementation pending** (next governance task, gates SC-0008): add
   both files to `_spec/pins.json` + the pin table and relocate them under `_spec/` so the pin path
   resolves; until then they remain compiler-repo docs and this rule states the target, not the state.
+  - **Current state — honest (verified 2026-06-06, during SC-0025).** The above is the *target*, not the
+    state, and the gap is wider than the log files: the vault `_spec/` **schema** files are a stale snapshot
+    frozen ~SC-0014 — `validation-rules.json` **v0.7** (compiler `v0.12`), `approved-enumerations.json` **v0.1**
+    (compiler `v0.10`), `compilation-log.schema.json` **v0.5** (compiler `v0.7`), and `quarantined-vocabulary.json`
+    (SC-0023) is **absent entirely**. Every SC from ~SC-0015 onward edited the spec compiler-side and never wrote
+    it back, and `check-drift --vault` (the guardrail that would catch this) was never built. **So the de-facto
+    canonical spec is the compiler's pinned `_spec/`; the vault `_spec/` is a stale snapshot. Do NOT vendor or
+    sync *from* the vault `_spec/`** — that would silently revert ~10 SCs. The bulk reconcile (catch the vault up
+    + create the quarantine file) and `check-drift --vault` ship **together** under SC-0008; until they do,
+    nothing should treat the vault `_spec/` as canonical. (Same class as the SC-0026 finding: an authoritative
+    artifact left unguarded because its check is the unbuilt one.)
 - **Bump the spec version** on every shipped change and record the new version + file hash so
   the compiler's vendored-copy drift-check can pin to it.
 - **Migrate artifacts in the same entry.** If a change invalidates existing artifacts
@@ -1067,6 +1078,7 @@ not authoring** — no §4 answer re-edited.
   `for-model-template.md` still documents `discourse_threads_active` as a FOR_MODEL field (now
   BCD-DELTA-only), and `audit-template-schema.json` is the schema for the obsolete AUDIT artifact.
   Retire/redirect both.
+- **Spec-vault staleness bound here (2026-06-06, found during SC-0025) — SC-0008 is the missing guardrail, not an incidental cleanup.** A now-verified drift: the vault `_spec/` schema files are a stale snapshot frozen ~SC-0014 (`validation-rules.json` v0.7 vs compiler v0.12; `approved-enumerations.json` v0.1 vs v0.10; `compilation-log.schema.json` v0.5 vs v0.7; `quarantined-vocabulary.json` **absent**), because every SC since ~SC-0015 edited the spec compiler-side and `check-drift --vault` — the check that would catch it — was never built. SC-0008 has sat **PROPOSED since before SC-0014 with no owner** while ~10 SCs of spec edits accrued unwritten-back; if it stays parked, the same finding recurs at SC-0030 with the spec eleven versions stale. **Scope bound here:** the bulk spec-vault reconcile (catch all four files up + create the quarantine file) ships **together** with `check-drift --vault` (so it can't silently re-drift), as its **own gate cycle** — one concern per cycle; it does **not** ride on SC-0026 (CL gate-validation — different artifact, different check) or Thread B. Interim, per the Canonical-home rule's "Current state": the compiler's pinned `_spec/` is canonical; the vault `_spec/` is a stale snapshot and must not be synced *from*.
 - **Rationale:** Stale templates re-introduce retired fields; a future author copying the
   template would re-add `discourse_threads_active` to a FOR_MODEL.
 - **Spec change (exact):** no `validation-rules.json` change; wiki-vault `_templates/` edits only.
