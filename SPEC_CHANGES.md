@@ -1065,11 +1065,11 @@ not authoring** — no §4 answer re-edited.
 
 ---
 
-## SC-0008 — Template relics: retire obsolete for-model/audit templates
+## SC-0008 — Canonical-home: spec-vault reconcile + `check-drift --vault` guardrail (folds in template-relics retirement)
 - **Date:** 2026-05-29 (reinstated as SC-0008)
 - **Decided by:** Marcia Suzuki
 - **Status:** PROPOSED
-- **Type:** docs/templates hygiene (no schema change)
+- **Type:** governance infrastructure — build the `check-drift --vault` guardrail + reconcile the stale vault spec (the **load-bearing** half); folds in the original template-relics docs hygiene (the minor half)
 - **ID note:** Tentatively numbered SC-0006 in an earlier planning session but never committed to this
   log under that number (SC-0006 shipped as drift convergence, `9fdef18`); later surfaced as SC-0007 in
   `docs/PROGRESS.md` open-thread (c), colliding with the L1-axis item now at SC-0007. Reinstated here
@@ -1078,7 +1078,7 @@ not authoring** — no §4 answer re-edited.
   `for-model-template.md` still documents `discourse_threads_active` as a FOR_MODEL field (now
   BCD-DELTA-only), and `audit-template-schema.json` is the schema for the obsolete AUDIT artifact.
   Retire/redirect both.
-- **Spec-vault staleness bound here (2026-06-06, found during SC-0025) — SC-0008 is the missing guardrail, not an incidental cleanup.** A now-verified drift: the vault `_spec/` schema files are a stale snapshot frozen ~SC-0014 (`validation-rules.json` v0.7 vs compiler v0.12; `approved-enumerations.json` v0.1 vs v0.10; `compilation-log.schema.json` v0.5 vs v0.7; `quarantined-vocabulary.json` **absent**), because every SC since ~SC-0015 edited the spec compiler-side and `check-drift --vault` — the check that would catch it — was never built. SC-0008 has sat **PROPOSED since before SC-0014 with no owner** while ~10 SCs of spec edits accrued unwritten-back; if it stays parked, the same finding recurs at SC-0030 with the spec eleven versions stale. **Scope bound here:** the bulk spec-vault reconcile (catch all four files up + create the quarantine file) ships **together** with `check-drift --vault` (so it can't silently re-drift), as its **own gate cycle** — one concern per cycle; it does **not** ride on SC-0026 (CL gate-validation — different artifact, different check) or Thread B. Interim, per the Canonical-home rule's "Current state": the compiler's pinned `_spec/` is canonical; the vault `_spec/` is a stale snapshot and must not be synced *from*.
+- **Spec-vault reconcile + `check-drift --vault` — the PRIMARY, load-bearing half of SC-0008 (scoped 2026-06-06, found during SC-0025); the template-relics retirement above is the minor original half.** SC-0008 is the missing guardrail behind a now-verified drift, not an incidental cleanup: the vault `_spec/` schema files are a stale snapshot frozen ~SC-0014 (`validation-rules.json` v0.7 vs compiler v0.12; `approved-enumerations.json` v0.1 vs v0.10; `compilation-log.schema.json` v0.5 vs v0.7; `quarantined-vocabulary.json` **absent**), because every SC since ~SC-0015 edited the spec compiler-side and `check-drift --vault` — the check that would catch it — was never built. SC-0008 has sat **PROPOSED since before SC-0014 with no owner** while ~10 SCs of spec edits accrued unwritten-back; if it stays parked, the same finding recurs at SC-0030 with the spec eleven versions stale. **Scope bound here:** the bulk spec-vault reconcile (catch all four files up + create the quarantine file) ships **together** with `check-drift --vault` (so it can't silently re-drift), as its **own gate cycle** — one concern per cycle; it does **not** ride on SC-0026 (CL gate-validation — different artifact, different check) or Thread B. Interim, per the Canonical-home rule's "Current state": the compiler's pinned `_spec/` is canonical; the vault `_spec/` is a stale snapshot and must not be synced *from*.
 - **Rationale:** Stale templates re-introduce retired fields; a future author copying the
   template would re-add `discourse_threads_active` to a FOR_MODEL.
 - **Spec change (exact):** no `validation-rules.json` change; wiki-vault `_templates/` edits only.
