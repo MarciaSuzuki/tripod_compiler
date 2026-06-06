@@ -89,6 +89,12 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     }
   ],
   "vocabulary_additions": {
+    "action_values": [
+      { "value": "ATE", "source": "first introduced in P06 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "HAD_LEFTOVER", "source": "first introduced in P06 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "PERMITTED", "source": "first introduced in P06 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "WAS_SATISFIED", "source": "first introduced in P06 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" }
+    ],
     "proposition_kinds": [
       {
         "value": "ATE",

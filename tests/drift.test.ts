@@ -140,18 +140,19 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
       const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
       expect(r.counts.drift, stem).toBe(0);
       for (const f of r.findings.filter((f) => f.severity === "quarantined")) {
-        expect(f.axis).toBe("communicative_function_element");
-        expect(QUAR.has(f.value!), f.value).toBe(true);
+        // SC-0025: the corpus now carries action quarantine too — every quarantined finding's
+        // value must be in the quarantine set for ITS axis (communicative_function_element or action).
+        expect(quarantineSets()[f.axis!]?.has(f.value!), `${f.axis}:${f.value}`).toBe(true);
       }
       totalQuar += r.counts.quarantined;
     }
-    expect(totalQuar).toBe(8); // each of the 8 used exactly once across P01–P06
+    expect(totalQuar).toBe(15); // SC-0023: 8 comm-func + SC-0025: 7 held action — each used once across P01–P06
   });
 
   it("quarantineWatch parks each value once in P01–P06 (no recurrence yet)", () => {
     const reports = ALL_FM.map((stem) => validateArtifact(FM(`${stem}-FOR-MODEL.md`)));
     const watch = quarantineWatch(reports);
-    expect(watch.length).toBe(8);
+    expect(watch.length).toBe(15); // 8 comm-func (SC-0023) + 7 held action (SC-0025)
     expect(watch.every((w) => !w.recurs)).toBe(true);
   });
 
@@ -190,5 +191,87 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
       const plan = planPromotion(CL(`${stem}-COMPILATION-LOG.md`), { status: "ANY", reg: loadApprovedEnumerations() });
       for (const c of plan.promote) expect(QUAR.has(c.value), `${stem}: ${c.value}`).toBe(false);
     }
+  });
+});
+
+describe("SC-0025 — action-slot enforcement (the nested-component action axis)", () => {
+  const ACTION_QUAR = quarantineSets()["action"]!;
+  const HELD7 = [
+    "ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH",
+    "WISHED_YHWH_TO_REPAY_HER_WORK",
+    "WISHED_FULL_WAGES_FROM_YHWH_UNDER_WHOSE_WINGS_SHE_TOOK_REFUGE",
+    "STATED_THAT_HE_COMFORTED_HER",
+    "STATED_THAT_HE_SPOKE_TO_HEART_OF_HIS_SHIFCHAH",
+    "STATED_SHE_IS_NOT_AS_ONE_OF_HIS_SHIFCHOT",
+    "STATED_SELF_AS_FOREIGNER",
+  ];
+
+  it("action is convergent, seeded with 31 verbs; the 7 held are quarantined, not approved (disjoint)", () => {
+    expect(axisClass("action")).toBe("convergent");
+    const approved = new Set((loadApprovedEnumerations().axes["action"] ?? []).map((e) => e.value));
+    expect(approved.size).toBe(31);
+    expect(ACTION_QUAR.size).toBe(7);
+    for (const v of HELD7) {
+      expect(ACTION_QUAR.has(v), `${v} quarantined`).toBe(true);
+      expect(approved.has(v), `${v} NOT approved`).toBe(false);
+    }
+    for (const v of ACTION_QUAR) expect(approved.has(v), v).toBe(false);
+  });
+
+  it("the held-7 surface as `quarantined` on the action axis across the corpus, never `drift`/`block`", () => {
+    let held = 0;
+    for (const stem of ALL_FM) {
+      const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
+      expect(r.counts.drift, `${stem} drift`).toBe(0);
+      for (const f of r.findings.filter((f) => f.axis === "action")) {
+        expect(f.severity, `${f.value}`).toBe("quarantined");
+        expect(ACTION_QUAR.has(f.value!), f.value).toBe(true);
+        held++;
+      }
+    }
+    expect(held).toBe(7); // the 7 held action labels, each used once across P01–P06
+  });
+
+  it("the engine REACHES a nested *_components[] action and drifts on an unseen verb", () => {
+    const j = {
+      level_3_propositions: [
+        { prop_id: "P1", event_specific_slots: { command_components: [{ action: "ZZ_NOVEL_UNSEEN_VERB" }] } },
+      ],
+    };
+    const af = vocabularyFindings(j, driftBaseline()).find((f) => f.axis === "action" && f.value === "ZZ_NOVEL_UNSEEN_VERB");
+    expect(af, "nested action reached by the walk").toBeTruthy();
+    expect(af!.severity).toBe("drift"); // unseen + not quarantined → convergent drift, the enforcement
+  });
+
+  it("a seeded verb does NOT drift; a held verb is quarantined — both at nested depth", () => {
+    const mk = (action: string) => ({
+      level_3_propositions: [{ prop_id: "P1", event_specific_slots: { vow_components: [{ action }] } }],
+    });
+    expect(vocabularyFindings(mk("VOWED"), driftBaseline()).filter((f) => f.axis === "action").length).toBe(0);
+    expect(
+      vocabularyFindings(mk("STATED_SELF_AS_FOREIGNER"), driftBaseline()).find((f) => f.axis === "action")?.severity,
+    ).toBe("quarantined");
+  });
+
+  it("LOAD-BEARING FACT (gated): every `action` value in the corpus is a bare verb string ^[A-Z_]+$, 79 total", () => {
+    // The SC-0025 clean-parallel verdict rests on this — the key-targeted walk catches every action with
+    // no false positives and no structured-object shape collectCodes can't reach. Now gated, not report-level.
+    const BARE = /^[A-Z_]+$/;
+    let count = 0;
+    const walk = (node: unknown, path: string, file: string) => {
+      if (Array.isArray(node)) node.forEach((x, i) => walk(x, `${path}/${i}`, file));
+      else if (node && typeof node === "object") {
+        for (const [k, v] of Object.entries(node)) {
+          if (k === "action") {
+            count++;
+            expect(typeof v, `${file}${path}/action not a string`).toBe("string");
+            expect(BARE.test(v as string), `${file}${path}/action = ${String(v)}`).toBe(true);
+          }
+          walk(v, `${path}/${k}`, file);
+        }
+      }
+    };
+    for (const stem of ALL_FM) walk(readArtifactNote(FM(`${stem}-FOR-MODEL.md`)).json, "", stem);
+    expect(count, "total action occurrences across P01–P06").toBe(79);
   });
 });

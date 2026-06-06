@@ -63,6 +63,11 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   ],
 
   "vocabulary_additions": {
+    "action_values": [
+      { "value": "ARRIVED_AT", "source": "first introduced in P01 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "TOOK_AS_WIFE", "source": "first introduced in P01 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" },
+      { "value": "WERE_AT", "source": "first introduced in P01 (SC-0025 action-enforcement seed)", "status": "CONFIRMED" }
+    ],
     "proposition_kinds": [
       {
         "value": "ARRIVED_AT",

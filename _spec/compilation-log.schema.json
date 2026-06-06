@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/compilation-log-v0-6.schema.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/compilation-log-v0-7.schema.json",
   "title": "Compilation Log",
   "description": "Methodology trace for one pericope's STA compilation. Renamed from AUDIT in v0.3. Contains compilation decisions, vocabulary additions, high-risk register, cross-pericope pair verification, validation checklist, and known limitations. Registry additions extracted to bcd-delta. Reviewer-facing content extracted to verification-input. The Seed Model does not train on this file; teams do not see it.",
-  "version": "v0.6",
+  "version": "v0.7",
   "tagset_version": "TRIPOD_STA_v2_0",
-  "date_locked": "2026-06-04",
-  "supersedes": "v0.3 → v0.4 (SC-0007, 2026-05-30): vocabulary_additions gains optional convergent promotion slots — arc_elements, context_elements, tone_elements, pace_elements, communicative_function_elements, discourse_thread_states, high_risk_register_kinds — so the L1-element / discourse / high-risk convergent axes can be promoted into approved-enumerations.json via `tripod promote` (closing the SC-0006 known limitation). Additive only; the required set is unchanged, so v0.3 logs remain valid. v0.4 → v0.5 (SC-0014, 2026-05-31): renamed the SPEECH_ACT enum value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (kept in sync with validation-rules.json closed list). See SPEC_CHANGES.md. v0.5 → v0.6 (SC-0024, 2026-06-04): collapsed the six VOWS_*_BINDING values in the speech_act_value enum to a single VOWS (kept in sync with the validation-rules.json closed list; SPEECH_ACT 31 → 26). P03 COMPILATION-LOG speech_act_values_used migrated. See SPEC_CHANGES.md.",
+  "date_locked": "2026-06-05",
+  "supersedes": "v0.3 → v0.4 (SC-0007, 2026-05-30): vocabulary_additions gains optional convergent promotion slots — arc_elements, context_elements, tone_elements, pace_elements, communicative_function_elements, discourse_thread_states, high_risk_register_kinds — so the L1-element / discourse / high-risk convergent axes can be promoted into approved-enumerations.json via `tripod promote` (closing the SC-0006 known limitation). Additive only; the required set is unchanged, so v0.3 logs remain valid. v0.4 → v0.5 (SC-0014, 2026-05-31): renamed the SPEECH_ACT enum value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (kept in sync with validation-rules.json closed list). See SPEC_CHANGES.md. v0.5 → v0.6 (SC-0024, 2026-06-04): collapsed the six VOWS_*_BINDING values in the speech_act_value enum to a single VOWS (kept in sync with the validation-rules.json closed list; SPEECH_ACT 31 → 26). P03 COMPILATION-LOG speech_act_values_used migrated. See SPEC_CHANGES.md. v0.6 → v0.7 (SC-0025, 2026-06-05): vocabulary_additions gains two properties — action_values (the new convergent action axis intake, parallel to the other promotion slots) and role_in_scene_beings (present in every CL since SC-0022 but absent here, which made every CL invalid against additionalProperties:false — this is the gap fix). Additive only; the required set is unchanged, so prior logs remain valid. NOTE: turning ON gate-board CL validation is SC-0026, not this change — SC-0025 only makes the schema correct. See SPEC_CHANGES.md.",
   "canonical_reference": {
     "source": "Renamed and slimmed from canonical P01-Ruth-1-1-5-AUDIT.md. registry_additions field moved to bcd-delta.schema.json. No reviewer-facing content; that lives in verification-input.schema.json."
   },
@@ -229,6 +229,16 @@
         "referential_forms": {
           "type": "array",
           "items": { "$ref": "#/$defs/vocabulary_addition_entry" }
+        },
+        "role_in_scene_beings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vocabulary_addition_entry" },
+          "description": "SC-0025: the beings participant-role convergent axis (→ approved-enumerations axis role_in_scene_being). Present in every COMPILATION-LOG since SC-0022 but absent from this schema until now — the gap that made every CL invalid against additionalProperties:false. The gap fix."
+        },
+        "action_values": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vocabulary_addition_entry" },
+          "description": "SC-0025: the nested-component action convergent axis (→ approved-enumerations axis action). New action verbs a pericope introduces are declared here for governed `tripod promote` (the SC-0024-cleaned verb set is the seeded baseline; the 7 held sentence-shaped labels are quarantined)."
         },
         "other": {
           "type": "array",

@@ -111,7 +111,7 @@ export function formatQuarantineWatch(entries: QuarantineWatchEntry[]): string {
   for (const e of entries) {
     const tag = e.recurs
       ? `⚠ RECURS in ${e.pericopes.length} pericopes [${e.pericopes.join(", ")}] — revisit: promote (real type) or collapse (one-off)`
-      : `parked [${e.pericopes.join(", ")}] — single pericope, awaiting frequency data`;
+      : `parked [${e.pericopes.join(", ")}] — single pericope, awaiting revisit`;
     lines.push(`   ${e.value}  (${e.axis})  ${e.occurrences}×  ${tag}`);
   }
   const recurring = entries.filter((e) => e.recurs).length;
