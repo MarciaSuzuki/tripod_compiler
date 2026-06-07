@@ -37,6 +37,13 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
     artifact left unguarded because its check is the unbuilt one.)
 - **Bump the spec version** on every shipped change and record the new version + file hash so
   the compiler's vendored-copy drift-check can pin to it.
+- **Reconcile the vault on every spec change, and prove it (SC-0008).** After editing `_spec/`, write the
+  change back to the wiki vault and run `npm run check-drift:vault` (= `check-drift --vault <wiki>/_spec`) —
+  it must report all `vault:ok`, exit 0, before the change is "done." A spec edit not written back leaves the
+  vault stale (the drift SC-0008 had to repair). **New files must be explicitly staged/committed** — an
+  untracked file can be silently skipped by auto-commit, so verify it actually landed on the vault *remote*,
+  not just local disk (the guard reads local disk and can't catch a missing-on-remote file). The conditional
+  `--vault` test (set `TRIPOD_VAULT_SPEC`) enforces clean-vault on any local `npm test`.
 - **Migrate artifacts in the same entry.** If a change invalidates existing artifacts
   (e.g. a value moves lists), list the affected pericopes and the migration, so the gold
   fixtures and the spec never disagree.

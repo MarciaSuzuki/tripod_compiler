@@ -49,8 +49,12 @@ four things, whose unifying concern is *make the "vault is canonical" claim TRUE
 
 **Vault writeback (human-gated, cron-landed, compiler→vault — the safe direction):**
 5. Reconcile the 3 stale schemas + add `quarantined-vocabulary.json` to the vault `_spec/`.
-6. Reconcile the 6 content-stale CLs to match the merged fixtures (diff-first; vault is a verified strict subset →
-   clean-copy, verify only-additions, no unexpected removals).
+6. Reconcile the 6 content-stale CLs to match the merged fixtures (diff-first; clean-copy). **Wording corrected
+   2026-06-07 during the writeback:** the vault CLs are *not* a byte-level strict subset — they diverge by array
+   **order** + the `source` provenance-text *format* (vault's redundant `"(triage …)"` vs the fixtures' `"P3 …"`
+   anchors). But at the **value level** the fixtures are a clean superset: verified vault-only = empty across all 6
+   for `vocabulary_additions` value-sets **and** `proposition_kind_slot_sets`. So clean-copy loses no value/slot/
+   status (SC-0007 intake invariant preserved); each vault CL becomes byte-identical to its gate-validated fixture.
 
 ## 4. The gating decision — adopting Option 3 (conceding my earlier rec)
 I'd recommended Option 1 (runbook + script). **The evaluator's counter is right and I'm adopting it:** the vault
