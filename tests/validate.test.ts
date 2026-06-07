@@ -110,6 +110,38 @@ describe("negative cases (located, precise errors)", () => {
   });
 });
 
+describe("Thread B fidelity model — SC-0027 (P03 vow)", () => {
+  const P03 = join(FIX, "P03-Ruth-1-15-18-FOR-MODEL.md");
+  const p03 = readFileSync(P03, "utf8");
+  const tmp = mkdtempSync(join(tmpdir(), "tripod-tb-"));
+  const write = (name: string, body: string) => {
+    const f = join(tmp, name);
+    writeFileSync(f, body);
+    return f;
+  };
+
+  it("P03 validates block-clean with the fidelity model, and both groups are declared", () => {
+    const r = validateArtifact(P03);
+    expect(r.counts.block, blockMsgs(r)).toBe(0);
+    expect(p03.includes('"group_id": "people_god_inseparability"')).toBe(true);
+    expect(p03.includes('"group_id": "unto_the_end"')).toBe(true);
+  });
+
+  it("blocks a dangling fidelity_group reference (SC-0027 dangling-group-id check)", () => {
+    const broken = p03.replace('"fidelity_group": "people_god_inseparability"', '"fidelity_group": "no_such_group"');
+    const r = validateArtifact(write("bad-fidelity-group-FOR-MODEL.md", broken));
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((x) => x.code === "referential-integrity" && x.message.includes("no_such_group"))).toBe(true);
+  });
+
+  it("blocks a malformed component fidelity (non-boolean preserve_meaning)", () => {
+    const broken = p03.replace('"fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Ruth binds herself to go', '"fidelity": { "preserve_meaning": "yes", "preserve_form": false, "meaning": "Ruth binds herself to go');
+    const r = validateArtifact(write("bad-fidelity-shape-FOR-MODEL.md", broken));
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((x) => x.code === "fidelity-shape")).toBe(true);
+  });
+});
+
 describe("spec integrity", () => {
   it("vendored schemas match their pins", () => {
     for (const d of checkDrift()) expect(d.vendoredOk, `${d.file} drifted from pin`).toBe(true);
