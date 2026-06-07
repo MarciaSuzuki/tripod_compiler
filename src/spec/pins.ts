@@ -9,8 +9,15 @@ export interface Pin {
 }
 export interface Pins {
   tagset_version: string;
+  /**
+   * Vault-canonical, governed spec files: vendored AND compared to the wiki `_spec/` via
+   * `check-drift --vault`. Criterion: a human authors/governs it and it belongs in the wiki → schema.
+   */
   schemas: Record<string, Pin>;
-  /** Generated, offline-frozen BHSA extracts + the derived alias table (paths under _spec/). */
+  /**
+   * Generated, offline-frozen extracts (BHSA packets, derived alias table): vendored-hash check only,
+   * NO vault comparison (no wiki-canonical original). Criterion: a tool produces it → source.
+   */
   sources?: Record<string, Pin>;
 }
 
@@ -32,6 +39,8 @@ export interface DriftResult {
   vaultSha?: string;
   /** true when the vault copy still matches the pin; false = upstream drift; undefined = not checked. */
   vaultOk?: boolean;
+  /** true when a pinned canonical file is entirely ABSENT from the vault — a kind of drift (SC-0008). */
+  vaultAbsent?: boolean;
 }
 
 /**
@@ -56,7 +65,10 @@ export function checkDrift(vaultSpecDir?: string): DriftResult[] {
         res.vaultSha = sha256OfFile(join(vaultSpecDir, file));
         res.vaultOk = res.vaultSha === pin.sha256;
       } catch {
-        res.vaultOk = undefined; // file absent in the vault dir
+        // SC-0008: a canonical schema MISSING from the vault is drift, not "not checked".
+        // (Previously `vaultOk = undefined`, which the exit code ignored — a silent blind spot.)
+        res.vaultAbsent = true;
+        res.vaultOk = false;
       }
     }
     results.push(res);
