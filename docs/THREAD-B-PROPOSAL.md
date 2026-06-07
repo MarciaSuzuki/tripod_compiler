@@ -85,7 +85,7 @@ The pairing is **two** entries in `level_3_propositions[].event_specific_slots.v
 4. **Reach confirmed:** the flag rides at the **component** level — one level deeper than `cb_flags`/`figure_flags`
    (whole-proposition). This is the real schema work and the reason Thread B is its own cautious cycle.
 
-## 6. Plan (prototype-first; nothing locked here)
+## 6. Plan (prototype-first; nothing locked here) — *superseded by §9 (pair-scope ruled (α))*
 1. **This prototype** → Marcia + evaluator review: confirm the flag shape, the Case-2 fit, and **rule the Case-1
    pair-scope option (α/β/γ).**
 2. **Then SC-0027 (schema-commit), its own cycle, plan-first:** add the `fidelity` object to the FOR_MODEL schema at
@@ -100,3 +100,37 @@ The pairing is **two** entries in `level_3_propositions[].event_specific_slots.v
 - `NOT_TO_BE_NORMALIZED` is **greenfield** (unimplemented README note); "unify" = build the flag fresh.
 - The Case-1 refinement means the architecture (c) is **right but incomplete as a pure single-element flag** — it
   needs pair-scope. That correction *is* the prototype doing its job before the schema locks.
+
+---
+
+## 8. Round 2 — pair-scope RULED (α), and the whole-vow prototype (the next gate)
+
+**Decision (Marcia + evaluator, 2026-06-07): adopt (α) shared group-id.** Verified against the structure: `nominal_equation_half` is a per-component **label, not a link** — so **(γ) is ruled out** (nothing binds the halves; you'd assert "inseparable" twice with no single home). **(β) pair-node is too invasive** (breaks the flat `list_position` list + the engine's component-walk) and **less general** (a node groups adjacent/contained items; Scripture's bindings — merisms, inclusios, figures opening in one proposition and closing in another — span **non-adjacent** elements). **(α) is additive, fits the existing recursive walk, and binds elements anywhere.** Two specifics carried into SC-0027:
+1. **The group entry carries the *relationship's* own flag** (`preserve_meaning = true` on the inseparability itself) — a **third thing**, distinct from the two per-half element flags.
+2. **A dangling-`fidelity_group` integrity check** (analogous to `id-check` for entity codes) so a group-id can't point at nothing. Scoped into SC-0027.
+
+**Whole-vow prototype (all six rungs — proving the model beyond its hardest sub-part):**
+
+| # | rung (P03 `vow_components`) | per-rung fidelity (Marcia rules) | candidate group (Marcia rules) |
+|---|---|---|---|
+| 0 | path — "where you go, I will go" | meaning: Ruth goes wherever Naomi goes; `preserve_form`? | **accompaniment (0+1)?** |
+| 1 | lodging — "where you lodge, I will lodge" | meaning: …stays wherever Naomi stays; `preserve_form`? | accompaniment (0+1)? |
+| 2 | **people** (`PEOPLE_HALF`, `bound_to_collective B31`) | **`preserve_meaning=true`, `preserve_form=false` — RULED** | **`people_god_inseparability` (2+3) — RULED a group** |
+| 3 | **God** (`GOD_HALF`, `invoked_divine_agent B10`) | **`preserve_meaning=true`, `preserve_form=false` — RULED** | `people_god_inseparability` (2+3) — RULED |
+| 4 | death — "where you die, I will die" | meaning: …unto death; `preserve_form`? | **unto-the-end (4+5)?** |
+| 5 | burial — "there I will be buried" | meaning: …same final resting place; `preserve_form`? | unto-the-end (4+5)? — artifact already links them via burial's `THERE_DEMONSTRATIVE_LINKING_TO_DEATH_PLACE` |
+
+**Plus a whole-ladder question:** `vow_structural_form: SIX_STEP_LADDER_PATH_LODGING_PEOPLE_GOD_DEATH_BURIAL` names an **escalation** (travel → union → death). Is the **ladder/escalation itself** a `preserve_meaning` claim (the totality/intensification must survive) with the six-step *form* re-realizable, or just descriptive scaffolding?
+
+**The per-step questions for you (THE NEXT GATE, before SC-0027) — your meaning calls, not guessed:**
+- The `preserve_meaning` content + `preserve_form` value for each unruled rung (0, 1, 4, 5).
+- Which candidate groups are **inseparable groups** vs merely **sequential steps**: **accompaniment (0+1)?** **unto-the-end (4+5)?** (the `THERE`-demonstrative is the artifact's own evidence for 4+5). people/God (2+3) is already ruled a group.
+- The whole-ladder claim above.
+
+**Generalization (noted, kept OUT of this cycle):** because an (α) group-id binds across propositions, it could later replace the free-text `cross_ref` ("FIG opens here, closes at P13") with a *structured* binding. Real, but **do not bundle** — one concern per cycle.
+
+## 9. Plan (updated — supersedes §6)
+1. **This extended prototype** → you rule the §8 per-step + grouping questions.
+2. **SC-0027 (schema-commit), plan-first, its own cycle:** add the `fidelity` object at the component level + the (α) group-id mechanism (group entry carries the relationship flag) + the dangling-group-id check; seed the held-7 + the ruled vow groups as the first annotated corpus; fold in `NOT_TO_BE_NORMALIZED`; add the optional Level-1 default-posture layer if wanted.
+3. **Roll out** to P01–P06 + author P07–P14 with fidelity from birth.
+Nothing is locked until SC-0027.
