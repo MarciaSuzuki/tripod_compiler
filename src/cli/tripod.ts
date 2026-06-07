@@ -65,10 +65,12 @@ program
   .action((opts: { vault?: string }) => {
     let bad = 0;
     for (const r of checkDrift(opts.vault)) {
-      let line = `${r.vendoredOk ? "✓" : "✗"} ${r.file}  pin ${r.pinnedVersion}  vendored:${r.vendoredOk ? "ok" : "DRIFT"}`;
-      if (r.vaultSha !== undefined) line += `  vault:${r.vaultOk ? "ok" : "DRIFT"}`;
+      const rowBad = !r.vendoredOk || r.vaultOk === false;
+      let line = `${rowBad ? "✗" : "✓"} ${r.file}  pin ${r.pinnedVersion}  vendored:${r.vendoredOk ? "ok" : "DRIFT"}`;
+      if (r.vaultAbsent) line += `  vault:MISSING`;
+      else if (r.vaultSha !== undefined) line += `  vault:${r.vaultOk ? "ok" : "DRIFT"}`;
       console.log(line);
-      if (!r.vendoredOk || r.vaultOk === false) bad++;
+      if (rowBad) bad++;
     }
     const sync = closedListSyncIssues();
     if (sync.length === 0) console.log("✓ closed-list sync invariant holds (REGISTER / GENRE / NARRATIVE_FRAMING)");

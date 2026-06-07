@@ -8,8 +8,9 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 155 tests green (97 → +16 SC-0018 → +13 SC-0018-refine → +7 SC-0020 id-align tweaks → +3 SC-0020 parity-bar = 136 through SC-0022 → 147 across SC-0023–0025 → +8 SC-0026 CL schema gate). COMPILATION-LOGs are now gate-validated (SC-0026).
-npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 11 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions + id-alignment-exceptions 0.3.0) + sync invariant
+npm install && npm run build && npm test     # 156 passed | 1 skipped (157): … +8 SC-0026 CL gate = 155, +1 SC-0008 absent-file unit test = 156; the 1 skipped is the SC-0008 vault-drift guard (runs only when TRIPOD_VAULT_SPEC is set, skips VISIBLY otherwise). CL gate (SC-0026) + vault-drift guard (SC-0008).
+npx tsx src/cli/tripod.ts check-drift          # 6 schema pins (SC-0008: quarantined-vocabulary reclassified source→schema) + 10 source pins + sync invariant
+npm run check-drift:vault                       # SC-0008: compares the wiki _spec/ to the pins (defaults to ~/Github/ruth-pilot-b-wiki/_spec; set TRIPOD_VAULT_SPEC to override) — exits 1 on vault drift OR a missing canonical file
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
