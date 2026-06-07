@@ -8,7 +8,7 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 136 tests green (97 → +16 SC-0018 → +13 SC-0018-refine → +7 SC-0020 id-align tweaks → +3 SC-0020 parity-bar)
+npm install && npm run build && npm test     # 155 tests green (97 → +16 SC-0018 → +13 SC-0018-refine → +7 SC-0020 id-align tweaks → +3 SC-0020 parity-bar = 136 through SC-0022 → 147 across SC-0023–0025 → +8 SC-0026 CL schema gate). COMPILATION-LOGs are now gate-validated (SC-0026).
 npx tsx src/cli/tripod.ts check-drift          # 5 schema pins + 11 source pins (6 packets + alias + coverage-exceptions + lint-lexicon + lint-exceptions + id-alignment-exceptions 0.3.0) + sync invariant
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
 npx tsx src/cli/tripod.ts gold-diff

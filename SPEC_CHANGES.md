@@ -74,7 +74,7 @@ number bound to exactly one decision.
 | SC-0005 | Widen the `place_id` pattern to `PL<n>_<DESCRIPTOR>` | SHIPPED |
 | SC-0006 | Drift convergence: convergent/descriptive split + approved-enumerations registry | SHIPPED |
 | SC-0007 | Converge the L1 / discourse / high-risk axes (add a COMPILATION-LOG promotion slot) | SHIPPED |
-| SC-0008 | Template relics: retire obsolete for-model/audit templates | PROPOSED |
+| SC-0008 | Canonical-home: reconcile the stale vault `_spec/` (frozen ~SC-0014) + build `check-drift --vault` (the load-bearing half) + retire obsolete templates (minor half); **extended 2026-06-06 (SC-0026 analysis) to also reconcile the stale vault `stas/` COMPILATION-LOGs** (same unguarded-stale-vault pattern) | PROPOSED |
 | SC-0009 | Merge PL_HA_ARETZ → PL_LAND_OF_JUDAH (same-referent principle, Layer-3) | SHIPPED |
 | SC-0010 | Coverage recorded-exception mechanism + P06 "Israel" epithet-internal ruling | SHIPPED |
 | SC-0011 | BCD `gender` frontmatter field (authoritative; replaces the prose-guess) | SHIPPED |
@@ -92,6 +92,7 @@ number bound to exactly one decision.
 | SC-0022 | Vocabulary consolidation (reuse-dependent triage — the enforcement gate): **promote** 56 cleaned bares (13 `scene_kind` + 27 `proposition_kind` + 16 `communicative_function_element`); **enforce** beings `role_in_scene` descriptive→convergent + seed the 21 ruled relations (controlled slot); **schema-drop** place/object/time `role_in_scene`/`function_in_scene` (entries id-only); **deprecate** 133 orphaned superseded values. `approved-enumerations v0.5→v0.8`, `validation-rules v0.7→v0.9`, re-pinned. | **APPLIED (compiler, gate board green)** 2026-06-04 — PR open; merge + vault writeback (remove place/object/time fields from vault `stas/`) pending Marcia |
 | SC-0024 | Thread A — nested component `action`/`speech_act` collapse: **closed-list** — collapse the six `VOWS_*_BINDING` SPEECH_ACT values to a single `VOWS` (31→26), synced across `validation-rules.json` + `compilation-log.schema.json`; **content** — reduce ~57 sentence-shaped `action` values across P01–P06 to a small reusable verb set (DIRECTED/STATED/VOWED/ASKED/REPORTED/ASCRIBED/IDENTIFIED + bare verbs), each proven by a per-value survival table (sibling slot or map §4 home); **route** the load-bearing vessels detail to a new `drink_source` sibling slot; **hold** 7 load-bearing labels for Thread B; **migrate** P03 (incl. a P03-D3 supersession note). `action` stays uncontrolled (enforcement = SC-0025). `validation-rules v0.10→v0.11`, `compilation-log.schema v0.5→v0.6`, re-pinned. | **APPLIED (compiler, gate board green: 142 tests · validate 6/6 · lint 0/7 · coverage 6/6 · id-check 6 clean · gold-diff baseline)** 2026-06-04 — PR open; merge + vault writeback pending Marcia |
 | SC-0025 | Action-slot enforcement (the SC-0024 durability follow-on): reclassify the nested component `action` slot from uncontrolled free-text to a controlled bounded-open axis, seeded with the verb set SC-0024 produced, so P07–P14 cannot re-introduce sentence-shaped action values (drift→review→promote-with-provenance). Clean-then-enforce, the same shape as triage→SC-0022. **SC-0024's `action` cleanup is only durable once this lands.** | PROPOSED |
+| SC-0026 | COMPILATION-LOG schema gate: wire the 6 gold CLs into the gate (validate against `compilation-log.schema.json`) so a malformed CL fails the board; **finding routed to SC-0008** — the vault `stas/` CLs are content-stale (a strict subset of the fixtures), the same unguarded-stale-vault pattern as `_spec/` | **APPLIED (compiler, gate board green: 155 tests)** 2026-06-06 — PR open; merge pending Marcia |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -123,6 +124,22 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0026 — COMPILATION-LOG schema gate (turn CL validation on)
+- **Date:** 2026-06-06
+- **Decided by:** Marcia Suzuki (scope ruling: schema gate only; vault-CL staleness → SC-0008)
+- **Status:** APPLIED (compiler, gate board green: 155 tests · validate 6/6 FOR_MODEL + 6/6 CL · check-drift clean · lint/coverage/id-check/gold-diff exit 0) 2026-06-06 — PR open; merge pending Marcia
+- **Type:** gate-checks (test wiring; no schema change)
+- **Summary:** Wire the six gold COMPILATION-LOGs (`fixtures/compilation-log/P01–P06`) into the gate so each is validated against `compilation-log.schema.json` (v0.7) on every `npm test`, exactly as the six FOR_MODELs already are. The CL-validation machinery already existed (`validateArtifact` dispatches the CL schema at `src/engine/validate.ts:33-34,76`; `tripod validate <dir>` already discovers CLs) — SC-0026 adds the missing **gate test** (6 positive + a vendored-count check + 1 negative) so a malformed CL fails the board instead of entering the corpus as unguarded "provenance."
+- **The seam (why SC-0026, not SC-0008):** SC-0026 only turns a check ON against the already-correct schema (the gate-checks side of the seam test). It changes no schema and no data.
+- **Finding surfaced (routed to SC-0008, NOT fixed here):** turning CL validation on is **green** — all 6 CLs are *shape*-clean in both trees. But the vault `stas/` CLs are a **strict subset** of the compiler fixtures (vault-only keys = 0 across all 6; each missing `vocabulary_additions.role_in_scene_beings`, 5/6 also missing the `vocabulary_additions.*_elements` breakdown; 54–242 changed lines per pericope). That is **content** staleness, invisible to a schema gate — the 4th unguarded-authoritative-artifact instance, sibling to the stale vault `_spec/`. **Routed to SC-0008** (writeback the 6 vault CLs + a `stas/` content guardrail). One concern per cycle.
+- **Spec change (exact):** none — no `validation-rules.json` / `_spec/` edit, no `pins.json` bump.
+- **Artifact migration:** none (no fixture content changed).
+- **Validator impact:** none new in the engine; the existing CL structural pass is now exercised by the durable test gate.
+- **Version:** no spec-version bump.
+- **Verification:** `npm test` 147→155 (6 CL fixtures + vendored-count + 1 negative); `tripod validate fixtures/compilation-log/` → 6 valid · 0 block; the negative case (drop required `sta_id`) → a located `block` schema finding naming `sta_id`; `check-drift` clean; `validate fixtures/for-model/` unchanged (6 valid · 0 block · 0 drift · 15 quarantined); `lint/coverage/id-check/gold-diff --corpus` exit 0.
 
 ---
 
@@ -1079,6 +1096,7 @@ not authoring** — no §4 answer re-edited.
   BCD-DELTA-only), and `audit-template-schema.json` is the schema for the obsolete AUDIT artifact.
   Retire/redirect both.
 - **Spec-vault reconcile + `check-drift --vault` — the PRIMARY, load-bearing half of SC-0008 (scoped 2026-06-06, found during SC-0025); the template-relics retirement above is the minor original half.** SC-0008 is the missing guardrail behind a now-verified drift, not an incidental cleanup: the vault `_spec/` schema files are a stale snapshot frozen ~SC-0014 (`validation-rules.json` v0.7 vs compiler v0.12; `approved-enumerations.json` v0.1 vs v0.10; `compilation-log.schema.json` v0.5 vs v0.7; `quarantined-vocabulary.json` **absent**), because every SC since ~SC-0015 edited the spec compiler-side and `check-drift --vault` — the check that would catch it — was never built. SC-0008 has sat **PROPOSED since before SC-0014 with no owner** while ~10 SCs of spec edits accrued unwritten-back; if it stays parked, the same finding recurs at SC-0030 with the spec eleven versions stale. **Scope bound here:** the bulk spec-vault reconcile (catch all four files up + create the quarantine file) ships **together** with `check-drift --vault` (so it can't silently re-drift), as its **own gate cycle** — one concern per cycle; it does **not** ride on SC-0026 (CL gate-validation — different artifact, different check) or Thread B. Interim, per the Canonical-home rule's "Current state": the compiler's pinned `_spec/` is canonical; the vault `_spec/` is a stale snapshot and must not be synced *from*.
+- **Scope extended (2026-06-06, found during SC-0026, Marcia's ruling):** SC-0008 also reconciles the stale vault `stas/` **COMPILATION-LOGs**, not just `_spec/`. Verified during SC-0026: all 6 vault CLs are a strict subset of the merged compiler fixtures (vault-only keys = 0; each missing `vocabulary_additions.role_in_scene_beings`, 5/6 also missing the `vocabulary_additions.*_elements` breakdown; 54–242 changed lines each) — the same unguarded-stale-vault class as `_spec/`, an authoritative artifact left adrift because its *content* check is the unbuilt one. SC-0008's deliverable accordingly grows to: (a) **writeback** the 6 vault CLs to match the merged compiler copies (diff-first / surgical, handoff §V.5), and (b) a **`stas/` content guardrail** (the CL analogue of `check-drift --vault`). SC-0026 (the CL **schema** gate) is the separate, already-shipped half — it cannot see content staleness.
 - **Rationale:** Stale templates re-introduce retired fields; a future author copying the
   template would re-add `discourse_threads_active` to a FOR_MODEL.
 - **Spec change (exact):** no `validation-rules.json` change; wiki-vault `_templates/` edits only.

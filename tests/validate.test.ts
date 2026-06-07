@@ -9,6 +9,8 @@ import { checkDrift, closedListSyncIssues } from "../src/spec/pins.js";
 const here = dirname(fileURLToPath(import.meta.url));
 const FIX = join(here, "..", "fixtures", "for-model");
 const forModels = readdirSync(FIX).filter((f) => f.endsWith("-FOR-MODEL.md")).sort();
+const CL_FIX = join(here, "..", "fixtures", "compilation-log");
+const compLogs = readdirSync(CL_FIX).filter((f) => f.endsWith("-COMPILATION-LOG.md")).sort();
 const blockMsgs = (r: ReturnType<typeof validateArtifact>) =>
   JSON.stringify(r.findings.filter((f) => f.severity === "block"), null, 2);
 
@@ -47,6 +49,26 @@ describe("FOR_MODEL gold fixtures (P01–P06)", () => {
   });
 });
 
+// SC-0026: the six gold COMPILATION-LOGs are now gate-validated against
+// compilation-log.schema.json, exactly as the FOR_MODELs above. The validation
+// machinery already existed (validateArtifact dispatches the CL schema); this block
+// makes the check load-bearing, so a malformed CL fails `npm test` instead of entering
+// the corpus as unguarded "provenance". (Vault-CL *content* staleness is SC-0008, not here.)
+describe("COMPILATION-LOG gold fixtures (P01–P06)", () => {
+  it("vendors all six gold compilation-logs", () => {
+    expect(compLogs).toHaveLength(6);
+  });
+
+  for (const f of compLogs) {
+    it(`${f} validates block-clean against compilation-log.schema.json`, () => {
+      const r = validateArtifact(join(CL_FIX, f));
+      expect(r.artifact).toBe("COMPILATION-LOG");
+      expect(r.counts.block, blockMsgs(r)).toBe(0);
+      expect(r.ok).toBe(true);
+    });
+  }
+});
+
 describe("negative cases (located, precise errors)", () => {
   const tmp = mkdtempSync(join(tmpdir(), "tripod-"));
   const p01 = readFileSync(join(FIX, "P01-Ruth-1-1-5-FOR-MODEL.md"), "utf8");
@@ -76,6 +98,15 @@ describe("negative cases (located, precise errors)", () => {
   it("blocks an artifact whose JSON body is missing", () => {
     const r = validateArtifact(write("no-json-FOR-MODEL.md", "---\ntype: sta-for-model\n---\n# no fenced block here\n"));
     expect(r.ok).toBe(false);
+  });
+
+  it("blocks a COMPILATION-LOG missing a required top-level field (sta_id) — SC-0026", () => {
+    const cl = readFileSync(join(CL_FIX, "P01-Ruth-1-1-5-COMPILATION-LOG.md"), "utf8");
+    const broken = cl.replace(/^\s*"sta_id":\s*"[^"]*",\n/m, "");
+    const r = validateArtifact(write("missing-staid-COMPILATION-LOG.md", broken));
+    expect(r.artifact).toBe("COMPILATION-LOG");
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((x) => x.severity === "block" && x.code === "schema" && x.message.includes("sta_id"))).toBe(true);
   });
 });
 
