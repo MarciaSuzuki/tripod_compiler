@@ -55,7 +55,7 @@ compiler does: schema drift is only safe when it is **deliberate, recorded, and 
 
 | Schema | Version | sha256 |
 | --- | --- | --- |
-| `validation-rules.json` | `v0.12` | `61bcbb3b75b5d5fdd6adf161e89e0bc193764ae081b6606b7aa0cf31727464bc` |
+| `validation-rules.json` | `v0.13` | `0323662a643822d469db257655fcdf9c1450e07eaf69a557a1191ebf6bc3b745` |
 | `compilation-log.schema.json` | `v0.7` | `0d7f17d1dc203ae72b4459857ce0135c2ec8f05e044faaabfbb372bd6ad94161` |
 | `bcd-delta.schema.json` | `v0.4` | `b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04` |
 | `verification-input.schema.json` | `v1.1` | `03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1` |
@@ -100,6 +100,7 @@ number bound to exactly one decision.
 | SC-0024 | Thread A — nested component `action`/`speech_act` collapse: **closed-list** — collapse the six `VOWS_*_BINDING` SPEECH_ACT values to a single `VOWS` (31→26), synced across `validation-rules.json` + `compilation-log.schema.json`; **content** — reduce ~57 sentence-shaped `action` values across P01–P06 to a small reusable verb set (DIRECTED/STATED/VOWED/ASKED/REPORTED/ASCRIBED/IDENTIFIED + bare verbs), each proven by a per-value survival table (sibling slot or map §4 home); **route** the load-bearing vessels detail to a new `drink_source` sibling slot; **hold** 7 load-bearing labels for Thread B; **migrate** P03 (incl. a P03-D3 supersession note). `action` stays uncontrolled (enforcement = SC-0025). `validation-rules v0.10→v0.11`, `compilation-log.schema v0.5→v0.6`, re-pinned. | **MERGED (PR #26, 2026-06-05)** (gate board green: 142 tests) |
 | SC-0025 | Action-slot enforcement (the SC-0024 durability follow-on): reclassify the nested component `action` slot from uncontrolled free-text to a controlled bounded-open axis, seeded with the verb set SC-0024 produced, so P07–P14 cannot re-introduce sentence-shaped action values (drift→review→promote-with-provenance). Clean-then-enforce, the same shape as triage→SC-0022. **SC-0024's `action` cleanup is only durable once this lands.** | **MERGED (PR #27, 2026-06-06)** |
 | SC-0026 | COMPILATION-LOG schema gate: wire the 6 gold CLs into the gate (validate against `compilation-log.schema.json`) so a malformed CL fails the board; **finding routed to SC-0008** — the vault `stas/` CLs are content-stale (a strict subset of the fixtures), the same unguarded-stale-vault pattern as `_spec/` | **APPLIED (compiler, gate board green: 155 tests)** 2026-06-06 — MERGED (PR #30, origin/main a6a2d04) |
+| SC-0027 | **Thread B fidelity model (THE GOAL):** two-axis fidelity flag (`preserve_meaning` × `preserve_form`; the license = `preserve_form=false`) at element/component level + the (α) shared-group-id (a group entry carries the relationship's own flag) + a dangling-group-id integrity check. `validation-rules v0.12→v0.13` (new `fidelity` + `fidelity_group_entry` defs; `fidelity_groups` on `proposition`, `fidelity` on `register_override_entry`); new engine fidelity pass; **P03 vow re-annotated** (2 groups `people_god_inseparability` + `unto_the_end`; `preserve_form=false` ×6; structure-flag; POETIC_SUNG+BLESSING+INTIMATE as preserve_meaning). Held-7 seeding = follow-up. | **APPLIED (compiler, gate board green: 159 tests + 1 skipped)** 2026-06-07 — PR open; held-7 seeding + P03 vault writeback pending |
 
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
@@ -131,6 +132,21 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0027 — Thread B fidelity model: `preserve_meaning` × `preserve_form` (first applied to the P03 vow)
+- **Date:** 2026-06-07
+- **Decided by:** Marcia Suzuki — the two Thread C calls + the per-step vow rulings + the genre/pair-scope rulings (2026-06-07); architecture (α) + scope (Option 1) recommended by Architect 10 + the evaluator, confirmed by Marcia in review.
+- **Status:** APPLIED (compiler half — schema + engine + P03 vow; gate board green: 159 tests + 1 skipped; validate 6/6, check-drift clean, lint/coverage/id-check/gold-diff exit 0) 2026-06-07 — PR open; **held-7 seeding + the P03 vault writeback pending**.
+- **Type:** schema-shape (FOR_MODEL) + new engine validation pass — **THE GOAL** (the fidelity model the interlingua exists to serve).
+- **Summary:** The two-axis fidelity flag — `preserve_meaning` (the claim must survive translation) × `preserve_form` (false = the Performer may re-realize the wording; the "means, not mandate" license). Attached at the element/component level; the (α) shared-group-id mechanism carries relationship-level claims (a group entry's own fidelity) referenced by member elements. First applied to the P03 vow.
+- **Spec change (exact):** `validation-rules v0.12→v0.13`. New `$defs`: `fidelity` (required boolean `preserve_meaning`/`preserve_form`; optional `meaning`, `fidelity_group`) and `fidelity_group_entry` (`group_id` + the relationship's `fidelity`; optional `members`). `proposition` gains optional `fidelity_groups`; `register_override_entry` gains optional `fidelity` (both strict). Component-level `fidelity` + the structure-flag ride in the permissive `event_specific_slots`.
+- **Validator impact:** new engine fidelity pass (`vocabulary.ts`) — validates fidelity-object shape wherever it appears in the permissive slots, and runs the **dangling-group-id integrity check** (every referenced `fidelity_group` must resolve to a declared group; pericope-wide, since groups bind across propositions). New finding code `fidelity-shape`. Strict-def fidelity (groups, register) is ajv-validated.
+- **Artifact migration:** P03 FOR_MODEL re-annotated — the vow: `preserve_form=false` on all six rungs; two `fidelity_groups` (`people_god_inseparability` = rungs 3+4 / `unto_the_end` = 5+6; accompaniment 0+1 ungrouped, per "group iff the text structurally binds, never for symmetry"); a `vow_structural_form_fidelity` structure-flag (`preserve_meaning=true`: the escalation must survive); S2 override → `genre_group_override=POETIC_SUNG` + `genre_override=BLESSING` + `override_value=INTIMATE` carrying `preserve_meaning=true` (genre+register must survive; blessing-dominant + a curse-oath note). `NOT_TO_BE_NORMALIZED` (unimplemented README note) is superseded by the `preserve_form=true` pole.
+- **Deferred (own follow-up):** seeding the held-7 with fidelity (each one's preserve/render = Marcia's call); the **P03 vault writeback** (fixture↔vault sync owed — SC-0008 discipline); the single-vs-multi group-membership question (the vow needs only single; revisit if a held-7 case needs two).
+- **Version:** `v0.12 → v0.13` (sha256 `0323662a643822d469db257655fcdf9c1450e07eaf69a557a1191ebf6bc3b745`). Re-pinned.
+- **Verification:** P03 re-validates block-clean (spec v0.13); the dangling-group-id check fails a broken ref (test) and passes the two real groups; a malformed component fidelity → `fidelity-shape` block (test); 159 tests + 1 skipped; check-drift clean; corpus gates exit 0; gold-diff unchanged (P03 100%).
 
 ---
 

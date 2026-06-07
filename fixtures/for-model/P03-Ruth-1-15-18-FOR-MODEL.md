@@ -38,8 +38,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         {
           "scene_id": "S2",
           "override_value": "INTIMATE",
-          "genre_override": null,
-          "genre_group_override": null
+          "genre_override": "BLESSING",
+          "genre_group_override": "POETIC_SUNG",
+          "fidelity": {
+            "preserve_meaning": true,
+            "preserve_form": false,
+            "meaning": "the vow scene is elevated POETIC_SUNG / BLESSING at INTIMATE register — the poetic genre + intimate register classification must survive (render as elevated poetry); blessing-dominant, but closes with a CURSE-formula oath (1:17b) and the taxonomy has no exact oath/vow genre"
+          }
         }
       ],
       "moment_level": null
@@ -271,6 +276,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "speaker": "B9",
         "addressee": "B3",
         "vow_structural_form": "SIX_STEP_LADDER_PATH_LODGING_PEOPLE_GOD_DEATH_BURIAL",
+        "vow_structural_form_fidelity": {
+          "preserve_meaning": true,
+          "preserve_form": false,
+          "meaning": "the six-step escalation (path -> lodging -> people -> God -> death -> burial), in this order, must survive; since preserve_form is false per rung, the escalating build is preserved explicitly so a re-realization cannot re-order or collapse the rungs"
+        },
         "vow_components": [
           {
             "action": "VOWED",
@@ -279,7 +289,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "binding_indefinite_place_form": "WHERE_YOU_GO",
             "matched_action_form": "I_WILL_GO",
             "list_position": "FIRST",
-            "speech_act": "VOWS"
+            "speech_act": "VOWS",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Ruth binds herself to go wherever Naomi goes; the commitment survives, the 'where you go, I will go' wording is the target's to re-realize" }
           },
           {
             "action": "VOWED",
@@ -288,7 +299,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "binding_indefinite_place_form": "WHERE_YOU_LODGE",
             "matched_action_form": "I_WILL_LODGE",
             "list_position": "SECOND",
-            "speech_act": "VOWS"
+            "speech_act": "VOWS",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Ruth binds herself to lodge wherever Naomi lodges; the commitment survives, the wording is re-realizable" }
           },
           {
             "action": "VOWED",
@@ -297,7 +309,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "bound_to_collective": "B31",
             "nominal_equation_half": "PEOPLE_HALF",
             "list_position": "THIRD",
-            "speech_act": "VOWS"
+            "speech_act": "VOWS",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "fidelity_group": "people_god_inseparability", "meaning": "belonging to Naomi's people becomes Ruth's own; bound to the God-half (see the group)" }
           },
           {
             "action": "VOWED",
@@ -307,7 +320,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "referential_form_at_verse": "UNNAMED_DEITY_IN_BINDING_PAIRING",
             "nominal_equation_half": "GOD_HALF",
             "list_position": "FOURTH",
-            "speech_act": "VOWS"
+            "speech_act": "VOWS",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "fidelity_group": "people_god_inseparability", "meaning": "belonging to Naomi's God becomes Ruth's own; bound to the people-half (see the group)" }
           },
           {
             "action": "VOWED",
@@ -317,7 +331,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "matched_action_form": "I_WILL_DIE",
             "binding_domain": "IDENTITY_AT_LIMIT_OF_EXISTENCE",
             "list_position": "FIFTH",
-            "speech_act": "VOWS"
+            "speech_act": "VOWS",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "fidelity_group": "unto_the_end", "meaning": "Ruth binds herself even unto death where Naomi dies; bound to the burial-half (see the group)" }
           },
           {
             "action": "VOWED",
@@ -327,7 +342,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "matched_action_form": "I_WILL_BE_BURIED",
             "binding_domain": "PLACE_OF_FINAL_REST",
             "list_position": "SIXTH",
-            "speech_act": "VOWS"
+            "speech_act": "VOWS",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "fidelity_group": "unto_the_end", "meaning": "Ruth binds herself to burial in the same place as Naomi; bound to the death-half (see the group)" }
           }
         ]
       },
@@ -341,6 +357,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "figure_flags": [
         "FIG_0072",
         "FIG_0074"
+      ],
+      "fidelity_groups": [
+        {
+          "group_id": "people_god_inseparability",
+          "members": ["THIRD", "FOURTH"],
+          "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "belonging-to-Naomi's-people and belonging-to-Naomi's-God are inseparable — the binding of the two halves, not either alone, is the theological claim that must survive" }
+        },
+        {
+          "group_id": "unto_the_end",
+          "members": ["FIFTH", "SIXTH"],
+          "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "the bond holds unto death and into the same final resting place — death and burial are one binding (the artifact links them via the THERE-demonstrative), not two sequential steps" }
+        }
       ]
     },
     {

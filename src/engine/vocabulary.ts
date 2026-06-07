@@ -162,6 +162,38 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
       });
   }
 
+  // ---- SC-0027: Thread B fidelity pass --------------------------------------------------------
+  // The strict defs (proposition.fidelity_groups, register_override_entry.fidelity) are ajv-validated.
+  // Component-level fidelity + the structure-flag ride in the *permissive* event_specific_slots, so
+  // their shape is checked here. Then the dangling-group-id integrity check: every element that names a
+  // fidelity_group must resolve to a declared fidelity_groups entry. Groups may bind across propositions
+  // (the (alpha) mechanism), so the declared set is pericope-wide.
+  const declaredGroups = new Set<string>();
+  for (const p of props) for (const g of asArray(p?.fidelity_groups) as any[]) if (typeof g?.group_id === "string") declaredGroups.add(g.group_id);
+  const groupRefs: Array<{ id: string; loc: string }> = [];
+  const checkFidelity = (fid: any, loc: string) => {
+    if (!fid || typeof fid !== "object" || Array.isArray(fid)) return;
+    if (typeof fid.preserve_meaning !== "boolean" || typeof fid.preserve_form !== "boolean")
+      findings.push({ severity: "block", code: "fidelity-shape", location: loc, message: "fidelity must carry boolean preserve_meaning and preserve_form" });
+    if (typeof fid.fidelity_group === "string") groupRefs.push({ id: fid.fidelity_group, loc: `${loc}/fidelity_group` });
+  };
+  const walkFidelity = (val: unknown, location: string) => {
+    if (Array.isArray(val)) val.forEach((x, i) => walkFidelity(x, `${location}/${i}`));
+    else if (val && typeof val === "object") {
+      for (const [k, v] of Object.entries(val as Record<string, unknown>)) {
+        if (k === "fidelity" || k.endsWith("_fidelity")) checkFidelity(v, `${location}/${k}`);
+        walkFidelity(v, `${location}/${k}`);
+      }
+    }
+  };
+  props.forEach((p, pi) => {
+    walkFidelity(p?.event_specific_slots, `/level_3_propositions/${pi}/event_specific_slots`);
+    asArray(p?.fidelity_groups).forEach((g: any, gi: number) => checkFidelity(g?.fidelity, `/level_3_propositions/${pi}/fidelity_groups/${gi}/fidelity`));
+  });
+  for (const { id, loc } of groupRefs)
+    if (!declaredGroups.has(id))
+      findings.push({ severity: "block", code: "referential-integrity", location: loc, message: `fidelity_group '${id}' is not a declared fidelity_groups entry` });
+
   // ---- register-critical + L3 info ----
   if (scenes.length)
     findings.push({

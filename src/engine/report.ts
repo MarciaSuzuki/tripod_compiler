@@ -25,7 +25,8 @@ export type FindingCode =
   | "quarantined"
   | "descriptive"
   | "registry"
-  | "register-critical";
+  | "register-critical"
+  | "fidelity-shape";
 
 export interface Finding {
   severity: Severity;
