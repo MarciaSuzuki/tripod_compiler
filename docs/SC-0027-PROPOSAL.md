@@ -16,10 +16,12 @@
 - **`preserve_form = false` on all six rungs** (no exceptions).
 - **Structure-flag: `preserve_meaning = true` on `vow_structural_form`** — the six-step escalation/order must
   survive (because freeing per-rung form would otherwise let a Performer re-order/collapse the ladder).
-- **Genre: scene-level `genre_group_override = POETIC_SUNG`** on the vow scene (S2), carrying
-  `preserve_meaning = true` (the poetic classification must survive = the "render as elevated poetry" demand).
-  **Existing mechanism, existing closed value — no new vocabulary.** (The withdrawn "literary-quality tone value" is
-  *not* added.)
+- **Genre: scene-level `genre_group_override = POETIC_SUNG` + `genre_override = BLESSING`** on the vow scene (S2),
+  carrying `preserve_meaning = true` (the poetic classification must survive = the "render as elevated poetry"
+  demand). **`genre_override = BLESSING` RULED (Marcia, 2026-06-07): blessing-dominant, mark-dominant-and-note** —
+  a note records the closing CURSE-formula oath (1:17b) and that the taxonomy has no exact oath/vow genre (so
+  BLESSING is the dominant approximation). **Existing mechanism, existing closed values — no new vocabulary** (the
+  withdrawn "literary-quality tone value" is *not* added).
 - **A dangling-`fidelity_group` integrity check** (the `id-check` pattern), covering both groups.
 
 ## 2. Verified grounding
@@ -59,7 +61,7 @@ must exist — a dangling ref is an error.
 | 2 people / 3 God | **false** (each) | **`people_god_inseparability`** |
 | 4 death / 5 burial | **false** (each) | **`unto_the_end`** |
 | `vow_structural_form` | — | structure-flag `preserve_meaning=true` |
-| S2 scene | — | `genre_group_override=POETIC_SUNG`, `preserve_meaning=true` |
+| S2 scene | — | `genre_group_override=POETIC_SUNG` + `genre_override=BLESSING` (blessing-dominant + curse-oath note), `preserve_meaning=true` |
 
 → **two** groups (not three), `preserve_form=false` ×6, the ladder flag, POETIC_SUNG-as-preserved-meaning.
 
@@ -69,9 +71,10 @@ must exist — a dangling ref is an error.
   lands on the remote**).
 - **Seed the held-7** as the first broader annotated corpus — Marcia rules each one's preserve/render.
 - **Fold in `NOT_TO_BE_NORMALIZED`**: it becomes the `preserve_form = true` pole; the README note is superseded.
-- **`genre_override` exact value:** Marcia's sub-call at P03 re-annotation (BLESSING + closing CURSE-oath; no exact
-  "oath/vow" genre → mark-dominant-and-note, or leave `genre_override` null with just the group-override). Plan
-  leaves the slot; she fills it.
+- **`genre_override` exact value — RULED (Marcia, 2026-06-07): `BLESSING`, blessing-dominant (mark-dominant-and-note).**
+  At P03 re-annotation, write `genre_override = BLESSING` + a note recording the closing CURSE-formula oath (1:17b)
+  and the no-exact-oath/vow-genre gap. The genre classification carries `preserve_meaning = true` (the BLESSING
+  reading must survive).
 - **Versions:** `validation-rules` bump (new defs) → re-pin → SPEC_CHANGES entry; the optional Level-1
   default-posture layer deferred unless wanted.
 
