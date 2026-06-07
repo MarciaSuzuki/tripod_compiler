@@ -1,6 +1,6 @@
 # SC-0026 — COMPILATION-LOG schema gate (CL validation turned on)
 
-> Plan-first proposal (Architect 10, 2026-06-06). **Scope ruled by Marcia 2026-06-06: schema gate only.**
+> Plan-first proposal (Architect 10, 2026-06-06). **Scope: schema gate only — recommended by Architect 10, confirmed by Marcia in review (2026-06-06).**
 > The vault-CL *content* staleness (concern B below) is routed to **SC-0008**, not built here.
 > Read with the POST-SC0025 handoff (Part III) and `[[tripod-spec-vault-stale]]` (the sibling stale-vault case).
 
