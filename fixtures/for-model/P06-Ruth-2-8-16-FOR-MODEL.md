@@ -476,7 +476,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "STATED_SELF_AS_FOREIGNER",
             "list_position": "THIRD",
-            "speech_act": "STATES_AS_TRUE"
+            "speech_act": "STATES_AS_TRUE",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Ruth names herself a foreigner/outsider (nokhriya); the outsider self-designation and the social gap she marks must survive. preserve_form=false: any target word for 'foreigner' carries the claim. NOTE the Hebrew wordplay nokhriya ('foreigner') / hikkirani ('you noticed me'), same n-k-r root at opposite poles — figure DEFERRED (single-verse, no recurrence data; revisit if the recognize/foreign root-play recurs in the held-out books, e.g. Jonah/Genesis)" }
           }
         ]
       },
@@ -572,12 +573,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "WISHED_YHWH_TO_REPAY_HER_WORK",
             "list_position": "FIRST",
-            "speech_act": "WISHES_FOR_HEARER"
+            "speech_act": "WISHES_FOR_HEARER",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "fidelity_group": "blessing_reward_and_refuge", "meaning": "Boaz prays YHWH to repay Ruth's deed; the petition that God reward her loyalty must survive, the wording is re-realizable; bound to the wages/refuge half (see the group)" }
           },
           {
             "action": "WISHED_FULL_WAGES_FROM_YHWH_UNDER_WHOSE_WINGS_SHE_TOOK_REFUGE",
             "list_position": "SECOND",
-            "speech_act": "WISHES_FOR_HEARER"
+            "speech_act": "WISHES_FOR_HEARER",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "fidelity_group": "blessing_reward_and_refuge", "meaning": "Boaz prays Ruth's wages be full from YHWH under whose wings she took refuge; the refuge-under-God's-wings claim must survive. preserve_form=false: the wing-of-refuge image is preserved by FIG_0011 (Wing-of-Refuge), which opens here and closes at 3:9, so the Performer may re-voice the wording; bound to the repayment half (see the group)" }
           }
         ]
       },
@@ -592,6 +595,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       ],
       "figure_flags": [
         "FIG_0011"
+      ],
+      "fidelity_groups": [
+        {
+          "group_id": "blessing_reward_and_refuge",
+          "members": ["FIRST", "SECOND"],
+          "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Boaz's blessing is one prayer in two movements: the repayment he asks of YHWH IS the full wages realized as refuge under YHWH's wings — reward and refuge are one binding, not two separable wishes" }
+        }
       ]
     },
     {
@@ -630,17 +640,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "STATED_THAT_HE_COMFORTED_HER",
             "list_position": "FIRST",
-            "speech_act": "STATES_AS_TRUE"
+            "speech_act": "STATES_AS_TRUE",
+            "fidelity": { "preserve_meaning": true, "preserve_form": false, "fidelity_group": "ruth_reply_grace_received_in_self_abasement", "meaning": "Ruth says Boaz has comforted her; the claim that he gave her comfort must survive, the wording is re-realizable; bound into the reply (see the group)" }
           },
           {
             "action": "STATED_THAT_HE_SPOKE_TO_HEART_OF_HIS_SHIFCHAH",
             "list_position": "SECOND",
-            "speech_act": "STATES_AS_TRUE"
+            "speech_act": "STATES_AS_TRUE",
+            "fidelity": { "preserve_meaning": true, "preserve_form": true, "fidelity_group": "ruth_reply_grace_received_in_self_abasement", "meaning": "Ruth says Boaz spoke to the heart of his shifchah (maidservant). PROTECTED WORD = 'shifchah', Ruth's lowest-rank self-designation, the load-bearing self-abasement (preserve_form=true holds the word). The idiom 'spoke to the heart' (dibber al-leb, 'spoke tenderly') is the RE-REALIZABLE part. FIG_0132 (Amah-Vs-Shifchah) registers the status motif. Mixed-fidelity element (preserve-token plus free idiom in one component); the meaning-field carries the split, no token-level schema change now; bound into the reply (see the group)" }
           },
           {
             "action": "STATED_SHE_IS_NOT_AS_ONE_OF_HIS_SHIFCHOT",
             "list_position": "THIRD",
-            "speech_act": "STATES_LAMENT_OBSERVATION"
+            "speech_act": "STATES_LAMENT_OBSERVATION",
+            "fidelity": { "preserve_meaning": true, "preserve_form": true, "fidelity_group": "ruth_reply_grace_received_in_self_abasement", "meaning": "Ruth says she is not even as one of Boaz's shifchot (maidservants) — self-abasement that is load-bearing in both claim and wording; preserve_form=true holds 'shifchah'. The amah-climb (3:9, where she rises to amah) reaches forward and is reinforcing-not-yet-load-bearing (3:9 unauthored); FIG_0132 registers the progression; bound into the reply (see the group)" }
           }
         ]
       },
@@ -653,6 +666,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "figure_flags": [
         "FIG_0102",
         "FIG_0132"
+      ],
+      "fidelity_groups": [
+        {
+          "group_id": "ruth_reply_grace_received_in_self_abasement",
+          "members": ["FIRST", "SECOND", "THIRD"],
+          "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Ruth's reply is one move: she receives Boaz's comfort and kind speech while abasing herself below even his maidservants — the comfort-received and the self-abasement are one bound response, not three separable statements; the binding must survive (the per-element preserve_form values still govern each statement's wording)" }
+        }
       ]
     },
     {
