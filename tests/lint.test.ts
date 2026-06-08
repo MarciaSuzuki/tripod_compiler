@@ -174,4 +174,20 @@ describe("lint — FOR_MODEL", () => {
     expect(r.findings.some((f) => f.rule === "interpretive_label")).toBe(false);
     expect(r.ok).toBe(true);
   });
+  it("SC-0030: flags a `meaning` key or prose-shaped value in Level-3 event_specific_slots (the relocated vector)", () => {
+    const withMeaning = { level_2_scenes: [], level_3_propositions: [
+      { prop_id: "P1", event_specific_slots: { components: [{ action: "VOWED", list_position: "FIRST", meaning: "she binds herself to go" }] } },
+    ] };
+    expect(lintForModel(withMeaning).findings.some((f) => f.rule === "l3_free_text" && f.match === "meaning")).toBe(true);
+    const withProse = { level_2_scenes: [], level_3_propositions: [
+      { prop_id: "P1", event_specific_slots: { note: "this is a prose clause" } },
+    ] };
+    expect(lintForModel(withProse).findings.some((f) => f.rule === "l3_free_text")).toBe(true);
+  });
+  it("SC-0030: does NOT flag UPPER_SNAKE slot values (the sentence-token triage is a separate cycle)", () => {
+    const fm = { level_2_scenes: [], level_3_propositions: [
+      { prop_id: "P1", event_specific_slots: { vow_structural_form: "SIX_STEP_LADDER_PATH_LODGING_PEOPLE_GOD_DEATH_BURIAL", components: [{ action: "VOWED", list_position: "FIRST" }] } },
+    ] };
+    expect(lintForModel(fm).findings.some((f) => f.rule === "l3_free_text")).toBe(false);
+  });
 });

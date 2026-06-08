@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-13.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-14.json",
   "title": "Ruth Pilot 2 - FOR_MODEL Validation Rules + Closed Lists + Drift Detector",
   "description": "Three-section document. (1) for_model_schema: JSON Schema for FOR_MODEL artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
-  "version": "v0.13",
+  "version": "v0.14",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date_locked": "2026-06-05",
-  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md. v0.8 (SC-0022, 2026-06-04): reclassified the beings participant-role drift axis from descriptive (role_in_scene_examples_being) to convergent (role_in_scene_being) and seeded it with the 21 ruled relations — the slot is now an enforced controlled relation set, not convention. v0.9 (SC-0022, 2026-06-04): dropped the place/object/time role_in_scene/function_in_scene fields from the scene-entry schemas (removed from required + properties — entries are now id-only) and removed their drift-detector example seeds; proven content-free per the cleanup-log per-value tables (role/function meaning is owned by registry-kind + statement slots + figures/threads). See SPEC_CHANGES.md. v0.10 (SC-0022 tidy, 2026-06-04): refreshed the inert drift-detector `canonical_p01_enumerations` seed (scene_kind/proposition_kind/communicative_function_element) to P01's cleaned values so the never-consulted fallback no longer names deprecated forms. See SPEC_CHANGES.md. v0.11 (SC-0024, 2026-06-04): collapsed the six VOWS_*_BINDING SPEECH_ACT values to a single closed-list VOWS (Thread A nested-component action/speech_act reduction); SPEECH_ACT 31 → 26. The per-binding distinction is retained outside the closed cross-corpus speech_act layer by FIG_0074 + vow_structural_form + per-component list_position (so the collapse incurs no loss; supersedes P03-D3's concern). P03 migrated; kept in sync with compilation-log.schema.json. See SPEC_CHANGES.md. v0.12 (SC-0025, 2026-06-05): reclassified the nested component action slot from uncontrolled free-text to a bounded-open convergent axis — added action to drift_detector.canonical_p01_enumerations (P01 seed ARRIVED_AT/TOOK_AS_WIFE/WERE_AT) and seeded approved-enumerations.json with the 31 SC-0024-cleaned verbs; the 7 held sentence-shaped labels are quarantined (Thread B corpus). Makes SC-0024's action cleanup durable; the drift engine now reaches event_specific_slots action values. See SPEC_CHANGES.md. v0.13 (SC-0027, 2026-06-07): Thread B fidelity model — added the fidelity object def (preserve_meaning × preserve_form; the 'means, not mandate' license is preserve_form=false) and the fidelity_group_entry def (the (alpha) shared-group-id binding whose own fidelity carries a relationship-level claim); fidelity_groups added to proposition and fidelity added to register_override_entry (both strict defs); component-level fidelity + the structure-flag ride in the permissive event_specific_slots and are validated by the engine fidelity pass, which also runs the dangling-group-id integrity check (every referenced fidelity_group must resolve to a declared group_id). First applied to the P03 vow (two groups people_god_inseparability + unto_the_end; preserve_form=false on all six rungs; a vow_structural_form structure-flag; genre_group_override=POETIC_SUNG + genre_override=BLESSING + register INTIMATE carried as preserve_meaning). See SPEC_CHANGES.md.",
+  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md. v0.8 (SC-0022, 2026-06-04): reclassified the beings participant-role drift axis from descriptive (role_in_scene_examples_being) to convergent (role_in_scene_being) and seeded it with the 21 ruled relations — the slot is now an enforced controlled relation set, not convention. v0.9 (SC-0022, 2026-06-04): dropped the place/object/time role_in_scene/function_in_scene fields from the scene-entry schemas (removed from required + properties — entries are now id-only) and removed their drift-detector example seeds; proven content-free per the cleanup-log per-value tables (role/function meaning is owned by registry-kind + statement slots + figures/threads). See SPEC_CHANGES.md. v0.10 (SC-0022 tidy, 2026-06-04): refreshed the inert drift-detector `canonical_p01_enumerations` seed (scene_kind/proposition_kind/communicative_function_element) to P01's cleaned values so the never-consulted fallback no longer names deprecated forms. See SPEC_CHANGES.md. v0.11 (SC-0024, 2026-06-04): collapsed the six VOWS_*_BINDING SPEECH_ACT values to a single closed-list VOWS (Thread A nested-component action/speech_act reduction); SPEECH_ACT 31 → 26. The per-binding distinction is retained outside the closed cross-corpus speech_act layer by FIG_0074 + vow_structural_form + per-component list_position (so the collapse incurs no loss; supersedes P03-D3's concern). P03 migrated; kept in sync with compilation-log.schema.json. See SPEC_CHANGES.md. v0.12 (SC-0025, 2026-06-05): reclassified the nested component action slot from uncontrolled free-text to a bounded-open convergent axis — added action to drift_detector.canonical_p01_enumerations (P01 seed ARRIVED_AT/TOOK_AS_WIFE/WERE_AT) and seeded approved-enumerations.json with the 31 SC-0024-cleaned verbs; the 7 held sentence-shaped labels are quarantined (Thread B corpus). Makes SC-0024's action cleanup durable; the drift engine now reaches event_specific_slots action values. See SPEC_CHANGES.md. v0.13 (SC-0027, 2026-06-07): Thread B fidelity model — added the fidelity object def (preserve_meaning × preserve_form; the 'means, not mandate' license is preserve_form=false) and the fidelity_group_entry def (the (alpha) shared-group-id binding whose own fidelity carries a relationship-level claim); fidelity_groups added to proposition and fidelity added to register_override_entry (both strict defs); component-level fidelity + the structure-flag ride in the permissive event_specific_slots and are validated by the engine fidelity pass, which also runs the dangling-group-id integrity check (every referenced fidelity_group must resolve to a declared group_id). First applied to the P03 vow (two groups people_god_inseparability + unto_the_end; preserve_form=false on all six rungs; a vow_structural_form structure-flag; genre_group_override=POETIC_SUNG + genre_override=BLESSING + register INTIMATE carried as preserve_meaning). See SPEC_CHANGES.md. v0.14 (SC-0030, 2026-06-08): Level-3 purity — removed the free-text 'meaning' field from every fidelity object and relocated the fidelity FLAGS out of the Level-3 content objects into a parallel top-level 'fidelity' layer (elements/groups/structure_flags/register_overrides) that references L3 by {prop_id, slot, list_position} (structure_flags by {prop_id, field}; register_overrides by {scene_id|verse}). Level 3 reverts to a pure supervision target (inventory only). Removed the old 'fidelity' + 'fidelity_group_entry' $defs, proposition.fidelity_groups, and register_override_entry.fidelity. The SC-0027 two-axis model + every A-F/vow ruling are unchanged — only placement moved; the rationale moved to the governance docs. ajv validates the layer shape; the engine resolves every ref (dangling ref blocks) + the dangling-group-id check; lintForModel flags free-text in L3. See SPEC_CHANGES.md.",
 
   "sibling_schemas": {
     "compilation_log": "compilation-log.schema.json v0.5",
@@ -56,7 +56,8 @@
         "type": "array",
         "minItems": 1,
         "items": { "$ref": "#/$defs/proposition" }
-      }
+      },
+      "fidelity": { "$ref": "#/$defs/fidelity_layer" }
     },
 
     "$defs": {
@@ -137,33 +138,91 @@
               { "type": "null" },
               { "enum": ["NARRATIVE", "POETIC_SUNG", "INSTRUCTIONAL_REGULATORY", "ORAL_DISCOURSE"] }
             ]
-          },
-          "fidelity": { "$ref": "#/$defs/fidelity" }
+          }
         }
       },
 
-      "fidelity": {
+      "l3_component_ref": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["preserve_meaning", "preserve_form"],
-        "description": "Thread B fidelity flag (SC-0027). preserve_meaning: the claim/content must survive translation. preserve_form=false: the Performer may re-realize the wording (the 'means, not mandate' license). meaning: what preserve_meaning protects. fidelity_group: links this element to a declared fidelity_groups entry (the engine checks the reference resolves — dangling-group-id check).",
+        "required": ["prop_id", "slot", "list_position"],
+        "description": "SC-0030: a path reference into a Level-3 proposition component (event_specific_slots[slot] item with that list_position). The engine resolves it; a dangling ref blocks.",
         "properties": {
+          "prop_id": { "$ref": "#/$defs/prop_id" },
+          "slot": { "type": "string", "minLength": 1 },
+          "list_position": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "fidelity_layer": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "SC-0030 (Level-3 purity): the parallel fidelity/conditioning layer, sibling to level_3_propositions. Keeps Level 3 a pure supervision target (inventory only) — the fidelity FLAGS live here and reference the L3 content by path. NO free-text 'meaning' (the rationale lives in the governance/SC docs). The SC-0027 two-axis fidelity MODEL is unchanged; only its placement moved out of the L3 content objects. The engine resolves every ref (dangling ref blocks) and every element.group (the dangling-group-id check).",
+        "properties": {
+          "elements": { "type": "array", "items": { "$ref": "#/$defs/fidelity_element" } },
+          "groups": { "type": "array", "items": { "$ref": "#/$defs/fidelity_group" } },
+          "structure_flags": { "type": "array", "items": { "$ref": "#/$defs/fidelity_structure_flag" } },
+          "register_overrides": { "type": "array", "items": { "$ref": "#/$defs/fidelity_register_override" } }
+        }
+      },
+
+      "fidelity_element": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ref", "preserve_meaning", "preserve_form"],
+        "description": "Per-component fidelity (the SC-0027 two-axis flag), referencing the L3 component it conditions. preserve_form=false = the Performer may re-realize the wording. group (optional) names a fidelity groups entry this element is bound into.",
+        "properties": {
+          "ref": { "$ref": "#/$defs/l3_component_ref" },
           "preserve_meaning": { "type": "boolean" },
           "preserve_form": { "type": "boolean" },
-          "meaning": { "type": "string", "minLength": 1 },
-          "fidelity_group": { "type": "string", "minLength": 1 }
+          "group": { "type": "string", "minLength": 1 }
         }
       },
 
-      "fidelity_group_entry": {
+      "fidelity_group": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["group_id", "fidelity"],
-        "description": "An (alpha) shared-group-id binding (SC-0027): a relationship across two or more elements whose binding is itself load-bearing meaning. Member elements reference group_id via their fidelity.fidelity_group; this entry's own fidelity carries the relationship's claim (e.g. the people/God inseparability). members optionally lists the bound elements for audit clarity.",
+        "required": ["group_id", "preserve_meaning", "preserve_form"],
+        "description": "An (alpha) shared-group-id binding (SC-0027): a relationship across two or more L3 components whose binding is itself load-bearing. This entry's own flags carry the relationship-level claim; members reference the bound components.",
         "properties": {
           "group_id": { "type": "string", "minLength": 1 },
-          "members": { "type": "array", "items": { "type": "string", "minLength": 1 } },
-          "fidelity": { "$ref": "#/$defs/fidelity" }
+          "members": { "type": "array", "items": { "$ref": "#/$defs/l3_component_ref" } },
+          "preserve_meaning": { "type": "boolean" },
+          "preserve_form": { "type": "boolean" }
+        }
+      },
+
+      "fidelity_structure_flag": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ref", "preserve_meaning", "preserve_form"],
+        "description": "SC-0030: fidelity on a proposition-level structure token (e.g. vow_structural_form). ref = {prop_id, field}; the engine checks the field exists on that proposition.",
+        "properties": {
+          "ref": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["prop_id", "field"],
+            "properties": { "prop_id": { "$ref": "#/$defs/prop_id" }, "field": { "type": "string", "minLength": 1 } }
+          },
+          "preserve_meaning": { "type": "boolean" },
+          "preserve_form": { "type": "boolean" }
+        }
+      },
+
+      "fidelity_register_override": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ref", "preserve_meaning", "preserve_form"],
+        "description": "SC-0030: fidelity on a Level-1 register override (moved here out of register_override_entry — single fidelity home). ref identifies the override by scene_id or verse.",
+        "properties": {
+          "ref": {
+            "type": "object",
+            "additionalProperties": false,
+            "anyOf": [{ "required": ["scene_id"] }, { "required": ["verse"] }],
+            "properties": { "scene_id": { "$ref": "#/$defs/scene_id" }, "verse": { "type": "string", "minLength": 1 } }
+          },
+          "preserve_meaning": { "type": "boolean" },
+          "preserve_form": { "type": "boolean" }
         }
       },
 
@@ -341,8 +400,7 @@
           "inter_proposition_links": { "type": "object" },
           "cb_flags": { "type": "array", "items": { "$ref": "#/$defs/cb_id" } },
           "figure_flags": { "type": "array", "items": { "$ref": "#/$defs/figure_id" } },
-          "cross_ref": { "type": "string", "minLength": 1 },
-          "fidelity_groups": { "type": "array", "items": { "$ref": "#/$defs/fidelity_group_entry" } }
+          "cross_ref": { "type": "string", "minLength": 1 }
         }
       },
 
