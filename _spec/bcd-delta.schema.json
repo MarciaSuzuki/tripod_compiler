@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/bcd-delta-v0-4.schema.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/bcd-delta-v0-5.schema.json",
   "title": "BCD Delta",
   "description": "Registry additions for one pericope, ready for promotion into the Book Character Database (BCD), Figure Registry, and Concept Bank. Extracted from canonical AUDIT.registry_additions in v0.3. Consumed by BCD-update tooling; not read by teams or the Seed Model.",
-  "version": "v0.4",
+  "version": "v0.5",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date_locked": "2026-05-29",
   "canonical_reference": {
@@ -30,7 +30,7 @@
     "tagset_version": { "const": "TRIPOD_STA_v2_0" },
     "bcd_delta_id": {
       "type": "string",
-      "pattern": "^ruth_bcd_delta_\\d{2}_v\\d+_\\d+$"
+      "pattern": "^[a-z]+_bcd_delta_\\d{2}_v\\d+_\\d+$"
     },
     "bcv": { "type": "string", "minLength": 1 },
     "pericope_id": {

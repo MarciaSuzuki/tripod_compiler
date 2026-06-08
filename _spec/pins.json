@@ -3,16 +3,16 @@
   "tagset_version": "TRIPOD_STA_v2_0",
   "schemas": {
     "validation-rules.json": {
-      "version": "v0.14",
-      "sha256": "4784b390d39e9d9cebee467360f91aa59a9b211c94c26652f9dfe5d74d27d694"
+      "version": "v0.15",
+      "sha256": "893b3a490134d4af279bd7e9c7b1d33765fa19d30a87cde6e796b3046fd6e401"
     },
     "compilation-log.schema.json": {
-      "version": "v0.7",
-      "sha256": "0d7f17d1dc203ae72b4459857ce0135c2ec8f05e044faaabfbb372bd6ad94161"
+      "version": "v0.8",
+      "sha256": "ff315586c9e70ea57fa17fa1635226e6f0ed8b8a8b5898cf0803c4f3fe8fdae3"
     },
     "bcd-delta.schema.json": {
-      "version": "v0.4",
-      "sha256": "b6afeceaef7076ef8693316425a794757f3b0230a2a408957bae23e3806baa04"
+      "version": "v0.5",
+      "sha256": "07a236c957f1429c51d81b8e012ad291298263134ce50dcc2ea7c0640e40d682"
     },
     "verification-input.schema.json": {
       "version": "v1.1",
