@@ -359,8 +359,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH",
             "invoked_divine_agent": "B10",
             "list_position": "THIRD",
-            "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT",
-            "fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Naomi ascribes her affliction to YHWH in the forensic register of a courtroom verdict spoken against her (anah bi, 'has testified against me'); the legal-accusation claim must survive. preserve_form=false: the courtroom image is preserved by FIG_0085 (Testify-Against-Legal-Image, keep-image PREFERRED), so the Performer may re-voice the exact legal wording while the image is kept" }
+            "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           },
           {
             "action": "ASCRIBED",
@@ -436,6 +435,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "FIG_0088"
       ]
     }
-  ]
+  ],
+  "fidelity":   {
+    "elements": [
+      {
+        "ref": {
+          "prop_id": "P5",
+          "slot": "lament_components",
+          "list_position": "THIRD"
+        },
+        "preserve_meaning": true,
+        "preserve_form": false
+      }
+    ]
+  }
 }
 ```

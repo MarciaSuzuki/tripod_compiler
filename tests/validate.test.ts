@@ -127,18 +127,34 @@ describe("Thread B fidelity model — SC-0027 (P03 vow)", () => {
     expect(p03.includes('"group_id": "unto_the_end"')).toBe(true);
   });
 
-  it("blocks a dangling fidelity_group reference (SC-0027 dangling-group-id check)", () => {
-    const broken = p03.replace('"fidelity_group": "people_god_inseparability"', '"fidelity_group": "no_such_group"');
+  it("blocks a dangling fidelity_group reference (SC-0030 dangling-group-id check, parallel layer)", () => {
+    const broken = p03.replace('"group": "people_god_inseparability"', '"group": "no_such_group"');
     const r = validateArtifact(write("bad-fidelity-group-FOR-MODEL.md", broken));
     expect(r.ok).toBe(false);
     expect(r.findings.some((x) => x.code === "referential-integrity" && x.message.includes("no_such_group"))).toBe(true);
   });
 
-  it("blocks a malformed component fidelity (non-boolean preserve_meaning)", () => {
-    const broken = p03.replace('"fidelity": { "preserve_meaning": true, "preserve_form": false, "meaning": "Ruth binds herself to go', '"fidelity": { "preserve_meaning": "yes", "preserve_form": false, "meaning": "Ruth binds herself to go');
+  it("blocks a dangling component ref (SC-0030 pointer-resolves check)", () => {
+    const broken = p03.replace('"slot": "vow_components"', '"slot": "ghost_slot"');
+    const r = validateArtifact(write("bad-fidelity-ref-FOR-MODEL.md", broken));
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((x) => x.code === "referential-integrity" && x.message.includes("does not resolve to a Level-3 component"))).toBe(true);
+  });
+
+  it("blocks a malformed fidelity flag (non-boolean preserve_meaning) via the layer schema (SC-0030)", () => {
+    const broken = p03.replace('"preserve_meaning": true', '"preserve_meaning": "yes"');
     const r = validateArtifact(write("bad-fidelity-shape-FOR-MODEL.md", broken));
     expect(r.ok).toBe(false);
-    expect(r.findings.some((x) => x.code === "fidelity-shape")).toBe(true);
+    expect(r.counts.block).toBeGreaterThan(0);
+  });
+
+  it("keeps Level 3 pure — no fidelity / meaning inside level_3_propositions (SC-0030)", () => {
+    const j = JSON.parse(p03.match(/```json\s*(\{[\s\S]*\})\s*```/)![1]);
+    const l3 = JSON.stringify(j.level_3_propositions);
+    expect(l3.includes('"meaning"')).toBe(false);
+    expect(l3.includes('"fidelity"')).toBe(false);
+    expect(l3.includes('"fidelity_groups"')).toBe(false);
+    expect(j.fidelity).toBeTruthy(); // the relocated parallel layer exists
   });
 });
 

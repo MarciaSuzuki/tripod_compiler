@@ -19,7 +19,8 @@ export type LintRule =
   | "compound"
   | "section_3c_not_entity"
   | "meta_question"
-  | "link_in_level3";
+  | "link_in_level3"
+  | "l3_free_text";
 
 /** A reviewer-accepted lint exception attached to a finding (downgrades it from drift to accepted). */
 export interface AcceptedLintException {
@@ -186,6 +187,26 @@ export function lintForModel(json: any, file = ""): LintReport {
   for (const prop of json.level_3_propositions ?? []) {
     walkStrings(prop?.event_specific_slots, `${prop.prop_id}.event_specific_slots`, scanField);
     if (prop?.cross_ref) findings.push(...scanProse(String(prop.cross_ref), `${prop.prop_id}.cross_ref`));
+  }
+
+  // SC-0030 (Level-3 purity): guard the vector that let the fidelity `meaning` field into the supervision
+  // target. Flag a `meaning` key, or any prose-shaped value (a space AND a lowercase letter — natural
+  // language, not an UPPER_SNAKE token or an id) inside a Level-3 proposition's event_specific_slots.
+  // Sentence-shaped UPPER_SNAKE slot VALUES are a SEPARATE finding (the post-Jonah triage) and are
+  // deliberately NOT flagged here — the lint can't cleanly draw that line yet. See tripod-sentence-token-triage.
+  const isL3Prose = (s: string) => /\s/.test(s) && /[a-z]/.test(s);
+  for (const prop of json.level_3_propositions ?? []) {
+    const walkL3 = (val: unknown, path: string): void => {
+      if (Array.isArray(val)) val.forEach((v, i) => walkL3(v, `${path}/${i}`));
+      else if (val && typeof val === "object")
+        for (const [k, v] of Object.entries(val as Record<string, unknown>)) {
+          if (k === "meaning") { findings.push({ rule: "l3_free_text", tier: 1, location: `${prop.prop_id}.${path}/meaning`, match: "meaning", context: String(v).slice(0, 90) }); continue; }
+          walkL3(v, `${path}/${k}`);
+        }
+      else if (typeof val === "string" && isL3Prose(val))
+        findings.push({ rule: "l3_free_text", tier: 1, location: `${prop.prop_id}.${path}`, match: val.slice(0, 40), context: val.slice(0, 90) });
+    };
+    walkL3(prop?.event_specific_slots, "event_specific_slots");
   }
 
   return finalize(findings, file, "FOR_MODEL");

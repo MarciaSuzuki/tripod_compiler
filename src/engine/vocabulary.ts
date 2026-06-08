@@ -162,37 +162,56 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
       });
   }
 
-  // ---- SC-0027: Thread B fidelity pass --------------------------------------------------------
-  // The strict defs (proposition.fidelity_groups, register_override_entry.fidelity) are ajv-validated.
-  // Component-level fidelity + the structure-flag ride in the *permissive* event_specific_slots, so
-  // their shape is checked here. Then the dangling-group-id integrity check: every element that names a
-  // fidelity_group must resolve to a declared fidelity_groups entry. Groups may bind across propositions
-  // (the (alpha) mechanism), so the declared set is pericope-wide.
-  const declaredGroups = new Set<string>();
-  for (const p of props) for (const g of asArray(p?.fidelity_groups) as any[]) if (typeof g?.group_id === "string") declaredGroups.add(g.group_id);
-  const groupRefs: Array<{ id: string; loc: string }> = [];
-  const checkFidelity = (fid: any, loc: string) => {
-    if (!fid || typeof fid !== "object" || Array.isArray(fid)) return;
-    if (typeof fid.preserve_meaning !== "boolean" || typeof fid.preserve_form !== "boolean")
-      findings.push({ severity: "block", code: "fidelity-shape", location: loc, message: "fidelity must carry boolean preserve_meaning and preserve_form" });
-    if (typeof fid.fidelity_group === "string") groupRefs.push({ id: fid.fidelity_group, loc: `${loc}/fidelity_group` });
-  };
-  const walkFidelity = (val: unknown, location: string) => {
-    if (Array.isArray(val)) val.forEach((x, i) => walkFidelity(x, `${location}/${i}`));
-    else if (val && typeof val === "object") {
-      for (const [k, v] of Object.entries(val as Record<string, unknown>)) {
-        if (k === "fidelity" || k.endsWith("_fidelity")) checkFidelity(v, `${location}/${k}`);
-        walkFidelity(v, `${location}/${k}`);
-      }
+  // ---- SC-0030: Level-3 purity — fidelity rides in the parallel top-level `fidelity` layer ---------
+  // The SC-0027 two-axis model is unchanged; only placement. ajv validates the layer SHAPE (required
+  // booleans, no free-text `meaning`). Here the engine resolves every REFERENCE into Level 3 — a dangling
+  // ref blocks — plus the dangling-group-id check (every element.group resolves to a declared group). This
+  // keeps Level 3 a pure supervision target: no fidelity flags, no commentary live in the content objects.
+  const fidLayer = (json?.fidelity ?? {}) as any;
+  // valid L3 component refs (prop_id|slot|list_position) + the field set present per proposition
+  const componentKeys = new Set<string>();
+  const propFields = new Map<string, Set<string>>();
+  for (const p of props) {
+    const pid = String(p?.prop_id ?? "");
+    const slots = (p?.event_specific_slots ?? {}) as Record<string, unknown>;
+    propFields.set(pid, new Set(Object.keys(slots)));
+    for (const [slot, val] of Object.entries(slots))
+      for (const item of asArray(val) as any[])
+        if (item && typeof item === "object" && typeof (item as any).list_position === "string")
+          componentKeys.add(`${pid}|${slot}|${(item as any).list_position}`);
+  }
+  // valid register-override refs (by scene_id or verse)
+  const overrideKeys = new Set<string>();
+  const ro = (json?.pericope_classification?.register_overrides ?? {}) as any;
+  for (const lvl of ["scene_level", "moment_level"])
+    for (const o of asArray(ro?.[lvl]) as any[]) {
+      if (typeof o?.scene_id === "string") overrideKeys.add(`scene:${o.scene_id}`);
+      if (typeof o?.verse === "string") overrideKeys.add(`verse:${o.verse}`);
     }
+  const declaredGroups = new Set<string>();
+  for (const g of asArray(fidLayer.groups) as any[]) if (typeof g?.group_id === "string") declaredGroups.add(g.group_id);
+
+  const compKey = (r: any): string => `${r?.prop_id}|${r?.slot}|${r?.list_position}`;
+  const refBlock = (ok: boolean, location: string, message: string) => {
+    if (!ok) findings.push({ severity: "block", code: "referential-integrity", location, message });
   };
-  props.forEach((p, pi) => {
-    walkFidelity(p?.event_specific_slots, `/level_3_propositions/${pi}/event_specific_slots`);
-    asArray(p?.fidelity_groups).forEach((g: any, gi: number) => checkFidelity(g?.fidelity, `/level_3_propositions/${pi}/fidelity_groups/${gi}/fidelity`));
+  asArray(fidLayer.elements).forEach((e: any, i: number) => {
+    refBlock(componentKeys.has(compKey(e?.ref)), `/fidelity/elements/${i}/ref`, `fidelity element ref ${JSON.stringify(e?.ref)} does not resolve to a Level-3 component`);
+    if (typeof e?.group === "string")
+      refBlock(declaredGroups.has(e.group), `/fidelity/elements/${i}/group`, `fidelity_group '${e.group}' is not a declared fidelity group`);
   });
-  for (const { id, loc } of groupRefs)
-    if (!declaredGroups.has(id))
-      findings.push({ severity: "block", code: "referential-integrity", location: loc, message: `fidelity_group '${id}' is not a declared fidelity_groups entry` });
+  asArray(fidLayer.groups).forEach((g: any, gi: number) =>
+    asArray(g?.members).forEach((m: any, mi: number) =>
+      refBlock(componentKeys.has(compKey(m)), `/fidelity/groups/${gi}/members/${mi}`, `fidelity group '${g?.group_id}' member ${JSON.stringify(m)} does not resolve to a Level-3 component`)));
+  asArray(fidLayer.structure_flags).forEach((s: any, i: number) => {
+    const pid = String(s?.ref?.prop_id ?? ""), field = String(s?.ref?.field ?? "");
+    refBlock(propFields.get(pid)?.has(field) ?? false, `/fidelity/structure_flags/${i}/ref`, `fidelity structure_flag ref {prop_id:${pid}, field:${field}} does not resolve to a Level-3 proposition field`);
+  });
+  asArray(fidLayer.register_overrides).forEach((r: any, i: number) => {
+    const ref = (r?.ref ?? {}) as any;
+    const ok = (typeof ref.scene_id === "string" && overrideKeys.has(`scene:${ref.scene_id}`)) || (typeof ref.verse === "string" && overrideKeys.has(`verse:${ref.verse}`));
+    refBlock(ok, `/fidelity/register_overrides/${i}/ref`, `fidelity register_override ref ${JSON.stringify(ref)} does not resolve to a register override`);
+  });
 
   // ---- register-critical + L3 info ----
   if (scenes.length)
