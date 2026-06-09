@@ -1,9 +1,25 @@
 {
   "book": "JONAH",
   "counts": {
-    "entries": 0
+    "entries": 3
   },
-  "entries": {},
+  "entries": {
+    "FIG_0001": {
+      "aliases": [],
+      "code": "FIG_0001",
+      "name_slug": "Word-of-YHWH-Came-Formula"
+    },
+    "FIG_0002": {
+      "aliases": [],
+      "code": "FIG_0002",
+      "name_slug": "Away-from-Before-YHWH-Refrain"
+    },
+    "FIG_0003": {
+      "aliases": [],
+      "code": "FIG_0003",
+      "name_slug": "Going-Down-Descent"
+    }
+  },
   "kind": "FIGURE",
   "schema": "tripod-figure-registry",
   "schema_version": "0.1.0",
