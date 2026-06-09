@@ -87,22 +87,29 @@ export interface CodeRegistryEntry {
   code: string;
   name_slug: string;
   aliases: string[];
+  /** SC-0037: which books use this canon-wide concept/figure (e.g. ["RUTH","JONAH"]). */
+  appears_in?: string[];
 }
 
 export interface CodeRegistry {
-  book: string;
+  /** SC-0037: the Concept Bank + Figure Registry are GLOBAL (canon-wide), not per-book. */
+  scope?: string;
   kind: "CONCEPT" | "FIGURE";
   entries: Record<string, CodeRegistryEntry>;
 }
 
-/** Load the pinned Concept-Bank index (`_spec/registry/<book>.concepts.json`). */
-export function loadConceptRegistry(book = "ruth"): CodeRegistry {
-  return loadSpecJson<CodeRegistry>(join("registry", `${book.toLowerCase()}.concepts.json`));
+/**
+ * Load the pinned GLOBAL Concept-Bank index (`_spec/registry/concepts.json`) — canon-wide (SC-0037):
+ * one code per concept across the whole Bible, so the Facilitator anchors it consistently everywhere.
+ * (Beings/places/objects — the per-book CAST — stay per-book in `loadAliasTable(book)`.)
+ */
+export function loadConceptRegistry(): CodeRegistry {
+  return loadSpecJson<CodeRegistry>(join("registry", "concepts.json"));
 }
 
-/** Load the pinned Figure-Registry index (`_spec/registry/<book>.figures.json`). */
-export function loadFigureRegistry(book = "ruth"): CodeRegistry {
-  return loadSpecJson<CodeRegistry>(join("registry", `${book.toLowerCase()}.figures.json`));
+/** Load the pinned GLOBAL Figure-Registry index (`_spec/registry/figures.json`) — canon-wide (SC-0037). */
+export function loadFigureRegistry(): CodeRegistry {
+  return loadSpecJson<CodeRegistry>(join("registry", "figures.json"));
 }
 
 /** A reviewer-signed-off coverage exception: downgrades a matched finding from BLOCK to ACCEPTED. */

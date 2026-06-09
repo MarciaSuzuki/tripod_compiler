@@ -1,7 +1,10 @@
 {
-  "book": "RUTH",
   "counts": {
-    "entries": 50
+    "by_book": {
+      "JONAH": 2,
+      "RUTH": 50
+    },
+    "entries": 52
   },
   "entries": {
     "CB_0001": {
@@ -12,6 +15,9 @@
         "CB_GOEL_REDEEMER",
         "CB_GOEL_KINSMAN_REDEEMER"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0001",
       "name_slug": "Kinsman-Redeemer"
     },
@@ -20,12 +26,18 @@
         "CB_LEVIRATE_STYLE_OBLIGATION",
         "CB_LEVIRATE_INSTITUTIONAL_SHADOW"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0002",
       "name_slug": "Levirate-Style-Obligation"
     },
     "CB_0003": {
       "aliases": [
         "CB_INHERITANCE"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0003",
       "name_slug": "Inheritance"
@@ -38,6 +50,9 @@
         "CB_MOAB_MOABITE",
         "CB_MOABITE_WOMEN_MARRIAGE_POOL"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0004",
       "name_slug": "Moabite-Outsider"
     },
@@ -49,6 +64,9 @@
         "CB_GENEALOGICAL_LINEAGE_PRESERVATION",
         "CB_PEREZ_AS_TAMAR_LINEAGE_FOUNDER"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0005",
       "name_slug": "Name-Preservation"
     },
@@ -57,12 +75,18 @@
         "CB_GATE_LEGAL_VENUE",
         "CB_GATE_CIVIC_COMMUNITY"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0006",
       "name_slug": "Gate-Legal-Venue"
     },
     "CB_0007": {
       "aliases": [
         "CB_ATTESTATION_CUSTOM"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0007",
       "name_slug": "Attestation-Custom"
@@ -71,6 +95,9 @@
       "aliases": [
         "CB_BLESSING",
         "CB_BLESSING_FORMULA"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0008",
       "name_slug": "Blessing"
@@ -82,12 +109,18 @@
         "CB_LORD",
         "CB_SHADDAI"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0009",
       "name_slug": "Divine-Name"
     },
     "CB_0010": {
       "aliases": [
         "CB_HOUSE_OF_ISRAEL"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0010",
       "name_slug": "House-of-Israel"
@@ -97,6 +130,9 @@
         "CB_HESED",
         "CB_HESED_ENACTED"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0011",
       "name_slug": "Hesed"
     },
@@ -104,12 +140,18 @@
       "aliases": [
         "CB_BREAD"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0012",
       "name_slug": "Bread"
     },
     "CB_0013": {
       "aliases": [
         "CB_MOTHERS_HOUSE"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0013",
       "name_slug": "Mothers-House"
@@ -119,12 +161,18 @@
         "CB_MENUCHA",
         "CB_MANOACH"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0014",
       "name_slug": "Rest-Menucha"
     },
     "CB_0015": {
       "aliases": [
         "CB_HAND_OF_YHWH"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0015",
       "name_slug": "Hand-of-YHWH"
@@ -133,12 +181,18 @@
       "aliases": [
         "CB_PAQAD"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0016",
       "name_slug": "Paqad-Visited"
     },
     "CB_0017": {
       "aliases": [
         "CB_DAUGHTER_IN_LAW_KALLA"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0017",
       "name_slug": "Daughter-in-Law-Kallah"
@@ -147,12 +201,18 @@
       "aliases": [
         "CB_DEVEK_CLINGING"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0018",
       "name_slug": "Devek-Clinging"
     },
     "CB_0019": {
       "aliases": [
         "CB_YEBIMTEKH_KINSHIP"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0019",
       "name_slug": "Yebimtekh-Sister-in-law"
@@ -162,12 +222,18 @@
         "CB_OATH_FORMULA",
         "CB_OATH_BY_DIVINE_LIFE"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0020",
       "name_slug": "Oath-Formula-Self-curse"
     },
     "CB_0021": {
       "aliases": [
         "CB_PEOPLE_AND_GOD_PAIRING"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0021",
       "name_slug": "People-and-God-Pairing"
@@ -176,12 +242,18 @@
       "aliases": [
         "CB_NAOMI_NAME_MEANING"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0022",
       "name_slug": "Naomi-Name-Meaning"
     },
     "CB_0023": {
       "aliases": [
         "CB_MARA_NAME_MEANING"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0023",
       "name_slug": "Mara-Name-Meaning"
@@ -190,12 +262,18 @@
       "aliases": [
         "CB_RIQAM"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0024",
       "name_slug": "Full-and-Empty"
     },
     "CB_0025": {
       "aliases": [
         "CB_TESTIFY_AGAINST_LEGAL_IDIOM"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0025",
       "name_slug": "Testify-Against-Anah-Bi"
@@ -205,12 +283,18 @@
         "CB_BARLEY_HARVEST_SEASON_FRAME",
         "CB_BARLEY_MEASURE"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0026",
       "name_slug": "Barley-Harvest-Harvest-Frame"
     },
     "CB_0027": {
       "aliases": [
         "CB_BETHLEHEM_OF_JUDAH"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0027",
       "name_slug": "Bethlehem-of-Judah"
@@ -219,12 +303,18 @@
       "aliases": [
         "CB_FAMINE"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0028",
       "name_slug": "Famine"
     },
     "CB_0029": {
       "aliases": [
         "CB_JUDGES_ERA"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0029",
       "name_slug": "Judges-Era"
@@ -233,12 +323,18 @@
       "aliases": [
         "CB_SOJOURN"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0030",
       "name_slug": "Sojourn-Gur"
     },
     "CB_0031": {
       "aliases": [
         "CB_EPHRATHITE"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0031",
       "name_slug": "Ephrathite"
@@ -249,6 +345,9 @@
         "CB_GIBBOR_CHAYIL_PHRASE",
         "CB_ESHET_CHAYIL"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0032",
       "name_slug": "Chayil"
     },
@@ -256,6 +355,9 @@
       "aliases": [
         "CB_HEN",
         "CB_GRACE"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0033",
       "name_slug": "Hen-Favor"
@@ -265,6 +367,9 @@
         "CB_LEKET",
         "CB_GLEANING"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0034",
       "name_slug": "Leket-Gleaning"
     },
@@ -272,12 +377,18 @@
       "aliases": [
         "CB_MIQREH"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0035",
       "name_slug": "Miqreh-Chance-providence"
     },
     "CB_0036": {
       "aliases": [
         "CB_NAAR_NITSAV_AL_HAQOTSRIM"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0036",
       "name_slug": "Foreman-Role-phrase"
@@ -288,6 +399,9 @@
         "CB_KANAPH_WING_OF_REFUGE",
         "CB_WING_OF_REFUGE"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0037",
       "name_slug": "Refuge-Under-Wings-Kanaph"
     },
@@ -295,6 +409,9 @@
       "aliases": [
         "CB_NOKHRIYA_FOREIGNER",
         "CB_SOJOURNER"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0038",
       "name_slug": "Nokhriya-Foreigner"
@@ -304,6 +421,9 @@
         "CB_LIVING_AND_DEAD",
         "CB_LIVING_AND_DEAD_FORMULA"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0039",
       "name_slug": "Living-and-Dead-Formula"
     },
@@ -312,12 +432,18 @@
         "CB_EPHAH",
         "CB_EPHAH_FIRST_OCCURRENCE"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0040",
       "name_slug": "Ephah"
     },
     "CB_0041": {
       "aliases": [
         "CB_HAND_THRESHING_CHAVAT"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0041",
       "name_slug": "Hand-Threshing-Chavat"
@@ -326,12 +452,18 @@
       "aliases": [
         "CB_UNCOVER_FEET_MARGELOT"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0042",
       "name_slug": "Uncover-Feet-Margelot"
     },
     "CB_0043": {
       "aliases": [
         "CB_MOTHER_IN_LAW"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0043",
       "name_slug": "Mother-in-Law-Chamot"
@@ -340,12 +472,18 @@
       "aliases": [
         "CB_RIQAM"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0044",
       "name_slug": "Riqam-Empty"
     },
     "CB_0045": {
       "aliases": [
         "CB_NEARER_REDEEMER"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0045",
       "name_slug": "Nearer-Redeemer"
@@ -354,12 +492,18 @@
       "aliases": [
         "CB_SEVEN_SONS_AS_CANONICAL_FULLNESS_IDEAL"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0046",
       "name_slug": "Seven-Sons-Shibah-Banim"
     },
     "CB_0047": {
       "aliases": [
         "CB_OBED_NAME"
+      ],
+      "appears_in": [
+        "RUTH"
       ],
       "code": "CB_0047",
       "name_slug": "Obed-Name"
@@ -368,6 +512,9 @@
       "aliases": [
         "CB_DAVID_NAME"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0048",
       "name_slug": "David-Name"
     },
@@ -375,17 +522,40 @@
       "aliases": [
         "CB_PEREZ_AS_TAMAR_LINEAGE_FOUNDER"
       ],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0049",
       "name_slug": "Perez-as-Lineage-Founder"
     },
     "CB_0050": {
       "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
       "code": "CB_0050",
       "name_slug": "Stirred-Hom"
+    },
+    "CB_0051": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0051",
+      "name_slug": "Evil-of-Nineveh"
+    },
+    "CB_0052": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0052",
+      "name_slug": "Before-the-Face-of-YHWH"
     }
   },
   "kind": "CONCEPT",
   "schema": "tripod-concept-bank",
-  "schema_version": "0.1.0",
-  "source": "ruth-pilot-b-wiki/concepts frontmatter (code + name_slug + aliases)"
+  "schema_version": "0.2.0",
+  "scope": "canon-wide",
+  "source": "global Bible-wide bank (per-book concept/figure notes, canon-numbered; SC-0037)"
 }

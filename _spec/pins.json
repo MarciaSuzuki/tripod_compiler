@@ -27,7 +27,7 @@
       "sha256": "dab5f57ba152d83686181c4d56281c07e5fb5cc9299c54426b3a4522f00eecf8"
     }
   },
-  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. The Concept-Bank + Figure-Registry indices (registry/ruth.concepts.json + ruth.figures.json) are vendored OFFLINE by extractor/build_concept_figure_registry.py from the wiki concepts/ + figures/ notes (SC-0018 refinement R2) so `tripod id-check` can verify CB_/FIG_ reference-integrity + name-binding. All pinned by sha256 so coverage reconciliation + id-check are reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off \u2014 edits are recorded (SC-ref + provenance) and re-pinned.",
+  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. The Concept-Bank + Figure-Registry indices are GLOBAL / canon-wide (registry/concepts.json + figures.json — SC-0037: one code per concept/figure across the whole Bible, so the Facilitator anchors them consistently everywhere), vendored OFFLINE by extractor/build_concept_figure_registry.py from the canon-wide concepts/ + figures/ notes so `tripod id-check` can verify CB_/FIG_ reference-integrity + name-binding. (The per-book CAST — beings/places/objects, the *.aliases.json tables — stays per-book.) All pinned by sha256 so coverage reconciliation + id-check are reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off — edits are recorded (SC-ref + provenance) and re-pinned.",
   "sources": {
     "coverage-exceptions.json": {
       "version": "0.1.0",
@@ -77,25 +77,17 @@
       "version": "aliases-0.1.3",
       "sha256": "0509f2ebd972b0fa80e40d8d658512b254ad207ba76317d17bbd5f76dfe4c88c"
     },
-    "registry/ruth.concepts.json": {
-      "version": "registry-0.1.0",
-      "sha256": "788d2f10bda81ac6b1a12e9d7cfc2904a3e42d65e744affd92bb48ff3ce817ff"
-    },
-    "registry/ruth.figures.json": {
-      "version": "registry-0.1.0",
-      "sha256": "56ebf4d450099ca1ed58ef2771cfec783d192b1dca8a8b1738a9aae34e9d3803"
-    },
     "registry/jonah.aliases.json": {
       "version": "aliases-0.1.1",
       "sha256": "b3bcfbffaed8b89ee2259930c45c5b5a94ef8894329a847c826f41ccdc98edfe"
     },
-    "registry/jonah.concepts.json": {
-      "version": "registry-0.1.0",
-      "sha256": "e19bd418f942405573c032dca019b3a49d4e77e67403ce97ac478dc5361b7879"
+    "registry/concepts.json": {
+      "version": "0.2.0",
+      "sha256": "2da6bf7d2ab11a287334a555d9051230bdb234a0aa416e49cfce29313606990f"
     },
-    "registry/jonah.figures.json": {
-      "version": "registry-0.1.0",
-      "sha256": "5726d0c361cb7f36d8d4addc563e5c82de061e3940f5d4bbee43253da67e0f6f"
+    "registry/figures.json": {
+      "version": "0.2.0",
+      "sha256": "c7fc627a41d1b914322d6fab8a0809b2b3dfbee0d236db493f9e1ecb0b0ef149"
     }
   }
 }

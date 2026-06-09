@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 """
+⚠ SC-0037 — SUPERSEDED FOR OUTPUT SHAPE: the Concept Bank + Figure Registry are now GLOBAL /
+canon-wide (one `_spec/registry/concepts.json` + `figures.json`, codes unique across the Bible,
+per-entry `appears_in`), NOT the per-book `<book>.concepts.json` this still emits. The global
+registries are currently merge-built + pinned; the GLOBAL-MODE harvest of this builder (canon-wide
+concepts/ + figures/ notes → the two global files, with `appears_in` from each note's `appears-in`
+frontmatter) is finalized together with the **vault-notes writeback** (the notes are the canonical
+source; moving Jonah's renumbered CB/FIG notes into the canon bank is the SC-0037 vault step). Until
+then, do not run this in per-book mode for CB/FIG. (`build_aliases.py` — the per-book CAST — is unaffected.)
+
 Build the vendored, pinned Concept-Bank and Figure-Registry indices for the SC-0018
 cross-artifact ID-alignment checker (`tripod id-check`).
 

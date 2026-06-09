@@ -1,4 +1,4 @@
 ---
-cb-code: CB_0002
+cb-code: CB_0052
 english: "before the face of YHWH"
 ---
