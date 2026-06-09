@@ -1,0 +1,14 @@
+{
+  "book": "JONAH",
+  "counts": {
+    "by_kind": {},
+    "entities": 0
+  },
+  "entities": {},
+  "places_ner": {
+    "loaded": false
+  },
+  "schema": "tripod-entity-aliases",
+  "schema_version": "0.1.0",
+  "source": "jonah-pilot-b-wiki/bcd frontmatter (+ ETCBC places NER sheet)"
+}

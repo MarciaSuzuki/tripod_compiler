@@ -24,11 +24,18 @@ accepts a known historical alias rather than false-flagging it.
 Offline: reads local markdown only. Output is deterministic (stable ordering, `sort_keys`) for
 pinning by sha256 — same vendor+pin discipline as `build_aliases.py` / `ruth.aliases.json`.
 
+Book-general (SC-0033): `--book` (default ruth) sets the output book label + default out-paths.
+Omit `--vault` (or a missing concepts//figures/ subdir) to scaffold EMPTY registries for a book
+whose Concept Bank / Figure Registry doesn't exist yet.
+
 Usage:
-    python3 extractor/build_concept_figure_registry.py \
+    # Ruth (byte-identical to the pinned registries):
+    python3 extractor/build_concept_figure_registry.py --book ruth \
         --vault ~/Github/ruth-pilot-b-wiki \
         --out-concepts _spec/registry/ruth.concepts.json \
         --out-figures  _spec/registry/ruth.figures.json
+    # A fresh book before its registries exist (empty scaffolds → _spec/registry/<book>.{concepts,figures}.json):
+    python3 extractor/build_concept_figure_registry.py --book jonah
 """
 import argparse
 import hashlib
@@ -95,13 +102,13 @@ def harvest(coll_dir, code_key):
     return table
 
 
-def write_registry(table, out_path, kind, schema):
+def write_registry(table, out_path, kind, schema, book):
     out = {
         "schema": schema,
         "schema_version": REGISTRY_SCHEMA_VERSION,
-        "book": "RUTH",
+        "book": book.upper(),
         "kind": kind,
-        "source": f"ruth-pilot-b-wiki/{kind.lower()}s frontmatter (code + name_slug + aliases)",
+        "source": f"{book.lower()}-pilot-b-wiki/{kind.lower()}s frontmatter (code + name_slug + aliases)",
         "counts": {"entries": len(table)},
         "entries": table,
     }
@@ -118,23 +125,35 @@ def write_registry(table, out_path, kind, schema):
 
 def main():
     ap = argparse.ArgumentParser(description="Harvest concepts/ + figures/ → vendored CB/FIG registries")
-    ap.add_argument("--vault", required=True, help="path to ruth-pilot-b-wiki (holds concepts/ + figures/)")
-    ap.add_argument("--out-concepts", default=os.path.join("_spec", "registry", "ruth.concepts.json"))
-    ap.add_argument("--out-figures", default=os.path.join("_spec", "registry", "ruth.figures.json"))
+    ap.add_argument("--book", default="ruth",
+                    help="book key (lowercase) → output book label + default out-paths. Default: ruth.")
+    ap.add_argument("--vault",
+                    help="path to the book's wiki vault (holds concepts/ + figures/). Omit to scaffold EMPTY "
+                         "registries for a book without a Concept Bank / Figure Registry yet (SC-0033, Jonah Phase 1).")
+    ap.add_argument("--out-concepts", help="default: _spec/registry/<book>.concepts.json")
+    ap.add_argument("--out-figures", help="default: _spec/registry/<book>.figures.json")
     args = ap.parse_args()
 
-    vault = os.path.expanduser(args.vault)
-    if not os.path.isdir(vault):
-        sys.exit(f"ERROR: vault dir not found: {vault}")
+    book = args.book.lower()
+    out_paths = {
+        "concepts": args.out_concepts or os.path.join("_spec", "registry", f"{book}.concepts.json"),
+        "figures": args.out_figures or os.path.join("_spec", "registry", f"{book}.figures.json"),
+    }
+
+    vault = os.path.expanduser(args.vault) if args.vault else None
+    if vault and not os.path.isdir(vault):
+        sys.exit(f"ERROR: vault dir not found: {vault}")  # explicit path must be valid (typo guard)
 
     shas = {}
     for sub, (code_key, kind, schema) in COLLECTIONS.items():
-        d = os.path.join(vault, sub)
-        if not os.path.isdir(d):
-            sys.exit(f"ERROR: collection dir not found: {d}")
-        table = harvest(d, code_key)
-        out_path = args.out_concepts if sub == "concepts" else args.out_figures
-        shas[sub] = write_registry(table, out_path, kind, schema)
+        d = os.path.join(vault, sub) if vault else None
+        if d and os.path.isdir(d):
+            table = harvest(d, code_key)
+        else:
+            reason = f"no {sub}/ dir in vault" if vault else "no --vault given"
+            sys.stderr.write(f"[reg] {reason}: scaffolding an EMPTY {kind} registry for book '{book}'\n")
+            table = {}
+        shas[sub] = write_registry(table, out_paths[sub], kind, schema, book)
 
     # print both shas (concepts then figures), one per line, for the pin step
     print(shas["concepts"])
