@@ -274,10 +274,9 @@ drift); on a deliberately corrupted copy → precise, located errors.
   browser, FOR_MODEL validator, progress tracker.
 
 ### Downstream contract to preserve
-`forja-de-cordel` (the cordel-poetry app) already consumes Meaning Map Level 1 → plan,
-Level 2 → vocabulary, Level 3 → propositions, with a hard "don't invent semantic content"
-rule. If the compiler emits FOR_MODEL from shared TS types, that contract becomes
-compiler-checked. The Facilitator (ML pilot) is the other consumer.
+The **Facilitator (ML pilot)** is the downstream consumer of the FOR_MODEL artifacts, under a
+hard "don't invent semantic content" rule. If the compiler emits FOR_MODEL from shared TS types,
+that contract becomes compiler-checked.
 
 ---
 
