@@ -8,7 +8,7 @@
 
 ## How to verify the state
 ```
-npm install && npm run build && npm test     # 159 passed | 1 skipped (160): … 156 through SC-0008, +3 SC-0027 Thread B fidelity (P03 vow block-clean + dangling-group-id check + fidelity-shape check); the 1 skipped is the SC-0008 vault-drift guard (runs only when TRIPOD_VAULT_SPEC is set, skips VISIBLY otherwise). CL gate (SC-0026) · vault-drift guard (SC-0008) · fidelity model (SC-0027).
+npm install && npm run build && npm test     # 164 passed | 1 skipped (165) with python3 present — the SC-0030 floor (163) + 1 for the SC-0033 measurement-trap self-test gate. The 1 skipped is the SC-0008 vault-drift guard (runs only with TRIPOD_VAULT_SPEC set, else skips VISIBLY); without python3 the SC-0033 guard ALSO skips visibly (→ 163 + 2 skipped) — never a silent green. CL gate (SC-0026) · vault-drift guard (SC-0008) · fidelity model (SC-0027) · measurement-trap self-test (SC-0033).
 npx tsx src/cli/tripod.ts check-drift          # 6 schema pins (SC-0008: quarantined-vocabulary reclassified source→schema) + 10 source pins + sync invariant
 npm run check-drift:vault                       # SC-0008: compares the wiki _spec/ to the pins (defaults to ~/Github/ruth-pilot-b-wiki/_spec; set TRIPOD_VAULT_SPEC to override) — exits 1 on vault drift OR a missing canonical file
 npx tsx src/cli/tripod.ts validate fixtures/for-model/
