@@ -1,9 +1,20 @@
 {
   "book": "JONAH",
   "counts": {
-    "entries": 0
+    "entries": 2
   },
-  "entries": {},
+  "entries": {
+    "CB_0001": {
+      "aliases": [],
+      "code": "CB_0001",
+      "name_slug": "Evil-of-Nineveh"
+    },
+    "CB_0002": {
+      "aliases": [],
+      "code": "CB_0002",
+      "name_slug": "Before-the-Face-of-YHWH"
+    }
+  },
   "kind": "CONCEPT",
   "schema": "tripod-concept-bank",
   "schema_version": "0.1.0",

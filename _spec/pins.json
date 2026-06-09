@@ -86,16 +86,16 @@
       "sha256": "56ebf4d450099ca1ed58ef2771cfec783d192b1dca8a8b1738a9aae34e9d3803"
     },
     "registry/jonah.aliases.json": {
-      "version": "aliases-0.1.0",
-      "sha256": "755e8bb567341a7c1c1a7ccd2fdf66a21c4f3506831e75f781d02d3322b732b1"
+      "version": "aliases-0.1.1",
+      "sha256": "b3bcfbffaed8b89ee2259930c45c5b5a94ef8894329a847c826f41ccdc98edfe"
     },
     "registry/jonah.concepts.json": {
       "version": "registry-0.1.0",
-      "sha256": "63bcfcd68dc7af2516aef0cc8a71c66ea27d76d4e9e1c47c111abf972f7af361"
+      "sha256": "e19bd418f942405573c032dca019b3a49d4e77e67403ce97ac478dc5361b7879"
     },
     "registry/jonah.figures.json": {
       "version": "registry-0.1.0",
-      "sha256": "8ce3216c694884a8194e125cef7b9d7e43c1eb35393d0d32e29c80c7076ed991"
+      "sha256": "5726d0c361cb7f36d8d4addc563e5c82de061e3940f5d4bbee43253da67e0f6f"
     }
   }
 }

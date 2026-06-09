@@ -1,10 +1,128 @@
 {
   "book": "JONAH",
   "counts": {
-    "by_kind": {},
-    "entities": 0
+    "by_kind": {
+      "PERSON": 5,
+      "PLACE": 3,
+      "THING": 2
+    },
+    "entities": 10
   },
-  "entities": {},
+  "entities": {
+    "B1": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "Jonah",
+      "gender": "m",
+      "hebrew": "יוֹנָה",
+      "hebrew_cons": "יונה",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
+    "B2": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "YHWH",
+      "gender": "m",
+      "hebrew": "יְהוָה",
+      "hebrew_cons": "יהוה",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
+    "B3": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "Amittai",
+      "gender": "m",
+      "hebrew": "אֲמִתַּי",
+      "hebrew_cons": "אמתי",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
+    "B4": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "the ship's crew",
+      "gender": null,
+      "hebrew": "",
+      "hebrew_cons": "",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
+    "B5": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "the people of Nineveh",
+      "gender": null,
+      "hebrew": "",
+      "hebrew_cons": "",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
+    "O1": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "ship",
+      "gender": null,
+      "hebrew": "אָנִיָּה",
+      "hebrew_cons": "אניה",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O2": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "fare",
+      "gender": null,
+      "hebrew": "שָׂכָר",
+      "hebrew_cons": "שכר",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "PL1": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "Nineveh",
+      "gender": null,
+      "hebrew": "נִינְוֵה",
+      "hebrew_cons": "נינוה",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL2": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "Tarshish",
+      "gender": null,
+      "hebrew": "תַּרְשִׁישׁ",
+      "hebrew_cons": "תרשיש",
+      "hebrew_cons_aliases": [
+        "תרשישה"
+      ],
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL3": {
+      "appears_in": [
+        "J01"
+      ],
+      "english": "Joppa",
+      "gender": null,
+      "hebrew": "יָפוֹ",
+      "hebrew_cons": "יפו",
+      "kind": "PLACE",
+      "referential_forms": []
+    }
+  },
   "places_ner": {
     "loaded": false
   },

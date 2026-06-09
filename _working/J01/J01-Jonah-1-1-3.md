@@ -30,12 +30,7 @@ active-figures:
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL, the plain default for the biblical narrator's voice — the relaxed, everyday way an old story gets told. One spot in v.2 carries direct speech from YHWH: a flat command ("Arise, go… and call out"). The narrator's voice around it stays INFORMAL_CASUAL; the command itself is the authoritative speech of a superior, and whether that warrants a scene-level shift (e.g. to ELDER_AUTHORITY) is a register call for the lead. v.3 reports the flight in a tight run of plain verbs.
-
-> **⟦Author note — exegetical calls for the lead, not settled⟧**
-> - **Genre:** `HISTORICAL_NARRATIVE` is used as the closest closed-list value — Jonah 1 is prose narrative of a prophet's commission and flight. Jonah's whole-book genre is debated (a didactic / ironic prophetic narrative); the closed list **holds** with this value for the narrative form, but the classification is the lead's to confirm (by-layer test, L1).
-> - **Register of the divine command (v.2):** flagged above — narrator `INFORMAL_CASUAL`; the command could carry a scene-level `ELDER_AUTHORITY`. Lead's call.
-> - **Codes are PROVISIONAL.** Jonah's registry starts empty (SC-0033 scaffold); this map proposes the cast (B/PL/O/CB/FIG codes) — the compiler records them as a BCD-DELTA for approval. None are yet registered.
+The whole passage sits in INFORMAL_CASUAL, the plain default for the biblical narrator's voice — the relaxed, everyday way an old story gets told. One scene-level override falls in v.2: YHWH's direct command ("Arise, go… and call out") lifts into ELDER_AUTHORITY — the authoritative voice of a superior giving an order. The narrator's voice around it stays INFORMAL_CASUAL; v.3 reports the flight in a tight run of plain verbs.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -48,7 +43,7 @@ This is where the book of Jonah begins. Jonah son of Amittai is the one the word
 The tone is plain and fast, and the force of it is in the turn. The command is four quick verbs; the flight is a tumble of them — got up, to flee, went down, found, paid, went down — all in one breath, all moving the wrong way. The narrator never tells us what Jonah feels, never lets Jonah say a word, and never explains the running. The pace drops like the verbs do: down to the port, down into the ship, down and away. By the end the mood is a quiet alarm — a man in full motion, fleeing the one place a prophet cannot flee — and whatever feeling there is rides on what the line refuses to say.
 
 ### 2.4 Communicative Function
-The passage opens the book by setting the command against the refusal: a clear charge from YHWH, and a prophet who answers it with his heels. It hands on the first turn the whole story is built on — the flight — and plants the questions the rest of the book has to answer: why a called man runs, whether he can get away, and what a God does with a prophet who will not go. To speak this passage is to set in place the caller, the called, the city he is sent to, the far place he runs to, and the silence where his reason should be. This is the groundwork: how the running began.
+The passage opens the book by setting the command against the refusal: a clear charge from YHWH, and a prophet who answers it with his heels. It hands on the first turn the whole story is built on — the flight — and plants the questions the rest of the book has to answer: why a called man runs, whether he can get away, and what a God does with a prophet who will not go. To speak this passage is to set in place the caller, the called, the city he is sent to, the far place he runs to, and the silence where his reason should be. This is the groundwork: how the running began. The form is plain narrative, but its mode is already ironic and teaching: the one man called to carry God's word is the one who runs from it, and the book makes its point through that reversal.
 
 ## 3. Level 2 — Scenes / Episodes
 
