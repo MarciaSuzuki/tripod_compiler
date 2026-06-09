@@ -53,6 +53,7 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
 
   const num = (mm.pericope ?? "P00").replace(/\D/g, "").padStart(2, "0");
   const bcv = (mm.bcv ?? "").replace(/[–—]/g, "-");
+  const book = (bcv.split(/\s+/)[0] || "ruth").toLowerCase(); // SC-0032: book-general sta_id prefix; "Ruth …" → ruth (byte-identical)
   const mmRef = mm.path.split("/").pop()?.replace(/\.md$/, "") ?? null;
 
   // ---- header ----
@@ -182,7 +183,7 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
   );
 
   const skeleton: Record<string, unknown> = {
-    sta_id: `ruth_pericope_${num}_v2_0`,
+    sta_id: `${book}_pericope_${num}_v2_0`,
     tagset_version: "TRIPOD_STA_v2_0",
     header,
     pericope_classification: classification,

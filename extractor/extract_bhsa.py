@@ -309,13 +309,13 @@ def load_place_aliases(path):
     return aliases
 
 
-def verse_nodes_for(api, start, end):
+def verse_nodes_for(api, start, end, bhsa_book):
     F = api.F
     sc, sv = start
     ec, ev = end
     out = []
     for v in F.otype.s("verse"):
-        if F.book.v(v) != "Ruth":
+        if F.book.v(v) != bhsa_book:
             continue
         c, n = F.chapter.v(v), F.verse.v(v)
         if (c, n) >= (sc, sv) and (c, n) <= (ec, ev):
@@ -337,12 +337,13 @@ def main():
     if args.pericope not in peri["pericopes"]:
         sys.exit(f"ERROR: unknown pericope {args.pericope}. Known: {list(peri['pericopes'])}")
     pdef = peri["pericopes"][args.pericope]
+    bhsa_book = peri.get("bhsa_book") or peri["book"].title()  # SC-0032: BHSA book name; "RUTH" → "Ruth"
 
     tf_path = resolve_tf_path(args.tf_path)
     sys.stderr.write(f"[extract] loading BHSA {BHSA_VERSION} offline from {tf_path}\n")
     api = load_tf(tf_path)
 
-    vnodes = verse_nodes_for(api, pdef["start"], pdef["end"])
+    vnodes = verse_nodes_for(api, pdef["start"], pdef["end"], bhsa_book)
     if not vnodes:
         sys.exit(f"ERROR: no verses found for {args.pericope} ({pdef['bcv']})")
 
@@ -381,7 +382,7 @@ def main():
     body = json.dumps(packet, ensure_ascii=False, indent=2, sort_keys=True)
     sha = hashlib.sha256(body.encode("utf-8")).hexdigest()
 
-    out_path = args.out or os.path.join("_spec", "source", "ruth", f"{args.pericope}.json")
+    out_path = args.out or os.path.join("_spec", "source", peri["book"].lower(), f"{args.pericope}.json")
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as fh:
         fh.write(body + "\n")

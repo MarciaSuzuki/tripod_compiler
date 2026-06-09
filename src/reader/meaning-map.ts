@@ -192,7 +192,7 @@ function parseProposition(heading: string, body: string[]): MMProposition {
   }
   return {
     propId: `MM_P${Number.isFinite(idx) ? idx : "?"}`,
-    verseAnchor: hm?.[2]?.replace(/^Ruth\s+/, "") ?? null,
+    verseAnchor: hm?.[2]?.replace(/^[A-Za-z]+\s+/, "") ?? null,
     sceneLink: hm?.[3] ? `S${hm[3]}` : null,
     qa,
     crossRef,
