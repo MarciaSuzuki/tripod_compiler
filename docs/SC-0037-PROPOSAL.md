@@ -1,7 +1,30 @@
-# SC-0037 (PROPOSAL) — Global Concept Bank + Figure Registry
+# SC-0037 (PROPOSAL — APPROVED 2026-06-09) — Global Concept Bank + Figure Registry
 
-> **Plan-first.** Marcia ruled the architecture (2026-06-09): the **Concept Bank AND the Figure
-> Registry are global / canon-wide** — one code per concept (and per figure) across the whole Bible.
+> **APPROVED by Marcia (+ evaluator review) 2026-06-09**, with three amendments folded in (below).
+> Builder now builds against this; evaluator verifies against §8 acceptance. Marcia ruled the architecture:
+> the **Concept Bank AND the Figure Registry are global / canon-wide** — one code per concept (and per
+> figure) across the whole Bible.
+>
+> **Amendments folded in at approval (evaluator findings):**
+> 1. **The migration is a MOVE + renumber, not just an add.** SC-0036 bootstrapped Jonah's registry
+>    **compiler-side** (`_spec/registry/jonah-bcd/concepts|figures/`), whereas Ruth's canonical notes are
+>    **vault**-side (`concepts/` + `figures/`). So globalizing = **move Jonah's renumbered CB/FIG notes into
+>    the vault bank + delete the compiler copies** (one source, no drift) — see §6.
+> 2. **The Jonah CAST home is a named deferred item.** Globalizing CB/FIG leaves Jonah's *cast* notes
+>    (beings/places/objects, at `_spec/registry/jonah-bcd/`) stranded compiler-side, inconsistent with
+>    Ruth's vault-canonical cast. The cast correctly stays **per-book** — but *where it lives* is a parallel
+>    reconciliation, **deferred + named** (the same "where does book #2 live in a Ruth-named vault" question
+>    as decision §7.3; rule them together).
+> 3. **Split compiler-vendored vs vault-notes explicitly.** The JSON registry FILES are compiler-**vendored**
+>    (a re-pin; no vault-drift check) ; the canonical NOTES are in the **vault** (a writeback). §6/§8's
+>    "vault writeback of the global bank" means **the notes**, not the JSON — keep them distinct so the build
+>    doesn't write back the wrong artifact.
+> - Grounding correction: Ruth figures are **115 codes with gaps, max `FIG_0195`** (retired slots at
+>   8–10, 19–23, …) — *not* contiguous; "continue from the **max**" (FIG_0196) is right and correctly avoids
+>   resurrecting retired codes. Bonus confirmed: globalizing **fixes a latent bug** — `id-align` loads the
+>   registry with no book arg, so today a Jonah check silently resolves against *Ruth's* registry; one global
+>   bank removes the ambiguity.
+>
 > This is the design, for: evaluator review → Marcia approval → builder build → evaluator verify.
 > **Sequencing (load-bearing): this must land BEFORE J01 graduates from `_working/` into the Jonah
 > fixtures**, so the fixtures never bake in codes we already know will change. Surfaced by the J01

@@ -1,0 +1,1012 @@
+{
+  "counts": {
+    "by_book": {
+      "JONAH": 3,
+      "RUTH": 115
+    },
+    "entries": 118
+  },
+  "entries": {
+    "FIG_0001": {
+      "aliases": [
+        "FIG_RUTH_THE_MOABITESS",
+        "FIG_RUTH_THE_MOABITESS_EPITHET",
+        "FIG_RUTH_THE_MOABITESS_LEGAL_NAMING_SUB_PATTERN",
+        "FIG_MOABITE_DAUGHTER_IN_LAW_THRESHOLD_LABEL",
+        "FIG_MOABITE_YOUNG_WOMAN_WHO_RETURNED_LABEL"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0001",
+      "name_slug": "Ruth-the-Moabitess"
+    },
+    "FIG_0002": {
+      "aliases": [
+        "FIG_TO_RAISE_UP_THE_NAME_OF_THE_DEAD",
+        "FIG_RAISE_UP_NAME_OF_DEAD"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0002",
+      "name_slug": "To-Raise-Up-the-Name-of-the-Dead"
+    },
+    "FIG_0003": {
+      "aliases": [
+        "FIG_GATE_AS_PLACE_OF_REMEMBERED_NAME"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0003",
+      "name_slug": "Gate-as-Place-of-Remembered-Name"
+    },
+    "FIG_0004": {
+      "aliases": [
+        "FIG_BUILD_THE_HOUSE_OF_ISRAEL"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0004",
+      "name_slug": "Build-the-House-of-Israel"
+    },
+    "FIG_0005": {
+      "aliases": [
+        "FIG_SHOE_DRAWING_ATTESTATION"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0005",
+      "name_slug": "Shoe-Drawing-Attestation"
+    },
+    "FIG_0006": {
+      "aliases": [
+        "FIG_SHADDAI_DIVINE_NAME",
+        "FIG_SHADDAI"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0006",
+      "name_slug": "Shaddai-Divine-Name"
+    },
+    "FIG_0007": {
+      "aliases": [
+        "FIG_NARRATOR_FRAME_FROM_LATER_TIME"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0007",
+      "name_slug": "Narrator-Frame-from-Later-Time"
+    },
+    "FIG_0011": {
+      "aliases": [
+        "FIG_WING_OF_REFUGE",
+        "FIG_WING_OF_REFUGE_REQUESTED",
+        "FIG_KANAPH"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0011",
+      "name_slug": "Wing-of-Refuge"
+    },
+    "FIG_0012": {
+      "aliases": [
+        "FIG_CLINGING_DEVEK_COVENANT_STRENGTH",
+        "FIG_DABAQ_IMAGE_RHYME"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0012",
+      "name_slug": "Clinging-Dabaq-Image-rhyme"
+    },
+    "FIG_0013": {
+      "aliases": [
+        "FIG_BREAD_HOUSE_IN_FAMINE"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0013",
+      "name_slug": "Bread-house-in-Famine"
+    },
+    "FIG_0014": {
+      "aliases": [
+        "FIG_DIVINE_NAME_RETURNS_AT_BLESSING_AFTER_LEGAL_SILENCE",
+        "FIG_NO_DIVINE_NAME_IN_LEGAL_PROCEEDING"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0014",
+      "name_slug": "Divine-Name-Returns-at-Blessing-After-Legal-Silence"
+    },
+    "FIG_0015": {
+      "aliases": [
+        "FIG_VAYYIQER_MIQREHA"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0015",
+      "name_slug": "Vayyiqer-Miqreha"
+    },
+    "FIG_0016": {
+      "aliases": [
+        "FIG_RUTH_AND_NAOMI_ABSENT_FROM_THE_PROCEEDING"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0016",
+      "name_slug": "Ruth-and-Naomi-Absent-from-the-Proceeding"
+    },
+    "FIG_0017": {
+      "aliases": [
+        "FIG_EPHRATHAH_AND_BETHLEHEM_DOUBLED_PLACE"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0017",
+      "name_slug": "Ephrathah-and-Bethlehem-Doubled-place"
+    },
+    "FIG_0018": {
+      "aliases": [
+        "FIG_FAVOR_IN_EYES"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0018",
+      "name_slug": "Favor-in-Eyes"
+    },
+    "FIG_0050": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0050",
+      "name_slug": "Wayhi-Bimei-Chronicle-Formula"
+    },
+    "FIG_0051": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0051",
+      "name_slug": "Cumulative-Loss-Listing"
+    },
+    "FIG_0052": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0052",
+      "name_slug": "Tishaer-Residual-Rhyme"
+    },
+    "FIG_0053": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0053",
+      "name_slug": "Ha-Ishah-Naming-Down"
+    },
+    "FIG_0054": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0054",
+      "name_slug": "Name-Meanings"
+    },
+    "FIG_0060": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0060",
+      "name_slug": "Sons-in-My-Womb"
+    },
+    "FIG_0061": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0061",
+      "name_slug": "Hand-of-YHWH-Against-Me"
+    },
+    "FIG_0062": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0062",
+      "name_slug": "Lifted-Voice-and-Wept"
+    },
+    "FIG_0063": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0063",
+      "name_slug": "Kiss-Kinswomen-Farewell"
+    },
+    "FIG_0064": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0064",
+      "name_slug": "This-Very-Night"
+    },
+    "FIG_0065": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0065",
+      "name_slug": "Rest-in-Husbands-House"
+    },
+    "FIG_0066": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0066",
+      "name_slug": "Levirate-Waiting-Shadow"
+    },
+    "FIG_0067": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0067",
+      "name_slug": "Hesed-Invocation-Blessing"
+    },
+    "FIG_0070": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0070",
+      "name_slug": "Behold-Hinneh-Attention-Pointing"
+    },
+    "FIG_0071": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0071",
+      "name_slug": "Press-to-Leave-Verb"
+    },
+    "FIG_0072": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0072",
+      "name_slug": "Paired-Path-Lodging-Vow"
+    },
+    "FIG_0073": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0073",
+      "name_slug": "People-and-God-Terse-Pairing"
+    },
+    "FIG_0074": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0074",
+      "name_slug": "Death-and-Burial-Shared-Place"
+    },
+    "FIG_0075": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0075",
+      "name_slug": "Self-Curse-Oath-Formula"
+    },
+    "FIG_0076": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0076",
+      "name_slug": "Death-as-Singular-Separator"
+    },
+    "FIG_0077": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0077",
+      "name_slug": "Determination-Mitametzet"
+    },
+    "FIG_0078": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0078",
+      "name_slug": "Ratification-by-Silence"
+    },
+    "FIG_0080": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0080",
+      "name_slug": "Is-This-Naomi-Recognition-Question"
+    },
+    "FIG_0081": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0081",
+      "name_slug": "City-Stirred-Hom"
+    },
+    "FIG_0082": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0082",
+      "name_slug": "Naomi-Mara-Name-Substitution"
+    },
+    "FIG_0083": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0083",
+      "name_slug": "Mara-Hemar-Root-Pun"
+    },
+    "FIG_0084": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0084",
+      "name_slug": "Full-and-Empty-Antithesis"
+    },
+    "FIG_0085": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0085",
+      "name_slug": "Testify-Against-Legal-Image"
+    },
+    "FIG_0086": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0086",
+      "name_slug": "Shaddai-Did-Evil-to-Me"
+    },
+    "FIG_0087": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0087",
+      "name_slug": "Why-Call-Me-Naomi-Protest-Question"
+    },
+    "FIG_0088": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0088",
+      "name_slug": "Empty-Lament-at-Harvest-Arrival"
+    },
+    "FIG_0090": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0090",
+      "name_slug": "Ish-Gibbor-Chayil"
+    },
+    "FIG_0091": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0091",
+      "name_slug": "Nitsav-Al-Haqotsrim-Foreman-Role"
+    },
+    "FIG_0092": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0092",
+      "name_slug": "YHWH-Be-with-You-Greeting"
+    },
+    "FIG_0093": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0093",
+      "name_slug": "YHWH-Bless-You-Return-Greeting"
+    },
+    "FIG_0094": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0094",
+      "name_slug": "Whose-Young-Woman-Belonging-Question"
+    },
+    "FIG_0100": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0100",
+      "name_slug": "Full-Knowledge-Doubling"
+    },
+    "FIG_0101": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0101",
+      "name_slug": "Deliberate-Pulling-Doubling"
+    },
+    "FIG_0102": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0102",
+      "name_slug": "Heart-Reaching-Speech"
+    },
+    "FIG_0103": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0103",
+      "name_slug": "Before-Now-Idiom"
+    },
+    "FIG_0104": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0104",
+      "name_slug": "Abundance-Triplet"
+    },
+    "FIG_0105": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0105",
+      "name_slug": "Touch-Prohibition"
+    },
+    "FIG_0106": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0106",
+      "name_slug": "Shame-Prohibition"
+    },
+    "FIG_0107": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0107",
+      "name_slug": "Rebuke-Prohibition"
+    },
+    "FIG_0110": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0110",
+      "name_slug": "Living-and-Dead-Formula"
+    },
+    "FIG_0111": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0111",
+      "name_slug": "Hesed-Not-Forsaken"
+    },
+    "FIG_0112": {
+      "aliases": [
+        "FIG_CLOSE_TO_US",
+        "FIG_CLOSE_TO_US_KINSHIP_PROXIMITY"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0112",
+      "name_slug": "Close-to-Us"
+    },
+    "FIG_0113": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0113",
+      "name_slug": "Leftovers-After-Satiety"
+    },
+    "FIG_0120": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0120",
+      "name_slug": "Manoach-Rest-Place"
+    },
+    "FIG_0121": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0121",
+      "name_slug": "Bridal-Preparation-Triplet"
+    },
+    "FIG_0122": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0122",
+      "name_slug": "He-Will-Tell-You-Handoff"
+    },
+    "FIG_0123": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0123",
+      "name_slug": "Absolute-Assent-Pattern"
+    },
+    "FIG_0130": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0130",
+      "name_slug": "Vayyecherad"
+    },
+    "FIG_0131": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0131",
+      "name_slug": "Wing-of-Refuge-Requested"
+    },
+    "FIG_0132": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0132",
+      "name_slug": "Amah-Vs-Shifchah"
+    },
+    "FIG_0133": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0133",
+      "name_slug": "Greater-Hesed-at-End"
+    },
+    "FIG_0134": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0134",
+      "name_slug": "Chayil-Pair-Completed"
+    },
+    "FIG_0135": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0135",
+      "name_slug": "Chai-YHWH-Oath-Formula"
+    },
+    "FIG_0136": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0136",
+      "name_slug": "All-You-Say-Formula"
+    },
+    "FIG_0137": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0137",
+      "name_slug": "Blessed-by-YHWH-Formula"
+    },
+    "FIG_0138": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0138",
+      "name_slug": "Nearer-Redeemer-Qualification"
+    },
+    "FIG_0139": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0139",
+      "name_slug": "Lie-Down-Authority-Transfer"
+    },
+    "FIG_0140": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0140",
+      "name_slug": "Reverse-Pattern-Handoff"
+    },
+    "FIG_0141": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0141",
+      "name_slug": "Heart-Good-After-Meal"
+    },
+    "FIG_0142": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0142",
+      "name_slug": "Blessed-Be-YHWH-Redeemer-Invocation"
+    },
+    "FIG_0150": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0150",
+      "name_slug": "Before-One-Could-Recognize-His-Neighbor"
+    },
+    "FIG_0151": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0151",
+      "name_slug": "Let-It-Not-Be-Known"
+    },
+    "FIG_0152": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0152",
+      "name_slug": "Six-Measures-of-Barley"
+    },
+    "FIG_0153": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0153",
+      "name_slug": "Do-Not-Return-Empty"
+    },
+    "FIG_0154": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0154",
+      "name_slug": "Doubled-Who-Are-You"
+    },
+    "FIG_0155": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0155",
+      "name_slug": "Ha-Ish-Unnamed-Kinsman-Referent"
+    },
+    "FIG_0156": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0156",
+      "name_slug": "The-Man-Will-Not-Rest"
+    },
+    "FIG_0160": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0160",
+      "name_slug": "Hinneh-Attention-Marker"
+    },
+    "FIG_0161": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0161",
+      "name_slug": "Hinneh-Family"
+    },
+    "FIG_0162": {
+      "aliases": [
+        "FIG_PLONI_ALMONI_VOCATIVE_OF_ANONYMITY",
+        "FIG_PELONI_ALMONI"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0162",
+      "name_slug": "Ploni-Almoni-Vocative-of-Anonymity"
+    },
+    "FIG_0163": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0163",
+      "name_slug": "Unnamed-Kinsman-Pattern-Deepened"
+    },
+    "FIG_0164": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0164",
+      "name_slug": "Threefold-Sit-Here-Legal-Staging"
+    },
+    "FIG_0165": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0165",
+      "name_slug": "Two-Stage-Disclosure-Field-Then-Ruth"
+    },
+    "FIG_0166": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0166",
+      "name_slug": "Lest-I-Ruin-My-Inheritance"
+    },
+    "FIG_0167": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0167",
+      "name_slug": "Uncovering-the-Ear"
+    },
+    "FIG_0168": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0168",
+      "name_slug": "Ruining-Inheritance"
+    },
+    "FIG_0170": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0170",
+      "name_slug": "Like-the-House-of-Perez-Whom-Tamar-Bore"
+    },
+    "FIG_0171": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0171",
+      "name_slug": "We-Are-Witnesses-Choral-Assent"
+    },
+    "FIG_0172": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0172",
+      "name_slug": "You-Are-Witnesses-Today-Bookend"
+    },
+    "FIG_0180": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0180",
+      "name_slug": "Rapid-Agent-Shifts-at-4-13"
+    },
+    "FIG_0181": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0181",
+      "name_slug": "Communal-Naming-for-Naomi"
+    },
+    "FIG_0182": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0182",
+      "name_slug": "Four-Step-Naming-of-the-Child"
+    },
+    "FIG_0183": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0183",
+      "name_slug": "Better-Than-Seven-Sons-Inverted-Fullness"
+    },
+    "FIG_0184": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0184",
+      "name_slug": "Name-Famous-in-Israel"
+    },
+    "FIG_0185": {
+      "aliases": [
+        "FIG_CHEQ_ANCHORED",
+        "FIG_CHEQ_AS_MATERNAL_ADOPTION_LOCUS"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0185",
+      "name_slug": "Cheq-as-Maternal-Adoption-Locus"
+    },
+    "FIG_0186": {
+      "aliases": [
+        "FIG_OMENET_ANCHORED",
+        "FIG_OMENET_AS_FAITHFUL_SUSTAINER"
+      ],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0186",
+      "name_slug": "Omenet-as-Faithful-Sustainer"
+    },
+    "FIG_0187": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0187",
+      "name_slug": "Blessing-Pair-Elders-and-Women"
+    },
+    "FIG_0188": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0188",
+      "name_slug": "Boaz-Recedes-at-Closure"
+    },
+    "FIG_0189": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0189",
+      "name_slug": "Book-Closing-Inclusio-with-Prologue"
+    },
+    "FIG_0190": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0190",
+      "name_slug": "Formulaic-Genealogical-Repetition"
+    },
+    "FIG_0191": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0191",
+      "name_slug": "Tamar-Perez-Forward-Pair-Completion"
+    },
+    "FIG_0192": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0192",
+      "name_slug": "Four-Step-Naming-Forward-Pair-Completion"
+    },
+    "FIG_0193": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0193",
+      "name_slug": "Perez-to-David-Genealogical-Lineage"
+    },
+    "FIG_0194": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0194",
+      "name_slug": "Divine-Gift-Consequences-Enumerated"
+    },
+    "FIG_0195": {
+      "aliases": [],
+      "appears_in": [
+        "RUTH"
+      ],
+      "code": "FIG_0195",
+      "name_slug": "Fourfold-Divine-Naming-in-Lament"
+    },
+    "FIG_0196": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0196",
+      "name_slug": "Word-of-YHWH-Came-Formula"
+    },
+    "FIG_0197": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0197",
+      "name_slug": "Away-from-Before-YHWH-Refrain"
+    },
+    "FIG_0198": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0198",
+      "name_slug": "Going-Down-Descent"
+    }
+  },
+  "kind": "FIGURE",
+  "schema": "tripod-figure-registry",
+  "schema_version": "0.2.0",
+  "scope": "canon-wide",
+  "source": "global Bible-wide bank (per-book concept/figure notes, canon-numbered; SC-0037)"
+}
