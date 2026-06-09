@@ -69,6 +69,10 @@
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "5228a78e3deacbe21af8a48b6fc56d2fdda4d0aa3f31598f00ffe5926ac15239"
     },
+    "source/jonah/J01.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "655575f6c6e6564f53769f1c41e6fc1eeb5f433ef94df227e67e86a8cb93c051"
+    },
     "registry/ruth.aliases.json": {
       "version": "aliases-0.1.3",
       "sha256": "0509f2ebd972b0fa80e40d8d658512b254ad207ba76317d17bbd5f76dfe4c88c"
@@ -80,6 +84,18 @@
     "registry/ruth.figures.json": {
       "version": "registry-0.1.0",
       "sha256": "56ebf4d450099ca1ed58ef2771cfec783d192b1dca8a8b1738a9aae34e9d3803"
+    },
+    "registry/jonah.aliases.json": {
+      "version": "aliases-0.1.0",
+      "sha256": "755e8bb567341a7c1c1a7ccd2fdf66a21c4f3506831e75f781d02d3322b732b1"
+    },
+    "registry/jonah.concepts.json": {
+      "version": "registry-0.1.0",
+      "sha256": "63bcfcd68dc7af2516aef0cc8a71c66ea27d76d4e9e1c47c111abf972f7af361"
+    },
+    "registry/jonah.figures.json": {
+      "version": "registry-0.1.0",
+      "sha256": "8ce3216c694884a8194e125cef7b9d7e43c1eb35393d0d32e29c80c7076ed991"
     }
   }
 }

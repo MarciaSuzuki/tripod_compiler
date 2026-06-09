@@ -40,11 +40,20 @@ python3 extractor/build_concept_figure_registry.py \
   --vault ~/Github/ruth-pilot-b-wiki \
   --out-concepts _spec/registry/ruth.concepts.json \
   --out-figures  _spec/registry/ruth.figures.json
+
+# Book-general (SC-0033): extract_bhsa takes the book from --pericopes; the registry builders
+# take --book (default ruth) and an OPTIONAL --bcd/--vault (omit → empty scaffold for a fresh book).
+# ⚠ bhsa_book is the ETCBC *Latin* name (Jonah = "Jona", not "Jonah"; Ruth is identical). Jonah Phase 1:
+python3 extractor/extract_bhsa.py J01 --pericopes extractor/pericopes.jonah.json
+python3 extractor/build_aliases.py --book jonah                  # empty alias table (no --bcd yet)
+python3 extractor/build_concept_figure_registry.py --book jonah  # empty CB/FIG registries
 ```
 
-Each script prints the output's `sha256`; the file hash (incl. trailing newline) is what
-`_spec/pins.json` pins and `tripod check-drift` verifies. Output is deterministic (stable
-ordering, `sort_keys`), so re-running on the same BHSA version reproduces the same hash.
+Output is deterministic (stable ordering, `sort_keys`), so re-running on the same BHSA version
+reproduces the same bytes. ⚠ **Pin from the file, not the printed sha:** `extract_bhsa.py` and
+`build_aliases.py` print the hash of the JSON body *before* the trailing newline they then write,
+so their stdout sha ≠ the file hash. Always pin via `shasum -a 256 <file>` — that is what
+`tripod check-drift` (`sha256OfFile`) verifies. (`build_concept_figure_registry.py` prints the true file hash.)
 
 The TF path is resolved from `--tf-path`, then `$BHSA_TF_PATH`, then a list of known local
 locations (see `KNOWN_TF_PATHS` in `extract_bhsa.py`). No path ⇒ a clear error, never a download.

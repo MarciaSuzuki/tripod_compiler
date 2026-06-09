@@ -17,11 +17,17 @@ The ETCBC places NER sheet (bonus) contributes extra place surface spellings (oc
 
 Offline: reads local markdown only. Output is deterministic for pinning by sha256.
 
+Book-general (SC-0033): `--book` (default ruth) sets the output book label + default out-path.
+Omit `--bcd` to scaffold an EMPTY alias table for a book whose cast isn't registered yet.
+
 Usage:
-    python3 extractor/build_aliases.py \
-        --bcd ~/Dropbox/Mac/Downloads/ruth-pilot-b-wiki/bcd \
+    # Ruth (byte-identical to the pinned table):
+    python3 extractor/build_aliases.py --book ruth \
+        --bcd ~/Github/ruth-pilot-b-wiki/bcd \
         --places-ner ~/Dropbox/Mac/Downloads/bhsa/ner/sheets/places.yaml \
         --out _spec/registry/ruth.aliases.json
+    # A fresh book before its BCD exists (empty scaffold → _spec/registry/<book>.aliases.json):
+    python3 extractor/build_aliases.py --book jonah
 """
 import argparse
 import hashlib
@@ -163,23 +169,31 @@ def fold_places_ner(table, ner_path):
 
 def main():
     ap = argparse.ArgumentParser(description="Harvest BCD frontmatter → vendored alias table")
-    ap.add_argument("--bcd", required=True, help="path to ruth-pilot-b-wiki/bcd")
+    ap.add_argument("--book", default="ruth",
+                    help="book key (lowercase) → output book label + default out-path. Default: ruth.")
+    ap.add_argument("--bcd",
+                    help="path to the book's BCD dir (e.g. ruth-pilot-b-wiki/bcd). Omit to scaffold an "
+                         "EMPTY alias table for a book whose cast isn't registered yet (SC-0033, Jonah Phase 1).")
     ap.add_argument("--places-ner", help="optional ETCBC places NER sheet (yaml)")
-    ap.add_argument("--out", default=os.path.join("_spec", "registry", "ruth.aliases.json"))
+    ap.add_argument("--out", help="output path (default: _spec/registry/<book>.aliases.json)")
     args = ap.parse_args()
 
-    bcd = os.path.expanduser(args.bcd)
-    if not os.path.isdir(bcd):
-        sys.exit(f"ERROR: BCD dir not found: {bcd}")
-
-    table = harvest_bcd(bcd)
+    book = args.book.lower()
+    if args.bcd:
+        bcd = os.path.expanduser(args.bcd)
+        if not os.path.isdir(bcd):
+            sys.exit(f"ERROR: BCD dir not found: {bcd}")  # explicit path must be valid (typo guard)
+        table = harvest_bcd(bcd)
+    else:
+        sys.stderr.write(f"[aliases] no --bcd given: scaffolding an EMPTY alias table for book '{book}'\n")
+        table = {}
     ner_info = fold_places_ner(table, args.places_ner)
 
     out = {
         "schema": "tripod-entity-aliases",
         "schema_version": ALIAS_SCHEMA_VERSION,
-        "book": "RUTH",
-        "source": "ruth-pilot-b-wiki/bcd frontmatter (+ ETCBC places NER sheet)",
+        "book": book.upper(),
+        "source": f"{book}-pilot-b-wiki/bcd frontmatter (+ ETCBC places NER sheet)",
         "places_ner": ner_info,
         "counts": {
             "entities": len(table),
@@ -192,11 +206,12 @@ def main():
 
     body = json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True)
     sha = hashlib.sha256(body.encode("utf-8")).hexdigest()
-    os.makedirs(os.path.dirname(args.out), exist_ok=True)
-    with open(args.out, "w", encoding="utf-8") as fh:
+    out_path = args.out or os.path.join("_spec", "registry", f"{book}.aliases.json")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as fh:
         fh.write(body + "\n")
     sys.stderr.write(
-        f"[aliases] {len(table)} entities ({out['counts']['by_kind']}) → {args.out}\n"
+        f"[aliases] {len(table)} entities ({out['counts']['by_kind']}) → {out_path}\n"
         f"[aliases] places NER: {ner_info}\n[aliases] sha256: {sha}\n"
     )
     print(sha)

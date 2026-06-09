@@ -1,0 +1,11 @@
+{
+  "book": "JONAH",
+  "counts": {
+    "entries": 0
+  },
+  "entries": {},
+  "kind": "CONCEPT",
+  "schema": "tripod-concept-bank",
+  "schema_version": "0.1.0",
+  "source": "jonah-pilot-b-wiki/concepts frontmatter (code + name_slug + aliases)"
+}

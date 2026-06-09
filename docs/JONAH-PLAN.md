@@ -5,6 +5,15 @@
 > model generalizes. Read with `[[tripod-level3-purity-debt]]` (the BHSA-for-Jonah extractor pattern + read-by-layer),
 > `[[tripod-sentence-token-triage]]` (why L3 stays mapping-disciplined until the post-Jonah triage), `docs/SOURCE_AND_SCALING.md`.
 
+> **STATUS (2026-06-08, updates the "plan-first / no build" header above).** §5's Phase-0 re-scope + the Jonah
+> cycle are **ruled** (Marcia, SC-0032). **Phase 0 — DONE (SC-0032):** book-general code + the 3 widened
+> schema id-patterns (a *governed* change, not the "pure refactor" §6 first called it — that framing is
+> superseded by §5.0). **Phase 1 — DONE (SC-0033):** J01 pilot packet extracted + pinned; the two
+> registry-builders generalized behind `--book`; empty Jonah registry scaffolded + pinned; Ruth byte-identical.
+> **Data-layer generality finding:** BHSA's `book` feature is Latin — Jonah = **`Jona`**, not `Jonah` (Ruth was
+> identical, so SC-0032 missed it); `pericopes.jonah.json` `bhsa_book` corrected. **Next = Phase 2 (Marcia):**
+> author the J01 Meaning Map → compile → the first **by-layer** read (§0). J02–J05 division (esp. the psalm) still yours.
+
 ---
 
 ## 0. The point + how we read the result
