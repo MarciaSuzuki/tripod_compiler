@@ -13,7 +13,8 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { SPEC_DIR } from "../spec/load.js";
 import { loadApprovedEnumerations } from "../spec/enumerations.js";
 import { planPromotion, applyPromotion } from "../compiler/promote.js";
-import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions, loadLintExceptions, loadIdAlignmentExceptions } from "../reader/source-packet.js";
+import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExceptions, loadLintExceptions, loadIdAlignmentExceptions, loadConceptRegistry, loadFigureRegistry } from "../reader/source-packet.js";
+import { suggestReuse, type ReuseSuggestion } from "../engine/concept-check.js";
 import { reconcile } from "../engine/coverage.js";
 import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
 import { lintForModel, lintMeaningMap, applyLintExceptions, type LintReport } from "../engine/lint.js";
@@ -500,6 +501,32 @@ program
     );
     if (opts.outDir) console.log(`  ledgers written to ${opts.outDir}/`);
     process.exitCode = sum.withFindings ? 1 : 0;
+  });
+
+program
+  .command("concept-check")
+  .description(
+    "SC-0037 cross-canon consistency check for the GLOBAL Concept Bank + Figure Registry. The new-book guard: " +
+      "surfaces where a book introduces a concept/figure resembling one the canon bank already has (a suggested reuse). " +
+      "Diagnostic only — it suggests; the human rules reuse-vs-distinct. (Reference-integrity = `id-check`, now global.)",
+  )
+  .option("--book <book>", "the (new) book whose introduced concepts/figures to check for reuse", "jonah")
+  .option("--threshold <n>", "similarity threshold 0..1 (default 0.34)", "0.34")
+  .option("--json", "emit suggestions as JSON")
+  .action((opts: { book: string; threshold: string; json?: boolean }) => {
+    const th = parseFloat(opts.threshold);
+    const cb = suggestReuse(loadConceptRegistry(), opts.book, th);
+    const fig = suggestReuse(loadFigureRegistry(), opts.book, th);
+    if (opts.json) { console.log(JSON.stringify({ book: opts.book, concepts: cb, figures: fig }, null, 2)); return; }
+    const show = (label: string, arr: ReuseSuggestion[]) => {
+      console.log(`\n${label} — ${arr.length} reuse suggestion(s) for book '${opts.book.toUpperCase()}':`);
+      for (const s of arr)
+        console.log(`  ⚠ ${s.candidate} (${s.candidateSlug}) resembles ${s.match} (${s.matchSlug}) [${s.matchBooks.join(",")}] @ ${s.score} — reuse, or genuinely distinct?`);
+      if (!arr.length) console.log("  (none — introduced entries look genuinely new to the canon)");
+    };
+    show("CONCEPT BANK", cb);
+    show("FIGURE REGISTRY", fig);
+    console.log(`\n— concept-check: ${cb.length + fig.length} suggestion(s) · diagnostic (the human rules reuse) —`);
   });
 
 program.parseAsync(process.argv);
