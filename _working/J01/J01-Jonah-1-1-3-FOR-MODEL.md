@@ -79,10 +79,10 @@ pilot: "pilot-2"
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "CB_0001"
+            "object_id": "CB_0051"
           },
           {
-            "object_id": "CB_0002"
+            "object_id": "CB_0052"
           }
         ]
       },
@@ -135,7 +135,7 @@ pilot: "pilot-2"
             "object_id": "O2"
           },
           {
-            "object_id": "CB_0002"
+            "object_id": "CB_0052"
           }
         ]
       },
@@ -158,7 +158,7 @@ pilot: "pilot-2"
       "inter_proposition_links": {},
       "cb_flags": [],
       "figure_flags": [
-        "FIG_0001"
+        "FIG_0196"
       ]
     },
     {
@@ -171,8 +171,8 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [
-        "CB_0001",
-        "CB_0002"
+        "CB_0051",
+        "CB_0052"
       ],
       "figure_flags": []
     },
@@ -186,10 +186,10 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [
-        "CB_0002"
+        "CB_0052"
       ],
       "figure_flags": [
-        "FIG_0002"
+        "FIG_0197"
       ]
     },
     {
@@ -203,7 +203,7 @@ pilot: "pilot-2"
       "inter_proposition_links": {},
       "cb_flags": [],
       "figure_flags": [
-        "FIG_0003"
+        "FIG_0198"
       ]
     },
     {
@@ -216,11 +216,11 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [
-        "CB_0002"
+        "CB_0052"
       ],
       "figure_flags": [
-        "FIG_0002",
-        "FIG_0003"
+        "FIG_0197",
+        "FIG_0198"
       ]
     }
   ]

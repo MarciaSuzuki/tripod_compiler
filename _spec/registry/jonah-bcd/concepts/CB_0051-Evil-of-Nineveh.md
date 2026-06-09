@@ -1,4 +1,4 @@
 ---
-cb-code: CB_0001
+cb-code: CB_0051
 english: "the evil of Nineveh"
 ---

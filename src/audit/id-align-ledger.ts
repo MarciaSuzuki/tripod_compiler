@@ -120,7 +120,7 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     `> DIAGNOSTIC ONLY — the prose map and the FOR_MODEL are two halves of one training pair; an entity\n` +
     `> named in one must be the same canonical code the other uses. This inventory is ruled by a human; it fixes nothing.\n\n` +
     `## Reference integrity — code with no registry entry (${r.referenceIntegrity.length})\n\n` +
-    `_B/PL/O/TM/I resolve via \`ruth.aliases.json\`; \`CB_\`/\`FIG_\` via the vendored \`ruth.concepts.json\`/\`ruth.figures.json\`. Unknown ⇒ **ERROR**._\n\n` +
+    `_B/PL/O/TM/I resolve via the book's per-book alias table; \`CB_\`/\`FIG_\` via the **global** \`concepts.json\`/\`figures.json\` (canon-wide, SC-0037). Unknown ⇒ **ERROR**._\n\n` +
     table(["side", "code", "where", "reason", "severity"], riRows) +
     `\n## Name-binding — map slug ≠ canonical name (${r.nameBinding.length})\n\n` +
     `_B/PL/O/TM/I: slug = slugify(BCD English name) (trim · whitespace→\`-\` · Title-Case preserved). \`CB_\`/\`FIG_\`: slug = the registry \`name_slug\` or a known alias. Catches typos and wrong-code-on-name._\n\n` +

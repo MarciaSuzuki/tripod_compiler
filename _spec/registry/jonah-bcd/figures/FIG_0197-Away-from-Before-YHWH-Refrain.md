@@ -1,4 +1,4 @@
 ---
-fig-code: FIG_0002
+fig-code: FIG_0197
 english: "away from before YHWH refrain"
 ---

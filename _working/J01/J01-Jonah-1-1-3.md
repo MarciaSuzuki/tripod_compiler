@@ -12,12 +12,12 @@ sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[J01-Jonah-1-1-3-FOR-MODEL]]
 active-concepts:
-  - [[CB_0001-Evil-of-Nineveh]]
-  - [[CB_0002-Before-the-Face-of-YHWH]]
+  - [[CB_0051-Evil-of-Nineveh]]
+  - [[CB_0052-Before-the-Face-of-YHWH]]
 active-figures:
-  - [[FIG_0001-Word-of-YHWH-Came-Formula]]
-  - [[FIG_0002-Away-from-Before-YHWH-Refrain]]
-  - [[FIG_0003-Going-Down-Descent]]
+  - [[FIG_0196-Word-of-YHWH-Came-Formula]]
+  - [[FIG_0197-Away-from-Before-YHWH-Refrain]]
+  - [[FIG_0198-Going-Down-Descent]]
 ---
 
 # J01 — Jonah 1:1–3
@@ -79,12 +79,12 @@ The passage opens the book by setting the command against the refusal: a clear c
 
 **3C — Objects and Concepts**
 
-[[CB_0001-Evil-of-Nineveh]] — רָעָתָם / their evil
+[[CB_0051-Evil-of-Nineveh]] — רָעָתָם / their evil
 - What it is: the wrongdoing of the people of Nineveh
 - Function in scene: it is the reason the errand is given — it has "come up before" YHWH
-- Cross-ref: [[CB_0002-Before-the-Face-of-YHWH]] (it comes up before YHWH's face)
+- Cross-ref: [[CB_0052-Before-the-Face-of-YHWH]] (it comes up before YHWH's face)
 
-[[CB_0002-Before-the-Face-of-YHWH]] — לְפָנַי / before my face
+[[CB_0052-Before-the-Face-of-YHWH]] — לְפָנַי / before my face
 - What it is: the presence of YHWH — being in front of him, in his sight
 - Function in scene: where Nineveh's evil has "come up to"; the same presence Jonah will run from in Scene 2
 
@@ -139,7 +139,7 @@ The narrator names "their evil" but never says what it is — the wrongdoing is 
 - What it is: the price of passage on the ship
 - Function in scene: Jonah pays it — he buys his way onto the flight
 
-[[CB_0002-Before-the-Face-of-YHWH]] — מִלִּפְנֵי יְהוָה / from before YHWH
+[[CB_0052-Before-the-Face-of-YHWH]] — מִלִּפְנֵי יְהוָה / from before YHWH
 - What it is: the presence of YHWH — the same presence Nineveh's evil came up to in Scene 1
 - Function in scene: what Jonah flees away from — stated twice, opening and closing the verse
 
@@ -175,14 +175,14 @@ The narrator gives no reason for the flight. Jonah says nothing — no refusal, 
 - **Q:** Against whom? **A:** it / [[PL1-Nineveh]] Nineveh
 - **Q:** Why? **A:** their evil came up
 - **Q:** Whose evil? **A:** [[B5-People-of-Nineveh]] the people of Nineveh
-- **Q:** Came up to where? **A:** before YHWH's face [[CB_0002-Before-the-Face-of-YHWH]]
+- **Q:** Came up to where? **A:** before YHWH's face [[CB_0052-Before-the-Face-of-YHWH]]
 
 ### Proposition 3 — Jonah 1:3a [Scene 2]
 - **Q:** What happened? **A:** getting up
 - **Q:** Who got up? **A:** [[B1-Jonah]] Jonah
 - **Q:** To do what? **A:** to flee
 - **Q:** Flee where? **A:** [[PL2-Tarshish]] Tarshish
-- **Q:** Away from what? **A:** before YHWH's face [[CB_0002-Before-the-Face-of-YHWH]]
+- **Q:** Away from what? **A:** before YHWH's face [[CB_0052-Before-the-Face-of-YHWH]]
 
 ### Proposition 4 — Jonah 1:3b [Scene 2]
 - **Q:** What happened? **A:** going down
@@ -201,17 +201,17 @@ The narrator gives no reason for the flight. Jonah says nothing — no refusal, 
 - **Q:** To do what? **A:** to sail
 - **Q:** With whom? **A:** [[B4-Ship-Crew]] the crew
 - **Q:** To where? **A:** [[PL2-Tarshish]] Tarshish
-- **Q:** Away from what? **A:** before YHWH's face [[CB_0002-Before-the-Face-of-YHWH]]
+- **Q:** Away from what? **A:** before YHWH's face [[CB_0052-Before-the-Face-of-YHWH]]
 
 ## 5. Flags
 
 > All Concept and Figure codes below are **PROVISIONAL** — Jonah's Concept Bank and Figure Registry start empty (SC-0033). They are proposed here for the BCD-DELTA; none are yet registered.
 
 **5A — Concept Bank Flags**
-- [[CB_0001-Evil-of-Nineveh]] — active at Proposition 2
-- [[CB_0002-Before-the-Face-of-YHWH]] — active at Propositions 2, 3, 5 (the presence both the evil rises to and Jonah flees from)
+- [[CB_0051-Evil-of-Nineveh]] — active at Proposition 2
+- [[CB_0052-Before-the-Face-of-YHWH]] — active at Propositions 2, 3, 5 (the presence both the evil rises to and Jonah flees from)
 
 **5B — Figure Flags**
-- [[FIG_0001-Word-of-YHWH-Came-Formula]] — active at Proposition 1 (the prophetic word-event opening)
-- [[FIG_0002-Away-from-Before-YHWH-Refrain]] — active at Propositions 3 and 5 (within-pericope refrain pair — "away from before YHWH" stated twice, framing the flight)
-- [[FIG_0003-Going-Down-Descent]] — active at Propositions 4 and 5 (Jonah's downward motion — down to Joppa, down into the ship)
+- [[FIG_0196-Word-of-YHWH-Came-Formula]] — active at Proposition 1 (the prophetic word-event opening)
+- [[FIG_0197-Away-from-Before-YHWH-Refrain]] — active at Propositions 3 and 5 (within-pericope refrain pair — "away from before YHWH" stated twice, framing the flight)
+- [[FIG_0198-Going-Down-Descent]] — active at Propositions 4 and 5 (Jonah's downward motion — down to Joppa, down into the ship)

@@ -1,4 +1,4 @@
 ---
-fig-code: FIG_0003
+fig-code: FIG_0198
 english: "going-down descent motif"
 ---
