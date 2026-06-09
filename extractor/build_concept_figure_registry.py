@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 """
-⚠ SC-0037 — SUPERSEDED FOR OUTPUT SHAPE: the Concept Bank + Figure Registry are now GLOBAL /
-canon-wide (one `_spec/registry/concepts.json` + `figures.json`, codes unique across the Bible,
-per-entry `appears_in`), NOT the per-book `<book>.concepts.json` this still emits. The global
-registries are currently merge-built + pinned; the GLOBAL-MODE harvest of this builder (canon-wide
-concepts/ + figures/ notes → the two global files, with `appears_in` from each note's `appears-in`
-frontmatter) is finalized together with the **vault-notes writeback** (the notes are the canonical
-source; moving Jonah's renumbered CB/FIG notes into the canon bank is the SC-0037 vault step). Until
-then, do not run this in per-book mode for CB/FIG. (`build_aliases.py` — the per-book CAST — is unaffected.)
+SC-0037 — GLOBAL / canon-wide. Harvests the vault's canon-wide concepts/ + figures/ notes into ONE
+`_spec/registry/concepts.json` + `figures.json` (codes unique across the whole Bible; per-entry
+`appears_in` derived from each note's `appears-in` pericope list, mapped to books via PERICOPE_BOOK).
+One code per concept/figure canon-wide, so the Facilitator anchors them consistently everywhere they
+appear. The pinned global registries are reproducible from these notes (verified byte-identical).
+(`build_aliases.py` — the per-book CAST: beings/places/objects — is separate and stays per-book.)
 
 Build the vendored, pinned Concept-Bank and Figure-Registry indices for the SC-0018
 cross-artifact ID-alignment checker (`tripod id-check`).
@@ -76,14 +74,28 @@ def parse_frontmatter(text):
         return None
 
 
+# Pericope-prefix → book. The `appears-in` field lists pericopes (e.g. P07, J01); the GLOBAL bank's
+# appears_in is canon-wide (book-level). Extend this map as each new book is added.
+PERICOPE_BOOK = {"P": "RUTH", "J": "JONAH"}
+
+
+def books_from_appears_in(fm):
+    """Map a note's `appears-in` pericope list (e.g. [P07, J01]) to its canon-wide book tags (SC-0037)."""
+    out = []
+    for p in fm.get("appears-in") or []:
+        bk = PERICOPE_BOOK.get(str(p).strip()[:1].upper())
+        if bk and bk not in out:
+            out.append(bk)
+    return sorted(out)
+
+
 def harvest(coll_dir, code_key):
-    """Harvest one flat note collection into { CODE: {code, name_slug, aliases[]} }."""
+    """Harvest one canon-wide note collection into { CODE: {code, name_slug, aliases[], appears_in[]} }."""
     table = {}
     for fn in sorted(os.listdir(coll_dir)):
         if not fn.endswith(".md"):
             continue
-        path = os.path.join(coll_dir, fn)
-        with open(path, encoding="utf-8") as fh:
+        with open(os.path.join(coll_dir, fn), encoding="utf-8") as fh:
             text = fh.read()
         fm = parse_frontmatter(text)
         if not fm:
@@ -107,62 +119,57 @@ def harvest(coll_dir, code_key):
             "code": code,
             "name_slug": name_slug,
             "aliases": aliases,
+            "appears_in": books_from_appears_in(fm),
         }
     return table
 
 
-def write_registry(table, out_path, kind, schema, book):
+def write_global(table, out_path, kind, schema):
+    """Write ONE canon-wide registry (SC-0037): global codes, per-entry appears_in (book tags)."""
+    by_book = {}
+    for e in table.values():
+        for b in e["appears_in"]:
+            by_book[b] = by_book.get(b, 0) + 1
     out = {
         "schema": schema,
-        "schema_version": REGISTRY_SCHEMA_VERSION,
-        "book": book.upper(),
+        "schema_version": "0.2.0",
+        "scope": "canon-wide",
         "kind": kind,
-        "source": f"{book.lower()}-pilot-b-wiki/{kind.lower()}s frontmatter (code + name_slug + aliases)",
-        "counts": {"entries": len(table)},
+        "source": "global Bible-wide bank (per-book concept/figure notes, canon-numbered; SC-0037)",
+        "counts": {"entries": len(table), "by_book": by_book},
         "entries": table,
     }
     body = json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    # sha of the FILE bytes (incl. the trailing newline) — this is what `_spec/pins.json` pins and
-    # what `tripod check-drift` (sha256OfFile) verifies. Match it exactly.
+    # sha of the FILE bytes (incl. trailing newline) — what `_spec/pins.json` pins + `check-drift` verifies.
     sha = hashlib.sha256(body.encode("utf-8")).hexdigest()
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as fh:
         fh.write(body)
-    sys.stderr.write(f"[reg] {len(table)} {kind} entries → {out_path}\n[reg] sha256 (file): {sha}\n")
+    sys.stderr.write(f"[reg] {len(table)} {kind} entries ({by_book}) → {out_path}\n[reg] sha256 (file): {sha}\n")
     return sha
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Harvest concepts/ + figures/ → vendored CB/FIG registries")
-    ap.add_argument("--book", default="ruth",
-                    help="book key (lowercase) → output book label + default out-paths. Default: ruth.")
-    ap.add_argument("--vault",
-                    help="path to the book's wiki vault (holds concepts/ + figures/). Omit to scaffold EMPTY "
-                         "registries for a book without a Concept Bank / Figure Registry yet (SC-0033, Jonah Phase 1).")
-    ap.add_argument("--out-concepts", help="default: _spec/registry/<book>.concepts.json")
-    ap.add_argument("--out-figures", help="default: _spec/registry/<book>.figures.json")
+    ap = argparse.ArgumentParser(
+        description="Harvest the canon-wide concepts/ + figures/ notes → the GLOBAL CB/FIG registries (SC-0037)")
+    ap.add_argument("--vault", required=True,
+                    help="path to the wiki vault holding the canon-wide concepts/ + figures/ notes")
+    ap.add_argument("--out-concepts", default=os.path.join("_spec", "registry", "concepts.json"))
+    ap.add_argument("--out-figures", default=os.path.join("_spec", "registry", "figures.json"))
     args = ap.parse_args()
 
-    book = args.book.lower()
-    out_paths = {
-        "concepts": args.out_concepts or os.path.join("_spec", "registry", f"{book}.concepts.json"),
-        "figures": args.out_figures or os.path.join("_spec", "registry", f"{book}.figures.json"),
-    }
-
-    vault = os.path.expanduser(args.vault) if args.vault else None
-    if vault and not os.path.isdir(vault):
-        sys.exit(f"ERROR: vault dir not found: {vault}")  # explicit path must be valid (typo guard)
+    vault = os.path.expanduser(args.vault)
+    if not os.path.isdir(vault):
+        sys.exit(f"ERROR: vault dir not found: {vault}")
 
     shas = {}
     for sub, (code_key, kind, schema) in COLLECTIONS.items():
-        d = os.path.join(vault, sub) if vault else None
-        if d and os.path.isdir(d):
-            table = harvest(d, code_key)
-        else:
-            reason = f"no {sub}/ dir in vault" if vault else "no --vault given"
-            sys.stderr.write(f"[reg] {reason}: scaffolding an EMPTY {kind} registry for book '{book}'\n")
-            table = {}
-        shas[sub] = write_registry(table, out_paths[sub], kind, schema, book)
+        d = os.path.join(vault, sub)
+        if not os.path.isdir(d):
+            sys.exit(f"ERROR: collection dir not found: {d}")
+        table = harvest(d, code_key)
+        out_path = args.out_concepts if sub == "concepts" else args.out_figures
+        shas[sub] = write_global(table, out_path, kind, schema)
 
     # print both shas (concepts then figures), one per line, for the pin step
     print(shas["concepts"])
