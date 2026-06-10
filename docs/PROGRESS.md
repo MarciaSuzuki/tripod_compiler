@@ -283,10 +283,3 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
   is still future work. Vendored-registry growth: **P01–P06 all promoted** (registry v0.4); pilot corpus fully converged.
 - **Coreference attribution & semantic additions** stay human (per `docs/COVERAGE.md` / `READING_QUALITY.md`) — not mechanizable.
 - **Two `.docx`** reference files were left in the working tree; now gitignored (`*.docx`).
-
-## Side prototypes (NOT part of the compiler pipeline)
-- **`sound-hunters/` (added 2026-06-10)** — self-contained browser prototype (React+Vite, own
-  `package.json`) of the "Sound Hunters" language-elicitation game for unwritten-language speakers:
-  spaced 5-rep elicitation, canonical-take selection, sound-matching baskets, minimal-pair + cross-speaker
-  convergence checks, ZIP export with `manifest.json`. See `sound-hunters/README.md`. It shares no code,
-  spec, or vocabulary with the compiler — do not wire compiler gates/pins into it (and vice versa).
