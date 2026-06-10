@@ -22,6 +22,14 @@
 > (`tests/jonah-j01.test.ts`); the FOR_MODEL **skeleton** + CL stay in `_working/J01/` until the judgment
 > half is authored (Marcia ruled Option 1 — map now, FOR_MODEL later). **Next = Phase 3:** J02–J05 (Marcia
 > rules the division; the ch.2 psalm is the hard test).
+>
+> **DIVISION RULED (2026-06-10, SC-0039) — the §5.1 sub-call: the psalm stands ALONE.** Marcia: "a pericope
+> that is purely the poem… no narrative frame muddying the measurement; the swallowing verse is narrative and
+> sits naturally as the storm's resolution." Tiling: **J02** 1:4–2:1 (Heb 1:4–2:2, storm+swallowing+prayer-intro)
+> · **J03** 2:2–9 (Heb 2:3–10, the poem ONLY — the genre/register stress test) · **J04** 2:10–3:10
+> (Heb 2:11–3:10, release+Nineveh) · **J05** 4:1–11. All four packets extracted from BHSA + pinned
+> (SC-0039; whole-book tiling verified, 48/48 verses, 0 overlaps). **Next: Marcia maps** (her order — J02 or
+> the psalm first); each map runs the J01 pipeline (compile → gates → by-layer read).
 
 ---
 
