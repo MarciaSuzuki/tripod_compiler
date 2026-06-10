@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 8,
+      "JONAH": 9,
       "RUTH": 115
     },
-    "entries": 123
+    "entries": 124
   },
   "entries": {
     "FIG_0001": {
@@ -1042,6 +1042,14 @@
       ],
       "code": "FIG_0203",
       "name_slug": "Drowning-Engulfment"
+    },
+    "FIG_0204": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0204",
+      "name_slug": "Not-Perish-Refrain"
     }
   },
   "kind": "FIGURE",
