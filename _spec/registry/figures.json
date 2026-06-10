@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 6,
+      "JONAH": 8,
       "RUTH": 115
     },
-    "entries": 121
+    "entries": 123
   },
   "entries": {
     "FIG_0001": {
@@ -1026,6 +1026,22 @@
       ],
       "code": "FIG_0201",
       "name_slug": "Captain-Echoes-the-Command"
+    },
+    "FIG_0202": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0202",
+      "name_slug": "Temple-Turn-Pair"
+    },
+    "FIG_0203": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0203",
+      "name_slug": "Drowning-Engulfment"
     }
   },
   "kind": "FIGURE",

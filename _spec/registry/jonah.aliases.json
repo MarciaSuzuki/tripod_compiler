@@ -2,11 +2,11 @@
   "book": "JONAH",
   "counts": {
     "by_kind": {
-      "PERSON": 7,
-      "PLACE": 5,
-      "THING": 6
+      "PERSON": 8,
+      "PLACE": 8,
+      "THING": 8
     },
-    "entities": 18
+    "entities": 24
   },
   "entities": {
     "B1": {
@@ -86,6 +86,17 @@
       "kind": "PERSON",
       "referential_forms": []
     },
+    "B8": {
+      "appears_in": [
+        "J03"
+      ],
+      "english": "Idol Keepers",
+      "gender": null,
+      "hebrew": "מְשַׁמְּרִים",
+      "hebrew_cons": "משמרים",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
     "O1": {
       "appears_in": [
         "J01"
@@ -152,6 +163,28 @@
       "kind": "THING",
       "referential_forms": []
     },
+    "O7": {
+      "appears_in": [
+        "J03"
+      ],
+      "english": "Deep",
+      "gender": null,
+      "hebrew": "תְּהוֹם",
+      "hebrew_cons": "תהום",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O8": {
+      "appears_in": [
+        "J03"
+      ],
+      "english": "Weeds",
+      "gender": null,
+      "hebrew": "סוּף",
+      "hebrew_cons": "סוף",
+      "kind": "THING",
+      "referential_forms": []
+    },
     "PL1": {
       "appears_in": [
         "J01"
@@ -207,6 +240,39 @@
       "gender": null,
       "hebrew": "יַבָּשָׁה",
       "hebrew_cons": "יבשה",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL6": {
+      "appears_in": [
+        "J03"
+      ],
+      "english": "Sheol",
+      "gender": null,
+      "hebrew": "שְׁאוֹל",
+      "hebrew_cons": "שאול",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL7": {
+      "appears_in": [
+        "J03"
+      ],
+      "english": "Temple",
+      "gender": null,
+      "hebrew": "הֵיכָל",
+      "hebrew_cons": "היכל",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL8": {
+      "appears_in": [
+        "J03"
+      ],
+      "english": "Pit",
+      "gender": null,
+      "hebrew": "שַׁחַת",
+      "hebrew_cons": "שחת",
       "kind": "PLACE",
       "referential_forms": []
     }
