@@ -150,6 +150,19 @@ number bound to exactly one decision.
 
 ---
 
+## SC-0041 — The Jonah writeback: book folders inside this vault
+- **Date:** 2026-06-10
+- **Decided by:** Marcia — the book-2 vault-home ruling ("book folders inside this vault"; the evaluator recorded it and set the expected-scope list as the acceptance contract). Closes the SC-0037 amendment-2 deferred item: "where does book #2 live in a Ruth-named vault."
+- **Status:** APPLIED (PR pair: compiler #49 + vault #17; merged on Marcia's call after the evaluator's remote verify).
+- **Type:** vault structure (writeback) + registry source-of-truth handover. **No `validation-rules.json` change, no closed-list change, no pin change, no spec-version bump** — the one acceptance-critical invariant is that `jonah.aliases.json` does NOT move.
+- **Vault gains (PR #17):** `pericopes/jonah/` with the two blessed maps — J01 (from `fixtures/meaning-map/`) and J02 (from `_working/J02/`), **byte-identical copies, shas proven on the remote refs**; Ruth's six stay flat in `pericopes/`, untouched. `bcd/jonah/{beings,places,objects}/` — the 18-entity Jonah cast comes home, book-foldered ("book folders" applied literally; also necessary — both books use the same code series, so a flat merge would put Ruth's B1-Judges and Jonah's B1-Jonah in one folder). Ruth's `bcd/` grandfathered flat.
+- **Compiler side (PR #49):** `_spec/registry/jonah-bcd/` **retired** (18 files; grep-verified zero runtime consumers — the alias builder takes `--bcd` as an argument). **The vault is now the cast's source of truth** — the SC-0037 CB/FIG pattern applied to the cast. Rebuild recipe: `build_aliases.py --book jonah --bcd <vault>/bcd/jonah`.
+- **Acceptance, proven (both by the builder pre-PR and the evaluator on the remote):** the pinned `jonah.aliases.json` rebuilds **byte-identical from the relocated vault notes** — pin **aliases-0.1.3 unchanged**; all 20 moved/copied files sha-identical across the repos; board 174 + 1 skipped; check-drift exit 0; Ruth byte-at-baseline. **The byte-identity guard now covers Jonah:** vault `pericopes/jonah/*` ≡ the compiler's blessed copies (J01 ↔ fixtures; J02 ↔ `_working` until its graduation).
+- **Deliberately NOT in scope:** the J0x FOR_MODEL skeletons + COMPILATION-LOGs (unfinished machine artifacts — no vault `stas/` entries until their judgment half is authored); J02's graduation (a separate later call, the J01 pattern); machine-only artifacts (BHSA packets, `pericopes.jonah.json`, pins) stay compiler-side.
+- **Process note:** this chronological entry was added at the evaluator's pre-merge catch — the original PR carried only the allocation-ledger row (the house norm is both). The recurrence class: ledger-completeness checks belong in the pre-PR sweep.
+
+---
+
 ## SC-0040 — J02 (the storm): map authored, ruled, applied
 - **Date:** 2026-06-10
 - **Decided by:** Marcia — J02-before-the-psalm ("the storm grows the Jonah cast on familiar narrative ground"), then all four ruling groups on the draft: **A** the map (scene division, absences, prose) + the "three days and three nights" **TIME_PAIR** + the three moment-level register shifts (ELDER_AUTHORITY v.6 · CONSULTATIVE v.7/v.11 · RELIGIOUS_WORSHIP v.14); **B** the 12-entity cast as proposed, **fish = being**; **C** the three cross-book reuses (CB_0052 · FIG_0197 · FIG_0198 continue into J02); **D** the five new canon codes. Builder drafted as Agent-2 v0.3; evaluator verifies the application against her words before the merge call.
