@@ -801,7 +801,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
       const acc = exMatch("REFERENCE_INTEGRITY", { code });
       referenceIntegrity.push({
         side, code, where, reason: "UNKNOWN_CODE",
-        detail: `no registry entry in ruth.${code.startsWith("CB_") ? "concepts" : "figures"}.json (the ${code.startsWith("CB_") ? "Concept Bank" : "Figure Registry"} is vendored)`,
+        detail: `no registry entry in the global ${code.startsWith("CB_") ? "concepts" : "figures"}.json (the canon-wide ${code.startsWith("CB_") ? "Concept Bank" : "Figure Registry"} is vendored)`,
         severity: acc ? "ACCEPTED" : "ERROR", accepted: acc,
       });
       return;
@@ -811,7 +811,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
       const acc = exMatch("REFERENCE_INTEGRITY", { code });
       referenceIntegrity.push({
         side, code, where, reason: "UNKNOWN_CODE",
-        detail: `no registry entry in ruth.aliases.json (${prefixOf(code)} namespace is tracked)`,
+        detail: `no registry entry in ${aliases.book.toLowerCase()}.aliases.json (${prefixOf(code)} namespace is tracked)`,
         severity: acc ? "ACCEPTED" : "ERROR", accepted: acc,
       });
     } else if (ns.isEntityCode(code)) {

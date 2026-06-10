@@ -1,6 +1,6 @@
 ---
 b-code: B4
-english: "the ship's crew"
+english: "Ship Crew"
 gender: null
 appears-in: [J01]
 ---

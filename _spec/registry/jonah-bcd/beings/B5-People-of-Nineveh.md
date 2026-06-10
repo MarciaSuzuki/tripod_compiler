@@ -1,6 +1,6 @@
 ---
 b-code: B5
-english: "the people of Nineveh"
+english: "People of Nineveh"
 gender: null
 appears-in: [J01]
 ---

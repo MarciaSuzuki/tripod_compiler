@@ -1,6 +1,6 @@
 ---
 o-code: O2
-english: "fare"
+english: "Fare"
 hebrew: "שָׂכָר"
 appears-in: [J01]
 ---

@@ -78,8 +78,8 @@
       "sha256": "0509f2ebd972b0fa80e40d8d658512b254ad207ba76317d17bbd5f76dfe4c88c"
     },
     "registry/jonah.aliases.json": {
-      "version": "aliases-0.1.1",
-      "sha256": "b3bcfbffaed8b89ee2259930c45c5b5a94ef8894329a847c826f41ccdc98edfe"
+      "version": "aliases-0.1.2",
+      "sha256": "109bd74d3fc437e61507768d68daff5d00bde38f722f9b9abd9c7c521dd9d0ee"
     },
     "registry/concepts.json": {
       "version": "0.2.0",
