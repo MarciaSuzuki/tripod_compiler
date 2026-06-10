@@ -24,7 +24,7 @@ pilot: "pilot-2"
     "production_use": false
   },
   "confidence_overall": "LOW",
-  "confidence_overall_note": "Deterministic skeleton from the approved Meaning Map. 16 beings + 5 place codes extracted, 4 flags carried, 106 judgment gaps deferred. Extract-only: no controlled-vocabulary values assigned by the compiler.",
+  "confidence_overall_note": "Deterministic skeleton from the approved Meaning Map. 17 beings + 5 place codes extracted, 6 flags carried, 106 judgment gaps deferred. Extract-only: no controlled-vocabulary values assigned by the compiler.",
   "compilation_decisions": [
     {
       "decision_id": "P04-D1",
@@ -70,7 +70,7 @@ pilot: "pilot-2"
   },
   "known_limitations": [
     "Deterministic skeleton (tripod compile): 106 judgment gaps remain as typed __TODO__ placeholders carrying their source-prose span.",
-    "Judgment gaps by field — proposition_kind:19, event_specific_slots:19, inter_proposition_links:19, role_in_scene:16, referential_form:16, scene_kind:6, object_id:3, book_context_ref:1, register_overrides:1, arc_elements:1, context_elements:1, tone_elements:1, pace_elements:1, communicative_function_elements:1, (granularity):1.",
+    "Judgment gaps by field — proposition_kind:19, event_specific_slots:19, inter_proposition_links:19, role_in_scene:17, referential_form:17, scene_kind:6, book_context_ref:1, register_overrides:1, arc_elements:1, context_elements:1, tone_elements:1, pace_elements:1, communicative_function_elements:1, beings_in_scene:1, (granularity):1.",
     "Propositions are at MEANING-MAP granularity (19); the FOR_MODEL may decompose multi-event propositions further (judgment, Agent 3).",
     "Controlled-vocabulary tokens (scene_kind, proposition_kind, role/function), event_specific_slots, inter_proposition_links, referential_form, and the L1 element arrays are judgment — deferred to Agent 3 (Slice 4). No values were invented."
   ]

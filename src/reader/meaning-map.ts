@@ -228,7 +228,11 @@ function applyFlags(flagsBody: string[], props: MMProposition[]): void {
     const wl = firstWikilink(line);
     if (!wl) continue;
     const code = codeFromWikilink(wl);
-    const nums = [...line.matchAll(/Proposition[s]?\s+([\d,\s and]+)/gi)].flatMap((m) =>
+    // Pointers live BEFORE the first parenthetical; "(…)" is commentary. A cross-pericope note may
+    // name another pericope's propositions there ("cross-pericope pair with J01 Proposition 1") —
+    // those are not local pointers (the J04/FIG_0196 leak, SC-0047).
+    const pointerSegment = line.split("(")[0]!;
+    const nums = [...pointerSegment.matchAll(/Proposition[s]?\s+([\d,\s and]+)/gi)].flatMap((m) =>
       (m[1] ?? "").split(/[,\s]+|and/).map((s) => s.trim()).filter((s) => /^\d+$/.test(s)),
     );
     for (const n of nums) {

@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 7,
+      "JONAH": 8,
       "RUTH": 50
     },
-    "entries": 56
+    "entries": 57
   },
   "entries": {
     "CB_0001": {
@@ -584,6 +584,14 @@
       ],
       "code": "CB_0056",
       "name_slug": "Salvation-Belongs-to-YHWH"
+    },
+    "CB_0057": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0057",
+      "name_slug": "God-Relents"
     }
   },
   "kind": "CONCEPT",

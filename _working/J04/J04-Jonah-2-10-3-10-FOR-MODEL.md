@@ -131,6 +131,11 @@ pilot: "pilot-2"
             "being_id": "B2",
             "role_in_scene": "__TODO__: the one whose word Jonah now walks by",
             "presence": "REFERENCED"
+          },
+          {
+            "being_id": "B9",
+            "role_in_scene": "__TODO__: the measure of the city — Nineveh is great even to God",
+            "presence": "REFERENCED"
           }
         ]
       },
@@ -163,7 +168,7 @@ pilot: "pilot-2"
             "presence": "PRESENT"
           },
           {
-            "being_id": "B2",
+            "being_id": "B9",
             "role_in_scene": "__TODO__: the one believed",
             "presence": "REFERENCED"
           }
@@ -179,7 +184,7 @@ pilot: "pilot-2"
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: sackcloth — שַׂקִּים / sackcloth"
+            "object_id": "O9"
           }
         ]
       },
@@ -197,12 +202,12 @@ pilot: "pilot-2"
       "beings_in_scene": {
         "entries": [
           {
-            "being_id": "__TODO__: the king of Nineveh — מֶלֶךְ נִינְוֵה / the king of Nineveh",
+            "being_id": "B10",
             "role_in_scene": "__TODO__: the throne's answer to the word — he rises, strips, covers, sits in ashes, and decrees",
             "presence": "PRESENT"
           },
           {
-            "being_id": "__TODO__: his nobles — גְּדֹלָיו / his great ones",
+            "being_id": "B11",
             "role_in_scene": "__TODO__: co-issuers of the decree",
             "presence": "REFERENCED"
           },
@@ -212,12 +217,12 @@ pilot: "pilot-2"
             "presence": "REFERENCED"
           },
           {
-            "being_id": "__TODO__: the animals of Nineveh — הַבְּהֵמָה הַבָּקָר וְהַצֹּאן / the beasts, herd and flock",
+            "being_id": "B12",
             "role_in_scene": "__TODO__: drawn into the fast and the sackcloth by decree",
             "presence": "REFERENCED"
           },
           {
-            "being_id": "B2",
+            "being_id": "B9",
             "role_in_scene": "__TODO__: the one to be cried to mightily; the one who may relent",
             "presence": "REFERENCED"
           }
@@ -233,10 +238,13 @@ pilot: "pilot-2"
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: sackcloth — שַׂק / sackcloth"
+            "object_id": "O9"
           },
           {
-            "object_id": "__TODO__: the ashes — הָאֵפֶר / the ashes"
+            "object_id": "O10"
+          },
+          {
+            "object_id": "CB_0057"
           }
         ]
       },
@@ -254,7 +262,7 @@ pilot: "pilot-2"
       "beings_in_scene": {
         "entries": [
           {
-            "being_id": "B2",
+            "being_id": "B9",
             "role_in_scene": "__TODO__: the one who sees the deeds and relents of the evil",
             "presence": "PRESENT"
           },
@@ -272,6 +280,9 @@ pilot: "pilot-2"
         "entries": [
           {
             "object_id": "CB_0051"
+          },
+          {
+            "object_id": "CB_0057"
           }
         ]
       },
@@ -293,9 +304,7 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": [
-        "FIG_0196"
-      ]
+      "figure_flags": []
     },
     {
       "prop_id": "P2",
@@ -389,7 +398,7 @@ pilot: "pilot-2"
       "verse_anchor": "3:5",
       "proposition_kind": "__TODO__: Q: What happened? A: believing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: believing | Q: Who believed? A: [[B5-People-of-Nineveh]] the men of Nineveh | Q: Believed whom? A: [[B2-YHWH]] God"
+        "__TODO__": "Q: What happened? A: believing | Q: Who believed? A: [[B5-People-of-Nineveh]] the men of Nineveh | Q: Believed whom? A: [[B9-God]] God"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -413,7 +422,7 @@ pilot: "pilot-2"
       "verse_anchor": "3:6",
       "proposition_kind": "__TODO__: Q: What happened? A: the word reached",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: the word reached | Q: Reached whom? A: the king of Nineveh"
+        "__TODO__": "Q: What happened? A: the word reached | Q: Reached whom? A: the [[B10-King-of-Nineveh]] king of Nineveh"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -437,7 +446,7 @@ pilot: "pilot-2"
       "verse_anchor": "3:7",
       "proposition_kind": "__TODO__: Q: What happened? A: proclaiming",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: proclaiming | Q: Who proclaimed? A: the king | Q: Where? A: in Nineveh | Q: By whose order? A: the king | Q: And? A: his nobles"
+        "__TODO__": "Q: What happened? A: proclaiming | Q: Who proclaimed? A: the king | Q: Where? A: in Nineveh | Q: By whose order? A: the king | Q: And? A: his [[B11-Nobles]] no…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -449,7 +458,7 @@ pilot: "pilot-2"
       "verse_anchor": "3:7",
       "proposition_kind": "__TODO__: Q: What was decreed? A: tasting nothing",
       "event_specific_slots": {
-        "__TODO__": "Q: What was decreed? A: tasting nothing | Q: Who must not taste? A: man | Q: And? A: beast | Q: Which beasts? A: herd | Q: And? A: flock | Q: And? A: no grazin…"
+        "__TODO__": "Q: What was decreed? A: tasting nothing | Q: Who must not taste? A: [[B5-People-of-Nineveh]] man | Q: And? A: [[B12-Animals]] beast | Q: Which beasts? A: herd …"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -461,7 +470,7 @@ pilot: "pilot-2"
       "verse_anchor": "3:8",
       "proposition_kind": "__TODO__: Q: What was decreed? A: covering with sackcloth",
       "event_specific_slots": {
-        "__TODO__": "Q: What was decreed? A: covering with sackcloth | Q: Covering whom? A: man | Q: And? A: beast | Q: What happened next in the decree? A: crying to God | Q: How?…"
+        "__TODO__": "Q: What was decreed? A: covering with sackcloth | Q: Covering whom? A: man | Q: And? A: beast | Q: What happened next in the decree? A: crying to [[B9-God]] Go…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -487,11 +496,15 @@ pilot: "pilot-2"
       "verse_anchor": "3:9",
       "proposition_kind": "__TODO__: Q: What was said? A: who knows",
       "event_specific_slots": {
-        "__TODO__": "Q: What was said? A: who knows | Q: What might happen? A: God may turn | Q: And? A: relent | Q: Turn from what? A: his burning anger | Q: Toward what end? A: w…"
+        "__TODO__": "Q: What was said? A: who knows | Q: What might happen? A: [[B9-God]] God may turn | Q: And? A: relent | Q: Turn from what? A: his burning anger | Q: Toward wha…"
       },
       "inter_proposition_links": {},
-      "cb_flags": [],
-      "figure_flags": []
+      "cb_flags": [
+        "CB_0057"
+      ],
+      "figure_flags": [
+        "FIG_0204"
+      ]
     },
     {
       "prop_id": "P18",
@@ -499,7 +512,7 @@ pilot: "pilot-2"
       "verse_anchor": "3:10",
       "proposition_kind": "__TODO__: Q: What happened? A: seeing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: seeing | Q: Who saw? A: [[B2-YHWH]] God | Q: Saw what? A: their deeds | Q: Which deeds? A: they turned from their evil way"
+        "__TODO__": "Q: What happened? A: seeing | Q: Who saw? A: [[B9-God]] God | Q: Saw what? A: their deeds | Q: Which deeds? A: they turned from their evil way"
       },
       "inter_proposition_links": {},
       "cb_flags": [
@@ -513,10 +526,12 @@ pilot: "pilot-2"
       "verse_anchor": "3:10",
       "proposition_kind": "__TODO__: Q: What happened? A: relenting",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: relenting | Q: Who relented? A: God | Q: Of what? A: the evil he had said he would do to them | Q: What happened next? A: he did not do it"
+        "__TODO__": "Q: What happened? A: relenting | Q: Who relented? A: [[B9-God]] God | Q: Of what? A: the evil he had said he would do to them | Q: What happened next? A: he di…"
       },
       "inter_proposition_links": {},
-      "cb_flags": [],
+      "cb_flags": [
+        "CB_0057"
+      ],
       "figure_flags": []
     }
   ]
