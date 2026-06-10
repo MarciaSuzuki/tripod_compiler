@@ -1,12 +1,12 @@
 {
   "book": "JONAH",
   "bhsa_book": "Jona",
-  "_note": "Jonah pericope → verse-range map (SC-0032; the held-out generality test). start/end are HEBREW versification (BHSA-native); bcv is English. NOTE bhsa_book is the ETCBC BHSA Latin book name 'Jona' (NOT 'Jonah') — verified against the tf/2021 `book` feature in Phase 1 (SC-0033); Ruth was identical in Latin/English so SC-0032 didn't surface this. Jonah's Heb/Eng numbering diverges at the fish: English 1:17 = Hebrew 2:1, so English 2:1-10 = Hebrew 2:2-11. Run via: extract_bhsa.py J01 --pericopes extractor/pericopes.jonah.json. J01 (1:1-3) is the firm pilot; J02-J05 are PROVISIONAL — boundaries (esp. the psalm) are Marcia's authoring-time ruling, and the Heb ranges are verified at extraction (Phase 1).",
+  "_note": "Jonah pericope → verse-range map (SC-0032; the held-out generality test). start/end are HEBREW versification (BHSA-native); bcv is English. NOTE bhsa_book is the ETCBC BHSA Latin book name 'Jona' (NOT 'Jonah') — verified against the tf/2021 `book` feature in Phase 1 (SC-0033); Ruth was identical in Latin/English so SC-0032 didn't surface this. Jonah's Heb/Eng numbering diverges at the fish: English 1:17 = Hebrew 2:1, so English 2:1-10 = Hebrew 2:2-11. Run via: extract_bhsa.py J01 --pericopes extractor/pericopes.jonah.json. J01 (1:1-3) shipped (SC-0038). J02-J05 boundaries RULED by Marcia 2026-06-10 (SC-0039): the psalm stands ALONE as J03 — purely the poem (Heb 2:3-10 = Eng 2:2-9), no narrative frame verse inside it; the swallowing (Heb 2:1 = Eng 1:17) closes the storm pericope as its resolution, the one-line prayer-intro (Heb 2:2 = Eng 2:1) closes J02 with it, and the release (Heb 2:11 = Eng 2:10) opens J04. Heb ranges verified at extraction.",
   "pericopes": {
-    "J01": { "bcv": "Jonah 1:1-3",  "start": [1, 1], "end": [1, 3] },
-    "J02": { "bcv": "Jonah 1:4-17", "start": [1, 4], "end": [2, 1] },
-    "J03": { "bcv": "Jonah 2:1-10", "start": [2, 2], "end": [2, 11] },
-    "J04": { "bcv": "Jonah 3:1-10", "start": [3, 1], "end": [3, 10] },
-    "J05": { "bcv": "Jonah 4:1-11", "start": [4, 1], "end": [4, 11] }
+    "J01": { "bcv": "Jonah 1:1-3",      "start": [1, 1],  "end": [1, 3] },
+    "J02": { "bcv": "Jonah 1:4-2:1",    "start": [1, 4],  "end": [2, 2] },
+    "J03": { "bcv": "Jonah 2:2-9",      "start": [2, 3],  "end": [2, 10] },
+    "J04": { "bcv": "Jonah 2:10-3:10",  "start": [2, 11], "end": [3, 10] },
+    "J05": { "bcv": "Jonah 4:1-11",     "start": [4, 1],  "end": [4, 11] }
   }
 }
