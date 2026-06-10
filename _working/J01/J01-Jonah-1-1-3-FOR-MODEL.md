@@ -7,7 +7,7 @@ status: "skeleton"
 pilot: "pilot-2"
 ---
 
-# J01 — Jonah 1:1–3 — FOR_MODEL (SKELETON — 45 judgment gaps)
+# J01 — Jonah 1:1–3 — FOR_MODEL (SKELETON — 40 judgment gaps)
 
 > Deterministic skeleton compiled from the Meaning Map (`tripod compile`). Fields set to `__TODO__` need the drafter/LLM (Slice 4); see the gap report (`--json`).
 
@@ -149,8 +149,8 @@ pilot: "pilot-2"
   "level_3_propositions": [
     {
       "prop_id": "P1",
-      "scene_link": "__TODO__",
-      "verse_anchor": "Jonah",
+      "scene_link": "S1",
+      "verse_anchor": "1:1",
       "proposition_kind": "__TODO__: Q: What happened? A: a word came",
       "event_specific_slots": {
         "__TODO__": "Q: What happened? A: a word came | Q: Whose word? A: [[B2-YHWH]] YHWH's | Q: To whom? A: [[B1-Jonah]] Jonah | Q: Jonah who? A: son of [[B3-Amittai]] Amittai"
@@ -163,8 +163,8 @@ pilot: "pilot-2"
     },
     {
       "prop_id": "P2",
-      "scene_link": "__TODO__",
-      "verse_anchor": "Jonah",
+      "scene_link": "S1",
+      "verse_anchor": "1:2",
       "proposition_kind": "__TODO__: Q: What happened? A: telling",
       "event_specific_slots": {
         "__TODO__": "Q: What happened? A: telling | Q: Who told? A: [[B2-YHWH]] YHWH | Q: Told whom? A: [[B1-Jonah]] Jonah | Q: To do what? A: get up | Q: And? A: go | Q: Go where?…"
@@ -178,8 +178,8 @@ pilot: "pilot-2"
     },
     {
       "prop_id": "P3",
-      "scene_link": "__TODO__",
-      "verse_anchor": "Jonah",
+      "scene_link": "S2",
+      "verse_anchor": "1:3a",
       "proposition_kind": "__TODO__: Q: What happened? A: getting up",
       "event_specific_slots": {
         "__TODO__": "Q: What happened? A: getting up | Q: Who got up? A: [[B1-Jonah]] Jonah | Q: To do what? A: to flee | Q: Flee where? A: [[PL2-Tarshish]] Tarshish | Q: Away from…"
@@ -194,8 +194,8 @@ pilot: "pilot-2"
     },
     {
       "prop_id": "P4",
-      "scene_link": "__TODO__",
-      "verse_anchor": "Jonah",
+      "scene_link": "S2",
+      "verse_anchor": "1:3b",
       "proposition_kind": "__TODO__: Q: What happened? A: going down",
       "event_specific_slots": {
         "__TODO__": "Q: What happened? A: going down | Q: Who went down? A: [[B1-Jonah]] Jonah | Q: Down to where? A: [[PL3-Joppa]] Joppa | Q: What happened next? A: finding | Q: F…"
@@ -208,8 +208,8 @@ pilot: "pilot-2"
     },
     {
       "prop_id": "P5",
-      "scene_link": "__TODO__",
-      "verse_anchor": "Jonah",
+      "scene_link": "S2",
+      "verse_anchor": "1:3c",
       "proposition_kind": "__TODO__: Q: What happened? A: paying",
       "event_specific_slots": {
         "__TODO__": "Q: What happened? A: paying | Q: Who paid? A: [[B1-Jonah]] Jonah | Q: Paid what? A: its [[O2-Fare]] fare | Q: What happened next? A: going down | Q: Down into …"

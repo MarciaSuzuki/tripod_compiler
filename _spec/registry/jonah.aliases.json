@@ -2,11 +2,11 @@
   "book": "JONAH",
   "counts": {
     "by_kind": {
-      "PERSON": 5,
-      "PLACE": 3,
-      "THING": 2
+      "PERSON": 7,
+      "PLACE": 5,
+      "THING": 6
     },
-    "entities": 10
+    "entities": 18
   },
   "entities": {
     "B1": {
@@ -64,6 +64,28 @@
       "kind": "PERSON",
       "referential_forms": []
     },
+    "B6": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Captain",
+      "gender": "m",
+      "hebrew": "רַב הַחֹבֵל",
+      "hebrew_cons": "רבהחבל",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
+    "B7": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Great Fish",
+      "gender": "m",
+      "hebrew": "דָּג גָּדוֹל",
+      "hebrew_cons": "דגגדול",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
     "O1": {
       "appears_in": [
         "J01"
@@ -83,6 +105,50 @@
       "gender": null,
       "hebrew": "שָׂכָר",
       "hebrew_cons": "שכר",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O3": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Wind",
+      "gender": null,
+      "hebrew": "רוּחַ",
+      "hebrew_cons": "רוח",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O4": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Storm",
+      "gender": null,
+      "hebrew": "סַעַר",
+      "hebrew_cons": "סער",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O5": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Cargo",
+      "gender": null,
+      "hebrew": "כֵּלִים",
+      "hebrew_cons": "כלים",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O6": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Lots",
+      "gender": null,
+      "hebrew": "גּוֹרָלוֹת",
+      "hebrew_cons": "גורלות",
       "kind": "THING",
       "referential_forms": []
     },
@@ -119,6 +185,28 @@
       "gender": null,
       "hebrew": "יָפוֹ",
       "hebrew_cons": "יפו",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL4": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Sea",
+      "gender": null,
+      "hebrew": "יָם",
+      "hebrew_cons": "ים",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL5": {
+      "appears_in": [
+        "J02"
+      ],
+      "english": "Dry Land",
+      "gender": null,
+      "hebrew": "יַבָּשָׁה",
+      "hebrew_cons": "יבשה",
       "kind": "PLACE",
       "referential_forms": []
     }
