@@ -222,9 +222,13 @@ program
       .filter((f) => f.endsWith(".md"))
       .sort()
       .map((mf) => {
-        const pid = mf.slice(0, 3); // P0#
+        const pid = mf.slice(0, 3); // P0# / J0#
         const fm = fmFiles.find((f) => f.startsWith(pid));
-        if (!fm) return null;
+        if (!fm) {
+          // a map-only fixture (FOR_MODEL not yet graduated) is a legitimate state — skip VISIBLY, never silently
+          console.log(`${pid}: skipped — no gold FOR_MODEL in ${opts.fmDir} (map-only fixture)`);
+          return null;
+        }
         const mm = readMeaningMap(join(opts.mmDir, mf));
         const { skeleton } = compileSkeleton(mm);
         return goldDiff(mm, skeleton, readArtifactNote(join(opts.fmDir, fm)).json);
@@ -259,9 +263,9 @@ program
     const resolveOne = (arg: string): { pericope: string; led: ReturnType<typeof reconcile>; packet: ReturnType<typeof loadSourcePacket> } => {
       let fmPath: string;
       let pericope: string;
-      if (/^P\d+$/i.test(arg)) {
+      if (/^[A-Za-z]\d+$/.test(arg)) {
         pericope = arg.toUpperCase();
-        const f = readdirSync(opts.fmDir).find((x) => x.startsWith(pericope) && x.endsWith(".md"));
+        const f = readdirSync(opts.fmDir).find((x) => x.startsWith(pericope) && x.endsWith("-FOR-MODEL.md"));
         if (!f) throw new Error(`no FOR_MODEL note for ${pericope} in ${opts.fmDir}`);
         fmPath = join(opts.fmDir, f);
       } else {
@@ -423,11 +427,11 @@ program
   .option("--corpus", "check every map in --mm-dir that has a paired FOR_MODEL in --fm-dir")
   .option("--mm-dir <dir>", "meaning-map dir", "fixtures/meaning-map")
   .option("--fm-dir <dir>", "FOR_MODEL dir", "fixtures/for-model")
-  .option("--book <book>", "book whose pinned alias registry to use", "ruth")
+  .option("--book <book>", "force one alias-table book for every map (default: derived per map from its bcv frontmatter, falling back to ruth)")
   .option("--json", "emit the structured inventory as JSON")
   .option("--out <file>", "write the full inventory as a wiki ledger note (single-target only)")
   .option("--out-dir <dir>", "write each pericope's ledger note into this dir (batch)")
-  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; fmDir: string; book: string; json?: boolean; out?: string; outDir?: string }) => {
+  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; fmDir: string; book?: string; json?: boolean; out?: string; outDir?: string }) => {
     const exceptions = loadIdAlignmentExceptions();
     const fmFiles = readdirSync(opts.fmDir).filter((f) => f.endsWith(".md"));
     const noteResolveDirs = [...new Set([opts.mmDir, opts.fmDir])];
@@ -439,6 +443,7 @@ program
       if (st.isDirectory()) for (const f of readdirSync(p)) { if (f.endsWith(".md")) mapPaths.push(join(p, f)); }
       else mapPaths.push(p);
     }
+    const explicit = new Set(mapPaths); // an explicitly-passed map keeps the hard unpaired error
     if (opts.corpus) for (const f of readdirSync(opts.mmDir)) if (f.endsWith(".md")) mapPaths.push(join(opts.mmDir, f));
     const maps = [...new Set(mapPaths)].sort();
     if (maps.length === 0) {
@@ -446,17 +451,33 @@ program
       process.exit(2);
     }
 
+    // SC-0038: a mixed-book corpus must check each map against its OWN book's alias table (a Jonah map
+    // resolved against ruth.aliases.json mis-binds every entity). Book = the bcv's leading word
+    // (single-word book names cover the pilot; a multi-word book — e.g. 1 Samuel — will need a map here).
+    const aliasCache = new Map<string, ReturnType<typeof loadAliasTable>>();
+    const aliasesFor = (mapPath: string) => {
+      const book = opts.book ?? readMeaningMap(mapPath).bcv?.trim().split(/\s+/)[0]?.toLowerCase() ?? "ruth";
+      let t = aliasCache.get(book);
+      if (!t) { t = loadAliasTable(book); aliasCache.set(book, t); }
+      return t;
+    };
+
     const reports: IdAlignReport[] = [];
     for (const mapPath of maps) {
-      const pid = (mapPath.split("/").pop() ?? "").slice(0, 3); // P0#
+      const pid = (mapPath.split("/").pop() ?? "").slice(0, 3); // P0# / J0#
       const fm = fmFiles.find((f) => f.startsWith(pid));
       if (!fm) {
+        if (opts.corpus && !explicit.has(mapPath)) {
+          // a map-only fixture (FOR_MODEL not yet graduated) has nothing to align — skip VISIBLY, never silently
+          console.log(`– ${mapPath}: skipped — no paired FOR_MODEL (prefix ${pid}) in ${opts.fmDir} (map-only fixture)`);
+          continue;
+        }
         console.error(`✗ ${mapPath}: no paired FOR_MODEL (prefix ${pid}) in ${opts.fmDir}`);
         process.exitCode = 2;
         continue;
       }
       try {
-        reports.push(checkIdAlignment(mapPath, join(opts.fmDir, fm), { exceptions, noteResolveDirs, aliases: loadAliasTable(opts.book) }));
+        reports.push(checkIdAlignment(mapPath, join(opts.fmDir, fm), { exceptions, noteResolveDirs, aliases: aliasesFor(mapPath) }));
       } catch (e) {
         console.error(`✗ ${mapPath}: ${(e as Error).message}`);
         process.exitCode = 2;
