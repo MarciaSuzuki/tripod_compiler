@@ -129,12 +129,29 @@ function parseEntities(blockLines: string[]): MMEntity[] {
 }
 
 function parseScene(heading: string, body: string[], chapter: string | null): MMScene {
-  const hm = heading.match(/Scene\s+(\d+)\s*[—–-]\s*(.*?)\s*\(vv?\.?\s*(\d+)(?:\s*[–-]\s*(\d+))?\)/i);
+  // Heading range forms: the verse-only "(v.1–2)" (chapter from the pericope bcv — the Ruth
+  // idiom; a pericope inside one chapter), and the chapter-qualified "(1:4–6)" / "(1:17–2:1)"
+  // (required once a pericope — or a single scene — crosses a chapter; first hit: Jonah J02 S5).
+  // Where English and Hebrew versification diverge (Jonah 2; Psalms superscriptions), the heading
+  // adds an explicit "; Heb c:v–v" qualifier — the human-facing range stays English, but the
+  // MACHINE range (verse_range, which coverage reconciles against the Hebrew-versified BHSA
+  // packet) is taken from the Heb qualifier when present.
+  const hm = heading.match(
+    /Scene\s+(\d+)\s*[—–-]\s*(.*?)\s*\(\s*(?:vv?\.?\s*(\d+)(?:\s*[–-]\s*(\d+))?|(\d+):(\d+)(?:\s*[–-]\s*(?:(\d+):)?(\d+))?)\s*(?:;\s*Heb\.?\s+(\d+):(\d+)(?:\s*[–-]\s*(?:(\d+):)?(\d+))?)?\s*\)/i,
+  );
   const idx = hm ? Number(hm[1]) : NaN;
   const sceneId = Number.isFinite(idx) ? `S${idx}` : "S?";
   const title = hm ? hm[2]!.trim() : heading;
   let verseRange: string | null = null;
-  if (hm && chapter) verseRange = `${chapter}:${hm[3]}` + (hm[4] ? `-${hm[4]}` : "");
+  if (hm && hm[9]) {
+    // explicit Hebrew override: (…; Heb c:v), (…; Heb c:v–v), (…; Heb c:v–c:v)
+    verseRange = `${hm[9]}:${hm[10]}` + (hm[12] ? `-${hm[11] ? `${hm[11]}:` : ""}${hm[12]}` : "");
+  } else if (hm && hm[5]) {
+    // chapter-qualified: (c:v), (c:v–v), (c:v–c:v)
+    verseRange = `${hm[5]}:${hm[6]}` + (hm[8] ? `-${hm[7] ? `${hm[7]}:` : ""}${hm[8]}` : "");
+  } else if (hm && hm[3] && chapter) {
+    verseRange = `${chapter}:${hm[3]}` + (hm[4] ? `-${hm[4]}` : "");
+  }
 
   // sub-blocks keyed by their bold marker
   const blocks: Record<string, string[]> = {};
@@ -179,7 +196,10 @@ function parseScene(heading: string, body: string[], chapter: string | null): MM
 }
 
 function parseProposition(heading: string, body: string[]): MMProposition {
-  const hm = heading.match(/Proposition\s+(\d+)\s*[—–-]\s*(?:Ruth\s+)?([\w:]+)?\s*(?:\[Scene\s+(\d+)\])?/i);
+  // The anchor may carry a leading book name ("Ruth 1:1", "Jonah 1:4") — strip ANY alphabetic book
+  // word, book-generally (the old form stripped only "Ruth", so a Jonah map's anchors captured the
+  // word "Jonah" instead of the verse — visible in the J01 skeleton's verse_anchor fields).
+  const hm = heading.match(/Proposition\s+(\d+)\s*[—–-]\s*(?:[A-Za-z]+\s+)?(\d[\w:]*)?\s*(?:\[Scene\s+(\d+)\])?/i);
   const idx = hm ? Number(hm[1]) : NaN;
   const qa: string[] = [];
   let crossRef: string | null = null;

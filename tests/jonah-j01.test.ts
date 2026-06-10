@@ -99,9 +99,12 @@ describe("SC-0038 — J01 (Jonah 1:1-3) graduation: the generality anchor", () =
       );
     }
 
-    // the pinned gap state of the unfilled skeleton (23 measured at graduation, SC-0038). If this
-    // moves, either the spec changed (look) or the FOR_MODEL began to be authored (graduate it).
-    expect(blocks.length).toBe(23);
+    // the pinned gap state of the unfilled skeleton. 23 measured at graduation (SC-0038); 23 → 18
+    // at SC-0040 when the reader's book-general anchor fix landed (the old regex captured "Jonah"
+    // as the verse anchor, which also blocked [Scene N] parsing → 5 spurious scene_link TODOs).
+    // If this moves again: the spec changed (look), the reader changed (re-derive), or the
+    // FOR_MODEL began to be authored (graduate it).
+    expect(blocks.length).toBe(18);
   });
 
   it("the entity layer anchors: 20/20 explicit referents accounted · 0 unanchored (frozen BHSA J01 packet)", () => {

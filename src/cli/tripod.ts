@@ -465,7 +465,9 @@ program
     const reports: IdAlignReport[] = [];
     for (const mapPath of maps) {
       const pid = (mapPath.split("/").pop() ?? "").slice(0, 3); // P0# / J0#
-      const fm = fmFiles.find((f) => f.startsWith(pid));
+      // require the FOR_MODEL suffix — a bare prefix-find in a mixed dir grabs the COMPILATION-LOG
+      // (the same trap coverage hit at SC-0038; second instance of the class)
+      const fm = fmFiles.find((f) => f.startsWith(pid) && f.endsWith("-FOR-MODEL.md"));
       if (!fm) {
         if (opts.corpus && !explicit.has(mapPath)) {
           // a map-only fixture (FOR_MODEL not yet graduated) has nothing to align — skip VISIBLY, never silently
