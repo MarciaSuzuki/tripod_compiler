@@ -1,0 +1,209 @@
+/* Tripod Review Portal — modest, readable, no client JS.
+   Hebrew renders via the system Hebrew font stack; mixed-direction text relies
+   on the browser bidi algorithm plus dir="auto" on JSON string values. */
+
+:root {
+  --ink: #1f2430;
+  --muted: #5c6470;
+  --paper: #fbfaf7;
+  --card: #ffffff;
+  --line: #e3ded3;
+  --accent: #7a5c2e;
+  --accent-soft: #f3ead9;
+  --ok: #2e6e46;
+  --off: #9a948a;
+  --code: #f4f1ea;
+  max-width: 100%;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 17px/1.65 Georgia, 'Times New Roman', 'SBL Hebrew', 'Ezra SIL', 'David', serif;
+}
+
+header.site {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 2px solid var(--accent);
+  background: var(--card);
+}
+header.site .home {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--accent);
+  text-decoration: none;
+}
+header.site .subtitle { color: var(--muted); font-size: 0.92rem; }
+
+main { max-width: 56rem; margin: 0 auto; padding: 1.2rem 1.5rem 3rem; }
+
+footer.site {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+h1 { font-size: 1.55rem; line-height: 1.25; }
+h2 { font-size: 1.25rem; margin-top: 2rem; }
+h3 { font-size: 1.05rem; }
+code { background: var(--code); padding: 0 0.25em; border-radius: 3px; font-size: 0.9em; }
+
+.note { background: var(--accent-soft); border: 1px solid var(--line); padding: 0.6rem 0.9rem; border-radius: 6px; }
+
+/* ---- index ---- */
+.gloss dt { font-weight: bold; margin-top: 0.7rem; }
+.gloss dd { margin: 0.15rem 0 0 1rem; color: var(--ink); }
+
+ul.cards { list-style: none; padding: 0; display: grid; gap: 0.7rem; }
+li.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+a.cardlink { text-decoration: none; color: inherit; display: block; }
+a.cardlink:hover .ptitle { text-decoration: underline; }
+.card .pid {
+  display: inline-block;
+  font-weight: bold;
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+.card .bcv { color: var(--muted); margin-right: 0.5rem; }
+.card .ptitle { display: block; margin-top: 0.15rem; }
+.badges { display: block; margin-top: 0.45rem; }
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  margin-right: 0.3rem;
+  border: 1px solid var(--line);
+}
+.badge.ok { color: var(--ok); border-color: var(--ok); background: #eef6f0; }
+.badge.off { color: var(--off); background: var(--paper); }
+
+/* ---- pericope page ---- */
+nav.crumbs {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+  margin: 0.8rem 0 0.4rem;
+}
+nav.crumbs a { color: var(--accent); }
+header.pericope .pid { color: var(--accent); margin-right: 0.4rem; }
+header.pericope .ptitle { color: var(--muted); margin-top: -0.4rem; font-size: 1.05rem; }
+
+section.artifact {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem 1.4rem 1.4rem;
+  margin: 1.4rem 0;
+}
+section.artifact-missing { background: var(--paper); border-style: dashed; }
+.secthead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+.secthead h2 { margin: 0.4rem 0; }
+.artifact-gloss { color: var(--muted); font-size: 0.92rem; margin-top: 0.2rem; }
+
+.classification { margin: 0.6rem 0 1rem; }
+.chiprow { margin-top: 0.35rem; }
+.chip, .chiplabel { font-size: 0.82rem; }
+.chip {
+  display: inline-block;
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.08rem 0.6rem;
+  margin: 0.12rem 0.25rem 0.12rem 0;
+}
+.chiplabel { color: var(--muted); margin-right: 0.25rem; }
+
+/* prose (rendered map) */
+.prose h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.25rem; }
+.prose li { margin: 0.2rem 0; }
+.ask-section {
+  font-size: 0.7rem;
+  vertical-align: middle;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 0.45rem;
+  text-decoration: none;
+  margin-left: 0.4rem;
+}
+.ask-section:hover { background: var(--accent-soft); }
+
+/* wikilinks */
+.wl { border-bottom: 1px dotted var(--accent); cursor: help; }
+.wl-entity { color: #234e70; }
+.wl-concept { color: #5b3a86; }
+.wl-figure { color: #7a3a52; }
+.wl-xref { border-bottom: none; color: var(--accent); }
+.wl-plain { color: var(--muted); border-bottom-style: dashed; }
+
+/* feedback buttons */
+.btns { display: inline-flex; gap: 0.4rem; flex-wrap: wrap; }
+.btn {
+  font-size: 0.82rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  background: var(--card);
+}
+.btn:hover { background: var(--accent-soft); }
+.btn-disabled { border-color: var(--off); color: var(--off); cursor: not-allowed; }
+
+/* JSON tree */
+.jsontree {
+  font: 14px/1.5 ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  background: var(--code);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  overflow-x: auto;
+}
+.jnode > summary { cursor: pointer; list-style-position: outside; }
+.jnode > summary:hover { background: #ece7db; }
+.jchildren { margin-left: 1.1rem; border-left: 1px dotted var(--line); padding-left: 0.7rem; }
+.jrow { padding: 0.05rem 0; }
+.jkey { color: var(--accent); margin-right: 0.45rem; }
+.jkey::after { content: ':'; color: var(--muted); }
+.jmeta { color: var(--muted); font-size: 0.85em; margin-left: 0.3rem; }
+.jstr { color: #234e70; }
+.jstr::before, .jstr::after { content: '"'; color: var(--muted); }
+.jnum { color: #6c3fa8; }
+.jnull { color: var(--off); font-style: italic; }
+.rawjson { margin-top: 0.6rem; font-size: 0.85rem; }
+.rawjson pre {
+  background: var(--code);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  overflow-x: auto;
+  font-size: 0.78rem;
+}
+
+/* Hebrew */
+:lang(he), bdi { font-family: 'SBL Hebrew', 'Ezra SIL', 'Times New Roman', serif; }
+
+@media (max-width: 640px) {
+  main { padding: 0.8rem 0.9rem 2rem; }
+  body { font-size: 16px; }
+  section.artifact { padding: 0.8rem 0.9rem 1rem; }
+}
+
+@media print {
+  .btns, .ask-section, nav.crumbs { display: none; }
+  section.artifact { border: none; padding: 0; }
+}
