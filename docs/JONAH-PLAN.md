@@ -13,6 +13,15 @@
 > **Data-layer generality finding:** BHSA's `book` feature is Latin — Jonah = **`Jona`**, not `Jonah` (Ruth was
 > identical, so SC-0032 missed it); `pericopes.jonah.json` `bhsa_book` corrected. **Next = Phase 2 (Marcia):**
 > author the J01 Meaning Map → compile → the first **by-layer** read (§0). J02–J05 division (esp. the psalm) still yours.
+>
+> **STATUS UPDATE (2026-06-09).** **Phase 2 — DONE (SC-0036):** Marcia authored/ruled the J01 map; registry
+> bootstrapped from the approved cast; **the by-layer read: L1 closed lists + schema structure HELD — the
+> interlingua generalizes** (coverage 20/20 · 0 unanchored · lint 0). Codes globalized (SC-0037: CB_0051/52,
+> FIG_0196-198) and Marcia confirmed all 5 canon-new. **J01 GRADUATED (SC-0038):** the map moved
+> `_working/J01/` → `fixtures/meaning-map/` with the 8-test generality regression anchor
+> (`tests/jonah-j01.test.ts`); the FOR_MODEL **skeleton** + CL stay in `_working/J01/` until the judgment
+> half is authored (Marcia ruled Option 1 — map now, FOR_MODEL later). **Next = Phase 3:** J02–J05 (Marcia
+> rules the division; the ch.2 psalm is the hard test).
 
 ---
 
