@@ -6,7 +6,7 @@ bcv: "Jonah 1:1–3"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
 sta-status: "pending"
 pilot: "pilot-2"
@@ -204,8 +204,6 @@ The narrator gives no reason for the flight. Jonah says nothing — no refusal, 
 - **Q:** Away from what? **A:** before YHWH's face [[CB_0052-Before-the-Face-of-YHWH]]
 
 ## 5. Flags
-
-> All Concept and Figure codes below are **PROVISIONAL** — Jonah's Concept Bank and Figure Registry start empty (SC-0033). They are proposed here for the BCD-DELTA; none are yet registered.
 
 **5A — Concept Bank Flags**
 - [[CB_0051-Evil-of-Nineveh]] — active at Proposition 2

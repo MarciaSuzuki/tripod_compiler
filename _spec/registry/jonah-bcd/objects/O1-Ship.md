@@ -1,6 +1,6 @@
 ---
 o-code: O1
-english: "ship"
+english: "Ship"
 hebrew: "אָנִיָּה"
 appears-in: [J01]
 ---
