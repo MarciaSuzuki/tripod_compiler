@@ -14,6 +14,7 @@
     "check-drift": "tsx src/cli/tripod.ts check-drift",
     "check-drift:vault": "tsx src/cli/tripod.ts check-drift --vault \"${TRIPOD_VAULT_SPEC:-$HOME/Github/ruth-pilot-b-wiki/_spec}\"",
     "check:adversarial": "python3 tools/adversarial_check.py --self-test",
+    "check:merge-discipline": "python3 tools/merge_pr.py --self-test",
     "test": "vitest run"
   },
   "dependencies": {
