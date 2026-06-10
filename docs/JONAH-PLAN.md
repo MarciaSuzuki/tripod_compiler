@@ -40,6 +40,13 @@
 > qualifier — **J03/J04 headings will need it** — and the book-general prop-anchor strip, a latent J01 bug).
 > **Next: J03 — the psalm (Heb 2:3–10), the real experiment** (first non-narrative genre against the closed
 > lists), on a pipeline now proven against narrative twice.
+>
+> **THE BOOK-2 VAULT-HOME RULED + WRITTEN BACK (2026-06-10, SC-0041): book folders inside this vault.**
+> Vault `pericopes/jonah/` holds the blessed J01 + J02 maps (byte-identical to the compiler copies; Ruth's
+> six stay flat); `bcd/jonah/{beings,places,objects}/` is now the **source of truth for the 18-entity Jonah
+> cast** (compiler-side `_spec/registry/jonah-bcd/` retired; `jonah.aliases.json` rebuilds byte-identical
+> from the vault — pin unchanged). The byte-identity guard covers Jonah. Machine artifacts (packets,
+> division spec, pins) stay compiler-side. The SC-0037 amendment-2 deferred item is CLOSED.
 
 ---
 
