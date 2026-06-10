@@ -24,12 +24,12 @@ pilot: "pilot-2"
     "production_use": false
   },
   "confidence_overall": "LOW",
-  "confidence_overall_note": "Deterministic skeleton from the approved Meaning Map. 9 beings + 1 place codes extracted, 2 flags carried, 80 judgment gaps deferred. Extract-only: no controlled-vocabulary values assigned by the compiler.",
+  "confidence_overall_note": "Deterministic skeleton from the approved Meaning Map. 9 beings + 5 place codes extracted, 7 flags carried, 72 judgment gaps deferred. Extract-only: no controlled-vocabulary values assigned by the compiler.",
   "compilation_decisions": [
     {
       "decision_id": "P03-D1",
       "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
-      "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 80 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
+      "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 72 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
     }
   ],
   "vocabulary_additions": {
@@ -69,8 +69,8 @@ pilot: "pilot-2"
     "no_reviewer_facing_prompts_in_compilation_log": true
   },
   "known_limitations": [
-    "Deterministic skeleton (tripod compile): 80 judgment gaps remain as typed __TODO__ placeholders carrying their source-prose span.",
-    "Judgment gaps by field — proposition_kind:14, event_specific_slots:14, inter_proposition_links:14, role_in_scene:9, referential_form:9, place_id:4, scene_kind:4, object_id:4, book_context_ref:1, register_overrides:1, arc_elements:1, context_elements:1, tone_elements:1, pace_elements:1, communicative_function_elements:1, (granularity):1.",
+    "Deterministic skeleton (tripod compile): 72 judgment gaps remain as typed __TODO__ placeholders carrying their source-prose span.",
+    "Judgment gaps by field — proposition_kind:14, event_specific_slots:14, inter_proposition_links:14, role_in_scene:9, referential_form:9, scene_kind:4, book_context_ref:1, register_overrides:1, arc_elements:1, context_elements:1, tone_elements:1, pace_elements:1, communicative_function_elements:1, (granularity):1.",
     "Propositions are at MEANING-MAP granularity (14); the FOR_MODEL may decompose multi-event propositions further (judgment, Agent 3).",
     "Controlled-vocabulary tokens (scene_kind, proposition_kind, role/function), event_specific_slots, inter_proposition_links, referential_form, and the L1 element arrays are judgment — deferred to Agent 3 (Slice 4). No values were invented."
   ]

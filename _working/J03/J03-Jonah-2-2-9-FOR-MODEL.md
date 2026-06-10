@@ -7,7 +7,7 @@ status: "skeleton"
 pilot: "pilot-2"
 ---
 
-# J03 — Jonah 2:2–9 — FOR_MODEL (SKELETON — 80 judgment gaps)
+# J03 — Jonah 2:2–9 — FOR_MODEL (SKELETON — 72 judgment gaps)
 
 > Deterministic skeleton compiled from the Meaning Map (`tripod compile`). Fields set to `__TODO__` need the drafter/LLM (Slice 4); see the gap report (`--json`).
 
@@ -62,7 +62,7 @@ pilot: "pilot-2"
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "__TODO__: the belly of Sheol — בֶּטֶן שְׁאוֹל / the belly of Sheol"
+            "place_id": "PL6"
           }
         ]
       },
@@ -100,7 +100,7 @@ pilot: "pilot-2"
             "place_id": "PL4"
           },
           {
-            "place_id": "__TODO__: the holy temple — הֵיכַל קָדְשְׁךָ / your holy temple"
+            "place_id": "PL7"
           }
         ]
       },
@@ -135,20 +135,20 @@ pilot: "pilot-2"
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "__TODO__: the pit — שַׁחַת / the pit"
+            "place_id": "PL8"
           },
           {
-            "place_id": "__TODO__: the holy temple — הֵיכַל קָדְשְׁךָ / your holy temple"
+            "place_id": "PL7"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: the deep — תְּהוֹם / the deep"
+            "object_id": "O7"
           },
           {
-            "object_id": "__TODO__: the weeds — סוּף / the weeds"
+            "object_id": "O8"
           }
         ]
       },
@@ -176,7 +176,7 @@ pilot: "pilot-2"
             "presence": "PRESENT"
           },
           {
-            "being_id": "__TODO__: the idol-keepers — מְשַׁמְּרִים הַבְלֵי־שָׁוְא / those who hold to vain idols",
+            "being_id": "B8",
             "role_in_scene": "__TODO__: the contrast — the ones who forsake their hesed",
             "presence": "REFERENCED"
           }
@@ -188,13 +188,13 @@ pilot: "pilot-2"
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: the vain idols — הַבְלֵי־שָׁוְא / worthless idols"
+            "object_id": "CB_0055"
           },
           {
             "object_id": "CB_0011"
           },
           {
-            "object_id": "__TODO__: salvation — יְשׁוּעָתָה / salvation"
+            "object_id": "CB_0056"
           }
         ]
       },
@@ -224,7 +224,7 @@ pilot: "pilot-2"
       "verse_anchor": "2:2",
       "proposition_kind": "__TODO__: Q: What happened? A: crying for help",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: crying for help | Q: Who cried? A: Jonah | Q: From where? A: the belly of Sheol | Q: What happened next? A: hearing | Q: Who heard? A: YHW…"
+        "__TODO__": "Q: What happened? A: crying for help | Q: Who cried? A: Jonah | Q: From where? A: the belly of [[PL6-Sheol]] Sheol | Q: What happened next? A: hearing | Q: Who…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -272,11 +272,13 @@ pilot: "pilot-2"
       "verse_anchor": "2:4",
       "proposition_kind": "__TODO__: Q: What happened? A: resolving",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: resolving | Q: Who resolved? A: Jonah | Q: Resolved what? A: to look again | Q: Toward what? A: YHWH's holy temple"
+        "__TODO__": "Q: What happened? A: resolving | Q: Who resolved? A: Jonah | Q: Resolved what? A: to look again | Q: Toward what? A: YHWH's holy [[PL7-Temple]] temple"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0202"
+      ]
     },
     {
       "prop_id": "P7",
@@ -288,7 +290,9 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0203"
+      ]
     },
     {
       "prop_id": "P8",
@@ -310,7 +314,7 @@ pilot: "pilot-2"
       "verse_anchor": "2:6",
       "proposition_kind": "__TODO__: Q: What happened? A: bringing up",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: bringing up | Q: Who brought up? A: [[B2-YHWH]] YHWH | Q: Brought up what? A: Jonah's life | Q: From where? A: the pit | Q: Addressed how?…"
+        "__TODO__": "Q: What happened? A: bringing up | Q: Who brought up? A: [[B2-YHWH]] YHWH | Q: Brought up what? A: Jonah's life | Q: From where? A: the [[PL8-Pit]] pit | Q: Ad…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -334,11 +338,13 @@ pilot: "pilot-2"
       "verse_anchor": "2:7",
       "proposition_kind": "__TODO__: Q: What happened? A: arriving",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: arriving | Q: What arrived? A: Jonah's prayer | Q: To whom? A: YHWH | Q: Where? A: his holy temple"
+        "__TODO__": "Q: What happened? A: arriving | Q: What arrived? A: Jonah's prayer | Q: To whom? A: YHWH | Q: Where? A: his holy [[PL7-Temple]] temple"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0202"
+      ]
     },
     {
       "prop_id": "P12",
@@ -346,11 +352,12 @@ pilot: "pilot-2"
       "verse_anchor": "2:8",
       "proposition_kind": "__TODO__: Q: What happened? A: forsaking",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: forsaking | Q: Who forsook? A: those who hold to vain idols | Q: Forsook what? A: their hesed"
+        "__TODO__": "Q: What happened? A: forsaking | Q: Who forsook? A: [[B8-Idol-Keepers]] those who hold to [[CB_0055-Vain-Idols]] vain idols | Q: Forsook what? A: their hesed"
       },
       "inter_proposition_links": {},
       "cb_flags": [
-        "CB_0011"
+        "CB_0011",
+        "CB_0055"
       ],
       "figure_flags": []
     },
@@ -372,10 +379,12 @@ pilot: "pilot-2"
       "verse_anchor": "2:9",
       "proposition_kind": "__TODO__: Q: What happened? A: declaring",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: declaring | Q: Who declared? A: Jonah | Q: Declared what? A: salvation belongs to YHWH"
+        "__TODO__": "Q: What happened? A: declaring | Q: Who declared? A: Jonah | Q: Declared what? A: [[CB_0056-Salvation-Belongs-to-YHWH]] salvation belongs to YHWH"
       },
       "inter_proposition_links": {},
-      "cb_flags": [],
+      "cb_flags": [
+        "CB_0056"
+      ],
       "figure_flags": []
     }
   ]

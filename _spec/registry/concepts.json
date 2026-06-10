@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 4,
+      "JONAH": 7,
       "RUTH": 50
     },
-    "entries": 54
+    "entries": 56
   },
   "entries": {
     "CB_0001": {
@@ -131,6 +131,7 @@
         "CB_HESED_ENACTED"
       ],
       "appears_in": [
+        "JONAH",
         "RUTH"
       ],
       "code": "CB_0011",
@@ -567,6 +568,22 @@
       ],
       "code": "CB_0054",
       "name_slug": "Innocent-Blood"
+    },
+    "CB_0055": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0055",
+      "name_slug": "Vain-Idols"
+    },
+    "CB_0056": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0056",
+      "name_slug": "Salvation-Belongs-to-YHWH"
     }
   },
   "kind": "CONCEPT",

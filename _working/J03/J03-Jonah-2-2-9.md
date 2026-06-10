@@ -13,8 +13,12 @@ pilot: "pilot-2"
 for-model: [[J03-Jonah-2-2-9-FOR-MODEL]]
 active-concepts:
   - [[CB_0011-Hesed]]
+  - [[CB_0055-Vain-Idols]]
+  - [[CB_0056-Salvation-Belongs-to-YHWH]]
 active-figures:
   - [[FIG_0198-Going-Down-Descent]]
+  - [[FIG_0202-Temple-Turn-Pair]]
+  - [[FIG_0203-Drowning-Engulfment]]
 ---
 
 # J03 — Jonah 2:2–9
@@ -66,7 +70,7 @@ The passage is the turn of the whole story: the runaway who would not pray on de
 - Referential form: named, then addressed — the verse turns from "he answered" to "you heard"
 
 **3B — Places**
-the belly of Sheol — בֶּטֶן שְׁאוֹל / the belly of Sheol
+[[PL6-Sheol]] — בֶּטֶן שְׁאוֹל / the belly of Sheol
 - Role: where the cry came from — the place of the dead, spoken as the depth he cried out of
 - Type: the underworld, beneath the seas
 - Effect on scene: it sets the prayer's starting floor — the call rose from as far down as a voice can go
@@ -79,7 +83,7 @@ None: no persistent objects in this scene.
 - None: no time-setting; the prayer recounts, it does not date.
 
 **3E — What Happens**
-[[B1-Jonah]] Jonah opens the prayer with the whole story told small: I called to [[B2-YHWH]] YHWH out of my distress, and he answered me; from the belly of Sheol I cried for help — you heard my voice. The address turns mid-verse from speaking about YHWH to speaking to him.
+[[B1-Jonah]] Jonah opens the prayer with the whole story told small: I called to [[B2-YHWH]] YHWH out of my distress, and he answered me; from the belly of [[PL6-Sheol]] Sheol I cried for help — you heard my voice. The address turns mid-verse from speaking about YHWH to speaking to him.
 
 **3F — Communicative Purpose**
 States the rescue before the road: the answered call is the headline, and everything after walks back through how deep the cry came from.
@@ -106,7 +110,7 @@ The prayer never says where the speaker is — the fish is not mentioned in the 
 - Type: open water; the same sea of J02, now spoken from inside
 - Effect on scene: the deep is the sentence carried out — the sea the storm wanted him in has him
 
-the holy temple — הֵיכַל קָדְשְׁךָ / your holy temple
+[[PL7-Temple]] — הֵיכַל קָדְשְׁךָ / your holy temple
 - Role: where the banished man says he will look again
 - Type: the place of YHWH's presence, where prayer is heard
 - Effect on scene: it is the turn — driven from God's eyes, he points his face at God's house
@@ -119,7 +123,7 @@ None: no persistent objects in this scene.
 - None: no time-setting; the recounting runs straight on.
 
 **3E — What Happens**
-You cast me into the deep, into the heart of the [[PL4-Sea]] seas, and the flood was all around me; all your breakers and your waves passed over me. And I said: I am driven away from before your eyes — yet I will look again toward your holy temple.
+You cast me into the deep, into the heart of the [[PL4-Sea]] seas, and the flood was all around me; all your breakers and your waves passed over me. And I said: I am driven away from before your eyes — yet I will look again toward your holy [[PL7-Temple]] temple.
 
 **3F — Communicative Purpose**
 Names the thrower: what the sailors' hands did, the prayer credits to YHWH — the sea was his sentence. And it sets the prayer's hinge: banishment answered not with despair but with a face turned toward the temple.
@@ -142,23 +146,23 @@ The sailors who hurled him are gone from the telling — "you cast me" gives YHW
 - Referential form: "YHWH my God" — the runaway's first "my" of the book
 
 **3B — Places**
-the pit — שַׁחַת / the pit
+[[PL8-Pit]] — שַׁחַת / the pit
 - Role: what his life was brought up from
 - Type: the grave's mouth; Sheol's door
 - Effect on scene: it marks the lowest point — the lift is measured from here
 
-the holy temple — הֵיכַל קָדְשְׁךָ / your holy temple
+[[PL7-Temple]] — הֵיכַל קָדְשְׁךָ / your holy temple
 - Role: where the fainting man's prayer arrived
 - Type: the place of YHWH's presence
 - Effect on scene: the looked-for temple of the last scene now receives the prayer — the turn completed
 
 **3C — Objects and Concepts**
 
-the deep — תְּהוֹם / the deep
+[[O7-Deep]] — תְּהוֹם / the deep
 - What it is: the primeval deep — the great water under everything
 - Function in scene: it closed around him; the drowning at its widest
 
-the weeds — סוּף / the weeds
+[[O8-Weeds]] — סוּף / the weeds
 - What it is: the sea-wrack of the bottom
 - Function in scene: wrapped around his head — the bottom touching him
 
@@ -166,7 +170,7 @@ the weeds — סוּף / the weeds
 - None: no time-setting; "forever" is the speaker's word for how final the bars felt, not a date.
 
 **3E — What Happens**
-The waters closed around me up to the throat; the [[B1-Jonah]] deep surrounded me; weeds were wrapped around my head. I went down to the roots of the mountains; the earth — her bars were behind me forever. And you brought my life up from the pit, [[B2-YHWH]] YHWH my God. As my soul fainted within me, I remembered YHWH; and my prayer came to you, to your holy temple.
+The waters closed around me up to the throat; the [[O7-Deep]] deep surrounded me; [[O8-Weeds]] weeds were wrapped around my head. I went down to the roots of the mountains; the earth — her bars were behind me forever. And you brought my life up from the [[PL8-Pit]] pit, [[B2-YHWH]] YHWH my God. As my soul fainted within me, I remembered YHWH; and my prayer came to you, to your holy [[PL7-Temple]] temple.
 
 **3F — Communicative Purpose**
 Touches bottom so the lift can be measured: three lines down, one line up. The remembering at the faint — not at the start — is the honest center: rescue came at the end of strength, and the prayer crossed the whole distance from the roots of the mountains to the temple.
@@ -188,7 +192,7 @@ There is no cry for help at the bottom — the poem records sinking, fainting, a
 - Relationship: addressed — "I will sacrifice to you"
 - Presence: PRESENT
 
-the idol-keepers — מְשַׁמְּרִים הַבְלֵי־שָׁוְא / those who hold to vain idols
+[[B8-Idol-Keepers]] — מְשַׁמְּרִים הַבְלֵי־שָׁוְא / those who hold to vain idols
 - Role: the contrast — the ones who forsake their hesed
 - Relationship: unnamed others, set against the praying "I"
 - Presence: REFERENCED
@@ -199,7 +203,7 @@ None: no place is named in this movement.
 
 **3C — Objects and Concepts**
 
-the vain idols — הַבְלֵי־שָׁוְא / worthless idols
+[[CB_0055-Vain-Idols]] — הַבְלֵי־שָׁוְא / worthless idols
 - What it is: empty things held onto as gods
 - Function in scene: what the contrasted ones keep — and what keeping costs them
 
@@ -207,7 +211,7 @@ the vain idols — הַבְלֵי־שָׁוְא / worthless idols
 - What it is: hesed — loyal, covenant kindness (the loyal love between worshiper and God)
 - Function in scene: what idol-keepers walk away from — the same hesed Ruth's story turns on, here forsaken
 
-salvation — יְשׁוּעָתָה / salvation
+[[CB_0056-Salvation-Belongs-to-YHWH]] — יְשׁוּעָתָה / salvation
 - What it is: rescue that is YHWH's to give
 - Function in scene: the prayer's last word and the book's claim — salvation belongs to YHWH
 
@@ -215,7 +219,7 @@ salvation — יְשׁוּעָתָה / salvation
 - None: no time-setting; the vow looks forward, undated.
 
 **3E — What Happens**
-Those who hold to vain idols forsake their hesed. But I — with a voice of thanksgiving I will sacrifice to you; what I have vowed I will pay. Salvation belongs to [[B2-YHWH]] YHWH.
+[[B8-Idol-Keepers]] Those who hold to [[CB_0055-Vain-Idols]] vain idols forsake their hesed. But I — with a voice of thanksgiving I will sacrifice to you; what I have vowed I will pay. [[CB_0056-Salvation-Belongs-to-YHWH]] Salvation belongs to [[B2-YHWH]] YHWH.
 
 **3F — Communicative Purpose**
 Closes the prayer outward and forward: the rescued man takes the worshiper's side against the idol-keepers, promises the thanksgiving sacrifice and the paid vow — the very acts the sailors did on deck — and hands the book its thesis before the mission resumes.
@@ -236,7 +240,7 @@ The vow's content is never told — what he vowed stays unsaid. There is no prom
 ### Proposition 2 — Jonah 2:2 [Scene 1]
 - **Q:** What happened? **A:** crying for help
 - **Q:** Who cried? **A:** Jonah
-- **Q:** From where? **A:** the belly of Sheol
+- **Q:** From where? **A:** the belly of [[PL6-Sheol]] Sheol
 - **Q:** What happened next? **A:** hearing
 - **Q:** Who heard? **A:** YHWH
 - **Q:** Heard what? **A:** his voice
@@ -266,16 +270,16 @@ The vow's content is never told — what he vowed stays unsaid. There is no prom
 - **Q:** What happened? **A:** resolving
 - **Q:** Who resolved? **A:** Jonah
 - **Q:** Resolved what? **A:** to look again
-- **Q:** Toward what? **A:** YHWH's holy temple
+- **Q:** Toward what? **A:** YHWH's holy [[PL7-Temple]] temple
 
 ### Proposition 7 — Jonah 2:5 [Scene 3]
 - **Q:** What happened? **A:** closing around
 - **Q:** What closed? **A:** the waters
 - **Q:** How far? **A:** up to the throat
 - **Q:** What happened next? **A:** surrounding
-- **Q:** What surrounded? **A:** the deep
+- **Q:** What surrounded? **A:** the [[O7-Deep]] deep
 - **Q:** What happened next? **A:** wrapping
-- **Q:** What wrapped? **A:** the weeds
+- **Q:** What wrapped? **A:** the [[O8-Weeds]] weeds
 - **Q:** Around what? **A:** his head
 
 ### Proposition 8 — Jonah 2:6 [Scene 3]
@@ -289,7 +293,7 @@ The vow's content is never told — what he vowed stays unsaid. There is no prom
 - **Q:** What happened? **A:** bringing up
 - **Q:** Who brought up? **A:** [[B2-YHWH]] YHWH
 - **Q:** Brought up what? **A:** Jonah's life
-- **Q:** From where? **A:** the pit
+- **Q:** From where? **A:** the [[PL8-Pit]] pit
 - **Q:** Addressed how? **A:** YHWH my God
 
 ### Proposition 10 — Jonah 2:7 [Scene 3]
@@ -303,11 +307,11 @@ The vow's content is never told — what he vowed stays unsaid. There is no prom
 - **Q:** What happened? **A:** arriving
 - **Q:** What arrived? **A:** Jonah's prayer
 - **Q:** To whom? **A:** YHWH
-- **Q:** Where? **A:** his holy temple
+- **Q:** Where? **A:** his holy [[PL7-Temple]] temple
 
 ### Proposition 12 — Jonah 2:8 [Scene 4]
 - **Q:** What happened? **A:** forsaking
-- **Q:** Who forsook? **A:** those who hold to vain idols
+- **Q:** Who forsook? **A:** [[B8-Idol-Keepers]] those who hold to [[CB_0055-Vain-Idols]] vain idols
 - **Q:** Forsook what? **A:** their hesed
 
 ### Proposition 13 — Jonah 2:9 [Scene 4]
@@ -320,12 +324,17 @@ The vow's content is never told — what he vowed stays unsaid. There is no prom
 ### Proposition 14 — Jonah 2:9 [Scene 4]
 - **Q:** What happened? **A:** declaring
 - **Q:** Who declared? **A:** Jonah
-- **Q:** Declared what? **A:** salvation belongs to YHWH
+- **Q:** Declared what? **A:** [[CB_0056-Salvation-Belongs-to-YHWH]] salvation belongs to YHWH
 
 ## 5. Flags
 
 **5A — Concept Bank Flags**
 - [[CB_0011-Hesed]] — active at Proposition 12 (the loyal love idol-keepers forsake — the first Ruth concept to recur in Jonah; cross-book reuse)
 
+- [[CB_0055-Vain-Idols]] — active at Proposition 12 (what the contrasted ones keep)
+- [[CB_0056-Salvation-Belongs-to-YHWH]] — active at Proposition 14 (the psalm's last word; the book's thesis)
+
 **5B — Figure Flags**
 - [[FIG_0198-Going-Down-Descent]] — active at Proposition 8 (the descent of J01–J02 touches bottom: down to the roots of the mountains — cross-pericope continuation, and its lowest point)
+- [[FIG_0202-Temple-Turn-Pair]] — active at Propositions 6 and 11 (the banished man's resolve and the prayer's arrival — within-pericope pair)
+- [[FIG_0203-Drowning-Engulfment]] — active at Proposition 7 (waters to the throat · the deep surrounding · weeds at the head)
