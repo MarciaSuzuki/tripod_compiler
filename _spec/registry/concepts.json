@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 2,
+      "JONAH": 4,
       "RUTH": 50
     },
-    "entries": 52
+    "entries": 54
   },
   "entries": {
     "CB_0001": {
@@ -551,6 +551,22 @@
       ],
       "code": "CB_0052",
       "name_slug": "Before-the-Face-of-YHWH"
+    },
+    "CB_0053": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0053",
+      "name_slug": "Fear-of-YHWH"
+    },
+    "CB_0054": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0054",
+      "name_slug": "Innocent-Blood"
     }
   },
   "kind": "CONCEPT",

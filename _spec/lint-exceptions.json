@@ -1,7 +1,7 @@
 {
   "schema": "tripod-lint-exceptions",
   "schema_version": "0.1.0",
-  "book": "RUTH",
+  "book": "CANON",
   "_doc": "Reviewer sign-off on Level-3 lint findings (the lint analogue of coverage-exceptions.json, SC-0010). A §4 finding whose (pericope, rule, match, context_prefix) matches an entry here is downgraded from drift to ACCEPTED by `tripod lint`: it still appears in the report (marked ✓ ACCEPTED, with the reason), but is excluded from the drift count and does not fail the run. These are the genuinely exegetical KEEPS the lint's heuristics cannot auto-distinguish — vocatives, discourse openers, fixed oath formulas, party-pairs, and a withholding-note — ruled by the project lead, NOT silently suppressed. Governed: every entry carries provenance (accepted_by/on + sc_ref); pinned in _spec/pins.json, so accepting an exception is a recorded, re-pinned edit. The engine stays pure (it always surfaces the finding); acceptance is applied as a recorded downgrade, exactly as `tripod coverage` applies coverage-exceptions. We do NOT reword the text to dodge the regex — the line is kept verbatim and signed off.",
   "exceptions": [
     {
@@ -80,6 +80,17 @@
       "accepted_by": "Marcia Suzuki",
       "accepted_on": "2026-05-31",
       "sc_ref": "SC-0016"
+    },
+    {
+      "pericope": "J02-Jonah-1-4-2-1",
+      "rule": "compound",
+      "match": "and",
+      "context_prefix": "three days and three nights",
+      "reason": "TIME_PAIR",
+      "note": "The 'and' joins the fixed doubled duration 'three days and three nights' — a time-pair spoken as one unit (the Ruth ENTITY_PAIR precedent, 'her father and her mother'), not two acts. Marcia ruled KEEP as one (J02 rulings, group A). Kept verbatim per ruling, not reworded.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-10",
+      "sc_ref": "SC-0040"
     }
   ]
 }

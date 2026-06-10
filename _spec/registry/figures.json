@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 3,
+      "JONAH": 6,
       "RUTH": 115
     },
-    "entries": 118
+    "entries": 121
   },
   "entries": {
     "FIG_0001": {
@@ -1002,6 +1002,30 @@
       ],
       "code": "FIG_0198",
       "name_slug": "Going-Down-Descent"
+    },
+    "FIG_0199": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0199",
+      "name_slug": "Hurling-Refrain"
+    },
+    "FIG_0200": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0200",
+      "name_slug": "Fear-Escalation"
+    },
+    "FIG_0201": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0201",
+      "name_slug": "Captain-Echoes-the-Command"
     }
   },
   "kind": "FIGURE",

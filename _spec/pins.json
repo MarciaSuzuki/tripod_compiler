@@ -38,8 +38,8 @@
       "sha256": "5bfa0e3fa9afdb8b90912865185a95c8596a7e1c3c58f90000ed748e2f3bb8f2"
     },
     "lint-exceptions.json": {
-      "version": "0.1.1",
-      "sha256": "2d756b6c0374e54598a6084b3fcb4b3c7fa74f56c656d6b0eae79f28533f4279"
+      "version": "0.1.2",
+      "sha256": "d980d255cf1c4d3137dbfdc4a38b581c011f6b77cdb19e60c74ac90bc6402763"
     },
     "id-alignment-exceptions.json": {
       "version": "0.3.0",
@@ -94,16 +94,16 @@
       "sha256": "0509f2ebd972b0fa80e40d8d658512b254ad207ba76317d17bbd5f76dfe4c88c"
     },
     "registry/jonah.aliases.json": {
-      "version": "aliases-0.1.2",
-      "sha256": "109bd74d3fc437e61507768d68daff5d00bde38f722f9b9abd9c7c521dd9d0ee"
+      "version": "aliases-0.1.3",
+      "sha256": "e22329d3a6457e530db15b98780b6e67b48ffaf6a295fa6dcea00fb27337b16b"
     },
     "registry/concepts.json": {
-      "version": "0.2.0",
-      "sha256": "2da6bf7d2ab11a287334a555d9051230bdb234a0aa416e49cfce29313606990f"
+      "version": "0.3.0",
+      "sha256": "cbaee17b27af066d11c56c2f86716e0bb23bfab492101da52c27643f523a4f00"
     },
     "registry/figures.json": {
-      "version": "0.2.0",
-      "sha256": "c7fc627a41d1b914322d6fab8a0809b2b3dfbee0d236db493f9e1ecb0b0ef149"
+      "version": "0.3.0",
+      "sha256": "fb2fe9456d646c8e31ea57fa0dbac637164ff8cc1626ecb5fc93b8b562112e21"
     }
   }
 }

@@ -7,7 +7,7 @@ status: "skeleton"
 pilot: "pilot-2"
 ---
 
-# J02 — Jonah 1:4–2:1 — FOR_MODEL (SKELETON — 132 judgment gaps)
+# J02 — Jonah 1:4–2:1 — FOR_MODEL (SKELETON — 115 judgment gaps)
 
 > Deterministic skeleton compiled from the Meaning Map (`tripod compile`). Fields set to `__TODO__` need the drafter/LLM (Slice 4); see the gap report (`--json`).
 
@@ -58,7 +58,7 @@ pilot: "pilot-2"
             "presence": "PRESENT"
           },
           {
-            "being_id": "__TODO__: the captain — רַב הַחֹבֵל / the chief of the sailors",
+            "being_id": "B6",
             "role_in_scene": "__TODO__: the one who finds Jonah asleep and orders him to get up and pray",
             "presence": "PRESENT"
           },
@@ -66,18 +66,13 @@ pilot: "pilot-2"
             "being_id": "B1",
             "role_in_scene": "__TODO__: the runaway, asleep in the ship's hold while the storm rages",
             "presence": "PRESENT"
-          },
-          {
-            "being_id": "__TODO__: the sailors' gods — אֱלֹהָיו / each man's own god",
-            "role_in_scene": "__TODO__: the ones the sailors cry to; the god the captain tells Jonah to call on",
-            "presence": "REFERENCED"
           }
         ]
       },
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "__TODO__: the sea — הַיָּם / the sea"
+            "place_id": "PL4"
           }
         ]
       },
@@ -87,13 +82,13 @@ pilot: "pilot-2"
             "object_id": "O1"
           },
           {
-            "object_id": "__TODO__: the great wind — רוּחַ גְּדוֹלָה / a great wind"
+            "object_id": "O3"
           },
           {
-            "object_id": "__TODO__: the storm — סַעַר גָּדוֹל / a great storm"
+            "object_id": "O4"
           },
           {
-            "object_id": "__TODO__: the cargo — הַכֵּלִים / the goods in the ship"
+            "object_id": "O5"
           }
         ]
       },
@@ -130,20 +125,20 @@ pilot: "pilot-2"
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "__TODO__: the sea — הַיָּם / the sea"
+            "place_id": "PL4"
           },
           {
-            "place_id": "__TODO__: the dry land — הַיַּבָּשָׁה / the dry land"
+            "place_id": "PL5"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: the lots — גּוֹרָלוֹת / lots"
+            "object_id": "O6"
           },
           {
-            "object_id": "__TODO__: this evil — הָרָעָה הַזֹּאת / this evil (the calamity)"
+            "object_id": "CB_0053"
           },
           {
             "object_id": "CB_0052"
@@ -178,17 +173,17 @@ pilot: "pilot-2"
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "__TODO__: the sea — הַיָּם / the sea"
+            "place_id": "PL4"
           },
           {
-            "place_id": "__TODO__: the dry land — הַיַּבָּשָׁה / the dry land"
+            "place_id": "PL5"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: the storm — הַסַּעַר הַגָּדוֹל / this great storm"
+            "object_id": "O4"
           }
         ]
       },
@@ -225,14 +220,17 @@ pilot: "pilot-2"
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "__TODO__: the sea — הַיָּם / the sea"
+            "place_id": "PL4"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: innocent blood — דָּם נָקִיא / innocent blood"
+            "object_id": "CB_0054"
+          },
+          {
+            "object_id": "CB_0053"
           }
         ]
       },
@@ -255,7 +253,7 @@ pilot: "pilot-2"
             "presence": "PRESENT"
           },
           {
-            "being_id": "__TODO__: the great fish — דָּג גָּדוֹל / a great fish",
+            "being_id": "B7",
             "role_in_scene": "__TODO__: the appointed swallower; Jonah's holder for three days and three nights",
             "presence": "PRESENT"
           },
@@ -269,14 +267,14 @@ pilot: "pilot-2"
       "places_in_scene": {
         "entries": [
           {
-            "place_id": "__TODO__: the sea — הַיָּם / the sea"
+            "place_id": "PL4"
           }
         ]
       },
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: three days and three nights — שְׁלֹשָׁה יָמִים וּשְׁלֹשָׁה לֵילוֹת / three days and three nights"
+            "object_id": "TH_THREE_DAYS_AND_THREE_NIGHTS"
           }
         ]
       },
@@ -294,11 +292,13 @@ pilot: "pilot-2"
       "verse_anchor": "1:4",
       "proposition_kind": "__TODO__: Q: What happened? A: hurling",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: hurling | Q: Who hurled? A: [[B2-YHWH]] YHWH | Q: Hurled what? A: a great wind | Q: At what? A: the sea"
+        "__TODO__": "Q: What happened? A: hurling | Q: Who hurled? A: [[B2-YHWH]] YHWH | Q: Hurled what? A: a great [[O3-Wind]] wind | Q: At what? A: the [[PL4-Sea]] sea"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0199"
+      ]
     },
     {
       "prop_id": "P2",
@@ -322,7 +322,9 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0200"
+      ]
     },
     {
       "prop_id": "P4",
@@ -330,11 +332,13 @@ pilot: "pilot-2"
       "verse_anchor": "1:5",
       "proposition_kind": "__TODO__: Q: What happened? A: hurling",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: hurling | Q: Who hurled? A: the sailors | Q: Hurled what? A: the cargo | Q: Where? A: into the sea | Q: Why? A: to lighten the ship"
+        "__TODO__": "Q: What happened? A: hurling | Q: Who hurled? A: the sailors | Q: Hurled what? A: the [[O5-Cargo]] cargo | Q: Where? A: into the sea | Q: Why? A: to lighten th…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0199"
+      ]
     },
     {
       "prop_id": "P5",
@@ -356,7 +360,7 @@ pilot: "pilot-2"
       "verse_anchor": "1:6",
       "proposition_kind": "__TODO__: Q: What happened? A: approaching",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: approaching | Q: Who approached? A: the captain | Q: Approached whom? A: Jonah | Q: What happened next? A: asking | Q: Asked what? A: what…"
+        "__TODO__": "Q: What happened? A: approaching | Q: Who approached? A: the [[B6-Captain]] captain | Q: Approached whom? A: Jonah | Q: What happened next? A: asking | Q: Aske…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -368,11 +372,13 @@ pilot: "pilot-2"
       "verse_anchor": "1:6",
       "proposition_kind": "__TODO__: Q: What happened? A: telling",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: telling | Q: Who told? A: the captain | Q: Told whom? A: Jonah | Q: To do what? A: get up | Q: And? A: cry out | Q: To whom? A: his god | …"
+        "__TODO__": "Q: What happened? A: telling | Q: Who told? A: the [[B6-Captain]] captain | Q: Told whom? A: Jonah | Q: To do what? A: get up | Q: And? A: cry out | Q: To whom…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0201"
+      ]
     },
     {
       "prop_id": "P8",
@@ -380,7 +386,7 @@ pilot: "pilot-2"
       "verse_anchor": "1:7",
       "proposition_kind": "__TODO__: Q: What happened? A: proposing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: proposing | Q: Who proposed? A: [[B4-Ship-Crew]] the men | Q: Proposed to whom? A: one another | Q: Proposed what? A: casting lots | Q: Wh…"
+        "__TODO__": "Q: What happened? A: proposing | Q: Who proposed? A: [[B4-Ship-Crew]] the men | Q: Proposed to whom? A: one another | Q: Proposed what? A: casting [[O6-Lots]] …"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -431,7 +437,9 @@ pilot: "pilot-2"
         "__TODO__": "Q: What happened? A: confessing | Q: Who confessed? A: Jonah | Q: Confessed what? A: he fears [[B2-YHWH]] YHWH | Q: YHWH described how? A: God of heaven | Q: A…"
       },
       "inter_proposition_links": {},
-      "cb_flags": [],
+      "cb_flags": [
+        "CB_0053"
+      ],
       "figure_flags": []
     },
     {
@@ -444,7 +452,9 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0200"
+      ]
     },
     {
       "prop_id": "P14",
@@ -484,7 +494,9 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0199"
+      ]
     },
     {
       "prop_id": "P17",
@@ -492,7 +504,7 @@ pilot: "pilot-2"
       "verse_anchor": "1:13",
       "proposition_kind": "__TODO__: Q: What happened? A: rowing hard",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: rowing hard | Q: Who rowed? A: the men | Q: Toward where? A: the dry land | Q: What happened next? A: they could not | Q: Why not? A: the …"
+        "__TODO__": "Q: What happened? A: rowing hard | Q: Who rowed? A: the men | Q: Toward where? A: the [[PL5-Dry-Land]] dry land | Q: What happened next? A: they could not | Q:…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -507,7 +519,9 @@ pilot: "pilot-2"
         "__TODO__": "Q: What happened? A: crying out | Q: Who cried? A: [[B4-Ship-Crew]] the men | Q: To whom? A: [[B2-YHWH]] YHWH | Q: Begged what? A: not to perish for this man's…"
       },
       "inter_proposition_links": {},
-      "cb_flags": [],
+      "cb_flags": [
+        "CB_0054"
+      ],
       "figure_flags": []
     },
     {
@@ -520,7 +534,9 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0199"
+      ]
     },
     {
       "prop_id": "P20",
@@ -543,8 +559,12 @@ pilot: "pilot-2"
         "__TODO__": "Q: What happened? A: fearing | Q: Who feared? A: the men | Q: Feared whom? A: [[B2-YHWH]] YHWH | Q: How greatly? A: a great fear | Q: What happened next? A: sa…"
       },
       "inter_proposition_links": {},
-      "cb_flags": [],
-      "figure_flags": []
+      "cb_flags": [
+        "CB_0053"
+      ],
+      "figure_flags": [
+        "FIG_0200"
+      ]
     },
     {
       "prop_id": "P22",
@@ -552,7 +572,7 @@ pilot: "pilot-2"
       "verse_anchor": "1:17",
       "proposition_kind": "__TODO__: Q: What happened? A: appointing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: [[B2-YHWH]] YHWH | Q: Appointed what? A: a great fish | Q: To do what? A: swallow [[B1-Jonah]] Jonah"
+        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: [[B2-YHWH]] YHWH | Q: Appointed what? A: a [[B7-Great-Fish]] great fish | Q: To do what? A: swallow [[B1…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -564,7 +584,7 @@ pilot: "pilot-2"
       "verse_anchor": "1:17",
       "proposition_kind": "__TODO__: Q: What happened? A: swallowing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: swallowing | Q: Who swallowed? A: the fish | Q: Swallowed whom? A: Jonah | Q: What happened next? A: staying | Q: Where? A: in the fish's …"
+        "__TODO__": "Q: What happened? A: swallowing | Q: Who swallowed? A: the [[B7-Great-Fish]] fish | Q: Swallowed whom? A: Jonah | Q: What happened next? A: staying | Q: Where?…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -576,7 +596,7 @@ pilot: "pilot-2"
       "verse_anchor": "2:1",
       "proposition_kind": "__TODO__: Q: What happened? A: praying",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: praying | Q: Who prayed? A: [[B1-Jonah]] Jonah | Q: To whom? A: [[B2-YHWH]] YHWH his God | Q: From where? A: the belly of the fish"
+        "__TODO__": "Q: What happened? A: praying | Q: Who prayed? A: [[B1-Jonah]] Jonah | Q: To whom? A: [[B2-YHWH]] YHWH his God | Q: From where? A: the belly of the [[B7-Great-F…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
