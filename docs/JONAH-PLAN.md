@@ -30,6 +30,16 @@
 > (Heb 2:11–3:10, release+Nineveh) · **J05** 4:1–11. All four packets extracted from BHSA + pinned
 > (SC-0039; whole-book tiling verified, 48/48 verses, 0 overlaps). **Next: Marcia maps** (her order — J02 or
 > the psalm first); each map runs the J01 pipeline (compile → gates → by-layer read).
+>
+> **J02 MAPPED + RULED + APPLIED (2026-06-10, SC-0040).** Marcia ruled J02-before-the-psalm, then all four
+> ruling groups (map/absences/pair/registers · the 12-entity cast, fish=being · the 3 cross-book reuses ·
+> the 5 new canon codes CB_0053/54 + FIG_0199–0201). **The by-layer read: L1 closed lists HELD on the
+> storm** (0 closed-axis blocks; 3 moment-level register shifts all inside the closed 7). Cast grown to 18
+> entities; coverage 79/79 · 0 unanchored; lint 0 drift/1 accepted TIME_PAIR; id-check clean. The draft
+> also surfaced + fixed three reader generality gaps (cross-chapter scene ranges + the `; Heb` versification
+> qualifier — **J03/J04 headings will need it** — and the book-general prop-anchor strip, a latent J01 bug).
+> **Next: J03 — the psalm (Heb 2:3–10), the real experiment** (first non-narrative genre against the closed
+> lists), on a pipeline now proven against narrative twice.
 
 ---
 
