@@ -211,6 +211,7 @@ function main() {
   fs.mkdirSync(path.join(outDir, 'assets'), { recursive: true });
   for (const [rel, html] of pages) fs.writeFileSync(path.join(outDir, rel), html);
   fs.copyFileSync(path.join(portalDir, 'assets', 'style.css'), path.join(outDir, 'assets', 'style.css'));
+  fs.copyFileSync(path.join(portalDir, 'assets', 'shema-logo.svg'), path.join(outDir, 'assets', 'shema-logo.svg'));
   fs.writeFileSync(path.join(outDir, '.nojekyll'), '');
 
   const manifest = {

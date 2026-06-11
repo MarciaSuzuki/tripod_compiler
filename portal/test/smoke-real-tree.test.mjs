@@ -35,6 +35,11 @@ test('the real fixtures tree builds clean', { skip: !haveFixtures }, () => {
   const j01 = fs.readFileSync(path.join(out, 'pericopes', 'J01.html'), 'utf8');
   assert.match(j01, /Not yet authored for this passage/);
 
+  // the Shema logo ships and every page's header references it (relRoot-correct)
+  assert.ok(fs.existsSync(path.join(out, 'assets', 'shema-logo.svg')), 'logo asset missing from dist');
+  assert.match(index, /<img class="logo" src="assets\/shema-logo\.svg"/);
+  assert.match(p01, /<img class="logo" src="\.\.\/assets\/shema-logo\.svg"/);
+
   // the manifest records provenance for every artifact rendered
   const manifest = JSON.parse(fs.readFileSync(path.join(out, 'build-manifest.json'), 'utf8'));
   assert.ok(manifest.artifacts.length >= 19);
