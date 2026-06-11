@@ -30,7 +30,7 @@ active-figures:
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL, the plain default for the biblical narrator's voice — the relaxed, everyday way an old story gets told. One scene-level override falls in v.2: YHWH's direct command ("Arise, go… and call out") lifts into ELDER_AUTHORITY — the authoritative voice of a superior giving an order. The narrator's voice around it stays INFORMAL_CASUAL; v.3 reports the flight in a tight run of plain verbs.
+The whole passage sits in INFORMAL_CASUAL. One scene-level override falls in v.2: YHWH's direct command ("Arise, go… and call out") lifts into ELDER_AUTHORITY — the authoritative voice of a superior giving an order. The narrator's voice around it stays INFORMAL_CASUAL; v.3 reports the flight in a tight run of plain verbs.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
