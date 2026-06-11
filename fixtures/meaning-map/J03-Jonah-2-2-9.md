@@ -6,7 +6,7 @@ bcv: "Jonah 2:2–9"
 genre-group: "POETIC_SUNG"
 genre: "PRAYER"
 register: "RELIGIOUS_WORSHIP"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
 sta-status: "pending"
 pilot: "pilot-2"
