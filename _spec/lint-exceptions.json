@@ -102,6 +102,17 @@
       "accepted_by": "Marcia Suzuki",
       "accepted_on": "2026-06-11",
       "sc_ref": "SC-0053"
+    },
+    {
+      "pericope": "P12-Ruth-4-9-12",
+      "rule": "compound",
+      "match": "and",
+      "context_prefix": "all that was Chilion's and Mahlon's",
+      "reason": "ENTITY_PAIR",
+      "note": "The 'and' joins the two dead brothers Chilion and Mahlon (4:9) — an entity-pair (C3), the same class as the existing 'her father and her mother' exception and the very 'his two sons Mahlon and Chilion' precedent named there. Boaz buys all that belonged to both brothers as one accounting, not two acts. Proposed by Architect 14 at the P12 draft; Marcia ruled KEEP as one (P12 rulings, group D1). Kept verbatim per ruling, not reworded.",
+      "accepted_by": "Marcia Suzuki",
+      "accepted_on": "2026-06-11",
+      "sc_ref": "SC-0059"
     }
   ]
 }
