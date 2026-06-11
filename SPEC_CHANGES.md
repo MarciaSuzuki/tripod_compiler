@@ -131,6 +131,8 @@ number bound to exactly one decision.
 
 | SC-0049 | **The Jonah Generality Report — the held-out test, written up** (`docs/JONAH-GENERALITY-REPORT.md`; the JONAH-PLAN §2 Phase-3 final deliverable; Marcia's sequencing ruling 2026-06-10: the report first, then the Ruth-remainder arc). The experiment's formal record: the question (does the vocabulary describe Scripture or just Ruth?), the by-layer verdict (**L1 HELD, zero values added · one structural prize-finding, ruled + fixed + gated (v0.16) · L3 born clean ×5 · the registry filled as designed, with the first cross-book concept anchor — CB_0011 Hesed P02→J05** · L2 explicitly deferred to the drafter phase), the numbers (48/48 verses · **279/279 explicit referents, 0 unanchored book-wide** · board 166→189+1 · pins aliases 0.1.0→0.1.6, banks →0.6.0, schema v0.15→v0.16, all reproducible-from-notes), the second thesis (**five pipeline defects only held-out drafting could find** — the Ruth-only anchor strip, cross-chapter ranges, the versification machinery, the prefix-grab class ×2, the §5 parenthetical leak — each now bite-gated), and the honest limits (the judgment half untested on Jonah; one judge; 2 of 4 genre groups exercised; 48 verses is a small book). | **DRAFTED (PR open — docs-only, Tier B by files-touched: evaluator number-verify + Marcia's content blessing, then merge).** No `_spec/` change, no pins, no code. 2026-06-10 |
 
+| SC-0050 | **The P07 packet — the Ruth-remainder arc's deterministic opener** (Marcia's sequencing ruling 2026-06-10: report first, then Ruth — interleaving explicitly allowed; this is the interleaved deterministic half, the SC-0033 pattern applied to P07). `extractor/pericopes.json` gains **P07 = Ruth 2:17–23** (the range settled by the June-2nd exegesis-blessed build; P08–P14 stay OUT, awaiting her division ruling; the file's note updated to say so). Packet extracted offline from BHSA tf/2021 + **pinned** (`source/ruth/P07.json`, file-bytes sha). **Verified against the data:** 7 verses (2:17–23 exactly) · 90 referents · proper nouns Boaz/Naomi/Ruth/YHWH (the gleaning-return cast). A process correction recorded honestly: the first extraction attempt assumed P07 was already in `pericopes.json` — it never was (the May PROGRESS note said so); the data corrected the memory at the first command. | **APPLIED (PR #58, stacked on #57 — the ruled merge order, report → Ruth).** Board **189 + 1 skipped** unchanged; check-drift exit 0 on the new pin. Next in the arc (post-report): the P07 **fresh rebuild** under the proven pipeline (the June-2nd draft beside it as exegetical reference), then the P08–P14 division ruling. 2026-06-10 |
+
 **Superseded / void allocations (recorded, never rebound):**
 - **SC-0006 — "Template relics" (planning-time allocation; never committed to this log) → VOID.**
   Cross-session history shows the template-relics fix was tentatively numbered SC-0006 in an earlier
@@ -161,6 +163,18 @@ number bound to exactly one decision.
 - Version: <old spec version> → <new spec version> (sha256 <hash>)
 - Verification: <how we confirmed: fixtures re-validate clean, etc.>
 ```
+
+---
+
+## SC-0050 — The P07 packet (the Ruth-remainder arc opens, deterministic half)
+- **Date:** 2026-06-10
+- **Decided by:** Marcia's sequencing ruling (report → Ruth; interleaving allowed — "they don't compete for your time until the report needs your blessing"). This is the interleaved deterministic half: the frozen referent set P07's fresh rebuild will be coverage-checked against.
+- **Status:** APPLIED (PR #58, stacked on #57; Tier A by files-touched — a pinned source packet; evaluator verify + Marcia's merge word, in the ruled order report → Ruth).
+- **Type:** pericope-spec entry + source-packet extraction/pin. **No schema change, no closed-list change, no registry change.**
+- **The entry:** `pericopes.json` gains **P07 = Ruth 2:17–23** — the range settled by the June-2nd exegesis-blessed P07 build (her readings remain valid input for the rebuild); **P08–P14 deliberately stay out** pending her division ruling, and the file's note now says exactly that.
+- **Verification:** 7 verses (2:17–23, no gaps) · 90 referents · proper nouns Boaz, Naomi, Ruth, YHWH; pinned by **file-bytes** sha; `check-drift` exit 0; board **189 + 1 skipped** untouched.
+- **Process note (the data corrected the memory):** the first extraction attempt assumed P07 was already in `pericopes.json`; it never was (PROGRESS.md recorded this in May). Caught at the first command — re-confirming the standing rule: verify against the data, not the recollection. A second instance the same hour: the ledger insert asserted on SC-0049's entries, which live on the unmerged #57 branch — resolved by stacking (this branch now sits on #57, matching the ruled merge order).
+- **Next:** post-report, the P07 **fresh rebuild** (Agent-2 v0.3, the pinned conventions, the global banks) with the June-2nd draft open beside it as exegetical reference; then Marcia's P08–P14 division ruling; then pericope by pericope.
 
 ---
 
