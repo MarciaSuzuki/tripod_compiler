@@ -38,8 +38,8 @@
       "sha256": "5bfa0e3fa9afdb8b90912865185a95c8596a7e1c3c58f90000ed748e2f3bb8f2"
     },
     "lint-exceptions.json": {
-      "version": "0.1.3",
-      "sha256": "beed6146defbb5068ff9894d5abdf3d0311acf6a06af08624219851640b3247b"
+      "version": "0.1.4",
+      "sha256": "2d5b85fde2a79e8fc5c15ca7366750ca067f0c0652f4a639c49b96e3f7289949"
     },
     "id-alignment-exceptions.json": {
       "version": "0.3.0",
