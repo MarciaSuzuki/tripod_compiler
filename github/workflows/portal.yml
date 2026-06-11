@@ -1,0 +1,79 @@
+# Review portal — build & deploy to GitHub Pages.
+#
+# ⚠ ACTIVATION (one-time, ~1 minute, needs a github.com web session):
+#   This file must live at .github/workflows/portal.yml to run. It ships HERE
+#   (portal/ci/) because the local git/gh tokens lack the `workflow` OAuth
+#   scope, which GitHub requires for pushing workflow files. To activate, copy
+#   it in the GitHub web UI: repo → Add file → Create new file → name it
+#   `.github/workflows/portal.yml` → paste this content → commit to main.
+#   (Alternatively: run `gh auth refresh -s workflow` locally once, then land
+#   `git mv portal/ci/portal.yml .github/workflows/portal.yml` as a PR.)
+#   Until activated, the portal builds and tests but does not auto-deploy.
+#
+# Freshness contract (acceptance item 5): the portal rebuilds on push to MAIN
+# ONLY, so it can never show unmerged drafts. The build itself enforces the
+# approved-only gate (exit 2 = no deploy). workflow_dispatch is allowed for
+# re-kicks, but the job refuses to run on any ref other than main.
+
+name: review-portal
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: portal/package-lock.json
+
+      - name: Install portal dependencies
+        working-directory: portal
+        run: npm ci
+
+      - name: Run portal tests (includes the approved-only bite tests)
+        working-directory: portal
+        run: npm test
+
+      - name: Build the site (approved-only gate enforced; exit 2 aborts deploy)
+        working-directory: portal
+        run: npm run build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: portal/dist
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
