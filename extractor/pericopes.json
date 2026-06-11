@@ -1,6 +1,6 @@
 {
     "book": "RUTH",
-    "_note": "Pericope → verse-range map for the Ruth pilot (P01–P06 have gold fixtures; P07 = Ruth 2:17-23 per the June-2nd exegesis-blessed build (SC-0050 re-extraction for the fresh rebuild); P08–P14 await Marcia's division ruling). bcv is human-facing; chapter/verse pairs drive the extractor.",
+    "_note": "Pericope → verse-range map for the Ruth pilot (P01–P06 have gold fixtures; P07 = Ruth 2:17-23 per the June-2nd exegesis-blessed build (SC-0050); P08–P14 = Marcia's division ruling 2026-06-11 (SC-0052) — the two contested seams ruled 3:5|3:6 and 4:8|4:9; the whole book tiles 85/85). bcv is human-facing; chapter/verse pairs drive the extractor.",
     "pericopes": {
         "P01": {
             "bcv": "Ruth 1:1-5",
@@ -77,6 +77,83 @@
             "end": [
                 2,
                 23
+            ]
+        },
+        "P08": {
+            "bcv": "Ruth 3:1-5",
+            "start": [
+                3,
+                1
+            ],
+            "end": [
+                3,
+                5
+            ]
+        },
+        "P09": {
+            "bcv": "Ruth 3:6-13",
+            "start": [
+                3,
+                6
+            ],
+            "end": [
+                3,
+                13
+            ]
+        },
+        "P10": {
+            "bcv": "Ruth 3:14-18",
+            "start": [
+                3,
+                14
+            ],
+            "end": [
+                3,
+                18
+            ]
+        },
+        "P11": {
+            "bcv": "Ruth 4:1-8",
+            "start": [
+                4,
+                1
+            ],
+            "end": [
+                4,
+                8
+            ]
+        },
+        "P12": {
+            "bcv": "Ruth 4:9-12",
+            "start": [
+                4,
+                9
+            ],
+            "end": [
+                4,
+                12
+            ]
+        },
+        "P13": {
+            "bcv": "Ruth 4:13-17",
+            "start": [
+                4,
+                13
+            ],
+            "end": [
+                4,
+                17
+            ]
+        },
+        "P14": {
+            "bcv": "Ruth 4:18-22",
+            "start": [
+                4,
+                18
+            ],
+            "end": [
+                4,
+                22
             ]
         }
     }

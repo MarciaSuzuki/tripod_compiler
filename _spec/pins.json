@@ -108,6 +108,34 @@
     "registry/figures.json": {
       "version": "0.6.0",
       "sha256": "03a392f306838b32f622b6c829a1da4d108b46b33a3c12a14584f9a4e3b48608"
+    },
+    "source/ruth/P08.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "a3ca3654b1e0b0b4a0b61344708c4ff4ef246a8734636a97ddaf08ec6090b68e"
+    },
+    "source/ruth/P09.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "78632efd2da61cc6c3b469a27087c0a1755fb318d4fb5c78367cc8bf9b8548b0"
+    },
+    "source/ruth/P10.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "86f099788e3162b93aff8579f397b970d80e6ff31be3f220d22db75e1ff6fd47"
+    },
+    "source/ruth/P11.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "7b7f8a0c71033c97afe97e51791ce9720936e2dbd901813fcfb6ab9be72e9fa8"
+    },
+    "source/ruth/P12.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "a8ec45797c7be80f90ea8109b8058bb5bd6ed1540218c7a14f6c699eb9113890"
+    },
+    "source/ruth/P13.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "0a048a01f14a59b33b8a74106f92bebcced26b51912ec067ad672db2c54fa9ab"
+    },
+    "source/ruth/P14.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "2bd1a6cdcdee6d07f8da25ba56208a92f12045a1a947d1716e9823b765014cf5"
     }
   }
 }
