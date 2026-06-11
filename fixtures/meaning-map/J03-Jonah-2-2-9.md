@@ -36,7 +36,7 @@ word — "and he said" — rides the front of the first verse; the poem proper b
 - **Register:** RELIGIOUS_WORSHIP
 
 **Multi-level register tagging:**
-This pericope has no narrator voice: by the ruled division it is the poem alone, a prayer spoken to YHWH from start to finish, so the pericope-level register is RELIGIOUS_WORSHIP — the voice of worship addressed directly to God. The standing rule that the narrator's storytelling voice is INFORMAL_CASUAL is not in play here, because there is no storytelling voice inside this pericope to carry it; the one narrative word ("and he said") is the seam left by cutting at the verse boundary, not a narrating presence. No scene-level or moment-level shifts: the prayer holds one register throughout — recounting, confessing, and vowing all inside worship. CONSULTATIVE is not used anywhere.
+This pericope has no narrator voice: by the ruled division it is the poem alone, a prayer spoken to YHWH from start to finish, so the pericope-level register is RELIGIOUS_WORSHIP — the voice of worship addressed directly to God. There is no storytelling voice inside this pericope; the one narrative word ("and he said") is the seam left by cutting at the verse boundary, not a narrating presence. No scene-level or moment-level shifts: the prayer holds one register throughout — recounting, confessing, and vowing all inside worship.
 
 ## 2. Level 1 — Whole-Passage Movement
 
