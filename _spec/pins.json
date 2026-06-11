@@ -69,6 +69,10 @@
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "5228a78e3deacbe21af8a48b6fc56d2fdda4d0aa3f31598f00ffe5926ac15239"
     },
+    "source/ruth/P07.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "7cc4d3f9c5656dfad72f00c44b04550e8fd1cf864fb44c53d4afba6d2df20bd2"
+    },
     "source/jonah/J01.json": {
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "655575f6c6e6564f53769f1c41e6fc1eeb5f433ef94df227e67e86a8cb93c051"
