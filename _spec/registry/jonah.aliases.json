@@ -2,11 +2,11 @@
   "book": "JONAH",
   "counts": {
     "by_kind": {
-      "PERSON": 12,
+      "PERSON": 13,
       "PLACE": 8,
-      "THING": 10
+      "THING": 13
     },
-    "entities": 30
+    "entities": 34
   },
   "entities": {
     "B1": {
@@ -44,12 +44,24 @@
     },
     "B12": {
       "appears_in": [
-        "J04"
+        "J04",
+        "J05"
       ],
       "english": "Animals",
       "gender": null,
       "hebrew": "בְּהֵמָה",
       "hebrew_cons": "בהמה",
+      "kind": "PERSON",
+      "referential_forms": []
+    },
+    "B13": {
+      "appears_in": [
+        "J05"
+      ],
+      "english": "Worm",
+      "gender": "f",
+      "hebrew": "תּוֹלַעַת",
+      "hebrew_cons": "תולעת",
       "kind": "PERSON",
       "referential_forms": []
     },
@@ -89,7 +101,8 @@
     "B5": {
       "appears_in": [
         "J01",
-        "J04"
+        "J04",
+        "J05"
       ],
       "english": "People of Nineveh",
       "gender": null,
@@ -162,6 +175,39 @@
       "gender": null,
       "hebrew": "אֵפֶר",
       "hebrew_cons": "אפר",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O11": {
+      "appears_in": [
+        "J05"
+      ],
+      "english": "Qiqayon",
+      "gender": null,
+      "hebrew": "קִיקָיוֹן",
+      "hebrew_cons": "קיקיון",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O12": {
+      "appears_in": [
+        "J05"
+      ],
+      "english": "East Wind",
+      "gender": null,
+      "hebrew": "רוּחַ קָדִים",
+      "hebrew_cons": "רוחקדים",
+      "kind": "THING",
+      "referential_forms": []
+    },
+    "O13": {
+      "appears_in": [
+        "J05"
+      ],
+      "english": "Booth",
+      "gender": null,
+      "hebrew": "סֻכָּה",
+      "hebrew_cons": "סכה",
       "kind": "THING",
       "referential_forms": []
     },
@@ -256,7 +302,8 @@
     "PL1": {
       "appears_in": [
         "J01",
-        "J04"
+        "J04",
+        "J05"
       ],
       "english": "Nineveh",
       "gender": null,
@@ -267,7 +314,8 @@
     },
     "PL2": {
       "appears_in": [
-        "J01"
+        "J01",
+        "J05"
       ],
       "english": "Tarshish",
       "gender": null,

@@ -7,7 +7,7 @@ status: "skeleton"
 pilot: "pilot-2"
 ---
 
-# J05 — Jonah 4:1–11 — FOR_MODEL (SKELETON — 101 judgment gaps)
+# J05 — Jonah 4:1–11 — FOR_MODEL (SKELETON — 97 judgment gaps)
 
 > Deterministic skeleton compiled from the Meaning Map (`tripod compile`). Fields set to `__TODO__` need the drafter/LLM (Slice 4); see the gap report (`--json`).
 
@@ -73,6 +73,9 @@ pilot: "pilot-2"
           },
           {
             "object_id": "CB_0011"
+          },
+          {
+            "object_id": "CB_0058"
           }
         ]
       },
@@ -111,7 +114,7 @@ pilot: "pilot-2"
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: the booth — סֻכָּה / a booth"
+            "object_id": "O13"
           }
         ]
       },
@@ -139,7 +142,7 @@ pilot: "pilot-2"
             "presence": "PRESENT"
           },
           {
-            "being_id": "__TODO__: the worm — תּוֹלַעַת / a worm",
+            "being_id": "B13",
             "role_in_scene": "__TODO__: the appointed striker — it kills the qiqayon at dawn",
             "presence": "PRESENT"
           }
@@ -151,10 +154,10 @@ pilot: "pilot-2"
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: the qiqayon — קִיקָיוֹן / the qiqayon plant"
+            "object_id": "O11"
           },
           {
-            "object_id": "__TODO__: the east wind — רוּחַ קָדִים חֲרִישִׁית / a cutting east wind"
+            "object_id": "O12"
           }
         ]
       },
@@ -203,7 +206,7 @@ pilot: "pilot-2"
       "objects_in_scene": {
         "entries": [
           {
-            "object_id": "__TODO__: the qiqayon — הַקִּיקָיוֹן / the qiqayon"
+            "object_id": "O11"
           }
         ]
       },
@@ -262,7 +265,8 @@ pilot: "pilot-2"
       "inter_proposition_links": {},
       "cb_flags": [
         "CB_0011",
-        "CB_0057"
+        "CB_0057",
+        "CB_0058"
       ],
       "figure_flags": []
     },
@@ -288,7 +292,9 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0206"
+      ]
     },
     {
       "prop_id": "P7",
@@ -306,9 +312,9 @@ pilot: "pilot-2"
       "prop_id": "P8",
       "scene_link": "S2",
       "verse_anchor": "4:5",
-      "proposition_kind": "__TODO__: Q: What happened? A: making a booth",
+      "proposition_kind": "__TODO__: Q: What happened? A: making a [[O13-Booth]] booth",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: making a booth | Q: Who made it? A: Jonah | Q: What happened next? A: sitting under it | Q: In what? A: the shade | Q: Until what? A: seei…"
+        "__TODO__": "Q: What happened? A: making a [[O13-Booth]] booth | Q: Who made it? A: Jonah | Q: What happened next? A: sitting under it | Q: In what? A: the shade | Q: Until…"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -320,11 +326,13 @@ pilot: "pilot-2"
       "verse_anchor": "4:6",
       "proposition_kind": "__TODO__: Q: What happened? A: appointing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: [[B2-YHWH]] YHWH-God | Q: Appointed what? A: a qiqayon plant"
+        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: [[B2-YHWH]] YHWH-God | Q: Appointed what? A: a [[O11-Qiqayon]] qiqayon plant"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0205"
+      ]
     },
     {
       "prop_id": "P10",
@@ -356,11 +364,13 @@ pilot: "pilot-2"
       "verse_anchor": "4:7",
       "proposition_kind": "__TODO__: Q: What happened? A: appointing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: God | Q: Appointed what? A: a worm | Q: When? A: at the rising of dawn the next day"
+        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: God | Q: Appointed what? A: a [[B13-Worm]] worm | Q: When? A: at the rising of dawn the next day"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0205"
+      ]
     },
     {
       "prop_id": "P13",
@@ -368,7 +378,7 @@ pilot: "pilot-2"
       "verse_anchor": "4:7",
       "proposition_kind": "__TODO__: Q: What happened? A: striking",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: striking | Q: What struck? A: the worm | Q: Struck what? A: the qiqayon | Q: What happened next? A: it withered"
+        "__TODO__": "Q: What happened? A: striking | Q: What struck? A: the [[B13-Worm]] worm | Q: Struck what? A: the qiqayon | Q: What happened next? A: it withered"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
@@ -380,11 +390,13 @@ pilot: "pilot-2"
       "verse_anchor": "4:8",
       "proposition_kind": "__TODO__: Q: What happened? A: appointing",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: God | Q: Appointed what? A: a cutting east wind | Q: When? A: when the sun rose"
+        "__TODO__": "Q: What happened? A: appointing | Q: Who appointed? A: God | Q: Appointed what? A: a cutting [[O12-East-Wind]] east wind | Q: When? A: when the sun rose"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0205"
+      ]
     },
     {
       "prop_id": "P15",
@@ -420,7 +432,9 @@ pilot: "pilot-2"
       },
       "inter_proposition_links": {},
       "cb_flags": [],
-      "figure_flags": []
+      "figure_flags": [
+        "FIG_0206"
+      ]
     },
     {
       "prop_id": "P18",

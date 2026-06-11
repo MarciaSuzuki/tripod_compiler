@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 8,
+      "JONAH": 9,
       "RUTH": 50
     },
-    "entries": 57
+    "entries": 58
   },
   "entries": {
     "CB_0001": {
@@ -592,6 +592,14 @@
       ],
       "code": "CB_0057",
       "name_slug": "God-Relents"
+    },
+    "CB_0058": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "CB_0058",
+      "name_slug": "Compassion-Creed"
     }
   },
   "kind": "CONCEPT",
