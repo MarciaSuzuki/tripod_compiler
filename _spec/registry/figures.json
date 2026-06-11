@@ -1,10 +1,10 @@
 {
   "counts": {
     "by_book": {
-      "JONAH": 9,
+      "JONAH": 11,
       "RUTH": 115
     },
-    "entries": 124
+    "entries": 126
   },
   "entries": {
     "FIG_0001": {
@@ -1050,6 +1050,22 @@
       ],
       "code": "FIG_0204",
       "name_slug": "Not-Perish-Refrain"
+    },
+    "FIG_0205": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0205",
+      "name_slug": "Appointing-Refrain"
+    },
+    "FIG_0206": {
+      "aliases": [],
+      "appears_in": [
+        "JONAH"
+      ],
+      "code": "FIG_0206",
+      "name_slug": "Anger-Question-Pair"
     }
   },
   "kind": "FIGURE",
