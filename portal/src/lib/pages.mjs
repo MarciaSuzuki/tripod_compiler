@@ -18,8 +18,11 @@ export function layout({ cfg, title, relRoot, contentHtml, buildInfo }) {
 </head>
 <body>
 <header class="site">
-  <a class="home" href="${relRoot}index.html">${escapeHtml(cfg.siteTitle)}</a>
-  <div class="subtitle">${escapeHtml(cfg.siteSubtitle)}</div>
+  <a class="brand" href="${relRoot}index.html"><img class="logo" src="${relRoot}assets/shema-logo.svg" alt="Shema — Multimodal Bible Translation" height="52"></a>
+  <div class="masthead">
+    <a class="home" href="${relRoot}index.html">${escapeHtml(cfg.siteTitle)}</a>
+    <div class="subtitle">${escapeHtml(cfg.siteSubtitle)}</div>
+  </div>
 </header>
 <main>
 ${contentHtml}
