@@ -1,0 +1,698 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"ruth_pilot_BCD_v0_3\"",
+      "note": "Ruth pericope → standard BCD ref per convention.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"Scenes 2-3 shift to INTIMATE (the whispered exchange in the dark at midnight); one moment at 3:10 lifts to CEREMONIAL (Boaz's blessing form). The v.13 chai-YHWH oath stays INTIMATE per the P03 precedent. Scene 1 is the narrator's plain INFORMAL_CASUAL telling.\",\"scene_level\":[{\"scene_id\":\"S2\",\"override_value\":\"INTIMATE\"},{\"scene_id\":\"S3\",\"override_value\":\"INTIMATE\"}],\"moment_level\":[{\"verse\":\"3:10a\",\"override_value\":\"CEREMONIAL\"}]}",
+      "note": "MM Section 1 multi-level register tagging encoded structurally. Quoted oath at v.13 deliberately NOT lifted to CEREMONIAL per the map's own note.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"PLAN_EXECUTION\",\"RECOGNITION_EXCHANGE\",\"WING_PETITION\",\"BLESSING_INVOCATION\",\"NEARER_REDEEMER_DISCLOSURE\",\"OATH_SEALING\"]",
+      "note": "Movement: execute Naomi's plan into the dark → midnight startle/recognition → the wing petition spoken past the plan → blessing → the nearer-redeemer complication → oath seal. Three mints required (no approved fit for plan-execution, the kanaf marriage-petition, or the legal-queue disclosure).",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "PLAN_EXECUTION",
+          "justification": "MM 2.1/3F-S1: Ruth 'does all her mother-in-law commanded' — the carrying-out of P08's plan; no approved arc token names execution of a prior plan."
+        },
+        {
+          "axis": "arc_element",
+          "value": "WING_PETITION",
+          "justification": "MM 3:9: 'spread your wing over your servant' — the kanaf marriage/protection petition closing the 2:12 image; no approved arc token covers this petition."
+        },
+        {
+          "axis": "arc_element",
+          "value": "NEARER_REDEEMER_DISCLOSURE",
+          "justification": "MM 3:12: 'there is a redeemer nearer than I' turns 2:20's comfort into a legal queue; distinct beat with no approved fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"PHYSICAL_LOCATION\",\"KINSHIP_CONTEXT\",\"INSTITUTIONAL_CONTEXT\",\"PRIOR_PERICOPE_CARRY_FORWARD\",\"DIVINE_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\"]",
+      "note": "Threshing floor/gate (physical); redeemer & mother/daughter-in-law (kinship); kinsman-redeemer law & gate-legal venue (institutional); the heavy carry-forward of P08's plan, 2:12 kanaf, 2:20 redeemer, 2:1 chayil, 1:8/2:20 hesed (prior-pericope); YHWH invoked in blessing and oath (divine); the wordplays the hearer is expected to catch (audience-knowledge).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"QUIET\",\"ECONOMICAL\",\"INTIMATE\",\"ANTICIPATORY\",\"STILLED\"]",
+      "note": "Quiet motion told plainly/economically; the whispered intimacy of the exchange; the held breath between 'you are a redeemer' and 'nearer than I' (anticipatory); the strange calm of the settled protocol (stilled).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"BRISK\",\"RISES\",\"SLOWED\",\"HOLDS\",\"SETTLES\"]",
+      "note": "Scene 1 told fast (brisk); the midnight startle (rises); the talk unrolling slowly (slowed); the held breath (holds); the settled protocol close (settles).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"ADVANCES\",\"CLOSES\",\"REACTIVATES\",\"OPENS\",\"STAGES\"]",
+      "note": "Advances the plot to its hinge; closes the 2:12 wing-image as petition; reactivates the 3:5 assent-pattern in Boaz's mouth; opens the legal redeemer-queue; stages the gate scene.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Ruth acting on Naomi's plan; relational role carried, executing party.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "Narrator uses 'Ruth' — unmarked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": "Boaz the household's redeemer-kinsman, asleep by his grain; he does not yet know she is there.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "Narrator names him 'Boaz' — unmarked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"PLANNER\"",
+      "note": "Naomi the absent author of the plan Ruth carries out.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "Narrator refers to Naomi only as 'her mother-in-law' (חֲמוֹתָהּ); left unmarked to avoid over-marking a passing kinship reference — flag for reviewer if the chamot relation should be preserved as marked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/places_in_scene/entries/1/place_id",
+      "value_json": "\"PL_END_OF_GRAIN_HEAP\"",
+      "note": "קְצֵה הָעֲרֵמָה / 'the end of the grain heap' — not in the registry; descriptive PL code proposed (reviewer's call on canonical form).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"NIGHT_APPROACH_SCENE\"",
+      "note": "Silent staging: descent to the floor, the meal, lying down, the soft approach and uncovering. No approved scene_kind names this nocturnal silent-approach staging; mint proposed.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "NIGHT_APPROACH_SCENE",
+          "justification": "MM 3F-S1: 'Executes the plan to the letter and sets the night's stage' — a wordless nighttime approach scene with no approved fit (MEAL_SCENE/INSTRUCTION_SCENE miss the staging focus)."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": "Boaz the startled sleeper; still the household redeemer-kin in function.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"HA_ISH_THE_MAN\"",
+      "note": "MM explicitly marks: 'the man' (הָאִישׁ) at v.8 — name withheld until his answer.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Ruth as petitioner; relational role carried.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"RUTH_YOUR_SERVANT_AMAH\"",
+      "note": "MM marks the self-naming 'Ruth your servant' (amah) — the marriageable-servant word, a step up from shifchah of 2:13 (FIG_0132).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": "B18 is the redeemer-role Ruth names Boaz into — the ground of her request.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "'a redeemer' (goel) is the role-naming, carried in objects; not a marked naming of a person.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/times_in_scene/entries/0/time_id",
+      "value_json": "\"TM_MIDDLE_OF_THE_NIGHT\"",
+      "note": "בַּחֲצִי הַלַּיְלָה / 'at half of the night' — no registry TM code; descriptive TM proposed (L3 registry proposal).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"APPEAL_SCENE\"",
+      "note": "The midnight recognition and Ruth's petition for the wing — an appeal scene.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B2\",\"role_in_scene\":\"ANCESTOR\",\"presence\":\"REFERENCED\"},{\"being_id\":\"B3\",\"role_in_scene\":\"MOTHER_IN_LAW\",\"presence\":\"REFERENCED\"}]",
+      "note": "Append: Elimelech's line is invoked (the redeemer duty of B2's line, MM 3A-B18 relationship) and Naomi as Ruth's mother-in-law. Both REFERENCED.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": "Boaz blesses, pledges, discloses, swears — the household redeemer (and not the nearest).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "Named 'Boaz' — unmarked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Ruth blessed and praised; relational role carried.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"MY_DAUGHTER_INTIMATE\"",
+      "note": "MM marks Boaz's twice-used address 'my daughter' (בִּתִּי) — the same address Naomi uses; _INTIMATE idiom per worked pair.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH invoked in the blessing and sworn by in the oath.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "'YHWH' — unmarked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": "The nearer redeemer — prior claim in the legal queue.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/referential_form",
+      "value_json": "\"NEARER_REDEEMER_UNNAMED\"",
+      "note": "MM marks: 'a redeemer nearer than I' — name withheld here (resolved at the gate, 4:1).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/4/role_in_scene",
+      "value_json": "\"TOWNSPEOPLE\"",
+      "note": "'all the gate of my people' — the town community whose knowledge of Ruth's worth Boaz cites.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/4/referential_form",
+      "value_json": "null",
+      "note": "Collective 'all the gate of my people' carried in role/place; not marked here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/5/role_in_scene",
+      "value_json": "\"POTENTIAL_SUITORS\"",
+      "note": "The young men (habachurim) Ruth did not go after — the measure of her last hesed. No approved role token for unchosen suitors; mint proposed.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "POTENTIAL_SUITORS",
+          "justification": "MM 3A-S3: 'the young men of marrying age, poor or rich; none of them chosen' — their scene function is the unchosen marital alternative, with no approved role_in_scene_being fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/5/referential_form",
+      "value_json": "null",
+      "note": "Surface form הַבַּחוּרִים / 'the young men'; carried in role, not a marked personal naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/5/being_id",
+      "value_json": "\"B?\"",
+      "note": "The young men (הַבַּחוּרִים) are a referenced group with no registry code; deliberately uncoded per the B? convention. Reviewer may register a B code if desired.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/times_in_scene/entries/0/time_id",
+      "value_json": "\"TM_NIGHT_UNTIL_MORNING\"",
+      "note": "הַלַּיְלָה … בַבֹּקֶר / 'the night … in the morning' — the protocol's two times; no registry TM code, descriptive TM proposed.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/scene_kind",
+      "value_json": "\"BLESSING_SCENE\"",
+      "note": "Boaz's answer opens with the blessing (CEREMONIAL lift) and carries pledge, disclosure, and oath. BLESSING_SCENE chosen as the dominant opening move; the oath-sealing also runs here (cf. VOW_SCENE) — flag for reviewer if a combined kind is preferred.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B2\",\"role_in_scene\":\"ANCESTOR\",\"presence\":\"REFERENCED\"}]",
+      "note": "Append: Elimelech's line invoked via the nearer-redeemer's kinship (MM 3A-S3 B19 relationship).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"WENT_DOWN\"",
+      "note": "Ruth's descent to the floor with compliance to the command. No approved kind for descent/compliance; mint proposed.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "WENT_DOWN",
+          "justification": "MM P1: 'she went down (yarad) to the threshing floor and did all her mother-in-law commanded' — a descent-and-compliance event with no approved proposition_kind fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"descender\":\"B9\",\"destination\":\"PL6\",\"compliance_form\":\"ALL_AS_COMMANDED\",\"commanding_party\":\"B3\"}",
+      "note": "Compliance with Naomi's P08 plan preserved as compliance_form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"ATE\"",
+      "note": "Reuse of approved kind.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"diner\":\"B13\",\"ate\":true,\"drank\":true,\"resulting_disposition\":\"HEART_WAS_GOOD\"}",
+      "note": "FIG_0141 heart-good-after-meal carried as resulting_disposition; drank kept as boolean to avoid an axis mint.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P3\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"LAY_DOWN\"",
+      "note": "No approved kind for lying down; mint proposed.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "LAY_DOWN",
+          "justification": "MM P3: 'he came to lie down at the end of the grain heap' — a lying-down event with no approved proposition_kind fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"one_lying_down\":\"B13\",\"location\":\"PL_END_OF_GRAIN_HEAP\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P2\",\"forward_link_to\":\"P4\"}",
+      "note": "Lies down after eating and being content.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"APPROACHED\"",
+      "note": "Ruth's soft approach, uncovering, and lying down — three actions in one MM proposition; decomposed into components. Mint for the kind.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "APPROACHED",
+          "justification": "MM P4: 'she came softly, uncovered the place of his feet, and lay down' — a multi-action approach with no approved proposition_kind fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"approach_components\":[{\"action\":\"WALKED\",\"approacher\":\"B9\",\"manner\":\"SOFTLY\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"UNCOVERED_FEET\",\"uncoverer\":\"B9\",\"uncovered_place\":\"CB_0042\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"LAY_DOWN\",\"one_lying_down\":\"B9\",\"speech_act\":\"STATES_AS_TRUE\"}]}",
+      "note": "Three component actions. WALKED reused for 'came softly'; UNCOVERED_FEET and LAY_DOWN are action-axis mints (declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "action",
+          "value": "UNCOVERED_FEET",
+          "justification": "MM P4 / CB_0042 margelot: 'uncovered the place of his feet' — the plan's central act; no approved action token covers uncovering."
+        },
+        {
+          "axis": "action",
+          "value": "LAY_DOWN",
+          "justification": "MM P4: 'and lay down' — a lying-down action with no approved action-axis fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"TREMBLED\"",
+      "note": "The midnight startle (FIG_0130 Vayyecherad). No approved kind; mint proposed.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "TREMBLED",
+          "justification": "MM P5: 'the man trembled and twisted' — the vayyecherad startle, with no approved proposition_kind fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"one_who_trembled\":\"B13\",\"time_of_startle\":\"TM_MIDDLE_OF_THE_NIGHT\",\"follow_motion\":\"TWISTED_AROUND\",\"referential_form_at_verse\":\"HA_ISH_THE_MAN\"}",
+      "note": "'the man' naming preserved at the startle.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P4\",\"forward_link_to\":\"P6\"}",
+      "note": "The presence at his feet causes the startle.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"PERCEIVED\"",
+      "note": "Reuse of approved kind.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"perceiver\":\"B13\",\"perceived_being\":\"B9\",\"perceived_as\":\"A_WOMAN\",\"location\":\"CB_0042\",\"attention_marker\":\"HINNEH\"}",
+      "note": "'and behold (hinneh) a woman' — he perceives her only as 'a woman', not yet Ruth.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P5\",\"forward_link_to\":\"P7\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"ASKED\"",
+      "note": "Reuse of approved kind.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"asker\":\"B13\",\"addressee\":\"B9\",\"question_form\":\"WHO_ARE_YOU\",\"referential_form_at_verse\":\"HA_ISH_THE_MAN\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"}",
+      "note": "'who are you?' — identity-seeking question.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P6\",\"forward_link_to\":\"P8\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"SPOKE\"",
+      "note": "Ruth's self-identifying answer.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"speaker\":\"B9\",\"addressee\":\"B13\",\"self_identification\":\"I_AM_RUTH_YOUR_SERVANT\",\"self_referential_form\":\"RUTH_YOUR_SERVANT_AMAH\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "amah self-naming preserved (FIG_0132).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P7\",\"paired_with\":\"P7\",\"forward_link_to\":\"P9\"}",
+      "note": "Answers the question P7.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"APPEAL\"",
+      "note": "Reuse — the wing petition.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"petitioner\":\"B9\",\"petitioned\":\"B13\",\"petition_content\":\"SPREAD_YOUR_WING_OVER_SERVANT\",\"invoked_image\":\"CB_0037\",\"self_referential_form\":\"AMAH_SERVANT\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}",
+      "note": "The kanaf petition closing 2:12. Imperative-form humble petition → DIRECTS_HEARER_TO_DO (the closest closed speech act); note the register is a petition, not a command.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P10\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Ruth states the ground of her petition — the redeemer-word in her own mouth for the first time.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/event_specific_slots",
+      "value_json": "{\"declarer\":\"B9\",\"addressee\":\"B13\",\"declared_ground\":\"YOU_ARE_A_REDEEMER\",\"redeemer_role\":\"B18\",\"redeemer_concept\":\"CB_0001\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "First occurrence of the goel word in Ruth's speech (the plan withheld it).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/inter_proposition_links",
+      "value_json": "{\"paired_with\":\"P9\",\"forward_link_to\":\"P11\"}",
+      "note": "The ground of the petition P9.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/proposition_kind",
+      "value_json": "\"BLESSING\"",
+      "note": "Reuse — Boaz's blessing (CEREMONIAL lift).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/event_specific_slots",
+      "value_json": "{\"blessing_speaker\":\"B13\",\"blessing_recipients\":\"B9\",\"invoked_divine_agent\":\"B10\",\"address_form\":\"MY_DAUGHTER_INTIMATE\",\"blessing_content_kind\":\"BLESSED_OF_YHWH\",\"speech_act\":\"WISHES_FOR_HEARER\"}",
+      "note": "Worked-pair blessing idiom. WISHES_FOR_HEARER is the closest closed speech act for the blessing form (no BLESSES act exists).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"forward_link_to\":\"P12\"}",
+      "note": "Boaz's answer responds to the petition.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Boaz praises her last hesed.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/event_specific_slots",
+      "value_json": "{\"declarer\":\"B13\",\"praised_party\":\"B9\",\"hesed_concept\":\"CB_0011\",\"hesed_comparison\":\"LAST_BETTER_THAN_FIRST\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "Hesed-thread third station (1:8, 2:20, 3:10); FIG_0133/FIG_0111.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P13\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "The content of the hesed-praise: not going after the young men.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/event_specific_slots",
+      "value_json": "{\"declarer\":\"B13\",\"about_party\":\"B9\",\"abstained_from\":\"GOING_AFTER_YOUNG_MEN\",\"young_men\":\"B?\",\"scope\":\"WHETHER_POOR_OR_RICH\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "Young men carried as B? (uncoded group).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P12\",\"forward_link_to\":\"P14\"}",
+      "note": "Explains the hesed of P12.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/proposition_kind",
+      "value_json": "\"REASSURED\"",
+      "note": "'do not fear' + the pledge 'all that you say I will do' — reassurance. No approved kind; mint proposed.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "REASSURED",
+          "justification": "MM P14: 'do not fear; all that you say I will do for you' — a reassurance/pledge act (FIG_0123/FIG_0136) with no approved proposition_kind fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/13/event_specific_slots",
+      "value_json": "{\"speaker\":\"B13\",\"addressee\":\"B9\",\"address_form\":\"MY_DAUGHTER_INTIMATE\",\"reassurance_components\":[{\"directive\":\"DO_NOT_FEAR\",\"speech_act\":\"DIRECTS_HEARER_NOT_TO_DO\"},{\"pledge_content\":\"ALL_THAT_YOU_SAY_I_WILL_DO\",\"speech_act\":\"VOWS\"}]}",
+      "note": "The pledge echoes Ruth's 3:5 assent in reverse (FIG_0136); VOWS used for the binding pledge — the formal chai-YHWH oath is distinct at P20.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"forward_link_to\":\"P15\"}",
+      "note": "Answers her petition with reassurance and pledge.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "The reason for the pledge: the gate knows her worth.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/event_specific_slots",
+      "value_json": "{\"declarer\":\"B13\",\"knowing_public\":\"B21\",\"public_venue\":\"PL7\",\"gate_concept\":\"CB_0006\",\"known_fact\":\"RUTH_IS_WOMAN_OF_WORTH\",\"worth_concept\":\"CB_0032\",\"about_party\":\"B9\",\"referential_form_at_verse\":\"ESHET_CHAYIL_WOMAN_OF_WORTH\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "eshet chayil completes the 2:1 pair (FIG_0134); the gate named as the venue the legal scene will use.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P14\",\"forward_link_to\":\"P16\"}",
+      "note": "Gives the reason for the pledge in P14.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Boaz owns the redeemer role.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/event_specific_slots",
+      "value_json": "{\"declarer\":\"B13\",\"owned_role\":\"REDEEMER\",\"redeemer_concept\":\"CB_0001\",\"affirmation_marker\":\"TRULY\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "'truly I am a redeemer'.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P17\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "The nearer-redeemer disclosure.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/event_specific_slots",
+      "value_json": "{\"declarer\":\"B13\",\"disclosed_party\":\"B19\",\"disclosure\":\"A_REDEEMER_NEARER_THAN_I\",\"redeemer_concept\":\"CB_0001\",\"referential_form\":\"NEARER_REDEEMER_UNNAMED\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "Turns 2:20's nearness into a legal queue (FIG_0138/FIG_0112); resolved at the gate (4:1-8).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P16\",\"forward_link_to\":\"P18\"}",
+      "note": "The 'but' complication against P16's ownership.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "'lodge the night' — a directive.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/event_specific_slots",
+      "value_json": "{\"instructor\":\"B13\",\"instructed\":\"B9\",\"action\":\"DIRECTED\",\"commanded_step\":\"LODGE_THE_NIGHT\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}",
+      "note": "Command encoded per the action-idiom ruling: DIRECTED + commanded_step.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P17\",\"forward_link_to\":\"P19\"}",
+      "note": "The disclosure necessitates the night's protocol.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/18/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "The conditional morning protocol (FIG_0140 reverse-handoff); contingent plan stated, decomposed into components.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/18/event_specific_slots",
+      "value_json": "{\"speaker\":\"B13\",\"protocol_components\":[{\"condition\":\"IF_NEARER_REDEEMS\",\"outcome\":\"GOOD_LET_HIM_REDEEM\",\"redeemer\":\"B19\",\"speech_act\":\"STATES_AS_TRUE\"},{\"condition\":\"IF_HE_REFUSES\",\"outcome\":\"I_WILL_REDEEM_YOU\",\"self_redeemer\":\"B13\",\"speech_act\":\"VOWS\"}],\"redeemer_concept\":\"CB_0001\"}",
+      "note": "redeem-upon-redeem; the self-pledge half carries VOWS (sealed by the oath at P20).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/18/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P17\",\"forward_link_to\":\"P20\"}",
+      "note": "The protocol follows from the nearer-redeemer disclosure.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/19/proposition_kind",
+      "value_json": "\"VOW\"",
+      "note": "The chai-YHWH oath.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/19/event_specific_slots",
+      "value_json": "{\"swearer\":\"B13\",\"oath_formula\":\"AS_YHWH_LIVES\",\"invoked_divine_witness\":\"B10\",\"speech_act\":\"INVOKES_DIVINE_AS_OATH_GUARANTOR\"}",
+      "note": "FIG_0135 chai-YHWH formula; INTIMATE register per the map (not lifted to ceremonial).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/19/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P19\",\"forward_link_to\":\"P21\"}",
+      "note": "Seals the protocol of P19.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/20/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "'lie down until the morning' — closing directive (FIG_0139 lie-down authority-transfer).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/20/event_specific_slots",
+      "value_json": "{\"instructor\":\"B13\",\"instructed\":\"B9\",\"action\":\"DIRECTED\",\"commanded_step\":\"LIE_DOWN_UNTIL_MORNING\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}",
+      "note": "Command encoded per the action-idiom ruling.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/20/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P20\"}",
+      "note": "Closes after the oath; last proposition.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "Propositions kept at meaning-map granularity. P4 (came softly / uncovered feet / lay down) and P19 (the conditional morning protocol) carry internal components inside event_specific_slots rather than separate L3 rows; no further decomposition needed. Flags re-anchored by verse already match the skeleton.",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "Register: pericope stays INFORMAL_CASUAL (NARRATIVE); S2/S3 INTIMATE and the 3:10 blessing CEREMONIAL encoded as overrides; v.13 oath deliberately left INTIMATE per the map. Mints declared: arc PLAN_EXECUTION/WING_PETITION/NEARER_REDEEMER_DISCLOSURE; scene_kind NIGHT_APPROACH_SCENE; role POTENTIAL_SUITORS; proposition_kind WENT_DOWN/LAY_DOWN/APPROACHED/TREMBLED/REASSURED; action UNCOVERED_FEET/LAY_DOWN — this floor scene's physical verbs are largely outside the Ruth-derived enumeration. Proposed registry IDs (reviewer's call): PL_END_OF_GRAIN_HEAP, TM_MIDDLE_OF_THE_NIGHT, TM_NIGHT_UNTIL_MORNING; the young men carried as B? (uncoded group). Two speech-act forcings flagged in-note: the kanaf petition (P9) and Boaz's blessing (P11) have no exact closed-list act — DIRECTS_HEARER_TO_DO and WISHES_FOR_HEARER chosen as nearest. S3 scene_kind set BLESSING_SCENE but the oath-sealing also runs there; flag if a combined kind is wanted."
+}

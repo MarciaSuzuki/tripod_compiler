@@ -1,0 +1,622 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"ruth_pilot_BCD_v0_3\"",
+      "note": "Standard Ruth pilot BCD ref per convention §5.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"Scene 3 (vv.19-22) shifts to INTIMATE per MM Section 1; within it Naomi's blessing at v.20 lifts to CEREMONIAL. Narrator framing at v.17, v.18, v.23 stays INFORMAL_CASUAL.\",\"scene_level\":[{\"scene_id\":\"S3\",\"override_value\":\"INTIMATE\"}],\"moment_level\":[{\"verse\":\"2:20\",\"override_value\":\"CEREMONIAL\"}]}",
+      "note": "Encoded the two register shifts the MM marks explicitly: INTIMATE over the whole mother/daughter exchange, CEREMONIAL at the v.20 blessing.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"PROVISION_BROUGHT_HOME\",\"REDEEMER_RECOGNITION\",\"BLESSING_INVOCATION\",\"PROTECTIVE_INSTRUCTION\",\"CLINGING\",\"NARRATOR_FRAMING_CLOSE\"]",
+      "note": "Two mints (PROVISION_BROUGHT_HOME, REDEEMER_RECOGNITION) — no approved arc token fit the grain-home beat or the redeemer-naming turn. RECOGNITION_EXCHANGE was the near-miss for the redeemer beat but reads as person-recognition (the 'Is this Naomi?' kind), not kinship-role recognition.",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "PROVISION_BROUGHT_HOME",
+          "justification": "MM arc: 'The passage moves from the field to home... carries it into town... hands her the food left over' — a day's gleaning brought home as provision; no approved arc token covers this."
+        },
+        {
+          "axis": "arc_element",
+          "value": "REDEEMER_RECOGNITION",
+          "justification": "MM arc: 'Naomi blesses him by YHWH... and tells Ruth the man is near to them, one of their redeemers' — the redeemer-role recognized for the first time in the book; the central turn, with no approved token for it."
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"PHYSICAL_LOCATION\",\"KINSHIP_CONTEXT\",\"INSTITUTIONAL_CONTEXT\",\"TEMPORAL_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\",\"DIVINE_CONTEXT\",\"PRIOR_PERICOPE_CARRY_FORWARD\",\"PRIOR_ACTION_CONTEXT\"]",
+      "note": "Enumerated every context kind the §2.2 prose invokes: field-day carry-forward (prior pericope/action), audience knowing since 2:1 (audience-knowledge), kinsman-redeemer institution, kinship, locations, harvest temporal, and YHWH invoked (divine).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"CHRONICLE\",\"WARM\",\"RISING\",\"STILLED\",\"ANTICIPATORY\"]",
+      "note": "Field line plain (CHRONICLE), intimate mother/daughter talk (WARM), feeling quickens into the blessing (RISING), then the long calm close (STILLED), ending in settled hope with a kinsman in view (ANTICIPATORY).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"STEADY\",\"RISES\",\"SETTLES\",\"WIDENS\"]",
+      "note": "Steady field work, pace rises at home, settles into calm counsel, then v.23 widens weeks of harvest into one line.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"CLOSES\",\"OPENS\",\"REACTIVATES\",\"STAGES\"]",
+      "note": "Closes the provision strand and Ruth's clinging; opens the redeemer thread; reactivates the hesed word (last at 1:8); stages the floor for the next chapter's plan.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"GLEANER\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "Narrator names Ruth plainly; no marked reference.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"GLEANING_SCENE\"",
+      "note": "No approved scene_kind covers a narrated field-work record. Minted GLEANING_SCENE.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "GLEANING_SCENE",
+          "justification": "MM S1: 'Ruth gleans in the field until evening, beats out what she gathered, and it comes to about an ephah' — a narrated gleaning/work scene with no approved scene_kind fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B13\",\"role_in_scene\":\"FIELD_OWNER\",\"presence\":\"REFERENCED\"},{\"being_id\":\"B3\",\"role_in_scene\":\"MOTHER_IN_LAW\",\"presence\":\"REFERENCED\"}]",
+      "note": "Append per gap hint: B13 referenced via the field being his portion; B3 only weakly referenced via Ruth's kinship — reviewer may prefer to drop B3 from S1.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/significant_absence",
+      "value_json": "null",
+      "note": "MM gives no Significant Absence block for S1 (only a 3F). Filling null rather than inventing one; reviewer's call whether the un-credited abundance counts as a load-bearing absence.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Function toward Naomi here is the providing daughter-in-law; pairs with B3 as MOTHER_IN_LAW.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "Ruth named plainly; unmarked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"MOTHER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"NAMED_ONLY_AS_MOTHER_IN_LAW\"",
+      "note": "MM marks this explicitly: 'named here only by the kinship-word, her mother-in-law.' Treated as free-form referential value per the worked pair's idiom.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/objects_in_scene/entries/1/object_id",
+      "value_json": "\"O10\"",
+      "note": "The leftover 'from her satiety' is the leftover roasted grain from Boaz's meal (2:14); FIG_0104 closes the 'had leftover' verb here. Assigned O10 (Roasted Grain); reviewer may prefer a distinct leftover code.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"PROVISION_HOMECOMING_SCENE\"",
+      "note": "No approved scene_kind fits the carrying-home-and-handing-over beat. Minted.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "PROVISION_HOMECOMING_SCENE",
+          "justification": "MM S2: 'Ruth lifts the grain and comes into the town. Her mother-in-law sees what she gleaned. Then Ruth brings out and gives her what she had left over' — bringing provision home; no approved fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"MOTHER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"ALTERNATES_MOTHER_IN_LAW_AND_NAOMI\"",
+      "note": "MM marks it: 'her mother-in-law through the exchange; named Naomi at v.20 and v.22.' Free-form referential value.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"RUTH_THE_MOABITESS_NARRATOR_EPITHET\"",
+      "note": "MM marks the narrator's foreigner-epithet returning at v.21 (FIG_0001). Used the registry form for B9.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/referential_form",
+      "value_json": "\"THE_MAN_THEN_NAMED_BOAZ\"",
+      "note": "MM marks the progression: 'the man who took notice of you' before the name, then named, then 'one of our redeemers.' Free-form value capturing the unnamed-then-named move.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": "YHWH named by the divine name; no specially marked form flagged in this pericope.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/4/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/4/referential_form",
+      "value_json": "\"ONE_OF_OUR_REDEEMERS\"",
+      "note": "First naming of the redeemer-role in the book (CB_0001); MM calls explicit attention to it. Free-form referential value.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/5/role_in_scene",
+      "value_json": "\"DECEASED_KIN\"",
+      "note": "No approved role_in_scene_being for the household dead held within hesed. Minted.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "DECEASED_KIN",
+          "justification": "MM S3 3A: 'the dead of the household... those the blessing keeps inside the reach of hesed' — Naomi's dead husband and sons, named only as 'the dead'; no approved role fits."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/5/referential_form",
+      "value_json": "\"HAMETIM_THE_DEAD\"",
+      "note": "MM significant-absence dwells on this: 'The dead are named only as the dead, not as Elimelech, Mahlon, and Chilion.' Free-form value.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/5/being_id",
+      "value_json": "\"THE_DEAD_HAMETIM\"",
+      "note": "The map keeps this collective deliberately uncoded ('the dead' = B2, B4, B5). No registry B code exists; proposed a descriptive id pending registry decision. The individual dead are also appended to S3 as REFERENCED (B2/B4/B5).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/6/role_in_scene",
+      "value_json": "\"MALE_WORKERS\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/6/referential_form",
+      "value_json": "null",
+      "note": "The 'young men/young women' report-variation is captured in P13's slots (report_variation_form) rather than as a referential form here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/7/role_in_scene",
+      "value_json": "\"FEMALE_WORKERS\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/7/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/scene_kind",
+      "value_json": "\"REDEEMER_RECOGNITION_SCENE\"",
+      "note": "BLESSING_SCENE was the near-miss (the v.20 blessing is the ceremonial peak), but the MM 3F frames the scene's spine as the redeemer recognition at the name. Minted REDEEMER_RECOGNITION_SCENE; reviewer may prefer BLESSING_SCENE.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "REDEEMER_RECOGNITION_SCENE",
+          "justification": "MM S3 3F: 'The turn of the passage: at the name Boaz, Naomi recognizes a redeemer' — a dialogue scene whose spine is the kinship-role recognition; no approved scene_kind fits."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B2\",\"role_in_scene\":\"HUSBAND\",\"presence\":\"REFERENCED\"},{\"being_id\":\"B4\",\"role_in_scene\":\"SON\",\"presence\":\"REFERENCED\"},{\"being_id\":\"B5\",\"role_in_scene\":\"SON\",\"presence\":\"REFERENCED\"}]",
+      "note": "Append per hint: the dead husband and sons, referenced within 'the dead' / hesed over the living and dead.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"GLEANER\"",
+      "note": "Dominant function in S4 is gleaning/staying-close through the harvest.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"FEMALE_WORKERS\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"FIELD_OWNER\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"MOTHER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": "S4 names her plainly 'her mother-in-law' with no map-attention 'Referential form' line; unmarked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/scene_kind",
+      "value_json": "\"NARRATOR_FRAMING_CLOSE_SCENE\"",
+      "note": "MM 3F: 'Closes the pericope and the season in one quiet line.' Approved token.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"GLEANED\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"gleaner\":\"B9\",\"gleaning_location\":\"PL5_BOAZ_PORTION\",\"gleaned_until\":\"TM_EVENING\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"THRESHED\"",
+      "note": "No approved proposition_kind for hand-threshing/beating-out (CB_0041). Minted.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "THRESHED",
+          "justification": "MM P2: 'beating out | who beat it out? Ruth | beat out what? what she had gleaned' (chavat, CB_0041); no approved proposition_kind covers threshing."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"thresher\":\"B9\",\"threshed_grain\":\"GLEANED_BARLEY\",\"threshing_method\":\"BY_HAND_CHAVAT\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P1\",\"forward_link_to\":\"P3\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"MEASURED\"",
+      "note": "No approved proposition_kind for the yield amounting to a measure. Minted.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "MEASURED",
+          "justification": "MM P3: 'measuring | how much was it? about an ephah | an ephah of what? barley' (CB_0040); no approved proposition_kind for a quantity/measure result."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"measured_yield\":\"O12\",\"yield_grain\":\"O2\",\"yield_amount\":\"ABOUT_AN_EPHAH\",\"yield_exactness\":\"APPROXIMATE\"}",
+      "note": "yield_exactness APPROXIMATE preserves the MM's 'about an ephah' (the same spare-measure idiom as the ~ten years in P01).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P2\",\"forward_link_to\":\"P4\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"ARRIVED_AT\"",
+      "note": "P4 carries two micro-actions (lifted/took up, came into town); modeled with a components array and ARRIVED_AT as the head kind.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"carrier\":\"B9\",\"home_bringing_components\":[{\"action\":\"TOOK\",\"lifted_load\":\"O12\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"ARRIVED_AT\",\"destination\":\"PL4\",\"speech_act\":\"STATES_AS_TRUE\"}]}",
+      "note": "Decomposed the 'lifted it / came into town' pair into a components array per the worked-pair idiom.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"PERCEIVED\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"perceiver\":\"B3\",\"perceived_gleaning\":\"O12\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P4\",\"forward_link_to\":\"P6\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"GAVE\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"giver\":\"B9\",\"given_to_mother_in_law\":\"B3\",\"gift_leftover\":\"O10\",\"brought_out_first\":\"BROUGHT_OUT_THEN_GAVE\"}",
+      "note": "Avoided forbidden 'recipient' key. FIG_0104 (abundance triplet) closes and FIG_0113 (leftovers after satiety) opens on this gift.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P7\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"SPOKE\"",
+      "note": "Information-seeking question; speech_act carries the act.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"asker\":\"B3\",\"asked_party\":\"B9\",\"question_subject\":\"WHERE_SHE_GLEANED_TODAY\",\"question_form\":\"DOUBLED_WHERE_AND_WHERE_WORKED\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"}",
+      "note": "Preserved the doubled 'where gleaned / where worked' question form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P5\",\"forward_link_to\":\"P8\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"BLESSING\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"blesser\":\"B3\",\"blessing_recipients\":\"B13\",\"blessing_recipient_form\":\"THE_MAN_WHO_TOOK_NOTICE\",\"blessing_content_kind\":\"MAY_HE_BE_BLESSED\",\"speech_act\":\"WISHES_FOR_THIRD_PARTY\"}",
+      "note": "Blessing of the still-unnamed man (recipient B13 under the form 'the man who took notice'); WISHES_FOR_THIRD_PARTY.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P9\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"IDENTIFIED\"",
+      "note": "Ruth answers by naming the man — identification of Boaz.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"reporter\":\"B9\",\"addressee\":\"B3\",\"identified_man\":\"B13\",\"given_name\":\"Boaz\",\"report_subject\":\"WHOM_SHE_WORKED_WITH_TODAY\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P7\",\"paired_with\":\"P7\",\"forward_link_to\":\"P10\"}",
+      "note": "Speech answering Naomi's question (P7).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/proposition_kind",
+      "value_json": "\"BLESSING\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/event_specific_slots",
+      "value_json": "{\"blesser\":\"B3\",\"addressee\":\"B9\",\"blessing_recipients\":\"B13\",\"invoked_divine_agent\":\"B10\",\"blessing_content_kind\":\"BLESSED_BY_YHWH\",\"speech_act\":\"WISHES_FOR_THIRD_PARTY\"}",
+      "note": "The CEREMONIAL-register blessing by name; invoked_divine_agent per worked-pair idiom.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"paired_with\":\"P8\",\"forward_link_to\":\"P11\"}",
+      "note": "Echoes the first (unnamed) blessing P8; triggered by hearing the name P9.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Declaration about hesed continuing the blessing.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"hesed_antecedent\":\"LEFT_OPEN_YHWH_OR_THE_MAN\",\"hesed_holds\":[\"THE_LIVING\",\"THE_DEAD\"],\"living_and_dead_form\":\"ET_HACHAYIM_VEET_HAMETIM\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "Preserved the MM's deliberately-open antecedent (YHWH's or the man's hesed) and the living-and-dead pairing (CB_0039).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P10\",\"forward_link_to\":\"P12\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/proposition_kind",
+      "value_json": "\"IDENTIFIED\"",
+      "note": "Naomi identifies the man as near-kin / a redeemer.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"identified_man\":\"B13\",\"nearness_statement\":\"NEAR_TO_US\",\"named_redeemer_role\":\"B18\",\"role_form\":\"ONE_OF_OUR_REDEEMERS\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "First naming of the redeemer-role in the book (CB_0001); FIG_0112 Close-to-Us.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"forward_link_to\":\"P13\"}",
+      "note": "Recognition flows from hearing the name (P9).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/proposition_kind",
+      "value_json": "\"SPOKE\"",
+      "note": "Ruth reports Boaz's prior instruction; speech_act carries the report.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/event_specific_slots",
+      "value_json": "{\"reporter\":\"B9\",\"reporter_referential_form\":\"RUTH_THE_MOABITESS_NARRATOR_EPITHET\",\"addressee\":\"B3\",\"reported_speaker\":\"B13\",\"reported_instruction\":\"STAY_CLOSE_TO_YOUNG_MEN\",\"reported_worker_referent\":\"B17\",\"report_variation_form\":\"YOUNG_MEN_NOT_YOUNG_WOMEN\",\"reported_until\":\"HARVEST_COMPLETE\",\"speech_act\":\"REPORTS_PRIOR_SPEECH_INSTRUCTION\"}",
+      "note": "Captured the MM's load-bearing report-variation (Boaz's 'young women' at 2:8 reported as 'young men') and the returning Moabite-epithet (FIG_0001).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P14\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/event_specific_slots",
+      "value_json": "{\"counselor\":\"B3\",\"counseled_party\":\"B9\",\"address_form\":\"MY_DAUGHTER_INTIMATE\",\"counseled_action\":\"GO_OUT_WITH_HIS_YOUNG_WOMEN\",\"worker_companions\":\"B16\",\"guarded_against\":\"HARM_IN_ANOTHER_FIELD\",\"avoided_field\":\"PL_OTHER_FIELD\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}",
+      "note": "Intimate address form per worked-pair idiom (_INTIMATE suffix).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P13\",\"paired_with\":\"P13\",\"forward_link_to\":\"P15\"}",
+      "note": "Naomi's counsel answers Ruth's report (P13).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/proposition_kind",
+      "value_json": "\"CLUNG_TO\"",
+      "note": "The devek/clinging verb (CB_0018, FIG_0012) — Ruth staying close to the young women.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/event_specific_slots",
+      "value_json": "{\"clinger\":\"B9\",\"clung_to\":\"B16\",\"clinging_purpose\":\"GLEAN\",\"clung_until\":\"TM_EXTENDED_HARVEST_SPAN\",\"harvest_span_seasons\":[\"BARLEY_HARVEST\",\"WHEAT_HARVEST\"]}",
+      "note": "Preserved both named harvest seasons (CB_0026, season-frame opened at 1:22 closes here).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P14\",\"forward_link_to\":\"P16\"}",
+      "note": "She follows Naomi's counsel (P14).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/proposition_kind",
+      "value_json": "\"DWELT_AT\"",
+      "note": "'And she lived with her mother-in-law.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/event_specific_slots",
+      "value_json": "{\"dweller\":\"B9\",\"dwelt_with_mother_in_law\":\"B3\",\"dwelling\":\"PL_NAOMIS_DWELLING\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/inter_proposition_links",
+      "value_json": "{}",
+      "note": "Closing line; left unlinked (the still floor for the next chapter).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "Granularity held at map level. Only P4 was decomposed internally (home_bringing_components: TOOK then ARRIVED_AT) to preserve the 'lifted it / came into the town' pair. Flags re-anchor cleanly by the existing verse anchors.",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "Mints declared: arc_element PROVISION_BROUGHT_HOME & REDEEMER_RECOGNITION; scene_kind GLEANING_SCENE, PROVISION_HOMECOMING_SCENE, REDEEMER_RECOGNITION_SCENE; role_in_scene_being DECEASED_KIN; proposition_kind THRESHED & MEASURED. All justified against MM substance with no approved fit. Key judgment flags for the reviewer: (1) S3 scene_kind — chose REDEEMER_RECOGNITION_SCENE over the approved BLESSING_SCENE because the MM frames recognition as the scene's spine; (2) the household dead (S3 entry5) given a proposed descriptive being_id THE_DEAD_HAMETIM since the map keeps the collective uncoded — B2/B4/B5 are also appended individually as REFERENCED; (3) S2 leftover assigned O10 (leftover roasted grain from 2:14, where FIG_0104 closes) — reviewer may want a distinct code; (4) S1 significant_absence left null (MM gives no block; did not invent); (5) referential_form values treated as free-form per the worked pair and not declared as axis mints — marked only where the MM's prose explicitly calls attention (S2/S3 B3, S3 B9/B13/B18/the-dead)."
+}

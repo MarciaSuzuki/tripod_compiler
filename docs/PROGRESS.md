@@ -256,8 +256,12 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
 ## Next (recommended)
 > SC-0007 (the previous #1 — L1/discourse/high-risk convergence) is **DONE** on
 > `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
-1. **Slice 4 — the LLM drafter** that fills the skeleton's judgment gaps into a complete,
-   validate-clean FOR_MODEL (Claude API; needs a key + cost). This is the "judgment half."
+1. **Slice 4 — the LLM drafter — SHIPPED, phase 1 (SC-0063, 2026-06-12).** `tripod draft` fills the
+   skeleton's judgment gaps via claude-opus-4-8 under the pinned `_spec/drafter/fm-drafter-prompt.md`
+   (patch-only merge; origin-aware mint audit; receipts + $25 ceiling enforced pre-dial). ALL 19
+   pericopes carry FOR_MODELs: P08 ruled (status:valid), 12 drafted awaiting the batch ruling
+   (`docs/SC-0063-BATCH-RULING-SHEET.md`); P10/P11 expose map↔schema tensions (tabled). See the
+   SC-0063 ledger row for the full trail.
 2. **Coverage ledger + BHSA frozen-extract sidecar — SHIPPED across the compiled corpus P01–P06, 6/6
    block-clean** (see Shipped above; Israel adjudicated as SC-0010, gender hardened as SC-0011). Remaining:
    (a) **extract P07–P14 when those pericopes are compiled** — they have no FOR_MODEL or decided verse ranges

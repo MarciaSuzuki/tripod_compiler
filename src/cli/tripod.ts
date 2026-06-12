@@ -175,7 +175,8 @@ program
   .option("--apply", "write the grown registry (default target: the vendored _spec/approved-enumerations.json)")
   .option("--to <file>", "registry file to write when --apply is set")
   .option("--log <file>", "VOCABULARY_LOG path to append a promotion line", "VOCABULARY_LOG.md")
-  .action((path: string, opts: { status?: string; apply?: boolean; to?: string; log?: string }) => {
+  .option("--sc <id>", "the governing SC id stamped as sc_ref on every promoted entry (REQUIRED with --apply)")
+  .action((path: string, opts: { status?: string; apply?: boolean; to?: string; log?: string; sc?: string }) => {
     const plan = planPromotion(path, { status: opts.status });
     console.log(`promote ${plan.pericope ?? path} — status gate: ${plan.statusFilter}`);
     console.log(
@@ -198,13 +199,20 @@ program
         `  ⚠ policy: promotion is CONFIRMED-only from P03 onward — Gate-F flips PROPOSED→CONFIRMED before promote. ` +
           `'--status ${plan.statusFilter}' is a deliberate gate override (P02 was the grandfathered exception; see VOCABULARY_LOG.md).`,
       );
+    if (!opts.sc || !/^SC-\d{4}$/.test(opts.sc)) {
+      console.error(`  ✗ --apply requires --sc <SC-id> (e.g. --sc SC-0063): every promoted entry's sc_ref must name the GOVERNING spec change, not the machinery's (the P08 batch was stamped SC-0006 by default and had to be fixed by hand).`);
+      process.exitCode = 1;
+      return;
+    }
     const target = opts.to ?? join(SPEC_DIR, "approved-enumerations.json");
-    const { reg, added } = applyPromotion(loadApprovedEnumerations(), plan);
+    const { reg, added } = applyPromotion(loadApprovedEnumerations(), plan, opts.sc);
     writeFileSync(target, JSON.stringify(reg, null, 2) + "\n");
     const stamp = plan.sourceArtifact;
+    // log the repo-relative target — an absolute worktree path dangles once the worktree is cleaned
+    const targetForLog = target.includes("_spec/") ? `_spec/${target.split("_spec/").pop()}` : target;
     appendFileSync(
       opts.log ?? "VOCABULARY_LOG.md",
-      `- ${stamp}: promoted ${added.length} value(s) [${added.map((a) => `${a.axis}:${a.value}`).join(", ")}] → ${target}\n`,
+      `- ${stamp}: promoted ${added.length} value(s) [${added.map((a) => `${a.axis}:${a.value}`).join(", ")}] → ${targetForLog} (${opts.sc})\n`,
     );
     console.log(`  applied: ${added.length} value(s) written to ${target}; logged to ${opts.log ?? "VOCABULARY_LOG.md"}.`);
     console.log(`  ⚠ governed step: re-vendor + re-pin (update _spec/pins.json sha256) and record under SPEC_CHANGES if this is the canonical registry.`);
@@ -552,7 +560,163 @@ program
     console.log(`\n— concept-check: ${cb.length + fig.length} suggestion(s) · diagnostic (the human rules reuse) —`);
   });
 
+program
+  .command("draft")
+  .description("SC-0063 Slice-4 drafter: fill a FOR_MODEL skeleton's judgment gaps via the Opus API (default = dry-run, no network)")
+  .argument("<map-or-id>", "a Meaning Map .md path, or a pericope id (P08, J03) resolved in fixtures/meaning-map/")
+  .option("--out <file>", "write the assembled request (dry-run artifact) to a file")
+  .option("--measure", "exact input-token count via the free count_tokens endpoint (needs ANTHROPIC_API_KEY; falls back to byte estimate)")
+  .option("--live", "PAID: actually call the drafter model and merge the fills (Phase B+; requires ANTHROPIC_API_KEY)")
+  .option("--out-dir <dir>", "provenance directory for --live runs (default _working/<id>/drafts)")
+  .action(async (mapOrId: string, opts: { out?: string; measure?: boolean; live?: boolean; outDir?: string }) => {
+    const { assembleDraftRequest, renderRequest, requestStats } = await import("../drafter/assemble.js");
+    const mmPath = resolveMapArg(mapOrId);
+    const req = assembleDraftRequest(mmPath);
+    const stats = requestStats(req);
+    const id = req.mm.pericope ?? "P00";
+    console.log(`drafter request assembled — ${id} (${req.mm.bcv ?? "?"}) · ${stats.gaps} gaps`);
+    console.log(
+      `  system ${(stats.systemBytes / 1024).toFixed(1)}KB · stable ${(stats.stableBytes / 1024).toFixed(1)}KB · per-pericope ${(stats.variableBytes / 1024).toFixed(1)}KB · total ${(stats.totalBytes / 1024).toFixed(1)}KB`,
+    );
+    console.log(`  request sha256 ${stats.sha256.slice(0, 16)}… (byte-stable: same inputs → same hash)`);
+    if (opts.out) {
+      writeFileSync(opts.out, renderRequest(req));
+      console.log(`  assembled request written to ${opts.out}`);
+    }
+    if (opts.measure) {
+      try {
+        const { measureTokens, DRAFTER_MODEL } = await import("../drafter/call.js");
+        const n = await measureTokens(req);
+        console.log(`  input tokens (count_tokens, ${DRAFTER_MODEL}): ${n}`);
+      } catch {
+        console.log(`  input tokens ≈ ${stats.estTokens} (byte estimate — set ANTHROPIC_API_KEY for an exact count_tokens measurement)`);
+      }
+    }
+    if (!opts.live) {
+      if (!opts.measure) console.log(`  input tokens ≈ ${stats.estTokens} (byte estimate)`);
+      console.log("  dry-run (no network). --measure for exact tokens · --live for the paid call (Phase B+, Marcia's ceiling applies).");
+      return;
+    }
+    // ---- PAID PATH (Phase B+) ----
+    const { draftViaApi, DRAFTER_MODEL, DrafterCallError } = await import("../drafter/call.js");
+    const { applyFills } = await import("../drafter/fills.js");
+    const { appendReceipt, checkCeiling, cumulativeUSD, usageCostUSD, RECEIPTS_PATH } = await import("../drafter/receipts.js");
+    const gate = checkCeiling();
+    if (!gate.ok) {
+      console.error(
+        `  ✗ CEILING GATE: $${gate.cumulative.toFixed(3)} spent + $${gate.reserve.toFixed(2)} call reserve exceeds the $${gate.ceiling} SC-0063 ceiling — stop-and-report (Marcia's word required to proceed).`,
+      );
+      process.exitCode = 1;
+      return;
+    }
+    console.log(`  ceiling gate: $${gate.cumulative.toFixed(3)} of $${gate.ceiling} spent · reserve $${gate.reserve.toFixed(2)} · OK`);
+    console.log(`  --live: calling ${DRAFTER_MODEL} (streaming, adaptive thinking, structured output)…`);
+    let res;
+    try {
+      res = await draftViaApi(req);
+    } catch (e) {
+      if (e instanceof DrafterCallError && e.usage) {
+        appendReceipt({
+          ts: new Date().toISOString(),
+          pericope: id,
+          request_sha256: stats.sha256,
+          model: e.model,
+          status: e.kind === "truncated" ? "truncated" : "parse_error",
+          usage: e.usage,
+          cost_usd: Number(usageCostUSD(e.usage).toFixed(4)),
+        });
+        console.error(`  ✗ paid call FAILED (${e.kind}) — receipt written; cumulative now $${cumulativeUSD().toFixed(3)} (${RECEIPTS_PATH})`);
+      }
+      throw e;
+    }
+    const merge = applyFills(req.compile.skeleton, req.compile.gaps, res.output);
+    const u = res.usage;
+    appendReceipt({
+      ts: new Date().toISOString(),
+      pericope: id,
+      request_sha256: stats.sha256,
+      model: res.model,
+      status: "ok",
+      usage: u,
+      cost_usd: Number(usageCostUSD(u).toFixed(4)),
+    });
+    console.log(
+      `  usage: in ${u.input_tokens} · out ${u.output_tokens} · cache-write ${u.cache_creation_input_tokens ?? 0} · cache-read ${u.cache_read_input_tokens ?? 0} → $${usageCostUSD(u).toFixed(3)} (list) · cumulative $${cumulativeUSD().toFixed(3)} of $${gate.ceiling}`,
+    );
+    console.log(
+      `  merge: ${merge.applied.length} applied · ${merge.noteOnly.length} note-only · ${merge.rejected.length} REJECTED · ${merge.unfilled.length} unfilled · ${merge.leftovers.length} __TODO__ left`,
+    );
+    for (const r of merge.rejected) console.log(`    ✗ ${r.location} — ${r.reason}`);
+    const { auditMints, formatMintAudit } = await import("../drafter/calibrate.js");
+    console.log("  " + formatMintAudit(auditMints(merge.merged, res.output, merge.applied, req.compile.skeleton)).split("\n").join("\n  "));
+    const outDir = opts.outDir ?? join("_working", id, "drafts");
+    const runDir = join(outDir, `run-${new Date().toISOString().replace(/[:.]/g, "-")}`);
+    mkdirSync(runDir, { recursive: true });
+    writeFileSync(join(runDir, "manifest.json"), JSON.stringify({ model: res.model, request_sha256: stats.sha256, map: mmPath, gaps: stats.gaps, usage: u, merge: { applied: merge.applied.length, noteOnly: merge.noteOnly.length, rejected: merge.rejected, unfilled: merge.unfilled.map((g) => g.location), leftovers: merge.leftovers } }, null, 2));
+    writeFileSync(join(runDir, "fills.json"), JSON.stringify(res.output, null, 2));
+    writeFileSync(join(runDir, "response-raw.txt"), res.rawText);
+    const note =
+      `---\ntype: "sta-for-model"\npericope: "${id}"\npericope-title: "${(req.mm.title ?? "").replace(/"/g, "'")}"\nsource-meaning-map: [[${String((req.compile.skeleton as any).header?.source_meaning_map_ref ?? "")}]]\nstatus: "draft"\npilot: "pilot-2"\ndrafter: "${res.model} · fm-drafter prompt (see _spec/pins.json) · machine-drafted, unruled"\n---\n\n` +
+      `# ${id} — ${req.mm.bcv ?? ""} — FOR_MODEL (DRAFT — machine-drafted, awaiting review)\n\n` +
+      `> Judgment gaps filled by the SC-0063 drafter (\`tripod draft --live\`); the merge layer enforced the patch-only contract. NOT canon until ruled.\n\n` +
+      "```json\n" + JSON.stringify(merge.merged, null, 2) + "\n```\n";
+    writeFileSync(join(runDir, `${id}-FOR-MODEL.md`), note);
+    console.log(`  provenance + drafted FM written to ${runDir}`);
+    console.log("  next: run the gates (validate · lint · coverage · id-check) on the drafted FM — findings are the experiment data.");
+  });
+
+program
+  .command("calibrate")
+  .description("SC-0063 Phase B: score a drafted FOR_MODEL against its GOLD counterpart at the judgment layer (drafted-vs-gold, alignment-aware, nothing smoothed)")
+  .argument("<id>", "pericope id with a gold FOR_MODEL fixture (P01–P06) and a draft run under _working/<id>/drafts/")
+  .option("--run <dir>", "a specific run directory (default: latest run-* under _working/<id>/drafts)")
+  .action(async (id: string, opts: { run?: string }) => {
+    const { assembleDraftRequest } = await import("../drafter/assemble.js");
+    const { applyFills } = await import("../drafter/fills.js");
+    const { calibrate, formatCalibration } = await import("../drafter/calibrate.js");
+    const ID = id.toUpperCase();
+    const goldFile = readdirSync(join("fixtures", "for-model")).find((f) => f.toUpperCase().startsWith(`${ID}-`));
+    if (!goldFile) throw new Error(`no gold FOR_MODEL fixture for ${ID} (calibration needs one of P01–P06)`);
+    const goldNote = readFileSync(join("fixtures", "for-model", goldFile), "utf8");
+    const goldJson = JSON.parse(goldNote.match(/```json\n([\s\S]*?)\n```/)![1]!);
+    const runDir =
+      opts.run ??
+      (() => {
+        const base = join("_working", ID, "drafts");
+        const runs = readdirSync(base)
+          .filter((d) => d.startsWith("run-"))
+          .sort();
+        if (!runs.length) throw new Error(`no run-* under ${base} — run \`tripod draft ${ID} --live\` first`);
+        return join(base, runs[runs.length - 1]!);
+      })();
+    const fills = JSON.parse(readFileSync(join(runDir, "fills.json"), "utf8"));
+    const req = assembleDraftRequest(resolveMapArg(ID));
+    const merge = applyFills(req.compile.skeleton, req.compile.gaps, fills);
+    if (merge.rejected.length) console.log(`⚠ ${merge.rejected.length} rejected fill(s) — the merged draft excludes them (see manifest)`);
+    const { auditMints, formatMintAudit } = await import("../drafter/calibrate.js");
+    const cal = calibrate(merge.merged, goldJson);
+    const audit = auditMints(merge.merged, fills, merge.applied, req.compile.skeleton);
+    const text =
+      formatCalibration(cal, `${ID} drafted (${runDir.split("/").pop()}) vs gold ${goldFile}`) + "\n\n" + formatMintAudit(audit);
+    console.log(text);
+    writeFileSync(join(runDir, "calibration.json"), JSON.stringify({ calibration: cal, mintAudit: audit }, null, 2));
+    writeFileSync(join(runDir, "calibration.txt"), text + "\n");
+    console.log(`\ncalibration written to ${runDir}/calibration.{json,txt}`);
+  });
+
 program.parseAsync(process.argv);
+
+function resolveMapArg(mapOrId: string): string {
+  try {
+    if (statSync(mapOrId).isFile()) return mapOrId;
+  } catch {
+    /* not a path — try id resolution */
+  }
+  const dir = join("fixtures", "meaning-map");
+  const hit = readdirSync(dir).find((f) => f.toUpperCase().startsWith(`${mapOrId.toUpperCase()}-`) && f.endsWith(".md"));
+  if (!hit) throw new Error(`cannot resolve '${mapOrId}' — not a file, and no fixtures/meaning-map/${mapOrId}-*.md`);
+  return join(dir, hit);
+}
 
 function expandPaths(paths: string[]): string[] {
   const out: string[] = [];

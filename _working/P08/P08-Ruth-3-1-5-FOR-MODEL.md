@@ -3,13 +3,14 @@ type: "sta-for-model"
 pericope: "P08"
 pericope-title: "Naomi's plan for rest; Ruth's total consent"
 source-meaning-map: [[P08-Ruth-3-1-5]]
-status: "skeleton"
+status: "valid"
 pilot: "pilot-2"
+drafter: "claude-opus-4-8 · fm-drafter-0.1.2 · run-2026-06-12T07-25-05-695Z · ruled by Marcia 2026-06-12 (bless with amendments: P02-gold action idiom; speech acts as drafted; 6 mints approved)"
 ---
 
-# P08 — Ruth 3:1-5 — FOR_MODEL (SKELETON — 50 judgment gaps)
+# P08 — Ruth 3:1-5 — FOR_MODEL
 
-> Deterministic skeleton compiled from the Meaning Map (`tripod compile`). Fields set to `__TODO__` need the drafter/LLM (Slice 4); see the gap report (`--json`).
+Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton; ruled and amended per Marcia's word 2026-06-12.
 
 ```json
 {
@@ -18,7 +19,7 @@ pilot: "pilot-2"
   "header": {
     "bcv": "Ruth 3:1-5",
     "pericope_title": "Naomi's plan for rest; Ruth's total consent",
-    "book_context_ref": "__TODO__: set the BCD ref, e.g. ruth_pilot_BCD_v0_3",
+    "book_context_ref": "ruth_pilot_BCD_v0_3",
     "source_meaning_map_ref": "P08-Ruth-3-1-5",
     "source_language": "Biblical Hebrew"
   },
@@ -27,44 +28,91 @@ pilot: "pilot-2"
     "genre": "HISTORICAL_NARRATIVE",
     "register": "INFORMAL_CASUAL",
     "register_overrides": {
-      "_note": "scaffold — confirm against the MM's multi-level register tagging",
-      "scene_level": null,
+      "_note": "Both scenes shift to INTIMATE at scene level — the two women alone at home, a private risky plan and a one-line answer of trust (per MM Section 1). No moment-level register or NARRATIVE_FRAMING shifts are marked in the prose.",
+      "scene_level": [
+        {
+          "scene_id": "S1",
+          "override_value": "INTIMATE"
+        },
+        {
+          "scene_id": "S2",
+          "override_value": "INTIMATE"
+        }
+      ],
       "moment_level": null
     }
   },
   "level_1": {
-    "arc_elements": [],
-    "context_elements": [],
-    "tone_elements": [],
-    "pace_elements": [],
-    "communicative_function_elements": []
+    "arc_elements": [
+      "REST_SEEKING_INITIATIVE",
+      "NIGHT_PLAN_INSTRUCTION",
+      "INITIATIVE_HANDOFF",
+      "TOTAL_CONSENT"
+    ],
+    "context_elements": [
+      "STORY_WORLD_CONTEXT",
+      "PHYSICAL_LOCATION",
+      "KINSHIP_CONTEXT",
+      "INSTITUTIONAL_CONTEXT",
+      "TEMPORAL_CONTEXT",
+      "AUDIENCE_KNOWLEDGE_CONTEXT",
+      "PRIOR_PERICOPE_CARRY_FORWARD"
+    ],
+    "tone_elements": [
+      "QUIET",
+      "INTIMATE",
+      "RESTRAINED",
+      "ANTICIPATORY",
+      "UNRESOLVED_AT_CLOSE"
+    ],
+    "pace_elements": [
+      "DELIBERATE",
+      "STEADY",
+      "RISES",
+      "PAUSED"
+    ],
+    "communicative_function_elements": [
+      "OPENS",
+      "STAGES",
+      "ADVANCES",
+      "REACTIVATES",
+      "WITHHOLDS"
+    ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "3:1-4",
-      "scene_kind": "__TODO__: The plan spoken",
+      "scene_kind": "INSTRUCTION_SCENE",
       "scene_communicative_purpose": "Turns the rest-wish into a worked plan: goal, man, night, place, and step-by-step instructions, ending with the next word handed to Boaz.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "__TODO__: the planner — she names the goal, the man, the night, and every step",
-            "presence": "PRESENT"
+            "role_in_scene": "PLANNER",
+            "presence": "PRESENT",
+            "referential_form": "NAOMI_HER_MOTHER_IN_LAW"
           },
           {
             "being_id": "B9",
-            "role_in_scene": "__TODO__: the one the rest is sought for; the hearer of the instructions",
-            "presence": "PRESENT"
+            "role_in_scene": "DAUGHTER_IN_LAW",
+            "presence": "PRESENT",
+            "referential_form": "MY_DAUGHTER_INTIMATE"
           },
           {
             "being_id": "B13",
-            "role_in_scene": "__TODO__: the means of the plan — the kinsman winnowing at the floor tonight; the man Ruth must not be known to until the right moment",
-            "presence": "REFERENCED"
+            "role_in_scene": "KINSMAN",
+            "presence": "REFERENCED",
+            "referential_form": "OUR_KINSMAN_MODA"
           },
           {
             "being_id": "B16",
-            "role_in_scene": "__TODO__: the workers Ruth was beside all season — the tie Naomi names between Ruth and Boaz",
+            "role_in_scene": "FEMALE_WORKERS",
+            "presence": "REFERENCED"
+          },
+          {
+            "being_id": "B2",
+            "role_in_scene": "HUSBAND",
             "presence": "REFERENCED"
           }
         ]
@@ -104,18 +152,18 @@ pilot: "pilot-2"
     {
       "scene_id": "S2",
       "verse_range": "3:5",
-      "scene_kind": "__TODO__: The consent",
+      "scene_kind": "CONSENT_SCENE",
       "scene_communicative_purpose": "Closes the exchange with total assent — one line, no questions — and sends the plan toward the floor.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B9",
-            "role_in_scene": "__TODO__: the one who consents — completely, and without one question",
+            "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "__TODO__: the one whose word is accepted whole",
+            "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT"
           }
         ]
@@ -142,11 +190,21 @@ pilot: "pilot-2"
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "3:1",
-      "proposition_kind": "__TODO__: Q: What happened? A: asking",
+      "proposition_kind": "APPEAL",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: asking | Q: Who spoke? A: [[B3-Naomi]] Naomi her mother-in-law | Q: To whom? A: [[B9-Ruth]] Ruth | Q: How did she address her? A: my daugh…"
+        "speaker": "B3",
+        "speaker_referential_form": "NAOMI_HER_MOTHER_IN_LAW",
+        "addressee": "B9",
+        "address_form": "MY_DAUGHTER_INTIMATE",
+        "rest_sought": "CB_0014",
+        "sought_rest_for": "B9",
+        "question_form": "RHETORICAL_PROMISE_QUESTION",
+        "stated_purpose": "THAT_IT_MAY_BE_WELL_WITH_YOU",
+        "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P2"
+      },
       "cb_flags": [
         "CB_0014"
       ],
@@ -158,11 +216,19 @@ pilot: "pilot-2"
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "3:2a",
-      "proposition_kind": "__TODO__: Q: What happened? A: telling",
+      "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: telling | Q: What did she say of Boaz? A: is he not our kinsman | Q: What tie did she name? A: Ruth was with his young women [[B16-Young-W…"
+        "speaker": "B3",
+        "identified_kinsman": "B13",
+        "kinsman_referential_form": "OUR_KINSMAN_MODA",
+        "named_tie": "B16",
+        "tie_form": "RUTH_WAS_WITH_HIS_YOUNG_WOMEN",
+        "question_form": "RHETORICAL_RECOGNITION_QUESTION",
+        "speech_act": "STATES_AS_TRUE"
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P3"
+      },
       "cb_flags": [],
       "figure_flags": []
     },
@@ -170,11 +236,20 @@ pilot: "pilot-2"
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "3:2b",
-      "proposition_kind": "__TODO__: Q: What happened? A: telling",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: telling | Q: What is the man doing? A: winnowing the barley at the threshing floor | Q: When? A: tonight"
+        "speaker": "B3",
+        "reported_subject": "B13",
+        "reported_activity": "WINNOWING_BARLEY",
+        "winnowed_grain": "O2",
+        "location": "PL6",
+        "timing": "TONIGHT",
+        "attention_marker": "HINNEH",
+        "speech_act": "STATES_AS_TRUE"
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P4"
+      },
       "cb_flags": [],
       "figure_flags": []
     },
@@ -182,11 +257,42 @@ pilot: "pilot-2"
       "prop_id": "P4",
       "scene_link": "S1",
       "verse_anchor": "3:3a",
-      "proposition_kind": "__TODO__: Q: What happened? A: instructing",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: instructing | Q: First instruction? A: wash | Q: Second? A: anoint yourself | Q: Third? A: put your garments on you | Q: Fourth? A: go dow…"
+        "speaker": "B3",
+        "instructed_party": "B9",
+        "instruction_components": [
+          {
+            "action": "DIRECTED",
+            "commanded_step": "WASH",
+            "step_order": "FIRST",
+            "speech_act": "DIRECTS_HEARER_TO_DO"
+          },
+          {
+            "action": "DIRECTED",
+            "commanded_step": "ANOINT_SELF",
+            "step_order": "SECOND",
+            "speech_act": "DIRECTS_HEARER_TO_DO"
+          },
+          {
+            "action": "DIRECTED",
+            "commanded_step": "PUT_ON_GARMENTS",
+            "garment": "O13",
+            "step_order": "THIRD",
+            "speech_act": "DIRECTS_HEARER_TO_DO"
+          },
+          {
+            "action": "DIRECTED",
+            "commanded_step": "GO_DOWN_TO_FLOOR",
+            "destination": "PL6",
+            "step_order": "FOURTH",
+            "speech_act": "DIRECTS_HEARER_TO_DO"
+          }
+        ]
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P5"
+      },
       "cb_flags": [],
       "figure_flags": [
         "FIG_0121"
@@ -196,11 +302,18 @@ pilot: "pilot-2"
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "3:3b",
-      "proposition_kind": "__TODO__: Q: What happened? A: instructing",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: instructing | Q: What was she told not to do? A: be known to the man | Q: Until when? A: until he has finished eating and drinking"
+        "speaker": "B3",
+        "instructed_party": "B9",
+        "prohibition": "BE_KNOWN_TO_THE_MAN",
+        "the_man_referential_form": "THE_MAN_HA_ISH",
+        "until_condition": "HE_FINISHES_EATING_AND_DRINKING",
+        "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P6"
+      },
       "cb_flags": [],
       "figure_flags": []
     },
@@ -208,11 +321,17 @@ pilot: "pilot-2"
       "prop_id": "P6",
       "scene_link": "S1",
       "verse_anchor": "3:4a",
-      "proposition_kind": "__TODO__: Q: What happened? A: instructing",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: instructing | Q: When? A: when he lies down | Q: What was she told? A: know the place where he lies"
+        "speaker": "B3",
+        "instructed_party": "B9",
+        "timing_condition": "WHEN_HE_LIES_DOWN",
+        "directive": "MARK_PLACE_WHERE_HE_LIES",
+        "speech_act": "DIRECTS_HEARER_TO_DO"
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P7"
+      },
       "cb_flags": [],
       "figure_flags": []
     },
@@ -220,11 +339,35 @@ pilot: "pilot-2"
       "prop_id": "P7",
       "scene_link": "S1",
       "verse_anchor": "3:4b",
-      "proposition_kind": "__TODO__: Q: What happened? A: instructing",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: instructing | Q: First step? A: go in | Q: Second? A: uncover the place of his feet | Q: Third? A: lie down"
+        "speaker": "B3",
+        "instructed_party": "B9",
+        "instruction_components": [
+          {
+            "action": "DIRECTED",
+            "commanded_step": "GO_IN",
+            "step_order": "FIRST",
+            "speech_act": "DIRECTS_HEARER_TO_DO"
+          },
+          {
+            "action": "DIRECTED",
+            "commanded_step": "UNCOVER_FEET",
+            "uncovered_place": "CB_0042",
+            "step_order": "SECOND",
+            "speech_act": "DIRECTS_HEARER_TO_DO"
+          },
+          {
+            "action": "DIRECTED",
+            "commanded_step": "LIE_DOWN",
+            "step_order": "THIRD",
+            "speech_act": "DIRECTS_HEARER_TO_DO"
+          }
+        ]
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P8"
+      },
       "cb_flags": [
         "CB_0042"
       ],
@@ -234,11 +377,17 @@ pilot: "pilot-2"
       "prop_id": "P8",
       "scene_link": "S1",
       "verse_anchor": "3:4c",
-      "proposition_kind": "__TODO__: Q: What happened? A: telling",
+      "proposition_kind": "HANDED",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: telling | Q: Who will speak next? A: he — the man | Q: What will he do? A: tell her what she shall do"
+        "speaker": "B3",
+        "future_speaker": "B13",
+        "the_man_referential_form": "THE_MAN_HA_ISH",
+        "handoff_content": "HE_WILL_TELL_YOU_WHAT_TO_DO",
+        "speech_act": "STATES_AS_TRUE"
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "forward_link_to": "P9"
+      },
       "cb_flags": [],
       "figure_flags": [
         "FIG_0122"
@@ -248,11 +397,18 @@ pilot: "pilot-2"
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "3:5",
-      "proposition_kind": "__TODO__: Q: What happened? A: consenting",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
-        "__TODO__": "Q: What happened? A: consenting | Q: Who spoke? A: [[B9-Ruth]] Ruth | Q: To whom? A: [[B3-Naomi]] Naomi | Q: What did she say? A: all that you say I will do"
+        "speaker": "B9",
+        "addressee": "B3",
+        "assent_content": "ALL_THAT_YOU_SAY_I_WILL_DO",
+        "assent_completeness": "TOTAL_NO_QUESTIONS",
+        "speech_act": "STATES_AS_TRUE"
       },
-      "inter_proposition_links": {},
+      "inter_proposition_links": {
+        "caused_by": "P8",
+        "paired_with": "P1"
+      },
       "cb_flags": [],
       "figure_flags": [
         "FIG_0123"

@@ -1,0 +1,13 @@
+{
+  "kind": "mechanical conformance amendment (pre-ruling; flagged for confirmation in docs/SC-0063-BATCH-RULING-SHEET.md §E-1)",
+  "by": "Architect, SC-0063 Phase D, 2026-06-12",
+  "edits": [
+    {
+      "where": "/level_2_scenes/2/beings_in_scene/entries/5/being_id",
+      "from": "THE_DEAD_HAMETIM",
+      "to": "B?",
+      "why": "The drafter proposed a descriptive token for the deliberately-uncoded collective ('the dead of the household'); the schema's being_id pattern ^B(\\d+|\\?)$ spells 'uncoded' as B?. The drafter's judgment (entity stays unbound) is preserved — only the spelling conforms. Its original note is intact in fills.json. The exegetical question (B? vs binding to B2/B4/B5) is ruling-sheet item A-4."
+    }
+  ],
+  "prompt_followup": "fm-drafter-0.1.4 teaches the B? idiom so later drafts conform at source."
+}

@@ -1,0 +1,327 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"jonah_pilot_BCD_v0_3\"",
+      "note": "No BCD ref in the MM; minted by analogy to ruth_pilot_BCD_v0_3. The canonical Jonah BCD ref is the reviewer's call.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"MM Section 1 marks YHWH's command at v.2 lifting to ELDER_AUTHORITY; the narrator voice around it stays INFORMAL_CASUAL. Encoded at moment level (v.2) rather than coloring the whole of S1 (which also carries the casual v.1 word-event formula). No NARRATIVE_FRAMING shift is marked here.\",\"scene_level\":null,\"moment_level\":[{\"verse\":\"1:2\",\"override_value\":\"ELDER_AUTHORITY\",\"framing_override\":null}]}",
+      "note": "The MM calls this a 'scene-level override' in prose but localizes it to v.2 and says the surrounding narrator voice stays INFORMAL_CASUAL; I encoded it moment-level for faithfulness. If the reviewer prefers the MM's literal 'scene-level' label, move to scene_level {scene_id:S1, override_value:ELDER_AUTHORITY}.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"DIVINE_COMMISSION\",\"REFUSAL_OF_COMMISSION\",\"FLIGHT_FROM_PRESENCE\"]",
+      "note": "The approved arc_element list is Ruth-derived and has no fit for a prophetic commission or a flight-from-God; three mints declared. Movement: command given, command refused, flight executed.",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "DIVINE_COMMISSION",
+          "justification": "MM 2.1/2.4: the passage opens with YHWH's word/charge to go to Nineveh — the commission the rest of the book answers; no approved arc token names a divine commissioning."
+        },
+        {
+          "axis": "arc_element",
+          "value": "REFUSAL_OF_COMMISSION",
+          "justification": "MM 2.4: 'a prophet who answers it with his heels' — the refusal is the burden of the pericope; no approved token captures a refused charge."
+        },
+        {
+          "axis": "arc_element",
+          "value": "FLIGHT_FROM_PRESENCE",
+          "justification": "MM 2.1: Jonah runs the opposite way 'away from before YHWH' — the flight is the structural turn; approved DEPARTURE connotes ordinary leave-taking, not flight from the divine presence."
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"PHYSICAL_LOCATION\",\"KINSHIP_CONTEXT\",\"DIVINE_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\"]",
+      "note": "Enumerated each context kind the prose invokes: book-opening story-world; Nineveh/Tarshish/Joppa physical geography; Jonah-son-of-Amittai kinship; the prophetic word/sending as divine context; the audience's knowledge of Nineveh-as-enemy and Tarshish-as-world's-edge. No temporal anchor (MM 3D: no date/era named) and no institutional office (MM notes 'no title, office').",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"ECONOMICAL\",\"RESTRAINED\",\"URGENT\",\"UNSETTLED_AT_CLOSE\"]",
+      "note": "MM 2.3: 'plain and fast' (ECONOMICAL); narrator never tells what Jonah feels (RESTRAINED); the tumble of verbs / full motion (URGENT); 'quiet alarm' at the end with the reason withheld (UNSETTLED_AT_CLOSE).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"BRISK\",\"NARROWS\"]",
+      "note": "MM 2.3: the flight is 'a tumble of verbs all in one breath' (BRISK); 'the pace drops like the verbs do: down to the port, down into the ship, down and away' (NARROWS).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"OPENS\",\"ESTABLISHES\",\"PLANTS\",\"WITHHOLDS\"]",
+      "note": "MM 2.4: opens the book (OPENS); sets in place caller/called/city/far place (ESTABLISHES); plants the questions the rest must answer (PLANTS); leaves 'the silence where his reason should be' (WITHHOLDS).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"COMMISSIONED_PROPHET\"",
+      "note": "Jonah's function in S1: the one the word comes to and is sent. No approved role_in_scene_being names a prophet/commissioned figure.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "COMMISSIONED_PROPHET",
+          "justification": "MM 3A: 'the one the word comes to; the prophet who is sent' — the approved role list (Ruth cast) has no prophet/commission role."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"JONAH_SON_OF_AMITTAI_NO_TITLE\"",
+      "note": "MM explicitly flags the referential form: 'named plainly as Jonah son of Amittai — given, with no title, office, or background', reinforced by the significant absence ('nothing told of who Jonah is'). Marked patronymic-only naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH as the one whose word comes and who sends; reuses approved DIVINE_AGENT.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "YHWH named plainly; the MM marks no special referential form here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"PATRONYMIC_REFERENT\"",
+      "note": "Amittai's function: he 'fixes who Jonah is by naming his father' — parallel to Ruth's ERA_REFERENT pattern (a being present only to anchor identity). No approved father/patronymic role exists.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "PATRONYMIC_REFERENT",
+          "justification": "MM 3A: Amittai 'fixes who Jonah is by naming his father'; he functions only as an identity anchor, like the approved ERA_REFERENT but for parentage."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "Amittai unmarked beyond the patronymic itself; no marked form called out.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"TOWNSPEOPLE\"",
+      "note": "People of Nineveh as the city's inhabitants (reuses approved TOWNSPEOPLE). Their narrative function here is the indicted party whose evil prompts the errand — the indictment nuance is carried in P2's slots; flag if the reviewer wants a dedicated indicted-populace role minted.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": "They appear only via the possessive 'their (evil)'; the MM notes the obliqueness but does not call attention to it as a marked naming, so left unmarked to avoid over-marking.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"COMMISSION_SCENE\"",
+      "note": "S1 is YHWH's prophetic commissioning of Jonah. INSTRUCTION_SCENE was the near miss but undersells the book-opening divine commission; minted COMMISSION_SCENE.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "COMMISSION_SCENE",
+          "justification": "MM Scene 1 / 3F: 'Gives the command that the rest of the pericope answers: the caller, the called, the city, and the reason' — a divine commissioning; no approved scene_kind fits."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"FLEEING_PROPHET\"",
+      "note": "Jonah's function in S2: the called one who flees instead of going. Mint distinct from his S1 COMMISSIONED_PROPHET role.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "FLEEING_PROPHET",
+          "justification": "MM 3A S2: 'the called one who flees instead of going' — the refusal-in-action role; no approved role token fits."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "Jonah referred to plainly in S2; no marked form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH as the one Jonah flees from; reuses DIVINE_AGENT consistent with S1.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "The 'away from before YHWH' refrain is a figure (FIG_0197) / CB_0052 carried in the proposition slots, not a marked naming of the being itself; left null.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"SHIP_CREW\"",
+      "note": "The crew Jonah means to sail away with. No approved maritime crew role exists.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "SHIP_CREW",
+          "justification": "MM 3A S2: 'the people aboard the ship bound for Tarshish' — the crew Jonah joins; no approved role token covers a ship's crew."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "Crew referenced only by the pronoun 'them'; MM does not call attention to this as a marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"FLIGHT_SCENE\"",
+      "note": "S2 records the flight toward Tarshish. DEPARTURE_SCENE was the near miss but connotes ordinary leave-taking; this is flight from the divine charge, so minted FLIGHT_SCENE.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "FLIGHT_SCENE",
+          "justification": "MM Scene 2 / 3F: 'Records the flight: the prophet's refusal, carried out as a journey the opposite way' — no approved scene_kind names a flight."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B3\",\"role_in_scene\":\"PATRONYMIC_REFERENT\",\"presence\":\"REFERENCED\"}]",
+      "note": "B3 Amittai is carried into S2's being-relations ('son of Amittai') though absent from the S2 3A list; appended as REFERENCED. Uses the PATRONYMIC_REFERENT mint declared at S1.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "PATRONYMIC_REFERENT",
+          "justification": "Same mint as S1: Amittai functions only as Jonah's identity anchor; re-declared here for the append entry."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"DIVINE_WORD_CAME\"",
+      "note": "The prophetic word-event opening (FIG_0196). No approved proposition_kind names a word-of-YHWH-came formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "DIVINE_WORD_CAME",
+          "justification": "MM P1: 'a word came / YHWH's / to Jonah' — the prophetic word-event formula; approved SPOKE does not capture the 'word of YHWH came to X' event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"word_source\":\"B2\",\"word_recipient\":\"B1\",\"recipient_patronymic\":\"B3\",\"recipient_referential_form\":\"JONAH_SON_OF_AMITTAI_NO_TITLE\"}",
+      "note": "Narrated word-event (no in-dialogue speech act at top level). The plain patronymic naming preserved as a referential-form slot, matching the being-entry marking.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": "The word-event leads into its content, the command (P2).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "YHWH's command (get up / go / cry out) — reuses approved INSTRUCTION.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"commander\":\"B2\",\"commanded\":\"B1\",\"command_components\":[{\"action\":\"DIRECTED\",\"commanded_step\":\"ARISE\",\"step_order\":\"FIRST\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"GO_TO_CITY\",\"step_order\":\"SECOND\",\"destination\":\"PL1\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"CALL_OUT_AGAINST\",\"step_order\":\"THIRD\",\"target\":\"PL1\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}],\"city_descriptor\":\"THE_GREAT_CITY\",\"reason_for_errand\":\"EVIL_COME_UP_BEFORE_YHWH\",\"indicted_party\":\"B5\",\"evil_referent\":\"CB_0051\",\"divine_presence_referent\":\"CB_0052\"}",
+      "note": "Command encoded per the action-idiom ruling: DIRECTED + commanded_step (ARISE/GO_TO_CITY/CALL_OUT_AGAINST), never imperatives on the action axis. Reason clause and indicted party preserved as slots; CB_0051 (their evil) and CB_0052 (before YHWH's face) anchored.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P1\",\"forward_link_to\":\"P3\"}",
+      "note": "The command is the content of the word that came (caused_by P1); the flight (P3) follows.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"FLED\"",
+      "note": "Jonah's getting-up-to-flee is the structural turn of the pericope. ROSE/DEPARTED were near misses but miss the flight-from-presence sense; minted FLED.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FLED",
+          "justification": "MM P3: 'getting up / to flee / to Tarshish / away from before YHWH' — a flight; no approved proposition_kind names fleeing (ROSE and DEPARTED understate the refusal)."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"fleer\":\"B1\",\"flight_destination\":\"PL2\",\"fled_from_presence\":\"CB_0052\",\"fled_from_being\":\"B2\",\"flight_directionality\":\"OPPOSITE_OF_COMMISSION\"}",
+      "note": "Kept the 'arose to flee' as the proposition_kind rather than minting an action token; the away-from-before-YHWH refrain (FIG_0197 / CB_0052) preserved as a slot.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P2\",\"forward_link_to\":\"P4\"}",
+      "note": "The flight is the answer/refusal to the command (caused_by P2) and opens the descent sequence (P4).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"WENT_DOWN\"",
+      "note": "Going down to Joppa and finding the ship — the descent motif (FIG_0198). No approved proposition_kind names a descent; DEPARTED/ARRIVED_AT miss the down-ward direction.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "WENT_DOWN",
+          "justification": "MM P4: 'going down / to Joppa / finding a ship' — the yarad descent (FIG_0198 Going-Down-Descent); no approved kind captures it."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"goer_down\":\"B1\",\"descent_destination\":\"PL3\",\"found_vessel\":\"O1\",\"vessel_destination\":\"PL2\",\"descent_marker\":\"GOING_DOWN\"}",
+      "note": "Two sub-events (descent to Joppa; finding the ship) kept compact at event-summary level within one proposition per MM granularity.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P3\",\"forward_link_to\":\"P5\"}",
+      "note": "Descent follows from the flight (P3); leads to boarding/payment (P5).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"EMBARKED\"",
+      "note": "Paying the fare, going down into the ship, sailing with the crew toward Tarshish away from YHWH — the boarding/embarkation. No approved proposition_kind fits; minted EMBARKED.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "EMBARKED",
+          "justification": "MM P5: 'paying / going down into it / to sail / with the crew / away from before YHWH' — boarding the vessel to flee; no approved proposition_kind names embarkation."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"payer\":\"B1\",\"fare_paid\":\"O2\",\"boarded_vessel\":\"O1\",\"descent_marker\":\"GOING_DOWN_INTO_SHIP\",\"sail_companions\":\"B4\",\"intended_destination\":\"PL2\",\"fled_from_presence\":\"CB_0052\",\"fled_from_being\":\"B2\"}",
+      "note": "Multiple sub-events (paying, descending into the ship, sailing-intent) held at event-summary level; the two figures on this prop (FIG_0198 descent, FIG_0197 away-refrain) both surface as slots (descent_marker, fled_from_presence).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P4\"}",
+      "note": "Boarding follows the descent to Joppa (P4). End of pericope; no forward link.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "Granularity: kept the MM's 5 propositions. P4 bundles two sub-events (descent to Joppa + finding the ship) and P5 bundles three (paying the fare + going down into the ship + sailing-intent with the crew). Rather than splitting them into separate L3 props, I captured the sub-events inside each proposition's event_specific_slots (found_vessel; payer/boarded_vessel/sail_companions), preserving the verb-tumble while keeping the MM-granular proposition count. Figures already re-anchor by verse (FIG_0197 at P3+P5, FIG_0198 at P4+P5).",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "Register: encoded the v.2 ELDER_AUTHORITY shift at moment-level (the MM prose calls it 'scene-level' but localizes it to the command while the narrator stays casual) — flagged for the reviewer. Mints declared: arc_element x3 (DIVINE_COMMISSION, REFUSAL_OF_COMMISSION, FLIGHT_FROM_PRESENCE); role_in_scene_being x4 (COMMISSIONED_PROPHET, PATRONYMIC_REFERENT, FLEEING_PROPHET, SHIP_CREW); scene_kind x2 (COMMISSION_SCENE, FLIGHT_SCENE); proposition_kind x4 (DIVINE_WORD_CAME, FLED, WENT_DOWN, EMBARKED). The Jonah cast/geography forced more mints than a Ruth pericope because the approved enumerations are Ruth-derived; all are map-anchored. book_context_ref minted by analogy (jonah_pilot_BCD_v0_3) — reviewer to confirm. B5 (people of Nineveh) given approved TOWNSPEOPLE; consider a dedicated indicted-populace role if the reviewer prefers."
+}

@@ -1,0 +1,968 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"jonah_pilot_BCD_v0_3\"",
+      "note": "Jonah, not Ruth — there is no Jonah BCD ref in my inputs, so this is a best-guess parallel to ruth_pilot_BCD_v0_3. The canonical ref is the reviewer's call.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"Three moment-level register shifts inside reported speech per MM Section 1; no scene-level overrides; no NARRATIVE_FRAMING shift. Verses are English numbering.\",\"scene_level\":null,\"moment_level\":[{\"verse\":\"1:6\",\"override_value\":\"ELDER_AUTHORITY\"},{\"verse\":\"1:7\",\"override_value\":\"CONSULTATIVE\"},{\"verse\":\"1:11\",\"override_value\":\"CONSULTATIVE\"},{\"verse\":\"1:14\",\"override_value\":\"RELIGIOUS_WORSHIP\"}]}",
+      "note": "MM Section 1 marks the captain's charge (v.6) as ELDER_AUTHORITY, the sailors' deliberations (v.7, v.11) as CONSULTATIVE, and the crew's prayer (v.14) as RELIGIOUS_WORSHIP.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"DIVINE_PURSUIT_BY_STORM\",\"CREW_CRISIS_RESPONSE\",\"EXPOSURE_BY_LOT\",\"SELF_CONFESSION\",\"SELF_SURRENDER_COUNSEL\",\"RESCUE_ATTEMPT_FAILS\",\"HURLING_OVERBOARD\",\"STORM_STILLED\",\"PAGAN_WORSHIP\",\"PROVIDENTIAL_SWALLOWING\"]",
+      "note": "The approved arc_element list is Ruth-specific; Jonah's storm narrative has no fits, so these are mints tracking the prose movement.",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "DIVINE_PURSUIT_BY_STORM",
+          "justification": "\"YHWH hurls a great wind at the sea, and the storm that follows hunts one man\" — the storm as divine pursuit opens the arc."
+        },
+        {
+          "axis": "arc_element",
+          "value": "CREW_CRISIS_RESPONSE",
+          "justification": "\"The sailors do everything — pray, jettison, cast lots, interrogate, row.\""
+        },
+        {
+          "axis": "arc_element",
+          "value": "EXPOSURE_BY_LOT",
+          "justification": "\"the lot finds Jonah\" — the runaway is exposed."
+        },
+        {
+          "axis": "arc_element",
+          "value": "SELF_CONFESSION",
+          "justification": "\"his own mouth confesses the God he is fleeing.\""
+        },
+        {
+          "axis": "arc_element",
+          "value": "SELF_SURRENDER_COUNSEL",
+          "justification": "\"his only counsel is 'hurl me in.'\""
+        },
+        {
+          "axis": "arc_element",
+          "value": "RESCUE_ATTEMPT_FAILS",
+          "justification": "\"the men dig their oars in to get back to the dry land — and they cannot.\""
+        },
+        {
+          "axis": "arc_element",
+          "value": "HURLING_OVERBOARD",
+          "justification": "\"Hurled at last into the sea.\""
+        },
+        {
+          "axis": "arc_element",
+          "value": "STORM_STILLED",
+          "justification": "\"the storm stops dead\" / \"the sea stands still from its raging.\""
+        },
+        {
+          "axis": "arc_element",
+          "value": "PAGAN_WORSHIP",
+          "justification": "\"the pagan crew worships YHWH\" — fear, sacrifice, vows."
+        },
+        {
+          "axis": "arc_element",
+          "value": "PROVIDENTIAL_SWALLOWING",
+          "justification": "\"YHWH appoints a great fish to swallow the man\" — rescue in the shape of judgment closes the arc."
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"PHYSICAL_LOCATION\",\"INSTITUTIONAL_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\",\"PRIOR_PERICOPE_CARRY_FORWARD\",\"PRIOR_ACTION_CONTEXT\",\"DIVINE_CONTEXT\"]",
+      "note": "Pagan seamen each with his own god (story-world); the sea (physical-location); lot-casting custom (institutional); 'fear YHWH' idiom and innocent-blood guilt (audience-knowledge); direct continuation of J01 (prior-pericope carry-forward); Jonah's paid flight (prior-action); the God he flees acting through wind/lot/fish (divine).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"RISING\",\"IRONIC\",\"URGENT\",\"STILLED\",\"QUIET\",\"ANTICIPATORY\"]",
+      "note": "IRONIC is a mint — the MM makes irony a load-bearing tone feature explicitly.",
+      "vocabulary_additions": [
+        {
+          "axis": "tone_element",
+          "value": "IRONIC",
+          "justification": "\"the irony rides on top of it ... the prophet of YHWH is fast asleep below while every pagan aboard is praying\" — irony is named as the passage's pervasive tone, with no approved token for it."
+        }
+      ]
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"RISES\",\"BRISK\",\"SETTLES\",\"HOLDS\"]",
+      "note": "Alarm builds in waves (RISES), fast crowded verbs (BRISK), sudden flat calm at v.15 (SETTLES), three days of silence (HOLDS).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"ADVANCES\",\"REACTIVATES\",\"STAGES\",\"WITHHOLDS\"]",
+      "note": "Carries J01's flight into consequence (ADVANCES); puts the fled command back in Jonah's ears (REACTIVATES); sets up the psalm J03 (STAGES); withholds the rescue announcement and the silence inside the fish (WITHHOLDS).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH as storm-sender; reusing the approved DIVINE_AGENT role.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "No marked referential form for YHWH here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"CREW\"",
+      "note": "The sailors as a collective working crew; mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "CREW",
+          "justification": "\"the sailors\" / \"the men\" — the ship's working crew, with no approved maritime collective role in the list."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"THE_SAILORS_HAMMALACHIM\"",
+      "note": "MM marks the naming here as 'the sailors' (hammalachim), set up to contrast with the later shift to 'the men.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"SHIP_CAPTAIN\"",
+      "note": "The chief of the sailors who orders Jonah to pray; mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "SHIP_CAPTAIN",
+          "justification": "\"the captain ... rab hachovel, the chief of the sailors\" — master of the ship; no approved equivalent."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "\"CHIEF_OF_THE_SAILORS\"",
+      "note": "MM gives the marked referential form 'the chief of the sailors' (rab hachovel).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"FUGITIVE\"",
+      "note": "Jonah the runaway, asleep below; mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "FUGITIVE",
+          "justification": "\"the runaway ... the prophet fleeing YHWH\" — Jonah's scene function throughout the pericope; no approved fit."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/referential_form",
+      "value_json": "\"ADDRESSED_AS_SLEEPER\"",
+      "note": "MM flags it: 'the captain addresses him only as sleeper — no name, no office.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"STORM_ONSET_SCENE\"",
+      "note": "Mint; approved scene_kind list is Ruth-specific.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "STORM_ONSET_SCENE",
+          "justification": "\"The storm hits, and the prophet sleeps\" — YHWH hurls the wind, the storm rises, the crew responds while Jonah sleeps."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"CREW\"",
+      "note": "Same crew casting lots and questioning; mint (re-declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "CREW",
+          "justification": "\"the men\" — the ship's working crew, continued from S1."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"THE_MEN_HAANASHIM\"",
+      "note": "MM marks the shift: 'from v.10 the narrator calls them the men — no longer the sailors.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"FUGITIVE\"",
+      "note": "Jonah, the exposed/confessing runaway; mint (re-declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "FUGITIVE",
+          "justification": "\"the one the lot falls on; the questioned man; the confessor\" — still the runaway, now exposed."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"SELF_NAMED_HEBREW\"",
+      "note": "MM flags it: 'he names himself a Hebrew — his people, not his calling.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH confessed as maker of sea and dry land; approved role.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "The divine descriptors (God of heaven, maker of sea and dry land) are confession content, carried in the proposition slots, not a marked narrator naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"EXPOSURE_AND_CONFESSION_SCENE\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "EXPOSURE_AND_CONFESSION_SCENE",
+          "justification": "\"The lot finds him, and he confesses\" — the lot exposes Jonah and his own mouth confesses YHWH."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"CREW\"",
+      "note": "Crew asking and rowing; mint (re-declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "CREW",
+          "justification": "\"the men ... rowing hard for shore to spare him\" — continued crew."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "No marked form flagged in this scene.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"FUGITIVE\"",
+      "note": "Jonah counseling his own hurling; mint (re-declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "FUGITIVE",
+          "justification": "\"the one who says: lift me and hurl me into the sea\" — the runaway who owns the storm."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "No marked form flagged here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/scene_kind",
+      "value_json": "\"CRISIS_DELIBERATION_SCENE\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "CRISIS_DELIBERATION_SCENE",
+          "justification": "\"'Hurl me in' — and they row instead\" — the crew weighs what to do as the sea rises, trying to spare him before throwing him."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"CREW\"",
+      "note": "Crew praying, hurling, worshiping; mint (re-declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "CREW",
+          "justification": "\"the ones who pray, hurl Jonah in, and then fear and worship YHWH\"."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "No marked form for the crew flagged here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH prayed to, feared, worshiped; approved role.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "No marked narrator naming; 'cries to him by name' is relationship, not a marked form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"FUGITIVE\"",
+      "note": "Jonah lifted and hurled in; mint (re-declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "FUGITIVE",
+          "justification": "\"the man lifted and hurled into the sea\" — 'this man' of the crew's prayer."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/2/referential_form",
+      "value_json": "\"THIS_MAN_IN_PRAYER\"",
+      "note": "MM flags it: 'in the prayer he is this man, a soul that might be charged as innocent blood.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/scene_kind",
+      "value_json": "\"HURLING_AND_WORSHIP_SCENE\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "HURLING_AND_WORSHIP_SCENE",
+          "justification": "\"Overboard: the sea stands still, and the men worship\" — the prayer, the hurling, the calm, and the crew's worship in one scene."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH appoints the fish; approved role.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "No marked form here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"APPOINTED_CREATURE\"",
+      "note": "The great fish doing YHWH's errand; mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "APPOINTED_CREATURE",
+          "justification": "\"the appointed swallower ... YHWH's creature, doing YHWH's errand without argument\" — no approved role for an appointed non-human agent."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "'great fish' is descriptive, not a map-flagged marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"FUGITIVE\"",
+      "note": "Jonah swallowed, at last praying; mint (re-declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "FUGITIVE",
+          "justification": "\"the swallowed man; at last, the one who prays\" — the runaway carried alive."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "No marked form flagged here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/scene_kind",
+      "value_json": "\"SWALLOWING_SCENE\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "SWALLOWING_SCENE",
+          "justification": "\"The fish: swallowed, three days, and a prayer begins\" — YHWH appoints the fish, it swallows Jonah, and the prayer begins."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"HURLED\"",
+      "note": "Mint; the storm-hurling refrain (FIG_0199) has no approved proposition_kind.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "HURLED",
+          "justification": "\"hurling ... YHWH hurled a great wind at the sea\" — the hetil/hurl verb that recurs four times in the pericope."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"hurler\":\"B2\",\"hurled_entity\":\"O3\",\"hurled_at\":\"PL4\",\"hurl_force_marker\":\"GREAT\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"STORM_AROSE\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "STORM_AROSE",
+          "justification": "\"a great storm rose on the sea, and the ship was about to break apart.\""
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"storm\":\"O4\",\"storm_magnitude\":\"GREAT\",\"location\":\"PL4\",\"imperiled_vessel\":\"O1\",\"vessel_peril\":\"ABOUT_TO_BREAK_APART\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P1\",\"forward_link_to\":\"P3\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"FEARED\"",
+      "note": "Mint; the fear-escalation refrain (FIG_0200).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FEARED",
+          "justification": "\"the sailors are afraid; each cries to his own god\" — first step of the fear escalation."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"fearers\":\"B4\",\"fear_object\":\"STORM\",\"subsequent_response\":\"CRIED_TO_OWN_GODS\",\"crier\":\"EACH_MAN\",\"addressee\":\"OWN_GOD\"}",
+      "note": "The crying to own gods is reported without quoted content, so no speech_act component is given.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P2\",\"forward_link_to\":\"P4\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"HURLED\"",
+      "note": "Mint (re-declared); second throw of the hurling refrain.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "HURLED",
+          "justification": "\"they hurl the cargo into the sea to lighten the ship\" — the second of four hurls."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"hurlers\":\"B4\",\"hurled_entity\":\"O5\",\"hurled_into\":\"PL4\",\"purpose\":\"LIGHTEN_SHIP\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P2\",\"forward_link_to\":\"P5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"WENT_DOWN\"",
+      "note": "Mint; the descent refrain (FIG_0198).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "WENT_DOWN",
+          "justification": "\"Jonah has gone down into the far hold, lain down, and fallen fast asleep\" — the yarad descent that runs through J01-J02."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"descender\":\"B1\",\"destination\":\"FAR_HOLD_OF_SHIP\",\"subsequent_states\":[\"LAY_DOWN\",\"FELL_DEEP_ASLEEP\"],\"descent_marker\":\"GOING_DOWN\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P6\"}",
+      "note": "Concurrent ('meanwhile') with the crew's actions, so no caused_by from the storm chain.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"APPROACHED\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "APPROACHED",
+          "justification": "\"the captain comes to him\" and rebukes the sleeper — the captain's approach with a protest question."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"approacher\":\"B6\",\"approached\":\"B1\",\"subsequent_speech_act_event\":\"REBUKING_QUESTION\",\"question_content\":\"WHAT_ARE_YOU_DOING_ASLEEP\",\"speech_act\":\"ASKS_RHETORICAL_QUESTION_AS_PROTEST\"}",
+      "note": "'What are you doing, sleeper?' read as a rebuke/protest rather than information-seeking.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P5\",\"forward_link_to\":\"P7\"}",
+      "note": "The captain finds him because he had gone down to sleep.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "Reusing approved INSTRUCTION; the captain's command (FIG_0201, echo of 1:2).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"director\":\"B6\",\"directee\":\"B1\",\"directed_address_form\":\"SLEEPER\",\"command_components\":[{\"action\":\"DIRECTED\",\"commanded_step\":\"ARISE\",\"step_order\":\"FIRST\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"CRY_OUT_TO_YOUR_GOD\",\"step_order\":\"SECOND\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}],\"command_rationale\":\"MAYBE_GOD_WILL_GIVE_THOUGHT_SO_WE_NOT_PERISH\"}",
+      "note": "Commands encoded per the action-idiom ruling: DIRECTED + commanded_step, not imperatives on the action axis.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P8\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"PROPOSED\"",
+      "note": "Mint on proposition_kind axis (PROPOSED exists on the action axis but not proposition_kind).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "PROPOSED",
+          "justification": "\"the men say to one another: come, let us cast lots\" — a cohortative proposal among equals (the CONSULTATIVE register shift at v.7)."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"proposers\":\"B4\",\"proposed_to\":\"ONE_ANOTHER\",\"proposed_action\":\"CAST_LOTS\",\"lots\":\"O6\",\"proposal_purpose\":\"KNOW_ON_WHOSE_ACCOUNT_THIS_EVIL\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P9\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"CAST_LOTS\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "CAST_LOTS",
+          "justification": "\"they cast, and the lot falls on Jonah\" — the lot-casting that exposes the runaway."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"casters\":\"B4\",\"lots\":\"O6\",\"outcome\":\"LOT_FELL_ON_JONAH\",\"exposed_party\":\"B1\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P8\",\"forward_link_to\":\"P10\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/proposition_kind",
+      "value_json": "\"INTERROGATED\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "INTERROGATED",
+          "justification": "\"they press him: tell us — whose fault is this? what is your work? ...\" — the rapid-fire questioning of the exposed man."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/9/event_specific_slots",
+      "value_json": "{\"interrogators\":\"B4\",\"interrogated\":\"B1\",\"question_listing\":[{\"question_subject\":\"WHOSE_FAULT_THIS_EVIL\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"},{\"question_subject\":\"WHAT_IS_YOUR_WORK\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"},{\"question_subject\":\"WHERE_DO_YOU_COME_FROM\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"},{\"question_subject\":\"WHAT_IS_YOUR_LAND\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"},{\"question_subject\":\"FROM_WHICH_PEOPLE_ARE_YOU\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"}]}",
+      "note": "The five questions preserved as a listing; the MM's significant absence (Jonah never answers 'what is your work?') is carried at the scene level.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"forward_link_to\":\"P11\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Reusing approved DECLARED for Jonah's answer 'I am a Hebrew.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/event_specific_slots",
+      "value_json": "{\"declarer\":\"B1\",\"declared_identity\":\"HEBREW\",\"identity_kind\":\"PEOPLE_NOT_CALLING\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "identity_kind preserves the MM's point: he gives his people, not his prophetic calling.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P10\",\"forward_link_to\":\"P12\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/proposition_kind",
+      "value_json": "\"CONFESSED\"",
+      "note": "Mint; CB_0053 fear-of-YHWH active here.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "CONFESSED",
+          "justification": "\"I fear YHWH, God of heaven, who made the sea and the dry land\" — Jonah's confession of the God he flees."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/11/event_specific_slots",
+      "value_json": "{\"confessor\":\"B1\",\"confessed_divine\":\"B2\",\"confessed_content\":\"FEARS_YHWH\",\"divine_descriptors\":[\"GOD_OF_HEAVEN\",\"MAKER_OF_SEA\",\"MAKER_OF_DRY_LAND\"],\"sea\":\"PL4\",\"dry_land\":\"PL5\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P13\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/proposition_kind",
+      "value_json": "\"FEARED\"",
+      "note": "Mint (re-declared); second step of the fear escalation (great fear).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FEARED",
+          "justification": "\"the men fear a great fear and say, What is this you have done!\" — the escalated fear."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/12/event_specific_slots",
+      "value_json": "{\"fearers\":\"B4\",\"fear_magnitude\":\"GREAT\",\"subsequent_speech_act_event\":\"PROTEST_QUESTION\",\"question_content\":\"WHAT_IS_THIS_YOU_HAVE_DONE\",\"speech_act\":\"ASKS_RHETORICAL_QUESTION_AS_PROTEST\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P12\",\"forward_link_to\":\"P14\",\"paired_with\":\"P3\"}",
+      "note": "paired_with P3 marks the fear-escalation rhyme (FIG_0200).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/proposition_kind",
+      "value_json": "\"PERCEIVED\"",
+      "note": "Reusing approved PERCEIVED for the men's knowing.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/event_specific_slots",
+      "value_json": "{\"knowers\":\"B4\",\"known_fact\":\"JONAH_FLEEING_FROM_BEFORE_YHWH\",\"fled_from\":\"CB_0052\",\"basis_of_knowledge\":\"HE_HAD_TOLD_THEM\"}",
+      "note": "CB_0052 (from-before-YHWH) and FIG_0197 active — the J01 refrain sounds again.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P12\",\"forward_link_to\":\"P15\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/proposition_kind",
+      "value_json": "\"ASKED\"",
+      "note": "Mint on proposition_kind axis (ASKED exists on the action axis but not proposition_kind).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "ASKED",
+          "justification": "\"the men ask Jonah: what shall we do to you, so the sea will quiet?\" — the crew's question to the exposed man (CONSULTATIVE shift at v.11)."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/14/event_specific_slots",
+      "value_json": "{\"askers\":\"B4\",\"asked\":\"B1\",\"question_content\":\"WHAT_SHALL_WE_DO_TO_YOU\",\"desired_outcome\":\"SEA_QUIET_FOR_US\",\"sea\":\"PL4\",\"reason_for_asking\":\"SEA_KEPT_GROWING_STORMIER\",\"speech_act\":\"ASKS_INFORMATION_SEEKING_QUESTION\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P16\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/proposition_kind",
+      "value_json": "\"ANSWERED\"",
+      "note": "Mint; Jonah's directive answer (FIG_0199 hurling refrain — 'hurl me').",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "ANSWERED",
+          "justification": "\"he answers: lift me and hurl me into the sea\" — a response to the crew's question that is itself a directive counsel."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/15/event_specific_slots",
+      "value_json": "{\"answerer\":\"B1\",\"answered_party\":\"B4\",\"counsel_components\":[{\"action\":\"DIRECTED\",\"commanded_step\":\"LIFT_ME\",\"step_order\":\"FIRST\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"HURL_ME_INTO_SEA\",\"step_order\":\"SECOND\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}],\"desired_outcome\":\"SEA_QUIET_FOR_YOU\",\"storm_ownership_admission\":\"GREAT_STORM_ON_MY_ACCOUNT\",\"storm\":\"O4\",\"sea\":\"PL4\"}",
+      "note": "The 'hurl me' counsel encoded as DIRECTED steps; storm_ownership_admission preserves 'on my account.' The MM's absence — no offer to repent or turn to Nineveh — is carried at scene level.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P15\",\"paired_with\":\"P15\",\"forward_link_to\":\"P17\"}",
+      "note": "paired_with P15 — Jonah's answer responds to the crew's question.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/proposition_kind",
+      "value_json": "\"ROWED\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "ROWED",
+          "justification": "\"the men dig their oars in to get back to the dry land — and they cannot\" — the failed rescue effort."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/16/event_specific_slots",
+      "value_json": "{\"rowers\":\"B4\",\"row_destination\":\"PL5\",\"row_effort\":\"DUG_OARS_IN_HARD\",\"outcome\":\"COULD_NOT_REACH\",\"reason\":\"SEA_KEPT_GROWING_STORMIER_AGAINST_THEM\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P16\",\"forward_link_to\":\"P18\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/proposition_kind",
+      "value_json": "\"APPEAL\"",
+      "note": "Reusing approved APPEAL for the crew's prayer to YHWH (RELIGIOUS_WORSHIP shift at v.14).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/event_specific_slots",
+      "value_json": "{\"petitioners\":\"B4\",\"petitioned_divine\":\"B2\",\"petition_components\":[{\"petition\":\"DO_NOT_LET_US_PERISH_FOR_THIS_MANS_LIFE\",\"speech_act\":\"DIRECTS_HEARER_NOT_TO_DO\"},{\"petition\":\"DO_NOT_LAY_INNOCENT_BLOOD_ON_US\",\"innocent_blood\":\"CB_0054\",\"speech_act\":\"DIRECTS_HEARER_NOT_TO_DO\"}],\"petition_grounds\":\"YOU_YHWH_HAVE_DONE_AS_YOU_PLEASED\",\"petitioned_subject_referential_form\":\"THIS_MAN\"}",
+      "note": "CB_0054 (innocent blood) active. Petitions to YHWH encoded as DIRECTS_HEARER_NOT_TO_DO (the hearer being YHWH).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P17\",\"forward_link_to\":\"P19\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/18/proposition_kind",
+      "value_json": "\"HURLED\"",
+      "note": "Mint (re-declared); fourth throw of the hurling refrain — Jonah himself.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "HURLED",
+          "justification": "\"they lift Jonah and hurl him into the sea\" — the climactic hurl of the refrain."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/18/event_specific_slots",
+      "value_json": "{\"hurlers\":\"B4\",\"lifted_party\":\"B1\",\"hurled_party\":\"B1\",\"hurled_into\":\"PL4\",\"action_sequence\":[\"LIFTED\",\"HURLED\"]}",
+      "note": "action_sequence kept as descriptive tokens rather than the action axis, since neither lift nor hurl is an approved action value.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/18/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P18\",\"forward_link_to\":\"P20\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/19/proposition_kind",
+      "value_json": "\"SEA_STILLED\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "SEA_STILLED",
+          "justification": "\"the sea stands still from its raging\" — the sudden calm that is the storm's verdict."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/19/event_specific_slots",
+      "value_json": "{\"stilled_entity\":\"PL4\",\"stilled_from\":\"ITS_RAGING\",\"stilling_marker\":\"SUDDEN_CALM\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/19/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P19\",\"forward_link_to\":\"P21\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/20/proposition_kind",
+      "value_json": "\"WORSHIPED\"",
+      "note": "Mint; CB_0053 active, FIG_0200 third step (feared YHWH a great fear).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "WORSHIPED",
+          "justification": "\"the men fear YHWH with a great fear, and they offer a sacrifice ... and they vow vows\" — the pagan crew's full worship as the storm's outcome."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/20/event_specific_slots",
+      "value_json": "{\"worshipers\":\"B4\",\"fear_object\":\"B2\",\"fear_magnitude\":\"GREAT\",\"worship_acts\":[{\"worship_act\":\"FEARED_YHWH_GREAT_FEAR\",\"speech_act\":\"STATES_AS_TRUE\"},{\"worship_act\":\"OFFERED_SACRIFICE\",\"to_whom\":\"B2\",\"speech_act\":\"STATES_AS_TRUE\"},{\"worship_act\":\"VOWED_VOWS\",\"to_whom\":\"B2\",\"speech_act\":\"VOWS\"}]}",
+      "note": "The trio fear/sacrifice/vow kept as worship_acts; the vow carries the VOWS speech act.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/20/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P20\",\"forward_link_to\":\"P22\",\"paired_with\":\"P13\"}",
+      "note": "paired_with P13 completes the fear-escalation chain (FIG_0200: feared / feared a great fear / feared YHWH a great fear).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/21/proposition_kind",
+      "value_json": "\"APPOINTED\"",
+      "note": "Mint; the appointing refrain that recurs across Jonah (fish, plant, worm, wind).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "APPOINTED",
+          "justification": "\"YHWH appoints a great fish to swallow Jonah\" — the manah/appoint verb."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/21/event_specific_slots",
+      "value_json": "{\"appointer\":\"B2\",\"appointed_creature\":\"B7\",\"appointed_purpose\":\"SWALLOW_JONAH\",\"swallowed_party\":\"B1\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/21/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P23\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/22/proposition_kind",
+      "value_json": "\"SWALLOWED\"",
+      "note": "Mint.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "SWALLOWED",
+          "justification": "\"the fish swallows him. Jonah is in the belly of the fish three days and three nights.\""
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/22/event_specific_slots",
+      "value_json": "{\"swallower\":\"B7\",\"swallowed_party\":\"B1\",\"subsequent_state\":\"REMAINED_IN_BELLY\",\"location\":\"BELLY_OF_FISH\",\"duration\":\"TH_THREE_DAYS_AND_THREE_NIGHTS\",\"duration_form\":\"THREE_DAYS_AND_THREE_NIGHTS\"}",
+      "note": "Duration referenced to the scene object TH_THREE_DAYS_AND_THREE_NIGHTS; exact form preserved.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/22/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P22\",\"forward_link_to\":\"P24\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/23/proposition_kind",
+      "value_json": "\"PRAYED\"",
+      "note": "Mint; the hinge into the psalm J03.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "PRAYED",
+          "justification": "\"Jonah prays to YHWH his God from the belly of the fish\" — the prayer the prophet never prayed on deck."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/23/event_specific_slots",
+      "value_json": "{\"praying_party\":\"B1\",\"prayed_to\":\"B2\",\"divine_relation\":\"YHWH_HIS_GOD\",\"prayer_origin\":\"BELLY_OF_FISH\",\"fish\":\"B7\"}",
+      "note": "The prayer content itself begins in J03, so no quoted speech_act is carried here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/23/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P23\"}",
+      "note": "Terminal proposition of the pericope; no forward link.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "No further decomposition needed beyond the components already used inside event_specific_slots: P7 (captain's two-step command), P10 (five-part interrogation listing), P16 (Jonah's two-step 'hurl me' counsel), P18 (two-part crew petition), and P21 (fear/sacrifice/vow worship_acts). The remaining propositions are single-event and left at meaning-map granularity. Flags are anchored by verse as given in the MM.",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "This is a Jonah pericope; the approved bounded-open lists are heavily Ruth-shaped, so the storm narrative required substantial declared mints on arc_element (10), tone_element (IRONIC), role_in_scene_being (CREW, SHIP_CAPTAIN, FUGITIVE, APPOINTED_CREATURE), scene_kind (5), and proposition_kind (HURLED, STORM_AROSE, FEARED, WENT_DOWN, APPROACHED, PROPOSED, CAST_LOTS, INTERROGATED, CONFESSED, ASKED, ANSWERED, ROWED, SEA_STILLED, WORSHIPED, APPOINTED, SWALLOWED, PRAYED). Where an approved value genuinely fit I reused it (DIVINE_AGENT; INSTRUCTION, DECLARED, PERCEIVED, APPEAL on proposition_kind; DIRECTED/VOWED on the action axis; the SPEECH_ACT closed list throughout). Re-declared values (CREW, FUGITIVE, HURLED, FEARED) appear in each fill they occur in per the strict declare-every-mint rule. book_context_ref is a best-guess Jonah analogue and needs the reviewer's canonical ref. Referential_form was marked only where the MM's own prose flags the naming (the hammalachim→ha'anashim shift, 'the chief of the sailors', 'sleeper', self-named 'a Hebrew', 'this man' in the prayer) and left null elsewhere. The English/Hebrew versification note (Eng 1:17–2:1 = Heb 2:1–2) is honored via the MM's English anchors. Significant_absence blocks were left as the deterministic skeleton carried them — they are load-bearing (Jonah's prayerlessness, the unspoken 'prophet', no word of sin, no rescue announced)."
+}

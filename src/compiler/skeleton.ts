@@ -106,6 +106,11 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
       gap(`${at}/beings_in_scene/entries/${i}/role_in_scene`, "role_in_scene", "tokenize from MM role prose (judgment)", b.roleProse ?? b.label);
       gap(`${at}/beings_in_scene/entries/${i}/referential_form`, "referential_form", "not in MM — assign if the narrator uses a marked reference (judgment)");
       if (!b.presence) gap(`${at}/beings_in_scene/entries/${i}/presence`, "presence", "no Presence line in MM", b.label);
+      // SC-0063: a code-less being (the uncoded-entity idiom — P13's child, "the dead") previously
+      // left a __TODO__ with NO gap entry, unreachable through the patch contract. Mirror the
+      // place/object rule: gap it so the drafter judges the code (assign registry / propose / note).
+      if (!b.code)
+        gap(`${at}/beings_in_scene/entries/${i}/being_id`, "being_id", "no wikilink in MM — assign a registry B code or propose one (the map may keep the entity deliberately uncoded; judge + note)", b.label);
       return { being_id: b.code ?? todo(b.label), role_in_scene: todo(b.roleProse ?? b.label), presence: b.presence ?? todo() };
     });
     // SC-0022: place/object/time scene entries are id-only (role_in_scene/function_in_scene dropped
@@ -122,7 +127,12 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
       sc.times === null
         ? { _note: "no distinct temporal frame for this scene (per meaning map)", entries: null }
         : {
-            entries: sc.times.map((t) => {
+            entries: sc.times.map((t, i) => {
+              // SC-0063: a code-less time previously left a __TODO__ with no gap (the SC-0022
+              // "times carry no judgment gap" predates the drafter). Mirror places/objects:
+              // the drafter assigns a TM_ token (a registry PROPOSAL — gold P04 minted its own).
+              if (!t.code)
+                gap(`${at}/times_in_scene/entries/${i}/time_id`, "time_id", "no wikilink in MM — assign a TM_ code (registry proposal; judgment)", t.label);
               return { time_id: t.code ?? todo(t.label) };
             }),
           };

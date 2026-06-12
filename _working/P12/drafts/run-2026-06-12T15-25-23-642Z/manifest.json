@@ -1,0 +1,25 @@
+{
+  "model": "claude-opus-4-8",
+  "request_sha256": "4ded8ce0a993d3b27164a5df58a66f297d39d126db773f2321bcdcfb4ae2a8b8",
+  "map": "fixtures/meaning-map/P12-Ruth-4-9-12.md",
+  "gaps": 80,
+  "usage": {
+    "input_tokens": 25076,
+    "cache_creation_input_tokens": 34397,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 34397,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 35668,
+    "service_tier": "standard",
+    "inference_geo": "global"
+  },
+  "merge": {
+    "applied": 65,
+    "noteOnly": 15,
+    "rejected": [],
+    "unfilled": [],
+    "leftovers": []
+  }
+}
