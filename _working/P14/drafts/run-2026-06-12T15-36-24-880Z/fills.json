@@ -1,0 +1,370 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"ruth_pilot_BCD_v0_3\"",
+      "note": "Ruth pericope → standard BCD ref per §5 convention.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"MM Section 1 explicitly states there are no character speeches, no ceremony, and no register shift anywhere in the unit — pericope-level INFORMAL_CASUAL throughout. No scene-level or moment-level overrides.\",\"scene_level\":null,\"moment_level\":null}",
+      "note": "Unlike P01 there is no vayhi-bimei framing lift here; the MM marks no NARRATIVE_FRAMING override.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"GENEALOGICAL_DESCENT\",\"LINE_ARRIVAL_AT_DAVID\",\"NARRATOR_FRAMING_CLOSE\"]",
+      "note": "No approved arc_element names a genealogy line of descent; minted GENEALOGICAL_DESCENT for the ten-name chain and LINE_ARRIVAL_AT_DAVID for the structurally load-bearing destination (\"the list exists to arrive at David\"). NARRATOR_FRAMING_CLOSE (approved) carries the book-closing/inclusio function.",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "GENEALOGICAL_DESCENT",
+          "justification": "MM 2.1: the passage is \"a ten-name line of descent\"; no approved arc_element covers an unbroken father-to-son lineage chain."
+        },
+        {
+          "axis": "arc_element",
+          "value": "LINE_ARRIVAL_AT_DAVID",
+          "justification": "MM 2.1/2.4: the cadence \"tilts toward its last word\" and \"exists to arrive at David\" — the arrival at the terminal name is the arc's burden, with no approved element for it."
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"KINSHIP_CONTEXT\",\"HISTORICAL_ERA_CONTEXT\",\"TEMPORAL_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\",\"DIVINE_CONTEXT\",\"PRIOR_PERICOPE_CARRY_FORWARD\"]",
+      "note": "KINSHIP=the toledot lineage; HISTORICAL_ERA=reach back to the patriarchs; TEMPORAL=narrator's cross-time vantage answering the prologue's distance; AUDIENCE_KNOWLEDGE=narrator already knows David's name; DIVINE=YHWH's gift of conception (4:13) and its long consequence; PRIOR_PERICOPE_CARRY_FORWARD=repeats 4:12, 4:17, 4:13.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"CHRONICLE\",\"DECLARATIVE\",\"WEIGHTED\",\"RESTRAINED\"]",
+      "note": "CHRONICLE/DECLARATIVE = even, formal recital; WEIGHTED = accumulating, gathering weight; RESTRAINED = no drama, no comment.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"STEADY\",\"SETTLES\"]",
+      "note": "STEADY = forward, name after name; SETTLES = the cadence simply stops at David, the stop being the emphasis.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"ESTABLISHES\",\"ADVANCES\",\"CLOSES\"]",
+      "note": "ESTABLISHES = places the Bethlehem line in David's ancestry (the book's largest claim); ADVANCES = completes the three threads opened earlier (Tamar-Perez, Obed-Jesse-David, YHWH's gift); CLOSES = the book-ending inclusio with the prologue.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"ANCESTOR\"",
+      "note": "B27 = the six named ancestors, each fathering the next — ANCESTOR fits the scene function.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"DUAL_SPELLING_SALMAH_AND_SALMON\"",
+      "note": "MM flags a marked referential form on B27: Boaz's father is spelled Salmah (4:20) and Salmon (4:21) — one ancestor, both forms in the text. Marking it here per the MM's own attention-calling; referential_form is an open descriptive field (not in the bounded-axis digest), so no vocabulary_additions.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"ANCESTOR\"",
+      "note": "B13 Boaz functions in this scene as an ancestral link in the line (the story's redeemer now seated as a name in the chain he served).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "Boaz is plainly named in the list; no marked referential form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"ANCESTOR\"",
+      "note": "B25 Obed is a father in the line (father of Jesse) — ANCESTOR. The MM's \"hinge\"/seventh-name significance is structural commentary, not a distinct scene role.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "Obed plainly named; no marked referential form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"LINE_TERMINUS\"",
+      "note": "B26 = \"Jesse and David — the line's arrival.\" ANCESTOR is semantically wrong for David, who is the descendant the genealogy reaches, not an ancestor within the book. Minted LINE_TERMINUS for the entry's scene function as the line's destination; Jesse within the entry is the penultimate ancestral link.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "LINE_TERMINUS",
+          "justification": "MM 3A/2.4: B26 is \"the line's arrival; David the book's destination\" — the terminal name the whole genealogy exists to reach; no approved role_in_scene_being names the endpoint of a descent line."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": "Jesse and David plainly named; no marked referential form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"GENEALOGY_SCENE\"",
+      "note": "No approved scene_kind covers a genealogy recitation. NARRATOR_FRAMING_CLOSE_SCENE captures the closing function but not the genealogy form, which is primary here (genre=GENEALOGY). Minted GENEALOGY_SCENE.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "GENEALOGY_SCENE",
+          "justification": "MM scene title \"The generations of Perez\" and genre GENEALOGY: the scene is a formal toledot list, a form with no approved scene_kind."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"GENEALOGY_HEADER\"",
+      "note": "P1 is the toledot header \"These are the generations of Perez\" — declares/heads the line rather than naming a person (NAMED) or framing narration generally (NARRATOR_FRAME). Minted GENEALOGY_HEADER.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "GENEALOGY_HEADER",
+          "justification": "MM P1: \"the line is named / Whose generations? Perez's\" — the toledot-formula header opening the genealogy; no approved proposition_kind names a lineage header."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"lineage_founder\":\"B27\",\"founder_name\":\"Perez\",\"line_form\":\"TOLEDOT_OF_PEREZ\"}",
+      "note": "Perez is carried within the B27 Genealogy-Figures group; founder_name disambiguates.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": "Header opens the chain that begins at P2.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "\"X fathered Y\" begetting formula; no approved proposition_kind covers it. Minted FATHERED (used P2–P10).",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P2–P10: the repeated \"X fathered Y\" genealogical formula; no approved proposition_kind names a begetting event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"begetter\":\"B27\",\"begetter_name\":\"Perez\",\"begotten\":\"B27\",\"begotten_name\":\"Hezron\"}",
+      "note": "Both Perez and Hezron carried within B27; names disambiguate.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P3\"}",
+      "note": "Sequential chain. The generative dependency (each begotten becomes next begetter) could also be marked caused_by — flagged in remarks for reviewer.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P3: \"a fathering\" — begetting event; declared per-fill as required for every minted axis token."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"begetter\":\"B27\",\"begetter_name\":\"Hezron\",\"begotten\":\"B27\",\"begotten_name\":\"Ram\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P4\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P4: \"a fathering\" — begetting event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"begetter\":\"B27\",\"begetter_name\":\"Ram\",\"begotten\":\"B27\",\"begotten_name\":\"Amminadab\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P5: \"a fathering\" — begetting event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"begetter\":\"B27\",\"begetter_name\":\"Amminadab\",\"begotten\":\"B27\",\"begotten_name\":\"Nahshon\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P6\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P6: \"a fathering\" — begetting event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"begetter\":\"B27\",\"begetter_name\":\"Nahshon\",\"begotten\":\"B27\",\"begotten_name\":\"Salmon\",\"begotten_name_form\":\"SALMAH_SPELLING_AT_4_20\"}",
+      "note": "At 4:20 (this verse) Boaz's father is spelled Salmah; preserved as a load-bearing spelling variant per the MM's referential-form flag. Normalized lemma kept as Salmon for cross-prop consistency.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P7\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P7: \"a fathering\" — begetting event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"begetter\":\"B27\",\"begetter_name\":\"Salmon\",\"begetter_name_form\":\"SALMON_SPELLING_AT_4_21\",\"begotten\":\"B13\",\"begotten_name\":\"Boaz\"}",
+      "note": "At 4:21 the father is spelled Salmon (vs Salmah at 4:20); spelling variant preserved. Boaz = registry B13.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P8\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P8: \"a fathering\" — begetting event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"begetter\":\"B13\",\"begetter_name\":\"Boaz\",\"begotten\":\"B25\",\"begotten_name\":\"Obed\"}",
+      "note": "The redeemed child Obed (B25) — the line's hinge.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P9\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P9: \"a fathering\" — begetting event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"begetter\":\"B25\",\"begetter_name\":\"Obed\",\"begotten\":\"B26\",\"begotten_name\":\"Jesse\"}",
+      "note": "Jesse carried within B26.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P10\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/proposition_kind",
+      "value_json": "\"FATHERED\"",
+      "note": "Begetting formula; terminal link arriving at David.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FATHERED",
+          "justification": "MM P10: \"a fathering\" — begetting event arriving at the terminal name."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/9/event_specific_slots",
+      "value_json": "{\"begetter\":\"B26\",\"begetter_name\":\"Jesse\",\"begotten\":\"B26\",\"begotten_name\":\"David\",\"begotten_role\":\"LINE_TERMINUS_THE_KING\"}",
+      "note": "Both Jesse and David carried within B26. begotten_role preserves David as the genealogy's terminal name and the book's destination (the stop is the emphasis).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/inter_proposition_links",
+      "value_json": "{}",
+      "note": "Terminal proposition — no forward link. Cross-pericope closures (FIG_0189 inclusio, FIG_0192/FIG_0194 forward pairs) are carried by the compiled figure_flags/cross_ref, not by intra-pericope links.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "Granularity check: the 10 propositions are already maximally atomic — P1 is the toledot header and P2–P10 are single begetting events each. No further decomposition into event_specific_slots components is warranted; each fathering is one event with one begetter and one begotten. No re-anchoring needed (verse anchors already split a/b per the MM).",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "P14 is a genealogy (genre GENEALOGY, genre_group NARRATIVE) with no speech, ceremony, or register shift, so register_overrides is null at both levels and INFORMAL_CASUAL stands throughout. Four mints proposed, all map-anchored: arc_elements GENEALOGICAL_DESCENT and LINE_ARRIVAL_AT_DAVID; scene_kind GENEALOGY_SCENE; role_in_scene_being LINE_TERMINUS (B26); proposition_kind GENEALOGY_HEADER (P1) and FATHERED (P2–P10). These reflect that the existing tagset was largely built on narrative-action pericopes and lacks genealogy vocabulary — the reviewer may wish to bless a small genealogy cluster. Two judgment calls flagged for review: (1) I chained the propositions with forward_link_to only; the genuine generative dependency (each begotten becomes the next begetter) could additionally justify caused_by on P3–P10 — I left it off to avoid over-marking a list, but it is defensible. (2) The Salmah/Salmon dual spelling is preserved both as B27 referential_form and as begetter/begotten_name_form slots in P6/P7; if downstream prefers a single locus, the slot-level forms are the more precise home. referential_form was treated as an open descriptive field (not in the bounded-axis digest), so no vocabulary_additions were attached to DUAL_SPELLING_SALMAH_AND_SALMON."
+}

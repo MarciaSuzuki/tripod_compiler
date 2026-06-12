@@ -1,0 +1,547 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"ruth_pilot_BCD_v0_3\"",
+      "note": "Ruth pericope → the pinned Ruth BCD ref; canonical ref is the reviewer's call.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"Pericope stays INFORMAL_CASUAL (narrator's telling). MM Section 1 marks two scene-level shifts: S2 (4:14-15) the women's benediction lifts to CEREMONIAL; S3 (4:16-17) the lap/cradle settles to INTIMATE. No moment-level or framing overrides.\",\"scene_level\":[{\"scene_id\":\"S2\",\"override_value\":\"CEREMONIAL\"},{\"scene_id\":\"S3\",\"override_value\":\"INTIMATE\"}],\"moment_level\":null}",
+      "note": "Both overrides are explicitly marked in the MM's multi-level register tagging.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"MARRIAGE_CONSUMMATED\",\"DIVINE_GIFT_OF_CONCEPTION\",\"BIRTH_OF_HEIR\",\"BLESSING_INVOCATION\",\"EMPTINESS_REVERSED\",\"COMMUNAL_NAMING\",\"NARRATOR_FRAMING_CLOSE\"]",
+      "note": "Closing pericope; existing arc tokens are pericope-specific and do not fit the marriage/gift/birth/restoration movement, so four mints + EMPTINESS_REVERSED. BLESSING_INVOCATION and NARRATOR_FRAMING_CLOSE reused.",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "MARRIAGE_CONSUMMATED",
+          "justification": "MM 2.1: 'Boaz takes Ruth, she becomes his wife, he comes to her' — the redemption completed in marriage; no existing arc token covers a consummated marriage."
+        },
+        {
+          "axis": "arc_element",
+          "value": "DIVINE_GIFT_OF_CONCEPTION",
+          "justification": "MM 2.1/2.4: 'YHWH gives her conception' — the book's second direct divine act, a distinct arc beat with no approved equivalent."
+        },
+        {
+          "axis": "arc_element",
+          "value": "BIRTH_OF_HEIR",
+          "justification": "MM 2.1: 'she bears a son' — the line's future delivered; no approved birth/heir arc token exists."
+        },
+        {
+          "axis": "arc_element",
+          "value": "EMPTINESS_REVERSED",
+          "justification": "MM 2.1/2.4: 'the turn from death to a living name and from empty to full' — the deliberate reversal of the approved EMPTYING; needs its own token."
+        },
+        {
+          "axis": "arc_element",
+          "value": "COMMUNAL_NAMING",
+          "justification": "MM 2.4: 'closes the communal-naming the book opened in Naomi's bitter homecoming' — the women name the child for Naomi; no approved naming arc token."
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"PHYSICAL_LOCATION\",\"KINSHIP_CONTEXT\",\"INSTITUTIONAL_CONTEXT\",\"DIVINE_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\",\"PRIOR_PERICOPE_CARRY_FORWARD\",\"HISTORICAL_ERA_CONTEXT\"]",
+      "note": "DIVINE_CONTEXT (YHWH gives conception; divine name returns), KINSHIP/INSTITUTIONAL (daughter-in-law, kinsman-redeemer), PRIOR_PERICOPE_CARRY_FORWARD + AUDIENCE_KNOWLEDGE (1:21, 2:20, 3:9, gate echoes), HISTORICAL_ERA (narrator's later David vantage).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"ECONOMICAL\",\"WARM\",\"INTIMATE\",\"STILLED\",\"RISING\"]",
+      "note": "ECONOMICAL = the bare swift verbs of v.13; WARM = the wide blessing; INTIMATE/STILLED = the lap image; RISING = the closing reach to David.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"BRISK\",\"SLOWED\",\"SETTLES\",\"WIDENS\"]",
+      "note": "BRISK = swift opening line; SLOWED to the tender lap; SETTLES at the still image; WIDENS at the sudden genealogical reach.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"CLOSES\",\"ADVANCES\",\"REACTIVATES\",\"OPENS\"]",
+      "note": "CLOSES = resolves every thread / inclusio; ADVANCES = delivers the gift child; REACTIVATES = lands the redeemer-word and answers the gate-blessing; OPENS = onto the genealogy/David.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"HUSBAND\"",
+      "note": "Boaz, the one who takes Ruth as wife.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "Boaz named plainly; no marked reference.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"WIFE\"",
+      "note": "Ruth, taken as wife and bearer of the son.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH, giver of conception — the direct divine act.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"SON\"",
+      "note": "The newborn son, the line's future.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": "'a son' (בֵּן); the deliberate not-yet-named status is carried by the B? being_id rather than a marked referential form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/being_id",
+      "value_json": "\"B?\"",
+      "note": "Surface form 'a son' (בֵּן). The map deliberately gives no wikilink — the child is the as-yet-unnamed newborn, later named Obed (B25) in S3. Kept uncoded to preserve the 'not yet named' significant absence.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"BIRTH_SCENE\"",
+      "note": "Considered MARRIAGE_SCENE but the scene's communicative heart is YHWH's gift of conception and the birth; minting BIRTH_SCENE. Reviewer may prefer MARRIAGE_SCENE.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "BIRTH_SCENE",
+          "justification": "MM Scene 1 title 'The marriage, the gift, the birth' and 3F centers on the divine gift of conception and the birth of the son; no approved scene_kind covers a birth/gift resolution."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"TOWNSWOMEN\"",
+      "note": "The women of Bethlehem who bless Naomi. Minting TOWNSWOMEN rather than TOWNSPEOPLE because the gender is load-bearing — they are the female counterpart to the men/elders (FIG_0187).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "TOWNSWOMEN",
+          "justification": "MM Scene 2/3 'the women' / 'the neighbor-women' act as the female counterpart to the men's gate-blessing (FIG_0187); approved TOWNSPEOPLE is gender-blind and FEMALE_WORKERS is field-specific."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"GRANDMOTHER\"",
+      "note": "Naomi is blessed here as the restored grandmother to whom the child is reckoned, not in her widow/MIL relation; minting GRANDMOTHER.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "GRANDMOTHER",
+          "justification": "MM Scene 2/3: 'the grandmother' to whom the child is reckoned (the once-empty widow now holding the line's future); no approved role captures the grandmother function central to this scene."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH, the one the women bless.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"REDEEMER_KIN\"",
+      "note": "The newborn named by the women as 'a redeemer' (גֹּאֵל) YHWH has given Naomi.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/3/referential_form",
+      "value_json": "\"REDEEMER_GOEL\"",
+      "note": "Map explicitly flags the redeemer-word (גֹּאֵל) landing on the newborn — a marked naming. referential_form is the open descriptive axis (cf. gold UNNAMED_MAN_FROM_BETHLEHEM), so no mint declaration.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/3/being_id",
+      "value_json": "\"B?\"",
+      "note": "Surface form 'a redeemer' (גֹּאֵל); the same as-yet-unnamed newborn as S1, deliberately uncoded by the map until named Obed (B25) in S3.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/4/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Ruth, praised as the bearer, better than seven sons.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/4/referential_form",
+      "value_json": "\"DAUGHTER_IN_LAW_WHO_LOVES_YOU\"",
+      "note": "MM explicitly carries a 'Referential form:' field here — 'your daughter-in-law who loves you … better than seven sons'; the Moabite label is dropped and replaced by love. A map-flagged marked form.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"BLESSING_SCENE\"",
+      "note": "The women's benediction over Naomi.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"GRANDMOTHER\"",
+      "note": "Naomi takes the child to her bosom and becomes his nurse; same GRANDMOTHER role as S2.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "GRANDMOTHER",
+          "justification": "MM Scene 3: the grandmother who takes the child to her bosom; reused from S2 (no approved equivalent)."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"SON\"",
+      "note": "The child taken up and held, reckoned a son to Naomi.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "'the child' (הַיֶּלֶד); plain reference, not marked.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/being_id",
+      "value_json": "\"B?\"",
+      "note": "Surface form 'the child' (הַיֶּלֶד); the held child kept uncoded, distinct from the named Obed (B25) entry — preserving the map's separation of the held child from the named heir.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"TOWNSWOMEN\"",
+      "note": "The neighbor-women who call out the name and reckon the child to Naomi; same group as S2 (B24).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "TOWNSWOMEN",
+          "justification": "MM Scene 3 'the neighbor-women' (הַשְּׁכֵנוֹת) reused from S2; gender load-bearing for the communal-naming-for-Naomi figure (FIG_0181)."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "'the neighbor-women' epithet noted, but the prose does not call attention to a naming shift from S2; left unmarked to avoid over-marking.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"ANCESTOR\"",
+      "note": "Obed, the named child who heads the line to David — functions as the line's founding ancestor.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/4/role_in_scene",
+      "value_json": "\"LINEAGE_REFERENT\"",
+      "note": "Jesse and David — the forward genealogical names the narrator reaches to; not ancestors of the scene but descendants/referents. Minting LINEAGE_REFERENT.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "LINEAGE_REFERENT",
+          "justification": "MM Scene 3: Jesse and David are 'the names the narrator reaches to past the story' — forward genealogical referents; ANCESTOR is wrong-direction and ERA_REFERENT is time-setting only."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/4/referential_form",
+      "value_json": "null",
+      "note": "David named without explanation (a significant absence), but this is the narrator's bare naming, not a marked epithet.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/scene_kind",
+      "value_json": "\"NAMING_SCENE\"",
+      "note": "Considered NARRATOR_FRAMING_CLOSE_SCENE (this is the book's closing inclusio, FIG_0189), but the scene's dominant content is the lap and the naming; minting NAMING_SCENE. Reviewer may prefer NARRATOR_FRAMING_CLOSE_SCENE.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "NAMING_SCENE",
+          "justification": "MM Scene 3 title 'The child on Naomi's lap; the naming' and 3F center on the communal naming of the child; no approved scene_kind covers a naming event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"TOOK\"",
+      "note": "Boaz takes Ruth as wife.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"taker\":\"B13\",\"wife_taken\":\"B9\",\"resulting_relation_form\":\"BECAME_HIS_WIFE\",\"consummation_marker\":\"CAME_TO_HER\"}",
+      "note": "Narrated event (no top-level speech_act, per gold idiom). The take/become/come sequence kept compact at event-summary level.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": "The marriage leads into the conception (rapid agent shift, FIG_0180).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"GAVE\"",
+      "note": "YHWH gives Ruth conception.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"giver\":\"B10\",\"gift_given\":\"CONCEPTION\",\"recipient\":\"B9\",\"divine_act_marker\":\"SECOND_DIRECT_DIVINE_ACT\"}",
+      "note": "The book's second direct divine act (per MM 2.4).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P1\",\"forward_link_to\":\"P3\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"BORE\"",
+      "note": "Ruth bears a son. No approved proposition_kind covers childbirth; minting BORE.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "BORE",
+          "justification": "MM P3 'bearing' — Ruth bears a son; no approved proposition_kind (DIED, GAVE, TOOK, etc.) covers a birth event."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"bearer\":\"B9\",\"child_borne\":\"B?\",\"child_sex\":\"SON\"}",
+      "note": "Child uncoded (the as-yet-unnamed newborn).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P2\",\"forward_link_to\":\"P4\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"BLESSING\"",
+      "note": "The women's benediction: blessed be YHWH.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"blessing_speakers\":\"B24\",\"blessing_addressee\":\"B3\",\"invoked_divine_agent\":\"B10\",\"blessing_form\":\"BARUKH_YHWH\",\"blessing_content_kind\":\"HAS_NOT_LEFT_WITHOUT_REDEEMER_TODAY\",\"redeemer_referent\":\"B?\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "'Blessed be YHWH' is doxological praise/declaration; STATES_AS_TRUE chosen as nearest closed speech act (no PRAISES/BLESSES exists). redeemer_referent is the newborn (uncoded).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P3\",\"forward_link_to\":\"P5\"}",
+      "note": "The blessing responds to the birth.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"BLESSING\"",
+      "note": "Wish-portion of the benediction: may his name be called out.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"wish_speakers\":\"B24\",\"wish_content_kind\":\"NAME_CALLED_OUT\",\"name_bearer\":\"B?\",\"where\":\"PL_ISRAEL\",\"speech_act\":\"WISHES_FOR_THIRD_PARTY\"}",
+      "note": "A wish for the child (third party) — name-preservation (CB_0005).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P6\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "The women declare the child's future role.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"declared_speakers\":\"B24\",\"subject_child\":\"B?\",\"future_role_first\":\"RESTORER_OF_LIFE\",\"future_role_second\":\"SUSTAINER_OF_OLD_AGE\",\"beneficiary\":\"B3\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P7\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "The women declare about Ruth — the ground of the blessing ('for your daughter-in-law … has borne him').",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"declared_speakers\":\"B24\",\"praised_bearer\":\"B9\",\"bearer_referential_form\":\"DAUGHTER_IN_LAW_WHO_LOVES_YOU\",\"relation_to_naomi\":\"LOVES_NAOMI\",\"comparative_measure\":\"BETTER_THAN_SEVEN_SONS\",\"child_borne\":\"B?\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "bearer_referential_form preserves the marked naming inside the proposition (cf. gold *_referential_form slots).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P8\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"TOOK\"",
+      "note": "Naomi takes the child and sets him on her bosom.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"taker\":\"B3\",\"child_taken\":\"B?\",\"placement\":\"SET_ON_BOSOM_CHEQ\"}",
+      "note": "Cheq as maternal-adoption locus (FIG_0185).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P9\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"IDENTIFIED\"",
+      "note": "Narrator identifies Naomi's new role as the child's nurse (omenet). No BECAME kind exists; IDENTIFIED is the nearest fit for a narrated role-assignment.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"caregiver\":\"B3\",\"assumed_role\":\"NURSE_OMENET\",\"for_child\":\"B?\"}",
+      "note": "Omenet as faithful sustainer (FIG_0186).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P8\",\"forward_link_to\":\"P10\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/proposition_kind",
+      "value_json": "\"NAMED\"",
+      "note": "The neighbor-women call out a name, proclaiming a son born to Naomi.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/event_specific_slots",
+      "value_json": "{\"naming_speakers\":\"B24\",\"naming_proclamation\":\"SON_BORN_TO_NAOMI\",\"reckoned_to\":\"B3\",\"named_child\":\"B?\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "The proclamation precedes the actual name (Obed) at P11; child still uncoded here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P11\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/proposition_kind",
+      "value_json": "\"NAMED\"",
+      "note": "They call his name Obed.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/event_specific_slots",
+      "value_json": "{\"naming_speakers\":\"B24\",\"name_given\":\"Obed\",\"named_child\":\"B25\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "Child coded B25 here — the naming is the point at which the registry-named Obed appears.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P10\",\"forward_link_to\":\"P12\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/proposition_kind",
+      "value_json": "\"NARRATOR_FRAME\"",
+      "note": "The narrator's genealogical reach past the story to Jesse and David (FIG_0007, from a later time).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/event_specific_slots",
+      "value_json": "{\"narrator_genealogical_reach\":[{\"father\":\"B25\",\"father_name\":\"Obed\",\"son_named\":\"Jesse\",\"son_id\":\"B26\",\"speech_act\":\"STATES_AS_TRUE\"},{\"father_named\":\"Jesse\",\"son_named\":\"David\",\"son_id\":\"B26\",\"speech_act\":\"STATES_AS_TRUE\"}],\"narrator_vantage\":\"LATER_TIME\"}",
+      "note": "B26 covers both Jesse and David per registry; the four-step naming (FIG_0182) lands on David as the inclusio with the prologue.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/inter_proposition_links",
+      "value_json": "{}",
+      "note": "Final proposition; the inclusio with the prologue (P01) is cross-pericope and carried by figure flags, not an in-pericope link.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "No further decomposition undertaken. P1 (4:13a) carries three sub-events (take / become wife / come to her) but is kept at one summary proposition with compact slots, matching the MM's own single-proposition granularity and the gold idiom of holding swift verb-chains together. P12's two genealogical links are held in a components array inside its slots rather than split.",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "Heavy mint load is concentrated in this closing pericope because the approved enumerations are largely tuned to the earlier Ruth scenes; all mints are map-anchored and declared. The newborn is kept uncoded as B? in S1/S2 and in all slots through P10 to preserve the MM's deliberate 'not yet named' absence, switching to B25 only at the naming (P11–P12). referential_form values (REDEEMER_GOEL, DAUGHTER_IN_LAW_WHO_LOVES_YOU) follow the gold's open descriptive-token convention and are not declared as enumeration mints. Two scene_kind choices (BIRTH_SCENE for S1, NAMING_SCENE for S3) and the GRANDMOTHER/TOWNSWOMEN/LINEAGE_REFERENT role mints are the items most worth reviewer attention."
+}
