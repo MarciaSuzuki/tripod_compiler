@@ -1,0 +1,12 @@
+{
+  "kind": "ruling amendments (SC-0064, Marcia 2026-06-12)",
+  "by": "Architect",
+  "edits": [],
+  "regens": [
+    {
+      "ruling": "A-2 (drop the FIG_0167 3C entry)",
+      "date": "2026-06-12",
+      "what": "FM regenerated from the amended map: the figure no longer rides objects_in_scene (it still fires via figure_flags); fills unchanged; the 4:5 ham-met stays B? per the A-4 disclosure rule."
+    }
+  ]
+}

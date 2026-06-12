@@ -198,9 +198,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "entries": [
           {
             "object_id": "CB_0003"
-          },
-          {
-            "object_id": "FIG_0167"
           }
         ]
       },

@@ -1,0 +1,12 @@
+{
+  "kind": "ruling amendment (SC-0064 A-4, Marcia 2026-06-12)",
+  "by": "Architect applying the disclosure rule",
+  "edits": [
+    {
+      "where": "level_2_scenes S1 dead entry being_id",
+      "from": "B?",
+      "to": "B4",
+      "why": "4:10 names Mahlon in-verse ('Ruth the Moabitess, the wife of Mahlon... to raise the name of the dead') — the book has disclosed the referent at this point, so the FOR_MODEL binds: B4-Mahlon. Surface form HA_MET_THE_DEAD preserved. Contrast P11's 4:5 ham-met (pre-disclosure in the gate scene): stays B? per the same rule — the model's own fill already withheld there."
+    }
+  ]
+}

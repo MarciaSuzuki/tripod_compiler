@@ -8,24 +8,28 @@
 > Ruling shorthand suggestion: tick = approve as proposed; write a rename beside a value; strike = reject
 > (the FM amendment then reuses an approved value or the field returns to the drafter).
 
-## A — Map-side items (content; each needs your explicit word)
+## A — Map-side items — **ALL FOUR RULED by Marcia, 2026-06-12; APPLIED on sc-0064-batch-ruling-a (+vault half)**
 
 1. **P10: `O15-Night-and-Morning` sits under 3D Times in the blessed map** — the FM schema requires
    `TM_*` in `time_id`, so the P10 draft is INVALID on exactly this. Options: (a) re-code the map
    entry as a `TM_` id (vault edit + BCD note); (b) keep O15 an object: move it to 3C/objects and give
    S1 `times: null` + `_note`. *The compiler carried it faithfully; the hand-loop never built P10's FM,
    so the tension never surfaced before.*
+   **RULED: re-code as a TM time.** Applied: `TM_NIGHT_TO_MORNING` (new bcd/times note; O15 retired in place — its P08 span was a phantom record), map 3D re-linked both trees, aliases rebuilt (diff = exactly the two entities) + re-pinned 0.1.5, FM regenerated → VALID.
 2. **P11: `FIG_0167` sits under 3C Objects-and-Concepts in the blessed map** — figures ride
    `figure_flags`, never `objects_in_scene` (schema refuses). Options: (a) drop the 3C entry (the
    figure already fires on the props' flags); (b) re-code as a `TH_`/`CB_` object if you mean a
    *thing*, not a figure.
+   **RULED: drop the 3C entry.** Applied: entry removed both trees (the figure still fires via figure_flags; frontmatter declaration kept), FM regenerated → VALID; anchor pin 52→49.
 3. **P07 Scene 1 has no Significant Absence block** (scenes 2–4 have theirs). Load-bearing
    downstream (`must_preserve_absences`). Options: (a) author the missing block (vault map edit);
    (b) rule that S1 (one verse of pure action) carries no marked absence and bless an explicit
    "none marked" wording for the FM field.
+   **RULED: bless a none-marked wording.** Applied (the offered wording, hers to amend): "No marked absence: the verse is pure action; the narrator withholds nothing here that the telling makes felt." Map S1 block added both trees; FM regenerated (gaps 95→94; the obsolete null fill rejects by design) → VALID.
 4. **The uncoded-collective question:** "the dead (of the household)" appears as a code-less being
    in P07/P11/P12 maps. The P07 draft (amended) carries `B?` (withheld). P02 gold rode it on **B2**
    with a referential form. Rule the idiom: `B?` + note, or bind to B2 (or B2+B4+B5 listing)?
+   **RULED: bind when the referent set is fixed by the text at that point in the book's own disclosure (named in-verse, or an unambiguous set); where the text withholds, the FOR_MODEL withholds with it.** Applied: P07 2:20 hammetim → B2 (gold idiom; surface withholding preserved; three-entry split = her optional refinement) · P12 4:10 → B4 (named in-verse) · P11 4:5 stays B? (pre-disclosure — the model's fill anticipated the rule).
 
 ## B — Declared L2 mints (the bounded-open growth; tick to promote, rename, or strike)
 

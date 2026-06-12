@@ -138,7 +138,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "__TODO__"
+      "significant_absence": "No marked absence: the verse is pure action; the narrator withholds nothing here that the telling makes felt."
     },
     {
       "scene_id": "S2",
@@ -223,7 +223,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "referential_form": "ONE_OF_OUR_REDEEMERS"
           },
           {
-            "being_id": "B?",
+            "being_id": "B2",
             "role_in_scene": "DECEASED_KIN",
             "presence": "REFERENCED",
             "referential_form": "HAMETIM_THE_DEAD"
