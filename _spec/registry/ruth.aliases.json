@@ -6,9 +6,9 @@
       "PERSON": 31,
       "PLACE": 17,
       "THING": 24,
-      "TIME": 9
+      "TIME": 10
     },
-    "entities": 90
+    "entities": 91
   },
   "entities": {
     "B1": {
@@ -642,10 +642,7 @@
       "referential_forms": []
     },
     "O15": {
-      "appears_in": [
-        "P08",
-        "P10"
-      ],
+      "appears_in": [],
       "english": "Night and Morning",
       "gender": null,
       "hebrew": "לַיְלָה בֹּקֶר",
@@ -1138,6 +1135,17 @@
       "gender": null,
       "hebrew": "לְעֵת הָאֹכֶל",
       "hebrew_cons": "לעתהאכל",
+      "kind": "TIME",
+      "referential_forms": []
+    },
+    "TM_NIGHT_TO_MORNING": {
+      "appears_in": [
+        "P10"
+      ],
+      "english": "Night to Morning",
+      "gender": null,
+      "hebrew": "לַיְלָה בֹּקֶר",
+      "hebrew_cons": "לילהבקר",
       "kind": "TIME",
       "referential_forms": []
     },

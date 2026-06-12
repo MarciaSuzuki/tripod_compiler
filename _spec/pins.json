@@ -94,8 +94,8 @@
       "sha256": "0a3a1b372ad4470cc888dde9d499a92a93aa5118b28bcd35afbf8d183b9f3717"
     },
     "registry/ruth.aliases.json": {
-      "version": "aliases-0.1.4",
-      "sha256": "17e1a47f322862ead7a94eb855f2515389ae2c0e9ac89100d7c3900d89d3c150"
+      "version": "aliases-0.1.5",
+      "sha256": "d5c150561178ef81218701cca6ff7046f7db84a5ed68865e46ca727d7f0520cf"
     },
     "registry/jonah.aliases.json": {
       "version": "aliases-0.1.6",

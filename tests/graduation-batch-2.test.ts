@@ -63,13 +63,15 @@ const ANCHORS: Anchor[] = [
   {
     pid: "P10", file: "P10-Ruth-3-14-18.md", staId: "ruth_pericope_10_v2_0", bcvStart: /^Ruth 3:14/,
     genreGroup: "NARRATIVE", genre: "HISTORICAL_NARRATIVE", register: "INFORMAL_CASUAL",
-    blocks: 27, explicit: 23, implied: 22,
+    // 27→24 (SC-0064 A-1, Marcia 2026-06-12): the O15-under-Times tension re-coded TM_NIGHT_TO_MORNING — its 3-block cascade gone
+    blocks: 24, explicit: 23, implied: 22,
     registered: { cb: ["CB_0044", "CB_0024", "CB_0043"], fig: ["FIG_0153", "FIG_0154"] },
   },
   {
     pid: "P11", file: "P11-Ruth-4-1-8.md", staId: "ruth_pericope_11_v2_0", bcvStart: /^Ruth 4:1/,
     genreGroup: "NARRATIVE", genre: "HISTORICAL_NARRATIVE", register: "INFORMAL_CASUAL",
-    blocks: 52, explicit: 53, implied: 27,
+    // 52→49 (SC-0064 A-2, Marcia 2026-06-12): the FIG_0167-under-3C entry dropped — its 3-block cascade gone
+    blocks: 49, explicit: 53, implied: 27,
     registered: { cb: ["CB_0001", "CB_0045", "CB_0007"], fig: ["FIG_0162", "FIG_0165"] },
   },
   {

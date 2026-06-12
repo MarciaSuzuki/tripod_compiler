@@ -1,0 +1,12 @@
+{
+  "kind": "ruling amendments (SC-0064, Marcia 2026-06-12)",
+  "by": "Architect",
+  "edits": [],
+  "regens": [
+    {
+      "ruling": "A-1 (re-code O15 as TM time)",
+      "date": "2026-06-12",
+      "what": "FM regenerated from the amended map: S1 time_id now TM_NIGHT_TO_MORNING (new registry time; O15 retired in place); fills unchanged."
+    }
+  ]
+}

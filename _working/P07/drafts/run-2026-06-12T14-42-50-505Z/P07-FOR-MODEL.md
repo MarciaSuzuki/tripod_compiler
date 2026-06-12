@@ -138,7 +138,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "__TODO__"
+      "significant_absence": "No marked absence: the verse is pure action; the narrator withholds nothing here that the telling makes felt."
     },
     {
       "scene_id": "S2",

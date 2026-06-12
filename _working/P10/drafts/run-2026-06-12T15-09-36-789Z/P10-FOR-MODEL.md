@@ -130,7 +130,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "times_in_scene": {
         "entries": [
           {
-            "time_id": "O15"
+            "time_id": "TM_NIGHT_TO_MORNING"
           }
         ]
       },
