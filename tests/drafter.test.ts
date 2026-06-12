@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { assembleDraftRequest, renderRequest, requestStats } from "../src/drafter/assemble.js";
 import { DrafterKeyMissingError, draftViaApi } from "../src/drafter/call.js";
@@ -141,7 +142,8 @@ describe("drafter assembly — dry-run reproducibility", () => {
     const req = assembleDraftRequest(P08);
     const text = renderRequest(req);
     expect(req.system).toMatch(/FOR_MODEL Drafter — system prompt/);
-    expect(req.system).toMatch(/fm-drafter-0\.1\.0/);
+    const pinned = JSON.parse(readFileSync("_spec/pins.json", "utf8")).sources["drafter/fm-drafter-prompt.md"].version;
+    expect(req.system).toContain(`\`${pinned}\``); // the prompt's own Pin header tracks pins.json
     expect(text).toMatch(/L1 closed lists/);
     expect(text).toMatch(/WORKED EXAMPLE — the blessed P01 pair/);
     expect(text).toMatch(/REGISTRY DIGEST — ruth/);
