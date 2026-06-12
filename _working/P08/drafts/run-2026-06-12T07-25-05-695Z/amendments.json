@@ -1,0 +1,52 @@
+{
+  "ruled_by": "Marcia",
+  "date": "2026-06-12",
+  "ruling": "bless with amendments",
+  "idiom": "P02-gold: commanded steps are content (commanded_step), not action-axis values",
+  "speech_acts": "P1 STATES_HOPED_FOR_CONDITION kept · P9 STATES_AS_TRUE kept",
+  "mints_approved": [
+    "arc_element REST_SEEKING_INITIATIVE",
+    "arc_element NIGHT_PLAN_INSTRUCTION",
+    "arc_element INITIATIVE_HANDOFF",
+    "arc_element TOTAL_CONSENT",
+    "role_in_scene_being PLANNER",
+    "scene_kind CONSENT_SCENE"
+  ],
+  "edits": [
+    {
+      "prop": "P4",
+      "step": "WASH",
+      "edit": "action WASH → DIRECTED + commanded_step WASH"
+    },
+    {
+      "prop": "P4",
+      "step": "ANOINT_SELF",
+      "edit": "action ANOINT_SELF → DIRECTED + commanded_step ANOINT_SELF"
+    },
+    {
+      "prop": "P4",
+      "step": "PUT_ON_GARMENTS",
+      "edit": "action PUT_ON_GARMENTS → DIRECTED + commanded_step PUT_ON_GARMENTS"
+    },
+    {
+      "prop": "P4",
+      "step": "GO_DOWN_TO_FLOOR",
+      "edit": "action GO_DOWN_TO_FLOOR → DIRECTED + commanded_step GO_DOWN_TO_FLOOR"
+    },
+    {
+      "prop": "P7",
+      "step": "GO_IN",
+      "edit": "action GO_IN → DIRECTED + commanded_step GO_IN"
+    },
+    {
+      "prop": "P7",
+      "step": "UNCOVER_FEET",
+      "edit": "action UNCOVER_FEET → DIRECTED + commanded_step UNCOVER_FEET"
+    },
+    {
+      "prop": "P7",
+      "step": "LIE_DOWN",
+      "edit": "action LIE_DOWN → DIRECTED + commanded_step LIE_DOWN"
+    }
+  ]
+}

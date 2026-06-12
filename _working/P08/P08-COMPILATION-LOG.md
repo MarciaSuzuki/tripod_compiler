@@ -1,11 +1,11 @@
 ---
 type: "compilation-log"
 pericope: "P08"
-status: "skeleton"
+status: "valid"
 pilot: "pilot-2"
 ---
 
-# P08 — Ruth 3:1-5 — COMPILATION-LOG (skeleton gap report)
+# P08 — Ruth 3:1-5 — COMPILATION-LOG
 
 ```json
 {
@@ -14,30 +14,81 @@ pilot: "pilot-2"
   "bcv": "Ruth 3:1-5",
   "pericope_id": "P08",
   "pericope_title": "Naomi's plan for rest; Ruth's total consent",
-  "compiled_at": "2026-05-29",
+  "compiled_at": "2026-06-12",
   "review_status": {
     "meaning_map_status": "PARSED_BY_COMPILER",
-    "sta_compilation_status": "SKELETON_DETERMINISTIC",
+    "sta_compilation_status": "MODEL_DRAFTED_REVIEWER_RULED",
     "community_verified": false,
     "translation_team_verified": false,
     "consultant_review_required": true,
     "production_use": false
   },
-  "confidence_overall": "LOW",
-  "confidence_overall_note": "Deterministic skeleton from the approved Meaning Map. 6 beings + 3 place codes extracted, 6 flags carried, 50 judgment gaps deferred. Extract-only: no controlled-vocabulary values assigned by the compiler.",
+  "confidence_overall": "MEDIUM",
+  "confidence_overall_note": "Judgment half machine-drafted (50/50 gaps, patch-only contract, 0 rejected), all four gates green, ruled by Marcia (bless with amendments). High-risk register audit still pending (placeholder retained).",
   "compilation_decisions": [
     {
       "decision_id": "P08-D1",
       "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 50 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
+    },
+    {
+      "decision_id": "P08-D2",
+      "decision": "Judgment gaps filled by the SC-0063 drafter (Slice 4).",
+      "description": "claude-opus-4-8 under pinned prompt fm-drafter-0.1.2; structured-output fills merged by the patch-only layer (46 applied · 4 note-only · 0 rejected · 0 unfilled). Provenance: _working/P08/drafts/run-2026-06-12T07-25-05-695Z/."
+    },
+    {
+      "decision_id": "P08-D3",
+      "decision": "Marcia ruled: bless with amendments (2026-06-12).",
+      "description": "P02-gold action idiom applied — the 7 commanded instruction steps re-encoded as action DIRECTED + commanded_step content (imperative forms do not enter the past-tense action axis); P1 STATES_HOPED_FOR_CONDITION and P9 STATES_AS_TRUE kept as drafted; 6 vocabulary additions CONFIRMED for promotion."
     }
   ],
   "vocabulary_additions": {
     "proposition_kinds": [],
-    "scene_kinds": [],
+    "scene_kinds": [
+      {
+        "value": "CONSENT_SCENE",
+        "source": "P08-FOR-MODEL · SC-0063 drafter run-2026-06-12T07-25-05-695Z (claude-opus-4-8 · fm-drafter-0.1.2) · ruled by Marcia 2026-06-12",
+        "status": "CONFIRMED",
+        "note": "One-line total assent closing the plan exchange; RATIFICATION_SCENE rejected for legal/sealing connotation."
+      }
+    ],
     "presence_values": [],
     "referential_forms": [],
-    "other": []
+    "other": [],
+    "arc_elements": [
+      {
+        "value": "REST_SEEKING_INITIATIVE",
+        "source": "P08-FOR-MODEL · SC-0063 drafter run-2026-06-12T07-25-05-695Z (claude-opus-4-8 · fm-drafter-0.1.2) · ruled by Marcia 2026-06-12",
+        "status": "CONFIRMED",
+        "note": "Naomi opens by seeking menucha/rest for Ruth (3:1)."
+      },
+      {
+        "value": "NIGHT_PLAN_INSTRUCTION",
+        "source": "P08-FOR-MODEL · SC-0063 drafter run-2026-06-12T07-25-05-695Z (claude-opus-4-8 · fm-drafter-0.1.2) · ruled by Marcia 2026-06-12",
+        "status": "CONFIRMED",
+        "note": "The worked step-by-step night plan (3:2-4)."
+      },
+      {
+        "value": "INITIATIVE_HANDOFF",
+        "source": "P08-FOR-MODEL · SC-0063 drafter run-2026-06-12T07-25-05-695Z (claude-opus-4-8 · fm-drafter-0.1.2) · ruled by Marcia 2026-06-12",
+        "status": "CONFIRMED",
+        "note": "The plan ends handing the next word to Boaz (3:4c)."
+      },
+      {
+        "value": "TOTAL_CONSENT",
+        "source": "P08-FOR-MODEL · SC-0063 drafter run-2026-06-12T07-25-05-695Z (claude-opus-4-8 · fm-drafter-0.1.2) · ruled by Marcia 2026-06-12",
+        "status": "CONFIRMED",
+        "note": "Ruth assents whole: all you say I will do (3:5)."
+      }
+    ],
+    "role_in_scene_beings": [
+      {
+        "value": "PLANNER",
+        "source": "P08-FOR-MODEL · SC-0063 drafter run-2026-06-12T07-25-05-695Z (claude-opus-4-8 · fm-drafter-0.1.2) · ruled by Marcia 2026-06-12",
+        "status": "CONFIRMED",
+        "note": "Naomi names the goal, the man, the night, and every step (S1)."
+      }
+    ]
   },
   "proposition_kind_slot_sets": [],
   "high_risk_register_audit": [
@@ -55,11 +106,16 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": false,
-    "every_proposition_has_cb_flags_and_figure_flags": false,
+    "for_model_contains_only_inference_signal": true,
+    "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
-    "speech_act_present_on_all_component_records": false,
-    "speech_act_values_used": [],
+    "speech_act_present_on_all_component_records": true,
+    "speech_act_values_used": [
+      "DIRECTS_HEARER_NOT_TO_DO",
+      "DIRECTS_HEARER_TO_DO",
+      "STATES_AS_TRUE",
+      "STATES_HOPED_FOR_CONDITION"
+    ],
     "discourse_threads_tracked_in_audit_only": true,
     "known_limitations_tracked_in_audit_only": true,
     "high_risk_register_complete": false,
@@ -69,10 +125,9 @@ pilot: "pilot-2"
     "no_reviewer_facing_prompts_in_compilation_log": true
   },
   "known_limitations": [
-    "Deterministic skeleton (tripod compile): 50 judgment gaps remain as typed __TODO__ placeholders carrying their source-prose span.",
-    "Judgment gaps by field — proposition_kind:9, event_specific_slots:9, inter_proposition_links:9, role_in_scene:6, referential_form:6, scene_kind:2, book_context_ref:1, register_overrides:1, arc_elements:1, context_elements:1, tone_elements:1, pace_elements:1, communicative_function_elements:1, beings_in_scene:1, (granularity):1.",
-    "Propositions are at MEANING-MAP granularity (9); the FOR_MODEL may decompose multi-event propositions further (judgment, Agent 3).",
-    "Controlled-vocabulary tokens (scene_kind, proposition_kind, role/function), event_specific_slots, inter_proposition_links, referential_form, and the L1 element arrays are judgment — deferred to Agent 3 (Slice 4). No values were invented."
+    "Judgment half machine-drafted under SC-0063 and ruled by the reviewer; the high-risk register audit is NOT yet authored — the R1 placeholder remains honest.",
+    "Propositions stay at meaning-map granularity (9); P4 and P7 decompose in-slot via instruction_components per the granularity contract.",
+    "Commanded steps are content (commanded_step), not action-axis values — Marcia idiom ruling 2026-06-12."
   ]
 }
 ```
