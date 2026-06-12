@@ -33,8 +33,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "moment_level": [
         {
           "verse": "1:2",
-          "override_value": "ELDER_AUTHORITY",
-          "framing_override": null
+          "override_value": "ELDER_AUTHORITY"
         }
       ]
     }

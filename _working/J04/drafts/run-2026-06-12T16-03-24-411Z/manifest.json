@@ -1,0 +1,25 @@
+{
+  "model": "claude-opus-4-8",
+  "request_sha256": "9c8abbd647feb1b63c4a2cf79a6bb2c13326f76ef84dee7bdfe5762125742d7e",
+  "map": "fixtures/meaning-map/J04-Jonah-2-10-3-10.md",
+  "gaps": 106,
+  "usage": {
+    "input_tokens": 29089,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 32524,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 43646,
+    "service_tier": "standard",
+    "inference_geo": "global"
+  },
+  "merge": {
+    "applied": 95,
+    "noteOnly": 11,
+    "rejected": [],
+    "unfilled": [],
+    "leftovers": []
+  }
+}

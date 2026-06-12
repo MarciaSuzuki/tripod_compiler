@@ -1,0 +1,818 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"jonah_pilot_BCD_v0_3\"",
+      "note": "No BCD ref in the map; supplied by analogy to ruth_pilot_BCD_v0_3. The canonical Jonah BCD ref is the reviewer's call.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"Three moment-level register lifts inside quoted speech, per MM Section 1; the narrator's own voice stays INFORMAL_CASUAL throughout. No scene-level overrides.\",\"scene_level\":null,\"moment_level\":[{\"verse\":\"3:2\",\"override_value\":\"ELDER_AUTHORITY\"},{\"verse\":\"3:4\",\"override_value\":\"FORMAL_OFFICIAL\"},{\"verse\":\"3:7-9\",\"override_value\":\"FORMAL_OFFICIAL\"}]}",
+      "note": "3:2 YHWH's renewed charge = ELDER_AUTHORITY (same commanding voice as 1:2); 3:4 Jonah's herald oracle and 3:7-9 the royal edict = FORMAL_OFFICIAL. Verses in English numbering per the map's own note.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"DELIVERANCE_TO_DRY_LAND\",\"RECOMMISSION\",\"OBEDIENT_DEPARTURE\",\"ORACLE_PROCLAMATION\",\"MASS_REPENTANCE\",\"ROYAL_DECREE\",\"DIVINE_RELENTING\"]",
+      "note": "Tokenized from the Section 2.1 arc; the approved arc_element list is Ruth-derived and offers no fit for this Jonah movement, so all seven are mints anchored to the prose stages.",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "DELIVERANCE_TO_DRY_LAND",
+          "justification": "'The fish gives Jonah back to the dry land at a word' — the opening release."
+        },
+        {
+          "axis": "arc_element",
+          "value": "RECOMMISSION",
+          "justification": "'the word of YHWH comes a second time — the same charge.'"
+        },
+        {
+          "axis": "arc_element",
+          "value": "OBEDIENT_DEPARTURE",
+          "justification": "'This time Jonah gets up and goes.'"
+        },
+        {
+          "axis": "arc_element",
+          "value": "ORACLE_PROCLAMATION",
+          "justification": "'he carries five words: forty more days and Nineveh is overthrown.'"
+        },
+        {
+          "axis": "arc_element",
+          "value": "MASS_REPENTANCE",
+          "justification": "'the Ninevites believe God, fast, and put on sackcloth from the greatest to the least.'"
+        },
+        {
+          "axis": "arc_element",
+          "value": "ROYAL_DECREE",
+          "justification": "'his decree pushes the fast out to the herds and flocks and calls every man to turn.'"
+        },
+        {
+          "axis": "arc_element",
+          "value": "DIVINE_RELENTING",
+          "justification": "'God sees what they did, and relents of the evil he had spoken, and does not do it.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"PRIOR_PERICOPE_CARRY_FORWARD\",\"PRIOR_ACTION_CONTEXT\",\"PHYSICAL_LOCATION\",\"INSTITUTIONAL_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\",\"DIVINE_CONTEXT\"]",
+      "note": "PRIOR_PERICOPE_CARRY_FORWARD + PRIOR_ACTION_CONTEXT for the resumed J01 errand and the unmentioned flight; INSTITUTIONAL_CONTEXT for the king/nobles decree; AUDIENCE_KNOWLEDGE_CONTEXT for the Sodom 'overthrown' resonance, sackcloth/ashes custom, and nicham; DIVINE_CONTEXT for the relenting. All approved.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"ECONOMICAL\",\"RESTRAINED\",\"WONDER_UNDERSTATED\",\"STILLED\",\"ANTICIPATORY\"]",
+      "note": "ECONOMICAL (five-word sermon), RESTRAINED + WONDER_UNDERSTATED for the 'quiet astonishment the narrator never names,' STILLED for the 'still and large' close, ANTICIPATORY for the fuse laid for J05. WONDER_UNDERSTATED is a mint — no approved tone carries the unspoken marvel the prose foregrounds.",
+      "vocabulary_additions": [
+        {
+          "axis": "tone_element",
+          "value": "WONDER_UNDERSTATED",
+          "justification": "'the wonder rides on how little resistance there is ... a quiet astonishment the narrator never names.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"BRISK\",\"QUIETLY_ACCELERATING\",\"WIDENS\",\"SETTLES\"]",
+      "note": "'headlong' = BRISK; the recall/obedience/sermon compression = QUIETLY_ACCELERATING; the decree reaching out to herds and flocks = WIDENS; 'the close is still' = SETTLES. All approved.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"REACTIVATES\",\"ADVANCES\",\"CLOSES\",\"PLANTS\",\"WITHHOLDS\"]",
+      "note": "REACTIVATES the broken J01 errand; ADVANCES it to completion; CLOSES the errand arc by landing the theology in one verse; PLANTS the fuse for J05; WITHHOLDS the prophet's silence/reaction. All approved.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH speaks to the fish.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"CREATURE_AGENT\"",
+      "note": "The fish is the obedient creature carrying out YHWH's word (vomiter). No approved role fits a non-human commissioned creature.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "CREATURE_AGENT",
+          "justification": "The fish is 'YHWH's creature, finishing its errand' — a non-human acting on the divine word."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"PROPHET\"",
+      "note": "Jonah, the man given back to the land and bearer of the errand. No approved role names the commissioned prophet.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "PROPHET",
+          "justification": "Jonah's book-spanning function as the one YHWH sends to call out to Nineveh."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"DELIVERANCE_SCENE\"",
+      "note": "The fish gives Jonah back to dry land in a single motion. No approved scene_kind covers a rescue/release beat.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "DELIVERANCE_SCENE",
+          "justification": "'YHWH speaks to the fish, and it vomits Jonah out onto the dry land' — the rescue completed."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH whose word comes again; the re-sender.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"PROPHET\"",
+      "note": "Jonah, recommissioned.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "PROPHET",
+          "justification": "The once-runaway prophet the word comes to a second time."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"COMMISSIONING_SCENE\"",
+      "note": "The word comes 'a second time' with the same get-up-go-and-call. INSTRUCTION_SCENE is the near-miss, but the scene's burden is a prophetic re-sending, not generic instruction.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "COMMISSIONING_SCENE",
+          "justification": "'The word of YHWH comes to Jonah a second time: get up, go to Nineveh ... call to her' — a divine commissioning."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"PROPHET\"",
+      "note": "Jonah, now obedient — gets up, goes, cries the cry.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "PROPHET",
+          "justification": "Jonah carrying out the errand in this scene."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH whose word Jonah now walks by (REFERENCED).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"BY_THE_WORD_OF_YHWH\"",
+      "note": "The map gives B2 an explicit 'Referential form' line here — YHWH appears only obliquely, as 'according to the word of YHWH.' Marked per the map's own attention.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "God (Elohim) as the measure of the city's greatness (REFERENCED).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/referential_form",
+      "value_json": "\"ELOHIM_NOT_YHWH\"",
+      "note": "The map flags the divine-name shift: 'the same God as YHWH, carried under the outsiders' name.' Register/theology-critical Elohim-vs-YHWH alternation, attention-called by the prose.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/scene_kind",
+      "value_json": "\"PROCLAMATION_SCENE\"",
+      "note": "Jonah enters and cries the five-word oracle. No approved scene_kind covers a herald's public proclamation.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "PROCLAMATION_SCENE",
+          "justification": "'he cries out: forty more days, and Nineveh is overthrown' — a public oracle proclaimed in the city."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"TOWNSPEOPLE\"",
+      "note": "The men of Nineveh as the city populace who believe and repent.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"GREATEST_TO_LEAST\"",
+      "note": "Map's explicit 'Referential form' line: 'from the greatest of them to the least of them' — the whole city ranked end to end; the completeness is the point.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "God, the one believed (REFERENCED).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"ELOHIM_NOT_YHWH\"",
+      "note": "Map flags 'the Nineveh scenes say God (Elohim), never YHWH.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/3/scene_kind",
+      "value_json": "\"REPENTANCE_SCENE\"",
+      "note": "The city believes, fasts, dons sackcloth. No approved scene_kind covers communal repentance.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "REPENTANCE_SCENE",
+          "justification": "'The men of Nineveh believe God. They call a fast and put on sackcloth' — the city's turning enacted."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/3/beings_in_scene",
+      "value_json": "[]",
+      "note": "Append gap hints B2, but the MM's scene-4 prose (3:5) names only the men of Nineveh (B5) and God/Elohim (B9), both already in the 3A list — YHWH (B2) is not invoked in this scene. Nothing to append; flagging the hint for the reviewer in case the compiler intended the oracle's 'word of YHWH' carry-over from S3.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"KING\"",
+      "note": "The king of Nineveh rises, strips, covers, sits in ashes, and decrees. No approved role names a monarch.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "KING",
+          "justification": "'the king of Nineveh ... rises, strips, covers, sits in ashes, and decrees.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"UNNAMED_KING\"",
+      "note": "The king is never named (significant_absence), a load-bearing anonymity parallel to Ruth's unnamed kinsman (FIG_0155). Marked as a referential form per that precedent; flagging in case the reviewer prefers it left to significant_absence only.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"NOBLES\"",
+      "note": "The king's great ones (gedolav), co-issuers of the decree. No approved role fits a royal court.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "NOBLES",
+          "justification": "'by decree of the king and his nobles' — co-issuers of the edict."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"TOWNSPEOPLE\"",
+      "note": "The people (ha-adam), the decree's human subjects.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": "No marked naming beyond 'every man' as decree subject.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"LIVESTOCK\"",
+      "note": "The beasts, herd and flock, drawn into the fast and sackcloth by decree. No approved role fits domestic animals.",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "LIVESTOCK",
+          "justification": "'man and beast, herd and flock ... covered with sackcloth' — the city's animals made part of its repentance."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": "No marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/4/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "God, to be cried to and the one who may relent (REFERENCED).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/beings_in_scene/entries/4/referential_form",
+      "value_json": "\"ELOHIM_NOT_YHWH\"",
+      "note": "Map flags 'God (Elohim) throughout the king's mouth.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/4/scene_kind",
+      "value_json": "\"DECREE_SCENE\"",
+      "note": "The king issues the fast/sackcloth/turning edict over man and beast. No approved scene_kind covers a royal decree.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "DECREE_SCENE",
+          "justification": "'He has it proclaimed in Nineveh, by decree of the king and his nobles' — the royal edict."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/5/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "God who sees the deeds and relents.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/5/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"ELOHIM_NOT_YHWH\"",
+      "note": "Map flags 'God (Elohim) — the scene stays in the outsiders' name to the end.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/5/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"TOWNSPEOPLE\"",
+      "note": "The city whose turning God sees (REFERENCED).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/5/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "Referenced obliquely as 'their deeds'; not a marked naming of the participant.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/5/scene_kind",
+      "value_json": "\"DIVINE_RELENTING_SCENE\"",
+      "note": "God sees and relents of the threatened evil. No approved scene_kind covers the divine turning that lands the book's theology.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "DIVINE_RELENTING_SCENE",
+          "justification": "'God relents of the evil he had said he would do to them, and he does not do it.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"SPOKE\"",
+      "note": "YHWH speaks/commands the fish.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"divine_speaker\":\"B2\",\"addressed_creature\":\"B7\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}",
+      "note": "YHWH's word to the fish functions as a command (the fish then expels Jonah).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"VOMITED\"",
+      "note": "The fish expels Jonah onto dry land; no approved proposition_kind fits.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "VOMITED",
+          "justification": "'it vomits Jonah out onto the dry land' (Jonah 2:10)."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"expeller\":\"B7\",\"expelled\":\"B1\",\"destination\":\"PL5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P1\",\"forward_link_to\":\"P3\"}",
+      "note": "Vomiting is the fish's response to YHWH's word (P1).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"WORD_OF_YHWH_CAME\"",
+      "note": "The prophetic-word-arrival formula (FIG_0196); SPOKE is the near-miss but loses the 'word came a second time' formula.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "WORD_OF_YHWH_CAME",
+          "justification": "'the word of YHWH comes to Jonah a second time' — the recurring word-arrival formula."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"divine_source\":\"B2\",\"word_recipient\":\"B1\",\"occurrence_marker\":\"SECOND_TIME\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P4\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "YHWH's charge to arise, go, and call out.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"divine_commander\":\"B2\",\"commanded_prophet\":\"B1\",\"destination\":\"PL1\",\"destination_qualifier\":\"GREAT_CITY\",\"charge_components\":[{\"action\":\"DIRECTED\",\"commanded_step\":\"ARISE\",\"step_order\":\"FIRST\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"GO_TO_NINEVEH\",\"step_order\":\"SECOND\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"CALL_OUT_TO_HER\",\"step_order\":\"THIRD\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}],\"message_withheld_marker\":\"THE_CALL_I_TELL_YOU\"}",
+      "note": "Commands encoded as DIRECTED + commanded_step per the action-idiom ruling; the message content is withheld ('the call that I am telling you').",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P3\",\"forward_link_to\":\"P5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"ROSE\"",
+      "note": "Jonah arises and goes in obedience.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"obedient_prophet\":\"B1\",\"destination\":\"PL1\",\"compliance_marker\":\"ACCORDING_TO_WORD_OF_YHWH\",\"motion_components\":[{\"action\":\"AROSE\",\"step_order\":\"FIRST\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"WALKED\",\"destination\":\"PL1\",\"step_order\":\"SECOND\",\"speech_act\":\"STATES_AS_TRUE\"}]}",
+      "note": "AROSE is a mint on the action axis (the approved AROSE_TO_RETURN is Ruth-specific and carries the wrong direction); WALKED is approved.",
+      "vocabulary_additions": [
+        {
+          "axis": "action",
+          "value": "AROSE",
+          "justification": "'Jonah gets up and goes' — the plain wayyaqom rising, no return sense."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P4\",\"forward_link_to\":\"P7\"}",
+      "note": "P6 is a parenthetical aside about the city's size; the action chain runs P5 → P7.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"IDENTIFIED\"",
+      "note": "Narrator's parenthetical characterizing Nineveh's greatness.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"identified_place\":\"PL1\",\"magnitude_qualifier\":\"GREAT_CITY\",\"greatness_measured_by\":\"B9\",\"traversal_scale\":\"THREE_DAYS_WALK\"}",
+      "note": "'great even to God' — the measure is B9 (Elohim).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{}",
+      "note": "Parenthetical aside; no flow link.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"ARRIVED_AT\"",
+      "note": "Jonah begins entering the city, one day's walk in.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"enterer\":\"B1\",\"place_entered\":\"PL1\",\"entry_marker\":\"BEGAN_TO_ENTER\",\"entry_extent\":\"ONE_DAYS_WALK\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P5\",\"forward_link_to\":\"P8\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Jonah cries out the five-word oracle.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"proclaimer\":\"B1\",\"addressed_city\":\"PL1\",\"oracle_deadline\":\"FORTY_DAYS_MORE\",\"oracle_pronouncement\":\"NINEVEH_OVERTHROWN\",\"pronouncement_ambiguity\":\"RUIN_OR_TURNING\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "'Overthrown' deliberately ambiguous (ruin or turning-over) per the map; no SPEECH_ACT for 'warns,' so STATES_AS_TRUE.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P7\",\"forward_link_to\":\"P9\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"BELIEVED\"",
+      "note": "The men of Nineveh believe God; no approved proposition_kind fits.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "BELIEVED",
+          "justification": "'The men of Nineveh believe God' (Jonah 3:5)."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"believers\":\"B5\",\"believed_one\":\"B9\"}",
+      "note": "They believe God (Elohim, B9), not named via YHWH.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P8\",\"forward_link_to\":\"P10\"}",
+      "note": "Belief is the response to the oracle (P8).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/proposition_kind",
+      "value_json": "\"FASTED\"",
+      "note": "They call a fast and put on sackcloth; no approved proposition_kind fits this communal repentance act.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "FASTED",
+          "justification": "'They call a fast and put on sackcloth, from the greatest of them to the least of them.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/9/event_specific_slots",
+      "value_json": "{\"penitents\":\"B5\",\"fast_response\":\"CALLED_A_FAST\",\"mourning_garb\":\"O9\",\"participation_extent\":\"GREATEST_TO_LEAST\"}",
+      "note": "The completeness form 'greatest to least' preserved as a slot.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"forward_link_to\":\"P11\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/proposition_kind",
+      "value_json": "\"HEARD_REPORT\"",
+      "note": "The word/news reaches the king.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/event_specific_slots",
+      "value_json": "{\"report_recipient\":\"B10\",\"report_origin\":\"JONAHS_ORACLE\",\"arrival_marker\":\"WORD_REACHED\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P8\",\"forward_link_to\":\"P12\"}",
+      "note": "The word that reaches the king traces back to the oracle (P8).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/proposition_kind",
+      "value_json": "\"ROSE\"",
+      "note": "The king's staircase down — rises, strips, covers, sits in ashes.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/event_specific_slots",
+      "value_json": "{\"king\":\"B10\",\"descent_components\":[{\"action\":\"AROSE\",\"from_seat\":\"THRONE\",\"step_order\":\"FIRST\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"REMOVED_ROBE\",\"step_order\":\"SECOND\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"DONNED_SACKCLOTH\",\"garment\":\"O9\",\"step_order\":\"THIRD\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"SAT_ON_ASHES\",\"seat\":\"O10\",\"step_order\":\"FOURTH\",\"speech_act\":\"STATES_AS_TRUE\"}],\"movement_form\":\"STAIRCASE_DOWN_THRONE_TO_ASHES\"}",
+      "note": "Four-action descent decomposed into components; AROSE (declared at P5), and three new action mints — none of the approved actions cover disrobing/donning sackcloth/sitting in ashes.",
+      "vocabulary_additions": [
+        {
+          "axis": "action",
+          "value": "AROSE",
+          "justification": "'He rises from his throne' — same rising verb as P5."
+        },
+        {
+          "axis": "action",
+          "value": "REMOVED_ROBE",
+          "justification": "'puts off his robe.'"
+        },
+        {
+          "axis": "action",
+          "value": "DONNED_SACKCLOTH",
+          "justification": "'covers himself with sackcloth.'"
+        },
+        {
+          "axis": "action",
+          "value": "SAT_ON_ASHES",
+          "justification": "'and sits on the ashes.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/11/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P11\",\"forward_link_to\":\"P13\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "The king has the decree proclaimed by his and the nobles' authority.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/event_specific_slots",
+      "value_json": "{\"decreer\":\"B10\",\"co_issuers\":\"B11\",\"proclamation_locus\":\"PL1\",\"decree_authority_form\":\"BY_DECREE_OF_KING_AND_NOBLES\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "Framing of the decree; the commanded content follows in P14-P16.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P12\",\"forward_link_to\":\"P14\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "The decree's first commanded content: total abstention.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/event_specific_slots",
+      "value_json": "{\"decree_issuer\":\"B10\",\"fast_subjects\":[\"B5\",\"B12\"],\"animal_scope\":\"HERD_AND_FLOCK\",\"abstention_commands\":[{\"action\":\"DIRECTED\",\"commanded_step\":\"TASTE_NOTHING\",\"speech_act\":\"DIRECTS_HEARER_NOT_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"NOT_GRAZE\",\"speech_act\":\"DIRECTS_HEARER_NOT_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"NOT_DRINK_WATER\",\"speech_act\":\"DIRECTS_HEARER_NOT_TO_DO\"}]}",
+      "note": "Commands as DIRECTED + commanded_step; man and beast both subjects.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P13\",\"forward_link_to\":\"P15\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "The decree's sackcloth-and-cry command.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/event_specific_slots",
+      "value_json": "{\"decree_issuer\":\"B10\",\"sackcloth_subjects\":[\"B5\",\"B12\"],\"decree_commands\":[{\"action\":\"DIRECTED\",\"commanded_step\":\"COVER_WITH_SACKCLOTH\",\"garment\":\"O9\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"CRY_TO_GOD\",\"addressed_deity\":\"B9\",\"intensity\":\"MIGHTILY\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}]}",
+      "note": "God addressed as Elohim (B9) in the king's decree.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/14/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P13\",\"forward_link_to\":\"P16\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "The decree's command to turn from evil.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/event_specific_slots",
+      "value_json": "{\"decree_issuer\":\"B10\",\"commanded_party\":\"B5\",\"turning_commands\":[{\"action\":\"DIRECTED\",\"commanded_step\":\"TURN_FROM_EVIL_WAY\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"commanded_step\":\"TURN_FROM_VIOLENCE\",\"violence_locus\":\"IN_THEIR_HANDS\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}]}",
+      "note": "CB_0051 (Evil-of-Nineveh) is flagged here per the skeleton.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/15/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P13\",\"forward_link_to\":\"P17\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/proposition_kind",
+      "value_json": "\"SPOKE\"",
+      "note": "The king's 'who knows?' hope — a hoped-for condition voiced.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/event_specific_slots",
+      "value_json": "{\"hopeful_speaker\":\"B10\",\"hope_marker\":\"WHO_KNOWS\",\"divine_object\":\"B9\",\"hoped_divine_turning\":[\"TURN\",\"RELENT\",\"TURN_FROM_BURNING_ANGER\"],\"hoped_outcome\":\"WE_WILL_NOT_PERISH\",\"speech_act\":\"STATES_HOPED_FOR_CONDITION\"}",
+      "note": "FIG_0204 (Not-Perish-Refrain) and CB_0057 flagged here; the bare hope stated as a hoped-for condition.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/16/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P13\",\"forward_link_to\":\"P18\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/proposition_kind",
+      "value_json": "\"PERCEIVED\"",
+      "note": "God sees their deeds — their turning from evil.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/event_specific_slots",
+      "value_json": "{\"perceiver\":\"B9\",\"whose_deeds\":\"B5\",\"perceived_content\":\"TURNED_FROM_EVIL_WAY\"}",
+      "note": "CB_0051 flagged here per the skeleton.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/17/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P16\",\"forward_link_to\":\"P19\"}",
+      "note": "God's seeing follows the city's actual turning (the decree's command, P16, enacted).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/18/proposition_kind",
+      "value_json": "\"RELENTED\"",
+      "note": "God relents of the threatened disaster; no approved proposition_kind fits.",
+      "vocabulary_additions": [
+        {
+          "axis": "proposition_kind",
+          "value": "RELENTED",
+          "justification": "'God relents of the evil he had said he would do to them, and he does not do it' (Jonah 3:10)."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/18/event_specific_slots",
+      "value_json": "{\"relenter\":\"B9\",\"relented_of\":\"DISASTER_HE_HAD_SPOKEN\",\"non_execution_marker\":\"DID_NOT_DO_IT\"}",
+      "note": "CB_0057 flagged here per the skeleton.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/18/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P18\",\"paired_with\":\"P17\"}",
+      "note": "God's relenting answers the king's 'who knows? God may relent' hope (P17).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "No further decomposition needed beyond what is already nested in event_specific_slots: P4 (the three-part charge), P12 (the king's four-step descent), and P14-P16 (the decree's commanded steps) are each decomposed into *_components/*_commands arrays inside their slots, with per-step speech_acts. All other propositions are single-event at this granularity.",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "Genre_group NARRATIVE → pericope register INFORMAL_CASUAL held; the three FORMAL_OFFICIAL/ELDER_AUTHORITY lifts are carried as moment-level overrides (3:2, 3:4, 3:7-9), matching the map's tagging. Heavy minting was unavoidable: the approved L2 enumerations are almost entirely Ruth-derived and offered no fit for Jonah's deliverance/recommission/proclamation/repentance/decree/relenting movement. Declared mints: arc_elements (7), tone WONDER_UNDERSTATED, scene_kinds (DELIVERANCE/COMMISSIONING/PROCLAMATION/REPENTANCE/DECREE/DIVINE_RELENTING_SCENE), roles (PROPHET, CREATURE_AGENT, KING, NOBLES, LIVESTOCK), proposition_kinds (VOMITED, WORD_OF_YHWH_CAME, BELIEVED, FASTED, RELENTED), and actions (AROSE, REMOVED_ROBE, DONNED_SACKCLOTH, SAT_ON_ASHES). Two referential-form judgment calls flagged for review: (a) UNNAMED_KING at S5 (the king's anonymity is in significant_absence; I also marked it as a referential form on the Ruth-unnamed-kinsman precedent — drop if the reviewer prefers); (b) the Elohim-vs-YHWH alternation marked as ELOHIM_NOT_YHWH on every B9 entry the map's prose calls attention to, since it is theologically load-bearing in Jonah. The S4 beings append gap hinted B2, but scene-4 prose names only B5 and B9 (already listed) — I appended nothing; please confirm. book_context_ref set to jonah_pilot_BCD_v0_3 by analogy — canonical ref is the reviewer's call."
+}
