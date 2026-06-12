@@ -4,8 +4,8 @@
 > This is the plan-first half: nothing here spends money or writes canon. The one decision that
 > gates the build is **the API-budget word** (§7). Pointers: [[tripod-seed-corpus-strategy]] ·
 > `docs/JONAH-GENERALITY-REPORT.md` §5 (the deferred L2 experiment) · vault
-> `_spec/agent-3-system-prompt.md` (the role this automates) · `docs/PROGRESS.md` "In-flight"
-> (the seam, defined at Slice 2).
+> `_spec/agent-3-system-prompt.md` (the role this automates — STALE as spec, discipline-language
+> raw material only; see §3.2) · `docs/PROGRESS.md` "In-flight" (the seam, defined at Slice 2).
 
 ---
 
@@ -47,14 +47,20 @@ the gap report — the deterministic half stays byte-identical to what `compile`
 the Facilitator's "don't invent semantic content" contract enforced at the merge layer, not by
 prompt hope.
 
-**3.2 The prompt.** Derived from the vault's `agent-3-system-prompt.md` v0.3 (the STA Compiler
-role: the approved map controls story content; event-participant slot names, never agent/patient;
-mint a bounded-open value only when the map requires it and record it; closed lists never expand)
-— **re-scoped to gap-fill** (the deterministic compile is done; your job is the judgment half
-only). It carries the pinned conventions the hand-runs learned: the versification convention
-(scene range = Hebrew, prop anchor = English; SC-0044), the register-usage rules
-(`_methodology/register-usage-rules.md`, SC-0058 — born-clean discipline), lexeme discipline on
-flags (flag where the word/image is). Stored as a **new pinned spec file**
+**3.2 The prompt — authored FRESH against the current pinned spec.** The vault's
+`agent-3-system-prompt.md` v0.3 is **stale** (evaluator-confirmed 2026-06-12, architect-verified:
+locked to validation-rules **v0.4** — current is **v0.16** — and its line 183 mandates the
+pre-SC-0046 register constant, *"Pericope-level `register` is always `INFORMAL_CASUAL` for
+biblical narrator voice"*, the exact falsehood the psalm finding fixed). Deriving from it would
+re-import a fixed bug. So the drafter prompt is **written new** against the compiler `_spec/`
+(the de-facto canonical: validation-rules v0.16 with the genre-aware register rule, the current
+closed lists, the skeleton gap-report shape); the old Agent-3 prompt serves as **raw material for
+the discipline language only** (the approved map controls story content; event-participant slot
+names, never agent/patient; mint a bounded-open value only when the map requires it and record
+it; closed lists never expand). It carries the pinned conventions the hand-runs learned: the
+versification convention (scene range = Hebrew, prop anchor = English; SC-0044), the
+register-usage rules (`_methodology/register-usage-rules.md`, SC-0058 — born-clean discipline),
+lexeme discipline on flags (flag where the word/image is). Stored as a **new pinned spec file**
 `_spec/drafter/fm-drafter-prompt.md` under the same pin discipline as every other spec file
 (check-drift covers it; prompt changes are visible diffs, not silent drift).
 
