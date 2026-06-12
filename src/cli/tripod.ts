@@ -590,14 +590,50 @@ program
       return;
     }
     // ---- PAID PATH (Phase B+) ----
-    const { draftViaApi, callCostUSD, DRAFTER_MODEL } = await import("../drafter/call.js");
+    const { draftViaApi, DRAFTER_MODEL, DrafterCallError } = await import("../drafter/call.js");
     const { applyFills } = await import("../drafter/fills.js");
+    const { appendReceipt, checkCeiling, cumulativeUSD, usageCostUSD, RECEIPTS_PATH } = await import("../drafter/receipts.js");
+    const gate = checkCeiling();
+    if (!gate.ok) {
+      console.error(
+        `  ✗ CEILING GATE: $${gate.cumulative.toFixed(3)} spent + $${gate.reserve.toFixed(2)} call reserve exceeds the $${gate.ceiling} SC-0063 ceiling — stop-and-report (Marcia's word required to proceed).`,
+      );
+      process.exitCode = 1;
+      return;
+    }
+    console.log(`  ceiling gate: $${gate.cumulative.toFixed(3)} of $${gate.ceiling} spent · reserve $${gate.reserve.toFixed(2)} · OK`);
     console.log(`  --live: calling ${DRAFTER_MODEL} (streaming, adaptive thinking, structured output)…`);
-    const res = await draftViaApi(req);
+    let res;
+    try {
+      res = await draftViaApi(req);
+    } catch (e) {
+      if (e instanceof DrafterCallError && e.usage) {
+        appendReceipt({
+          ts: new Date().toISOString(),
+          pericope: id,
+          request_sha256: stats.sha256,
+          model: e.model,
+          status: e.kind === "truncated" ? "truncated" : "parse_error",
+          usage: e.usage,
+          cost_usd: Number(usageCostUSD(e.usage).toFixed(4)),
+        });
+        console.error(`  ✗ paid call FAILED (${e.kind}) — receipt written; cumulative now $${cumulativeUSD().toFixed(3)} (${RECEIPTS_PATH})`);
+      }
+      throw e;
+    }
     const merge = applyFills(req.compile.skeleton, req.compile.gaps, res.output);
     const u = res.usage;
+    appendReceipt({
+      ts: new Date().toISOString(),
+      pericope: id,
+      request_sha256: stats.sha256,
+      model: res.model,
+      status: "ok",
+      usage: u,
+      cost_usd: Number(usageCostUSD(u).toFixed(4)),
+    });
     console.log(
-      `  usage: in ${u.input_tokens} · out ${u.output_tokens} · cache-write ${u.cache_creation_input_tokens ?? 0} · cache-read ${u.cache_read_input_tokens ?? 0} → $${callCostUSD(u).toFixed(3)} (list)`,
+      `  usage: in ${u.input_tokens} · out ${u.output_tokens} · cache-write ${u.cache_creation_input_tokens ?? 0} · cache-read ${u.cache_read_input_tokens ?? 0} → $${usageCostUSD(u).toFixed(3)} (list) · cumulative $${cumulativeUSD().toFixed(3)} of $${gate.ceiling}`,
     );
     console.log(
       `  merge: ${merge.applied.length} applied · ${merge.noteOnly.length} note-only · ${merge.rejected.length} REJECTED · ${merge.unfilled.length} unfilled · ${merge.leftovers.length} __TODO__ left`,

@@ -19,6 +19,18 @@ export const DRAFTER_MODEL = "claude-opus-4-8";
  */
 const MAX_TOKENS = 64000;
 
+/** A paid call that failed AFTER spending (truncation, unparseable output) — carries the usage so the CLI can write a failure receipt. */
+export class DrafterCallError extends Error {
+  constructor(
+    public kind: "truncated" | "parse_error",
+    message: string,
+    public usage: { input_tokens: number; output_tokens: number; cache_creation_input_tokens?: number; cache_read_input_tokens?: number } | null,
+    public model: string,
+  ) {
+    super(message);
+  }
+}
+
 export class DrafterKeyMissingError extends Error {
   constructor() {
     super(
@@ -104,7 +116,7 @@ export async function draftViaApi(req: DraftRequest): Promise<DraftCallResult> {
   const u: any = final.usage;
   const spent = `usage in ${u?.input_tokens} · out ${u?.output_tokens} · cache-write ${u?.cache_creation_input_tokens ?? 0} · cache-read ${u?.cache_read_input_tokens ?? 0}`;
   if (final.stop_reason === "max_tokens") {
-    throw new Error(`drafter response TRUNCATED at max_tokens=${MAX_TOKENS} (${spent}) — raise MAX_TOKENS; the call was paid but unusable`);
+    throw new DrafterCallError("truncated", `drafter response TRUNCATED at max_tokens=${MAX_TOKENS} (${spent}) — the call was paid but unusable`, u, final.model);
   }
   const rawText = final.content
     .filter((b: any) => b.type === "text")
@@ -114,7 +126,7 @@ export async function draftViaApi(req: DraftRequest): Promise<DraftCallResult> {
   try {
     output = JSON.parse(rawText) as DraftOutput;
   } catch (e) {
-    throw new Error(`drafter response was not parseable JSON despite structured output (stop_reason ${final.stop_reason}; ${spent}): ${String(e)}`);
+    throw new DrafterCallError("parse_error", `drafter response was not parseable JSON despite structured output (stop_reason ${final.stop_reason}; ${spent}): ${String(e)}`, u, final.model);
   }
   return { output, rawText, model: final.model, usage: final.usage as any };
 }
@@ -132,11 +144,3 @@ export async function measureTokens(req: DraftRequest): Promise<number> {
   return (res as any).input_tokens;
 }
 
-/** $ cost of one call at Opus list prices ($5/M in · $25/M out · cache write 1.25× · cache read 0.1×). */
-export function callCostUSD(u: DraftCallResult["usage"]): number {
-  const inFull = (u.input_tokens ?? 0) * 5e-6;
-  const cacheWrite = (u.cache_creation_input_tokens ?? 0) * 6.25e-6;
-  const cacheRead = (u.cache_read_input_tokens ?? 0) * 0.5e-6;
-  const out = (u.output_tokens ?? 0) * 25e-6;
-  return inFull + cacheWrite + cacheRead + out;
-}
