@@ -175,7 +175,8 @@ program
   .option("--apply", "write the grown registry (default target: the vendored _spec/approved-enumerations.json)")
   .option("--to <file>", "registry file to write when --apply is set")
   .option("--log <file>", "VOCABULARY_LOG path to append a promotion line", "VOCABULARY_LOG.md")
-  .action((path: string, opts: { status?: string; apply?: boolean; to?: string; log?: string }) => {
+  .option("--sc <id>", "the governing SC id stamped as sc_ref on every promoted entry (REQUIRED with --apply)")
+  .action((path: string, opts: { status?: string; apply?: boolean; to?: string; log?: string; sc?: string }) => {
     const plan = planPromotion(path, { status: opts.status });
     console.log(`promote ${plan.pericope ?? path} — status gate: ${plan.statusFilter}`);
     console.log(
@@ -198,13 +199,20 @@ program
         `  ⚠ policy: promotion is CONFIRMED-only from P03 onward — Gate-F flips PROPOSED→CONFIRMED before promote. ` +
           `'--status ${plan.statusFilter}' is a deliberate gate override (P02 was the grandfathered exception; see VOCABULARY_LOG.md).`,
       );
+    if (!opts.sc || !/^SC-\d{4}$/.test(opts.sc)) {
+      console.error(`  ✗ --apply requires --sc <SC-id> (e.g. --sc SC-0063): every promoted entry's sc_ref must name the GOVERNING spec change, not the machinery's (the P08 batch was stamped SC-0006 by default and had to be fixed by hand).`);
+      process.exitCode = 1;
+      return;
+    }
     const target = opts.to ?? join(SPEC_DIR, "approved-enumerations.json");
-    const { reg, added } = applyPromotion(loadApprovedEnumerations(), plan);
+    const { reg, added } = applyPromotion(loadApprovedEnumerations(), plan, opts.sc);
     writeFileSync(target, JSON.stringify(reg, null, 2) + "\n");
     const stamp = plan.sourceArtifact;
+    // log the repo-relative target — an absolute worktree path dangles once the worktree is cleaned
+    const targetForLog = target.includes("_spec/") ? `_spec/${target.split("_spec/").pop()}` : target;
     appendFileSync(
       opts.log ?? "VOCABULARY_LOG.md",
-      `- ${stamp}: promoted ${added.length} value(s) [${added.map((a) => `${a.axis}:${a.value}`).join(", ")}] → ${target}\n`,
+      `- ${stamp}: promoted ${added.length} value(s) [${added.map((a) => `${a.axis}:${a.value}`).join(", ")}] → ${targetForLog} (${opts.sc})\n`,
     );
     console.log(`  applied: ${added.length} value(s) written to ${target}; logged to ${opts.log ?? "VOCABULARY_LOG.md"}.`);
     console.log(`  ⚠ governed step: re-vendor + re-pin (update _spec/pins.json sha256) and record under SPEC_CHANGES if this is the canonical registry.`);

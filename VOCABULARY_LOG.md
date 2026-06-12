@@ -97,4 +97,4 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
   pericopes) as an explicit RECURS in the corpus quarantine watch; `promote` skips quarantined values. **A
   quarantined value is no longer a settled type — its recurrence in P07–P14 is the revisit signal.** (Lifting
   a value OUT of quarantine — promote or collapse — is a future governed decision, logged here when it happens.)
-- P08-COMPILATION-LOG: promoted 6 value(s) [scene_kind:CONSENT_SCENE, role_in_scene_being:PLANNER, arc_element:REST_SEEKING_INITIATIVE, arc_element:NIGHT_PLAN_INSTRUCTION, arc_element:INITIATIVE_HANDOFF, arc_element:TOTAL_CONSENT] → /Users/marciasuzuki/Dropbox/Mac/Downloads/tripod_compiler/.claude/worktrees/infallible-bardeen-059525/_spec/approved-enumerations.json
+- P08-COMPILATION-LOG: promoted 6 value(s) [scene_kind:CONSENT_SCENE, role_in_scene_being:PLANNER, arc_element:REST_SEEKING_INITIATIVE, arc_element:NIGHT_PLAN_INSTRUCTION, arc_element:INITIATIVE_HANDOFF, arc_element:TOTAL_CONSENT] → _spec/approved-enumerations.json (SC-0063)

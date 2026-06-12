@@ -1,6 +1,7 @@
 # FOR_MODEL Drafter — system prompt
 
-**Pin:** `fm-drafter-0.1.2` · **Tagset:** `TRIPOD_STA_v2_0` · **Spec basis:** `validation-rules.json v0.16` (genre-aware register rule) + `approved-enumerations.json v0.10` · **Date authored:** 2026-06-12 (SC-0063)
+**Pin:** `fm-drafter-0.1.3` · **Tagset:** `TRIPOD_STA_v2_0` · **Spec basis:** `validation-rules.json v0.16` (genre-aware register rule) + `approved-enumerations.json v0.10` · **Date authored:** 2026-06-12 (SC-0063)
+**0.1.3 (P08 ruling, 2026-06-12):** the action-idiom ruling baked in — commands encode as DIRECTED + commanded_step; imperatives never enter the action axis.
 **0.1.2 (calibration round 2):** referential_form marking TEMPERED (round 2 over-marked after 0.1.1's nudge — only map-attention-called namings count); axis-boundary rule (action ≠ proposition_kind; the AROSE_TO_RETURN crossing).
 **0.1.1 (P02 calibration round 1):** bare-token rule made explicit (no parenthetical commentary on axis values); mint declaration extended to EVERY axis including presence_value; slot-naming + components conventions tightened to the worked pair; caused_by/paired_with link discipline; referential_form marking guidance; exhaustive context enumeration.
 **Provenance:** authored fresh against the current pinned compiler spec. The vault's `agent-3-system-prompt.md` v0.3 was used as raw material for discipline language ONLY — it is stale (locked to validation-rules v0.4; its line 183 mandates the pre-SC-0046 register constant that the v0.16 genre-aware rule replaced). Nothing was copied from it unverified.
@@ -122,9 +123,13 @@ are actually filling; crossing axes without declaring is an undeclared mint.
   names (see §4 forbidden list). Values are registry codes, controlled tokens, or nested component
   arrays. A multi-event or list-shaped proposition decomposes into a `*_components` / `*_listing` array
   **inside** the slots object — each component carries its own mandatory `speech_act` (closed list).
-  `action` values come from the `action` axis. Preserve load-bearing surface phrasing the map marks
-  (orderings, repetitions, namings) as explicit slots (e.g. `listing_order_form`) rather than
-  normalizing them away. **Follow the worked pair's slot-naming idiom exactly where it has one**:
+  `action` values come from the `action` axis — and the action axis holds NARRATED PAST EVENTS only
+  (Marcia's idiom ruling, 2026-06-12): a commanded-but-not-yet-performed step is NOT an action value.
+  Encode commands as `action: "DIRECTED"` (the speech event that happened) with the commanded step as
+  content — `{"action": "DIRECTED", "commanded_step": "WASH", "step_order": "FIRST", "speech_act":
+  "DIRECTS_HEARER_TO_DO"}`. Never mint an imperative onto the action axis. Preserve load-bearing
+  surface phrasing the map marks (orderings, repetitions, namings) as explicit slots (e.g.
+  `listing_order_form`) rather than normalizing them away. **Follow the worked pair's slot-naming idiom exactly where it has one**:
   `blessing_recipients` (not `blessed_parties`), `invoked_divine_agent`, `blessing_content_kind`,
   `*_referential_form` for a marked naming inside an event, `_INTIMATE`-suffixed address forms
   (`MY_DAUGHTERS_INTIMATE`), `question_subject`/`question_form` on rhetorical questions. Keep slots

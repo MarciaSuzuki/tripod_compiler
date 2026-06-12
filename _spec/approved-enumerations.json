@@ -590,7 +590,7 @@
         "first_seen": "P08",
         "approved_in": "P08",
         "source_artifact": "P08-COMPILATION-LOG",
-        "sc_ref": "SC-0006"
+        "sc_ref": "SC-0063"
       }
     ],
     "presence_value": [
@@ -853,28 +853,28 @@
         "first_seen": "P08",
         "approved_in": "P08",
         "source_artifact": "P08-COMPILATION-LOG",
-        "sc_ref": "SC-0006"
+        "sc_ref": "SC-0063"
       },
       {
         "value": "NIGHT_PLAN_INSTRUCTION",
         "first_seen": "P08",
         "approved_in": "P08",
         "source_artifact": "P08-COMPILATION-LOG",
-        "sc_ref": "SC-0006"
+        "sc_ref": "SC-0063"
       },
       {
         "value": "INITIATIVE_HANDOFF",
         "first_seen": "P08",
         "approved_in": "P08",
         "source_artifact": "P08-COMPILATION-LOG",
-        "sc_ref": "SC-0006"
+        "sc_ref": "SC-0063"
       },
       {
         "value": "TOTAL_CONSENT",
         "first_seen": "P08",
         "approved_in": "P08",
         "source_artifact": "P08-COMPILATION-LOG",
-        "sc_ref": "SC-0006"
+        "sc_ref": "SC-0063"
       }
     ],
     "context_element": [
@@ -1553,7 +1553,7 @@
         "first_seen": "P08",
         "approved_in": "P08",
         "source_artifact": "P08-COMPILATION-LOG",
-        "sc_ref": "SC-0006"
+        "sc_ref": "SC-0063"
       }
     ]
   }
