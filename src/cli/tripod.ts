@@ -552,7 +552,86 @@ program
     console.log(`\n— concept-check: ${cb.length + fig.length} suggestion(s) · diagnostic (the human rules reuse) —`);
   });
 
+program
+  .command("draft")
+  .description("SC-0063 Slice-4 drafter: fill a FOR_MODEL skeleton's judgment gaps via the Opus API (default = dry-run, no network)")
+  .argument("<map-or-id>", "a Meaning Map .md path, or a pericope id (P08, J03) resolved in fixtures/meaning-map/")
+  .option("--out <file>", "write the assembled request (dry-run artifact) to a file")
+  .option("--measure", "exact input-token count via the free count_tokens endpoint (needs ANTHROPIC_API_KEY; falls back to byte estimate)")
+  .option("--live", "PAID: actually call the drafter model and merge the fills (Phase B+; requires ANTHROPIC_API_KEY)")
+  .option("--out-dir <dir>", "provenance directory for --live runs (default _working/<id>/drafts)")
+  .action(async (mapOrId: string, opts: { out?: string; measure?: boolean; live?: boolean; outDir?: string }) => {
+    const { assembleDraftRequest, renderRequest, requestStats } = await import("../drafter/assemble.js");
+    const mmPath = resolveMapArg(mapOrId);
+    const req = assembleDraftRequest(mmPath);
+    const stats = requestStats(req);
+    const id = req.mm.pericope ?? "P00";
+    console.log(`drafter request assembled — ${id} (${req.mm.bcv ?? "?"}) · ${stats.gaps} gaps`);
+    console.log(
+      `  system ${(stats.systemBytes / 1024).toFixed(1)}KB · stable ${(stats.stableBytes / 1024).toFixed(1)}KB · per-pericope ${(stats.variableBytes / 1024).toFixed(1)}KB · total ${(stats.totalBytes / 1024).toFixed(1)}KB`,
+    );
+    console.log(`  request sha256 ${stats.sha256.slice(0, 16)}… (byte-stable: same inputs → same hash)`);
+    if (opts.out) {
+      writeFileSync(opts.out, renderRequest(req));
+      console.log(`  assembled request written to ${opts.out}`);
+    }
+    if (opts.measure) {
+      try {
+        const { measureTokens, DRAFTER_MODEL } = await import("../drafter/call.js");
+        const n = await measureTokens(req);
+        console.log(`  input tokens (count_tokens, ${DRAFTER_MODEL}): ${n}`);
+      } catch {
+        console.log(`  input tokens ≈ ${stats.estTokens} (byte estimate — set ANTHROPIC_API_KEY for an exact count_tokens measurement)`);
+      }
+    }
+    if (!opts.live) {
+      if (!opts.measure) console.log(`  input tokens ≈ ${stats.estTokens} (byte estimate)`);
+      console.log("  dry-run (no network). --measure for exact tokens · --live for the paid call (Phase B+, Marcia's ceiling applies).");
+      return;
+    }
+    // ---- PAID PATH (Phase B+) ----
+    const { draftViaApi, callCostUSD, DRAFTER_MODEL } = await import("../drafter/call.js");
+    const { applyFills } = await import("../drafter/fills.js");
+    console.log(`  --live: calling ${DRAFTER_MODEL} (streaming, adaptive thinking, structured output)…`);
+    const res = await draftViaApi(req);
+    const merge = applyFills(req.compile.skeleton, req.compile.gaps, res.output);
+    const u = res.usage;
+    console.log(
+      `  usage: in ${u.input_tokens} · out ${u.output_tokens} · cache-write ${u.cache_creation_input_tokens ?? 0} · cache-read ${u.cache_read_input_tokens ?? 0} → $${callCostUSD(u).toFixed(3)} (list)`,
+    );
+    console.log(
+      `  merge: ${merge.applied.length} applied · ${merge.noteOnly.length} note-only · ${merge.rejected.length} REJECTED · ${merge.unfilled.length} unfilled · ${merge.leftovers.length} __TODO__ left`,
+    );
+    for (const r of merge.rejected) console.log(`    ✗ ${r.location} — ${r.reason}`);
+    const outDir = opts.outDir ?? join("_working", id, "drafts");
+    const runDir = join(outDir, `run-${new Date().toISOString().replace(/[:.]/g, "-")}`);
+    mkdirSync(runDir, { recursive: true });
+    writeFileSync(join(runDir, "manifest.json"), JSON.stringify({ model: res.model, request_sha256: stats.sha256, map: mmPath, gaps: stats.gaps, usage: u, merge: { applied: merge.applied.length, noteOnly: merge.noteOnly.length, rejected: merge.rejected, unfilled: merge.unfilled.map((g) => g.location), leftovers: merge.leftovers } }, null, 2));
+    writeFileSync(join(runDir, "fills.json"), JSON.stringify(res.output, null, 2));
+    writeFileSync(join(runDir, "response-raw.txt"), res.rawText);
+    const note =
+      `---\ntype: "sta-for-model"\npericope: "${id}"\npericope-title: "${(req.mm.title ?? "").replace(/"/g, "'")}"\nsource-meaning-map: [[${String((req.compile.skeleton as any).header?.source_meaning_map_ref ?? "")}]]\nstatus: "draft"\npilot: "pilot-2"\ndrafter: "${res.model} · fm-drafter prompt (see _spec/pins.json) · machine-drafted, unruled"\n---\n\n` +
+      `# ${id} — ${req.mm.bcv ?? ""} — FOR_MODEL (DRAFT — machine-drafted, awaiting review)\n\n` +
+      `> Judgment gaps filled by the SC-0063 drafter (\`tripod draft --live\`); the merge layer enforced the patch-only contract. NOT canon until ruled.\n\n` +
+      "```json\n" + JSON.stringify(merge.merged, null, 2) + "\n```\n";
+    writeFileSync(join(runDir, `${id}-FOR-MODEL.draft.md`), note);
+    console.log(`  provenance + drafted FM written to ${runDir}`);
+    console.log("  next: run the gates (validate · lint · coverage · id-check) on the drafted FM — findings are the experiment data.");
+  });
+
 program.parseAsync(process.argv);
+
+function resolveMapArg(mapOrId: string): string {
+  try {
+    if (statSync(mapOrId).isFile()) return mapOrId;
+  } catch {
+    /* not a path — try id resolution */
+  }
+  const dir = join("fixtures", "meaning-map");
+  const hit = readdirSync(dir).find((f) => f.toUpperCase().startsWith(`${mapOrId.toUpperCase()}-`) && f.endsWith(".md"));
+  if (!hit) throw new Error(`cannot resolve '${mapOrId}' — not a file, and no fixtures/meaning-map/${mapOrId}-*.md`);
+  return join(dir, hit);
+}
 
 function expandPaths(paths: string[]): string[] {
   const out: string[] = [];

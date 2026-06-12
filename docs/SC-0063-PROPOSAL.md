@@ -111,6 +111,14 @@ spend approaches it, stop and report. (The Batch API's 50% discount is available
 sequential calls are recommended: gate-after-each, and the cache makes the saving marginal at
 this scale.)
 
+**§5a — Phase A MEASURED (2026-06-12, byte-estimate; count_tokens lands once the key is in env):**
+per-call input 25.4k–37.9k tokens (J01 smallest, J02 largest); the shared cacheable prefix is
+**≈ 17.8k tokens** (64.3 KB Ruth / 61.1 KB Jonah — the registry digest differs by book); all 14
+targets (13 skeletons + the P02 calibration) ≈ **459k input tokens naive**. At list prices with
+sequential caching: input ≈ $1.30, output (est. ~9k/call incl. thinking) ≈ $3.15 → **≈ $4.50–5.50
+per full pass; $6–9 for the whole front including calibration iterations** — the original §5
+estimate refined DOWN. The ceiling stays $25.
+
 ## 6. What this does NOT touch
 
 No vault writes. No closed-list changes (any L1 violation is a hard validate error = a finding,
