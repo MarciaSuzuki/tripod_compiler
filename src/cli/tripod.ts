@@ -603,6 +603,8 @@ program
       `  merge: ${merge.applied.length} applied · ${merge.noteOnly.length} note-only · ${merge.rejected.length} REJECTED · ${merge.unfilled.length} unfilled · ${merge.leftovers.length} __TODO__ left`,
     );
     for (const r of merge.rejected) console.log(`    ✗ ${r.location} — ${r.reason}`);
+    const { auditMints, formatMintAudit } = await import("../drafter/calibrate.js");
+    console.log("  " + formatMintAudit(auditMints(merge.merged, res.output)).split("\n").join("\n  "));
     const outDir = opts.outDir ?? join("_working", id, "drafts");
     const runDir = join(outDir, `run-${new Date().toISOString().replace(/[:.]/g, "-")}`);
     mkdirSync(runDir, { recursive: true });
@@ -647,10 +649,13 @@ program
     const req = assembleDraftRequest(resolveMapArg(ID));
     const merge = applyFills(req.compile.skeleton, req.compile.gaps, fills);
     if (merge.rejected.length) console.log(`⚠ ${merge.rejected.length} rejected fill(s) — the merged draft excludes them (see manifest)`);
+    const { auditMints, formatMintAudit } = await import("../drafter/calibrate.js");
     const cal = calibrate(merge.merged, goldJson);
-    const text = formatCalibration(cal, `${ID} drafted (${runDir.split("/").pop()}) vs gold ${goldFile}`);
+    const audit = auditMints(merge.merged, fills);
+    const text =
+      formatCalibration(cal, `${ID} drafted (${runDir.split("/").pop()}) vs gold ${goldFile}`) + "\n\n" + formatMintAudit(audit);
     console.log(text);
-    writeFileSync(join(runDir, "calibration.json"), JSON.stringify(cal, null, 2));
+    writeFileSync(join(runDir, "calibration.json"), JSON.stringify({ calibration: cal, mintAudit: audit }, null, 2));
     writeFileSync(join(runDir, "calibration.txt"), text + "\n");
     console.log(`\ncalibration written to ${runDir}/calibration.{json,txt}`);
   });

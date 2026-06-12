@@ -1,0 +1,669 @@
+{
+  "calibration": {
+    "fields": {
+      "book_context_ref": {
+        "matched": 1,
+        "divergent": 0,
+        "divergences": []
+      },
+      "register_overrides": {
+        "matched": 1,
+        "divergent": 0,
+        "divergences": []
+      },
+      "scene_kind": {
+        "matched": 2,
+        "divergent": 1,
+        "divergences": [
+          {
+            "where": "/S3",
+            "drafted": "SEPARATION_SCENE",
+            "gold": "APPEAL_SCENE"
+          }
+        ]
+      },
+      "role_in_scene": {
+        "matched": 17,
+        "divergent": 0,
+        "divergences": []
+      },
+      "referential_form": {
+        "matched": 13,
+        "divergent": 4,
+        "divergences": [
+          {
+            "where": "/S1/B8",
+            "drafted": null,
+            "gold": "KALLAH_DAUGHTER_IN_LAW"
+          },
+          {
+            "where": "/S1/B9",
+            "drafted": null,
+            "gold": "KALLAH_DAUGHTER_IN_LAW"
+          },
+          {
+            "where": "/S2/B2",
+            "drafted": "COLLECTIVELY_THE_DEAD",
+            "gold": null
+          },
+          {
+            "where": "/S3/B8",
+            "drafted": null,
+            "gold": "CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW"
+          }
+        ]
+      },
+      "presence": {
+        "matched": 13,
+        "divergent": 4,
+        "divergences": [
+          {
+            "where": "/S1/B10",
+            "drafted": "REFERENCED (acts off-stage in the land of Judah)",
+            "gold": "REFERENCED"
+          },
+          {
+            "where": "/S1/B31",
+            "drafted": "REFERENCED (off-stage in the land of Judah)",
+            "gold": "REFERENCED"
+          },
+          {
+            "where": "/S2/B2",
+            "drafted": "REFERENCED (named in P01; named here only as \"the dead\")",
+            "gold": "REFERENCED"
+          },
+          {
+            "where": "/S3/B8",
+            "drafted": "PRESENT_BECOMES_DEPARTS",
+            "gold": "PRESENT"
+          }
+        ]
+      },
+      "proposition_kind": {
+        "matched": 8,
+        "divergent": 3,
+        "divergences": [
+          {
+            "where": "/P2↔P2@1:6b",
+            "drafted": "DEPARTED",
+            "gold": "GAVE"
+          },
+          {
+            "where": "/P7↔P8@1:10",
+            "drafted": "DECLARED",
+            "gold": "SPOKE"
+          },
+          {
+            "where": "/P13↔P14@1:14b",
+            "drafted": "KISSED",
+            "gold": "DEPARTED"
+          }
+        ]
+      },
+      "event_specific_slots": {
+        "matched": 1,
+        "divergent": 10,
+        "divergences": [
+          {
+            "where": "/P2↔P2@1:6b",
+            "drafted": {
+              "journey_components": [
+                {
+                  "action": "AROSE_TO_RETURN",
+                  "traveler": "B3",
+                  "companions": [
+                    "B8",
+                    "B9"
+                  ],
+                  "origin": "PL2",
+                  "purpose": "RETURN",
+                  "speech_act": "STATES_AS_TRUE"
+                },
+                {
+                  "action": "WENT_OUT",
+                  "departer": "B3",
+                  "accompanied_by": [
+                    "B8",
+                    "B9"
+                  ],
+                  "origin": "PLACE_WHERE_SHE_HAD_BEEN",
+                  "speech_act": "STATES_AS_TRUE"
+                },
+                {
+                  "action": "WALKED",
+                  "walkers": [
+                    "B3",
+                    "B8",
+                    "B9"
+                  ],
+                  "path": "PL_HA_DEREKH_THE_ROAD",
+                  "destination": "PL_LAND_OF_JUDAH",
+                  "speech_act": "STATES_AS_TRUE"
+                }
+              ]
+            },
+            "gold": {
+              "agent_named": "B10",
+              "people_provided_for": "B31",
+              "provision_kind": "BREAD",
+              "where_implied": "PL_LAND_OF_JUDAH"
+            }
+          },
+          {
+            "where": "/P3↔P4@1:8a",
+            "drafted": {
+              "speaker": "B3",
+              "addressees": [
+                "B8",
+                "B9"
+              ],
+              "directive_components": [
+                {
+                  "action": "DIRECTED",
+                  "content": "GO",
+                  "speech_act": "DIRECTS_HEARER_TO_DO"
+                },
+                {
+                  "action": "DIRECTED",
+                  "content": "RETURN",
+                  "return_target": "PL_EACH_HER_MOTHERS_HOUSE",
+                  "distributive_form": "EACH_TO_HER_OWN_MOTHERS_HOUSE",
+                  "speech_act": "DIRECTS_HEARER_TO_RETURN"
+                }
+              ]
+            },
+            "gold": {
+              "speaker": "B3",
+              "addressees": [
+                "B8",
+                "B9"
+              ],
+              "return_destination_distributive": "PL_EACH_HER_MOTHERS_HOUSE",
+              "speech_act": "DIRECTS_HEARER_TO_RETURN"
+            }
+          },
+          {
+            "where": "/P4↔P5@1:8b",
+            "drafted": {
+              "blesser": "B3",
+              "blessed_parties": [
+                "B8",
+                "B9"
+              ],
+              "invoked_divine": "B10",
+              "blessing_content": "HESED",
+              "grounding": "PRIOR_HESED_OF_DAUGHTERS",
+              "prior_hesed_recipients": [
+                "B2",
+                "B4",
+                "B5"
+              ],
+              "dead_referential_form": "COLLECTIVELY_THE_DEAD",
+              "speech_act": "WISHES_FOR_HEARER"
+            },
+            "gold": {
+              "blesser": "B3",
+              "blessing_recipients": [
+                "B8",
+                "B9"
+              ],
+              "invoked_divine_agent": "B10",
+              "blessing_content_kind": "HESED",
+              "prior_hesed_targets": [
+                "B2",
+                "B4",
+                "B5",
+                "B3"
+              ],
+              "prior_hesed_targets_referential_form": "COLLECTIVE_THE_DEAD_AND_NAOMI_NO_PAIRING_INFERRED",
+              "speech_act": "WISHES_FOR_HEARER"
+            }
+          },
+          {
+            "where": "/P5↔P6@1:9a",
+            "drafted": {
+              "blesser": "B3",
+              "blessed_parties": [
+                "B8",
+                "B9"
+              ],
+              "invoked_divine": "B10",
+              "blessing_content": "MENUCHA_REST",
+              "rest_locus": "HOUSE_OF_HER_HUSBAND_EACH",
+              "speech_act": "WISHES_FOR_HEARER"
+            },
+            "gold": {
+              "blesser": "B3",
+              "blessing_recipients": [
+                "B8",
+                "B9"
+              ],
+              "invoked_divine_agent": "B10",
+              "blessing_content_kind": "MENUCHA_REST",
+              "speech_act": "WISHES_FOR_HEARER"
+            }
+          },
+          {
+            "where": "/P7↔P8@1:10",
+            "drafted": {
+              "refusers": [
+                "B8",
+                "B9"
+              ],
+              "addressee": "B3",
+              "refusal_target": "DIRECTIVE_TO_RETURN_TO_MOTHERS_HOUSE",
+              "counter_action": "RETURN_WITH_NAOMI",
+              "counter_destination": "B31",
+              "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
+            },
+            "gold": {
+              "refusers": [
+                "B8",
+                "B9"
+              ],
+              "addressee_of_refusal": "B3",
+              "refusal_target_proposition": "P4",
+              "counter_action": "RETURN_WITH_NAOMI",
+              "counter_destination_collective": "B31",
+              "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
+            }
+          },
+          {
+            "where": "/P8↔P9@1:11",
+            "drafted": {
+              "speaker": "B3",
+              "addressees": [
+                "B8",
+                "B9"
+              ],
+              "address_form": "MY_DAUGHTERS",
+              "speech_components": [
+                {
+                  "action": "DIRECTED",
+                  "content": "TURN_BACK",
+                  "speech_act": "DIRECTS_HEARER_TO_RETURN"
+                },
+                {
+                  "action": "ASKED",
+                  "content": "WHY_WOULD_YOU_GO_WITH_ME",
+                  "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
+                },
+                {
+                  "action": "ASKED",
+                  "content": "HAVE_I_YET_SONS_IN_MY_WOMB",
+                  "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
+                }
+              ],
+              "dissuasion_target": "LEVIRATE_REMARRIAGE_THROUGH_NAOMI"
+            },
+            "gold": {
+              "speaker": "B3",
+              "addressees": [
+                "B8",
+                "B9"
+              ],
+              "address_form": "MY_DAUGHTERS_INTIMATE",
+              "appeal_components": [
+                {
+                  "action": "DIRECTED",
+                  "speech_act": "DIRECTS_HEARER_TO_RETURN"
+                },
+                {
+                  "action": "ASKED",
+                  "question_subject": "DAUGHTERS_GOING_WITH_NAOMI",
+                  "question_form": "WHY_WOULD_YOU_GO_WITH_ME",
+                  "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
+                },
+                {
+                  "action": "ASKED",
+                  "question_subject": "SONS_IN_NAOMIS_WOMB",
+                  "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
+                }
+              ],
+              "dissuasion_target": "LEVIRATE_STYLE_REMARRIAGE_THROUGH_NAOMI"
+            }
+          },
+          {
+            "where": "/P11↔P12@1:13d",
+            "drafted": {
+              "speaker": "B3",
+              "addressees": [
+                "B8",
+                "B9"
+              ],
+              "address_form": "MY_DAUGHTERS",
+              "lament_comparison": "MORE_BITTER_FOR_ME_THAN_FOR_YOU",
+              "affliction_source": "B10",
+              "affliction_form": "HAND_OF_YHWH_GONE_OUT_AGAINST_ME",
+              "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
+            },
+            "gold": {
+              "speaker": "B3",
+              "addressees": [
+                "B8",
+                "B9"
+              ],
+              "address_form": "MY_DAUGHTERS_INTIMATE",
+              "lament_components": [
+                {
+                  "action": "STATED",
+                  "comparison_summary": "NAOMI_MORE_BITTER_THAN_DAUGHTERS",
+                  "speech_act": "STATES_LAMENT_OBSERVATION"
+                },
+                {
+                  "action": "ASCRIBED",
+                  "agent_named": "B10",
+                  "ascription_summary": "HAND_OF_YHWH_AGAINST_NAOMI",
+                  "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
+                }
+              ]
+            }
+          },
+          {
+            "where": "/P12↔P13@1:14a",
+            "drafted": {
+              "weepers": [
+                "B8",
+                "B9"
+              ],
+              "manner": "LIFTED_VOICE_AND_WEPT_AGAIN"
+            },
+            "gold": {
+              "weepers": [
+                "B8",
+                "B9"
+              ],
+              "parallel_with_proposition": "P7"
+            }
+          },
+          {
+            "where": "/P13↔P14@1:14b",
+            "drafted": {
+              "parting_components": [
+                {
+                  "action": "KISSED",
+                  "kisser": "B8",
+                  "kissed": "B3",
+                  "speech_act": "STATES_AS_TRUE"
+                },
+                {
+                  "action": "TURNED_BACK",
+                  "departer": "B8",
+                  "speech_act": "STATES_AS_TRUE"
+                }
+              ]
+            },
+            "gold": {
+              "departure_components": [
+                {
+                  "action": "KISSED",
+                  "kisser": "B8",
+                  "kissed": "B3",
+                  "kissed_referential_form": "CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW",
+                  "speech_act": "STATES_AS_TRUE"
+                },
+                {
+                  "action": "TURNED_BACK",
+                  "subject": "B8",
+                  "narrative_status": "EXITS_BOOK_HERE",
+                  "speech_act": "STATES_AS_TRUE"
+                }
+              ]
+            }
+          },
+          {
+            "where": "/P14↔P15@1:14c",
+            "drafted": {
+              "clinger": "B9",
+              "clung_to": "B3",
+              "manner": "DAVQAH_CLUNG_FAST"
+            },
+            "gold": {
+              "clinger": "B9",
+              "clung_to": "B3",
+              "contrast_with_proposition": "P14"
+            }
+          }
+        ]
+      },
+      "inter_proposition_links": {
+        "matched": 2,
+        "divergent": 9,
+        "divergences": [
+          {
+            "where": "/P2↔P2@1:6b",
+            "drafted": {
+              "caused_by": "P1",
+              "forward_link_to": "P3"
+            },
+            "gold": {
+              "paired_with": "P1(gold-only)"
+            }
+          },
+          {
+            "where": "/P3↔P4@1:8a",
+            "drafted": {
+              "forward_link_to": "P4"
+            },
+            "gold": {
+              "caused_by": "P3(gold-only)",
+              "forward_link_to": "P4"
+            }
+          },
+          {
+            "where": "/P4↔P5@1:8b",
+            "drafted": {
+              "forward_link_to": "P5"
+            },
+            "gold": {
+              "caused_by": "P3",
+              "paired_with": "P5",
+              "forward_link_to": "P5"
+            }
+          },
+          {
+            "where": "/P6↔P7@1:9b",
+            "drafted": {
+              "forward_link_to": "P7"
+            },
+            "gold": {
+              "caused_by": "P5",
+              "forward_link_to": "P7"
+            }
+          },
+          {
+            "where": "/P7↔P8@1:10",
+            "drafted": {
+              "caused_by": "P3",
+              "forward_link_to": "P8"
+            },
+            "gold": {
+              "caused_by": "P6",
+              "forward_link_to": "P8"
+            }
+          },
+          {
+            "where": "/P8↔P9@1:11",
+            "drafted": {
+              "caused_by": "P7",
+              "forward_link_to": "P9"
+            },
+            "gold": {
+              "caused_by": "P7",
+              "forward_link_to": "P10(gold-only)"
+            }
+          },
+          {
+            "where": "/P11↔P12@1:13d",
+            "drafted": {
+              "caused_by": "P9",
+              "forward_link_to": "P12"
+            },
+            "gold": {
+              "caused_by": "P11(gold-only)",
+              "forward_link_to": "P12"
+            }
+          },
+          {
+            "where": "/P12↔P13@1:14a",
+            "drafted": {
+              "paired_with": "P6",
+              "forward_link_to": "P13"
+            },
+            "gold": {
+              "caused_by": "P11",
+              "forward_link_to": "P13",
+              "paired_with": "P6"
+            }
+          },
+          {
+            "where": "/P13↔P14@1:14b",
+            "drafted": {
+              "paired_with": "P14",
+              "forward_link_to": "P14"
+            },
+            "gold": {
+              "caused_by": "P12",
+              "paired_with": "P14"
+            }
+          }
+        ]
+      }
+    },
+    "level1": {
+      "arc_elements": {
+        "exact": true,
+        "shared": [
+          "NEWS_RECEPTION",
+          "RETURN_INITIATED",
+          "BLESSING_APPEAL",
+          "ARGUED_DISMISSAL",
+          "SEPARATION_AND_CHOICE",
+          "CLINGING"
+        ],
+        "goldOnly": [],
+        "draftOnly": []
+      },
+      "context_elements": {
+        "exact": false,
+        "shared": [
+          "KINSHIP_CONTEXT",
+          "PHYSICAL_LOCATION"
+        ],
+        "goldOnly": [
+          "STORY_WORLD_CONTEXT",
+          "INSTITUTIONAL_CONTEXT",
+          "TEMPORAL_CONTEXT",
+          "AUDIENCE_KNOWLEDGE_CONTEXT",
+          "HISTORICAL_ERA_CONTEXT"
+        ],
+        "draftOnly": [
+          "PRIOR_PERICOPE_CARRY_FORWARD",
+          "DIVINE_CONTEXT",
+          "TRAJECTORY_CONTEXT_ON_RETURN_ROAD"
+        ]
+      },
+      "tone_elements": {
+        "exact": false,
+        "shared": [
+          "INTIMATE",
+          "WEIGHTED"
+        ],
+        "goldOnly": [
+          "RESTRAINED",
+          "CHRONICLE",
+          "URGENT"
+        ],
+        "draftOnly": [
+          "ECONOMICAL",
+          "UNRESOLVED_AT_CLOSE"
+        ]
+      },
+      "pace_elements": {
+        "exact": false,
+        "shared": [
+          "BRISK",
+          "SLOWED"
+        ],
+        "goldOnly": [],
+        "draftOnly": [
+          "NARROWS"
+        ]
+      },
+      "communicative_function_elements": {
+        "exact": false,
+        "shared": [
+          "ESTABLISHES",
+          "OPENS",
+          "CLOSES",
+          "PLANTS"
+        ],
+        "goldOnly": [
+          "ANSWERS"
+        ],
+        "draftOnly": [
+          "STAGES"
+        ]
+      }
+    },
+    "alignment": {
+      "props": {
+        "aligned": 11,
+        "goldOnly": [
+          "P1@1:6a",
+          "P3@1:6b-7",
+          "P10@1:12-13a",
+          "P11@1:13a-c"
+        ],
+        "draftOnly": [
+          "P1@1:6",
+          "P9@1:12",
+          "P10@1:13a"
+        ]
+      },
+      "beings": {
+        "aligned": 17,
+        "goldOnly": [],
+        "draftAdded": [
+          "S1/B2"
+        ]
+      }
+    },
+    "notes": [
+      "gold decomposed beyond map granularity (gold-only props above) — gold link targets were TRANSLATED into draft numbering before comparison; a target pointing at a gold-only prop reads `Pn(gold-only)`"
+    ]
+  },
+  "mintAudit": {
+    "checked": 116,
+    "declared": [
+      {
+        "axis": "scene_kind",
+        "value": "SEPARATION_SCENE",
+        "where": "/S3/scene_kind"
+      }
+    ],
+    "undeclared": [
+      {
+        "axis": "presence_value",
+        "value": "REFERENCED (acts off-stage in the land of Judah)",
+        "where": "/S1/B10/presence"
+      },
+      {
+        "axis": "presence_value",
+        "value": "REFERENCED (off-stage in the land of Judah)",
+        "where": "/S1/B31/presence"
+      },
+      {
+        "axis": "presence_value",
+        "value": "REFERENCED (named in P01; named here only as \"the dead\")",
+        "where": "/S2/B2/presence"
+      },
+      {
+        "axis": "presence_value",
+        "value": "PRESENT_BECOMES_DEPARTS",
+        "where": "/S3/B8/presence"
+      }
+    ],
+    "closedViolations": []
+  }
+}

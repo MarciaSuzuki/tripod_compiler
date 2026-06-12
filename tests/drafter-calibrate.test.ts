@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { alignProps, calibrate } from "../src/drafter/calibrate.js";
+import { alignProps, auditMints, calibrate, normalizeOverrides } from "../src/drafter/calibrate.js";
 
 // SC-0063 Phase B acceptance: the calibration scorer is alignment-aware and smooths nothing.
 
@@ -82,7 +82,72 @@ describe("calibrate — field scoring honesty", () => {
     const c = calibrate(drafted, gold);
     expect(c.level1.arc_elements).toMatchObject({ exact: false, shared: ["B"], goldOnly: ["C"], draftOnly: ["A"] });
     expect(c.alignment.props.goldOnly).toEqual(["P2@3:1b"]);
-    expect(c.notes.join(" ")).toMatch(/numbering skew/);
+    expect(c.notes.join(" ")).toMatch(/TRANSLATED into draft numbering/);
+  });
+});
+
+describe("calibrate — link de-skew and format normalization", () => {
+  it("translates gold link targets into draft numbering before comparing", () => {
+    const base = (props: any[]) => ({
+      header: {},
+      pericope_classification: {},
+      level_1: { arc_elements: [], context_elements: [], tone_elements: [], pace_elements: [], communicative_function_elements: [] },
+      level_2_scenes: [],
+      level_3_propositions: props,
+    });
+    const drafted = base([
+      { prop_id: "P1", verse_anchor: "1:1a", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: {} },
+      { prop_id: "P2", verse_anchor: "1:1b", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: { caused_by: "P1" } },
+    ]);
+    const gold = base([
+      { prop_id: "P1", verse_anchor: "1:1a", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: {} },
+      { prop_id: "P2", verse_anchor: "1:1a", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: {} }, // gold-only
+      { prop_id: "P3", verse_anchor: "1:1b", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: { caused_by: "P1" } },
+    ]);
+    const c = calibrate(drafted, gold);
+    // drafted P2 ↔ gold P3; gold's caused_by P1 translates to draft P1 — a MATCH despite the skew
+    expect(c.fields.inter_proposition_links).toMatchObject({ matched: 2, divergent: 0 });
+  });
+
+  it("normalizeOverrides: null ≡ [] ≡ absent, explicit-null entry keys dropped, judgment preserved", () => {
+    expect(normalizeOverrides({ _note: "x", scene_level: null, moment_level: [] })).toEqual({ scene_level: null, moment_level: null });
+    expect(
+      normalizeOverrides({ scene_level: [{ scene_id: "S2", override_value: "INTIMATE", genre_override: null }], moment_level: null }),
+    ).toEqual({ scene_level: [{ scene_id: "S2", override_value: "INTIMATE" }], moment_level: null });
+  });
+});
+
+describe("auditMints — silent minting becomes mechanical findings", () => {
+  it("classifies approved / declared / undeclared / closed-violation tokens", () => {
+    const merged = {
+      level_1: { arc_elements: ["AFFLICTION", "TOTALLY_NEW_ARC"] },
+      level_2_scenes: [
+        {
+          scene_id: "S1",
+          scene_kind: "OPENING_CHRONICLE_SCENE",
+          beings_in_scene: { entries: [{ being_id: "B1", presence: "REFERENCED (off-stage)", role_in_scene: "CLAN" }] },
+        },
+      ],
+      level_3_propositions: [
+        {
+          prop_id: "P1",
+          proposition_kind: "MIGRATED",
+          event_specific_slots: {
+            action: "ARRIVED_AT",
+            speech_act: "STATES_AS_TRUE",
+            parts: [{ action: "NEVER_SEEN_ACTION", speech_act: "IMPERATIVE" }],
+          },
+        },
+      ],
+    };
+    const fills = {
+      fills: [{ location: "/level_1/arc_elements", value_json: "[]", note: null, vocabulary_additions: [{ axis: "arc_element", value: "TOTALLY_NEW_ARC", justification: "j" }] }],
+      remarks: null,
+    };
+    const a = auditMints(merged, fills as any);
+    expect(a.declared.map((m) => m.value)).toEqual(["TOTALLY_NEW_ARC"]);
+    expect(a.undeclared.map((m) => m.value).sort()).toEqual(["NEVER_SEEN_ACTION", "REFERENCED (off-stage)"]);
+    expect(a.closedViolations.map((m) => m.value)).toEqual(["IMPERATIVE"]);
   });
 });
 

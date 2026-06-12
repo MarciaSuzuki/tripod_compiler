@@ -12,8 +12,12 @@ import { DRAFT_OUTPUT_SCHEMA, type DraftOutput } from "./fills.js";
  */
 
 export const DRAFTER_MODEL = "claude-opus-4-8";
-/** Generous room for fills + adaptive thinking on the largest pericopes; streaming avoids HTTP timeouts. */
-const MAX_TOKENS = 32000;
+/**
+ * Room for fills + adaptive thinking on the largest pericopes (thinking tokens count toward
+ * max_tokens; the first P02 live call truncated at 32k — measured lesson). Streaming avoids
+ * HTTP timeouts at this size.
+ */
+const MAX_TOKENS = 64000;
 
 export class DrafterKeyMissingError extends Error {
   constructor() {
@@ -97,6 +101,11 @@ export async function draftViaApi(req: DraftRequest): Promise<DraftCallResult> {
     output_config: { format: { type: "json_schema", schema: DRAFT_OUTPUT_SCHEMA } },
   } as any);
   const final = await stream.finalMessage();
+  const u: any = final.usage;
+  const spent = `usage in ${u?.input_tokens} · out ${u?.output_tokens} · cache-write ${u?.cache_creation_input_tokens ?? 0} · cache-read ${u?.cache_read_input_tokens ?? 0}`;
+  if (final.stop_reason === "max_tokens") {
+    throw new Error(`drafter response TRUNCATED at max_tokens=${MAX_TOKENS} (${spent}) — raise MAX_TOKENS; the call was paid but unusable`);
+  }
   const rawText = final.content
     .filter((b: any) => b.type === "text")
     .map((b: any) => b.text)
@@ -105,7 +114,7 @@ export async function draftViaApi(req: DraftRequest): Promise<DraftCallResult> {
   try {
     output = JSON.parse(rawText) as DraftOutput;
   } catch (e) {
-    throw new Error(`drafter response was not parseable JSON despite structured output (stop_reason ${final.stop_reason}): ${String(e)}`);
+    throw new Error(`drafter response was not parseable JSON despite structured output (stop_reason ${final.stop_reason}; ${spent}): ${String(e)}`);
   }
   return { output, rawText, model: final.model, usage: final.usage as any };
 }

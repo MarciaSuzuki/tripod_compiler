@@ -1,0 +1,557 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"ruth_pilot_BCD_v0_3\"",
+      "note": "Ruth pericope — canonical BCD ref per pinned convention.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"Section 1 marks INTIMATE for the close mother/daughters-in-law road dialogue in Scenes 2-3; Scene 1 stays in the pericope value INFORMAL_CASUAL. No NARRATIVE_FRAMING moment overrides in this pericope.\",\"scene_level\":[{\"scene_id\":\"S2\",\"override_value\":\"INTIMATE\"},{\"scene_id\":\"S3\",\"override_value\":\"INTIMATE\"}],\"moment_level\":null}",
+      "note": "MM Section 1 explicitly: Scenes 2 and 3 shift to INTIMATE (mother and daughters-in-law, kiss, weeping, 'my daughters'); the heavy blessings stay in the close family key, not ceremonial. Scene 1 stays plain.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"NEWS_RECEPTION\",\"RETURN_INITIATED\",\"BLESSING_APPEAL\",\"ARGUED_DISMISSAL\",\"SEPARATION_AND_CHOICE\",\"CLINGING\"]",
+      "note": "Order follows the prose: news of bread, return begins, first appeal as blessing, second appeal as argument, the parting, Ruth's hold.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"PRIOR_PERICOPE_CARRY_FORWARD\",\"KINSHIP_CONTEXT\",\"DIVINE_CONTEXT\",\"PHYSICAL_LOCATION\",\"TRAJECTORY_CONTEXT_ON_RETURN_ROAD\"]",
+      "note": "Picks up P01; three widows (kinship); YHWH gives bread (divine); the road from Moab toward Judah (location + return-road trajectory).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"ECONOMICAL\",\"INTIMATE\",\"WEIGHTED\",\"UNRESOLVED_AT_CLOSE\"]",
+      "note": "vv6-7 quick/plain (economical); from 1:8 close-up (intimate) and heavy with feeling (weighted); Naomi's charge against God left unanswered as the company splits.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"BRISK\",\"SLOWED\",\"NARROWS\"]",
+      "note": "vv6-7 brisk (one thing after another); from 1:8 the telling slows and moves in close.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"ESTABLISHES\",\"OPENS\",\"CLOSES\",\"STAGES\",\"PLANTS\"]",
+      "note": "Establishes first divine act; opens three questions; closes the 1:1 bread irony; stages Ruth's distinguishing choice; plants Naomi's reading of her suffering (revisited 1:20-21).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"MOTHER_IN_LAW\"",
+      "note": "Naomi's defining function across this pericope relative to Orpah and Ruth; she hears and initiates the return.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "Named plainly; no marked reference.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH acts off-stage: visits his people and gives bread.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/4/role_in_scene",
+      "value_json": "\"PEOPLE\"",
+      "note": "The Israelite collective in Judah, 'his people' — recipients of YHWH's provision.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/4/referential_form",
+      "value_json": "null",
+      "note": "'his people' (ammo) is relational but not a register-critical marked naming-down; left null.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/places_in_scene/entries/2/place_id",
+      "value_json": "\"PL_HA_DEREKH_THE_ROAD\"",
+      "note": "'the road' (ha-derekh) has no wikilink/registry code in the MM. Proposed new PL code — reviewer must confirm/register in BCD. Used consistently across S1/S2/S3.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"DEPARTURE_SCENE\"",
+      "note": "Scene combines news-hearing and setting out; structural payload is 'the return road begins' (arc NEWS_RECEPTION + RETURN_INITIATED). REPORT_SCENE is a reasonable alternative if the reviewer wants to foreground the news-hearing.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B2\",\"role_in_scene\":\"HUSBAND\",\"presence\":\"REFERENCED\"}]",
+      "note": "Elimelech is named in S1 relationship prose ('widow of Elimelech') but absent from the 3A list; appended as REFERENCED.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"MOTHER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH invoked twice as blesser (hesed-giver, rest-giver).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/4/role_in_scene",
+      "value_json": "\"HUSBAND\"",
+      "note": "This entry (B2) stands in the 3A list for the deceased collectively (Elimelech + Mahlon + Chilion, 'the dead'); role given from B2's relation as Naomi's husband.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/4/referential_form",
+      "value_json": "\"COLLECTIVELY_THE_DEAD\"",
+      "note": "Marked reference: the named dead are referenced only as ha-metim ('the dead') in Naomi's blessing-grounding clause — register-relevant naming-down.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/5/role_in_scene",
+      "value_json": "\"PEOPLE\"",
+      "note": "Recipients of the daughters' counter-declaration, 'your people' (1:10).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/5/referential_form",
+      "value_json": "null",
+      "note": "'your people' (le-ammekh) relational; left null.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/places_in_scene/entries/1/place_id",
+      "value_json": "\"PL_HA_DEREKH_THE_ROAD\"",
+      "note": "Same proposed road code as S1; reviewer to register.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"APPEAL_SCENE\"",
+      "note": "Naomi's first plea (directive + double blessing) and the daughters' refusal.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B4\",\"role_in_scene\":\"SON\",\"presence\":\"REFERENCED\"},{\"being_id\":\"B5\",\"role_in_scene\":\"SON\",\"presence\":\"REFERENCED\"}]",
+      "note": "Mahlon and Chilion are referenced within 'the dead' in the 3A prose but lack their own skeleton entries; appended as REFERENCED.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"MOTHER_IN_LAW\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Orpah, who kisses and turns back. (Skeleton presence 'PRESENT_BECOMES_DEPARTS' is deterministic/read-only; flagging that this value is not in the approved presence_value list — reviewer's call.)",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Ruth, who clings.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/2/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"DIVINE_AGENT\"",
+      "note": "YHWH, blamed by Naomi for her bitterness (1:13).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/places_in_scene/entries/0/place_id",
+      "value_json": "\"PL_HA_DEREKH_THE_ROAD\"",
+      "note": "Same proposed road code; reviewer to register.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/2/scene_kind",
+      "value_json": "\"SEPARATION_SCENE\"",
+      "note": "S3 carries a second appeal but its defining structural payload is the parting-of-ways (Orpah kisses and turns back; Ruth clings) — arc SEPARATION_AND_CHOICE + CLINGING. APPEAL_SCENE is already used for S2 and would lose the split; no existing scene_kind captures the division. If the reviewer prefers reuse, APPEAL_SCENE is the fallback.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "SEPARATION_SCENE",
+          "justification": "MM Scene 3 climaxes in the company breaking in two — Orpah's farewell kiss and departure vs Ruth's clinging; no approved scene_kind (APPEAL_SCENE, DEPARTURE_SCENE) captures a parting-of-ways where one stays and one goes."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"HEARD_REPORT\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"hearer\":\"B3\",\"hearing_location\":\"PL2\",\"report_content\":\"YHWH_GAVE_BREAD_TO_HIS_PEOPLE\",\"divine_actor\":\"B10\",\"divine_action\":\"PAQAD_VISITED\",\"people_provisioned\":\"B31\",\"provision\":\"CB_0012\",\"provision_place\":\"PL_LAND_OF_JUDAH\"}",
+      "note": "paqad (covenant-visit) carried in divine_action; bread = CB_0012; the act-place 'land of Judah' is implied in the MM.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": "The news triggers the rising/departure.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"DEPARTED\"",
+      "note": "Arising + going out + walking, all in service of returning; they set out but have not arrived, so DEPARTED rather than RETURNED.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"journey_components\":[{\"action\":\"AROSE_TO_RETURN\",\"traveler\":\"B3\",\"companions\":[\"B8\",\"B9\"],\"origin\":\"PL2\",\"purpose\":\"RETURN\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"WENT_OUT\",\"departer\":\"B3\",\"accompanied_by\":[\"B8\",\"B9\"],\"origin\":\"PLACE_WHERE_SHE_HAD_BEEN\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"WALKED\",\"walkers\":[\"B3\",\"B8\",\"B9\"],\"path\":\"PL_HA_DEREKH_THE_ROAD\",\"destination\":\"PL_LAND_OF_JUDAH\",\"speech_act\":\"STATES_AS_TRUE\"}]}",
+      "note": "Multi-event proposition decomposed into three narrated components (arise / go out / walk), each carrying STATES_AS_TRUE per component-speech-act rule.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P1\",\"forward_link_to\":\"P3\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/scene_link",
+      "value_json": "\"S1\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"APPEAL\"",
+      "note": "First directive plea (go / return).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"addressees\":[\"B8\",\"B9\"],\"directive_components\":[{\"action\":\"DIRECTED\",\"content\":\"GO\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"DIRECTED\",\"content\":\"RETURN\",\"return_target\":\"PL_EACH_HER_MOTHERS_HOUSE\",\"distributive_form\":\"EACH_TO_HER_OWN_MOTHERS_HOUSE\",\"speech_act\":\"DIRECTS_HEARER_TO_RETURN\"}]}",
+      "note": "Distributive 'each to her own mother's house' preserved as an explicit slot.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P4\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"BLESSING\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"blesser\":\"B3\",\"blessed_parties\":[\"B8\",\"B9\"],\"invoked_divine\":\"B10\",\"blessing_content\":\"HESED\",\"grounding\":\"PRIOR_HESED_OF_DAUGHTERS\",\"prior_hesed_recipients\":[\"B2\",\"B4\",\"B5\"],\"dead_referential_form\":\"COLLECTIVELY_THE_DEAD\",\"speech_act\":\"WISHES_FOR_HEARER\"}",
+      "note": "hesed-blessing grounded in the daughters' prior hesed toward 'the dead' (Elimelech/Mahlon/Chilion) and Naomi.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"BLESSING\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"blesser\":\"B3\",\"blessed_parties\":[\"B8\",\"B9\"],\"invoked_divine\":\"B10\",\"blessing_content\":\"MENUCHA_REST\",\"rest_locus\":\"HOUSE_OF_HER_HUSBAND_EACH\",\"speech_act\":\"WISHES_FOR_HEARER\"}",
+      "note": "Second blessing-wish: rest (menucha) each in a husband's house.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"paired_with\":\"P4\",\"forward_link_to\":\"P6\"}",
+      "note": "Paired with the hesed-blessing as the two-part double blessing.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"KISSED\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"farewell_components\":[{\"action\":\"KISSED\",\"kisser\":\"B3\",\"kissed\":[\"B8\",\"B9\"],\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"WEPT_ALOUD\",\"weepers\":[\"B8\",\"B9\"],\"speech_act\":\"STATES_AS_TRUE\"}]}",
+      "note": "Kiss then weeping-aloud decomposed into two narrated components.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P7\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Daughters' refusal as a counter-declaration.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"refusers\":[\"B8\",\"B9\"],\"addressee\":\"B3\",\"refusal_target\":\"DIRECTIVE_TO_RETURN_TO_MOTHERS_HOUSE\",\"counter_action\":\"RETURN_WITH_NAOMI\",\"counter_destination\":\"B31\",\"speech_act\":\"REFUSES_REQUEST_WITH_COUNTER_DECLARATION\"}",
+      "note": "counter_destination = Naomi's people (B31).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P3\",\"forward_link_to\":\"P8\"}",
+      "note": "Refusal responds to the directive at P3.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"APPEAL\"",
+      "note": "Directive with rhetorical dissuasion.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"addressees\":[\"B8\",\"B9\"],\"address_form\":\"MY_DAUGHTERS\",\"speech_components\":[{\"action\":\"DIRECTED\",\"content\":\"TURN_BACK\",\"speech_act\":\"DIRECTS_HEARER_TO_RETURN\"},{\"action\":\"ASKED\",\"content\":\"WHY_WOULD_YOU_GO_WITH_ME\",\"speech_act\":\"ASKS_RHETORICAL_QUESTION_AS_DISSUASION\"},{\"action\":\"ASKED\",\"content\":\"HAVE_I_YET_SONS_IN_MY_WOMB\",\"speech_act\":\"ASKS_RHETORICAL_QUESTION_AS_DISSUASION\"}],\"dissuasion_target\":\"LEVIRATE_REMARRIAGE_THROUGH_NAOMI\"}",
+      "note": "Directive plus two rhetorical dissuasion questions as components.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P7\",\"forward_link_to\":\"P9\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"APPEAL\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"addressees\":[\"B8\",\"B9\"],\"speech_components\":[{\"action\":\"DIRECTED\",\"content\":\"TURN_BACK\",\"speech_act\":\"DIRECTS_HEARER_TO_RETURN\"},{\"action\":\"DIRECTED\",\"content\":\"GO\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"STATED\",\"content\":\"TOO_OLD_FOR_A_HUSBAND\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"STATED\",\"content\":\"EVEN_IF_HUSBAND_TONIGHT_AND_BORE_SONS\",\"speech_act\":\"STATES_HOPED_FOR_CONDITION\"}]}",
+      "note": "Directive + impossibility statement + hypothetical concession as components.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P8\",\"forward_link_to\":\"P10\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/scene_link",
+      "value_json": "\"S3\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/proposition_kind",
+      "value_json": "\"APPEAL\"",
+      "note": "Twin rhetorical questions of dissuasion within Naomi's argued plea. (SPOKE is a possible alternative since these are pure questions; APPEAL chosen to keep the persuasive function.)",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"addressees\":[\"B8\",\"B9\"],\"question_components\":[{\"action\":\"ASKED\",\"content\":\"WOULD_YOU_WAIT_FOR_THE_SONS_TO_GROW\",\"speech_act\":\"ASKS_RHETORICAL_QUESTION_AS_DISSUASION\"},{\"action\":\"ASKED\",\"content\":\"WOULD_YOU_KEEP_FROM_MARRYING_MEANWHILE\",\"speech_act\":\"ASKS_RHETORICAL_QUESTION_AS_DISSUASION\"}],\"dissuasion_target\":\"IMPOSSIBILITY_OF_WAITING_ON_HYPOTHETICAL_SONS\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"forward_link_to\":\"P11\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/9/scene_link",
+      "value_json": "\"S3\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/proposition_kind",
+      "value_json": "\"LAMENT\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"addressees\":[\"B8\",\"B9\"],\"address_form\":\"MY_DAUGHTERS\",\"lament_comparison\":\"MORE_BITTER_FOR_ME_THAN_FOR_YOU\",\"affliction_source\":\"B10\",\"affliction_form\":\"HAND_OF_YHWH_GONE_OUT_AGAINST_ME\",\"speech_act\":\"ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT\"}",
+      "note": "Naomi lays her bitterness on the hand of YHWH (CB_0015); foreshadows 1:20-21.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/10/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P9\",\"forward_link_to\":\"P12\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/proposition_kind",
+      "value_json": "\"WEPT\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/event_specific_slots",
+      "value_json": "{\"weepers\":[\"B8\",\"B9\"],\"manner\":\"LIFTED_VOICE_AND_WEPT_AGAIN\"}",
+      "note": "Single narrated act; explicitly parallel to the weeping at P6 (MM Q/A).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/11/inter_proposition_links",
+      "value_json": "{\"paired_with\":\"P6\",\"forward_link_to\":\"P13\"}",
+      "note": "Paired with the weeping at P6.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/proposition_kind",
+      "value_json": "\"KISSED\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/event_specific_slots",
+      "value_json": "{\"parting_components\":[{\"action\":\"KISSED\",\"kisser\":\"B8\",\"kissed\":\"B3\",\"speech_act\":\"STATES_AS_TRUE\"},{\"action\":\"TURNED_BACK\",\"departer\":\"B8\",\"speech_act\":\"STATES_AS_TRUE\"}]}",
+      "note": "Orpah's farewell kiss then her turning back, decomposed into two components.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/12/inter_proposition_links",
+      "value_json": "{\"paired_with\":\"P14\",\"forward_link_to\":\"P14\"}",
+      "note": "Orpah's turning-back is set in deliberate contrast with Ruth's clinging at P14.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/proposition_kind",
+      "value_json": "\"CLUNG_TO\"",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/event_specific_slots",
+      "value_json": "{\"clinger\":\"B9\",\"clung_to\":\"B3\",\"manner\":\"DAVQAH_CLUNG_FAST\"}",
+      "note": "Ruth's clinging (devek); FIG_0012 image-rhyme opens here (closes at P07/2:23).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/13/inter_proposition_links",
+      "value_json": "{\"paired_with\":\"P13\"}",
+      "note": "The defining contrast: Ruth clings where Orpah turned back (P13).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "Note-only granularity gap. Six propositions carry multi-event surface content decomposed INSIDE their event_specific_slots via component arrays: P2 (arise/go-out/walk = journey_components), P6 (kiss/weep = farewell_components), P8 and P9 (directive + dissuasion/concession = speech_components), P10 (two rhetorical questions = question_components), P13 (kiss/turn-back = parting_components). Each component carries its own speech_act. No proposition was split into new top-level propositions; MM-granularity preserved.",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "One scene_kind mint (SEPARATION_SCENE for S3) with justification — APPEAL_SCENE is the fallback if reuse is preferred. A new place code PL_HA_DEREKH_THE_ROAD is proposed for 'the road' (ha-derekh), which has no registry wikilink; reviewer must register it. Register overrides encode the MM's INTIMATE shift for Scenes 2-3. Flagging that the deterministic presence value 'PRESENT_BECOMES_DEPARTS' on Orpah (S3) is not in the approved presence_value list — read-only for me, reviewer's call. referential_form is marked only for the collectively-named dead in S2 (COLLECTIVELY_THE_DEAD); all other references left null as unmarked. Several of Naomi's propositions are tagged APPEAL since they form one sustained two-wave plea; P10 (pure rhetorical questions) could alternatively be SPOKE."
+}

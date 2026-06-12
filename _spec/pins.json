@@ -138,8 +138,8 @@
       "sha256": "2bd1a6cdcdee6d07f8da25ba56208a92f12045a1a947d1716e9823b765014cf5"
     },
     "drafter/fm-drafter-prompt.md": {
-      "version": "fm-drafter-0.1.0",
-      "sha256": "aa00da253f46d890b7bd66ac4c673e763f152d84776ac40a459a847d0a111241"
+      "version": "fm-drafter-0.1.1",
+      "sha256": "739eee351d3dd9dd8e903dd282aae932df6bad98dfa0ff703e1c0fd779ec8c82"
     }
   }
 }

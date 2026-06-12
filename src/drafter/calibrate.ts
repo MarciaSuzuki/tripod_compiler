@@ -70,6 +70,36 @@ function arrayScore(drafted: string[], gold: string[]): ArrayScore {
   };
 }
 
+/**
+ * Format-noise normalization for register_overrides: `null` ≡ `[]` for each level, `_note`
+ * dropped, and explicit-null keys inside entries dropped (gold styles vary: P01 writes
+ * `scene_level: null`, P02 writes `moment_level: []`; entries may spell `genre_override: null`
+ * or omit it). The JUDGMENT — which scenes/moments carry which override values — is preserved.
+ */
+export function normalizeOverrides(ro: any): any {
+  if (!ro || typeof ro !== "object") return { scene_level: null, moment_level: null };
+  const lvl = (v: any) => {
+    if (!Array.isArray(v) || v.length === 0) return null;
+    return v.map((e: any) => {
+      const out: Record<string, unknown> = {};
+      for (const [k, val] of Object.entries(e ?? {})) if (val !== null && val !== undefined) out[k] = val;
+      return out;
+    });
+  };
+  return { scene_level: lvl(ro.scene_level), moment_level: lvl(ro.moment_level) };
+}
+
+/** Translate a gold links object's prop-id targets into DRAFT numbering via the alignment map. */
+function translateLinks(links: any, goldToDraft: Map<string, string>): any {
+  if (!links || typeof links !== "object") return links;
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(links)) {
+    if (typeof v === "string" && /^P\d+$/.test(v)) out[k] = goldToDraft.get(v) ?? `${v}(gold-only)`;
+    else out[k] = v;
+  }
+  return out;
+}
+
 /** Pair two proposition lists by verse_anchor groups, preserving order within a group. */
 export function alignProps(drafted: any[], gold: any[]): Array<{ d?: any; g?: any }> {
   const out: Array<{ d?: any; g?: any }> = [];
@@ -105,11 +135,13 @@ export function calibrate(drafted: any, gold: any): Calibration {
 
   // header + classification
   score(c, "book_context_ref", "/header", drafted.header?.book_context_ref, gold.header?.book_context_ref);
-  const dro = { ...(drafted.pericope_classification?.register_overrides ?? {}) };
-  const gro = { ...(gold.pericope_classification?.register_overrides ?? {}) };
-  delete (dro as any)._note;
-  delete (gro as any)._note;
-  score(c, "register_overrides", "/pericope_classification", dro, gro);
+  score(
+    c,
+    "register_overrides",
+    "/pericope_classification",
+    normalizeOverrides(drafted.pericope_classification?.register_overrides),
+    normalizeOverrides(gold.pericope_classification?.register_overrides),
+  );
 
   // level_1 arrays — set comparison (order is prose-order, membership is the judgment)
   for (const k of ["arc_elements", "context_elements", "tone_elements", "pace_elements", "communicative_function_elements"]) {
@@ -144,6 +176,8 @@ export function calibrate(drafted: any, gold: any): Calibration {
 
   // propositions by verse_anchor groups
   const pairs = alignProps(drafted.level_3_propositions ?? [], gold.level_3_propositions ?? []);
+  const goldToDraft = new Map<string, string>();
+  for (const { d, g } of pairs) if (d && g) goldToDraft.set(String(g.prop_id), String(d.prop_id));
   let countsDiffer = false;
   for (const { d, g } of pairs) {
     if (d && g) {
@@ -151,7 +185,9 @@ export function calibrate(drafted: any, gold: any): Calibration {
       const at = `/${d.prop_id}↔${g.prop_id}@${g.verse_anchor}`;
       score(c, "proposition_kind", at, d.proposition_kind, g.proposition_kind);
       score(c, "event_specific_slots", at, d.event_specific_slots, g.event_specific_slots);
-      score(c, "inter_proposition_links", at, d.inter_proposition_links, g.inter_proposition_links);
+      // links compared in DRAFT numbering: gold targets translated through the alignment map,
+      // so a gold decomposition's +1 shift doesn't masquerade as a wrong link judgment.
+      score(c, "inter_proposition_links", at, d.inter_proposition_links, translateLinks(g.inter_proposition_links, goldToDraft));
     } else if (d) c.alignment.props.draftOnly.push(`${d.prop_id}@${d.verse_anchor}`);
     else if (g) {
       c.alignment.props.goldOnly.push(`${g.prop_id}@${g.verse_anchor}`);
@@ -160,9 +196,104 @@ export function calibrate(drafted: any, gold: any): Calibration {
   }
   if (countsDiffer)
     c.notes.push(
-      "gold decomposed beyond map granularity (gold-only props above) — inter_proposition_links comparisons may carry prop-id numbering skew; read link divergences with that in mind",
+      "gold decomposed beyond map granularity (gold-only props above) — gold link targets were TRANSLATED into draft numbering before comparison; a target pointing at a gold-only prop reads `Pn(gold-only)`",
     );
   return c;
+}
+
+// ---------------------------------------------------------------------------
+// Mint audit: every axis-typed token in a merged draft, cross-checked against the approved
+// enumerations + the closed lists + the fills' declared vocabulary_additions. Silent minting
+// becomes a mechanical finding, not a prompt hope. (SC-0063 Phase B; the L2-generality data.)
+// ---------------------------------------------------------------------------
+
+import { loadSpecJson } from "../spec/load.js";
+import type { DraftOutput } from "./fills.js";
+
+export interface MintRecord {
+  axis: string;
+  value: string;
+  where: string;
+}
+
+export interface MintAudit {
+  checked: number;
+  declared: MintRecord[];
+  undeclared: MintRecord[];
+  closedViolations: MintRecord[];
+}
+
+const LEVEL1_AXIS: Record<string, string> = {
+  arc_elements: "arc_element",
+  context_elements: "context_element",
+  tone_elements: "tone_element",
+  pace_elements: "pace_element",
+  communicative_function_elements: "communicative_function_element",
+};
+
+function collectActionsAndSpeechActs(v: unknown, where: string, out: Array<{ key: "action" | "speech_act"; value: string; where: string }>): void {
+  if (Array.isArray(v)) {
+    v.forEach((x, i) => collectActionsAndSpeechActs(x, `${where}/${i}`, out));
+    return;
+  }
+  if (v && typeof v === "object") {
+    for (const [k, x] of Object.entries(v)) {
+      if ((k === "action" || k === "speech_act") && typeof x === "string") out.push({ key: k, value: x, where: `${where}/${k}` });
+      else collectActionsAndSpeechActs(x, `${where}/${k}`, out);
+    }
+  }
+}
+
+export function auditMints(merged: any, fills: DraftOutput): MintAudit {
+  const ae = loadSpecJson<any>("approved-enumerations.json");
+  const approved = new Map<string, Set<string>>();
+  for (const [axis, entries] of Object.entries<any>(ae.axes ?? {})) approved.set(axis, new Set((entries as any[]).map((e) => e.value)));
+  const rules = loadSpecJson<any>("validation-rules.json");
+  const speechActs = new Set<string>(rules.closed_lists?.SPEECH_ACT ?? []);
+  const declaredSet = new Set<string>();
+  for (const f of fills.fills) for (const v of f.vocabulary_additions ?? []) declaredSet.add(`${v.axis} ${v.value}`);
+
+  const audit: MintAudit = { checked: 0, declared: [], undeclared: [], closedViolations: [] };
+  const check = (axis: string, value: unknown, where: string) => {
+    if (typeof value !== "string" || !value.length) return;
+    audit.checked++;
+    if (approved.get(axis)?.has(value)) return;
+    const rec = { axis, value, where };
+    if (declaredSet.has(`${axis} ${value}`)) audit.declared.push(rec);
+    else audit.undeclared.push(rec);
+  };
+
+  for (const [field, axis] of Object.entries(LEVEL1_AXIS)) for (const v of merged.level_1?.[field] ?? []) check(axis, v, `/level_1/${field}`);
+  for (const sc of merged.level_2_scenes ?? []) {
+    check("scene_kind", sc.scene_kind, `/${sc.scene_id}/scene_kind`);
+    for (const b of sc.beings_in_scene?.entries ?? []) {
+      check("presence_value", b.presence, `/${sc.scene_id}/${b.being_id}/presence`);
+      check("role_in_scene_being", b.role_in_scene, `/${sc.scene_id}/${b.being_id}/role_in_scene`);
+    }
+  }
+  for (const p of merged.level_3_propositions ?? []) {
+    check("proposition_kind", p.proposition_kind, `/${p.prop_id}/proposition_kind`);
+    const hits: Array<{ key: "action" | "speech_act"; value: string; where: string }> = [];
+    collectActionsAndSpeechActs(p.event_specific_slots, `/${p.prop_id}/event_specific_slots`, hits);
+    for (const h of hits) {
+      if (h.key === "action") check("action", h.value, h.where);
+      else {
+        audit.checked++;
+        if (!speechActs.has(h.value)) audit.closedViolations.push({ axis: "SPEECH_ACT(closed)", value: h.value, where: h.where });
+      }
+    }
+  }
+  return audit;
+}
+
+export function formatMintAudit(a: MintAudit): string {
+  const L: string[] = [
+    `mint audit: ${a.checked} axis tokens checked · ${a.declared.length} declared mint(s) · ${a.undeclared.length} UNDECLARED mint(s) · ${a.closedViolations.length} closed-list violation(s)`,
+  ];
+  for (const m of a.declared) L.push(`   ◆ declared  ${m.axis} · ${m.value}  @ ${m.where}`);
+  for (const m of a.undeclared) L.push(`   ✗ UNDECLARED  ${m.axis} · ${m.value}  @ ${m.where}`);
+  for (const m of a.closedViolations) L.push(`   ‼ CLOSED  ${m.axis} · ${m.value}  @ ${m.where}`);
+  return L.join("\n");
 }
 
 export function formatCalibration(c: Calibration, label: string): string {
