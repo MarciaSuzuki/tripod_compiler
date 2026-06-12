@@ -1,0 +1,13 @@
+{
+  "kind": "mechanical conformance amendment (pre-ruling; flagged for confirmation in docs/SC-0063-BATCH-RULING-SHEET.md §E-2)",
+  "by": "Architect, SC-0063 Phase D, 2026-06-12",
+  "edits": [
+    {
+      "where": "/pericope_classification/register_overrides/moment_level/0",
+      "from": "{\"verse\": \"1:2\", \"framing_override\": \"ELDER_AUTHORITY\"}",
+      "to": "{\"verse\": \"1:2\", \"override_value\": \"ELDER_AUTHORITY\"}",
+      "why": "The drafter's judgment (YHWH's command at 1:2 lifts to ELDER_AUTHORITY, a legitimate REGISTER member, at moment level) is preserved verbatim; it was written into the wrong KEY — framing_override carries the NARRATIVE_FRAMING axis (closed: COMMUNITY_MEMORY), override_value carries register values. The explicit framing_override:null left behind was dropped (that key's schema has no null branch, unlike genre_override). The drafter's note is intact in fills.json."
+    }
+  ],
+  "prompt_followup": "none needed — the override-entry key split is already in fm-drafter prompt §4; tabled as a watch item if it recurs."
+}
