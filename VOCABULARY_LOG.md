@@ -98,3 +98,9 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
   quarantined value is no longer a settled type — its recurrence in P07–P14 is the revisit signal.** (Lifting
   a value OUT of quarantine — promote or collapse — is a future governed decision, logged here when it happens.)
 - P08-COMPILATION-LOG: promoted 6 value(s) [scene_kind:CONSENT_SCENE, role_in_scene_being:PLANNER, arc_element:REST_SEEKING_INITIATIVE, arc_element:NIGHT_PLAN_INSTRUCTION, arc_element:INITIATIVE_HANDOFF, arc_element:TOTAL_CONSENT] → _spec/approved-enumerations.json (SC-0063)
+- P07-SC-0064-B1-RULING-LOG: promoted 1 value(s) [action:TOOK] → _spec/approved-enumerations.json (SC-0064)
+- P09-SC-0064-B1-RULING-LOG: promoted 2 value(s) [action:UNCOVERED_FEET, action:LAY_DOWN] → _spec/approved-enumerations.json (SC-0064)
+- P11-SC-0064-B1-RULING-LOG: promoted 2 value(s) [action:DREW_OFF_SANDAL, tone_element:PROCEDURAL] → _spec/approved-enumerations.json (SC-0064)
+- J02-SC-0064-B1-RULING-LOG: promoted 1 value(s) [tone_element:IRONIC] → _spec/approved-enumerations.json (SC-0064)
+- J04-SC-0064-B1-RULING-LOG: promoted 5 value(s) [action:AROSE, action:REMOVED_ROBE, action:DONNED_SACKCLOTH, action:SAT_ON_ASHES, tone_element:WONDER_UNDERSTATED] → _spec/approved-enumerations.json (SC-0064)
+- J05-SC-0064-B1-RULING-LOG: promoted 1 value(s) [tone_element:HEATED] → _spec/approved-enumerations.json (SC-0064)

@@ -19,15 +19,15 @@
       "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
     },
     "approved-enumerations.json": {
-      "version": "v0.11",
-      "sha256": "5f4908a21952e619e18ff37d9c9ed8fe629a2467a25e0427d12038412b3d3ca0"
+      "version": "v0.12",
+      "sha256": "7927188a5872e4556f973bd063bda3d1bf2db08801043d2ebc00303393ed7c80"
     },
     "quarantined-vocabulary.json": {
       "version": "0.2.0",
       "sha256": "dab5f57ba152d83686181c4d56281c07e5fb5cc9299c54426b3a4522f00eecf8"
     }
   },
-  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. The Concept-Bank + Figure-Registry indices are GLOBAL / canon-wide (registry/concepts.json + figures.json — SC-0037: one code per concept/figure across the whole Bible, so the Facilitator anchors them consistently everywhere), vendored OFFLINE by extractor/build_concept_figure_registry.py from the canon-wide concepts/ + figures/ notes so `tripod id-check` can verify CB_/FIG_ reference-integrity + name-binding. (The per-book CAST — beings/places/objects, the *.aliases.json tables — stays per-book.) All pinned by sha256 so coverage reconciliation + id-check are reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off — edits are recorded (SC-ref + provenance) and re-pinned.",
+  "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. The Concept-Bank + Figure-Registry indices are GLOBAL / canon-wide (registry/concepts.json + figures.json \u2014 SC-0037: one code per concept/figure across the whole Bible, so the Facilitator anchors them consistently everywhere), vendored OFFLINE by extractor/build_concept_figure_registry.py from the canon-wide concepts/ + figures/ notes so `tripod id-check` can verify CB_/FIG_ reference-integrity + name-binding. (The per-book CAST \u2014 beings/places/objects, the *.aliases.json tables \u2014 stays per-book.) All pinned by sha256 so coverage reconciliation + id-check are reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off \u2014 edits are recorded (SC-ref + provenance) and re-pinned.",
   "sources": {
     "coverage-exceptions.json": {
       "version": "0.1.0",

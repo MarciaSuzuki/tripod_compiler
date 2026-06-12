@@ -37,6 +37,8 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 
 > Justifications below are verbatim-from-fills (regenerated for SC-0064 §B prep, 2026-06-12 — the original sheet clipped 32 of them and showed only the first occurrence's text; ⚠ margin notes are evaluator-surfaced, architect-verified). Source per pericope: `_working/<id>/drafts/run-*/fills.json` (latest run).
 
+**Sitting B1 RULED (Marcia, 2026-06-12): `action` (7) + `tone_element` (4) + §D's TOOK — all 12 ticked** → promoted via per-pericope ruling logs (`_working/<id>/<id>-SC-0064-B1-RULING-LOG.md`), approved-enumerations **v0.12** re-pinned both trees. The dual-axis `proposition_kind` LAY_DOWN was **DEFERRED** to its axis sitting (B1 item 13). Remaining §B: 178 open checkboxes — proposition_kind (53, incl. the deferred LAY_DOWN) · role_in_scene_being (38) · arc_element (58) · scene_kind (29).
+
 ### Axis `proposition_kind` — 72 declaration(s) · 53 unique value(s)
 
 - [ ] **ACQUIRED** (P12) — MM P2/P3: 'I have bought all that was Elimelech's... I have bought Ruth' — the redemption-purchase; no existing proposition_kind names a legal acquisition/redemption (TOOK is take-as-wife; DECLARED is the speech frame). Reviewer may prefer a registry REDEEMED if one exists in P11.
@@ -90,7 +92,7 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [ ] **LAY_DOWN** (P09, P10)
   - P09: MM P3: 'he came to lie down at the end of the grain heap' — a lying-down event with no approved proposition_kind fit.
   - P10: MM P1: 'lying — who lay? she — at the place of his feet, until the morning.' No approved kind covers reclining/lying down (SAT, PROSTRATED, ROSE, REMAINED do not fit).
-  - ⚠ dual-axis proposal (evaluator-surfaced, architect-verified): `LAY_DOWN` is also proposed on the `action` axis below (P09) — rule the two checkboxes together.
+  - ⚠ dual-axis (updated at B1): the `action` LAY_DOWN was RULED tick + promoted v0.12 (B1 item 6); THIS `proposition_kind` proposal was **DEFERRED** by Marcia (B1 item 13, 2026-06-12) — rule it with this axis.
 - [ ] **MADE_SHELTER** (J05) — P8: 'making a booth... sitting under it in the shade.' Jonah builds his own watcher's shade (O13); no approved kind covers constructing a shelter.
 - [ ] **MEASURED** (P07) — MM P3: 'measuring | how much was it? about an ephah | an ephah of what? barley' (CB_0040); no approved proposition_kind for a quantity/measure result.
 - [ ] **MEASURED_OUT** (P10) — MM P5: 'measuring — measured six measures of barley — laid it on her.' FIG_0152 foregrounds the measuring with the measure-unit deliberately unspecified; GAVE/HANDED would lose the measuring act the text marks.
@@ -295,25 +297,25 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [ ] **SWALLOWING_SCENE** (J02) — "The fish: swallowed, three days, and a prayer begins" — YHWH appoints the fish, it swallows Jonah, and the prayer begins.
 - [ ] **WATCH_POST_SCENE** (J05) — MM S2 (4:4-5): God's question hangs unanswered while Jonah goes out, builds a booth, and sits to watch the city; no approved scene_kind fits.
 
-### Axis `action` — 8 declaration(s) · 7 unique value(s)
+### Axis `action` — 8 declaration(s) · 7 unique value(s) — **RULED, sitting B1 (Marcia 2026-06-12): all 7 ticked → promoted v0.12**
 
-- [ ] **AROSE** (J04, J04)
+- [x] **AROSE** (J04, J04) — **RULED "approve as proposed" (B1 item 1) → promoted v0.12**
   - J04: 'Jonah gets up and goes' — the plain wayyaqom rising, no return sense.
   - J04: 'He rises from his throne' — same rising verb as P5.
-- [ ] **DONNED_SACKCLOTH** (J04) — 'covers himself with sackcloth.'
-- [ ] **DREW_OFF_SANDAL** (P11) — MM P15/Scene 4: the redeemer 'draws off his sandal' as the attestation act; no approved action covers the sandal-drawing gesture, and HANDED is avoided because the MM marks the handing as not narrated.
-- [ ] **LAY_DOWN** (P09) — MM P4: 'and lay down' — a lying-down action with no approved action-axis fit.
-  - ⚠ dual-axis proposal (evaluator-surfaced, architect-verified): `LAY_DOWN` is also proposed on the `proposition_kind` axis above (P09, P10) — rule the two checkboxes together.
-- [ ] **REMOVED_ROBE** (J04) — 'puts off his robe.'
-- [ ] **SAT_ON_ASHES** (J04) — 'and sits on the ashes.'
-- [ ] **UNCOVERED_FEET** (P09) — MM P4 / CB_0042 margelot: 'uncovered the place of his feet' — the plan's central act; no approved action token covers uncovering.
+- [x] **DONNED_SACKCLOTH** (J04) — 'covers himself with sackcloth.' **RULED tick (B1 item 3) → promoted v0.12**
+- [x] **DREW_OFF_SANDAL** (P11) — MM P15/Scene 4: the redeemer 'draws off his sandal' as the attestation act; no approved action covers the sandal-drawing gesture, and HANDED is avoided because the MM marks the handing as not narrated. **RULED tick (B1 item 7) → promoted v0.12**
+- [x] **LAY_DOWN** (P09) — MM P4: 'and lay down' — a lying-down action with no approved action-axis fit. **RULED tick (B1 item 6) → promoted v0.12**
+  - ⚠ dual-axis (updated at B1): this `action` half is RULED + promoted v0.12; the `proposition_kind` LAY_DOWN proposal above (P09, P10) was **DEFERRED** by Marcia (B1 item 13) — rule it with its axis.
+- [x] **REMOVED_ROBE** (J04) — 'puts off his robe.' **RULED "approve as proposed" (B1 item 2) → promoted v0.12**
+- [x] **SAT_ON_ASHES** (J04) — 'and sits on the ashes.' **RULED tick (B1 item 4) → promoted v0.12**
+- [x] **UNCOVERED_FEET** (P09) — MM P4 / CB_0042 margelot: 'uncovered the place of his feet' — the plan's central act; no approved action token covers uncovering. **RULED tick (B1 item 5) → promoted v0.12**
 
-### Axis `tone_element` — 4 declaration(s) · 4 unique value(s)
+### Axis `tone_element` — 4 declaration(s) · 4 unique value(s) — **RULED, sitting B1 (Marcia 2026-06-12): all 4 ticked → promoted v0.12**
 
-- [ ] **HEATED** (J05) — 2.3: 'The chapter runs on heat. Jonah burns... the sun blazes, the east wind cuts dry.' No approved tone token names this governing heat/anger texture.
-- [ ] **IRONIC** (J02) — "the irony rides on top of it ... the prophet of YHWH is fast asleep below while every pagan aboard is praying" — irony is named as the passage's pervasive tone, with no approved token for it.
-- [ ] **PROCEDURAL** (P11) — MM 2.3: 'Brisk, public, and procedural — the opposite key from the night before'; the legal-transactional texture has no approved tone token.
-- [ ] **WONDER_UNDERSTATED** (J04) — 'the wonder rides on how little resistance there is ... a quiet astonishment the narrator never names.'
+- [x] **HEATED** (J05) — 2.3: 'The chapter runs on heat. Jonah burns... the sun blazes, the east wind cuts dry.' No approved tone token names this governing heat/anger texture. **RULED tick (B1 item 8) → promoted v0.12**
+- [x] **IRONIC** (J02) — "the irony rides on top of it ... the prophet of YHWH is fast asleep below while every pagan aboard is praying" — irony is named as the passage's pervasive tone, with no approved token for it. **RULED tick (B1 item 9) → promoted v0.12**
+- [x] **PROCEDURAL** (P11) — MM 2.3: 'Brisk, public, and procedural — the opposite key from the night before'; the legal-transactional texture has no approved tone token. **RULED tick (B1 item 10) → promoted v0.12**
+- [x] **WONDER_UNDERSTATED** (J04) — 'the wonder rides on how little resistance there is ... a quiet astonishment the narrator never names.' **RULED tick (B1 item 11) → promoted v0.12**
 
 ## Drafter remarks per pericope (verbatim, for context)
 
@@ -343,7 +345,7 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 
 ## D — Undeclared mints the audit caught (drafter contract misses; rule the value anyway)
 
-- [ ] **TOOK** as `action` (P07 P4 component) — used without declaration; plausible action-axis value.
+- [x] **TOOK** as `action` (P07 P4 component) — used without declaration; plausible action-axis value. **RULED tick (sitting B1 item 12, Marcia 2026-06-12) → promoted v0.12 with the undeclared use recorded in the P07 ruling log.**
 - [ ] **ASKED** as `proposition_kind` (P09 P7) — an axis-crossing (ASKED-style values live elsewhere);
       either promote deliberately or amend to an approved kind.
 
