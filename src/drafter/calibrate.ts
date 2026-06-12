@@ -214,6 +214,8 @@ export interface MintRecord {
   axis: string;
   value: string;
   where: string;
+  /** "drafter" = the value sits at/under a location the drafter filled; "map" = deterministic carry-through from the Meaning Map. */
+  origin: "drafter" | "map";
 }
 
 export interface MintAudit {
@@ -244,55 +246,93 @@ function collectActionsAndSpeechActs(v: unknown, where: string, out: Array<{ key
   }
 }
 
-export function auditMints(merged: any, fills: DraftOutput): MintAudit {
+/**
+ * @param filledLocations the merge's applied gap locations — a finding at/under one of them is
+ *   the DRAFTER's writing; anything else is deterministic carry-through from the map (e.g. a
+ *   prose-suffixed `Presence:` line, or the reader's `PRESENT → DEPARTS` normalization). The
+ *   split matters: only drafter-origin findings are drafter-compliance data; map-origin findings
+ *   are upstream content-discipline findings for the reviewer.
+ */
+export function auditMints(merged: any, fills: DraftOutput, filledLocations: string[] = [], skeleton?: any): MintAudit {
   const ae = loadSpecJson<any>("approved-enumerations.json");
   const approved = new Map<string, Set<string>>();
   for (const [axis, entries] of Object.entries<any>(ae.axes ?? {})) approved.set(axis, new Set((entries as any[]).map((e) => e.value)));
   const rules = loadSpecJson<any>("validation-rules.json");
   const speechActs = new Set<string>(rules.closed_lists?.SPEECH_ACT ?? []);
   const declaredSet = new Set<string>();
-  for (const f of fills.fills) for (const v of f.vocabulary_additions ?? []) declaredSet.add(`${v.axis} ${v.value}`);
+  for (const f of fills.fills) for (const v of f.vocabulary_additions ?? []) declaredSet.add(`${v.axis} ${v.value}`);
+  // An APPEND gap (…/beings_in_scene) authorizes only entries past the skeleton's original
+  // count — pre-existing entries under it stay map-origin (the round-2 misattribution fix).
+  const appendBaseline = new Map<string, number>();
+  if (skeleton) {
+    for (const loc of filledLocations) {
+      if (!/\/beings_in_scene$/.test(loc)) continue;
+      let cur: any = skeleton;
+      for (const part of loc.split("/").filter(Boolean)) cur = cur?.[/^\d+$/.test(part) ? Number(part) : part];
+      appendBaseline.set(loc, Array.isArray(cur?.entries) ? cur.entries.length : 0);
+    }
+  }
+  const originOf = (path: string): "drafter" | "map" => {
+    for (const loc of filledLocations) {
+      if (path !== loc && !path.startsWith(`${loc}/`)) continue;
+      const base = appendBaseline.get(loc);
+      if (base === undefined) return "drafter"; // ordinary replace-fill location
+      const m = path.slice(loc.length).match(/^\/entries\/(\d+)(\/|$)/);
+      if (m && Number(m[1]) >= base) return "drafter"; // an appended entry
+      // under the append location but within the original entries — not the drafter's writing
+    }
+    return "map";
+  };
 
   const audit: MintAudit = { checked: 0, declared: [], undeclared: [], closedViolations: [] };
-  const check = (axis: string, value: unknown, where: string) => {
+  const check = (axis: string, value: unknown, where: string, path: string) => {
     if (typeof value !== "string" || !value.length) return;
     audit.checked++;
     if (approved.get(axis)?.has(value)) return;
-    const rec = { axis, value, where };
-    if (declaredSet.has(`${axis} ${value}`)) audit.declared.push(rec);
+    const rec: MintRecord = { axis, value, where, origin: originOf(path) };
+    if (declaredSet.has(`${axis} ${value}`)) audit.declared.push(rec);
     else audit.undeclared.push(rec);
   };
 
-  for (const [field, axis] of Object.entries(LEVEL1_AXIS)) for (const v of merged.level_1?.[field] ?? []) check(axis, v, `/level_1/${field}`);
-  for (const sc of merged.level_2_scenes ?? []) {
-    check("scene_kind", sc.scene_kind, `/${sc.scene_id}/scene_kind`);
-    for (const b of sc.beings_in_scene?.entries ?? []) {
-      check("presence_value", b.presence, `/${sc.scene_id}/${b.being_id}/presence`);
-      check("role_in_scene_being", b.role_in_scene, `/${sc.scene_id}/${b.being_id}/role_in_scene`);
-    }
-  }
-  for (const p of merged.level_3_propositions ?? []) {
-    check("proposition_kind", p.proposition_kind, `/${p.prop_id}/proposition_kind`);
+  for (const [field, axis] of Object.entries(LEVEL1_AXIS))
+    for (const v of merged.level_1?.[field] ?? []) check(axis, v, `/level_1/${field}`, `/level_1/${field}`);
+  (merged.level_2_scenes ?? []).forEach((sc: any, si: number) => {
+    const at = `/level_2_scenes/${si}`;
+    check("scene_kind", sc.scene_kind, `/${sc.scene_id}/scene_kind`, `${at}/scene_kind`);
+    // drafter-appended entries sit under the append gap location (`…/beings_in_scene`), so
+    // prefix matching attributes them to the drafter automatically.
+    (sc.beings_in_scene?.entries ?? []).forEach((b: any, bi: number) => {
+      const bp = `${at}/beings_in_scene/entries/${bi}`;
+      check("presence_value", b.presence, `/${sc.scene_id}/${b.being_id}/presence`, `${bp}/presence`);
+      check("role_in_scene_being", b.role_in_scene, `/${sc.scene_id}/${b.being_id}/role_in_scene`, `${bp}/role_in_scene`);
+    });
+  });
+  (merged.level_3_propositions ?? []).forEach((p: any, pi: number) => {
+    const at = `/level_3_propositions/${pi}`;
+    check("proposition_kind", p.proposition_kind, `/${p.prop_id}/proposition_kind`, `${at}/proposition_kind`);
     const hits: Array<{ key: "action" | "speech_act"; value: string; where: string }> = [];
     collectActionsAndSpeechActs(p.event_specific_slots, `/${p.prop_id}/event_specific_slots`, hits);
     for (const h of hits) {
-      if (h.key === "action") check("action", h.value, h.where);
+      const path = `${at}/event_specific_slots`;
+      if (h.key === "action") check("action", h.value, h.where, path);
       else {
         audit.checked++;
-        if (!speechActs.has(h.value)) audit.closedViolations.push({ axis: "SPEECH_ACT(closed)", value: h.value, where: h.where });
+        if (!speechActs.has(h.value))
+          audit.closedViolations.push({ axis: "SPEECH_ACT(closed)", value: h.value, where: h.where, origin: originOf(path) });
       }
     }
-  }
+  });
   return audit;
 }
 
 export function formatMintAudit(a: MintAudit): string {
+  const tag = (m: MintRecord) => (m.origin === "map" ? "map-borne" : "DRAFTER");
   const L: string[] = [
-    `mint audit: ${a.checked} axis tokens checked · ${a.declared.length} declared mint(s) · ${a.undeclared.length} UNDECLARED mint(s) · ${a.closedViolations.length} closed-list violation(s)`,
+    `mint audit: ${a.checked} axis tokens checked · ${a.declared.length} declared mint(s) · ${a.undeclared.length} undeclared (${a.undeclared.filter((m) => m.origin === "drafter").length} drafter / ${a.undeclared.filter((m) => m.origin === "map").length} map-borne) · ${a.closedViolations.length} closed-list violation(s)`,
   ];
-  for (const m of a.declared) L.push(`   ◆ declared  ${m.axis} · ${m.value}  @ ${m.where}`);
-  for (const m of a.undeclared) L.push(`   ✗ UNDECLARED  ${m.axis} · ${m.value}  @ ${m.where}`);
-  for (const m of a.closedViolations) L.push(`   ‼ CLOSED  ${m.axis} · ${m.value}  @ ${m.where}`);
+  for (const m of a.declared) L.push(`   ◆ declared [${tag(m)}]  ${m.axis} · ${m.value}  @ ${m.where}`);
+  for (const m of a.undeclared) L.push(`   ✗ undeclared [${tag(m)}]  ${m.axis} · ${m.value}  @ ${m.where}`);
+  for (const m of a.closedViolations) L.push(`   ‼ CLOSED [${tag(m)}]  ${m.axis} · ${m.value}  @ ${m.where}`);
   return L.join("\n");
 }
 

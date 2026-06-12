@@ -144,10 +144,19 @@ describe("auditMints — silent minting becomes mechanical findings", () => {
       fills: [{ location: "/level_1/arc_elements", value_json: "[]", note: null, vocabulary_additions: [{ axis: "arc_element", value: "TOTALLY_NEW_ARC", justification: "j" }] }],
       remarks: null,
     };
-    const a = auditMints(merged, fills as any);
+    const filled = ["/level_1/arc_elements", "/level_3_propositions/0/event_specific_slots"];
+    const a = auditMints(merged, fills as any, filled);
     expect(a.declared.map((m) => m.value)).toEqual(["TOTALLY_NEW_ARC"]);
     expect(a.undeclared.map((m) => m.value).sort()).toEqual(["NEVER_SEEN_ACTION", "REFERENCED (off-stage)"]);
     expect(a.closedViolations.map((m) => m.value)).toEqual(["IMPERATIVE"]);
+    // origin split: drafter-filled locations vs deterministic carry-through from the map
+    const byValue = Object.fromEntries([...a.declared, ...a.undeclared, ...a.closedViolations].map((m) => [m.value, m.origin]));
+    expect(byValue).toEqual({
+      TOTALLY_NEW_ARC: "drafter",
+      NEVER_SEEN_ACTION: "drafter",
+      IMPERATIVE: "drafter",
+      "REFERENCED (off-stage)": "map",
+    });
   });
 });
 

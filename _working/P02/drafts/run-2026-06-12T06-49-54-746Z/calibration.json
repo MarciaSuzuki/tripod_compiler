@@ -12,15 +12,9 @@
         "divergences": []
       },
       "scene_kind": {
-        "matched": 2,
-        "divergent": 1,
-        "divergences": [
-          {
-            "where": "/S3",
-            "drafted": "SEPARATION_SCENE",
-            "gold": "APPEAL_SCENE"
-          }
-        ]
+        "matched": 3,
+        "divergent": 0,
+        "divergences": []
       },
       "role_in_scene": {
         "matched": 17,
@@ -28,8 +22,8 @@
         "divergences": []
       },
       "referential_form": {
-        "matched": 13,
-        "divergent": 4,
+        "matched": 10,
+        "divergent": 7,
         "divergences": [
           {
             "where": "/S1/B8",
@@ -42,8 +36,23 @@
             "gold": "KALLAH_DAUGHTER_IN_LAW"
           },
           {
+            "where": "/S1/B31",
+            "drafted": "HIS_PEOPLE_OF_YHWH",
+            "gold": null
+          },
+          {
             "where": "/S2/B2",
-            "drafted": "COLLECTIVELY_THE_DEAD",
+            "drafted": "THE_DEAD_HA_METIM",
+            "gold": null
+          },
+          {
+            "where": "/S2/B31",
+            "drafted": "YOUR_PEOPLE_RELATIONAL",
+            "gold": null
+          },
+          {
+            "where": "/S3/B3",
+            "drafted": "HA_CHAMOT_MOTHER_IN_LAW",
             "gold": null
           },
           {
@@ -80,13 +89,18 @@
         ]
       },
       "proposition_kind": {
-        "matched": 8,
-        "divergent": 3,
+        "matched": 7,
+        "divergent": 4,
         "divergences": [
           {
             "where": "/P2↔P2@1:6b",
-            "drafted": "DEPARTED",
+            "drafted": "AROSE_TO_RETURN",
             "gold": "GAVE"
+          },
+          {
+            "where": "/P3↔P4@1:8a",
+            "drafted": "INSTRUCTION",
+            "gold": "APPEAL"
           },
           {
             "where": "/P7↔P8@1:10",
@@ -101,46 +115,24 @@
         ]
       },
       "event_specific_slots": {
-        "matched": 1,
-        "divergent": 10,
+        "matched": 0,
+        "divergent": 11,
         "divergences": [
           {
             "where": "/P2↔P2@1:6b",
             "drafted": {
-              "journey_components": [
-                {
-                  "action": "AROSE_TO_RETURN",
-                  "traveler": "B3",
-                  "companions": [
-                    "B8",
-                    "B9"
-                  ],
-                  "origin": "PL2",
-                  "purpose": "RETURN",
-                  "speech_act": "STATES_AS_TRUE"
-                },
-                {
-                  "action": "WENT_OUT",
-                  "departer": "B3",
-                  "accompanied_by": [
-                    "B8",
-                    "B9"
-                  ],
-                  "origin": "PLACE_WHERE_SHE_HAD_BEEN",
-                  "speech_act": "STATES_AS_TRUE"
-                },
-                {
-                  "action": "WALKED",
-                  "walkers": [
-                    "B3",
-                    "B8",
-                    "B9"
-                  ],
-                  "path": "PL_HA_DEREKH_THE_ROAD",
-                  "destination": "PL_LAND_OF_JUDAH",
-                  "speech_act": "STATES_AS_TRUE"
-                }
-              ]
+              "riser": "B3",
+              "accompanying_household": [
+                "B8",
+                "B9"
+              ],
+              "origin": "PL2",
+              "purpose": "RETURN",
+              "destination": "PL_LAND_OF_JUDAH",
+              "departure_locus": "PL2",
+              "journey_action": "WALKED",
+              "journey_locus": "PL_HA_DEREKH",
+              "travelers": "THE_THREE_TOGETHER"
             },
             "gold": {
               "agent_named": "B10",
@@ -160,17 +152,17 @@
               "directive_components": [
                 {
                   "action": "DIRECTED",
-                  "content": "GO",
+                  "directive_content": "GO",
                   "speech_act": "DIRECTS_HEARER_TO_DO"
                 },
                 {
                   "action": "DIRECTED",
-                  "content": "RETURN",
-                  "return_target": "PL_EACH_HER_MOTHERS_HOUSE",
-                  "distributive_form": "EACH_TO_HER_OWN_MOTHERS_HOUSE",
+                  "directive_content": "RETURN",
                   "speech_act": "DIRECTS_HEARER_TO_RETURN"
                 }
-              ]
+              ],
+              "return_target": "PL_EACH_HER_MOTHERS_HOUSE",
+              "return_target_form": "DISTRIBUTIVE_EACH_TO_MOTHERS_HOUSE"
             },
             "gold": {
               "speaker": "B3",
@@ -186,19 +178,20 @@
             "where": "/P4↔P5@1:8b",
             "drafted": {
               "blesser": "B3",
-              "blessed_parties": [
+              "blessing_recipients": [
                 "B8",
                 "B9"
               ],
-              "invoked_divine": "B10",
-              "blessing_content": "HESED",
-              "grounding": "PRIOR_HESED_OF_DAUGHTERS",
-              "prior_hesed_recipients": [
+              "invoked_divine_agent": "B10",
+              "blessing_content_kind": "HESED",
+              "blessing_grounding": "PRIOR_HESED_OF_DAUGHTERS",
+              "prior_hesed_beneficiaries": [
                 "B2",
                 "B4",
-                "B5"
+                "B5",
+                "B3"
               ],
-              "dead_referential_form": "COLLECTIVELY_THE_DEAD",
+              "deceased_referential_form": "THE_DEAD_HA_METIM",
               "speech_act": "WISHES_FOR_HEARER"
             },
             "gold": {
@@ -223,12 +216,12 @@
             "where": "/P5↔P6@1:9a",
             "drafted": {
               "blesser": "B3",
-              "blessed_parties": [
+              "blessing_recipients": [
                 "B8",
                 "B9"
               ],
-              "invoked_divine": "B10",
-              "blessing_content": "MENUCHA_REST",
+              "invoked_divine_agent": "B10",
+              "blessing_content_kind": "REST_MENUCHA",
               "rest_locus": "HOUSE_OF_HER_HUSBAND_EACH",
               "speech_act": "WISHES_FOR_HEARER"
             },
@@ -244,9 +237,45 @@
             }
           },
           {
+            "where": "/P6↔P7@1:9b",
+            "drafted": {
+              "kisser": "B3",
+              "kissed": [
+                "B8",
+                "B9"
+              ],
+              "following_action": "WEPT_ALOUD",
+              "weepers": [
+                "B8",
+                "B9"
+              ]
+            },
+            "gold": {
+              "farewell_components": [
+                {
+                  "action": "KISSED",
+                  "kisser": "B3",
+                  "kissed": [
+                    "B8",
+                    "B9"
+                  ],
+                  "speech_act": "STATES_AS_TRUE"
+                },
+                {
+                  "action": "WEPT_ALOUD",
+                  "weepers": [
+                    "B8",
+                    "B9"
+                  ],
+                  "speech_act": "STATES_AS_TRUE"
+                }
+              ]
+            }
+          },
+          {
             "where": "/P7↔P8@1:10",
             "drafted": {
-              "refusers": [
+              "speakers": [
                 "B8",
                 "B9"
               ],
@@ -276,21 +305,17 @@
                 "B8",
                 "B9"
               ],
-              "address_form": "MY_DAUGHTERS",
-              "speech_components": [
+              "addressee_form": "MY_DAUGHTERS_INTIMATE",
+              "directive_content": "TURN_BACK",
+              "dissuasion_components": [
                 {
-                  "action": "DIRECTED",
-                  "content": "TURN_BACK",
-                  "speech_act": "DIRECTS_HEARER_TO_RETURN"
-                },
-                {
-                  "action": "ASKED",
-                  "content": "WHY_WOULD_YOU_GO_WITH_ME",
+                  "question_subject": "DAUGHTERS_GOING_WITH_NAOMI",
+                  "question_form": "WHY_WOULD_YOU_GO_WITH_ME",
                   "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
                 },
                 {
-                  "action": "ASKED",
-                  "content": "HAVE_I_YET_SONS_IN_MY_WOMB",
+                  "question_subject": "SONS_IN_NAOMIS_WOMB",
+                  "question_form": "HAVE_I_YET_SONS",
                   "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
                 }
               ],
@@ -327,14 +352,10 @@
             "where": "/P11↔P12@1:13d",
             "drafted": {
               "speaker": "B3",
-              "addressees": [
-                "B8",
-                "B9"
-              ],
-              "address_form": "MY_DAUGHTERS",
-              "lament_comparison": "MORE_BITTER_FOR_ME_THAN_FOR_YOU",
-              "affliction_source": "B10",
-              "affliction_form": "HAND_OF_YHWH_GONE_OUT_AGAINST_ME",
+              "addressee_form": "MY_DAUGHTERS_INTIMATE",
+              "lament_comparison": "NAOMI_MORE_BITTER_THAN_DAUGHTERS",
+              "affliction_attribution": "HAND_OF_YHWH_GONE_OUT_AGAINST_NAOMI",
+              "attributed_divine_agent": "B10",
               "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
             },
             "gold": {
@@ -366,7 +387,8 @@
                 "B8",
                 "B9"
               ],
-              "manner": "LIFTED_VOICE_AND_WEPT_AGAIN"
+              "weeping_form": "LIFTED_VOICE_AND_WEPT_AGAIN",
+              "parallel_with_proposition": "P6"
             },
             "gold": {
               "weepers": [
@@ -379,19 +401,12 @@
           {
             "where": "/P13↔P14@1:14b",
             "drafted": {
-              "parting_components": [
-                {
-                  "action": "KISSED",
-                  "kisser": "B8",
-                  "kissed": "B3",
-                  "speech_act": "STATES_AS_TRUE"
-                },
-                {
-                  "action": "TURNED_BACK",
-                  "departer": "B8",
-                  "speech_act": "STATES_AS_TRUE"
-                }
-              ]
+              "kisser": "B8",
+              "kissed": "B3",
+              "kissed_referential_form": "HA_CHAMOT_MOTHER_IN_LAW",
+              "following_action": "TURNED_BACK",
+              "departer": "B8",
+              "contrast_with_proposition": "P14"
             },
             "gold": {
               "departure_components": [
@@ -416,7 +431,9 @@
             "drafted": {
               "clinger": "B9",
               "clung_to": "B3",
-              "manner": "DAVQAH_CLUNG_FAST"
+              "clung_to_referential_form": "HER_MOTHER_IN_LAW",
+              "clinging_manner": "CLUNG_FAST_DAVQAH",
+              "contrast_with_proposition": "P13"
             },
             "gold": {
               "clinger": "B9",
@@ -496,7 +513,7 @@
           {
             "where": "/P11↔P12@1:13d",
             "drafted": {
-              "caused_by": "P9",
+              "caused_by": "P10",
               "forward_link_to": "P12"
             },
             "gold": {
@@ -505,26 +522,23 @@
             }
           },
           {
-            "where": "/P12↔P13@1:14a",
-            "drafted": {
-              "paired_with": "P6",
-              "forward_link_to": "P13"
-            },
-            "gold": {
-              "caused_by": "P11",
-              "forward_link_to": "P13",
-              "paired_with": "P6"
-            }
-          },
-          {
             "where": "/P13↔P14@1:14b",
             "drafted": {
-              "paired_with": "P14",
+              "caused_by": "P11",
               "forward_link_to": "P14"
             },
             "gold": {
               "caused_by": "P12",
               "paired_with": "P14"
+            }
+          },
+          {
+            "where": "/P14↔P15@1:14c",
+            "drafted": {
+              "caused_by": "P11"
+            },
+            "gold": {
+              "paired_with": "P13"
             }
           }
         ]
@@ -547,35 +561,36 @@
       "context_elements": {
         "exact": false,
         "shared": [
+          "STORY_WORLD_CONTEXT",
           "KINSHIP_CONTEXT",
-          "PHYSICAL_LOCATION"
+          "PHYSICAL_LOCATION",
+          "AUDIENCE_KNOWLEDGE_CONTEXT",
+          "TEMPORAL_CONTEXT"
         ],
         "goldOnly": [
-          "STORY_WORLD_CONTEXT",
           "INSTITUTIONAL_CONTEXT",
-          "TEMPORAL_CONTEXT",
-          "AUDIENCE_KNOWLEDGE_CONTEXT",
           "HISTORICAL_ERA_CONTEXT"
         ],
         "draftOnly": [
           "PRIOR_PERICOPE_CARRY_FORWARD",
-          "DIVINE_CONTEXT",
-          "TRAJECTORY_CONTEXT_ON_RETURN_ROAD"
+          "TRAJECTORY_CONTEXT_ON_RETURN_ROAD",
+          "DIVINE_CONTEXT"
         ]
       },
       "tone_elements": {
         "exact": false,
         "shared": [
+          "CHRONICLE",
           "INTIMATE",
           "WEIGHTED"
         ],
         "goldOnly": [
           "RESTRAINED",
-          "CHRONICLE",
           "URGENT"
         ],
         "draftOnly": [
           "ECONOMICAL",
+          "RISING",
           "UNRESOLVED_AT_CLOSE"
         ]
       },
@@ -634,15 +649,8 @@
     ]
   },
   "mintAudit": {
-    "checked": 116,
-    "declared": [
-      {
-        "axis": "scene_kind",
-        "value": "SEPARATION_SCENE",
-        "where": "/S3/scene_kind",
-        "origin": "drafter"
-      }
-    ],
+    "checked": 98,
+    "declared": [],
     "undeclared": [
       {
         "axis": "presence_value",
@@ -667,6 +675,12 @@
         "value": "PRESENT_BECOMES_DEPARTS",
         "where": "/S3/B8/presence",
         "origin": "map"
+      },
+      {
+        "axis": "proposition_kind",
+        "value": "AROSE_TO_RETURN",
+        "where": "/P2/proposition_kind",
+        "origin": "drafter"
       }
     ],
     "closedViolations": []
