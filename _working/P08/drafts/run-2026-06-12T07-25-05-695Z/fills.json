@@ -1,0 +1,375 @@
+{
+  "fills": [
+    {
+      "location": "/header/book_context_ref",
+      "value_json": "\"ruth_pilot_BCD_v0_3\"",
+      "note": "Ruth pericope → standard pilot BCD ref.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/pericope_classification/register_overrides",
+      "value_json": "{\"_note\":\"Both scenes shift to INTIMATE at scene level — the two women alone at home, a private risky plan and a one-line answer of trust (per MM Section 1). No moment-level register or NARRATIVE_FRAMING shifts are marked in the prose.\",\"scene_level\":[{\"scene_id\":\"S1\",\"override_value\":\"INTIMATE\"},{\"scene_id\":\"S2\",\"override_value\":\"INTIMATE\"}],\"moment_level\":null}",
+      "note": "MM explicitly marks scene-level INTIMATE for both scenes. The narrator framing at v.1/v.5 stays in the pericope INFORMAL_CASUAL voice and is not a separate override.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/arc_elements",
+      "value_json": "[\"REST_SEEKING_INITIATIVE\",\"NIGHT_PLAN_INSTRUCTION\",\"INITIATIVE_HANDOFF\",\"TOTAL_CONSENT\"]",
+      "note": "No approved arc_element fits this plan-and-consent exchange; minted four anchored to the prose movement (rest-seeking → worked plan → handoff to Boaz → Ruth's total assent). PROTECTIVE_INSTRUCTION was considered for the plan body but its protective connotation does not match a marriage-securing night plan.",
+      "vocabulary_additions": [
+        {
+          "axis": "arc_element",
+          "value": "REST_SEEKING_INITIATIVE",
+          "justification": "MM 2.1/2.4: Naomi stops wishing and starts seeking manoach for Ruth — the goal that opens the passage."
+        },
+        {
+          "axis": "arc_element",
+          "value": "NIGHT_PLAN_INSTRUCTION",
+          "justification": "MM 2.1: step-by-step nighttime instructions (wash, anoint, dress, go down, stay unknown, mark the place, uncover, lie down)."
+        },
+        {
+          "axis": "arc_element",
+          "value": "INITIATIVE_HANDOFF",
+          "justification": "MM 2.1/2.4: the plan ends not with its goal but with 'he will tell you what to do' — initiative handed toward Boaz."
+        },
+        {
+          "axis": "arc_element",
+          "value": "TOTAL_CONSENT",
+          "justification": "MM 2.1/Scene 2: Ruth answers with everything at once — 'all that you say I will do.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_1/context_elements",
+      "value_json": "[\"STORY_WORLD_CONTEXT\",\"PHYSICAL_LOCATION\",\"KINSHIP_CONTEXT\",\"INSTITUTIONAL_CONTEXT\",\"TEMPORAL_CONTEXT\",\"AUDIENCE_KNOWLEDGE_CONTEXT\",\"PRIOR_PERICOPE_CARRY_FORWARD\"]",
+      "note": "Enumerated each context kind the prose invokes: story-world, the threshing floor/home (physical), mother-in-law/daughter-in-law/kinsman (kinship), the redeemer/kinsman institution (institutional), harvests' end and 'tonight' (temporal), the audience still carrying 2:12's blessing (audience-knowledge), and the carry-forward of 1:9's rest-wish and 2:20's recognition (prior-pericope).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/tone_elements",
+      "value_json": "[\"QUIET\",\"INTIMATE\",\"RESTRAINED\",\"ANTICIPATORY\",\"UNRESOLVED_AT_CLOSE\"]",
+      "note": "'Hushed' → QUIET; two women alone → INTIMATE; plain, none explained → RESTRAINED; the question hanging over the dark → ANTICIPATORY/UNRESOLVED_AT_CLOSE.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/pace_elements",
+      "value_json": "[\"DELIBERATE\",\"STEADY\",\"RISES\",\"PAUSED\"]",
+      "note": "'small steady steps' → DELIBERATE/STEADY; 'single accumulating instruction' → RISES; 'stops short ... the stillness after' → PAUSED.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_1/communicative_function_elements",
+      "value_json": "[\"OPENS\",\"STAGES\",\"ADVANCES\",\"REACTIVATES\",\"WITHHOLDS\"]",
+      "note": "Opens the floor scene the next pericopes live inside; stages the hinge to the threshing-floor night; advances initiative from Naomi's word to Ruth's act; reactivates 1:9's rest-wish; withholds the unsaid (marriage/redeemer/risk).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"PLANNER\"",
+      "note": "Naomi's function in this scene is the planner — she names the goal, man, night, and every step. Minted per §5 (PLANNER cited as a scene-role example).",
+      "vocabulary_additions": [
+        {
+          "axis": "role_in_scene_being",
+          "value": "PLANNER",
+          "justification": "MM Scene 1 3A: 'the planner — she names the goal, the man, the night, and every step.' Scene function, not her kinship identity (carried in referential_form)."
+        }
+      ]
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/0/referential_form",
+      "value_json": "\"NAOMI_HER_MOTHER_IN_LAW\"",
+      "note": "MM marks this: the narrator gives the name and the kinship-word together ('Naomi her mother-in-law').",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Ruth is the hearer of the instructions and the one rest is sought for; her scene relationship-function is daughter-in-law (addressed as 'my daughter', see referential_form).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/1/referential_form",
+      "value_json": "\"MY_DAUGHTER_INTIMATE\"",
+      "note": "MM marks it: addressed only as 'my daughter'; her name is not spoken in this scene.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/role_in_scene",
+      "value_json": "\"KINSMAN\"",
+      "note": "MM names Boaz by the softer family word 'our kinsman' (moda), not the legal 'redeemer' — so KINSMAN over REDEEMER_KIN.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/2/referential_form",
+      "value_json": "\"OUR_KINSMAN_MODA\"",
+      "note": "MM marks the naming: 'our kinsman' (moda, the family word, not the legal one) at v.2, then 'the man' at v.3. Register-critical withholding of 'redeemer.'",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/role_in_scene",
+      "value_json": "\"FEMALE_WORKERS\"",
+      "note": "'his young women' — Boaz's female field-workers Ruth was beside.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene/entries/3/referential_form",
+      "value_json": "null",
+      "note": "'his young women' is a passing naming of the tie, not a map-flagged marked reference; left unmarked per the tempered referential_form rule.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/scene_kind",
+      "value_json": "\"INSTRUCTION_SCENE\"",
+      "note": "Scene is the worked plan spoken as step-by-step instruction; INSTRUCTION_SCENE (approved) fits.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/0/beings_in_scene",
+      "value_json": "[{\"being_id\":\"B2\",\"role_in_scene\":\"HUSBAND\",\"presence\":\"REFERENCED\"}]",
+      "note": "Elimelech is named in the scene's kinship relationships ('widow of Elimelech'; 'kinsman of the household of Elimelech') but absent from the 3A entry list; appended as REFERENCED.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/role_in_scene",
+      "value_json": "\"DAUGHTER_IN_LAW\"",
+      "note": "Ruth consents; her scene function is the daughter-in-law answering whole.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/0/referential_form",
+      "value_json": "null",
+      "note": "MM names her directly ('Ruth') with no marked naming in this scene.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/role_in_scene",
+      "value_json": "\"MOTHER_IN_LAW\"",
+      "note": "Naomi is the one whose word is accepted whole — her authority here is the mother-in-law's.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/beings_in_scene/entries/1/referential_form",
+      "value_json": "null",
+      "note": "MM refers to her only pronominally ('to her') — not a marked naming.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_2_scenes/1/scene_kind",
+      "value_json": "\"CONSENT_SCENE\"",
+      "note": "One-line total assent closing the exchange. RATIFICATION_SCENE was the near-miss but carries a legal/sealing connotation; this is intimate consent. Minted.",
+      "vocabulary_additions": [
+        {
+          "axis": "scene_kind",
+          "value": "CONSENT_SCENE",
+          "justification": "MM Scene 2 3F: 'Closes the exchange with total assent — one line, no questions.' No approved scene_kind names a consent/assent scene."
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/0/proposition_kind",
+      "value_json": "\"APPEAL\"",
+      "note": "Naomi's rhetorical question 'shall I not seek a resting place for you' functions as a promise/appeal toward Ruth's good.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"speaker_referential_form\":\"NAOMI_HER_MOTHER_IN_LAW\",\"addressee\":\"B9\",\"address_form\":\"MY_DAUGHTER_INTIMATE\",\"rest_sought\":\"CB_0014\",\"sought_rest_for\":\"B9\",\"question_form\":\"RHETORICAL_PROMISE_QUESTION\",\"stated_purpose\":\"THAT_IT_MAY_BE_WELL_WITH_YOU\",\"speech_act\":\"STATES_HOPED_FOR_CONDITION\"}",
+      "note": "No closed SPEECH_ACT cleanly names a benevolent promise-question; STATES_HOPED_FOR_CONDITION captures 'that it may be well with you' and question_form preserves the rhetorical form. Reviewer may prefer WISHES_FOR_HEARER.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/0/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P2\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/proposition_kind",
+      "value_json": "\"IDENTIFIED\"",
+      "note": "Naomi identifies Boaz as 'our kinsman' and names the tie.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"identified_kinsman\":\"B13\",\"kinsman_referential_form\":\"OUR_KINSMAN_MODA\",\"named_tie\":\"B16\",\"tie_form\":\"RUTH_WAS_WITH_HIS_YOUNG_WOMEN\",\"question_form\":\"RHETORICAL_RECOGNITION_QUESTION\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "'is he not our kinsman' asserts a known fact in question form; STATES_AS_TRUE with question_form preserving the rhetorical shape.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/1/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P3\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "'Behold, he is winnowing ... tonight' — a hinneh declaration of the time/place/activity.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"reported_subject\":\"B13\",\"reported_activity\":\"WINNOWING_BARLEY\",\"winnowed_grain\":\"O2\",\"location\":\"PL6\",\"timing\":\"TONIGHT\",\"attention_marker\":\"HINNEH\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/2/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P4\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "Four-part preparation instruction (the bridal-prep triplet plus go-down).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/3/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"instructed_party\":\"B9\",\"instruction_components\":[{\"action\":\"WASH\",\"step_order\":\"FIRST\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"ANOINT_SELF\",\"step_order\":\"SECOND\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"PUT_ON_GARMENTS\",\"garment\":\"O13\",\"step_order\":\"THIRD\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"GO_DOWN_TO_FLOOR\",\"destination\":\"PL6\",\"step_order\":\"FOURTH\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}]}",
+      "note": "Decomposed the four ordered commands into instruction_components, each carrying its own speech_act, preserving the step order. Action stems are minted (declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "action",
+          "value": "WASH",
+          "justification": "MM Prop 4: first instruction 'wash'."
+        },
+        {
+          "axis": "action",
+          "value": "ANOINT_SELF",
+          "justification": "MM Prop 4: 'anoint yourself'."
+        },
+        {
+          "axis": "action",
+          "value": "PUT_ON_GARMENTS",
+          "justification": "MM Prop 4: 'put your garments on you'."
+        },
+        {
+          "axis": "action",
+          "value": "GO_DOWN_TO_FLOOR",
+          "justification": "MM Prop 4: 'go down to the threshing floor.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/3/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P5\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "A prohibition with a until-condition.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"instructed_party\":\"B9\",\"prohibition\":\"BE_KNOWN_TO_THE_MAN\",\"the_man_referential_form\":\"THE_MAN_HA_ISH\",\"until_condition\":\"HE_FINISHES_EATING_AND_DRINKING\",\"speech_act\":\"DIRECTS_HEARER_NOT_TO_DO\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/4/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P6\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "Timing condition plus directive to mark the place.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"instructed_party\":\"B9\",\"timing_condition\":\"WHEN_HE_LIES_DOWN\",\"directive\":\"MARK_PLACE_WHERE_HE_LIES\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/5/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P7\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/proposition_kind",
+      "value_json": "\"INSTRUCTION\"",
+      "note": "Three-step boldest instruction (go in, uncover feet, lie down); CB_0042 margelot active here.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/6/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"instructed_party\":\"B9\",\"instruction_components\":[{\"action\":\"GO_IN\",\"step_order\":\"FIRST\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"UNCOVER_FEET\",\"uncovered_place\":\"CB_0042\",\"step_order\":\"SECOND\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"},{\"action\":\"LIE_DOWN\",\"step_order\":\"THIRD\",\"speech_act\":\"DIRECTS_HEARER_TO_DO\"}]}",
+      "note": "Decomposed three ordered commands; uncovered_place points to CB_0042 (margelot). Action stems minted (declared).",
+      "vocabulary_additions": [
+        {
+          "axis": "action",
+          "value": "GO_IN",
+          "justification": "MM Prop 7: first step 'go in'."
+        },
+        {
+          "axis": "action",
+          "value": "UNCOVER_FEET",
+          "justification": "MM Prop 7: 'uncover the place of his feet' (margelot, CB_0042)."
+        },
+        {
+          "axis": "action",
+          "value": "LIE_DOWN",
+          "justification": "MM Prop 7: 'lie down.'"
+        }
+      ]
+    },
+    {
+      "location": "/level_3_propositions/6/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P8\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/proposition_kind",
+      "value_json": "\"HANDED\"",
+      "note": "'he will tell you what to do' — the plan hands the next word to Boaz (FIG_0122 handoff).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/event_specific_slots",
+      "value_json": "{\"speaker\":\"B3\",\"future_speaker\":\"B13\",\"the_man_referential_form\":\"THE_MAN_HA_ISH\",\"handoff_content\":\"HE_WILL_TELL_YOU_WHAT_TO_DO\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/7/inter_proposition_links",
+      "value_json": "{\"forward_link_to\":\"P9\"}",
+      "note": null,
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/proposition_kind",
+      "value_json": "\"DECLARED\"",
+      "note": "Ruth declares total assent. No closed proposition_kind names consent; DECLARED fits the speech act of asserting compliance.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/event_specific_slots",
+      "value_json": "{\"speaker\":\"B9\",\"addressee\":\"B3\",\"assent_content\":\"ALL_THAT_YOU_SAY_I_WILL_DO\",\"assent_completeness\":\"TOTAL_NO_QUESTIONS\",\"speech_act\":\"STATES_AS_TRUE\"}",
+      "note": "'all that you say I will do' is a commissive assent; no closed SPEECH_ACT names a promise/commitment, so STATES_AS_TRUE renders the 'I will do' assertion. FIG_0123 assent-pattern active.",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions/8/inter_proposition_links",
+      "value_json": "{\"caused_by\":\"P8\",\"paired_with\":\"P1\"}",
+      "note": "Ruth's consent answers Naomi's whole plan-speech (paired_with the opening appeal P1) and follows as its consequence (caused_by the handoff P8).",
+      "vocabulary_additions": null
+    },
+    {
+      "location": "/level_3_propositions",
+      "value_json": "null",
+      "note": "Two map-granularity propositions (P4, P7) carry several ordered commands each; I decomposed them inside event_specific_slots as instruction_components, each with its own speech_act and step_order, rather than splitting into new proposition rows. No re-anchoring of flags by verse was needed — flags sit on their map propositions.",
+      "vocabulary_additions": null
+    }
+  ],
+  "remarks": "Register: pericope stays INFORMAL_CASUAL (NARRATIVE); both scenes carry scene-level INTIMATE per the MM. Main judgment calls: (1) P1's rhetorical promise-question has no clean closed SPEECH_ACT — used STATES_HOPED_FOR_CONDITION with a question_form slot; reviewer may prefer WISHES_FOR_HEARER. (2) Minted CONSENT_SCENE and four arc_elements and the PLANNER role since no approved values fit this plan-and-consent exchange; RATIFICATION_SCENE was the near-miss for the consent scene. (3) Minted seven action stems for the concrete instruction verbs (wash/anoint/dress/go-down/go-in/uncover-feet/lie-down) — these are load-bearing plan content with no approved equivalents. (4) Referential-form tokens (NAOMI_HER_MOTHER_IN_LAW, MY_DAUGHTER_INTIMATE, OUR_KINSMAN_MODA, THE_MAN_HA_ISH) are map-flagged marked namings; left B16 and the S2 references unmarked per the tempered rule."
+}

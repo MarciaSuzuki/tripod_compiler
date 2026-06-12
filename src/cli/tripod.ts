@@ -652,7 +652,7 @@ program
       `# ${id} — ${req.mm.bcv ?? ""} — FOR_MODEL (DRAFT — machine-drafted, awaiting review)\n\n` +
       `> Judgment gaps filled by the SC-0063 drafter (\`tripod draft --live\`); the merge layer enforced the patch-only contract. NOT canon until ruled.\n\n` +
       "```json\n" + JSON.stringify(merge.merged, null, 2) + "\n```\n";
-    writeFileSync(join(runDir, `${id}-FOR-MODEL.draft.md`), note);
+    writeFileSync(join(runDir, `${id}-FOR-MODEL.md`), note);
     console.log(`  provenance + drafted FM written to ${runDir}`);
     console.log("  next: run the gates (validate · lint · coverage · id-check) on the drafted FM — findings are the experiment data.");
   });
