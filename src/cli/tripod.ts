@@ -619,6 +619,42 @@ program
     console.log("  next: run the gates (validate · lint · coverage · id-check) on the drafted FM — findings are the experiment data.");
   });
 
+program
+  .command("calibrate")
+  .description("SC-0063 Phase B: score a drafted FOR_MODEL against its GOLD counterpart at the judgment layer (drafted-vs-gold, alignment-aware, nothing smoothed)")
+  .argument("<id>", "pericope id with a gold FOR_MODEL fixture (P01–P06) and a draft run under _working/<id>/drafts/")
+  .option("--run <dir>", "a specific run directory (default: latest run-* under _working/<id>/drafts)")
+  .action(async (id: string, opts: { run?: string }) => {
+    const { assembleDraftRequest } = await import("../drafter/assemble.js");
+    const { applyFills } = await import("../drafter/fills.js");
+    const { calibrate, formatCalibration } = await import("../drafter/calibrate.js");
+    const ID = id.toUpperCase();
+    const goldFile = readdirSync(join("fixtures", "for-model")).find((f) => f.toUpperCase().startsWith(`${ID}-`));
+    if (!goldFile) throw new Error(`no gold FOR_MODEL fixture for ${ID} (calibration needs one of P01–P06)`);
+    const goldNote = readFileSync(join("fixtures", "for-model", goldFile), "utf8");
+    const goldJson = JSON.parse(goldNote.match(/```json\n([\s\S]*?)\n```/)![1]!);
+    const runDir =
+      opts.run ??
+      (() => {
+        const base = join("_working", ID, "drafts");
+        const runs = readdirSync(base)
+          .filter((d) => d.startsWith("run-"))
+          .sort();
+        if (!runs.length) throw new Error(`no run-* under ${base} — run \`tripod draft ${ID} --live\` first`);
+        return join(base, runs[runs.length - 1]!);
+      })();
+    const fills = JSON.parse(readFileSync(join(runDir, "fills.json"), "utf8"));
+    const req = assembleDraftRequest(resolveMapArg(ID));
+    const merge = applyFills(req.compile.skeleton, req.compile.gaps, fills);
+    if (merge.rejected.length) console.log(`⚠ ${merge.rejected.length} rejected fill(s) — the merged draft excludes them (see manifest)`);
+    const cal = calibrate(merge.merged, goldJson);
+    const text = formatCalibration(cal, `${ID} drafted (${runDir.split("/").pop()}) vs gold ${goldFile}`);
+    console.log(text);
+    writeFileSync(join(runDir, "calibration.json"), JSON.stringify(cal, null, 2));
+    writeFileSync(join(runDir, "calibration.txt"), text + "\n");
+    console.log(`\ncalibration written to ${runDir}/calibration.{json,txt}`);
+  });
+
 program.parseAsync(process.argv);
 
 function resolveMapArg(mapOrId: string): string {
