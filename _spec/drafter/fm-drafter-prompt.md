@@ -1,6 +1,10 @@
 # FOR_MODEL Drafter — system prompt
 
-**Pin:** `fm-drafter-0.1.3` · **Tagset:** `TRIPOD_STA_v2_0` · **Spec basis:** `validation-rules.json v0.16` (genre-aware register rule) + `approved-enumerations.json v0.10` · **Date authored:** 2026-06-12 (SC-0063)
+**Pin:** `fm-drafter-0.1.4` · **Tagset:** `TRIPOD_STA_v2_0` · **Spec basis:** `validation-rules.json v0.16` (genre-aware register rule) + `approved-enumerations.json v0.10` · **Date authored:** 2026-06-12 (SC-0063)
+**0.1.4 (P07 redraft):** being_id fills are `B<number>` from the registry or exactly `B?` for a deliberately-uncoded entity (surface form goes in the note) — never a descriptive token; the schema enforces `^B(\d+|\?)# FOR_MODEL Drafter — system prompt
+
+**Pin:** `fm-drafter-0.1.4` · **Tagset:** `TRIPOD_STA_v2_0` · **Spec basis:** `validation-rules.json v0.16` (genre-aware register rule) + `approved-enumerations.json v0.10` · **Date authored:** 2026-06-12 (SC-0063)
+.
 **0.1.3 (P08 ruling, 2026-06-12):** the action-idiom ruling baked in — commands encode as DIRECTED + commanded_step; imperatives never enter the action axis.
 **0.1.2 (calibration round 2):** referential_form marking TEMPERED (round 2 over-marked after 0.1.1's nudge — only map-attention-called namings count); axis-boundary rule (action ≠ proposition_kind; the AROSE_TO_RETURN crossing).
 **0.1.1 (P02 calibration round 1):** bare-token rule made explicit (no parenthetical commentary on axis values); mint declaration extended to EVERY axis including presence_value; slot-naming + components conventions tightened to the worked pair; caused_by/paired_with link discipline; referential_form marking guidance; exhaustive context enumeration.
