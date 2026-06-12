@@ -127,7 +127,12 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
       sc.times === null
         ? { _note: "no distinct temporal frame for this scene (per meaning map)", entries: null }
         : {
-            entries: sc.times.map((t) => {
+            entries: sc.times.map((t, i) => {
+              // SC-0063: a code-less time previously left a __TODO__ with no gap (the SC-0022
+              // "times carry no judgment gap" predates the drafter). Mirror places/objects:
+              // the drafter assigns a TM_ token (a registry PROPOSAL — gold P04 minted its own).
+              if (!t.code)
+                gap(`${at}/times_in_scene/entries/${i}/time_id`, "time_id", "no wikilink in MM — assign a TM_ code (registry proposal; judgment)", t.label);
               return { time_id: t.code ?? todo(t.label) };
             }),
           };
