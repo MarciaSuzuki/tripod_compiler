@@ -154,10 +154,12 @@ describe("drafter paid edge — locked without the key", () => {
   it("throws DrafterKeyMissingError before any network when ANTHROPIC_API_KEY is unset", async () => {
     const saved = process.env.ANTHROPIC_API_KEY;
     delete process.env.ANTHROPIC_API_KEY;
+    process.env.TRIPOD_DRAFTER_NO_DOTENV = "1"; // isolate the guard from a real .env on disk
     try {
       const req = assembleDraftRequest(P08);
       await expect(draftViaApi(req)).rejects.toBeInstanceOf(DrafterKeyMissingError);
     } finally {
+      delete process.env.TRIPOD_DRAFTER_NO_DOTENV;
       if (saved !== undefined) process.env.ANTHROPIC_API_KEY = saved;
     }
   });

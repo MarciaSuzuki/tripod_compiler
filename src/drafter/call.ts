@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { DraftRequest } from "./assemble.js";
 import { DRAFT_OUTPUT_SCHEMA, type DraftOutput } from "./fills.js";
 
@@ -15,13 +18,44 @@ const MAX_TOKENS = 32000;
 export class DrafterKeyMissingError extends Error {
   constructor() {
     super(
-      "ANTHROPIC_API_KEY is not set — the drafter's paid path is locked. Set the key in the environment " +
-        "(never commit it, never paste it into chat) and re-run, or use the free paths (--measure works keyless via byte estimate; default is dry-run).",
+      "ANTHROPIC_API_KEY is not set — the drafter's paid path is locked. Set the key in the environment, " +
+        "or put `ANTHROPIC_API_KEY=...` in a `.env` file at the repo root (gitignored; chmod 600). Never commit it, " +
+        "never paste it into chat. Free paths work keyless (--measure byte estimate; default is dry-run).",
     );
   }
 }
 
+/**
+ * Fallback when the variable isn't in the process environment: walk up from this module
+ * toward the filesystem root looking for a `.env` file (gitignored at any depth) carrying
+ * ANTHROPIC_API_KEY=…  Worktrees live inside the main repo, so a `.env` at the main root is
+ * found from either. The value is loaded into process.env and NEVER logged.
+ */
+function loadKeyFromDotEnv(): void {
+  let dir = dirname(fileURLToPath(import.meta.url));
+  for (let i = 0; i < 8; i++) {
+    try {
+      const text = readFileSync(join(dir, ".env"), "utf8");
+      const line = text.split(/\r?\n/).find((l) => /^\s*(export\s+)?ANTHROPIC_API_KEY\s*=/.test(l));
+      if (line) {
+        const value = line.slice(line.indexOf("=") + 1).trim().replace(/^["']|["']$/g, "");
+        if (value) {
+          process.env.ANTHROPIC_API_KEY = value;
+          return;
+        }
+      }
+    } catch {
+      /* no .env here — keep walking up */
+    }
+    const parent = dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+  }
+}
+
 function requireKey(): void {
+  // TRIPOD_DRAFTER_NO_DOTENV=1 disables the .env fallback (test isolation for the guard).
+  if (!process.env.ANTHROPIC_API_KEY && process.env.TRIPOD_DRAFTER_NO_DOTENV !== "1") loadKeyFromDotEnv();
   if (!process.env.ANTHROPIC_API_KEY) throw new DrafterKeyMissingError();
 }
 
