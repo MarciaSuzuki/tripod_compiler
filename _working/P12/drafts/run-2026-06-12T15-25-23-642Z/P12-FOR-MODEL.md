@@ -130,7 +130,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "referential_form": "RUTH_THE_MOABITESS_LEGAL_NAMING_AT_PROCEEDING"
           },
           {
-            "being_id": "B?",
+            "being_id": "B4",
             "role_in_scene": "DECEASED_WHOSE_NAME_RAISED",
             "presence": "REFERENCED",
             "referential_form": "HA_MET_THE_DEAD"

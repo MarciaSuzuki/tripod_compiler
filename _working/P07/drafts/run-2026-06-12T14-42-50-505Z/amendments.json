@@ -7,6 +7,12 @@
       "from": "THE_DEAD_HAMETIM",
       "to": "B?",
       "why": "The drafter proposed a descriptive token for the deliberately-uncoded collective ('the dead of the household'); the schema's being_id pattern ^B(\\d+|\\?)$ spells 'uncoded' as B?. The drafter's judgment (entity stays unbound) is preserved — only the spelling conforms. Its original note is intact in fills.json. The exegetical question (B? vs binding to B2/B4/B5) is ruling-sheet item A-4."
+    },
+    {
+      "where": "/level_2_scenes/2/beings_in_scene/entries/5/being_id",
+      "from": "B?",
+      "to": "B2",
+      "why": "Marcia's disclosure ruling (SC-0064, 2026-06-12): bind when the referent set is fixed by the text at that point — 2:20's hammetim = the household's dead, all named by 1:3–1:5 (unambiguous set). Bound per the P02-gold idiom (the scene entry carries the head, B2-Elimelech); the SURFACE withholding the map marks as significant is preserved untouched (referential_form HAMETIM_THE_DEAD; the 2:20b merism slots). Alternative (three entries B2/B4/B5) flagged for her optional refinement."
     }
   ],
   "prompt_followup": "fm-drafter-0.1.4 teaches the B? idiom so later drafts conform at source."
