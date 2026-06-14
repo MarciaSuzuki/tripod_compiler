@@ -57,7 +57,9 @@ const ANCHORS: Anchor[] = [
   {
     pid: "P09", file: "P09-Ruth-3-6-13.md", staId: "ruth_pericope_09_v2_0", bcvStart: /^Ruth 3:6/,
     genreGroup: "NARRATIVE", genre: "HISTORICAL_NARRATIVE", register: "INFORMAL_CASUAL",
-    blocks: 52, explicit: 39, implied: 23,
+    // 52→43 (SC-0064 §C, Marcia 2026-06-12): three place/time entities coded in the P09 map
+    // (PL_END_OF_GRAIN_HEAP, TM_MIDDLE_OF_THE_NIGHT, TM_NIGHT_UNTIL_MORNING) resolve their __TODO__ placeholders
+    blocks: 43, explicit: 39, implied: 23,
     registered: { cb: ["CB_0001", "CB_0011", "CB_0037"], fig: ["FIG_0131", "FIG_0135"] },
   },
   {
@@ -71,7 +73,8 @@ const ANCHORS: Anchor[] = [
     pid: "P11", file: "P11-Ruth-4-1-8.md", staId: "ruth_pericope_11_v2_0", bcvStart: /^Ruth 4:1/,
     genreGroup: "NARRATIVE", genre: "HISTORICAL_NARRATIVE", register: "INFORMAL_CASUAL",
     // 52→49 (SC-0064 A-2, Marcia 2026-06-12): the FIG_0167-under-3C entry dropped — its 3-block cascade gone
-    blocks: 49, explicit: 53, implied: 27,
+    // 49→43 (SC-0064 §C, Marcia 2026-06-12): PL5_ELIMELECH_PORTION + TM_DAY_OF_PURCHASE coded in the P11 map resolve their __TODO__ placeholders
+    blocks: 43, explicit: 53, implied: 27,
     registered: { cb: ["CB_0001", "CB_0045", "CB_0007"], fig: ["FIG_0162", "FIG_0165"] },
   },
   {

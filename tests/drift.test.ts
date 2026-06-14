@@ -208,8 +208,13 @@ describe("SC-0025 — action-slot enforcement (the nested-component action axis)
 
   it("action is convergent, seeded with 31 verbs; the 7 held are quarantined, not approved (disjoint)", () => {
     expect(axisClass("action")).toBe("convergent");
-    const approved = new Set((loadApprovedEnumerations().axes["action"] ?? []).map((e) => e.value));
-    expect(approved.size).toBe(31);
+    const entries = loadApprovedEnumerations().axes["action"] ?? [];
+    const approved = new Set(entries.map((e) => e.value));
+    // the SC-0025 seed is immutable at 31; the axis is convergent bounded-open and GROWS by
+    // governed promotion (SC-0006) — pin the seed by provenance, not the whole axis by count
+    // (first action-axis growth: SC-0064 sitting B1, +8 ruled by Marcia 2026-06-12).
+    expect(entries.filter((e) => e.sc_ref === "SC-0025").length).toBe(31);
+    expect(approved.size).toBeGreaterThanOrEqual(31);
     expect(ACTION_QUAR.size).toBe(7);
     for (const v of HELD7) {
       expect(ACTION_QUAR.has(v), `${v} quarantined`).toBe(true);

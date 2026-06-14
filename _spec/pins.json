@@ -19,8 +19,8 @@
       "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
     },
     "approved-enumerations.json": {
-      "version": "v0.11",
-      "sha256": "5f4908a21952e619e18ff37d9c9ed8fe629a2467a25e0427d12038412b3d3ca0"
+      "version": "v0.12",
+      "sha256": "7927188a5872e4556f973bd063bda3d1bf2db08801043d2ebc00303393ed7c80"
     },
     "quarantined-vocabulary.json": {
       "version": "0.2.0",
@@ -94,8 +94,8 @@
       "sha256": "0a3a1b372ad4470cc888dde9d499a92a93aa5118b28bcd35afbf8d183b9f3717"
     },
     "registry/ruth.aliases.json": {
-      "version": "aliases-0.1.5",
-      "sha256": "d5c150561178ef81218701cca6ff7046f7db84a5ed68865e46ca727d7f0520cf"
+      "version": "aliases-0.1.6",
+      "sha256": "87eadad49b4a61ec6d506fb10dc626ca72f0090b760edae798a6303c98c18da5"
     },
     "registry/jonah.aliases.json": {
       "version": "aliases-0.1.6",

@@ -4,11 +4,11 @@
     "by_kind": {
       "INSTITUTION": 9,
       "PERSON": 31,
-      "PLACE": 17,
+      "PLACE": 19,
       "THING": 24,
-      "TIME": 10
+      "TIME": 13
     },
-    "entities": 91
+    "entities": 96
   },
   "entities": {
     "B1": {
@@ -585,7 +585,8 @@
     },
     "O10": {
       "appears_in": [
-        "P06"
+        "P06",
+        "P07"
       ],
       "english": "Roasted Grain",
       "gender": null,
@@ -929,9 +930,21 @@
       "kind": "PLACE",
       "referential_forms": []
     },
+    "PL5_ELIMELECH_PORTION": {
+      "appears_in": [
+        "P11"
+      ],
+      "english": "Elimelech's Portion of the Field",
+      "gender": null,
+      "hebrew": "חֶלְקַת הַשָּׂדֶה אֲשֶׁר לְאָחִינוּ לֶאֱלִימֶלֶךְ",
+      "hebrew_cons": "חלקתהשדהאשרלאחינולאלימלך",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
     "PL6": {
       "appears_in": [
         "P08",
+        "P09",
         "P10"
       ],
       "english": "Threshing Floor",
@@ -984,6 +997,17 @@
       "gender": null,
       "hebrew": "",
       "hebrew_cons": "",
+      "kind": "PLACE",
+      "referential_forms": []
+    },
+    "PL_END_OF_GRAIN_HEAP": {
+      "appears_in": [
+        "P09"
+      ],
+      "english": "End of the Grain Heap",
+      "gender": null,
+      "hebrew": "קְצֵה הָעֲרֵמָה",
+      "hebrew_cons": "קצההערמה",
       "kind": "PLACE",
       "referential_forms": []
     },
@@ -1081,6 +1105,17 @@
       "kind": "TIME",
       "referential_forms": []
     },
+    "TM_DAY_OF_PURCHASE": {
+      "appears_in": [
+        "P11"
+      ],
+      "english": "Day of Purchase",
+      "gender": null,
+      "hebrew": "בְּיוֹם־קְנוֹתְךָ",
+      "hebrew_cons": "ביוםקנותך",
+      "kind": "TIME",
+      "referential_forms": []
+    },
     "TM_END_OF_BARLEY_HARVEST": {
       "appears_in": [
         "P04",
@@ -1138,6 +1173,17 @@
       "kind": "TIME",
       "referential_forms": []
     },
+    "TM_MIDDLE_OF_THE_NIGHT": {
+      "appears_in": [
+        "P09"
+      ],
+      "english": "Middle of the Night",
+      "gender": null,
+      "hebrew": "בַּחֲצִי הַלַּיְלָה",
+      "hebrew_cons": "בחציהלילה",
+      "kind": "TIME",
+      "referential_forms": []
+    },
     "TM_NIGHT_TO_MORNING": {
       "appears_in": [
         "P10"
@@ -1146,6 +1192,17 @@
       "gender": null,
       "hebrew": "לַיְלָה בֹּקֶר",
       "hebrew_cons": "לילהבקר",
+      "kind": "TIME",
+      "referential_forms": []
+    },
+    "TM_NIGHT_UNTIL_MORNING": {
+      "appears_in": [
+        "P09"
+      ],
+      "english": "Night Until Morning",
+      "gender": null,
+      "hebrew": "הַלַּיְלָה … בַבֹּקֶר",
+      "hebrew_cons": "הלילהבבקר",
       "kind": "TIME",
       "referential_forms": []
     },
@@ -1163,7 +1220,7 @@
     "TM_TODAY": {
       "appears_in": [
         "P07",
-        "P11",
+        "P10",
         "P12"
       ],
       "english": "Today",

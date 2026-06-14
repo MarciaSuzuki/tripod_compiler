@@ -1,7 +1,14 @@
 {
   "kind": "ruling amendments (SC-0064, Marcia 2026-06-12)",
   "by": "Architect",
-  "edits": [],
+  "edits": [
+    {
+      "where": "/level_2_scenes (S2 place roster) + /level_3_propositions (matter_disclosed slot)",
+      "from": "PL_ELIMELECH_FIELD_PORTION",
+      "to": "PL5_ELIMELECH_PORTION",
+      "why": "SC-0064 §C ruling (Marcia 2026-06-12): the drafter's proposed place code was renamed to PL5_ELIMELECH_PORTION to match the established PL5_BOAZ_PORTION sub-code pattern (both are portions of PL5-Field). The entity is unchanged; only the code conforms to the registry naming convention. Minted in bcd/places/PL5_ELIMELECH_PORTION-Elimelechs-Portion-of-the-Field.md; P11 map 3B roster wikilinked; 2 FM occurrences renamed."
+    }
+  ],
   "regens": [
     {
       "ruling": "A-2 (drop the FIG_0167 3C entry)",

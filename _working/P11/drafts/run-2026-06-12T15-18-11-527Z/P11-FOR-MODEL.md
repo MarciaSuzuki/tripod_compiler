@@ -187,7 +187,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "place_id": "PL7"
           },
           {
-            "place_id": "PL_ELIMELECH_FIELD_PORTION"
+            "place_id": "PL5_ELIMELECH_PORTION"
           },
           {
             "place_id": "PL2"
@@ -447,7 +447,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B19",
-        "matter_disclosed": "PL_ELIMELECH_FIELD_PORTION",
+        "matter_disclosed": "PL5_ELIMELECH_PORTION",
         "deceased_owner": "B2",
         "deceased_referential_form": "OUR_BROTHER_ELIMELECH",
         "seller": "B3",
