@@ -86,7 +86,9 @@ const ANCHORS: Anchor[] = [
     book: "ruth",
     staId: "ruth_pericope_07_v2_0",
     bcvStart: /^Ruth 2:17/,
-    blocks: 47,
+    // SC-0064 (2026-06-12): 47→44 — O10 (Roasted Grain) coded in the P07 map 3C (the 2:18 leftover =
+    // the 2:14 roasted grain); resolving the former __TODO__ placeholder drops its judgment gaps.
+    blocks: 44,
     explicit: 40,
     implied: 24,
     registered: { cb: ["CB_0001", "CB_0011", "CB_0039", "CB_0041"], fig: ["FIG_0104", "FIG_0110", "FIG_0111", "FIG_0112"] },

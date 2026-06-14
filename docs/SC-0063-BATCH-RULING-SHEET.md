@@ -333,29 +333,29 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - **J05:** This pericope is Jonah, not Ruth, so the bounded-open axes (which the digest populates almost entirely from Ruth) required several declared mints: arc_elements (9), one tone_element (HEATED), four scene_kinds, six role_in_scene tokens, and nine proposition_kinds (APPOINTED, QUESTIONED, STRUCK reused across multiple props; each declared at first occurrence). All mints are anchored to MM prose. Two judgment flags for the reviewer: (1) speech-act choices for the two pleas-to-YHWH (P5 DIRECTS_HEARER_TO_DO, P20 ASKS_RHETORICAL_QUESTION_AS_PROTEST) are nearest-fit from the closed 26 but neither is a clean match for a petition/self-justifying divine question; (2) P10 reuses ROSE for a plant's growth, a mild semantic stretch. Marked divine-name shifts (YHWH-Elohim doubled at 4:6, Elohim→YHWH across 4:9-11) are preserved both on being entries and in proposition slots. The closing question is left structurally open (UNANSWERED_QUESTION_CLOSE / UNRESOLVED_AT_CLOSE); the significant_absence blocks carry the unanswered-question constraint forward. book_context_ref is a best guess pending the canonical Jonah BCD slug.
 
 
-## C — Registry proposals (L3; each needs a BCD note + aliases rebuild on approval)
+## C — Registry proposals (L3; each needs a BCD note + aliases rebuild on approval) — **ALL RULED + APPLIED (Marcia, 2026-06-12; aliases 0.1.5→0.1.6, both trees)**
 
-- [ ] **PL_END_OF_GRAIN_HEAP** (P09 S1) — "at the end of the grain heap" (3:7); proposed place.
-- [ ] **TM_MIDDLE_OF_THE_NIGHT** (P09 S2) — "at half of the night" (3:8).
-- [ ] **TM_NIGHT_UNTIL_MORNING** (P09 S3) — "the night … in the morning" (3:13).
-  - ⚠ near-twin (evaluator-surfaced, architect-verified): the A-1 ruling (2026-06-12) minted `TM_NIGHT_TO_MORNING` for P10's 3:14 morning departure — the same threshing-floor night, adjacent verses. Option: reuse the A-1 code here instead of minting a near-twin.
-- [ ] **PL_ELIMELECH_FIELD_PORTION** (P11 S2) — "the portion of the field of our brother Elimelech" (4:3).
-- [ ] **TM_DAY_OF_PURCHASE** (P11 S3) — "on the day you buy" (4:5).
-- (P07's S2 **O10** appears in the FM but not the map's 3C — id-check FM-not-map; confirm or strike.)
+- [x] **PL_END_OF_GRAIN_HEAP** (P09 S1) — "at the end of the grain heap" (3:7); proposed place. **RULED mint → bcd/places/PL_END_OF_GRAIN_HEAP-End-of-the-Grain-Heap.md, span [P09], P09 map 3B wikilinked (both trees).**
+- [x] **TM_MIDDLE_OF_THE_NIGHT** (P09 S2) — "at half of the night" (3:8). **RULED mint → bcd/times note, span [P09], P09 map 3D wikilinked.**
+- [x] **TM_NIGHT_UNTIL_MORNING** (P09 S3) — "the night … in the morning" (3:13). **RULED mint DISTINCT (Marcia: "my map wrote them as two") → bcd/times note, span [P09], P09 map 3D wikilinked.**
+  - resolved: NOT a reuse of A-1's `TM_NIGHT_TO_MORNING`. Marcia's map distinguishes them — this is the PROSPECTIVE protocol-frame at 3:13 (הַלַּיְלָה … בַבֹּקֶר); TM_NIGHT_TO_MORNING is the ENACTED span at 3:14 (עַד־הַבֹּקֶר … בְּטֶרֶם). Two Hebrew surfaces, two referents.
+- [x] **PL5_ELIMELECH_PORTION** (P11 S2) — "the portion of the field of our brother Elimelech" (4:3). **RULED mint, RENAMED from PL_ELIMELECH_FIELD_PORTION to match the PL5_BOAZ_PORTION pattern → bcd/places note, span [P11], P11 map 3B wikilinked, P11 FM ×2 renamed (amendments.json).**
+- [x] **TM_DAY_OF_PURCHASE** (P11 S3) — "on the day you buy" (4:5). **RULED mint (Marcia: "the TM_TODAY overlap isn't real") → bcd/times note, span [P11], P11 map 3D wikilinked.**
+- [x] **O10** (P07 S2) appears in the FM but not the map's 3C — id-check FM-not-map. **RULED CONFIRM → O10 added to P07 map 3C (both trees, the 2:18 leftover = the 2:14 roasted grain); O10 registry span extended P06→[P06, P07].**
+- **Rider (Marcia, Tier A): two drifted spans corrected** — PL6 Threshing Floor [P08,P10]→**[P08,P09,P10]** (P09 was the threshing-floor night, unbuilt when the note was written); TM_TODAY [P07,P11,P12]→**[P07,P10,P12]** (drop P11 — its 4:5 anchor is now TM_DAY_OF_PURCHASE; add P10 — 3:18 "finished the matter today"). aliases rebuild diff = exactly +5 codes & these 3 span changes.
 
 ## D — Undeclared mints the audit caught (drafter contract misses; rule the value anyway)
 
 - [x] **TOOK** as `action` (P07 P4 component) — used without declaration; plausible action-axis value. **RULED tick (sitting B1 item 12, Marcia 2026-06-12) → promoted v0.12 with the undeclared use recorded in the P07 ruling log.**
-- [ ] **ASKED** as `proposition_kind` (P09 P7) — an axis-crossing (ASKED-style values live elsewhere);
-      either promote deliberately or amend to an approved kind.
+- [x] **ASKED** as `proposition_kind` (P09 P7) — an axis-crossing (ASKED-style values live elsewhere). **DEFERRED by Marcia (2026-06-12) to the `proposition_kind` axis sitting — to be ruled alongside QUESTIONED and the deferred dual-axis LAY_DOWN. Not applied here; the P09 FM keeps `ASKED` pending that sitting (the proposition_kind axis is bounded-open, so the FM still validates).**
 
-## E — Mechanical conformance amendments already applied (confirm or overrule)
+## E — Mechanical conformance amendments already applied (confirm or overrule) — **BOTH CONFIRMED (Marcia, 2026-06-12)**
 
 1. **P07:** drafter's `THE_DEAD_HAMETIM` → **`B?`** (schema's withheld-referent marker; the
-   drafter's note preserved in fills.json). Interacts with A-4.
+   drafter's note preserved in fills.json). Interacts with A-4. **CONFIRMED — the procedure was right; the live FM now reads `B2` per the A-4 disclosure ruling that superseded this spot (surface `HAMETIM_THE_DEAD` preserved).**
 2. **J01:** the drafter put `ELDER_AUTHORITY` (a legitimate REGISTER value, YHWH's command at 1:2)
    in the `framing_override` key; moved to **`override_value`** — the model's judgment preserved,
-   only the key corrected.
+   only the key corrected. **CONFIRMED — live FM clean.**
 
 ## F — Gate summary at close (per final run)
 
