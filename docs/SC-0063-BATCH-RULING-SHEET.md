@@ -39,7 +39,7 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 
 **Sitting B1 RULED (Marcia, 2026-06-12): `action` (7) + `tone_element` (4) + §D's TOOK — all 12 ticked** → promoted via per-pericope ruling logs (`_working/<id>/<id>-SC-0064-B1-RULING-LOG.md`), approved-enumerations **v0.12** re-pinned both trees. The dual-axis `proposition_kind` LAY_DOWN was **DEFERRED** to its axis sitting (B1 item 13). Remaining §B: 178 open checkboxes — proposition_kind (53, incl. the deferred LAY_DOWN) · role_in_scene_being (38) · arc_element (58) · scene_kind (29).
 
-### Axis `proposition_kind` — 72 declaration(s) · 53 unique value(s) — **Group A RULED (Marcia 2026-06-13): ASKED/LAY_DOWN/PROPOSED dual-axis + RESOLVED→AFFIRMED_RESOLVE rename → v0.13; B-collapses/C/bulk pending**
+### Axis `proposition_kind` — 72 declaration(s) · 53 unique value(s) — **Group A + B RULED (Marcia 2026-06-13): A → v0.13 (dual-axis trio + AFFIRMED_RESOLVE rename); B → v0.14 (B-1 collapse DIVINE_WORD_CAME→WORD_OF_YHWH_CAME; B-2/3/4 keep QUESTIONED/INTERROGATED/WENT_DOWN/DESCENDED/MEASURED/MEASURED_OUT). C (prose) + bulk pending**
 
 - [ ] **ACQUIRED** (P12) — MM P2/P3: 'I have bought all that was Elimelech's... I have bought Ruth' — the redemption-purchase; no existing proposition_kind names a legal acquisition/redemption (TOOK is take-as-wife; DECLARED is the speech frame). Reviewer may prefer a registry REDEEMED if one exists in P11.
 - [ ] **ANGER_KINDLED** (J05) — P1: 'it was evil to Jonah... a great evil... burning anger.' No approved proposition_kind names becoming angry.
@@ -61,8 +61,8 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [ ] **CONFESSED** (J02) — "I fear YHWH, God of heaven, who made the sea and the dry land" — Jonah's confession of the God he flees.
 - [ ] **CREED_RECITED** (J05) — P4: the five-fold creed (gracious, compassionate, slow to anger, abounding in hesed, relenting of evil) quoted as accusation; CB_0058 active here.
 - [ ] **DECLINED** (P11) — MM P11: 'I cannot redeem it for myself, lest I ruin my own inheritance' — the redeemer declines; no approved kind covers a refusal.
-- [ ] **DESCENDED** (J03) — P8: 'I went down to the roots of the mountains; the earth — her bars were behind me forever' — the descent's lowest point.
-- [ ] **DIVINE_WORD_CAME** (J01) — MM P1: 'a word came / YHWH's / to Jonah' — the prophetic word-event formula; approved SPOKE does not capture the 'word of YHWH came to X' event.
+- [x] **DESCENDED** (J03) — P8: 'I went down to the roots of the mountains; the earth — her bars were behind me forever' — the descent's lowest point. **RULED keep (Group B-3) → promoted v0.14** — the psalm's descent, distinct from WENT_DOWN.
+- [x] **DIVINE_WORD_CAME** (J01) — MM P1: 'a word came / YHWH's / to Jonah' — the prophetic word-event formula; approved SPOKE does not capture the 'word of YHWH came to X' event. **RULED COLLAPSE (Group B-1, Marcia 2026-06-13) → folded into `WORD_OF_YHWH_CAME`; J01 FM amended; NOT promoted.**
 - [ ] **EMBARKED** (J01) — MM P5: 'paying / going down into it / to sail / with the crew / away from before YHWH' — boarding the vessel to flee; no approved proposition_kind names embarkation.
 - [ ] **ENGULFED** (J03, J03)
   - J03: P4: 'the flood was all around me; all your breakers and your waves passed over me' — no approved kind covers engulfment.
@@ -88,14 +88,14 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
   - J02: "hurling ... YHWH hurled a great wind at the sea" — the hetil/hurl verb that recurs four times in the pericope.
   - J02: "they hurl the cargo into the sea to lighten the ship" — the second of four hurls.
   - J02: "they lift Jonah and hurl him into the sea" — the climactic hurl of the refrain.
-- [ ] **INTERROGATED** (J02) — "they press him: tell us — whose fault is this? what is your work? ..." — the rapid-fire questioning of the exposed man.
+- [x] **INTERROGATED** (J02) — "they press him: tell us — whose fault is this? what is your work? ..." — the rapid-fire questioning of the exposed man. **RULED keep (Group B-2) → promoted v0.14** — rapid-fire, distinct from ASKED/QUESTIONED.
 - [x] **LAY_DOWN** (P09, P10) — **RULED dual-axis (Group A, Marcia 2026-06-13) → promoted to proposition_kind v0.13 (action half landed in B1).**
   - P09: MM P3: 'he came to lie down at the end of the grain heap' — a lying-down event with no approved proposition_kind fit.
   - P10: MM P1: 'lying — who lay? she — at the place of his feet, until the morning.' No approved kind covers reclining/lying down (SAT, PROSTRATED, ROSE, REMAINED do not fit).
   - ✓ dual-axis resolved: the `action` half was promoted v0.12 (B1 item 6); the `proposition_kind` half (deferred at B1 item 13) is now promoted v0.13.
 - [ ] **MADE_SHELTER** (J05) — P8: 'making a booth... sitting under it in the shade.' Jonah builds his own watcher's shade (O13); no approved kind covers constructing a shelter.
-- [ ] **MEASURED** (P07) — MM P3: 'measuring | how much was it? about an ephah | an ephah of what? barley' (CB_0040); no approved proposition_kind for a quantity/measure result.
-- [ ] **MEASURED_OUT** (P10) — MM P5: 'measuring — measured six measures of barley — laid it on her.' FIG_0152 foregrounds the measuring with the measure-unit deliberately unspecified; GAVE/HANDED would lose the measuring act the text marks.
+- [x] **MEASURED** (P07) — MM P3: 'measuring | how much was it? about an ephah | an ephah of what? barley' (CB_0040); no approved proposition_kind for a quantity/measure result. **RULED keep (Group B-4) → promoted v0.14** — quantity result, distinct from MEASURED_OUT.
+- [x] **MEASURED_OUT** (P10) — MM P5: 'measuring — measured six measures of barley — laid it on her.' FIG_0152 foregrounds the measuring with the measure-unit deliberately unspecified; GAVE/HANDED would lose the measuring act the text marks. **RULED keep (Group B-4) → promoted v0.14** — portioning act, distinct from MEASURED.
 - [ ] **NAME_NOT_CUT_OFF** (P12) — MM P5: 'so that the name of the dead is not cut off from his kindred and from the gate of his place' (FIG_0110, living-and-dead formula); distinct negative beat from NAME_RAISED. Fallback DECLARED if registry consolidates.
 - [ ] **NAME_RAISED** (P12) — MM P4: 'to raise up the name of the dead upon his inheritance' (FIG_0002, the raise-up-the-name formula enacted); no existing proposition_kind covers name-preservation as the act. Fallback DECLARED if registry prefers consolidation.
 - [ ] **PASSED_BY** (P11) — MM P2: 'the redeemer of whom Boaz had spoken is passing by' — incidental passage with no approved kind.
@@ -104,7 +104,7 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
   - J05: P2: 'praying... to YHWH.' Distinct speech-to-deity act; SPOKE is the only generic near-fit but loses the prayer framing the register override marks.
 - [x] **PROPOSED** (J02) — "the men say to one another: come, let us cast lots" — a cohortative proposal among equals (the CONSULTATIVE register shift at v.7). **RULED dual-axis (Group A, Marcia 2026-06-13) → promoted to proposition_kind v0.13 (already on action).**
   - ✓ cross-axis resolved: dual-axis allowed (the established 7-member action↔proposition_kind pattern).
-- [ ] **QUESTIONED** (J05) — P6: 'asking... is it good that it burns to you?' No approved proposition_kind names a posed question; reused at P17 and P20.
+- [x] **QUESTIONED** (J05) — P6: 'asking... is it good that it burns to you?' No approved proposition_kind names a posed question; reused at P17 and P20. **RULED keep (Group B-2) → promoted v0.14** — probing question, distinct from ASKED/INTERROGATED.
 - [ ] **REASSURED** (P09) — MM P14: 'do not fear; all that you say I will do for you' — a reassurance/pledge act (FIG_0123/FIG_0136) with no approved proposition_kind fit.
 - [ ] **REJOICED** (J05) — P11: 'rejoicing... over the qiqayon, a great joy' — the only joy in the book.
 - [ ] **RELENTED** (J04) — 'God relents of the evil he had said he would do to them, and he does not do it' (Jonah 3:10).
@@ -120,11 +120,11 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [ ] **THRESHED** (P07) — MM P2: 'beating out | who beat it out? Ruth | beat out what? what she had gleaned' (chavat, CB_0041); no approved proposition_kind covers threshing.
 - [ ] **TREMBLED** (P09) — MM P5: 'the man trembled and twisted' — the vayyecherad startle, with no approved proposition_kind fit.
 - [ ] **VOMITED** (J04) — 'it vomits Jonah out onto the dry land' (Jonah 2:10).
-- [ ] **WENT_DOWN** (P09, J01, J02)
+- [x] **WENT_DOWN** (P09, J01, J02) **RULED keep (Group B-3) → promoted v0.14** — narrative yarad, distinct from DESCENDED.
   - P09: MM P1: 'she went down (yarad) to the threshing floor and did all her mother-in-law commanded' — a descent-and-compliance event with no approved proposition_kind fit.
   - J01: MM P4: 'going down / to Joppa / finding a ship' — the yarad descent (FIG_0198 Going-Down-Descent); no approved kind captures it.
   - J02: "Jonah has gone down into the far hold, lain down, and fallen fast asleep" — the yarad descent that runs through J01-J02.
-- [ ] **WORD_OF_YHWH_CAME** (J04) — 'the word of YHWH comes to Jonah a second time' — the recurring word-arrival formula.
+- [x] **WORD_OF_YHWH_CAME** (J04) — 'the word of YHWH comes to Jonah a second time' — the recurring word-arrival formula. **RULED COLLAPSE SURVIVOR (Group B-1, Marcia 2026-06-13) → promoted v0.14; absorbs DIVINE_WORD_CAME (J01 1:1 amended + J04 3:1).**
 - [ ] **WORSHIPED** (J02) — "the men fear YHWH with a great fear, and they offer a sacrifice ... and they vow vows" — the pagan crew's full worship as the storm's outcome.
 
 ### Axis `role_in_scene_being` — 60 declaration(s) · 38 unique value(s)

@@ -1,10 +1,10 @@
 {
   "$comment": "Growing registry of APPROVED convergent bounded-open enumeration values, with provenance. Seeded from canonical P01 (SC-0006); grows by governed promotion (tripod promote) as pericope COMPILATION-LOG vocabulary_additions are CONFIRMED. Replaces drift_detector.canonical_p01_enumerations as the live drift baseline for convergent axes. Descriptive/open axes (role/function/_kind _examples, referential_form) are NOT tracked here \u2014 they never converge. Vendored + pinned into the compiler; promotions are logged in VOCABULARY_LOG.md and re-pinned.",
-  "version": "v0.13",
+  "version": "v0.14",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date": "2026-06-05",
   "seeded_from": "validation-rules.json drift_detector.canonical_p01_enumerations (convergent axes only)",
-  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots \u2014 see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) \u2014 P03 now validates with zero convergent drift. v0.4 (2026-05-30): batch-promoted P04 (31), P05 (33), P06 (40) convergent values via the CONFIRMED-only flow \u2014 the full Ruth pilot corpus (P01\u2013P06) now validates with zero convergent drift. v0.5 (2026-06-03, SC-0021): promoted 11 corpus-independent triage bares \u2014 tone RISING/STILLED/URGENT; pace BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS \u2014 the locus-stripped/cleaned forms from the tone+pace triage (NARROW unified into NARROWS); tone/pace convergent drift across P01-P06 remains zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.6 (2026-06-04, SC-0022): promoted 56 reuse-dependent triage bares \u2014 13 scene_kind (APPEAL/ARRIVAL/BLESSING/DEPARTURE/INITIATIVE/INSTRUCTION/LAMENT/MARRIAGE/MEAL/NARRATOR_INTRODUCTION/RATIFICATION/REPORT/VOW _SCENE), 27 proposition_kind (action-verbs + SPOKE + move-labels APPEAL/LAMENT/VOW/INSTRUCTION/RENAMING/BLESSING), 16 communicative_function_element (leading verbs) \u2014 the collapsed reusable types from the scene_kind/proposition_kind/communicative_function triage; convergent drift across P01-P06 returns to zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.7 (2026-06-04, SC-0022): added the role_in_scene_being axis \u2014 beings' participant role reclassified descriptive\u2192convergent and seeded with the 21 ruled relations (kinship HUSBAND/WIFE/WIDOW/MOTHER_IN_LAW/SON/DAUGHTER_IN_LAW/KINSMAN/ANCESTOR/CLAN/REDEEMER_KIN/PEOPLE; DIVINE_AGENT; activity GLEANER/FIELD_OWNER/FOREMAN/HARVESTERS/FEMALE_WORKERS/MALE_WORKERS/TOWNSPEOPLE; referenced SOURCE_GROUP/ERA_REFERENT). The slot is now an enforced controlled relation set, not convention. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.8 (2026-06-04, SC-0022 deprecation): removed 133 orphaned superseded values no longer used by any pericope \u2014 17 scene_kind + 54 proposition_kind + 40 communicative_function_element (the wordy forms collapsed by the triage) + 9 tone_element + 13 pace_element (the locus-stripped forms SC-0021 left behind, incl. NARROW unified into NARROWS). The old\u2192new mapping is preserved in tripod_cleanup_log.md + git history; the registry is now exactly the cleaned canonical set, so reusing an old form drifts. See SPEC_CHANGES.md. v0.9 (2026-06-04, SC-0023): un-settled the 8 quarantined communicative_function_element used-once coin-flips (TRANSMITS/ANSWERS/PLACES/ANCHORS/INTRODUCES/POSITIONS/DISTRIBUTES/RECITES) \u2014 moved out of the approved set into the pinned quarantined-vocabulary.json. They were erroneously promoted as settled in SC-0022; they are NOT settled types. The validator now surfaces each use as a `quarantined` notice and a recurrence (\u22652 pericopes) as an explicit RECURS in the corpus quarantine watch. comm-func approved set 16 \u2192 8 (the recurring verbs). See SPEC_CHANGES.md SC-0023. v0.10 (2026-06-05, SC-0025): added the action axis \u2014 the nested component action slot reclassified from uncontrolled free-text to convergent bounded-open, seeded with the 31 SC-0024-cleaned verbs across P01-P06 (the 7 held sentence-shaped labels are quarantined, not approved \u2014 see quarantined-vocabulary.json). action convergent drift across P01-P06 is zero. See SPEC_CHANGES.md SC-0025. v0.11 (2026-06-12): promoted P08's 6 CONFIRMED values (scene_kind CONSENT_SCENE \u00b7 role_in_scene_being PLANNER \u00b7 arc_element REST_SEEKING_INITIATIVE/NIGHT_PLAN_INSTRUCTION/INITIATIVE_HANDOFF/TOTAL_CONSENT) from the SC-0063 drafter pilot, ruled by Marcia \u2014 the first machine-drafted promotion; see VOCABULARY_LOG.md. v0.12 (2026-06-12): promoted the 12 CONFIRMED values of Marcia's SC-0064 \u00a7B sitting-1 ruling (action AROSE/REMOVED_ROBE/DONNED_SACKCLOTH/SAT_ON_ASHES/UNCOVERED_FEET/LAY_DOWN/DREW_OFF_SANDAL/TOOK \u00b7 tone_element HEATED/IRONIC/PROCEDURAL/WONDER_UNDERSTATED) from the SC-0063 batch-ruling sheet (action + tone_element axes + \u00a7D's audit-caught TOOK; the dual-axis proposition_kind LAY_DOWN deferred to its axis sitting); per-pericope ruling logs in _working/<id>/<id>-SC-0064-B1-RULING-LOG.md; see VOCABULARY_LOG.md. v0.13 (2026-06-13): promoted SC-0064 proposition_kind Group A (Marcia's ruling) \u2014 the dual-axis trio ASKED/LAY_DOWN/PROPOSED added to proposition_kind (the established 7-member action\u2194proposition_kind pattern; ASKED also closes the \u00a7D-deferred P09 use) + AFFIRMED_RESOLVE (renamed from the drafter's RESOLVED to avoid the discourse_thread_state collision; J03 FM amended). proposition_kind 35\u219239. Logs: _working/{J02,P09,J03}/*-SC-0064-PROPKIND-A-RULING-LOG.md; see VOCABULARY_LOG.md.",
+  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots \u2014 see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) \u2014 P03 now validates with zero convergent drift. v0.4 (2026-05-30): batch-promoted P04 (31), P05 (33), P06 (40) convergent values via the CONFIRMED-only flow \u2014 the full Ruth pilot corpus (P01\u2013P06) now validates with zero convergent drift. v0.5 (2026-06-03, SC-0021): promoted 11 corpus-independent triage bares \u2014 tone RISING/STILLED/URGENT; pace BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS \u2014 the locus-stripped/cleaned forms from the tone+pace triage (NARROW unified into NARROWS); tone/pace convergent drift across P01-P06 remains zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.6 (2026-06-04, SC-0022): promoted 56 reuse-dependent triage bares \u2014 13 scene_kind (APPEAL/ARRIVAL/BLESSING/DEPARTURE/INITIATIVE/INSTRUCTION/LAMENT/MARRIAGE/MEAL/NARRATOR_INTRODUCTION/RATIFICATION/REPORT/VOW _SCENE), 27 proposition_kind (action-verbs + SPOKE + move-labels APPEAL/LAMENT/VOW/INSTRUCTION/RENAMING/BLESSING), 16 communicative_function_element (leading verbs) \u2014 the collapsed reusable types from the scene_kind/proposition_kind/communicative_function triage; convergent drift across P01-P06 returns to zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.7 (2026-06-04, SC-0022): added the role_in_scene_being axis \u2014 beings' participant role reclassified descriptive\u2192convergent and seeded with the 21 ruled relations (kinship HUSBAND/WIFE/WIDOW/MOTHER_IN_LAW/SON/DAUGHTER_IN_LAW/KINSMAN/ANCESTOR/CLAN/REDEEMER_KIN/PEOPLE; DIVINE_AGENT; activity GLEANER/FIELD_OWNER/FOREMAN/HARVESTERS/FEMALE_WORKERS/MALE_WORKERS/TOWNSPEOPLE; referenced SOURCE_GROUP/ERA_REFERENT). The slot is now an enforced controlled relation set, not convention. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.8 (2026-06-04, SC-0022 deprecation): removed 133 orphaned superseded values no longer used by any pericope \u2014 17 scene_kind + 54 proposition_kind + 40 communicative_function_element (the wordy forms collapsed by the triage) + 9 tone_element + 13 pace_element (the locus-stripped forms SC-0021 left behind, incl. NARROW unified into NARROWS). The old\u2192new mapping is preserved in tripod_cleanup_log.md + git history; the registry is now exactly the cleaned canonical set, so reusing an old form drifts. See SPEC_CHANGES.md. v0.9 (2026-06-04, SC-0023): un-settled the 8 quarantined communicative_function_element used-once coin-flips (TRANSMITS/ANSWERS/PLACES/ANCHORS/INTRODUCES/POSITIONS/DISTRIBUTES/RECITES) \u2014 moved out of the approved set into the pinned quarantined-vocabulary.json. They were erroneously promoted as settled in SC-0022; they are NOT settled types. The validator now surfaces each use as a `quarantined` notice and a recurrence (\u22652 pericopes) as an explicit RECURS in the corpus quarantine watch. comm-func approved set 16 \u2192 8 (the recurring verbs). See SPEC_CHANGES.md SC-0023. v0.10 (2026-06-05, SC-0025): added the action axis \u2014 the nested component action slot reclassified from uncontrolled free-text to convergent bounded-open, seeded with the 31 SC-0024-cleaned verbs across P01-P06 (the 7 held sentence-shaped labels are quarantined, not approved \u2014 see quarantined-vocabulary.json). action convergent drift across P01-P06 is zero. See SPEC_CHANGES.md SC-0025. v0.11 (2026-06-12): promoted P08's 6 CONFIRMED values (scene_kind CONSENT_SCENE \u00b7 role_in_scene_being PLANNER \u00b7 arc_element REST_SEEKING_INITIATIVE/NIGHT_PLAN_INSTRUCTION/INITIATIVE_HANDOFF/TOTAL_CONSENT) from the SC-0063 drafter pilot, ruled by Marcia \u2014 the first machine-drafted promotion; see VOCABULARY_LOG.md. v0.12 (2026-06-12): promoted the 12 CONFIRMED values of Marcia's SC-0064 \u00a7B sitting-1 ruling (action AROSE/REMOVED_ROBE/DONNED_SACKCLOTH/SAT_ON_ASHES/UNCOVERED_FEET/LAY_DOWN/DREW_OFF_SANDAL/TOOK \u00b7 tone_element HEATED/IRONIC/PROCEDURAL/WONDER_UNDERSTATED) from the SC-0063 batch-ruling sheet (action + tone_element axes + \u00a7D's audit-caught TOOK; the dual-axis proposition_kind LAY_DOWN deferred to its axis sitting); per-pericope ruling logs in _working/<id>/<id>-SC-0064-B1-RULING-LOG.md; see VOCABULARY_LOG.md. v0.13 (2026-06-13): promoted SC-0064 proposition_kind Group A (Marcia's ruling) \u2014 the dual-axis trio ASKED/LAY_DOWN/PROPOSED added to proposition_kind (the established 7-member action\u2194proposition_kind pattern; ASKED also closes the \u00a7D-deferred P09 use) + AFFIRMED_RESOLVE (renamed from the drafter's RESOLVED to avoid the discourse_thread_state collision; J03 FM amended). proposition_kind 35\u219239. Logs: _working/{J02,P09,J03}/*-SC-0064-PROPKIND-A-RULING-LOG.md; see VOCABULARY_LOG.md. v0.14 (2026-06-13): promoted SC-0064 proposition_kind Group B (Marcia's ruling) \u2014 B-1 COLLAPSE: DIVINE_WORD_CAME folded into WORD_OF_YHWH_CAME (the literal survivor; J01 FM amended, DIVINE_WORD_CAME not promoted); B-2/3/4 KEEP: QUESTIONED/INTERROGATED (distinct from Group-A's ASKED), WENT_DOWN (narrative yarad) / DESCENDED (the psalm), MEASURED (quantity) / MEASURED_OUT (portioning). proposition_kind 39\u219246. Logs: _working/{J01,J05,J02,P09,J03,P07,P10}/*-SC-0064-PROPKIND-B-RULING-LOG.md.",
   "axes": {
     "action": [
       {
@@ -553,6 +553,55 @@
         "first_seen": "J03",
         "approved_in": "J03",
         "source_artifact": "J03-SC-0064-PROPKIND-A-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "WORD_OF_YHWH_CAME",
+        "first_seen": "J01",
+        "approved_in": "J01",
+        "source_artifact": "J01-SC-0064-PROPKIND-B-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "QUESTIONED",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-PROPKIND-B-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "INTERROGATED",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-PROPKIND-B-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "WENT_DOWN",
+        "first_seen": "P09",
+        "approved_in": "P09",
+        "source_artifact": "P09-SC-0064-PROPKIND-B-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DESCENDED",
+        "first_seen": "J03",
+        "approved_in": "J03",
+        "source_artifact": "J03-SC-0064-PROPKIND-B-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "MEASURED",
+        "first_seen": "P07",
+        "approved_in": "P07",
+        "source_artifact": "P07-SC-0064-PROPKIND-B-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "MEASURED_OUT",
+        "first_seen": "P10",
+        "approved_in": "P10",
+        "source_artifact": "P10-SC-0064-PROPKIND-B-RULING-LOG",
         "sc_ref": "SC-0064"
       }
     ],
