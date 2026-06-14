@@ -1,12 +1,12 @@
 {
-  "kind": "ruling amendment (SC-0064 A-4, Marcia 2026-06-12)",
-  "by": "Architect applying the disclosure rule",
+  "kind": "ruling amendment (SC-0064 proposition_kind Group C consolidation, Marcia 2026-06-13)",
+  "by": "Architect",
   "edits": [
     {
-      "where": "level_2_scenes S1 dead entry being_id",
-      "from": "B?",
-      "to": "B4",
-      "why": "4:10 names Mahlon in-verse ('Ruth the Moabitess, the wife of Mahlon... to raise the name of the dead') — the book has disclosed the referent at this point, so the FOR_MODEL binds: B4-Mahlon. Surface form HA_MET_THE_DEAD preserved. Contrast P11's 4:5 ham-met (pre-disclosure in the gate scene): stays B? per the same rule — the model's own fill already withheld there."
+      "where": "/level_3_propositions (P4 @ 4:10b, P5 @ 4:10c) /proposition_kind",
+      "from": "NAME_RAISED (P4) + NAME_NOT_CUT_OFF (P5)",
+      "to": "NAME_PRESERVED (both)",
+      "why": "Marcia's Group-C ruling (option a): the levirate name-preservation formula's two halves consolidated to one neutral type. NAME_NOT_CUT_OFF failed the strip-to-type test (a full clause restating content); NAME_RAISED folded in with it since a neutral NAME_PRESERVED covers the raising too (keeping both would be redundant). NAME_RAISED + NAME_NOT_CUT_OFF retire (not promoted); NAME_PRESERVED promoted to proposition_kind under SC-0064 (P12 ruling log)."
     }
   ]
 }

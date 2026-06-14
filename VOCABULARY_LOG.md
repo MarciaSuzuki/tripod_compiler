@@ -114,3 +114,7 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
 - J03-SC-0064-PROPKIND-B-RULING-LOG: promoted 1 value(s) [proposition_kind:DESCENDED] → _spec/approved-enumerations.json (SC-0064)
 - P07-SC-0064-PROPKIND-B-RULING-LOG: promoted 1 value(s) [proposition_kind:MEASURED] → _spec/approved-enumerations.json (SC-0064)
 - P10-SC-0064-PROPKIND-B-RULING-LOG: promoted 1 value(s) [proposition_kind:MEASURED_OUT] → _spec/approved-enumerations.json (SC-0064)
+- P12-SC-0064-PROPKIND-C-RULING-LOG: promoted 1 value(s) [proposition_kind:NAME_PRESERVED] → _spec/approved-enumerations.json (SC-0064)
+- J05-SC-0064-PROPKIND-C-RULING-LOG: promoted 2 value(s) [proposition_kind:ANGER_KINDLED, proposition_kind:CREED_RECITED] → _spec/approved-enumerations.json (SC-0064)
+- J02-SC-0064-PROPKIND-C-RULING-LOG: promoted 2 value(s) [proposition_kind:SEA_STILLED, proposition_kind:STORM_AROSE] → _spec/approved-enumerations.json (SC-0064)
+- J03-SC-0064-PROPKIND-C-RULING-LOG: promoted 1 value(s) [proposition_kind:CAST_INTO_DEEP] → _spec/approved-enumerations.json (SC-0064)
