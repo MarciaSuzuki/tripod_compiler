@@ -338,7 +338,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "2:4",
-      "proposition_kind": "RESOLVED",
+      "proposition_kind": "AFFIRMED_RESOLVE",
       "event_specific_slots": {
         "resolver": "B1",
         "resolved_action": "LOOK_AGAIN",

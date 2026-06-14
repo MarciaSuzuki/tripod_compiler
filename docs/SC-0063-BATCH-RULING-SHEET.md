@@ -39,7 +39,7 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 
 **Sitting B1 RULED (Marcia, 2026-06-12): `action` (7) + `tone_element` (4) + §D's TOOK — all 12 ticked** → promoted via per-pericope ruling logs (`_working/<id>/<id>-SC-0064-B1-RULING-LOG.md`), approved-enumerations **v0.12** re-pinned both trees. The dual-axis `proposition_kind` LAY_DOWN was **DEFERRED** to its axis sitting (B1 item 13). Remaining §B: 178 open checkboxes — proposition_kind (53, incl. the deferred LAY_DOWN) · role_in_scene_being (38) · arc_element (58) · scene_kind (29).
 
-### Axis `proposition_kind` — 72 declaration(s) · 53 unique value(s)
+### Axis `proposition_kind` — 72 declaration(s) · 53 unique value(s) — **Group A RULED (Marcia 2026-06-13): ASKED/LAY_DOWN/PROPOSED dual-axis + RESOLVED→AFFIRMED_RESOLVE rename → v0.13; B-collapses/C/bulk pending**
 
 - [ ] **ACQUIRED** (P12) — MM P2/P3: 'I have bought all that was Elimelech's... I have bought Ruth' — the redemption-purchase; no existing proposition_kind names a legal acquisition/redemption (TOOK is take-as-wife; DECLARED is the speech frame). Reviewer may prefer a registry REDEEMED if one exists in P11.
 - [ ] **ANGER_KINDLED** (J05) — P1: 'it was evil to Jonah... a great evil... burning anger.' No approved proposition_kind names becoming angry.
@@ -52,7 +52,7 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [ ] **APPROACHED** (P09, J02)
   - P09: MM P4: 'she came softly, uncovered the place of his feet, and lay down' — a multi-action approach with no approved proposition_kind fit.
   - J02: "the captain comes to him" and rebukes the sleeper — the captain's approach with a protest question.
-- [ ] **ASKED** (J02) — "the men ask Jonah: what shall we do to you, so the sea will quiet?" — the crew's question to the exposed man (CONSULTATIVE shift at v.11).
+- [x] **ASKED** (J02, P09) — "the men ask Jonah: what shall we do to you, so the sea will quiet?" — the crew's question to the exposed man (CONSULTATIVE shift at v.11). **RULED dual-axis (Group A, Marcia 2026-06-13) → promoted to proposition_kind v0.13 (already on action); one promotion covers J02 + P09 and CLOSES the §D-deferred P09 use.**
 - [ ] **BELIEVED** (J04) — 'The men of Nineveh believe God' (Jonah 3:5).
 - [ ] **BORE** (P13) — MM P3 'bearing' — Ruth bears a son; no approved proposition_kind (DIED, GAVE, TOOK, etc.) covers a birth event.
 - [ ] **BROUGHT_UP** (J03) — P9: 'And you brought my life up from the pit, YHWH my God' — the lift, no approved kind covers it.
@@ -89,10 +89,10 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
   - J02: "they hurl the cargo into the sea to lighten the ship" — the second of four hurls.
   - J02: "they lift Jonah and hurl him into the sea" — the climactic hurl of the refrain.
 - [ ] **INTERROGATED** (J02) — "they press him: tell us — whose fault is this? what is your work? ..." — the rapid-fire questioning of the exposed man.
-- [ ] **LAY_DOWN** (P09, P10)
+- [x] **LAY_DOWN** (P09, P10) — **RULED dual-axis (Group A, Marcia 2026-06-13) → promoted to proposition_kind v0.13 (action half landed in B1).**
   - P09: MM P3: 'he came to lie down at the end of the grain heap' — a lying-down event with no approved proposition_kind fit.
   - P10: MM P1: 'lying — who lay? she — at the place of his feet, until the morning.' No approved kind covers reclining/lying down (SAT, PROSTRATED, ROSE, REMAINED do not fit).
-  - ⚠ dual-axis (updated at B1): the `action` LAY_DOWN was RULED tick + promoted v0.12 (B1 item 6); THIS `proposition_kind` proposal was **DEFERRED** by Marcia (B1 item 13, 2026-06-12) — rule it with this axis.
+  - ✓ dual-axis resolved: the `action` half was promoted v0.12 (B1 item 6); the `proposition_kind` half (deferred at B1 item 13) is now promoted v0.13.
 - [ ] **MADE_SHELTER** (J05) — P8: 'making a booth... sitting under it in the shade.' Jonah builds his own watcher's shade (O13); no approved kind covers constructing a shelter.
 - [ ] **MEASURED** (P07) — MM P3: 'measuring | how much was it? about an ephah | an ephah of what? barley' (CB_0040); no approved proposition_kind for a quantity/measure result.
 - [ ] **MEASURED_OUT** (P10) — MM P5: 'measuring — measured six measures of barley — laid it on her.' FIG_0152 foregrounds the measuring with the measure-unit deliberately unspecified; GAVE/HANDED would lose the measuring act the text marks.
@@ -102,15 +102,15 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [ ] **PRAYED** (J02, J05)
   - J02: "Jonah prays to YHWH his God from the belly of the fish" — the prayer the prophet never prayed on deck.
   - J05: P2: 'praying... to YHWH.' Distinct speech-to-deity act; SPOKE is the only generic near-fit but loses the prayer framing the register override marks.
-- [ ] **PROPOSED** (J02) — "the men say to one another: come, let us cast lots" — a cohortative proposal among equals (the CONSULTATIVE register shift at v.7).
-  - ⚠ cross-axis (evaluator-surfaced, architect-verified): `PROPOSED` is already an approved `action` value — ticking here puts the same token on two axes.
+- [x] **PROPOSED** (J02) — "the men say to one another: come, let us cast lots" — a cohortative proposal among equals (the CONSULTATIVE register shift at v.7). **RULED dual-axis (Group A, Marcia 2026-06-13) → promoted to proposition_kind v0.13 (already on action).**
+  - ✓ cross-axis resolved: dual-axis allowed (the established 7-member action↔proposition_kind pattern).
 - [ ] **QUESTIONED** (J05) — P6: 'asking... is it good that it burns to you?' No approved proposition_kind names a posed question; reused at P17 and P20.
 - [ ] **REASSURED** (P09) — MM P14: 'do not fear; all that you say I will do for you' — a reassurance/pledge act (FIG_0123/FIG_0136) with no approved proposition_kind fit.
 - [ ] **REJOICED** (J05) — P11: 'rejoicing... over the qiqayon, a great joy' — the only joy in the book.
 - [ ] **RELENTED** (J04) — 'God relents of the evil he had said he would do to them, and he does not do it' (Jonah 3:10).
 - [ ] **REMEMBERED** (J03) — P10: 'As my soul fainted within me, I remembered YHWH' — remembering, distinct from PERCEIVED.
-- [ ] **RESOLVED** (J03) — P6: 'yet I will look again toward your holy temple' — a forward resolve, distinct from a vow or a plain speech act.
-  - ⚠ cross-axis (evaluator-surfaced, architect-verified): `RESOLVED` is already an approved `discourse_thread_state` value — ticking here puts the same token on two axes.
+- [x] **RESOLVED → `AFFIRMED_RESOLVE`** (J03) — P6: 'yet I will look again toward your holy temple' — a forward resolve, distinct from a vow or a plain speech act. **RULED RENAME (Group A option b, Marcia 2026-06-13): renamed to AFFIRMED_RESOLVE → promoted to proposition_kind v0.13; J03 FM amended (amendments.json). RESOLVED stays on discourse_thread_state only.**
+  - ✓ cross-axis resolved by rename: `RESOLVED` is the approved `discourse_thread_state` value (a status axis); no token spans status↔event, so the proposition_kind was renamed rather than dual-placed.
 - [ ] **ROWED** (J02) — "the men dig their oars in to get back to the dry land — and they cannot" — the failed rescue effort.
 - [ ] **SEA_STILLED** (J02) — "the sea stands still from its raging" — the sudden calm that is the storm's verdict.
 - [ ] **SHOWED** (P10) — MM P10: 'showing — what did she show? these six measures of barley.' The gift is laid out as evidence; no approved kind covers displaying/presenting an object as proof (GAVE/HANDED is the original transfer, not the showing).
@@ -347,7 +347,7 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 ## D — Undeclared mints the audit caught (drafter contract misses; rule the value anyway)
 
 - [x] **TOOK** as `action` (P07 P4 component) — used without declaration; plausible action-axis value. **RULED tick (sitting B1 item 12, Marcia 2026-06-12) → promoted v0.12 with the undeclared use recorded in the P07 ruling log.**
-- [x] **ASKED** as `proposition_kind` (P09 P7) — an axis-crossing (ASKED-style values live elsewhere). **DEFERRED by Marcia (2026-06-12) to the `proposition_kind` axis sitting — to be ruled alongside QUESTIONED and the deferred dual-axis LAY_DOWN. Not applied here; the P09 FM keeps `ASKED` pending that sitting (the proposition_kind axis is bounded-open, so the FM still validates).**
+- [x] **ASKED** as `proposition_kind` (P09 P7) — an axis-crossing. **RESOLVED in the proposition_kind Group A sitting (Marcia 2026-06-13): ASKED promoted dual-axis to proposition_kind v0.13 — the one promotion (J02 + P09) closes this §D-deferred P09 use. No FM amendment needed; the P09 FM's `ASKED` is now an approved value.**
 
 ## E — Mechanical conformance amendments already applied (confirm or overrule) — **BOTH CONFIRMED (Marcia, 2026-06-12)**
 

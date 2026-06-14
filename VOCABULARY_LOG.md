@@ -104,3 +104,6 @@ communicative_function), `discourse_thread_state`, and `high_risk_register_kind`
 - J02-SC-0064-B1-RULING-LOG: promoted 1 value(s) [tone_element:IRONIC] → _spec/approved-enumerations.json (SC-0064)
 - J04-SC-0064-B1-RULING-LOG: promoted 5 value(s) [action:AROSE, action:REMOVED_ROBE, action:DONNED_SACKCLOTH, action:SAT_ON_ASHES, tone_element:WONDER_UNDERSTATED] → _spec/approved-enumerations.json (SC-0064)
 - J05-SC-0064-B1-RULING-LOG: promoted 1 value(s) [tone_element:HEATED] → _spec/approved-enumerations.json (SC-0064)
+- J02-SC-0064-PROPKIND-A-RULING-LOG: promoted 2 value(s) [proposition_kind:ASKED, proposition_kind:PROPOSED] → _spec/approved-enumerations.json (SC-0064)
+- P09-SC-0064-PROPKIND-A-RULING-LOG: promoted 1 value(s) [proposition_kind:LAY_DOWN] → _spec/approved-enumerations.json (SC-0064)
+- J03-SC-0064-PROPKIND-A-RULING-LOG: promoted 1 value(s) [proposition_kind:AFFIRMED_RESOLVE] → _spec/approved-enumerations.json (SC-0064)

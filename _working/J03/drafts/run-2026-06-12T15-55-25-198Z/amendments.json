@@ -1,0 +1,12 @@
+{
+  "kind": "ruling amendment (SC-0064 proposition_kind Group A, Marcia 2026-06-13)",
+  "by": "Architect",
+  "edits": [
+    {
+      "where": "/level_3_propositions (P6 @ 2:4) /proposition_kind",
+      "from": "RESOLVED",
+      "to": "AFFIRMED_RESOLVE",
+      "why": "Marcia's Group-A ruling (option b: rename): RESOLVED already names an approved `discourse_thread_state` (a status axis); no token has spanned status↔event, so the J03 proposition_kind is renamed AFFIRMED_RESOLVE to avoid the cross-axis collision while preserving the drafter's 'forward resolve, distinct from a vow or plain speech act' intent (2:4 'yet I will look again toward your holy temple'). AFFIRMED_RESOLVE promoted to proposition_kind under SC-0064 (J03 ruling log)."
+    }
+  ]
+}
