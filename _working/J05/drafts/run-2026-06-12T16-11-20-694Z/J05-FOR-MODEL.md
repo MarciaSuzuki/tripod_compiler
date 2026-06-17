@@ -182,12 +182,12 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B1",
-            "role_in_scene": "AFFLICTED_ONE",
+            "role_in_scene": "COMPLAINANT",
             "presence": "PRESENT"
           },
           {
             "being_id": "B13",
-            "role_in_scene": "APPOINTED_STRIKER",
+            "role_in_scene": "APPOINTED_CREATURE",
             "presence": "PRESENT"
           }
         ]
@@ -226,7 +226,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B1",
-            "role_in_scene": "RESPONDENT",
+            "role_in_scene": "COMPLAINANT",
             "presence": "PRESENT"
           },
           {

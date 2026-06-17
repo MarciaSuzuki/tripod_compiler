@@ -7,6 +7,12 @@
       "from": "NAME_RAISED (P4) + NAME_NOT_CUT_OFF (P5)",
       "to": "NAME_PRESERVED (both)",
       "why": "Marcia's Group-C ruling (option a): the levirate name-preservation formula's two halves consolidated to one neutral type. NAME_NOT_CUT_OFF failed the strip-to-type test (a full clause restating content); NAME_RAISED folded in with it since a neutral NAME_PRESERVED covers the raising too (keeping both would be redundant). NAME_RAISED + NAME_NOT_CUT_OFF retire (not promoted); NAME_PRESERVED promoted to proposition_kind under SC-0064 (P12 ruling log)."
+    },
+    {
+      "where": "/level_2_scenes beings_in_scene role_in_scene (one or more entries)",
+      "from": "DECEASED_HOUSEHOLD_HEAD · DECEASED_WHOSE_NAME_RAISED",
+      "to": "DECEASED_HOUSEHOLD_HEAD→DECEASED_KIN · DECEASED_WHOSE_NAME_RAISED→DECEASED_KIN",
+      "why": "Marcia's role_in_scene_being ruling (Principle A consolidation, 2026-06-13): near-synonym scene-roles merged to their cluster survivor. The deceased cluster collapsed 5→1 (DECEASED_KIN) — identity stays in the being-id, kinship in the approved HUSBAND/KINSMAN roles, the levirate act in NAME_PRESERVED; the merged values are NOT promoted, the survivors are."
     }
   ]
 }

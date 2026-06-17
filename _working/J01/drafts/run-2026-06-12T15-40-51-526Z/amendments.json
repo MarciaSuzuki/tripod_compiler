@@ -7,6 +7,12 @@
       "from": "DIVINE_WORD_CAME",
       "to": "WORD_OF_YHWH_CAME",
       "why": "Marcia's B-1 collapse ruling: DIVINE_WORD_CAME (J01 1:1) and WORD_OF_YHWH_CAME (J04 3:1) are the same 'word of YHWH came to Jonah' formula. Collapsed to the literal survivor WORD_OF_YHWH_CAME; DIVINE_WORD_CAME is NOT promoted. WORD_OF_YHWH_CAME promoted to proposition_kind under SC-0064 (J01 ruling log, covering J01+J04)."
+    },
+    {
+      "where": "/level_2_scenes beings_in_scene role_in_scene (one or more entries)",
+      "from": "COMMISSIONED_PROPHET · FLEEING_PROPHET · SHIP_CREW",
+      "to": "COMMISSIONED_PROPHET→PROPHET · FLEEING_PROPHET→FUGITIVE · SHIP_CREW→CREW",
+      "why": "Marcia's role_in_scene_being ruling (Principle A consolidation, 2026-06-13): near-synonym scene-roles merged to their cluster survivor. The deceased cluster collapsed 5→1 (DECEASED_KIN) — identity stays in the being-id, kinship in the approved HUSBAND/KINSMAN roles, the levirate act in NAME_PRESERVED; the merged values are NOT promoted, the survivors are."
     }
   ]
 }
