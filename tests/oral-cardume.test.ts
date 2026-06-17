@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { readFileSync, writeFileSync, mkdtempSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdtempSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
@@ -93,5 +93,21 @@ describe("oral profile — negative cases (located, precise errors)", () => {
     const r = validateArtifact(write("bad-bead-sta.json", raw.replace('"start_bead": 36, "end_bead": 47', '"start_bead": 36, "end_bead": 99')));
     expect(r.ok).toBe(false);
     expect(r.findings.some((f) => f.code === "bead-span")).toBe(true);
+  });
+});
+
+// SC-0066 — the source Prose Meaning Map committed beside its STA. No oral map reader exists yet
+// (a fuller map↔STA derivation-consistency check is future Evaluator work); this keeps the pairing
+// load-bearing so the map can't be silently dropped/renamed and the STA can't lose its provenance.
+describe("oral profile — map↔STA fixture pairing (SC-0066)", () => {
+  const MAP = join(here, "..", "fixtures", "oral", "cardume-P01-meaning-map.md");
+
+  it("the source Prose Meaning Map is committed beside its STA", () => {
+    expect(existsSync(MAP), `expected the oral map fixture at ${MAP}`).toBe(true);
+  });
+
+  it("the STA's compilation_log.compiled_from names the map fixture (provenance is load-bearing)", () => {
+    const sta = JSON.parse(raw) as { compilation_log?: { compiled_from?: string } };
+    expect(sta.compilation_log?.compiled_from).toContain("cardume-P01-meaning-map.md");
   });
 });
