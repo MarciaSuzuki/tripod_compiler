@@ -46,7 +46,18 @@ export function readArtifactNote(path: string): ArtifactNote {
   }
   const { frontmatterRaw, body, kv } = parseFrontmatter(raw);
   const fence = body.match(JSON_FENCE) ?? raw.match(JSON_FENCE);
-  if (!fence) throw new ReaderError(`no \`\`\`json fenced block found in ${path}`);
+  if (!fence) {
+    // SC-0065: oral STA artifacts arrive as a raw .json file (no Obsidian envelope, no fenced
+    // block). Fall back to parsing the whole file as JSON. Biblical .md notes always carry a
+    // fence, so they never reach here; a fence-less .md (e.g. frontmatter only) is not valid JSON
+    // and re-throws the original error below.
+    try {
+      const json = JSON.parse(raw);
+      return { path, frontmatterRaw, frontmatter: kv, json, rawJson: raw };
+    } catch {
+      throw new ReaderError(`no \`\`\`json fenced block found in ${path}`);
+    }
+  }
   let json: unknown;
   try {
     json = JSON.parse(fence[1]!);
