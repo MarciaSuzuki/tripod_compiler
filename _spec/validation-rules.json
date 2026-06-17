@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-16.json",
+  "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-17.json",
   "title": "Ruth Pilot 2 - FOR_MODEL Validation Rules + Closed Lists + Drift Detector",
   "description": "Three-section document. (1) for_model_schema: JSON Schema for FOR_MODEL artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
-  "version": "v0.16",
+  "version": "v0.17",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date_locked": "2026-06-05",
-  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md. v0.8 (SC-0022, 2026-06-04): reclassified the beings participant-role drift axis from descriptive (role_in_scene_examples_being) to convergent (role_in_scene_being) and seeded it with the 21 ruled relations — the slot is now an enforced controlled relation set, not convention. v0.9 (SC-0022, 2026-06-04): dropped the place/object/time role_in_scene/function_in_scene fields from the scene-entry schemas (removed from required + properties — entries are now id-only) and removed their drift-detector example seeds; proven content-free per the cleanup-log per-value tables (role/function meaning is owned by registry-kind + statement slots + figures/threads). See SPEC_CHANGES.md. v0.10 (SC-0022 tidy, 2026-06-04): refreshed the inert drift-detector `canonical_p01_enumerations` seed (scene_kind/proposition_kind/communicative_function_element) to P01's cleaned values so the never-consulted fallback no longer names deprecated forms. See SPEC_CHANGES.md. v0.11 (SC-0024, 2026-06-04): collapsed the six VOWS_*_BINDING SPEECH_ACT values to a single closed-list VOWS (Thread A nested-component action/speech_act reduction); SPEECH_ACT 31 → 26. The per-binding distinction is retained outside the closed cross-corpus speech_act layer by FIG_0074 + vow_structural_form + per-component list_position (so the collapse incurs no loss; supersedes P03-D3's concern). P03 migrated; kept in sync with compilation-log.schema.json. See SPEC_CHANGES.md. v0.12 (SC-0025, 2026-06-05): reclassified the nested component action slot from uncontrolled free-text to a bounded-open convergent axis — added action to drift_detector.canonical_p01_enumerations (P01 seed ARRIVED_AT/TOOK_AS_WIFE/WERE_AT) and seeded approved-enumerations.json with the 31 SC-0024-cleaned verbs; the 7 held sentence-shaped labels are quarantined (Thread B corpus). Makes SC-0024's action cleanup durable; the drift engine now reaches event_specific_slots action values. See SPEC_CHANGES.md. v0.13 (SC-0027, 2026-06-07): Thread B fidelity model — added the fidelity object def (preserve_meaning × preserve_form; the 'means, not mandate' license is preserve_form=false) and the fidelity_group_entry def (the (alpha) shared-group-id binding whose own fidelity carries a relationship-level claim); fidelity_groups added to proposition and fidelity added to register_override_entry (both strict defs); component-level fidelity + the structure-flag ride in the permissive event_specific_slots and are validated by the engine fidelity pass, which also runs the dangling-group-id integrity check (every referenced fidelity_group must resolve to a declared group_id). First applied to the P03 vow (two groups people_god_inseparability + unto_the_end; preserve_form=false on all six rungs; a vow_structural_form structure-flag; genre_group_override=POETIC_SUNG + genre_override=BLESSING + register INTIMATE carried as preserve_meaning). See SPEC_CHANGES.md. v0.14 (SC-0030, 2026-06-08): Level-3 purity — removed the free-text 'meaning' field from every fidelity object and relocated the fidelity FLAGS out of the Level-3 content objects into a parallel top-level 'fidelity' layer (elements/groups/structure_flags/register_overrides) that references L3 by {prop_id, slot, list_position} (structure_flags by {prop_id, field}; register_overrides by {scene_id|verse}). Level 3 reverts to a pure supervision target (inventory only). Removed the old 'fidelity' + 'fidelity_group_entry' $defs, proposition.fidelity_groups, and register_override_entry.fidelity. The SC-0027 two-axis model + every A-F/vow ruling are unchanged — only placement moved; the rationale moved to the governance docs. ajv validates the layer shape; the engine resolves every ref (dangling ref blocks) + the dangling-group-id check; lintForModel flags free-text in L3. See SPEC_CHANGES.md. v0.15 (SC-0032, 2026-06-08): book-generalized the FOR_MODEL sta_id pattern (^ruth_pericope_… → ^[a-z]+_pericope_…) so artifacts from any book (Jonah — the held-out generality test) validate; Ruth ids still match (byte-identical). Paired widening: compilation-log.schema.json sta_id (v0.7→v0.8) + bcd-delta.schema.json id (v0.4→v0.5). See SPEC_CHANGES.md. v0.16 (SC-0046, 2026-06-10): genre-aware pericope register — Marcia’s A-ruling on the first real L1 finding (the J03 psalm, the first no-narrator pericope): pericope_classification.register widened from const INFORMAL_CASUAL to the closed register_value enum, with an allOf conditional keeping the narrator constant for NARRATIVE pericopes (genre_group NARRATIVE → register must be INFORMAL_CASUAL). Narrative artifacts (Ruth, J01, J02) validate unchanged; a non-narrative pericope carries its true register from the closed seven. See SPEC_CHANGES.md.",
+  "supersedes": "v0.3 covered FOR_MODEL plus the old monolithic AUDIT. v0.4 covers FOR_MODEL only; AUDIT validation is now split into compilation-log.schema.json v0.3 (methodology) and bcd-delta.schema.json v0.3 (registry promotions). The new VERIFICATION-INPUT artifact is governed by verification-input.schema.json v1.0. v0.5 (SC-0001, 2026-05-29): COMMUNITY_MEMORY removed from REGISTER (8 to 7) and reclassified onto the new NARRATIVE_FRAMING axis; register_override_entry gains an optional framing_override (at least one of override_value/framing_override required). GENRE unchanged (COMMUNITY_MEMORY remains the 31st genre per ruling). See SPEC_CHANGES.md. v0.6 (SC-0005, 2026-05-29): widened the place_id pattern to allow PL<n>_<DESCRIPTOR> sub-place codes such as PL5_BOAZ_PORTION (the BCD already registers them). v0.7 (SC-0014, 2026-05-31): renamed the closed SPEECH_ACT value ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (drops the role-theory 'AGENT' jargon, R4; 'GOD' not 'YHWH' because SPEECH_ACT is cross-corpus). P02/P04 artifacts migrated. See SPEC_CHANGES.md. v0.8 (SC-0022, 2026-06-04): reclassified the beings participant-role drift axis from descriptive (role_in_scene_examples_being) to convergent (role_in_scene_being) and seeded it with the 21 ruled relations — the slot is now an enforced controlled relation set, not convention. v0.9 (SC-0022, 2026-06-04): dropped the place/object/time role_in_scene/function_in_scene fields from the scene-entry schemas (removed from required + properties — entries are now id-only) and removed their drift-detector example seeds; proven content-free per the cleanup-log per-value tables (role/function meaning is owned by registry-kind + statement slots + figures/threads). See SPEC_CHANGES.md. v0.10 (SC-0022 tidy, 2026-06-04): refreshed the inert drift-detector `canonical_p01_enumerations` seed (scene_kind/proposition_kind/communicative_function_element) to P01's cleaned values so the never-consulted fallback no longer names deprecated forms. See SPEC_CHANGES.md. v0.11 (SC-0024, 2026-06-04): collapsed the six VOWS_*_BINDING SPEECH_ACT values to a single closed-list VOWS (Thread A nested-component action/speech_act reduction); SPEECH_ACT 31 → 26. The per-binding distinction is retained outside the closed cross-corpus speech_act layer by FIG_0074 + vow_structural_form + per-component list_position (so the collapse incurs no loss; supersedes P03-D3's concern). P03 migrated; kept in sync with compilation-log.schema.json. See SPEC_CHANGES.md. v0.12 (SC-0025, 2026-06-05): reclassified the nested component action slot from uncontrolled free-text to a bounded-open convergent axis — added action to drift_detector.canonical_p01_enumerations (P01 seed ARRIVED_AT/TOOK_AS_WIFE/WERE_AT) and seeded approved-enumerations.json with the 31 SC-0024-cleaned verbs; the 7 held sentence-shaped labels are quarantined (Thread B corpus). Makes SC-0024's action cleanup durable; the drift engine now reaches event_specific_slots action values. See SPEC_CHANGES.md. v0.13 (SC-0027, 2026-06-07): Thread B fidelity model — added the fidelity object def (preserve_meaning × preserve_form; the 'means, not mandate' license is preserve_form=false) and the fidelity_group_entry def (the (alpha) shared-group-id binding whose own fidelity carries a relationship-level claim); fidelity_groups added to proposition and fidelity added to register_override_entry (both strict defs); component-level fidelity + the structure-flag ride in the permissive event_specific_slots and are validated by the engine fidelity pass, which also runs the dangling-group-id integrity check (every referenced fidelity_group must resolve to a declared group_id). First applied to the P03 vow (two groups people_god_inseparability + unto_the_end; preserve_form=false on all six rungs; a vow_structural_form structure-flag; genre_group_override=POETIC_SUNG + genre_override=BLESSING + register INTIMATE carried as preserve_meaning). See SPEC_CHANGES.md. v0.14 (SC-0030, 2026-06-08): Level-3 purity — removed the free-text 'meaning' field from every fidelity object and relocated the fidelity FLAGS out of the Level-3 content objects into a parallel top-level 'fidelity' layer (elements/groups/structure_flags/register_overrides) that references L3 by {prop_id, slot, list_position} (structure_flags by {prop_id, field}; register_overrides by {scene_id|verse}). Level 3 reverts to a pure supervision target (inventory only). Removed the old 'fidelity' + 'fidelity_group_entry' $defs, proposition.fidelity_groups, and register_override_entry.fidelity. The SC-0027 two-axis model + every A-F/vow ruling are unchanged — only placement moved; the rationale moved to the governance docs. ajv validates the layer shape; the engine resolves every ref (dangling ref blocks) + the dangling-group-id check; lintForModel flags free-text in L3. See SPEC_CHANGES.md. v0.15 (SC-0032, 2026-06-08): book-generalized the FOR_MODEL sta_id pattern (^ruth_pericope_… → ^[a-z]+_pericope_…) so artifacts from any book (Jonah — the held-out generality test) validate; Ruth ids still match (byte-identical). Paired widening: compilation-log.schema.json sta_id (v0.7→v0.8) + bcd-delta.schema.json id (v0.4→v0.5). See SPEC_CHANGES.md. v0.16 (SC-0046, 2026-06-10): genre-aware pericope register — Marcia’s A-ruling on the first real L1 finding (the J03 psalm, the first no-narrator pericope): pericope_classification.register widened from const INFORMAL_CASUAL to the closed register_value enum, with an allOf conditional keeping the narrator constant for NARRATIVE pericopes (genre_group NARRATIVE → register must be INFORMAL_CASUAL). Narrative artifacts (Ruth, J01, J02) validate unchanged; a non-narrative pericope carries its true register from the closed seven. See SPEC_CHANGES.md. v0.17 (SC-0065, 2026-06-17): the ORAL PROFILE — admit the general-profile derivation TRIPOD_STA_GENERAL_v0_1 (source_domain=oral_archive) via a top-level if/then/else on source_domain. Biblical artifacts carry no source_domain → routed to the byte-identical BIBLICAL_PASSAGE branch ($defs/biblical_for_model = the pre-SC-0065 top-level body; every Ruth+Jonah fixture validates unchanged — the generality test). The oral branch ($defs/oral_for_model) admits artifact_profile=LA_RECORDING (on the header), provenance (speaker_role=LISTENER_NOT_STORYTELLER), bead_span anchoring on header/scene/proposition, level_1_prose, and the embedded concept-bank/figure-index/compilation-log surfaces; it shares the Layer-1/2 vocabulary ($defs upper_token, scene_id, prop_id, pericope_classification, register/genre/closed lists) — one controlled vocabulary, two profiles. Bounded-open NEW_VALUEs surface as drift for ruling (not coined). Supersedes Decisions C+D for the oral profile only (Marcia's word, 2026-06-17). See SPEC_CHANGES.md.",
 
   "sibling_schemas": {
     "compilation_log": "compilation-log.schema.json v0.5",
@@ -20,47 +20,341 @@
     "title": "FOR_MODEL",
     "description": "Structural tag artifact derived from an approved meaning map. Trained on by the Seed Model alongside the meaning map.",
     "type": "object",
-    "additionalProperties": false,
-    "required": [
-      "sta_id",
-      "tagset_version",
-      "header",
-      "pericope_classification",
-      "level_1",
-      "level_2_scenes",
-      "level_3_propositions"
-    ],
-    "not": {
-      "anyOf": [
-        { "required": ["artifact_profile"] },
-        { "required": ["registry_additions"] },
-        { "required": ["compilation_decisions"] },
-        { "required": ["high_risk_register_audit"] }
-      ]
+    "if": {
+      "required": ["source_domain"],
+      "properties": { "source_domain": { "const": "oral_archive" } }
     },
-    "properties": {
-      "sta_id": {
-        "type": "string",
-        "pattern": "^[a-z]+_pericope_\\d{2}_v\\d+_\\d+$"
-      },
-      "tagset_version": { "const": "TRIPOD_STA_v2_0" },
-      "header": { "$ref": "#/$defs/header" },
-      "pericope_classification": { "$ref": "#/$defs/pericope_classification" },
-      "level_1": { "$ref": "#/$defs/level_1" },
-      "level_2_scenes": {
-        "type": "array",
-        "minItems": 1,
-        "items": { "$ref": "#/$defs/scene" }
-      },
-      "level_3_propositions": {
-        "type": "array",
-        "minItems": 1,
-        "items": { "$ref": "#/$defs/proposition" }
-      },
-      "fidelity": { "$ref": "#/$defs/fidelity_layer" }
-    },
+    "then": { "$ref": "#/$defs/oral_for_model" },
+    "else": { "$ref": "#/$defs/biblical_for_model" },
 
     "$defs": {
+      "biblical_for_model": {
+        "$comment": "SC-0065: the BIBLICAL_PASSAGE branch — byte-identical to the pre-SC-0065 top-level FOR_MODEL body. Biblical artifacts carry no source_domain, so the top-level if/else routes them here unchanged. The artifact_profile/registry_additions/... forbid is RETAINED here: biblical stays implicit-by-context (Decision C still holds for biblical; only the oral profile is exempted).",
+        "additionalProperties": false,
+        "required": [
+          "sta_id",
+          "tagset_version",
+          "header",
+          "pericope_classification",
+          "level_1",
+          "level_2_scenes",
+          "level_3_propositions"
+        ],
+        "not": {
+          "anyOf": [
+            { "required": ["artifact_profile"] },
+            { "required": ["registry_additions"] },
+            { "required": ["compilation_decisions"] },
+            { "required": ["high_risk_register_audit"] }
+          ]
+        },
+        "properties": {
+          "sta_id": {
+            "type": "string",
+            "pattern": "^[a-z]+_pericope_\\d{2}_v\\d+_\\d+$"
+          },
+          "tagset_version": { "const": "TRIPOD_STA_v2_0" },
+          "header": { "$ref": "#/$defs/header" },
+          "pericope_classification": { "$ref": "#/$defs/pericope_classification" },
+          "level_1": { "$ref": "#/$defs/level_1" },
+          "level_2_scenes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/scene" }
+          },
+          "level_3_propositions": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/proposition" }
+          },
+          "fidelity": { "$ref": "#/$defs/fidelity_layer" }
+        }
+      },
+
+      "oral_for_model": {
+        "$comment": "SC-0065: the LA_RECORDING (oral_archive) branch — the general-profile derivation TRIPOD_STA_GENERAL_v0_1. Shares Layer-1/2 vocabulary with biblical (one controlled vocabulary, two profiles): pericope_classification, upper_token, scene_id, prop_id, the cb/figure id shapes, the register/genre/closed lists. Adds the oral-only machinery: source_domain, provenance, bead_span anchoring, level_1_prose, and the embedded concept-bank/figure-index/compilation-log surfaces. Exegetical pointers (cb_flags/figure_flags) stay present-but-emptyable.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sta_id",
+          "tagset_version",
+          "source_domain",
+          "header",
+          "provenance",
+          "passage_classification",
+          "level_1",
+          "level_2_scenes",
+          "level_3_propositions"
+        ],
+        "properties": {
+          "sta_id": {
+            "type": "string",
+            "pattern": "^[a-z]+_passage_\\d{2}_v\\d+_\\d+$"
+          },
+          "tagset_version": { "const": "TRIPOD_STA_GENERAL_v0_1" },
+          "source_domain": { "const": "oral_archive" },
+          "header": { "$ref": "#/$defs/oral_header" },
+          "provenance": { "$ref": "#/$defs/provenance" },
+          "passage_classification": { "$ref": "#/$defs/pericope_classification" },
+          "level_1": { "$ref": "#/$defs/oral_level_1" },
+          "level_1_prose": { "$ref": "#/$defs/oral_level_1_prose" },
+          "level_2_scenes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/oral_scene" }
+          },
+          "level_3_propositions": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/oral_proposition" }
+          },
+          "concept_bank_entries_surfaced": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/oral_cb_entry" }
+          },
+          "figure_index_entries_surfaced": { "$ref": "#/$defs/oral_figure_index" },
+          "compilation_log": { "$ref": "#/$defs/oral_compilation_log" }
+        }
+      },
+
+      "bead_span": {
+        "$comment": "SC-0065: an audio-bead span — the oral anchor, counterpart to a verse range. Integer bead indices set by the speaker, never the LLM (field-app invariant 1).",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start_bead", "end_bead"],
+        "properties": {
+          "start_bead": { "type": "integer", "minimum": 0 },
+          "end_bead": { "type": "integer", "minimum": 0 }
+        }
+      },
+
+      "provenance": {
+        "$comment": "SC-0065: oral provenance. speaker_role enforces the listener-not-author standard — the map represents the story as understood by a skilled native LISTENER, not authorial intent.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["speaker_role"],
+        "properties": {
+          "speaker_role": { "enum": ["LISTENER_NOT_STORYTELLER"] },
+          "elicitation_mode": { "type": "string", "minLength": 1 },
+          "lrl_recording_language": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "oral_header": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["passage_ref", "passage_title", "artifact_profile", "source_language", "bead_span"],
+        "properties": {
+          "passage_ref": { "type": "string", "minLength": 1 },
+          "passage_title": { "type": "string", "minLength": 1 },
+          "artifact_profile": { "const": "LA_RECORDING" },
+          "entry_brief_ref": { "anyOf": [{ "type": "null" }, { "type": "string", "minLength": 1 }] },
+          "source_language": { "type": "string", "minLength": 1 },
+          "bead_span": { "$ref": "#/$defs/bead_span" }
+        }
+      },
+
+      "oral_level_1": {
+        "$comment": "SC-0065: the same five bounded-open element arrays as the biblical level_1 (shared vocabulary), plus the elicitation _*_note annotations the field app records. The element VALUES drift-check against the same approved enumerations.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["arc_elements", "context_elements", "tone_elements", "pace_elements", "communicative_function_elements"],
+        "properties": {
+          "arc_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "context_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "tone_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "pace_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } },
+          "communicative_function_elements": { "type": "array", "items": { "$ref": "#/$defs/upper_token" } }
+        }
+      },
+
+      "oral_level_1_prose": {
+        "$comment": "SC-0065: the confirmed interpretive prose slots (read back to the speaker in plain HRL). Load-bearing: passage_level_significant_absence becomes must_preserve_absences downstream.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["prose_arc", "prose_communicative_function", "passage_level_significant_absence"],
+        "properties": {
+          "prose_arc": { "type": "string", "minLength": 1 },
+          "prose_communicative_function": { "type": "string", "minLength": 1 },
+          "passage_level_significant_absence": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "oral_scene": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["scene_id", "verse_range", "scene_kind", "scene_communicative_purpose", "bead_span", "beings_in_scene", "places_in_scene", "objects_in_scene", "times_in_scene", "significant_absence"],
+        "properties": {
+          "scene_id": { "$ref": "#/$defs/scene_id" },
+          "verse_range": { "type": "string", "minLength": 1 },
+          "scene_kind": { "$ref": "#/$defs/upper_token" },
+          "scene_communicative_purpose": { "type": "string", "minLength": 1 },
+          "bead_span": { "$ref": "#/$defs/bead_span" },
+          "beings_in_scene": { "$ref": "#/$defs/oral_scene_beings_container" },
+          "places_in_scene": { "$ref": "#/$defs/oral_scene_places_container" },
+          "objects_in_scene": { "$ref": "#/$defs/oral_scene_objects_container" },
+          "times_in_scene": { "$ref": "#/$defs/scene_times_container" },
+          "significant_absence": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "oral_scene_beings_container": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["entries"],
+        "properties": {
+          "entries": {
+            "anyOf": [
+              { "type": "null" },
+              { "type": "array", "items": { "$ref": "#/$defs/oral_being_entry" } }
+            ]
+          }
+        }
+      },
+
+      "oral_being_entry": {
+        "$comment": "SC-0065: an oral being entry. Wider than the biblical one: carries being_kind and referential_form_at_verse (the oral referential-form axis) plus _note annotations.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["being_id", "role_in_scene", "presence"],
+        "properties": {
+          "being_id": { "$ref": "#/$defs/b_code" },
+          "role_in_scene": { "$ref": "#/$defs/upper_token" },
+          "presence": { "$ref": "#/$defs/upper_token" },
+          "referential_form_at_verse": { "$ref": "#/$defs/upper_token" },
+          "being_kind": { "$ref": "#/$defs/upper_token" }
+        }
+      },
+
+      "oral_scene_places_container": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["entries"],
+        "properties": {
+          "entries": {
+            "anyOf": [
+              { "type": "null" },
+              { "type": "array", "items": { "$ref": "#/$defs/oral_place_entry" } }
+            ]
+          }
+        }
+      },
+
+      "oral_place_entry": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["place_id"],
+        "properties": {
+          "place_id": { "$ref": "#/$defs/place_id" },
+          "place_kind": { "$ref": "#/$defs/upper_token" },
+          "place_role_in_scene": { "$ref": "#/$defs/upper_token" },
+          "parent_place": { "$ref": "#/$defs/place_id" }
+        }
+      },
+
+      "oral_scene_objects_container": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["entries"],
+        "properties": {
+          "entries": {
+            "anyOf": [
+              { "type": "null" },
+              { "type": "array", "items": { "$ref": "#/$defs/oral_object_entry" } }
+            ]
+          }
+        }
+      },
+
+      "oral_object_entry": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["object_id"],
+        "properties": {
+          "object_id": { "$ref": "#/$defs/object_id" },
+          "function_in_scene": { "$ref": "#/$defs/upper_token" }
+        }
+      },
+
+      "oral_proposition": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["prop_id", "scene_link", "verse_anchor", "proposition_kind", "bead_span", "event_specific_slots", "inter_proposition_links", "cb_flags", "figure_flags"],
+        "properties": {
+          "prop_id": { "$ref": "#/$defs/prop_id" },
+          "scene_link": { "$ref": "#/$defs/scene_id" },
+          "verse_anchor": { "type": "string", "minLength": 1 },
+          "proposition_kind": { "$ref": "#/$defs/upper_token" },
+          "bead_span": { "$ref": "#/$defs/bead_span" },
+          "event_specific_slots": { "type": "object" },
+          "inter_proposition_links": { "type": "object" },
+          "cb_flags": { "type": "array", "items": { "$ref": "#/$defs/cb_id" } },
+          "figure_flags": { "type": "array", "items": { "$ref": "#/$defs/figure_id" } },
+          "cross_ref": { "type": "string", "minLength": 1 },
+          "ambiguity_held_open": { "$ref": "#/$defs/oral_ambiguity" }
+        }
+      },
+
+      "oral_ambiguity": {
+        "$comment": "SC-0065: a deliberately-held-open reading (e.g. chronicle-vs-latent-meta). Preserved, not resolved, at this passage.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "properties": {
+          "reading_a": { "type": "string", "minLength": 1 },
+          "reading_b": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "oral_cb_entry": {
+        "$comment": "SC-0065: a Concept-Bank entry surfaced by an oral passage (opens the per-recording bank). cb_id shares the global CB_#### shape.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["cb_id", "label"],
+        "properties": {
+          "cb_id": { "$ref": "#/$defs/cb_id" },
+          "label": { "type": "string", "minLength": 1 },
+          "first_occurrence": { "type": "string", "minLength": 1 },
+          "controlled_handling": { "type": "string", "minLength": 1 }
+        }
+      },
+
+      "oral_figure_index": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["entries"],
+        "properties": {
+          "entries": { "type": "array", "items": { "type": "object" } }
+        }
+      },
+
+      "oral_compilation_log": {
+        "$comment": "SC-0065: the embedded compilation log. new_value_flags is the NEW_VALUE ledger — bounded-open values the passage surfaced for methodology review, logged not silently coined.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": {} },
+        "required": ["compiled_from", "new_value_flags"],
+        "properties": {
+          "compiled_from": { "type": "string", "minLength": 1 },
+          "new_value_flags": { "type": "array", "items": { "type": "string" } },
+          "exegetical_fields_status": { "type": "string", "minLength": 1 },
+          "bead_span_status": { "type": "string", "minLength": 1 }
+        }
+      },
+
       "upper_token": { "type": "string", "pattern": "^[A-Z][A-Z0-9_?]*$" },
       "b_code": { "type": "string", "pattern": "^B(\\d+|\\?)$" },
       "place_id": { "type": "string", "pattern": "^PL(\\d+(_[A-Z][A-Z0-9_]*)?|_[A-Z][A-Z0-9_]*)$" },

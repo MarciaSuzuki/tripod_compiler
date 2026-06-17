@@ -32,7 +32,12 @@ export function compileSchema(schema: object): Validator {
  */
 export function structuralFindings(validate: Validator, json: unknown): Finding[] {
   if (validate(json)) return [];
-  const errs: ErrorObject[] = validate.errors ?? [];
+  // SC-0065: the FOR_MODEL schema routes biblical vs oral artifacts through a top-level
+  // if/then/else (on source_domain). When the chosen branch fails, ajv emits a contentless
+  // wrapper error at the root (keyword "if": 'must match "else"/"then" schema') ALONGSIDE the
+  // real, locatable sub-errors. Drop the wrapper: the sub-errors carry the actual cause, and
+  // dropping it keeps biblical findings byte-identical to the pre-SC-0065 (no-conditional) output.
+  const errs: ErrorObject[] = (validate.errors ?? []).filter((e) => e.keyword !== "if");
   return errs.map((e): Finding => {
     const location = e.instancePath && e.instancePath.length ? e.instancePath : "(root)";
     const p = (e.params ?? {}) as Record<string, unknown>;

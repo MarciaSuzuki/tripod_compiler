@@ -3,6 +3,7 @@ import { readArtifactNote } from "../reader/obsidian.js";
 import { loadValidationRules, loadSpecJson } from "../spec/load.js";
 import { compileSchema, structuralFindings, type Validator } from "./structural.js";
 import { vocabularyFindings } from "./vocabulary.js";
+import { oralFindings } from "./oral.js";
 import { driftBaseline } from "../spec/enumerations.js";
 import { tally, type Finding, type ValidationReport } from "./report.js";
 
@@ -13,12 +14,19 @@ export type ArtifactKind =
   | "VERIFICATION-INPUT"
   | "UNKNOWN";
 
-export function detectArtifact(path: string, frontmatterType?: string): ArtifactKind {
+export function detectArtifact(path: string, frontmatterType?: string, json?: unknown): ArtifactKind {
   const n = basename(path).toUpperCase();
   if (n.includes("FOR-MODEL") || frontmatterType === "sta-for-model") return "FOR_MODEL";
   if (n.includes("COMPILATION-LOG") || frontmatterType === "compilation-log") return "COMPILATION-LOG";
   if (n.includes("BCD-DELTA") || frontmatterType === "bcd-delta") return "BCD-DELTA";
   if (n.includes("VERIFICATION-INPUT") || frontmatterType === "verification-input") return "VERIFICATION-INPUT";
+  // SC-0065: an oral STA arrives as raw .json — no FOR-MODEL filename, no frontmatter type. Detect
+  // it by signature: an STA/FOR_MODEL carries sta_id + a level_3_propositions array. The sibling
+  // artifacts (compilation-log / bcd-delta / verification-input) have neither, so this stays tight.
+  if (json && typeof json === "object") {
+    const j = json as Record<string, unknown>;
+    if (typeof j["sta_id"] === "string" && Array.isArray(j["level_3_propositions"])) return "FOR_MODEL";
+  }
   return "UNKNOWN";
 }
 
@@ -64,7 +72,7 @@ export function validateArtifact(path: string): ValidationReport {
     return { ...base, artifact: detectArtifact(path), ok: false, findings, counts: tally(findings) };
   }
 
-  const kind = detectArtifact(path, note.frontmatter["type"]);
+  const kind = detectArtifact(path, note.frontmatter["type"], note.json);
   const validator = validatorFor(kind);
   if (!validator) {
     const findings: Finding[] = [
@@ -76,6 +84,11 @@ export function validateArtifact(path: string): ValidationReport {
   const findings: Finding[] = [...structuralFindings(validator, note.json)];
   if (kind === "FOR_MODEL") {
     findings.push(...vocabularyFindings(note.json as any, driftBaseline()));
+    // SC-0065: oral artifacts (source_domain = oral_archive) get the bead-span integrity pass
+    // (tiling + nesting) — the audio analogue of the biblical scene/verse-coverage invariants.
+    if ((note.json as any)?.source_domain === "oral_archive") {
+      findings.push(...oralFindings(note.json as any));
+    }
   }
   const counts = tally(findings);
   return { ...base, artifact: kind, ok: counts.block === 0, findings, counts };

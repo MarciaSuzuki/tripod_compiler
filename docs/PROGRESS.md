@@ -221,8 +221,13 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
   `validation-rules.json` in the wiki, vendored + pinned here.
 - **Pilot-2 lane only (decision D):** do NOT build the LA_RECORDING profile / unified vocabulary
   (that's Pilot-3, "do not act"). Profile-awareness is limited to what pilot-2 literally requires.
+  **→ SUPERSEDED by SC-0065 (Marcia's Option-A ruling, 2026-06-17):** the oral pipeline is now an
+  active stream; SC-0065 builds the `LA_RECORDING` profile as a governed derivation of the biblical
+  master (`source_domain=oral_archive`, `TRIPOD_STA_GENERAL_v0_1`).
 - **`artifact_profile` is FORBIDDEN (decision C)** — the validator blocks it; biblical profile is
-  implicit-by-context.
+  implicit-by-context. **→ SUPERSEDED by SC-0065 for the oral profile ONLY:** an oral artifact
+  carries `artifact_profile: "LA_RECORDING"` on its header. Biblical stays implicit-by-context — the
+  forbid is RETAINED on the biblical branch, so biblical artifacts validate byte-identical.
 - **REGISTER is 7** (not the brief's "6 vs 7" or the locked file's stale 8); `COMMUNITY_MEMORY` is a
   `NARRATIVE_FRAMING` value (and still the 31st GENRE), never a register (SC-0001).
 - **Gold fixtures are P01–P06** (brief assumed only P01–P02).

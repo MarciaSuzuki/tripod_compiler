@@ -26,7 +26,8 @@ export type FindingCode =
   | "descriptive"
   | "registry"
   | "register-critical"
-  | "fidelity-shape";
+  | "fidelity-shape"
+  | "bead-span";
 
 export interface Finding {
   severity: Severity;

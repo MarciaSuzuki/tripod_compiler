@@ -1,0 +1,273 @@
+{
+  "sta_id": "cardume_passage_01_v0_1",
+  "tagset_version": "TRIPOD_STA_GENERAL_v0_1",
+  "source_domain": "oral_archive",
+
+  "header": {
+    "passage_ref": "O Cardume que Esqueceu que Sabia Nadar — paragraph 1",
+    "passage_title": "The shoal that swam without thinking",
+    "artifact_profile": "LA_RECORDING",
+    "entry_brief_ref": null,
+    "source_language": "Portuguese",
+    "bead_span": { "start_bead": 0, "end_bead": 47 }
+  },
+
+  "provenance": {
+    "_note": "The speaker is a skilled native LISTENER, not the original storyteller. This map represents the story as understood by a competent native listener, not the storyteller's authorial intent. Interpretive slots were confirmed by the speaker via plain-language read-back during oral elicitation.",
+    "speaker_role": "LISTENER_NOT_STORYTELLER",
+    "elicitation_mode": "ORAL_HRL_CONVERSATION_PORTUGUESE",
+    "lrl_recording_language": "(pilot demo — substitute target LRL, e.g. Terena)"
+  },
+
+  "passage_classification": {
+    "genre_group": "NARRATIVE",
+    "genre": "PARABLE_ILLUSTRATIVE_STORY",
+    "register": "INFORMAL_CASUAL",
+    "register_overrides": {
+      "_note": "Question posed and confirmed: no scene-level or moment-level overrides in this passage. The whole passage sits in INFORMAL_CASUAL (relaxed storytelling sense, not colloquial English 'casual'). No quoted speech occurs in this passage.",
+      "scene_level": null,
+      "moment_level": null
+    }
+  },
+
+  "level_1": {
+    "arc_elements": [
+      "OPENING_BASELINE_OF_UNSELFCONSCIOUS_BELONGING"
+    ],
+    "_arc_elements_note": "OPENING_BASELINE_OF_UNSELFCONSCIOUS_BELONGING is a NEW_VALUE candidate flagged at elicitation: the bounded-open ARC_ELEMENTS list (Ruth-derived) has no value for a contentment-baseline opening that lays down a state to be later disrupted. Logged for methodology review. Closest existing values (OPENING_CRISIS) misdescribe it — there is no crisis here, which is the point.",
+    "context_elements": [
+      "STORY_WORLD_CONTEXT",
+      "PHYSICAL_LOCATION",
+      "AUDIENCE_KNOWLEDGE_CONTEXT"
+    ],
+    "_context_elements_note": "TEMPORAL_CONTEXT, KINSHIP_CONTEXT, DIVINE_CONTEXT each asked and confirmed absent. AUDIENCE_KNOWLEDGE_CONTEXT is load-bearing here: the passage leans on the audience already knowing fish swim — the very fact the fish will come to forget.",
+    "tone_elements": [
+      "WARM",
+      "SETTLED_AT_CLOSE",
+      "QUIET_IRONY_AT_CHANCE_FRAME"
+    ],
+    "_tone_elements_note": "QUIET_IRONY_AT_CHANCE_FRAME is applied loosely to the final clause ('without ever thinking about it'), which a listener registers as plain fact now but which the story later turns ironic. Flagged: a LATENT_IRONY value distinct from active irony may be a cleaner NEW_VALUE — the irony is planted, not yet operating.",
+    "pace_elements": [
+      "STEADY"
+    ],
+    "communicative_function_elements": [
+      "OPENS",
+      "ESTABLISHES",
+      "PLANTS"
+    ]
+  },
+
+  "level_1_prose": {
+    "_note": "Interpretive prose slots. Each CONFIRMED via plain-Portuguese read-back to the speaker during Level 1 elicitation. Not LLM-finalized.",
+    "prose_arc": "The passage opens the fable by setting a place and a people, and showing them at peace with their own nature. A cheerful shoal of little fish lives on an island ringed by clear water and coral, spending their days swimming, exploring, and diving into the coral caves. Swimming is their life, done naturally, without ever thinking about it. What weighs on the passage is that last fact: the fish possess their defining ability so completely that it is invisible to them — and that invisibility is what the rest of the story will exploit. The concern planted here is the gap between what a creature is and what it notices about itself.",
+    "prose_communicative_function": "The passage opens the story by establishing the world, the community, and their nature, and by planting the one fact the whole fable depends on: that swimming is so natural to the fish that they do not think about it. To speak this passage is to set in place the island, the water, the shoal, their daily life among the coral, and above all their unselfconscious ease in their own element. This is groundwork; it introduces no problem and resolves nothing. Its work is to make the audience feel the baseline so the later forgetting will register as a loss. Its mode is gentle and scene-setting, already quietly ironic in its final note — naming, as simple fact, the self-knowledge the fish will lose.",
+    "passage_level_significant_absence": "The narrator gives the fish no individual names, no leader, no problem, and no event — only a state. Nothing yet hints the contentment is fragile. The fish are not shown reflecting on themselves; their lack of self-awareness is presented as plain fact, not yet as a flaw. CONFIRMED facilitator-led."
+  },
+
+  "level_2_scenes": [
+    {
+      "scene_id": "S1",
+      "verse_range": "paragraph 1 (whole)",
+      "scene_kind": "CONTENTMENT_BASELINE_SCENE",
+      "_scene_kind_note": "CONTENTMENT_BASELINE_SCENE is a NEW_VALUE candidate flagged at elicitation. The bounded-open SCENE_KIND list (Ruth-derived) has no value for a scene whose work is to establish an undisturbed state of belonging with no event. Logged for methodology review.",
+      "scene_communicative_purpose": "Establishes the place, the community, and their nature, and plants the single load-bearing fact — that the shoal's defining skill is invisible to them.",
+      "bead_span": { "start_bead": 0, "end_bead": 47 },
+
+      "beings_in_scene": {
+        "entries": [
+          {
+            "being_id": "B1",
+            "role_in_scene": "COMMUNITY_WHOSE_NATURE_IS_ESTABLISHED",
+            "presence": "PRESENT_COLLECTIVE",
+            "referential_form_at_verse": "UNNAMED_BUT_PRESENT",
+            "being_kind": "COLLECTIVE_COMMUNAL_BODY",
+            "_note": "Named by collective description ('a cheerful shoal of little fish'); not individuated, no single fish yet."
+          },
+          {
+            "being_id": "B2",
+            "role_in_scene": "AUDIENCE_WHOSE_PRIOR_KNOWLEDGE_IS_LEANED_ON",
+            "presence": "IMPLIED",
+            "being_kind": "GROUP",
+            "_note": "The listener, expected to already know fish swim. The knowledge the passage depends on."
+          }
+        ]
+      },
+
+      "places_in_scene": {
+        "entries": [
+          {
+            "place_id": "PL1",
+            "place_kind": "HOME_SETTING_IN_OPEN_OCEAN",
+            "place_role_in_scene": "SETTING",
+            "_note": "The island ringed by clear water and coral; the whole world of the passage."
+          },
+          {
+            "place_id": "PL2",
+            "place_kind": "UNDERWATER_DETAIL_OF_HOME_SETTING",
+            "place_role_in_scene": "SETTING",
+            "parent_place": "PL1",
+            "_note": "The coral reefs and hidden caves where the shoal swims, explores, and dives."
+          }
+        ]
+      },
+
+      "objects_in_scene": {
+        "entries": [
+          {
+            "object_id": "CB_0001",
+            "_note": "Swimming-as-nature. The load-bearing concept of the passage and the whole fable. Established here as done naturally, without thought."
+          }
+        ]
+      },
+
+      "times_in_scene": {
+        "_note": "No time-setting frame. The opening rests in narrative present with no era, date, or season named. Confirmed: time does not frame this scene.",
+        "entries": null
+      },
+
+      "significant_absence": "The narrator gives the fish no names, no leader, no problem, no event — only a state. Their lack of self-awareness is presented as fact, not yet as flaw. No hint the contentment is fragile."
+    }
+  ],
+
+  "level_3_propositions": [
+    {
+      "prop_id": "P1",
+      "scene_link": "S1",
+      "verse_anchor": "paragraph 1, opening",
+      "proposition_kind": "ESTABLISHED_CONDITION",
+      "_proposition_kind_note": "A setting-condition established by the narrator (the island and its waters exist).",
+      "bead_span": { "start_bead": 0, "end_bead": 11 },
+      "event_specific_slots": {
+        "establishment_components": [
+          {
+            "action": "ESTABLISHED_SETTING",
+            "what_is_established": "PL1",
+            "setting_detail": "ringed by clear blue water and bright coral reefs, in the middle of the vast Pacific",
+            "speech_act": "STATES_AS_TRUE"
+          }
+        ]
+      },
+      "inter_proposition_links": {
+        "forward_link_to": "P2"
+      },
+      "cb_flags": [],
+      "figure_flags": []
+    },
+
+    {
+      "prop_id": "P2",
+      "scene_link": "S1",
+      "verse_anchor": "paragraph 1",
+      "proposition_kind": "DWELT_AT",
+      "_proposition_kind_note": "The shoal dwells in the place established in P1.",
+      "bead_span": { "start_bead": 12, "end_bead": 19 },
+      "event_specific_slots": {
+        "residents": "B1",
+        "where": "PL1",
+        "speech_act_marker": "STATES_AS_TRUE"
+      },
+      "inter_proposition_links": {
+        "caused_by": "P1",
+        "forward_link_to": "P3"
+      },
+      "cb_flags": [],
+      "figure_flags": []
+    },
+
+    {
+      "prop_id": "P3",
+      "scene_link": "S1",
+      "verse_anchor": "paragraph 1",
+      "proposition_kind": "DWELT_AT",
+      "_proposition_kind_note": "Sustained daily activity in the place — swimming, exploring, diving into the coral caves. A continuing-activity report.",
+      "bead_span": { "start_bead": 20, "end_bead": 35 },
+      "event_specific_slots": {
+        "residents": "B1",
+        "where": "PL2",
+        "sustained_activity_components": [
+          {
+            "action": "SWAM",
+            "activity_concept": "CB_0001",
+            "manner": "back and forth, day after day",
+            "speech_act": "STATES_AS_TRUE"
+          },
+          {
+            "action": "EXPLORED",
+            "what_explored": "the beauty below",
+            "speech_act": "STATES_AS_TRUE"
+          },
+          {
+            "action": "DOVE_INTO",
+            "where_dove": "PL2",
+            "where_dove_detail": "the hidden caves of the coral",
+            "speech_act": "STATES_AS_TRUE"
+          }
+        ]
+      },
+      "inter_proposition_links": {
+        "forward_link_to": "P4"
+      },
+      "cb_flags": ["CB_0001"],
+      "figure_flags": []
+    },
+
+    {
+      "prop_id": "P4",
+      "scene_link": "S1",
+      "verse_anchor": "paragraph 1, closing",
+      "proposition_kind": "ESTABLISHED_CONDITION",
+      "_proposition_kind_note": "Narrator establishes the defining, unreflective nature: swimming is their life, done naturally, without thinking. This is the load-bearing proposition of the passage.",
+      "bead_span": { "start_bead": 36, "end_bead": 47 },
+      "event_specific_slots": {
+        "establishment_components": [
+          {
+            "action": "ESTABLISHED_DEFINING_NATURE",
+            "whose_nature": "B1",
+            "the_nature": "CB_0001",
+            "manner": "naturally",
+            "awareness_marker": "WITHOUT_REFLECTION",
+            "awareness_detail": "without ever thinking about it",
+            "speech_act": "STATES_AS_TRUE"
+          }
+        ]
+      },
+      "inter_proposition_links": {
+        "caused_by": "P3"
+      },
+      "ambiguity_held_open": {
+        "_note": "The closing clause ('without ever thinking about it') is grammatically a plain factual report but rhetorically the hinge of the fable's later irony. At the level of THIS passage it is plain fact; its ironic load only activates across later passages. The chronicle-vs-latent-meta tension is preserved here, not resolved.",
+        "reading_a": "Plain narrator-chronicle: a factual description of how the shoal swims.",
+        "reading_b": "Latent narrator-meta: the narrator names, as simple fact, the self-knowledge the fish will lose — a forward-pointing irony."
+      },
+      "cb_flags": ["CB_0001"],
+      "figure_flags": []
+    }
+  ],
+
+  "concept_bank_entries_surfaced": [
+    {
+      "cb_id": "CB_0001",
+      "label": "Swimming-as-nature",
+      "_note": "The shoal's defining activity and, the passage insists, their very nature. Load-bearing across the whole fable: estranged in later passages (P03-P04), recovered at the end (P07). Requires controlled handling at every occurrence. This entry OPENS the corpus Concept Bank for this recording and will be linked, not re-created, in subsequent passages.",
+      "first_occurrence": "P01 / S1 / proposition P3",
+      "controlled_handling": "Track as the natural-skill pole of the fable's central natural-vs-acquired contrast. Do not conflate with CB_0002 (walking-as-acquired-skill), which opens in P02."
+    }
+  ],
+
+  "figure_index_entries_surfaced": {
+    "_note": "No figures operate in this passage. The fable's central figure (swimming-as-true-nature vs walking-as-prized-but-foreign-skill) is LATENT here — the passage states swimming plainly as fact. The figure begins operating only once walking is introduced (P02) and the demotion begins (P03-P04). Recorded as latent so cross-passage figure tracking can note where it activates.",
+    "entries": []
+  },
+
+  "compilation_log": {
+    "compiled_from": "cardume-P01-meaning-map.md (prose Meaning Map)",
+    "new_value_flags": [
+      "ARC_ELEMENTS: OPENING_BASELINE_OF_UNSELFCONSCIOUS_BELONGING (no Ruth analogue for contentment-baseline opening)",
+      "SCENE_KIND: CONTENTMENT_BASELINE_SCENE (no Ruth analogue for eventless state-establishing scene)",
+      "TONE_ELEMENTS: possible LATENT_IRONY value distinct from active irony (planted, not operating)"
+    ],
+    "_new_value_note": "All NEW_VALUE flags logged here for methodology review per the bounded-open growth protocol. Not silently coined into the controlled vocabulary. The fable is surfacing the didactic/contentment region of the space that the Ruth pilot never visited.",
+    "exegetical_fields_status": "All exegetical fields present and emptied, not dropped: cb_flags and figure_flags are [] where no concept/figure operates; figure_index entries empty; no biblical reference machinery. source_domain = oral_archive.",
+    "bead_span_status": "Illustrative bead indexing assuming the Easy-Beads demo manifest. In production, every bead_span is set by the speaker's confirmed cuts (scenes) and confirmed proposition placements (Level 3), never by the LLM."
+  }
+}
