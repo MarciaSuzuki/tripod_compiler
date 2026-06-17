@@ -186,7 +186,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "1:1",
-      "proposition_kind": "DIVINE_WORD_CAME",
+      "proposition_kind": "WORD_OF_YHWH_CAME",
       "event_specific_slots": {
         "word_source": "B2",
         "word_recipient": "B1",

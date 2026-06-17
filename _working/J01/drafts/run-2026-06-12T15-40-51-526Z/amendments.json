@@ -1,13 +1,12 @@
 {
-  "kind": "mechanical conformance amendment (pre-ruling; flagged for confirmation in docs/SC-0063-BATCH-RULING-SHEET.md §E-2)",
-  "by": "Architect, SC-0063 Phase D, 2026-06-12",
+  "kind": "ruling amendment (SC-0064 proposition_kind Group B-1 collapse, Marcia 2026-06-13)",
+  "by": "Architect",
   "edits": [
     {
-      "where": "/pericope_classification/register_overrides/moment_level/0",
-      "from": "{\"verse\": \"1:2\", \"framing_override\": \"ELDER_AUTHORITY\"}",
-      "to": "{\"verse\": \"1:2\", \"override_value\": \"ELDER_AUTHORITY\"}",
-      "why": "The drafter's judgment (YHWH's command at 1:2 lifts to ELDER_AUTHORITY, a legitimate REGISTER member, at moment level) is preserved verbatim; it was written into the wrong KEY — framing_override carries the NARRATIVE_FRAMING axis (closed: COMMUNITY_MEMORY), override_value carries register values. The explicit framing_override:null left behind was dropped (that key's schema has no null branch, unlike genre_override). The drafter's note is intact in fills.json."
+      "where": "/level_3_propositions (the divine-word-arrival proposition) /proposition_kind",
+      "from": "DIVINE_WORD_CAME",
+      "to": "WORD_OF_YHWH_CAME",
+      "why": "Marcia's B-1 collapse ruling: DIVINE_WORD_CAME (J01 1:1) and WORD_OF_YHWH_CAME (J04 3:1) are the same 'word of YHWH came to Jonah' formula. Collapsed to the literal survivor WORD_OF_YHWH_CAME; DIVINE_WORD_CAME is NOT promoted. WORD_OF_YHWH_CAME promoted to proposition_kind under SC-0064 (J01 ruling log, covering J01+J04)."
     }
-  ],
-  "prompt_followup": "none needed — the override-entry key split is already in fm-drafter prompt §4; tabled as a watch item if it recurs."
+  ]
 }

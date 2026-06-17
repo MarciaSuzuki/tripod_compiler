@@ -352,7 +352,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "prop_id": "P4",
       "scene_link": "S1",
       "verse_anchor": "4:10b",
-      "proposition_kind": "NAME_RAISED",
+      "proposition_kind": "NAME_PRESERVED",
       "event_specific_slots": {
         "name_raiser": "B13",
         "name_raised_of": "B4",
@@ -376,7 +376,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "4:10c",
-      "proposition_kind": "NAME_NOT_CUT_OFF",
+      "proposition_kind": "NAME_PRESERVED",
       "event_specific_slots": {
         "secured_name_of": "B4",
         "secured_name_referential_form": "SHEM_HA_MET_NAME_OF_THE_DEAD",
