@@ -13,6 +13,12 @@
       "from": "COMMISSIONED_PROPHET · FLEEING_PROPHET · SHIP_CREW",
       "to": "COMMISSIONED_PROPHET→PROPHET · FLEEING_PROPHET→FUGITIVE · SHIP_CREW→CREW",
       "why": "Marcia's role_in_scene_being ruling (Principle A consolidation, 2026-06-13): near-synonym scene-roles merged to their cluster survivor. The deceased cluster collapsed 5→1 (DECEASED_KIN) — identity stays in the being-id, kinship in the approved HUSBAND/KINSMAN roles, the levirate act in NAME_PRESERVED; the merged values are NOT promoted, the survivors are."
+    },
+    {
+      "where": "/level_2_scenes (the commissioning scene) /scene_kind",
+      "from": "COMMISSION_SCENE",
+      "to": "COMMISSIONING_SCENE",
+      "why": "Marcia's scene_kind ruling (collapse, 2026-06-13): COMMISSION_SCENE (J01, first call) + COMMISSIONING_SCENE (J04, second call) name the same divine-commissioning scene-kind; collapsed to COMMISSIONING_SCENE (the survivor). COMMISSION_SCENE not promoted."
     }
   ]
 }
