@@ -72,7 +72,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
     {
       "scene_id": "S1",
       "verse_range": "1:1-2",
-      "scene_kind": "COMMISSION_SCENE",
+      "scene_kind": "COMMISSIONING_SCENE",
       "scene_communicative_purpose": "Gives the command that the rest of the pericope answers: the caller, the called, the city, and the reason.",
       "beings_in_scene": {
         "entries": [

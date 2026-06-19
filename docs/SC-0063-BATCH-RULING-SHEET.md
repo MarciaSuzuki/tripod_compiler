@@ -263,39 +263,39 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [ ] **WITHDRAWAL_TO_WATCH** (J05) — 2.1: 'walks out east of the city to watch what will become of it.'
 - [ ] **WITHHELD_MOTIVE_DISCLOSED** (J05) — 2.1: 'His prayer finally says what the story has withheld since the flight: this is why I ran.'
 
-### Axis `scene_kind` — 30 declaration(s) · 29 unique value(s)
+### Axis `scene_kind` — 30 declaration(s) · 29 unique value(s) — **AXIS COMPLETE (Marcia 2026-06-13): 28 promoted (COMMISSION_SCENE→COMMISSIONING_SCENE collapse + 27 distinct scene-types); enum v0.18.**
 
-- [ ] **ANGRY_PRAYER_SCENE** (J05) — MM S1: Jonah burns and prays a furious, accusatory prayer asking to die (4:1-3); no approved scene_kind covers an angry complaint-prayer.
-- [ ] **APPOINTMENT_SCENE** (J05) — MM S3 (4:6-8): YHWH-God appoints plant, worm, and wind in sequence — the book's quiet signature verb building the object lesson.
-- [ ] **BIRTH_SCENE** (P13) — MM Scene 1 title 'The marriage, the gift, the birth' and 3F centers on the divine gift of conception and the birth of the son; no approved scene_kind covers a birth/gift resolution.
-- [ ] **CLOSING_ARGUMENT_SCENE** (J05) — MM S4 (4:9-11): the sharpened question, Jonah's defiant answer, and YHWH's argument from plant to city left hanging — the book's open end.
-- [ ] **COMMISSIONING_SCENE** (J04) — 'The word of YHWH comes to Jonah a second time: get up, go to Nineveh ... call to her' — a divine commissioning.
-- [ ] **COMMISSION_SCENE** (J01) — MM Scene 1 / 3F: 'Gives the command that the rest of the pericope answers: the caller, the called, the city, and the reason' — a divine commissioning; no approved scene_kind fits.
-- [ ] **CRISIS_DELIBERATION_SCENE** (J02) — "'Hurl me in' — and they row instead" — the crew weighs what to do as the sea rises, trying to spare him before throwing him.
-- [ ] **DECREE_SCENE** (J04) — 'He has it proclaimed in Nineveh, by decree of the king and his nobles' — the royal edict.
-- [ ] **DELIVERANCE_SCENE** (J03, J04)
+- [x] **ANGRY_PRAYER_SCENE** (J05) — MM S1: Jonah burns and prays a furious, accusatory prayer asking to die (4:1-3); no approved scene_kind covers an angry complaint-prayer. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **APPOINTMENT_SCENE** (J05) — MM S3 (4:6-8): YHWH-God appoints plant, worm, and wind in sequence — the book's quiet signature verb building the object lesson. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **BIRTH_SCENE** (P13) — MM Scene 1 title 'The marriage, the gift, the birth' and 3F centers on the divine gift of conception and the birth of the son; no approved scene_kind covers a birth/gift resolution. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **CLOSING_ARGUMENT_SCENE** (J05) — MM S4 (4:9-11): the sharpened question, Jonah's defiant answer, and YHWH's argument from plant to city left hanging — the book's open end. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **COMMISSIONING_SCENE** (J04) — 'The word of YHWH comes to Jonah a second time: get up, go to Nineveh ... call to her' — a divine commissioning. **RULED collapse survivor (Marcia 2026-06-13) → promoted v0.18; absorbs COMMISSION_SCENE.**
+- [x] **COMMISSION_SCENE** (J01) — MM Scene 1 / 3F: 'Gives the command that the rest of the pericope answers: the caller, the called, the city, and the reason' — a divine commissioning; no approved scene_kind fits. **RULED → collapsed into `COMMISSIONING_SCENE` (Marcia 2026-06-13); J01 FM amended; NOT promoted.**
+- [x] **CRISIS_DELIBERATION_SCENE** (J02) — "'Hurl me in' — and they row instead" — the crew weighs what to do as the sea rises, trying to spare him before throwing him. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **DECREE_SCENE** (J04) — 'He has it proclaimed in Nineveh, by decree of the king and his nobles' — the royal edict. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **DELIVERANCE_SCENE** (J03, J04) **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
   - J03: Scene 3 title/3F: 'Touches bottom so the lift can be measured... you brought my life up from the pit.'
   - J04: 'YHWH speaks to the fish, and it vomits Jonah out onto the dry land' — the rescue completed.
-- [ ] **DISTRESS_RECOUNTING_SCENE** (J03) — Scene 2 recounts the casting into the deep and banishment answered by a face turned to the temple.
-- [ ] **DIVINE_RELENTING_SCENE** (J04) — 'God relents of the evil he had said he would do to them, and he does not do it.'
-- [ ] **EXPOSURE_AND_CONFESSION_SCENE** (J02) — "The lot finds him, and he confesses" — the lot exposes Jonah and his own mouth confesses YHWH.
-- [ ] **FLIGHT_SCENE** (J01) — MM Scene 2 / 3F: 'Records the flight: the prophet's refusal, carried out as a journey the opposite way' — no approved scene_kind names a flight.
-- [ ] **GATE_COURT_CONVENING_SCENE** (P11) — MM S1 title and 3F: the court convened in three sittings at the gate; no approved scene_kind covers a legal convening.
-- [ ] **GENEALOGY_SCENE** (P14) — MM scene title "The generations of Perez" and genre GENEALOGY: the scene is a formal toledot list, a form with no approved scene_kind.
-- [ ] **GLEANING_SCENE** (P07) — MM S1: 'Ruth gleans in the field until evening, beats out what she gathered, and it comes to about an ephah' — a narrated gleaning/work scene with no approved scene_kind fit.
-- [ ] **HURLING_AND_WORSHIP_SCENE** (J02) — "Overboard: the sea stands still, and the men worship" — the prayer, the hurling, the calm, and the crew's worship in one scene.
-- [ ] **NAMING_SCENE** (P13) — MM Scene 3 title 'The child on Naomi's lap; the naming' and 3F center on the communal naming of the child; no approved scene_kind covers a naming event.
-- [ ] **NIGHT_APPROACH_SCENE** (P09) — MM 3F-S1: 'Executes the plan to the letter and sets the night's stage' — a wordless nighttime approach scene with no approved fit (MEAL_SCENE/INSTRUCTION_SCENE miss the staging focus).
-- [ ] **PROCLAMATION_SCENE** (J04) — 'he cries out: forty more days, and Nineveh is overthrown' — a public oracle proclaimed in the city.
-- [ ] **PROVISION_HOMECOMING_SCENE** (P07) — MM S2: 'Ruth lifts the grain and comes into the town. Her mother-in-law sees what she gleaned. Then Ruth brings out and gives her what she had left over' — bringing provision home; no approved fit.
-- [ ] **REDEEMER_RECOGNITION_SCENE** (P07) — MM S3 3F: 'The turn of the passage: at the name Boaz, Naomi recognizes a redeemer' — a dialogue scene whose spine is the kinship-role recognition; no approved scene_kind fits.
-- [ ] **REDEMPTION_DECLINE_SCENE** (P11) — MM S3: the second stage springs and the claim reverses into the decline that frees Boaz; no approved scene_kind for the declination.
-- [ ] **REDEMPTION_OFFER_SCENE** (P11) — MM S2: the first stage — the field offered, the confident claim drawn; no approved scene_kind for a redemption offer.
-- [ ] **REPENTANCE_SCENE** (J04) — 'The men of Nineveh believe God. They call a fast and put on sackcloth' — the city's turning enacted.
-- [ ] **RESCUE_DECLARATION_SCENE** (J03) — Scene 1 title/3F: 'States the rescue before the road: the answered call is the headline.'
-- [ ] **STORM_ONSET_SCENE** (J02) — "The storm hits, and the prophet sleeps" — YHWH hurls the wind, the storm rises, the crew responds while Jonah sleeps.
-- [ ] **SWALLOWING_SCENE** (J02) — "The fish: swallowed, three days, and a prayer begins" — YHWH appoints the fish, it swallows Jonah, and the prayer begins.
-- [ ] **WATCH_POST_SCENE** (J05) — MM S2 (4:4-5): God's question hangs unanswered while Jonah goes out, builds a booth, and sits to watch the city; no approved scene_kind fits.
+- [x] **DISTRESS_RECOUNTING_SCENE** (J03) — Scene 2 recounts the casting into the deep and banishment answered by a face turned to the temple. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **DIVINE_RELENTING_SCENE** (J04) — 'God relents of the evil he had said he would do to them, and he does not do it.' **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **EXPOSURE_AND_CONFESSION_SCENE** (J02) — "The lot finds him, and he confesses" — the lot exposes Jonah and his own mouth confesses YHWH. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **FLIGHT_SCENE** (J01) — MM Scene 2 / 3F: 'Records the flight: the prophet's refusal, carried out as a journey the opposite way' — no approved scene_kind names a flight. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **GATE_COURT_CONVENING_SCENE** (P11) — MM S1 title and 3F: the court convened in three sittings at the gate; no approved scene_kind covers a legal convening. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **GENEALOGY_SCENE** (P14) — MM scene title "The generations of Perez" and genre GENEALOGY: the scene is a formal toledot list, a form with no approved scene_kind. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **GLEANING_SCENE** (P07) — MM S1: 'Ruth gleans in the field until evening, beats out what she gathered, and it comes to about an ephah' — a narrated gleaning/work scene with no approved scene_kind fit. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **HURLING_AND_WORSHIP_SCENE** (J02) — "Overboard: the sea stands still, and the men worship" — the prayer, the hurling, the calm, and the crew's worship in one scene. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **NAMING_SCENE** (P13) — MM Scene 3 title 'The child on Naomi's lap; the naming' and 3F center on the communal naming of the child; no approved scene_kind covers a naming event. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **NIGHT_APPROACH_SCENE** (P09) — MM 3F-S1: 'Executes the plan to the letter and sets the night's stage' — a wordless nighttime approach scene with no approved fit (MEAL_SCENE/INSTRUCTION_SCENE miss the staging focus). **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **PROCLAMATION_SCENE** (J04) — 'he cries out: forty more days, and Nineveh is overthrown' — a public oracle proclaimed in the city. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **PROVISION_HOMECOMING_SCENE** (P07) — MM S2: 'Ruth lifts the grain and comes into the town. Her mother-in-law sees what she gleaned. Then Ruth brings out and gives her what she had left over' — bringing provision home; no approved fit. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **REDEEMER_RECOGNITION_SCENE** (P07) — MM S3 3F: 'The turn of the passage: at the name Boaz, Naomi recognizes a redeemer' — a dialogue scene whose spine is the kinship-role recognition; no approved scene_kind fits. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **REDEMPTION_DECLINE_SCENE** (P11) — MM S3: the second stage springs and the claim reverses into the decline that frees Boaz; no approved scene_kind for the declination. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **REDEMPTION_OFFER_SCENE** (P11) — MM S2: the first stage — the field offered, the confident claim drawn; no approved scene_kind for a redemption offer. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **REPENTANCE_SCENE** (J04) — 'The men of Nineveh believe God. They call a fast and put on sackcloth' — the city's turning enacted. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **RESCUE_DECLARATION_SCENE** (J03) — Scene 1 title/3F: 'States the rescue before the road: the answered call is the headline.' **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **STORM_ONSET_SCENE** (J02) — "The storm hits, and the prophet sleeps" — YHWH hurls the wind, the storm rises, the crew responds while Jonah sleeps. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **SWALLOWING_SCENE** (J02) — "The fish: swallowed, three days, and a prayer begins" — YHWH appoints the fish, it swallows Jonah, and the prayer begins. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
+- [x] **WATCH_POST_SCENE** (J05) — MM S2 (4:4-5): God's question hangs unanswered while Jonah goes out, builds a booth, and sits to watch the city; no approved scene_kind fits. **RULED tick (Marcia 2026-06-13) → promoted v0.18.**
 
 ### Axis `action` — 8 declaration(s) · 7 unique value(s) — **RULED, sitting B1 (Marcia 2026-06-12): all 7 ticked → promoted v0.12**
 

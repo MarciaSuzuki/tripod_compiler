@@ -19,8 +19,8 @@
       "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
     },
     "approved-enumerations.json": {
-      "version": "v0.17",
-      "sha256": "b43f7980eacab1ae7d0b5dae6f90a097ae3871e40d745da3d7f532f6a6d201b3"
+      "version": "v0.18",
+      "sha256": "5e092b4be029b6b5277ec77bb7faf3e6a03d82a8903384bb3ffc9102d1f2a2e3"
     },
     "quarantined-vocabulary.json": {
       "version": "0.2.0",
