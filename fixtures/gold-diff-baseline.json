@@ -1,5 +1,45 @@
 [
   {
+    "pericope": "J01",
+    "matched": 23,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 20,
+    "divergences": []
+  },
+  {
+    "pericope": "J02",
+    "matched": 41,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 69,
+    "divergences": []
+  },
+  {
+    "pericope": "J03",
+    "matched": 30,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 42,
+    "divergences": []
+  },
+  {
+    "pericope": "J04",
+    "matched": 38,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 62,
+    "divergences": []
+  },
+  {
+    "pericope": "J05",
+    "matched": 29,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 58,
+    "divergences": []
+  },
+  {
     "pericope": "P01",
     "matched": 44,
     "divergent": 0,
@@ -86,5 +126,69 @@
         "note": "B17:PRESENT not in gold"
       }
     ]
+  },
+  {
+    "pericope": "P07",
+    "matched": 52,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 53,
+    "divergences": []
+  },
+  {
+    "pericope": "P08",
+    "matched": 23,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 27,
+    "divergences": []
+  },
+  {
+    "pericope": "P09",
+    "matched": 49,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 59,
+    "divergences": []
+  },
+  {
+    "pericope": "P10",
+    "matched": 29,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 34,
+    "divergences": []
+  },
+  {
+    "pericope": "P11",
+    "matched": 60,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 51,
+    "divergences": []
+  },
+  {
+    "pericope": "P12",
+    "matched": 54,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 44,
+    "divergences": []
+  },
+  {
+    "pericope": "P13",
+    "matched": 45,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 45,
+    "divergences": []
+  },
+  {
+    "pericope": "P14",
+    "matched": 21,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 26,
+    "divergences": []
   }
 ]
