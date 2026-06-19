@@ -86,3 +86,36 @@ describe("SC-0064 close — FOR_MODEL graduation (13 ruled FMs become visible)",
     });
   });
 });
+
+// SC-0064 close part 2 — the COMPILATION-LOGs catch up to the FOR_MODELs. The 12 drafted
+// pericopes' skeleton gap-reports were mechanized into ruled logs (status skeleton→valid,
+// sta_compilation_status SKELETON_DETERMINISTIC→MODEL_DRAFTED_REVIEWER_RULED, vocabulary_additions
+// assembled from the per-axis ruling-logs); P08's hand-built ruled log graduated as-is.
+describe("SC-0064 close part 2 — COMPILATION-LOG mechanization (13 ruled logs)", () => {
+  const CL_FIX = join(here, "..", "fixtures", "compilation-log");
+  for (const [pid, [file]] of Object.entries(ANCHORS)) {
+    const clFile = file.replace("-FOR-MODEL.md", "-COMPILATION-LOG.md");
+    describe(pid, () => {
+      const path = join(CL_FIX, clFile);
+      const text = readFileSync(path, "utf8");
+
+      it("mechanized: status valid + sta_compilation_status MODEL_DRAFTED_REVIEWER_RULED", () => {
+        expect(statusOf(text)).toBe("valid");
+        expect(jsonOf(text).review_status.sta_compilation_status).toBe("MODEL_DRAFTED_REVIEWER_RULED");
+      });
+
+      it("validates block-clean against compilation-log.schema.json", () => {
+        const r = validateArtifact(path);
+        expect(r.artifact).toBe("COMPILATION-LOG");
+        expect(r.counts.block, JSON.stringify(r.findings.filter((f) => f.severity === "block"), null, 2)).toBe(0);
+        expect(r.ok).toBe(true);
+      });
+    });
+  }
+
+  it("bite-proof: a status regression valid → skeleton is caught", () => {
+    const p13 = readFileSync(join(CL_FIX, "P13-Ruth-4-13-17-COMPILATION-LOG.md"), "utf8");
+    expect(statusOf(p13)).toBe("valid");
+    expect(statusOf(p13.replace('status: "valid"', 'status: "skeleton"'))).toBe("skeleton");
+  });
+});
