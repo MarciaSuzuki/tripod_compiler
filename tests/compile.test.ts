@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { readFileSync, writeFileSync, mkdtempSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdtempSync, readdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { readMeaningMap } from "../src/reader/meaning-map.js";
 import { compileSkeleton, TODO, isTodo } from "../src/compiler/skeleton.js";
@@ -133,16 +133,32 @@ describe("Slice 2 — compiles all six meaning maps without error", () => {
 });
 
 describe("Slice 2 — gold diff (item 1) matches the committed regression baseline", () => {
-  const PIDS = ["P01-Ruth-1-1-5", "P02-Ruth-1-6-14", "P03-Ruth-1-15-18", "P04-Ruth-1-19-22", "P05-Ruth-2-1-7", "P06-Ruth-2-8-16"];
+  // Recompute exactly as `tripod gold-diff` does — iterate the maps, pair each with its gold
+  // FOR_MODEL by pid, skip map-only fixtures — so the regression test tracks the committed baseline
+  // through graduations instead of a brittle hardcoded list (SC-0064: the 13 ruled FMs graduated,
+  // baseline 6→19).
+  const MM_DIR = join(here, "..", "fixtures", "meaning-map");
+  const FM_DIR = join(here, "..", "fixtures", "for-model");
+  const fmFiles = readdirSync(FM_DIR).filter((f) => f.endsWith("-FOR-MODEL.md"));
   const baseline = JSON.parse(readFileSync(join(here, "..", "fixtures", "gold-diff-baseline.json"), "utf8"));
-  const current = PIDS.map((n) => goldDiff(readMeaningMap(MM(`${n}.md`)), compileSkeleton(readMeaningMap(MM(`${n}.md`))).skeleton, gold(`${n}-FOR-MODEL.md`)));
+  const current = readdirSync(MM_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .sort()
+    .map((mf) => {
+      const fm = fmFiles.find((f) => f.startsWith(mf.slice(0, 3)));
+      if (!fm) return null; // map-only fixture — skipped, exactly as the CLI does
+      const mm = readMeaningMap(join(MM_DIR, mf));
+      return goldDiff(mm, compileSkeleton(mm).skeleton, readArtifactNote(join(FM_DIR, fm)).json);
+    })
+    .filter((d): d is NonNullable<typeof d> => d !== null);
 
   it("recomputed gold diff equals the baseline (extractor + gold unchanged)", () => {
     expect(current).toEqual(baseline);
   });
-  it("gold agreement on the comparable deterministic layer is high (>=90%) and P01/P03 are exact", () => {
+  it("gold agreement on the comparable deterministic layer is high (>=90%); P01/P03 exact", () => {
     for (const d of current) expect(d.agreementPct, `${d.pericope} agreement`).toBeGreaterThanOrEqual(90);
     expect(current.find((d: any) => d.pericope === "P01")!.agreementPct).toBe(100);
+    expect(current.find((d: any) => d.pericope === "P03")!.agreementPct).toBe(100);
   });
 });
 

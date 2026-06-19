@@ -14,9 +14,9 @@ const compLogs = readdirSync(CL_FIX).filter((f) => f.endsWith("-COMPILATION-LOG.
 const blockMsgs = (r: ReturnType<typeof validateArtifact>) =>
   JSON.stringify(r.findings.filter((f) => f.severity === "block"), null, 2);
 
-describe("FOR_MODEL gold fixtures (P01–P06)", () => {
-  it("vendors all six gold fixtures", () => {
-    expect(forModels).toHaveLength(6);
+describe("FOR_MODEL gold fixtures (P01–P14 + J01–J05 — the full seed corpus)", () => {
+  it("vendors all 19 gold fixtures (P01–P06 hand-built + the 13 SC-0064-ruled, graduated)", () => {
+    expect(forModels).toHaveLength(19);
   });
 
   for (const f of forModels) {
