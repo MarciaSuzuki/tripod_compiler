@@ -54,9 +54,9 @@ describe("FOR_MODEL gold fixtures (P01–P14 + J01–J05 — the full seed corpu
 // machinery already existed (validateArtifact dispatches the CL schema); this block
 // makes the check load-bearing, so a malformed CL fails `npm test` instead of entering
 // the corpus as unguarded "provenance". (Vault-CL *content* staleness is SC-0008, not here.)
-describe("COMPILATION-LOG gold fixtures (P01–P06)", () => {
-  it("vendors all six gold compilation-logs", () => {
-    expect(compLogs).toHaveLength(6);
+describe("COMPILATION-LOG gold fixtures (P01–P14 + J01–J05 — the full seed corpus)", () => {
+  it("vendors all 19 gold compilation-logs (P01–P06 hand-built + the 13 SC-0064 close-part-2 mechanized)", () => {
+    expect(compLogs).toHaveLength(19);
   });
 
   for (const f of compLogs) {
