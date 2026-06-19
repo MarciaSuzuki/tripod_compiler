@@ -1,5 +1,5 @@
 {
-  "kind": "ruling amendment (SC-0064 proposition_kind Group A, Marcia 2026-06-13)",
+  "kind": "ruling amendments",
   "by": "Architect",
   "edits": [
     {
@@ -7,6 +7,24 @@
       "from": "RESOLVED",
       "to": "AFFIRMED_RESOLVE",
       "why": "Marcia's Group-A ruling (option b: rename): RESOLVED already names an approved `discourse_thread_state` (a status axis); no token has spanned status↔event, so the J03 proposition_kind is renamed AFFIRMED_RESOLVE to avoid the cross-axis collision while preserving the drafter's 'forward resolve, distinct from a vow or plain speech act' intent (2:4 'yet I will look again toward your holy temple'). AFFIRMED_RESOLVE promoted to proposition_kind under SC-0064 (J03 ruling log)."
+    },
+    {
+      "where": "/level_1/arc_elements",
+      "from": "RESCUE_DECLARED_FIRST",
+      "to": "RESCUE_DECLARED",
+      "why": "Marcia's arc_element rename ruling (2026-06-19, strip-to-type): dropped the narration-order _FIRST suffix; the type is RESCUE_DECLARED."
+    },
+    {
+      "where": "/level_1/arc_elements",
+      "from": "BANISHMENT_AND_TEMPLE_TURN",
+      "to": "TEMPLE_TURN",
+      "why": "Marcia's arc_element rename ruling (2026-06-19): atomize the AND-compound to the prayer's hinge; banishment is carried by the descent beats. Renamed to TEMPLE_TURN."
+    },
+    {
+      "where": "/level_1/arc_elements",
+      "from": "DESCENT_TO_THE_BOTTOM",
+      "to": "(removed — folded into DESCENT_INTO_THE_DEEP)",
+      "why": "Marcia's arc_element collapse ruling (2026-06-19): DESCENT_INTO_THE_DEEP + DESCENT_TO_THE_BOTTOM are one downward arc-movement (the staging stays in the scenes/propositions). Removed the merged-away value (DESCENT_INTO_THE_DEEP already present in this FM); DESCENT_TO_THE_BOTTOM not promoted."
     }
   ]
 }

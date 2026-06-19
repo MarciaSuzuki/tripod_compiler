@@ -45,7 +45,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
   "level_1": {
     "arc_elements": [
       "ANGER_AT_DIVINE_MERCY",
-      "WITHHELD_MOTIVE_DISCLOSED",
+      "MOTIVE_DISCLOSED",
       "DEATH_WISH",
       "DIVINE_PROBING_QUESTION",
       "WITHDRAWAL_TO_WATCH",

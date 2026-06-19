@@ -56,7 +56,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "CREW_CRISIS_RESPONSE",
       "EXPOSURE_BY_LOT",
       "SELF_CONFESSION",
-      "SELF_SURRENDER_COUNSEL",
+      "SELF_SURRENDER",
       "RESCUE_ATTEMPT_FAILS",
       "HURLING_OVERBOARD",
       "STORM_STILLED",

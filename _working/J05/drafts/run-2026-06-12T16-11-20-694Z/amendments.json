@@ -7,6 +7,12 @@
       "from": "APPOINTED_STRIKER · AFFLICTED_ONE · RESPONDENT",
       "to": "APPOINTED_STRIKER→APPOINTED_CREATURE · AFFLICTED_ONE→COMPLAINANT · RESPONDENT→COMPLAINANT",
       "why": "Marcia's role_in_scene_being ruling (Principle A consolidation, 2026-06-13): near-synonym scene-roles merged to their cluster survivor. The deceased cluster collapsed 5→1 (DECEASED_KIN) — identity stays in the being-id, kinship in the approved HUSBAND/KINSMAN roles, the levirate act in NAME_PRESERVED; the merged values are NOT promoted, the survivors are."
+    },
+    {
+      "where": "/level_1/arc_elements",
+      "from": "WITHHELD_MOTIVE_DISCLOSED",
+      "to": "MOTIVE_DISCLOSED",
+      "why": "Marcia's arc_element rename ruling (2026-06-19, strip-to-type): the delayed-disclosure type is MOTIVE_DISCLOSED; dropped the WITHHELD_ prefix."
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "$comment": "Growing registry of APPROVED convergent bounded-open enumeration values, with provenance. Seeded from canonical P01 (SC-0006); grows by governed promotion (tripod promote) as pericope COMPILATION-LOG vocabulary_additions are CONFIRMED. Replaces drift_detector.canonical_p01_enumerations as the live drift baseline for convergent axes. Descriptive/open axes (role/function/_kind _examples, referential_form) are NOT tracked here \u2014 they never converge. Vendored + pinned into the compiler; promotions are logged in VOCABULARY_LOG.md and re-pinned.",
-  "version": "v0.18",
+  "version": "v0.19",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date": "2026-06-05",
   "seeded_from": "validation-rules.json drift_detector.canonical_p01_enumerations (convergent axes only)",
-  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots \u2014 see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) \u2014 P03 now validates with zero convergent drift. v0.4 (2026-05-30): batch-promoted P04 (31), P05 (33), P06 (40) convergent values via the CONFIRMED-only flow \u2014 the full Ruth pilot corpus (P01\u2013P06) now validates with zero convergent drift. v0.5 (2026-06-03, SC-0021): promoted 11 corpus-independent triage bares \u2014 tone RISING/STILLED/URGENT; pace BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS \u2014 the locus-stripped/cleaned forms from the tone+pace triage (NARROW unified into NARROWS); tone/pace convergent drift across P01-P06 remains zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.6 (2026-06-04, SC-0022): promoted 56 reuse-dependent triage bares \u2014 13 scene_kind (APPEAL/ARRIVAL/BLESSING/DEPARTURE/INITIATIVE/INSTRUCTION/LAMENT/MARRIAGE/MEAL/NARRATOR_INTRODUCTION/RATIFICATION/REPORT/VOW _SCENE), 27 proposition_kind (action-verbs + SPOKE + move-labels APPEAL/LAMENT/VOW/INSTRUCTION/RENAMING/BLESSING), 16 communicative_function_element (leading verbs) \u2014 the collapsed reusable types from the scene_kind/proposition_kind/communicative_function triage; convergent drift across P01-P06 returns to zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.7 (2026-06-04, SC-0022): added the role_in_scene_being axis \u2014 beings' participant role reclassified descriptive\u2192convergent and seeded with the 21 ruled relations (kinship HUSBAND/WIFE/WIDOW/MOTHER_IN_LAW/SON/DAUGHTER_IN_LAW/KINSMAN/ANCESTOR/CLAN/REDEEMER_KIN/PEOPLE; DIVINE_AGENT; activity GLEANER/FIELD_OWNER/FOREMAN/HARVESTERS/FEMALE_WORKERS/MALE_WORKERS/TOWNSPEOPLE; referenced SOURCE_GROUP/ERA_REFERENT). The slot is now an enforced controlled relation set, not convention. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.8 (2026-06-04, SC-0022 deprecation): removed 133 orphaned superseded values no longer used by any pericope \u2014 17 scene_kind + 54 proposition_kind + 40 communicative_function_element (the wordy forms collapsed by the triage) + 9 tone_element + 13 pace_element (the locus-stripped forms SC-0021 left behind, incl. NARROW unified into NARROWS). The old\u2192new mapping is preserved in tripod_cleanup_log.md + git history; the registry is now exactly the cleaned canonical set, so reusing an old form drifts. See SPEC_CHANGES.md. v0.9 (2026-06-04, SC-0023): un-settled the 8 quarantined communicative_function_element used-once coin-flips (TRANSMITS/ANSWERS/PLACES/ANCHORS/INTRODUCES/POSITIONS/DISTRIBUTES/RECITES) \u2014 moved out of the approved set into the pinned quarantined-vocabulary.json. They were erroneously promoted as settled in SC-0022; they are NOT settled types. The validator now surfaces each use as a `quarantined` notice and a recurrence (\u22652 pericopes) as an explicit RECURS in the corpus quarantine watch. comm-func approved set 16 \u2192 8 (the recurring verbs). See SPEC_CHANGES.md SC-0023. v0.10 (2026-06-05, SC-0025): added the action axis \u2014 the nested component action slot reclassified from uncontrolled free-text to convergent bounded-open, seeded with the 31 SC-0024-cleaned verbs across P01-P06 (the 7 held sentence-shaped labels are quarantined, not approved \u2014 see quarantined-vocabulary.json). action convergent drift across P01-P06 is zero. See SPEC_CHANGES.md SC-0025. v0.11 (2026-06-12): promoted P08's 6 CONFIRMED values (scene_kind CONSENT_SCENE \u00b7 role_in_scene_being PLANNER \u00b7 arc_element REST_SEEKING_INITIATIVE/NIGHT_PLAN_INSTRUCTION/INITIATIVE_HANDOFF/TOTAL_CONSENT) from the SC-0063 drafter pilot, ruled by Marcia \u2014 the first machine-drafted promotion; see VOCABULARY_LOG.md. v0.12 (2026-06-12): promoted the 12 CONFIRMED values of Marcia's SC-0064 \u00a7B sitting-1 ruling (action AROSE/REMOVED_ROBE/DONNED_SACKCLOTH/SAT_ON_ASHES/UNCOVERED_FEET/LAY_DOWN/DREW_OFF_SANDAL/TOOK \u00b7 tone_element HEATED/IRONIC/PROCEDURAL/WONDER_UNDERSTATED) from the SC-0063 batch-ruling sheet (action + tone_element axes + \u00a7D's audit-caught TOOK; the dual-axis proposition_kind LAY_DOWN deferred to its axis sitting); per-pericope ruling logs in _working/<id>/<id>-SC-0064-B1-RULING-LOG.md; see VOCABULARY_LOG.md. v0.13 (2026-06-13): promoted SC-0064 proposition_kind Group A (Marcia's ruling) \u2014 the dual-axis trio ASKED/LAY_DOWN/PROPOSED added to proposition_kind (the established 7-member action\u2194proposition_kind pattern; ASKED also closes the \u00a7D-deferred P09 use) + AFFIRMED_RESOLVE (renamed from the drafter's RESOLVED to avoid the discourse_thread_state collision; J03 FM amended). proposition_kind 35\u219239. Logs: _working/{J02,P09,J03}/*-SC-0064-PROPKIND-A-RULING-LOG.md; see VOCABULARY_LOG.md. v0.14 (2026-06-13): promoted SC-0064 proposition_kind Group B (Marcia's ruling) \u2014 B-1 COLLAPSE: DIVINE_WORD_CAME folded into WORD_OF_YHWH_CAME (the literal survivor; J01 FM amended, DIVINE_WORD_CAME not promoted); B-2/3/4 KEEP: QUESTIONED/INTERROGATED (distinct from Group-A's ASKED), WENT_DOWN (narrative yarad) / DESCENDED (the psalm), MEASURED (quantity) / MEASURED_OUT (portioning). proposition_kind 39\u219246. Logs: _working/{J01,J05,J02,P09,J03,P07,P10}/*-SC-0064-PROPKIND-B-RULING-LOG.md. v0.15 (2026-06-13): promoted SC-0064 proposition_kind Group C (Marcia's ruling) \u2014 NAME_PRESERVED (consolidated neutral type: NAME_RAISED + the sentence-shaped NAME_NOT_CUT_OFF both renamed to it, P12 FM amended, neither promoted) + the glance-5 KEEP (ANGER_KINDLED, SEA_STILLED, STORM_AROSE, CAST_INTO_DEEP, CREED_RECITED \u2014 passed the strip-to-type test as discrete event-beats). proposition_kind 46\u219252. Logs: _working/{P12,J05,J02,J03}/*-SC-0064-PROPKIND-C-RULING-LOG.md. v0.16 (2026-06-13): promoted SC-0064 proposition_kind BULK-TICK (Marcia's ruling) \u2014 the 34 clean event-kinds verified free of cross-axis/collapse/prose issues. proposition_kind 52\u219286. The proposition_kind axis of the SC-0064 batch ruling is now COMPLETE (all 53 unique proposed values ruled across Groups A/B/C + bulk). Logs: _working/*/\u200b*-SC-0064-PROPKIND-BULK-RULING-LOG.md. v0.17 (2026-06-13): promoted SC-0064 role_in_scene_being (Marcia's Principle-A consolidation) \u2014 27 survivors of the 38 proposed values; 11 near-synonyms merged via FM amendments (COMMISSIONED_PROPHET\u2192PROPHET, FLEEING_PROPHET\u2192FUGITIVE, {2 fish + worm}\u2192APPOINTED_CREATURE, SHIP_CREW\u2192CREW, the 5-deceased cluster\u2192DECEASED_KIN, AFFLICTED_ONE+RESPONDENT\u2192COMPLAINANT). The deceased 5\u21921 avoids triple-encoding (being-id + approved HUSBAND/KINSMAN role + NAME_PRESERVED proposition already carry it). role_in_scene_being 22\u219249. Logs: _working/*/\u200b*-SC-0064-ROLE-RULING-LOG.md. v0.18 (2026-06-13): promoted SC-0064 scene_kind (Marcia's ruling) \u2014 28 of 29 proposed; COMMISSION_SCENE collapsed into COMMISSIONING_SCENE (same divine-commissioning kind, J01 first / J04 second; J01 FM amended, not promoted); the other 27 are distinct scene-types (no cross-axis/prose issue). scene_kind +28. Logs: _working/*/\u200b*-SC-0064-SCENEKIND-RULING-LOG.md.",
+  "growth_log": "v0.1 seeded from canonical P01 (SC-0006). v0.2 (2026-05-30): promoted P02's convergent vocabulary (41 values across proposition_kind/scene_kind/arc/tone/pace/communicative_function/high_risk_register_kind) via SC-0007 slots \u2014 see VOCABULARY_LOG.md. P02 now validates with zero convergent drift. v0.3 (2026-05-30): promoted P03's 27 convergent values via the CONFIRMED-only flow (default gate) \u2014 P03 now validates with zero convergent drift. v0.4 (2026-05-30): batch-promoted P04 (31), P05 (33), P06 (40) convergent values via the CONFIRMED-only flow \u2014 the full Ruth pilot corpus (P01\u2013P06) now validates with zero convergent drift. v0.5 (2026-06-03, SC-0021): promoted 11 corpus-independent triage bares \u2014 tone RISING/STILLED/URGENT; pace BRISK/SLOWED/PAUSED/NARROWS/RISES/SETTLES/HOLDS/WIDENS \u2014 the locus-stripped/cleaned forms from the tone+pace triage (NARROW unified into NARROWS); tone/pace convergent drift across P01-P06 remains zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.6 (2026-06-04, SC-0022): promoted 56 reuse-dependent triage bares \u2014 13 scene_kind (APPEAL/ARRIVAL/BLESSING/DEPARTURE/INITIATIVE/INSTRUCTION/LAMENT/MARRIAGE/MEAL/NARRATOR_INTRODUCTION/RATIFICATION/REPORT/VOW _SCENE), 27 proposition_kind (action-verbs + SPOKE + move-labels APPEAL/LAMENT/VOW/INSTRUCTION/RENAMING/BLESSING), 16 communicative_function_element (leading verbs) \u2014 the collapsed reusable types from the scene_kind/proposition_kind/communicative_function triage; convergent drift across P01-P06 returns to zero. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.7 (2026-06-04, SC-0022): added the role_in_scene_being axis \u2014 beings' participant role reclassified descriptive\u2192convergent and seeded with the 21 ruled relations (kinship HUSBAND/WIFE/WIDOW/MOTHER_IN_LAW/SON/DAUGHTER_IN_LAW/KINSMAN/ANCESTOR/CLAN/REDEEMER_KIN/PEOPLE; DIVINE_AGENT; activity GLEANER/FIELD_OWNER/FOREMAN/HARVESTERS/FEMALE_WORKERS/MALE_WORKERS/TOWNSPEOPLE; referenced SOURCE_GROUP/ERA_REFERENT). The slot is now an enforced controlled relation set, not convention. See tripod_cleanup_log.md + SPEC_CHANGES.md. v0.8 (2026-06-04, SC-0022 deprecation): removed 133 orphaned superseded values no longer used by any pericope \u2014 17 scene_kind + 54 proposition_kind + 40 communicative_function_element (the wordy forms collapsed by the triage) + 9 tone_element + 13 pace_element (the locus-stripped forms SC-0021 left behind, incl. NARROW unified into NARROWS). The old\u2192new mapping is preserved in tripod_cleanup_log.md + git history; the registry is now exactly the cleaned canonical set, so reusing an old form drifts. See SPEC_CHANGES.md. v0.9 (2026-06-04, SC-0023): un-settled the 8 quarantined communicative_function_element used-once coin-flips (TRANSMITS/ANSWERS/PLACES/ANCHORS/INTRODUCES/POSITIONS/DISTRIBUTES/RECITES) \u2014 moved out of the approved set into the pinned quarantined-vocabulary.json. They were erroneously promoted as settled in SC-0022; they are NOT settled types. The validator now surfaces each use as a `quarantined` notice and a recurrence (\u22652 pericopes) as an explicit RECURS in the corpus quarantine watch. comm-func approved set 16 \u2192 8 (the recurring verbs). See SPEC_CHANGES.md SC-0023. v0.10 (2026-06-05, SC-0025): added the action axis \u2014 the nested component action slot reclassified from uncontrolled free-text to convergent bounded-open, seeded with the 31 SC-0024-cleaned verbs across P01-P06 (the 7 held sentence-shaped labels are quarantined, not approved \u2014 see quarantined-vocabulary.json). action convergent drift across P01-P06 is zero. See SPEC_CHANGES.md SC-0025. v0.11 (2026-06-12): promoted P08's 6 CONFIRMED values (scene_kind CONSENT_SCENE \u00b7 role_in_scene_being PLANNER \u00b7 arc_element REST_SEEKING_INITIATIVE/NIGHT_PLAN_INSTRUCTION/INITIATIVE_HANDOFF/TOTAL_CONSENT) from the SC-0063 drafter pilot, ruled by Marcia \u2014 the first machine-drafted promotion; see VOCABULARY_LOG.md. v0.12 (2026-06-12): promoted the 12 CONFIRMED values of Marcia's SC-0064 \u00a7B sitting-1 ruling (action AROSE/REMOVED_ROBE/DONNED_SACKCLOTH/SAT_ON_ASHES/UNCOVERED_FEET/LAY_DOWN/DREW_OFF_SANDAL/TOOK \u00b7 tone_element HEATED/IRONIC/PROCEDURAL/WONDER_UNDERSTATED) from the SC-0063 batch-ruling sheet (action + tone_element axes + \u00a7D's audit-caught TOOK; the dual-axis proposition_kind LAY_DOWN deferred to its axis sitting); per-pericope ruling logs in _working/<id>/<id>-SC-0064-B1-RULING-LOG.md; see VOCABULARY_LOG.md. v0.13 (2026-06-13): promoted SC-0064 proposition_kind Group A (Marcia's ruling) \u2014 the dual-axis trio ASKED/LAY_DOWN/PROPOSED added to proposition_kind (the established 7-member action\u2194proposition_kind pattern; ASKED also closes the \u00a7D-deferred P09 use) + AFFIRMED_RESOLVE (renamed from the drafter's RESOLVED to avoid the discourse_thread_state collision; J03 FM amended). proposition_kind 35\u219239. Logs: _working/{J02,P09,J03}/*-SC-0064-PROPKIND-A-RULING-LOG.md; see VOCABULARY_LOG.md. v0.14 (2026-06-13): promoted SC-0064 proposition_kind Group B (Marcia's ruling) \u2014 B-1 COLLAPSE: DIVINE_WORD_CAME folded into WORD_OF_YHWH_CAME (the literal survivor; J01 FM amended, DIVINE_WORD_CAME not promoted); B-2/3/4 KEEP: QUESTIONED/INTERROGATED (distinct from Group-A's ASKED), WENT_DOWN (narrative yarad) / DESCENDED (the psalm), MEASURED (quantity) / MEASURED_OUT (portioning). proposition_kind 39\u219246. Logs: _working/{J01,J05,J02,P09,J03,P07,P10}/*-SC-0064-PROPKIND-B-RULING-LOG.md. v0.15 (2026-06-13): promoted SC-0064 proposition_kind Group C (Marcia's ruling) \u2014 NAME_PRESERVED (consolidated neutral type: NAME_RAISED + the sentence-shaped NAME_NOT_CUT_OFF both renamed to it, P12 FM amended, neither promoted) + the glance-5 KEEP (ANGER_KINDLED, SEA_STILLED, STORM_AROSE, CAST_INTO_DEEP, CREED_RECITED \u2014 passed the strip-to-type test as discrete event-beats). proposition_kind 46\u219252. Logs: _working/{P12,J05,J02,J03}/*-SC-0064-PROPKIND-C-RULING-LOG.md. v0.16 (2026-06-13): promoted SC-0064 proposition_kind BULK-TICK (Marcia's ruling) \u2014 the 34 clean event-kinds verified free of cross-axis/collapse/prose issues. proposition_kind 52\u219286. The proposition_kind axis of the SC-0064 batch ruling is now COMPLETE (all 53 unique proposed values ruled across Groups A/B/C + bulk). Logs: _working/*/\u200b*-SC-0064-PROPKIND-BULK-RULING-LOG.md. v0.17 (2026-06-13): promoted SC-0064 role_in_scene_being (Marcia's Principle-A consolidation) \u2014 27 survivors of the 38 proposed values; 11 near-synonyms merged via FM amendments (COMMISSIONED_PROPHET\u2192PROPHET, FLEEING_PROPHET\u2192FUGITIVE, {2 fish + worm}\u2192APPOINTED_CREATURE, SHIP_CREW\u2192CREW, the 5-deceased cluster\u2192DECEASED_KIN, AFFLICTED_ONE+RESPONDENT\u2192COMPLAINANT). The deceased 5\u21921 avoids triple-encoding (being-id + approved HUSBAND/KINSMAN role + NAME_PRESERVED proposition already carry it). role_in_scene_being 22\u219249. Logs: _working/*/\u200b*-SC-0064-ROLE-RULING-LOG.md. v0.18 (2026-06-13): promoted SC-0064 scene_kind (Marcia's ruling) \u2014 28 of 29 proposed; COMMISSION_SCENE collapsed into COMMISSIONING_SCENE (same divine-commissioning kind, J01 first / J04 second; J01 FM amended, not promoted); the other 27 are distinct scene-types (no cross-axis/prose issue). scene_kind +28. Logs: _working/*/\u200b*-SC-0064-SCENEKIND-RULING-LOG.md. v0.19 (2026-06-19): promoted SC-0064 arc_element (Marcia's ruling) \u2014 the last \u00a7B axis. 56 of the 58 proposed values: 5 strip-to-type renames (LINE_ARRIVAL_AT_DAVID\u2192LINE_TERMINUS_REACHED, BANISHMENT_AND_TEMPLE_TURN\u2192TEMPLE_TURN, RESCUE_DECLARED_FIRST\u2192RESCUE_DECLARED, WITHHELD_MOTIVE_DISCLOSED\u2192MOTIVE_DISCLOSED, SELF_SURRENDER_COUNSEL\u2192SELF_SURRENDER) + 2 collapses to a survivor (EMPTINESS_REVERSED\u2192EMPTYING_REVERSED, DESCENT_TO_THE_BOTTOM\u2192DESCENT_INTO_THE_DEEP; the merged-away values not promoted, the survivors are; the 5 FMs amended). arc_element 36\u219292. \u00a7B of the SC-0064 batch ruling (action+tone \u00b7 proposition_kind \u00b7 role_in_scene_being \u00b7 scene_kind \u00b7 arc_element) is now COMPLETE. Logs: _working/*/*-SC-0064-ARC-RULING-LOG.md. See VOCABULARY_LOG.md.",
   "axes": {
     "action": [
       {
@@ -1484,6 +1484,398 @@
         "approved_in": "P08",
         "source_artifact": "P08-COMPILATION-LOG",
         "sc_ref": "SC-0063"
+      },
+      {
+        "value": "PROVISION_BROUGHT_HOME",
+        "first_seen": "P07",
+        "approved_in": "P07",
+        "source_artifact": "P07-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "REDEEMER_RECOGNITION",
+        "first_seen": "P07",
+        "approved_in": "P07",
+        "source_artifact": "P07-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "NEARER_REDEEMER_DISCLOSURE",
+        "first_seen": "P09",
+        "approved_in": "P09",
+        "source_artifact": "P09-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "PLAN_EXECUTION",
+        "first_seen": "P09",
+        "approved_in": "P09",
+        "source_artifact": "P09-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "WING_PETITION",
+        "first_seen": "P09",
+        "approved_in": "P09",
+        "source_artifact": "P09-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "EMPTYING_REVERSED",
+        "first_seen": "P10",
+        "approved_in": "P10",
+        "source_artifact": "P10-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "SECRECY_INJUNCTION",
+        "first_seen": "P10",
+        "approved_in": "P10",
+        "source_artifact": "P10-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "ATTESTATION_BY_SANDAL",
+        "first_seen": "P11",
+        "approved_in": "P11",
+        "source_artifact": "P11-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "GATE_COURT_CONVENED",
+        "first_seen": "P11",
+        "approved_in": "P11",
+        "source_artifact": "P11-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "REDEMPTION_DECLINED",
+        "first_seen": "P11",
+        "approved_in": "P11",
+        "source_artifact": "P11-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "REDEMPTION_OFFER",
+        "first_seen": "P11",
+        "approved_in": "P11",
+        "source_artifact": "P11-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "STAGED_DISCLOSURE",
+        "first_seen": "P11",
+        "approved_in": "P11",
+        "source_artifact": "P11-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "COMMUNITY_WITNESS_ATTESTATION",
+        "first_seen": "P12",
+        "approved_in": "P12",
+        "source_artifact": "P12-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DEAD_NAME_RAISED",
+        "first_seen": "P12",
+        "approved_in": "P12",
+        "source_artifact": "P12-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "PUBLIC_REDEMPTION_DECLARATION",
+        "first_seen": "P12",
+        "approved_in": "P12",
+        "source_artifact": "P12-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "BIRTH_OF_HEIR",
+        "first_seen": "P13",
+        "approved_in": "P13",
+        "source_artifact": "P13-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "COMMUNAL_NAMING",
+        "first_seen": "P13",
+        "approved_in": "P13",
+        "source_artifact": "P13-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DIVINE_GIFT_OF_CONCEPTION",
+        "first_seen": "P13",
+        "approved_in": "P13",
+        "source_artifact": "P13-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "MARRIAGE_CONSUMMATED",
+        "first_seen": "P13",
+        "approved_in": "P13",
+        "source_artifact": "P13-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "GENEALOGICAL_DESCENT",
+        "first_seen": "P14",
+        "approved_in": "P14",
+        "source_artifact": "P14-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "LINE_TERMINUS_REACHED",
+        "first_seen": "P14",
+        "approved_in": "P14",
+        "source_artifact": "P14-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DIVINE_COMMISSION",
+        "first_seen": "J01",
+        "approved_in": "J01",
+        "source_artifact": "J01-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "FLIGHT_FROM_PRESENCE",
+        "first_seen": "J01",
+        "approved_in": "J01",
+        "source_artifact": "J01-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "REFUSAL_OF_COMMISSION",
+        "first_seen": "J01",
+        "approved_in": "J01",
+        "source_artifact": "J01-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "CREW_CRISIS_RESPONSE",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DIVINE_PURSUIT_BY_STORM",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "EXPOSURE_BY_LOT",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "HURLING_OVERBOARD",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "PAGAN_WORSHIP",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "PROVIDENTIAL_SWALLOWING",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "RESCUE_ATTEMPT_FAILS",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "SELF_CONFESSION",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "SELF_SURRENDER",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "STORM_STILLED",
+        "first_seen": "J02",
+        "approved_in": "J02",
+        "source_artifact": "J02-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "TEMPLE_TURN",
+        "first_seen": "J03",
+        "approved_in": "J03",
+        "source_artifact": "J03-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DESCENT_INTO_THE_DEEP",
+        "first_seen": "J03",
+        "approved_in": "J03",
+        "source_artifact": "J03-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "LIFT_FROM_THE_PIT",
+        "first_seen": "J03",
+        "approved_in": "J03",
+        "source_artifact": "J03-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "RESCUE_DECLARED",
+        "first_seen": "J03",
+        "approved_in": "J03",
+        "source_artifact": "J03-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "SALVATION_THESIS",
+        "first_seen": "J03",
+        "approved_in": "J03",
+        "source_artifact": "J03-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "THANKSGIVING_VOW",
+        "first_seen": "J03",
+        "approved_in": "J03",
+        "source_artifact": "J03-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DELIVERANCE_TO_DRY_LAND",
+        "first_seen": "J04",
+        "approved_in": "J04",
+        "source_artifact": "J04-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DIVINE_RELENTING",
+        "first_seen": "J04",
+        "approved_in": "J04",
+        "source_artifact": "J04-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "MASS_REPENTANCE",
+        "first_seen": "J04",
+        "approved_in": "J04",
+        "source_artifact": "J04-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "OBEDIENT_DEPARTURE",
+        "first_seen": "J04",
+        "approved_in": "J04",
+        "source_artifact": "J04-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "ORACLE_PROCLAMATION",
+        "first_seen": "J04",
+        "approved_in": "J04",
+        "source_artifact": "J04-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "RECOMMISSION",
+        "first_seen": "J04",
+        "approved_in": "J04",
+        "source_artifact": "J04-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "ROYAL_DECREE",
+        "first_seen": "J04",
+        "approved_in": "J04",
+        "source_artifact": "J04-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "ANGER_AT_DIVINE_MERCY",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "APPOINTED_OBJECT_LESSON",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "ARGUMENT_FROM_LESSER_TO_GREATER",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DEATH_WISH",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "DIVINE_PROBING_QUESTION",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "LOSS_OF_COMFORT",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "UNANSWERED_QUESTION_CLOSE",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "WITHDRAWAL_TO_WATCH",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
+      },
+      {
+        "value": "MOTIVE_DISCLOSED",
+        "first_seen": "J05",
+        "approved_in": "J05",
+        "source_artifact": "J05-SC-0064-ARC-RULING-LOG",
+        "sc_ref": "SC-0064"
       }
     ],
     "context_element": [

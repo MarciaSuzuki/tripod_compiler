@@ -48,7 +48,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "DIVINE_GIFT_OF_CONCEPTION",
       "BIRTH_OF_HEIR",
       "BLESSING_INVOCATION",
-      "EMPTINESS_REVERSED",
+      "EMPTYING_REVERSED",
       "COMMUNAL_NAMING",
       "NARRATOR_FRAMING_CLOSE"
     ],
