@@ -127,77 +127,77 @@ Total declared mints: 232 declarations · 189 unique values across 6 axes (the c
 - [x] **WORD_OF_YHWH_CAME** (J04) — 'the word of YHWH comes to Jonah a second time' — the recurring word-arrival formula. **RULED COLLAPSE SURVIVOR (Group B-1, Marcia 2026-06-13) → promoted v0.14; absorbs DIVINE_WORD_CAME (J01 1:1 amended + J04 3:1).**
 - [x] **WORSHIPED** (J02) — "the men fear YHWH with a great fear, and they offer a sacrifice ... and they vow vows" — the pagan crew's full worship as the storm's outcome. **RULED bulk-tick (Marcia 2026-06-13) → promoted v0.16.**
 
-### Axis `role_in_scene_being` — 60 declaration(s) · 38 unique value(s)
+### Axis `role_in_scene_being` — 60 declaration(s) · 38 unique value(s) — **AXIS COMPLETE (Marcia, 2026-06-13, Principle A consolidation): 27 survivors promoted (role_in_scene_being 22→49, enum v0.17) · 11 near-synonyms merged via FM amendments (deceased 5→1, prophet/creature/crew/ch.4 clusters).**
 
-- [ ] **AFFLICTED_ONE** (J05) — MM S3 role prose: 'the shaded one, the rejoicing one, then the struck and fainting one who asks to die.'
-- [ ] **ANIMAL_REFERENT** (J05) — MM S4 role prose: 'the book's last word — the animals stand inside the final mercy'; the same beasts of the J04 decree.
-- [ ] **APPOINTED_CREATURE** (J02) — "the appointed swallower ... YHWH's creature, doing YHWH's errand without argument" — no approved role for an appointed non-human agent.
-- [ ] **APPOINTED_STRIKER** (J05) — MM S3 role prose: 'the appointed striker — it kills the qiqayon at dawn'; God's smallest creature on God's errand.
-- [ ] **COMMISSIONED_PROPHET** (J01) — MM 3A: 'the one the word comes to; the prophet who is sent' — the approved role list (Ruth cast) has no prophet/commission role.
-- [ ] **COMPLAINANT** (J05) — MM S1 role prose: 'the angry pray-er; the one who asks to die'; 3F: 'turns Israel's oldest praise into a prophet's accusation.'
-- [ ] **CONVENER** (P11) — MM S1: Boaz 'takes the gate, calls the redeemer aside, and seats the elders'; no approved role names a convener of a proceeding.
-- [ ] **CREATURE_AGENT** (J04) — The fish is 'YHWH's creature, finishing its errand' — a non-human acting on the divine word.
-- [ ] **CREW** (J02, J02, J02, J02)
+- [x] **AFFLICTED_ONE** (J05) — MM S3 role prose: 'the shaded one, the rejoicing one, then the struck and fainting one who asks to die.' **RULED → merged into `COMPLAINANT` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **ANIMAL_REFERENT** (J05) — MM S4 role prose: 'the book's last word — the animals stand inside the final mercy'; the same beasts of the J04 decree. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **APPOINTED_CREATURE** (J02) — "the appointed swallower ... YHWH's creature, doing YHWH's errand without argument" — no approved role for an appointed non-human agent. **RULED cluster survivor (Principle A) → promoted v0.17; absorbs CREATURE_AGENT + APPOINTED_STRIKER.**
+- [x] **APPOINTED_STRIKER** (J05) — MM S3 role prose: 'the appointed striker — it kills the qiqayon at dawn'; God's smallest creature on God's errand. **RULED → merged into `APPOINTED_CREATURE` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **COMMISSIONED_PROPHET** (J01) — MM 3A: 'the one the word comes to; the prophet who is sent' — the approved role list (Ruth cast) has no prophet/commission role. **RULED → merged into `PROPHET` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **COMPLAINANT** (J05) — MM S1 role prose: 'the angry pray-er; the one who asks to die'; 3F: 'turns Israel's oldest praise into a prophet's accusation.' **RULED cluster survivor (Principle A) → promoted v0.17; absorbs AFFLICTED_ONE + RESPONDENT.**
+- [x] **CONVENER** (P11) — MM S1: Boaz 'takes the gate, calls the redeemer aside, and seats the elders'; no approved role names a convener of a proceeding. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **CREATURE_AGENT** (J04) — The fish is 'YHWH's creature, finishing its errand' — a non-human acting on the divine word. **RULED → merged into `APPOINTED_CREATURE` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **CREW** (J02, J02, J02, J02) **RULED cluster survivor (Principle A) → promoted v0.17; absorbs SHIP_CREW.**
   - J02: "the sailors" / "the men" — the ship's working crew, with no approved maritime collective role in the list.
   - J02: "the men" — the ship's working crew, continued from S1.
   - J02: "the men ... rowing hard for shore to spare him" — continued crew.
   - J02: "the ones who pray, hurl Jonah in, and then fear and worship YHWH".
-- [ ] **DECEASED_HOUSEHOLD_HEAD** (P12) — MM 3A: 'the dead head of the line whose holdings Boaz has bought'; no existing token for a deceased estate-holder being named in the purchase.
-- [ ] **DECEASED_HUSBAND** (P11) — MM S3: 'the one whose name must be raised upon his inheritance' — Ruth's late husband; no approved role.
-- [ ] **DECEASED_KIN** (P07) — MM S3 3A: 'the dead of the household... those the blessing keeps inside the reach of hesed' — Naomi's dead husband and sons, named only as 'the dead'; no approved role fits.
-- [ ] **DECEASED_KINSMAN** (P11, P11)
+- [x] **DECEASED_HOUSEHOLD_HEAD** (P12) — MM 3A: 'the dead head of the line whose holdings Boaz has bought'; no existing token for a deceased estate-holder being named in the purchase. **RULED → merged into `DECEASED_KIN` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **DECEASED_HUSBAND** (P11) — MM S3: 'the one whose name must be raised upon his inheritance' — Ruth's late husband; no approved role. **RULED → merged into `DECEASED_KIN` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **DECEASED_KIN** (P07) — MM S3 3A: 'the dead of the household... those the blessing keeps inside the reach of hesed' — Naomi's dead husband and sons, named only as 'the dead'; no approved role fits. **RULED cluster survivor (Principle A) → promoted v0.17; absorbs the 5-deceased cluster (KINSMAN/HOUSEHOLD_HEAD/HUSBAND/WHOSE_NAME_RAISED).**
+- [x] **DECEASED_KINSMAN** (P11, P11) **RULED → merged into `DECEASED_KIN` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
   - P11: MM: Elimelech is the dead kinsman whose line the redeeming serves; no approved role for the deceased ancestor-of-the-matter.
   - P11: MM S2: 'the dead man whose portion is the matter'; the deceased-owner role is not approved.
-- [ ] **DECEASED_WHOSE_NAME_RAISED** (P12) — MM 3A: 'the one whose name the purchase raises and keeps from being cut off'; the formulaic 'the dead' referent has no existing role token.
-- [ ] **FLEEING_PROPHET** (J01) — MM 3A S2: 'the called one who flees instead of going' — the refusal-in-action role; no approved role token fits.
-- [ ] **FUGITIVE** (J02, J02, J02, J02, J02)
+- [x] **DECEASED_WHOSE_NAME_RAISED** (P12) — MM 3A: 'the one whose name the purchase raises and keeps from being cut off'; the formulaic 'the dead' referent has no existing role token. **RULED → merged into `DECEASED_KIN` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **FLEEING_PROPHET** (J01) — MM 3A S2: 'the called one who flees instead of going' — the refusal-in-action role; no approved role token fits. **RULED → merged into `FUGITIVE` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **FUGITIVE** (J02, J02, J02, J02, J02) **RULED cluster survivor (Principle A) → promoted v0.17; absorbs FLEEING_PROPHET.**
   - J02: "the runaway ... the prophet fleeing YHWH" — Jonah's scene function throughout the pericope; no approved fit.
   - J02: "the one the lot falls on; the questioned man; the confessor" — still the runaway, now exposed.
   - J02: "the one who says: lift me and hurl me into the sea" — the runaway who owns the storm.
   - J02: "the man lifted and hurled into the sea" — 'this man' of the crew's prayer.
   - J02: "the swallowed man; at last, the one who prays" — the runaway carried alive.
-- [ ] **GRANDMOTHER** (P13, P13)
+- [x] **GRANDMOTHER** (P13, P13) **RULED keep (Principle A) → promoted v0.17.**
   - P13: MM Scene 2/3: 'the grandmother' to whom the child is reckoned (the once-empty widow now holding the line's future); no approved role captures the grandmother function central to this scene.
   - P13: MM Scene 3: the grandmother who takes the child to her bosom; reused from S2 (no approved equivalent).
-- [ ] **IDOL_KEEPERS** (J03) — Scene 4 role prose: 'the contrast — the ones who forsake their hesed' (those who hold to vain idols).
-- [ ] **KING** (J04) — 'the king of Nineveh ... rises, strips, covers, sits in ashes, and decrees.'
-- [ ] **LINEAGE_REFERENT** (P13) — MM Scene 3: Jesse and David are 'the names the narrator reaches to past the story' — forward genealogical referents; ANCESTOR is wrong-direction and ERA_REFERENT is time-setting only.
-- [ ] **LINE_TERMINUS** (P14) — MM 3A/2.4: B26 is "the line's arrival; David the book's destination" — the terminal name the whole genealogy exists to reach; no approved role_in_scene_being names the endpoint of a descent line.
-- [ ] **LIVESTOCK** (J04) — 'man and beast, herd and flock ... covered with sackcloth' — the city's animals made part of its repentance.
-- [ ] **NEARER_REDEEMER** (P11, P11, P11, P11)
+- [x] **IDOL_KEEPERS** (J03) — Scene 4 role prose: 'the contrast — the ones who forsake their hesed' (those who hold to vain idols). **RULED keep (Principle A) → promoted v0.17.**
+- [x] **KING** (J04) — 'the king of Nineveh ... rises, strips, covers, sits in ashes, and decrees.' **RULED keep (Principle A) → promoted v0.17.**
+- [x] **LINEAGE_REFERENT** (P13) — MM Scene 3: Jesse and David are 'the names the narrator reaches to past the story' — forward genealogical referents; ANCESTOR is wrong-direction and ERA_REFERENT is time-setting only. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **LINE_TERMINUS** (P14) — MM 3A/2.4: B26 is "the line's arrival; David the book's destination" — the terminal name the whole genealogy exists to reach; no approved role_in_scene_being names the endpoint of a descent line. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **LIVESTOCK** (J04) — 'man and beast, herd and flock ... covered with sackcloth' — the city's animals made part of its repentance. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **NEARER_REDEEMER** (P11, P11, P11, P11) **RULED keep (Principle A) → promoted v0.17.**
   - P11: MM S1: 'kinsman of Elimelech's line, nearer in the queue than Boaz (3:12)'; the queue-priority role is distinct from the generic REDEEMER_KIN.
   - P11: MM S2: the nearer kinsman, given first right and taking it; queue-priority role not in approved list.
   - P11: MM S3: the nearer kinsman who reverses and declines.
   - P11: MM S4: the nearer kinsman withdrawing via the sandal.
-- [ ] **NOBLES** (J04) — 'by decree of the king and his nobles' — co-issuers of the edict.
-- [ ] **PATRONYMIC_REFERENT** (J01, J01)
+- [x] **NOBLES** (J04) — 'by decree of the king and his nobles' — co-issuers of the edict. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **PATRONYMIC_REFERENT** (J01, J01) **RULED keep (Principle A) → promoted v0.17.**
   - J01: MM 3A: Amittai 'fixes who Jonah is by naming his father'; he functions only as an identity anchor, like the approved ERA_REFERENT but for parentage.
   - J01: Same mint as S1: Amittai functions only as Jonah's identity anchor; re-declared here for the append entry.
-- [ ] **POTENTIAL_SUITORS** (P09) — MM 3A-S3: 'the young men of marrying age, poor or rich; none of them chosen' — their scene function is the unchosen marital alternative, with no approved role_in_scene_being fit.
-- [ ] **PROPHET** (J04, J04, J04)
+- [x] **POTENTIAL_SUITORS** (P09) — MM 3A-S3: 'the young men of marrying age, poor or rich; none of them chosen' — their scene function is the unchosen marital alternative, with no approved role_in_scene_being fit. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **PROPHET** (J04, J04, J04) **RULED cluster survivor (Principle A) → promoted v0.17; absorbs COMMISSIONED_PROPHET.**
   - J04: Jonah's book-spanning function as the one YHWH sends to call out to Nineveh.
   - J04: The once-runaway prophet the word comes to a second time.
   - J04: Jonah carrying out the errand in this scene.
-- [ ] **REDEMPTION_OFFEROR** (P11, P11)
+- [x] **REDEMPTION_OFFEROR** (P11, P11) **RULED keep (Principle A) → promoted v0.17.**
   - P11: MM S2: 'the one who lays out the field-matter before the court'; no approved role for the one tendering a redemption offer.
   - P11: MM S3: Boaz states the second binding term — still the offeror function.
-- [ ] **RESPONDENT** (J05) — MM S4 role prose: 'the defiant answerer — angry enough to die — then the silent one.'
-- [ ] **SELLER** (P11, P11)
+- [x] **RESPONDENT** (J05) — MM S4 role prose: 'the defiant answerer — angry enough to die — then the silent one.' **RULED → merged into `COMPLAINANT` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **SELLER** (P11, P11) **RULED keep (Principle A) → promoted v0.17.**
   - P11: MM S2: 'the seller — the widow whose hand holds Elimelech's portion'; the seller function is not among approved roles.
   - P11: MM S3: Naomi as the seller-hand the field is acquired from.
-- [ ] **SHIP_CAPTAIN** (J02) — "the captain ... rab hachovel, the chief of the sailors" — master of the ship; no approved equivalent.
-- [ ] **SHIP_CREW** (J01) — MM 3A S2: 'the people aboard the ship bound for Tarshish' — the crew Jonah joins; no approved role token covers a ship's crew.
-- [ ] **SUPPLIANT** (J03, J03, J03)
+- [x] **SHIP_CAPTAIN** (J02) — "the captain ... rab hachovel, the chief of the sailors" — master of the ship; no approved equivalent. **RULED keep (Principle A) → promoted v0.17.**
+- [x] **SHIP_CREW** (J01) — MM 3A S2: 'the people aboard the ship bound for Tarshish' — the crew Jonah joins; no approved role token covers a ship's crew. **RULED → merged into `CREW` (Principle A, Marcia 2026-06-13); FM amended; NOT promoted.**
+- [x] **SUPPLIANT** (J03, J03, J03) **RULED keep (Principle A) → promoted v0.17.**
   - J03: Scene 1 role prose: 'the one praying — he called from his distress and was answered.' No approved role covers a praying suppliant.
   - J03: Scene 2 role prose: 'the one cast into the deep; the banished one who turns toward the temple' — still the praying suppliant.
   - J03: Scene 3 role prose: 'the drowning man — engulfed, wrapped, sunk to the roots; then lifted, remembering, heard.'
-- [ ] **TOWNSWOMEN** (P13, P13)
+- [x] **TOWNSWOMEN** (P13, P13) **RULED keep (Principle A) → promoted v0.17.**
   - P13: MM Scene 2/3 'the women' / 'the neighbor-women' act as the female counterpart to the men's gate-blessing (FIG_0187); approved TOWNSPEOPLE is gender-blind and FEMALE_WORKERS is field-specific.
   - P13: MM Scene 3 'the neighbor-women' (הַשְּׁכֵנוֹת) reused from S2; gender load-bearing for the communal-naming-for-Naomi figure (FIG_0181).
-- [ ] **VOWER** (J03) — Scene 4 role prose: 'the one vowing — sacrifice with thanksgiving, payment of what he vowed.'
-- [ ] **WATCHER** (J05) — MM S2 role prose: 'the unanswering one — he walks out and sits down to watch'; 3F: 'The watcher's post east of the city stages the lesson.'
-- [ ] **WITNESSING_ASSEMBLY** (P12) — MM 3A: 'the wider assembly called to witness alongside the elders'; TOWNSPEOPLE/PEOPLE name the group but not its scene-defining witnessing function ('you are witnesses today').
-- [ ] **WITNESSING_ELDERS** (P11, P11, P12)
+- [x] **VOWER** (J03) — Scene 4 role prose: 'the one vowing — sacrifice with thanksgiving, payment of what he vowed.' **RULED keep (Principle A) → promoted v0.17.**
+- [x] **WATCHER** (J05) — MM S2 role prose: 'the unanswering one — he walks out and sits down to watch'; 3F: 'The watcher's post east of the city stages the lesson.' **RULED keep (Principle A) → promoted v0.17.**
+- [x] **WITNESSING_ASSEMBLY** (P12) — MM 3A: 'the wider assembly called to witness alongside the elders'; TOWNSPEOPLE/PEOPLE name the group but not its scene-defining witnessing function ('you are witnesses today'). **RULED keep (Principle A) → promoted v0.17.**
+- [x] **WITNESSING_ELDERS** (P11, P11, P12) **RULED keep (Principle A) → promoted v0.17.**
   - P11: MM S1: 'the seated witnesses who make the gate a court'; no approved role for legal witnesses.
   - P11: MM S2: 'the elders of my people' as the witnesses the buying happens before.
   - P12: MM 3A: 'the seated court, named first among those called to witness'; no existing role_in_scene_being token names the elder court in its witnessing function.

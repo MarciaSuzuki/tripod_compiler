@@ -78,7 +78,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "entries": [
           {
             "being_id": "B1",
-            "role_in_scene": "COMMISSIONED_PROPHET",
+            "role_in_scene": "PROPHET",
             "presence": "PRESENT",
             "referential_form": "JONAH_SON_OF_AMITTAI_NO_TITLE"
           },
@@ -131,7 +131,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "entries": [
           {
             "being_id": "B1",
-            "role_in_scene": "FLEEING_PROPHET",
+            "role_in_scene": "FUGITIVE",
             "presence": "PRESENT"
           },
           {
@@ -141,7 +141,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SHIP_CREW",
+            "role_in_scene": "CREW",
             "presence": "REFERENCED"
           },
           {

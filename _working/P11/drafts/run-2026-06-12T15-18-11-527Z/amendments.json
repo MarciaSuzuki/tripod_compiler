@@ -7,6 +7,12 @@
       "from": "PL_ELIMELECH_FIELD_PORTION",
       "to": "PL5_ELIMELECH_PORTION",
       "why": "SC-0064 §C ruling (Marcia 2026-06-12): the drafter's proposed place code was renamed to PL5_ELIMELECH_PORTION to match the established PL5_BOAZ_PORTION sub-code pattern (both are portions of PL5-Field). The entity is unchanged; only the code conforms to the registry naming convention. Minted in bcd/places/PL5_ELIMELECH_PORTION-Elimelechs-Portion-of-the-Field.md; P11 map 3B roster wikilinked; 2 FM occurrences renamed."
+    },
+    {
+      "where": "/level_2_scenes beings_in_scene role_in_scene (one or more entries)",
+      "from": "DECEASED_KINSMAN · DECEASED_HUSBAND",
+      "to": "DECEASED_KINSMAN→DECEASED_KIN · DECEASED_HUSBAND→DECEASED_KIN",
+      "why": "Marcia's role_in_scene_being ruling (Principle A consolidation, 2026-06-13): near-synonym scene-roles merged to their cluster survivor. The deceased cluster collapsed 5→1 (DECEASED_KIN) — identity stays in the being-id, kinship in the approved HUSBAND/KINSMAN roles, the levirate act in NAME_PRESERVED; the merged values are NOT promoted, the survivors are."
     }
   ],
   "regens": [

@@ -104,7 +104,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B2",
-            "role_in_scene": "DECEASED_HOUSEHOLD_HEAD",
+            "role_in_scene": "DECEASED_KIN",
             "presence": "REFERENCED"
           },
           {
@@ -131,7 +131,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B4",
-            "role_in_scene": "DECEASED_WHOSE_NAME_RAISED",
+            "role_in_scene": "DECEASED_KIN",
             "presence": "REFERENCED",
             "referential_form": "HA_MET_THE_DEAD"
           }

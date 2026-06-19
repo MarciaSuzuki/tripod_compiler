@@ -114,7 +114,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B2",
-            "role_in_scene": "DECEASED_KINSMAN",
+            "role_in_scene": "DECEASED_KIN",
             "presence": "REFERENCED"
           }
         ]
@@ -175,7 +175,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B2",
-            "role_in_scene": "DECEASED_KINSMAN",
+            "role_in_scene": "DECEASED_KIN",
             "presence": "REFERENCED",
             "referential_form": "OUR_BROTHER_ELIMELECH"
           }
@@ -237,7 +237,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B?",
-            "role_in_scene": "DECEASED_HUSBAND",
+            "role_in_scene": "DECEASED_KIN",
             "presence": "REFERENCED",
             "referential_form": "THE_DEAD_UNNAMED"
           }

@@ -101,7 +101,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "being_id": "B7",
-            "role_in_scene": "CREATURE_AGENT",
+            "role_in_scene": "APPOINTED_CREATURE",
             "presence": "PRESENT"
           },
           {
