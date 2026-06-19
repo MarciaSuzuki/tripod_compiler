@@ -36,7 +36,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
   "level_1": {
     "arc_elements": [
       "GENEALOGICAL_DESCENT",
-      "LINE_ARRIVAL_AT_DAVID",
+      "LINE_TERMINUS_REACHED",
       "NARRATOR_FRAMING_CLOSE"
     ],
     "context_elements": [

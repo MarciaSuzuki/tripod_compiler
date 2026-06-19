@@ -1,0 +1,12 @@
+{
+  "kind": "ruling amendment (SC-0064 arc_element, Marcia 2026-06-19)",
+  "by": "Architect",
+  "edits": [
+    {
+      "where": "/level_1/arc_elements",
+      "from": "LINE_ARRIVAL_AT_DAVID",
+      "to": "LINE_TERMINUS_REACHED",
+      "why": "Marcia's arc_element rename ruling (2026-06-19, strip-to-type): a cross-Bible type must not bake in the proper noun 'David'; renamed to LINE_TERMINUS_REACHED (mirrors the approved role token LINE_TERMINUS for B26). The David-specificity stays in the prose/referential_form."
+    }
+  ]
+}

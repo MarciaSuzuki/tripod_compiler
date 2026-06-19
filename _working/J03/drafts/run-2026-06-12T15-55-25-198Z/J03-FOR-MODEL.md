@@ -35,11 +35,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
   },
   "level_1": {
     "arc_elements": [
-      "RESCUE_DECLARED_FIRST",
+      "RESCUE_DECLARED",
       "AFFLICTION",
       "DESCENT_INTO_THE_DEEP",
-      "BANISHMENT_AND_TEMPLE_TURN",
-      "DESCENT_TO_THE_BOTTOM",
+      "TEMPLE_TURN",
       "LIFT_FROM_THE_PIT",
       "THANKSGIVING_VOW",
       "SALVATION_THESIS"

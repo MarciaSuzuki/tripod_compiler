@@ -1,0 +1,12 @@
+{
+  "kind": "ruling amendment (SC-0064 arc_element, Marcia 2026-06-19)",
+  "by": "Architect",
+  "edits": [
+    {
+      "where": "/level_1/arc_elements",
+      "from": "EMPTINESS_REVERSED",
+      "to": "EMPTYING_REVERSED",
+      "why": "Marcia's arc_element collapse ruling (2026-06-19): EMPTYING_REVERSED (P10) + EMPTINESS_REVERSED (P13) name the single reversal of the approved EMPTYING; collapsed to EMPTYING_REVERSED (it shares the approved root). EMPTINESS_REVERSED not promoted; the survivor is promoted via P10's ruling log."
+    }
+  ]
+}

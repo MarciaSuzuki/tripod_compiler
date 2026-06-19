@@ -1,0 +1,12 @@
+{
+  "kind": "ruling amendment (SC-0064 arc_element, Marcia 2026-06-19)",
+  "by": "Architect",
+  "edits": [
+    {
+      "where": "/level_1/arc_elements",
+      "from": "SELF_SURRENDER_COUNSEL",
+      "to": "SELF_SURRENDER",
+      "why": "Marcia's arc_element rename ruling (2026-06-19, strip-to-type): the beat is SELF_SURRENDER; dropped the _COUNSEL suffix."
+    }
+  ]
+}
