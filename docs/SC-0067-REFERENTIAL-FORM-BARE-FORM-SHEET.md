@@ -10,11 +10,12 @@
 > Net apply: **~30 strip-values + 1 drop** (the `SELF_REFERENCE_REFUSING_OWN_NAME` slot) across the FMs,
 > with the coupled CL echoes + 2 divergent CL variants reconciled; **3 occurrences held/deferred**, the rest kept.
 >
-> **⚠ ONE HOLD surfaced during apply (2026-06-20):** `MY_DAUGHTER_INTIMATE` (§1 #12) is **entangled with a
-> newly-found sibling slot family `address_form`** that R1 did not scope (the Evaluator's "3 sub-families,
-> no 4th" bounded the `referential_form` family; `address_form` is outside it). Stripping it in
-> `referential_form` only would split the same file. **`MY_DAUGHTER_INTIMATE` is HELD pending Marcia's
-> scope ruling on the `*_form` siblings — see §9.** Everything else in the ruling applies as planned.
+> **SCOPE EXTENDED — Marcia ruled Option A 2026-06-20:** R1 now covers **all surface-form slots**, not
+> just `referential_form`. The newly-found **(a) surface-address family** is folded in (see **§10**, ruled);
+> the `MY_DAUGHTER_INTIMATE` hold **dissolves** (it now strips to `MY_DAUGHTER` consistently in both
+> families). The word-bearing **(b)** forms route to **Phase 2 (R2)** and the structural **(c)** forms to
+> **Phase 3** — on record in §10D. Independently re-verified: the non-referential `*_form` landscape is
+> **56 occ / 31 keys = (a) 24 + (b) 22 + (c) 10**.
 
 > **Status (original): CALIBRATION — awaiting Marcia's word.** Nothing applied yet. This sheet enumerates
 > every referential-form value across the 19 gold FOR_MODELs (FMs) — **all three key sub-families**
@@ -49,7 +50,7 @@
   truly CL-only, and both are divergent variants of an at_verse value (see §5).
 - **84 distinct total** = 82 FM + 2 truly-CL-only.
 
-## Disposition summary (136 occurrences · 82 distinct FM + 2 CL-only = 84 total)
+## Disposition summary — R1 scope = referential family (136) + (a) surface-address (24) = 160 occ
 
 | § | Disposition | Distinct | FM occ. | Recommendation |
 |---|---|---|---|---|
@@ -59,6 +60,10 @@
 | 3 | **KEEP — `UNNAMED_`/`NON_NAME` family** (blessed) | 10 | 11 | **Keep** (CLAUDE.md §3.3) |
 | 4 | **KEEP — already bare** (surface forms / translit-gloss) | ~33 | ~68 | **No change** |
 | 5 | CL reconciliation | — | — | echoes track FM; CL-only → her call |
+| 10 | **(a) surface-address family** (`address_form` + kin) | 17 | 24 | 7 strip · 5 keep · 5 boundary |
+
+The referential family is 136 occ (81 + 43 + 12); the (a) surface-address family adds 24 occ. Word-bearing
+(b, 22 occ) routes to Phase 2 (R2); structural (c, 10 occ) to Phase 3.
 
 ---
 
@@ -282,10 +287,15 @@ three values I first listed as CL-only are the CL echoes of at_verse slots and m
 
 ## §8 — Phase-4 guard scope (recorded now so it isn't lost)
 
-The automatable guard (Phase 4) must match **all three** key-forms — `referential_form`,
-`*_referential_form`, **and `*referential_form_at_verse`** — or prose re-leaks through the positional
-family undetected. It must also **allow-list the blessed forms** (`UNNAMED_*`, `STRIPPED_TO_HA_ISHAH`,
-`*_PRONOMINAL`) so a naive later pass cannot strip them.
+Now that R1 spans the whole surface-form set (referential family + (a) address family), the Phase-4
+guard must work by **value-shape, not key-name**: flag an **analytic-tailed surface form under ANY
+`*_form` key** (register/relational/positional/occurrence/epithet tails — `_INTIMATE`, `_DEFERENTIAL`,
+`_RELATIONAL`, `_NARRATOR_EPITHET`, `_THIRD_PARTY_EPITHET`, `KINSHIP_FORM`, `_FIRST/SECOND_OCCURRENCE`,
+`_SPELLING_AT_*`, `WITHHELD_PER_*`, `_NAMED_BY_ROLE`, …). It must **allow-list the blessed forms**
+(`UNNAMED_*`, `STRIPPED_TO_HA_ISHAH`, `*_PRONOMINAL`) so a naive later pass cannot strip them, and it must
+still match all three referential key-forms (`referential_form`, `*_referential_form`,
+`*referential_form_at_verse`). (b) speech-content and (c) structural forms are out of R1's value-shape and
+are handled by their own phases.
 
 ---
 
@@ -322,3 +332,56 @@ entanglement and keeps the bare-form cleanup coherent — ~5 strips: `MY_DAUGHTE
 `MY_DAUGHTERS`, `MY_LORD`; keep `PELONI_ALMONI`, `SLEEPER`, `YHWH_MY_GOD`; `DAUGHTER_FORM_OF_ADDRESS` is a
 boundary). Defer **(b)** to Phase 2 (R2) and **(c)** to Phase 3. The Phase-4 guard (§8) then widens to the
 address-kin keys too, with the same blessed allow-list.
+
+> **RESOLVED — Marcia ruled Option A (extend) 2026-06-20.** The ruled (a) family is §10. (Correction to
+> the §9 estimate: address_form `MY_DAUGHTER_INTIMATE` is **×6** — P07/P08/P09/P10 — not ×7; total across
+> both families = 9.)
+
+---
+
+## §10 — (a) surface-address family — RULED: extend R1 (Marcia, Option A, 2026-06-20)
+
+R1's bare-form principle now covers the surface-address / referring-expression `*_form` slots.
+**Independently re-verified from the files** (digit-inclusive grep — the earlier scan's value-regex skipped
+digits, hiding the SALMAH/SALMON forms): non-referential `*_form` landscape = **56 occ / 31 keys**,
+bucketed **(a) 24 · (b) 22 · (c) 10** (sums to 56). My classification matches the Evaluator's (b)/(c)
+routing exactly.
+
+### 10A — STRIP (R1 bare-form; per-value count-assert each)
+
+| Key | Value | → bare | FM occ | CL reconcile |
+|---|---|---|---|---|
+| `address_form` | `MY_DAUGHTER_INTIMATE` | **`MY_DAUGHTER`** | 6 (P07,P08,P09,P10) | — |
+| `address_form` | `MY_DAUGHTERS_INTIMATE` | **`MY_DAUGHTERS`** | 3 (P02) | — |
+| `address_form` | `MY_DAUGHTER_NON_KIN_ELDER_TO_YOUNG_FOREIGNER` | **`MY_DAUGHTER`** | 1 (P06) | **P06 CL prose, line 88** |
+| `address_form` | `MY_LORD_DEFERENTIAL` | **`MY_LORD`** | 1 (P06) | **P06 CL prose, line 88** |
+| `addressed_form` | `DAUGHTER_FORM_OF_ADDRESS` | **`DAUGHTER`** | 1 (P05) | — |
+| `begotten_name_form` | `SALMAH_SPELLING_AT_4_20` | **`SALMAH`** | 1 (P14) | — |
+| `begetter_name_form` | `SALMON_SPELLING_AT_4_21` | **`SALMON`** | 1 (P14) | — |
+
+7 distinct / **14 occ**. **SALMAH/SALMON:** only the positional `_SPELLING_AT_4_2x` tail is stripped — both
+spellings stay distinct (the verse already lives in the anchor), so the load-bearing dual spelling is preserved.
+
+**Entanglement resolved:** `MY_DAUGHTER_INTIMATE` now strips to `MY_DAUGHTER` consistently in **both**
+families (referential ×3 + address ×6 = **9 total**); the §9 hold dissolves. **CL reconcile (P06 only):**
+the two P06 values are cited in CL prose (line 88) — bare the cited value, keep the explanatory prose
+("non-kin elder to young foreigner" / "deferential") as the note-home. The TH_ code
+`TH_ADONI_MY_LORD_DEFERENTIAL_FORM` (line 494) is an L3 registry code — out of R1 scope, untouched.
+
+### 10B — KEEP (already bare / surface)
+`directed_address_form: SLEEPER` · `divine_address_form: YHWH_MY_GOD` · `address_form: PELONI_ALMONI_NON_NAME`
+(= §3 keep) · `role_form: ONE_OF_OUR_REDEEMERS` (= §4 keep) · `blessing_recipient_form: THE_MAN_WHO_TOOK_NOTICE`
+(surface relative-clause, Ruth 2:19).
+
+### 10C — BOUNDARY — place/lineage referring forms (her word; lean keep)
+`doubled_place_form: EPHRATHAH_AND_BETHLEHEM` · `model_house_form: HOUSE_OF_PEREZ` · `line_form: TOLEDOT_OF_PEREZ` ·
+`living_and_dead_form: ET_HACHAYIM_VEET_HAMETIM` — all surface phrases, **lean keep**. The one likely strip:
+`destination_people_form: PEOPLE_PREVIOUSLY_UNKNOWN_TO_HER` → **`PEOPLE`**? ("previously unknown to her" is analytic).
+
+### 10D — Routed out of R1 (on record for later phases)
+- **(b) → R2 / Phase 2 (carry words, 22 occ):** `question_form` (9), `matched_action_form` (4),
+  `binding_indefinite_place_form` (3), `witness_summons_form` (2), `response_form`, `blessing_form` (`BARUKH_YHWH`),
+  `decree_authority_form`, `compliance_form`.
+- **(c) → Phase 3 (structural residue, 10 occ):** `vow_structural_form` (`SIX_STEP_LADDER…` — the triage memory's
+  own example), `movement_form`, `listing_order_form`, `duration_form`, `report_variation_form`, `attestation_form`,
+  `acquired_from_form`, `tie_form`, `resulting_relation_form`, `binding_demonstrative_place_form`.
