@@ -1,10 +1,12 @@
 # SC-0067 — Phase 1 (R1) — `referential_form` bare-form calibration sheet
 
 > **Status: CALIBRATION — awaiting Marcia's word.** Nothing applied yet. This sheet enumerates
-> every `*_referential_form` value across the 19 gold FOR_MODELs (FMs), proposes the **bare surface
-> form** per R1, and surfaces the boundary calls. After ruling, the changes land as **one
-> compiler+vault pair** (FM amendments — string-replace + count assertion + re-grep + `amendments.json`
-> record; vault byte-identical), with the coupled COMPILATION-LOG (CL) echoes updated in lockstep.
+> every referential-form value across the 19 gold FOR_MODELs (FMs) — **all three key sub-families**
+> (`referential_form`, `*_referential_form`, `referential_form_at_verse`), **136 occurrences total** —
+> proposes the **bare surface form** per R1, and surfaces the boundary calls. After ruling, the
+> changes land as **one compiler+vault pair** (FM amendments — string-replace + count assertion +
+> re-grep + `amendments.json` record; vault byte-identical), with the coupled COMPILATION-LOG (CL)
+> echoes updated in lockstep.
 
 ## The ruling being applied (R1, Marcia, locked)
 
@@ -15,21 +17,27 @@
 > (`significant_absence`, CL, lint-exception) — **preserve every blessed device; change ONLY the
 > FM slot value.**
 
-## Counts (from the fixtures, not memory)
+## Counts (from the fixtures, not memory — re-verified with the corrected family grep)
 
-- **124** FM occurrences of a `*_referential_form` slot, across **75** distinct FM values.
-- **19** CL `referential_forms[].value` entries (in P01–P05 CLs only), of which **5** are CL-only
-  (no FM counterpart) and the rest echo FM values.
-- **80** distinct values total (75 FM + 5 CL-only).
-- Two slot families: the scene-being `referential_form` (81 occ.) and the proposition event-slot
-  `<participant>_referential_form` (43 occ.).
+- **136** FM occurrences across **three** key sub-families. Re-grep
+  (`grep -roE '"[a-z_]*referential_form[a-z_]*"'`) proves the set is exactly these three — no 4th:
+  - scene-being `referential_form` — **81**
+  - proposition event-slot `<participant>_referential_form` — **43**
+  - positional `referential_form_at_verse` — **12** (10 distinct; **was missing from the first draft** —
+    the original grep anchored the closing quote right after `referential_form`, so the suffixed key slipped through)
+- **84** distinct FM values (was 75; the at_verse family adds 4 brand-new strings —
+  `ESHET_CHAYIL_WOMAN_OF_WORTH`, `HE_PRONOMINAL`, `HUSBAND_OF_NAOMI`, `UNNAMED_DEITY_IN_BINDING_PAIRING` —
+  and pulls 3 previously-"CL-only" strings into the FM).
+- **19** CL `referential_forms[].value` entries (P01–P05). After the at_verse merge only **2** are
+  truly CL-only, and both are divergent variants of an at_verse value (see §5).
 
-## Disposition summary
+## Disposition summary (136 occurrences, 84 distinct FM values)
 
-| § | Disposition | Distinct values | FM occ. | Recommendation |
+| § | Disposition | Distinct | FM occ. | Recommendation |
 |---|---|---|---|---|
 | 1 | **CLEAR STRIP** (R1-named annotation) | 13 | 20 | **Apply as proposed** |
-| 2 | **BOUNDARY** (needs her word) | ~19 | ~25 | Per the grouped asks below |
+| 2A–2D | **BOUNDARY** — `referential_form` + `*_referential_form` | ~19 | ~25 | Per the grouped asks below |
+| 2F | **`referential_form_at_verse` sub-family** | 10 | 12 | 2 strip · 1 drop · 7 keep (3 edges) |
 | 3 | **KEEP — `UNNAMED_`/`NON_NAME` family** (blessed) | 10 | 11 | **Keep** (CLAUDE.md §3.3) |
 | 4 | **KEEP — already bare** (surface forms / translit-gloss) | ~33 | ~68 | **No change** |
 | 5 | CL reconciliation | — | — | echoes track FM; CL-only → her call |
@@ -118,6 +126,26 @@ a load-bearing literary feature — surfacing before any drop.**
 | `DIVINE_NAME_FIRST_ON_RUTHS_LIPS` | **`YHWH`** | `DIVINE_NAME_` prefix + `_FIRST_ON_RUTHS_LIPS` salience (→ note) | P03 agent_named | P03 |
 | `REFUSED_NAME_NAOMI_IN_RECALL` | **`NAOMI`** | the refusal is the B3-renaming, audited in P04-D8 + CL | P04 question_target | P04 |
 
+### 2F — The `referential_form_at_verse` sub-family (12 occ. / 10 distinct) — the missing third family
+
+R1 governs this family too (same axis, positional key). The deity-context and pronominal edges were
+device-checked against the FM + CL before disposition.
+
+| Value | FM loc | Disposition | → bare form |
+|---|---|---|---|
+| `STRIPPED_TO_HA_ISHAH` | P01×1 | **KEEP** — blessed (§3); extend its location list + count-assert | — |
+| `HA_ISH_THE_MAN` | P09×2 | **KEEP** — already bare (§4); extend | — |
+| `HA_ISHAH_THE_WOMAN` | P10×1 | **KEEP** — already bare (§4); extend | — |
+| `ESHET_CHAYIL_WOMAN_OF_WORTH` | P09×1 | **KEEP** — bare Hebrew+gloss (*eshet chayil*, the 3:11 epithet) | — |
+| `HUSBAND_OF_NAOMI` | P01×1 | **KEEP** — already-bare relational | — |
+| `PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH` | P04×1 | **STRIP** (+1 real strip) — redundant with the prop's `action:PROPOSED` + `proposed_name:"Mara"` (FM lines 303–304) | **`MARA`** |
+| `UNNAMED_DEITY_IN_BINDING_PAIRING` | P03×1 | **STRIP** — `_IN_BINDING_PAIRING` confirmed *not* a withholding-home: the deity is homed structurally in `invoked_divine_agent: B10` and the unnamed→named escalation in the CL's P03-D5 STRUCTURAL_CONTRAST entry. Blessed `UNNAMED_` stays. | **`UNNAMED_DEITY`** |
+| `SHE_PRONOMINAL` | P01×1, P10×1 | **EDGE → recommend KEEP** — the pronoun *is* the surface form; load-bearing in P10's secrecy scene (`SECRECY_INJUNCTION` / `WITHHOLDS`, FM lines 47/75) | — |
+| `HE_PRONOMINAL` | P10×1 | **EDGE → recommend KEEP** — same | — |
+| `SELF_REFERENCE_REFUSING_OWN_NAME` | P04×1 | **EDGE → recommend DROP the slot** — names the *act*, not a referring expression; fully redundant with `action:REFUSED` + `refused_name:"Naomi"` (FM lines 295–296) | (drop) |
+
+**Net for this family: +1 real strip (`→MARA`), +1 strip (`→UNNAMED_DEITY`), +1 drop, 7 keeps (3 already in the sheet).**
+
 ---
 
 ## §3 — KEEP: `UNNAMED_` / `NON_NAME` family (recommend: KEEP — blessed surface device)
@@ -188,11 +216,16 @@ Moabite epithet after withholding"), so stripping the FM value loses nothing.
 P04 FM uses `…HER_DAUGHTER_IN_LAW_NARRATOR_EPITHET` (long). Recommend: set the P04 CL echo to the
 FM's bare form `RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW` so the two halves agree.
 
-**CL-only records (no FM slot — her call; recommend leave as audit, since `referential_form` is a
-descriptive axis that is never promoted):** `SHE_PRONOMINAL` (P01) · `HUSBAND_OF_NAOMI_FRAMING`
-(P01) · `UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING` (P03) · `SELF_REFERENCE_REFUSING_OWN_NAME` (P04) ·
-`PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH` (P04). The last two are the B3-renaming audit and read
-correctly as governance prose (SC-0017 scope: the audit layer retains analytic language).
+**At_verse coupling (these are the CL halves of `referential_form_at_verse` slots, not "CL-only"):**
+three values I first listed as CL-only are the CL echoes of at_verse slots and move with their FM per
+§2F — `SHE_PRONOMINAL` (CL P01 ↔ FM P01/P10 → **keep**), `PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH`
+(CL P04 ↔ FM P04 → **`MARA`**), `SELF_REFERENCE_REFUSING_OWN_NAME` (CL P04 ↔ FM P04 → **drop**).
+
+**Two divergent CL variants to reconcile to the FM bare form (the only truly CL-only entries left):**
+- `HUSBAND_OF_NAOMI_FRAMING` (CL P01) → **`HUSBAND_OF_NAOMI`** — the FM at_verse is already bare; strip the CL `_FRAMING`.
+- `UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING` (CL P03 — in the `referential_forms[]` array **and** cited
+  in the P03-D5 decision prose) → **`UNNAMED_DEITY`** — matches the FM at_verse bare form and incidentally
+  drops the "AGENT" role-jargon SC-0014 removed. Update **both** the CL array entry and the P03-D5 prose citation.
 
 ---
 
@@ -220,4 +253,18 @@ correctly as governance prose (SC-0017 scope: the audit layer retains analytic l
    (`ALTERNATES_…`, `NAMED_THEN_ADDRESSED`) — strip to one form + note, or defer to Phase 3?
 5. **§3 `UNNAMED_`/`NON_NAME`:** keep the family (recommend) — and normalize prefix/suffix, or leave?
    `PELONI_ALMONI_NON_NAME` — keep or strip `_NON_NAME`?
-6. **§5 CL-only records:** leave as audit (recommend), or strip the analytic ones too?
+6. **CL reconciliation (§5):** the 2 divergent CL variants reconcile to the FM bare form
+   (`HUSBAND_OF_NAOMI_FRAMING`→`HUSBAND_OF_NAOMI`, `UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING`→`UNNAMED_DEITY`)? — *recommend: yes*
+7. **`referential_form_at_verse` sub-family (§2F — the family I'd missed):** apply the 2 strips
+   (`→MARA`, `→UNNAMED_DEITY`)? And the 3 edges — *recommend: KEEP `SHE_PRONOMINAL` / `HE_PRONOMINAL`
+   (pronominal surface, load-bearing in P10's secrecy scene); DROP `SELF_REFERENCE_REFUSING_OWN_NAME`
+   (redundant with `action:REFUSED` + `refused_name`).*
+
+---
+
+## §8 — Phase-4 guard scope (recorded now so it isn't lost)
+
+The automatable guard (Phase 4) must match **all three** key-forms — `referential_form`,
+`*_referential_form`, **and `*referential_form_at_verse`** — or prose re-leaks through the positional
+family undetected. It must also **allow-list the blessed forms** (`UNNAMED_*`, `STRIPPED_TO_HA_ISHAH`,
+`*_PRONOMINAL`) so a naive later pass cannot strip them.
