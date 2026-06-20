@@ -204,7 +204,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B1",
             "role_in_scene": "VOWER",
             "presence": "PRESENT",
-            "referential_form": "BUT_I_CONTRASTIVE"
+            "referential_form": "BUT_I"
           },
           {
             "being_id": "B2",

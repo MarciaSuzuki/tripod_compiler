@@ -59,8 +59,8 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     },
     {
       "decision_id": "P05-D6",
-      "decision": "B15 The-Foreman referential_form NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE used at S4 throughout per pre-declared B15 BCD page.",
-      "description": "The Wave 1 B15-The-Foreman.md page pre-declares the single referential_form NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE for B15. The foreman is named only by role ('the young man standing over the harvesters') at both v.5 (Boaz's address) and v.6 (the narrator's identifying-clause for the answerer); no personal name is given anywhere in P05. Use this single referential_form throughout S4. The role-only naming is structurally significant; recorded in high_risk_register_audit R14 NAMED_BY_ROLE_ONLY_NO_PERSONAL_NAME."
+      "decision": "B15 The-Foreman referential_form NAAR_NITSAV_AL_HAQOTSRIM used at S4 throughout per pre-declared B15 BCD page.",
+      "description": "The Wave 1 B15-The-Foreman.md page pre-declares the single referential_form NAAR_NITSAV_AL_HAQOTSRIM for B15. The foreman is named only by role ('the young man standing over the harvesters') at both v.5 (Boaz's address) and v.6 (the narrator's identifying-clause for the answerer); no personal name is given anywhere in P05. Use this single referential_form throughout S4. The role-only naming is structurally significant; recorded in high_risk_register_audit R14 NAMED_BY_ROLE_ONLY_NO_PERSONAL_NAME."
     },
     {
       "decision_id": "P05-D7",
@@ -195,7 +195,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "referential_forms": [
       {
-        "value": "NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE",
+        "value": "NAAR_NITSAV_AL_HAQOTSRIM",
         "source": "B15 The-Foreman at S4 (v.5 + v.6)",
         "status": "PROPOSED",
         "note": "Bounded-open; pre-declared in Wave 1 B15 BCD page as the single referential_form for the foreman."
@@ -729,7 +729,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "applies_to": "B15 The-Foreman named only by role ('the young man standing over the harvesters') at v.5 + v.6",
       "note": "B15 is identified only by function in the field-organization (nitsav-al-haqotsrim); no personal name is given anywhere in P05. The role-only naming distinguishes the foreman from named protagonists. Reconstructor must use a role-designation form in the target language, not coin a personal name for the foreman.",
       "required_in_audit": true,
-      "source_in_meaning_map": "Section 3A Scene 4 (B15 referential_form NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE); Section 3C Scene 4 (TH_FOREMAN_ROLE_PHRASE_NITSAV_AL_HAQOTSRIM)"
+      "source_in_meaning_map": "Section 3A Scene 4 (B15 referential_form NAAR_NITSAV_AL_HAQOTSRIM); Section 3C Scene 4 (TH_FOREMAN_ROLE_PHRASE_NITSAV_AL_HAQOTSRIM)"
     },
     {
       "id": "R15",

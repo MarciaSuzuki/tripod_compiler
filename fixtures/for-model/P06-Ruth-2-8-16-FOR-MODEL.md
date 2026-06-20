@@ -318,7 +318,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
-        "address_form": "MY_DAUGHTER_NON_KIN_ELDER_TO_YOUNG_FOREIGNER",
+        "address_form": "MY_DAUGHTER",
         "instruction_components": [
           {
             "action": "DIRECTED",
@@ -504,9 +504,9 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "STATED",
             "loyalty_act_toward_party": "B3",
-            "loyalty_act_toward_referential_form": "YOUR_MOTHER_IN_LAW_KINSHIP_FORM",
+            "loyalty_act_toward_referential_form": "YOUR_MOTHER_IN_LAW",
             "after_whose_death": "B?",
-            "after_whose_death_referential_form": "YOUR_HUSBAND_RELATIONAL_PAIRING_WITHHELD_PER_P01_D2",
+            "after_whose_death_referential_form": "YOUR_HUSBAND",
             "speech_act": "STATES_AS_TRUE"
           }
         ]
@@ -543,7 +543,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "STATED",
-            "destination_people_form": "PEOPLE_PREVIOUSLY_UNKNOWN_TO_HER",
+            "destination_people_form": "PEOPLE",
             "list_position": "THIRD",
             "speech_act": "STATES_AS_TRUE"
           }
@@ -602,7 +602,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B13",
-        "address_form": "MY_LORD_DEFERENTIAL",
+        "address_form": "MY_LORD",
         "name_known_status": "NAME_NOT_YET_KNOWN_TO_RUTH",
         "wished_state": "FAVOR_IN_HIS_EYES",
         "speech_act": "STATES_HOPED_FOR_CONDITION"

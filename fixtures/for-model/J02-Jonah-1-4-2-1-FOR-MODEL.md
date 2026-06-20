@@ -122,7 +122,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B1",
             "role_in_scene": "FUGITIVE",
             "presence": "PRESENT",
-            "referential_form": "ADDRESSED_AS_SLEEPER"
+            "referential_form": "SLEEPER"
           }
         ]
       },
@@ -172,7 +172,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B1",
             "role_in_scene": "FUGITIVE",
             "presence": "PRESENT",
-            "referential_form": "SELF_NAMED_HEBREW"
+            "referential_form": "HEBREW"
           },
           {
             "being_id": "B2",
@@ -273,7 +273,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B1",
             "role_in_scene": "FUGITIVE",
             "presence": "PRESENT",
-            "referential_form": "THIS_MAN_IN_PRAYER"
+            "referential_form": "THIS_MAN"
           }
         ]
       },

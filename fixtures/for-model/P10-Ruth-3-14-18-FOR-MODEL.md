@@ -153,7 +153,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "MY_DAUGHTER_INTIMATE"
+            "referential_form": "MY_DAUGHTER"
           },
           {
             "being_id": "B13",
@@ -341,7 +341,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "questioner": "B3",
         "addressee": "B9",
         "question_form": "WHO_ARE_YOU",
-        "address_form": "MY_DAUGHTER_INTIMATE",
+        "address_form": "MY_DAUGHTER",
         "question_subject": "IDENTITY_RECOGNITION_AND_STANDING",
         "speech_act": "ASKS_KINSHIP_BELONGING_QUESTION"
       },
@@ -431,7 +431,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B3",
         "addressee": "B9",
-        "address_form": "MY_DAUGHTER_INTIMATE",
+        "address_form": "MY_DAUGHTER",
         "commanded_step": "SIT_STILL",
         "until_condition": "UNTIL_SHE_KNOWS_HOW_MATTER_FALLS",
         "matter_referent": "O19",

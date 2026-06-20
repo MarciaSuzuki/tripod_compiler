@@ -234,7 +234,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "being_id": "B8",
             "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW"
+            "referential_form": "HER_MOTHER_IN_LAW"
           },
           {
             "being_id": "B9",
@@ -363,7 +363,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "invoked_divine_agent": "B10",
         "blessing_content_kind": "HESED",
         "prior_hesed_targets": ["B2", "B4", "B5", "B3"],
-        "prior_hesed_targets_referential_form": "COLLECTIVE_THE_DEAD_AND_NAOMI_NO_PAIRING_INFERRED",
+        "prior_hesed_targets_referential_form": "THE_DEAD_AND_NAOMI",
         "speech_act": "WISHES_FOR_HEARER"
       },
       "inter_proposition_links": {
@@ -448,7 +448,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B3",
         "addressees": ["B8", "B9"],
-        "address_form": "MY_DAUGHTERS_INTIMATE",
+        "address_form": "MY_DAUGHTERS",
         "appeal_components": [
           {
             "action": "DIRECTED",
@@ -483,7 +483,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B3",
         "addressees": ["B8", "B9"],
-        "address_form": "MY_DAUGHTERS_INTIMATE",
+        "address_form": "MY_DAUGHTERS",
         "appeal_components": [
           {
             "action": "DIRECTED",
@@ -543,7 +543,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B3",
         "addressees": ["B8", "B9"],
-        "address_form": "MY_DAUGHTERS_INTIMATE",
+        "address_form": "MY_DAUGHTERS",
         "lament_components": [
           {
             "action": "STATED",
@@ -593,7 +593,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "KISSED",
             "kisser": "B8",
             "kissed": "B3",
-            "kissed_referential_form": "CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW",
+            "kissed_referential_form": "HER_MOTHER_IN_LAW",
             "speech_act": "STATES_AS_TRUE"
           },
           {

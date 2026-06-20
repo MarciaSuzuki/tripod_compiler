@@ -80,7 +80,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B1",
             "role_in_scene": "PROPHET",
             "presence": "PRESENT",
-            "referential_form": "JONAH_SON_OF_AMITTAI_NO_TITLE"
+            "referential_form": "JONAH_SON_OF_AMITTAI"
           },
           {
             "being_id": "B2",
@@ -191,7 +191,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "word_source": "B2",
         "word_recipient": "B1",
         "recipient_patronymic": "B3",
-        "recipient_referential_form": "JONAH_SON_OF_AMITTAI_NO_TITLE"
+        "recipient_referential_form": "JONAH_SON_OF_AMITTAI"
       },
       "inter_proposition_links": {
         "forward_link_to": "P2"

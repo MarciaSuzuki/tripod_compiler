@@ -213,7 +213,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "MY_DAUGHTER_INTIMATE"
+            "referential_form": "MY_DAUGHTER"
           },
           {
             "being_id": "B10",
@@ -505,7 +505,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "blessing_speaker": "B13",
         "blessing_recipients": "B9",
         "invoked_divine_agent": "B10",
-        "address_form": "MY_DAUGHTER_INTIMATE",
+        "address_form": "MY_DAUGHTER",
         "blessing_content_kind": "BLESSED_OF_YHWH",
         "speech_act": "WISHES_FOR_HEARER"
       },
@@ -571,7 +571,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
-        "address_form": "MY_DAUGHTER_INTIMATE",
+        "address_form": "MY_DAUGHTER",
         "reassurance_components": [
           {
             "directive": "DO_NOT_FEAR",

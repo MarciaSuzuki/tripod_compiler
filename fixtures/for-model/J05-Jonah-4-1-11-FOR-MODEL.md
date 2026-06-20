@@ -98,7 +98,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B2",
             "role_in_scene": "DIVINE_AGENT",
             "presence": "PRESENT",
-            "referential_form": "ADDRESSED_AS_YHWH"
+            "referential_form": "YHWH"
           }
         ]
       },
@@ -178,7 +178,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B2",
             "role_in_scene": "DIVINE_AGENT",
             "presence": "PRESENT",
-            "referential_form": "YHWH_ELOHIM_DOUBLED"
+            "referential_form": "YHWH_ELOHIM"
           },
           {
             "being_id": "B1",
@@ -442,7 +442,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "APPOINTED",
       "event_specific_slots": {
         "appointer": "B2",
-        "appointer_referential_form": "YHWH_ELOHIM_DOUBLED",
+        "appointer_referential_form": "YHWH_ELOHIM",
         "appointed_creature": "O11",
         "appointment_intent": "SHADE_OVER_HEAD"
       },
@@ -496,7 +496,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "APPOINTED",
       "event_specific_slots": {
         "appointer": "B2",
-        "appointer_referential_form": "ELOHIM_ALONE",
+        "appointer_referential_form": "ELOHIM",
         "appointed_creature": "B13",
         "appointment_timing": "RISING_OF_DAWN_NEXT_DAY"
       },
@@ -532,7 +532,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "APPOINTED",
       "event_specific_slots": {
         "appointer": "B2",
-        "appointer_referential_form": "ELOHIM_ALONE",
+        "appointer_referential_form": "ELOHIM",
         "appointed_force": "O12",
         "force_quality": "CUTTING_EAST_WIND",
         "appointment_timing": "WHEN_SUN_ROSE"
@@ -588,7 +588,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "QUESTIONED",
       "event_specific_slots": {
         "questioner": "B2",
-        "questioner_referential_form": "ELOHIM_ALONE",
+        "questioner_referential_form": "ELOHIM",
         "questioned_party": "B1",
         "question_form": "IS_IT_GOOD_THAT_IT_BURNS_OVER_QIQAYON",
         "question_subject": "ANGER_OVER_PLANT",

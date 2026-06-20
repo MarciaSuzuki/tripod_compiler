@@ -156,7 +156,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B3",
             "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "NAMED_ONLY_AS_MOTHER_IN_LAW"
+            "referential_form": "MOTHER_IN_LAW"
           }
         ]
       },
@@ -203,13 +203,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "RUTH_THE_MOABITESS_NARRATOR_EPITHET"
+            "referential_form": "RUTH_THE_MOABITESS"
           },
           {
             "being_id": "B13",
             "role_in_scene": "REDEEMER_KIN",
             "presence": "REFERENCED",
-            "referential_form": "THE_MAN_THEN_NAMED_BOAZ"
+            "referential_form": "THE_MAN"
           },
           {
             "being_id": "B10",
@@ -614,7 +614,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "reporter": "B9",
-        "reporter_referential_form": "RUTH_THE_MOABITESS_NARRATOR_EPITHET",
+        "reporter_referential_form": "RUTH_THE_MOABITESS",
         "addressee": "B3",
         "reported_speaker": "B13",
         "reported_instruction": "STAY_CLOSE_TO_YOUNG_MEN",
@@ -641,7 +641,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "counselor": "B3",
         "counseled_party": "B9",
-        "address_form": "MY_DAUGHTER_INTIMATE",
+        "address_form": "MY_DAUGHTER",
         "counseled_action": "GO_OUT_WITH_HIS_YOUNG_WOMEN",
         "worker_companions": "B16",
         "guarded_against": "HARM_IN_ANOTHER_FIELD",

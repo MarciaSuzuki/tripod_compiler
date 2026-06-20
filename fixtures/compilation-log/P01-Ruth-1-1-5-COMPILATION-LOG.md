@@ -192,10 +192,10 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       { "value": "UNNAMED_WIFE_OF_HEAD", "source": "B3 at 1:1b", "status": "CONFIRMED" },
       { "value": "UNNAMED_FIRST_SON", "source": "B4 at 1:1b", "status": "CONFIRMED" },
       { "value": "UNNAMED_SECOND_SON", "source": "B5 at 1:1b", "status": "CONFIRMED" },
-      { "value": "HUSBAND_OF_NAOMI_FRAMING", "source": "B2 at 1:3", "status": "CONFIRMED" },
+      { "value": "HUSBAND_OF_NAOMI", "source": "B2 at 1:3", "status": "CONFIRMED" },
       { "value": "SHE_PRONOMINAL", "source": "B3 at 1:3", "status": "CONFIRMED" },
       { "value": "STRIPPED_TO_HA_ISHAH", "source": "B3 at 1:5", "status": "CONFIRMED" },
-      { "value": "HER_HUSBAND_RELATIONAL", "source": "B2 at 1:5 in cumulative loss listing", "status": "CONFIRMED" }
+      { "value": "HER_HUSBAND", "source": "B2 at 1:5 in cumulative loss listing", "status": "CONFIRMED" }
     ],
     "other": [
       { "category": "PLACE_KIND", "value": "COVENANT_TERRITORY", "source": "PL_HA_ARETZ at 1:1", "status": "CONFIRMED" },

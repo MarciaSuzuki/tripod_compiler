@@ -257,13 +257,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "being_id": "B15",
             "role_in_scene": "FOREMAN",
             "presence": "PRESENT",
-            "referential_form": "NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE"
+            "referential_form": "NAAR_NITSAV_AL_HAQOTSRIM"
           },
           {
             "being_id": "B9",
             "role_in_scene": "GLEANER",
             "presence": "REFERENCED",
-            "referential_form": "NAARA_MOABIYAH_THIRD_PARTY_EPITHET"
+            "referential_form": "NAARA_MOABIYAH"
           },
           {
             "being_id": "B3",
@@ -379,7 +379,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "permission_granter": "B3",
         "permission_recipient": "B9",
-        "addressed_form": "DAUGHTER_FORM_OF_ADDRESS",
+        "addressed_form": "DAUGHTER",
         "granted_action": "GO_AND_GLEAN_AS_REQUESTED",
         "speech_act": "GRANTS_PERMISSION_TO_DO"
       },

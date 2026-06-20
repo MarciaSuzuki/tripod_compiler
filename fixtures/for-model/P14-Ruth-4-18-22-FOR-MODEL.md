@@ -76,7 +76,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B27",
             "role_in_scene": "ANCESTOR",
             "presence": "REFERENCED",
-            "referential_form": "DUAL_SPELLING_SALMAH_AND_SALMON"
+            "referential_form": "SALMAH_AND_SALMON"
           },
           {
             "being_id": "B13",
@@ -226,7 +226,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "begetter_name": "Nahshon",
         "begotten": "B27",
         "begotten_name": "Salmon",
-        "begotten_name_form": "SALMAH_SPELLING_AT_4_20"
+        "begotten_name_form": "SALMAH"
       },
       "inter_proposition_links": {
         "forward_link_to": "P7"
@@ -242,7 +242,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "begetter": "B27",
         "begetter_name": "Salmon",
-        "begetter_name_form": "SALMON_SPELLING_AT_4_21",
+        "begetter_name_form": "SALMON",
         "begotten": "B13",
         "begotten_name": "Boaz"
       },

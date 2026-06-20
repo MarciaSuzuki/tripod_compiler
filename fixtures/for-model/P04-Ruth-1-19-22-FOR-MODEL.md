@@ -184,7 +184,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "being_id": "B9",
             "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW_NARRATOR_EPITHET"
+            "referential_form": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW"
           }
         ]
       },
@@ -295,7 +295,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "REFUSED",
             "refused_name": "Naomi",
             "refused_name_meaning": "SWEET",
-            "referential_form_at_verse": "SELF_REFERENCE_REFUSING_OWN_NAME",
             "list_position": "FIRST",
             "speech_act": "REFUSES_USE_OF_OWN_NAME"
           },
@@ -303,14 +302,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "PROPOSED",
             "proposed_name": "Mara",
             "proposed_name_meaning": "BITTER",
-            "referential_form_at_verse": "PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH",
+            "referential_form_at_verse": "MARA",
             "list_position": "SECOND",
             "speech_act": "PROPOSES_NEW_NAME_FOR_SELF"
           },
           {
             "action": "STATED",
             "invoked_divine_agent": "B12",
-            "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_FIRST_OCCURRENCE",
+            "invoked_divine_agent_referential_form": "SHADDAI",
             "list_position": "THIRD",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
@@ -351,7 +350,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "ASKED",
-            "question_target_referential_form": "REFUSED_NAME_NAOMI_IN_RECALL",
+            "question_target_referential_form": "NAOMI",
             "list_position": "SECOND",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
           },
@@ -364,7 +363,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "ASCRIBED",
             "invoked_divine_agent": "B12",
-            "invoked_divine_agent_referential_form": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_SECOND_OCCURRENCE",
+            "invoked_divine_agent_referential_form": "SHADDAI",
             "list_position": "FOURTH",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
@@ -402,7 +401,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "accompanying_household": [
               "B9"
             ],
-            "accompanying_referential_form": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW_NARRATOR_EPITHET",
+            "accompanying_referential_form": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW",
             "origin_place": "PL2",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"

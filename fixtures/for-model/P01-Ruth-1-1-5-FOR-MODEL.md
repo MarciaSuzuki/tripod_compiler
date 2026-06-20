@@ -637,7 +637,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "loss_target": "B2",
-            "referential_form": "HER_HUSBAND_RELATIONAL",
+            "referential_form": "HER_HUSBAND",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
           }

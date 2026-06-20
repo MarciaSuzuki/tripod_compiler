@@ -50,7 +50,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P03-D4",
       "decision": "YHWH-naming escalation v.16 → v.17 encoded across P3 and P4 with separate referential forms.",
-      "description": "Ruth says 'your God my God' at v.16d-e without naming YHWH; she invokes YHWH by name at v.17b inside the self-curse formula. The escalation from unnamed-God-in-pairing to named-YHWH-in-oath is structurally significant. P3's God-binding component carries invoked_divine_agent: B10 BUT marks referential_form_at_verse: UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING; P4's self-curse carries agent_named: B10 with referential_form DIVINE_NAME_FIRST_ON_RUTHS_LIPS. The asymmetry between v.15 ('her gods' unnamed) and v.17 ('YHWH' named) is recorded as a STRUCTURAL_CONTRAST high-risk entry."
+      "description": "Ruth says 'your God my God' at v.16d-e without naming YHWH; she invokes YHWH by name at v.17b inside the self-curse formula. The escalation from unnamed-God-in-pairing to named-YHWH-in-oath is structurally significant. P3's God-binding component carries invoked_divine_agent: B10 BUT marks referential_form_at_verse: UNNAMED_DEITY; P4's self-curse carries agent_named: B10 with referential_form YHWH. The asymmetry between v.15 ('her gods' unnamed) and v.17 ('YHWH' named) is recorded as a STRUCTURAL_CONTRAST high-risk entry."
     },
     {
       "decision_id": "P03-D5",
@@ -90,7 +90,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P03-D12",
       "decision": "No new B-codes, PL-codes, or TM-codes registered; new vocabulary is concentrated in TH_ objects and bounded-open enumerations.",
-      "description": "The pericope is dialogue-heavy and oath-heavy but introduces no new participants (B-codes), no new named places (PL-codes), and no new named times (TM-codes). All new content sits in TH_-prefixed structural objects (the vow's six binding forms, the self-curse formula, the oath conditional, the kinship form yebimtekh, the presentational marker hinneh, the referenced-Moabite-collective forms, the determined hithpael participle, the cessation-of-appeal verb, the directive form, the nominal-equation pair-form, the indefinite-place construction). Bounded-open additions also surface in proposition_kinds (5 new), scene_kinds (3 new — APPEAL_WITH_EXEMPLAR_POINTING_SCENE, VOW_AND_RATIFICATION_SCENE, SEEING_AND_FALLING_SILENT_SCENE), role_in_scene values (~10 new), and referential_forms (KINSHIP_FORM_YEBIMTEKH, UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING, DIVINE_NAME_FIRST_ON_RUTHS_LIPS). All drift-warn against the canonical P01 seed; all are real pericope-specific values; all should be accepted at Gate F."
+      "description": "The pericope is dialogue-heavy and oath-heavy but introduces no new participants (B-codes), no new named places (PL-codes), and no new named times (TM-codes). All new content sits in TH_-prefixed structural objects (the vow's six binding forms, the self-curse formula, the oath conditional, the kinship form yebimtekh, the presentational marker hinneh, the referenced-Moabite-collective forms, the determined hithpael participle, the cessation-of-appeal verb, the directive form, the nominal-equation pair-form, the indefinite-place construction). Bounded-open additions also surface in proposition_kinds (5 new), scene_kinds (3 new — APPEAL_WITH_EXEMPLAR_POINTING_SCENE, VOW_AND_RATIFICATION_SCENE, SEEING_AND_FALLING_SILENT_SCENE), role_in_scene values (~10 new), and referential_forms (YEBIMTEKH, UNNAMED_DEITY, YHWH). All drift-warn against the canonical P01 seed; all are real pericope-specific values; all should be accepted at Gate F."
     }
   ],
   "vocabulary_additions": {
@@ -156,19 +156,19 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "referential_forms": [
       {
-        "value": "KINSHIP_FORM_YEBIMTEKH",
+        "value": "YEBIMTEKH",
         "source": "B8 at S1 / 1:15 (Orpah named only as 'your sister-in-law' yebimtekh)",
         "status": "PROPOSED",
         "note": "Bounded-open; second kinship-only form for B8 after לַחֲמוֹתָהּ at P02 1:14."
       },
       {
-        "value": "UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING",
+        "value": "UNNAMED_DEITY",
         "source": "B10 at P3 v.16d-e (Ruth says 'your God my God' without naming YHWH)",
         "status": "PROPOSED",
         "note": "Bounded-open; first half of the YHWH-naming escalation."
       },
       {
-        "value": "DIVINE_NAME_FIRST_ON_RUTHS_LIPS",
+        "value": "YHWH",
         "source": "B10 at P4 v.17b (Ruth names YHWH inside the self-curse formula)",
         "status": "PROPOSED",
         "note": "Bounded-open; second half of the YHWH-naming escalation; structural-first."
@@ -455,13 +455,13 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "note": "Naomi at v.15 names Orpah twice within the verse but uses the levirate-relevant kinship form yebimtekh both times. Combined with the kinship form לַחֲמוֹתָהּ ('her mother-in-law') used at P02 1:14 (P02 R7), Orpah's exit-finality is completed by kinship-only naming across her last two textual appearances. Reconstructor must preserve the kinship-only naming (do not insert Orpah's name at 1:15) so the exit-finality remains structurally visible.",
       "required_in_audit": true,
       "carries_forward_to": "P02_R7",
-      "source_in_meaning_map": "Section 3A Scene 1 (B8 REFERENCED with referential_form KINSHIP_FORM_YEBIMTEKH); Section 3C Scene 1 (TH_KINSHIP_FORM_YEBIMTEKH)"
+      "source_in_meaning_map": "Section 3A Scene 1 (B8 REFERENCED with referential_form YEBIMTEKH); Section 3C Scene 1 (TH_KINSHIP_FORM_YEBIMTEKH)"
     },
     {
       "id": "R9",
       "kind": "REFERENTIAL_FORM_CHANGE",
       "applies_to": "B10 YHWH at P3 v.16d-e (unnamed in binding pairing) versus B10 YHWH at P4 v.17b (named in oath)",
-      "note": "Ruth's God-binding at v.16e ('your God my God') refers to B10 without uttering the divine name; Ruth's self-curse at v.17b utters the divine name YHWH directly. The escalation from unnamed-God-in-pairing to named-YHWH-in-oath is structurally significant. Recorded via separate referential_form values UNNAMED_DIVINE_AGENT_IN_BINDING_PAIRING (P3 God-binding) and DIVINE_NAME_FIRST_ON_RUTHS_LIPS (P4 self-curse). Reconstructor must preserve the escalation — do not insert YHWH at v.16, do not omit YHWH at v.17.",
+      "note": "Ruth's God-binding at v.16e ('your God my God') refers to B10 without uttering the divine name; Ruth's self-curse at v.17b utters the divine name YHWH directly. The escalation from unnamed-God-in-pairing to named-YHWH-in-oath is structurally significant. Recorded via separate referential_form values UNNAMED_DEITY (P3 God-binding) and YHWH (P4 self-curse). Reconstructor must preserve the escalation — do not insert YHWH at v.16, do not omit YHWH at v.17.",
       "required_in_audit": true,
       "source_in_meaning_map": "Section 3C Scene 2 (TH_VOW_GOD_BINDING and TH_SELF_CURSE_OATH_FORMULA as separate structural objects); Section 4 Propositions 3 and 4"
     },

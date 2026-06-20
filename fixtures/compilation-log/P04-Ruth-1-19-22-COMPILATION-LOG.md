@@ -70,7 +70,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P04-D8",
       "decision": "Naomi's renaming proposal does not take effect; narrator returns to 'Naomi' at v.22; recorded as STRUCTURAL_NON_ADOPTION_OF_PROPOSED_RENAMING.",
-      "description": "Naomi proposes 'Mara' at v.20 and reinforces the refusal of 'Naomi' at v.21 ('Why do you call me Naomi'). The narrator immediately uses 'Naomi' again in the v.22 narrator-frame ('So Naomi returned'). The proposal is structurally encoded at FOR_MODEL P4 as a speech-act without changing B3's underlying being. B3's referential_form_at_verse is SELF_REFERENCE_REFUSING_OWN_NAME for the refusal component and PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH for the proposal component; at v.22 it returns to NAMED. The reconstructor must encode the proposal as Naomi's speech-act without applying the new name in narrator voice or in later references."
+      "description": "Naomi proposes 'Mara' at v.20 and reinforces the refusal of 'Naomi' at v.21 ('Why do you call me Naomi'). The narrator immediately uses 'Naomi' again in the v.22 narrator-frame ('So Naomi returned'). The proposal is structurally encoded at FOR_MODEL P4 as a speech-act without changing B3's underlying being. B3's refusal component carries action REFUSED + refused_name Naomi (no referential_form_at_verse); the proposal component carries referential_form_at_verse MARA; at v.22 it returns to NAMED. The reconstructor must encode the proposal as Naomi's speech-act without applying the new name in narrator voice or in later references."
     },
     {
       "decision_id": "P04-D9",
@@ -165,40 +165,28 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "referential_forms": [
       {
-        "value": "SELF_REFERENCE_REFUSING_OWN_NAME",
-        "source": "B3 at P4 v.20 (Naomi refusing 'Naomi')",
-        "status": "CONFIRMED",
-        "note": "Already in v0.4 canonical seed."
-      },
-      {
-        "value": "PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH",
+        "value": "MARA",
         "source": "B3 at P4 v.20 (Naomi proposing 'Mara')",
         "status": "PROPOSED",
         "note": "Bounded-open; specific to the Mara-renaming proposal."
       },
       {
-        "value": "REFUSED_NAME_NAOMI_IN_RECALL",
+        "value": "NAOMI",
         "source": "B3 at P5 v.21 ('Why do you call me Naomi')",
         "status": "PROPOSED",
         "note": "Bounded-open."
       },
       {
-        "value": "RUTH_THE_MOABITESS_NARRATOR_EPITHET",
+        "value": "RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW",
         "source": "B9 at P6 v.22 (narrator returns to Moabite epithet after withholding)",
         "status": "PROPOSED",
         "note": "Bounded-open; specific to the FIG_0001 reactivation pattern."
       },
       {
-        "value": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_FIRST_OCCURRENCE",
-        "source": "B12 at P4 v.20",
+        "value": "SHADDAI",
+        "source": "B12 at P4 v.20 and P5 v.21 (first and second occurrence)",
         "status": "PROPOSED",
-        "note": "Bounded-open; first-occurrence marker."
-      },
-      {
-        "value": "SHADDAI_ARCHAIC_POETIC_DIVINE_NAME_SECOND_OCCURRENCE",
-        "source": "B12 at P5 v.21",
-        "status": "PROPOSED",
-        "note": "Bounded-open; second-occurrence marker."
+        "note": "Bounded-open; the archaic divine name Shaddai."
       }
     ],
     "other": [
@@ -610,7 +598,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "required_in_audit": true,
       "do_not_decide": true,
       "carries_forward_to": "P05_compilation_log",
-      "source_in_meaning_map": "Section 3A Scene 3 (B9 referential_form RUTH_THE_MOABITESS_NARRATOR_EPITHET); Section 3C Scene 3 (TH_RUTH_THE_MOABITESS_NARRATOR_EPITHET); Section 5B (FIG_0001 active at P6)"
+      "source_in_meaning_map": "Section 3A Scene 3 (B9 referential_form RUTH_THE_MOABITESS_HER_DAUGHTER_IN_LAW); Section 3C Scene 3 (TH_RUTH_THE_MOABITESS_NARRATOR_EPITHET); Section 5B (FIG_0001 active at P6)"
     },
     {
       "id": "R11",
