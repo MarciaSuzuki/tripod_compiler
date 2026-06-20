@@ -25,3 +25,7 @@ build/
 # Python sidecar cache
 __pycache__/
 *.pyc
+
+# Coverage ledgers are a generated VIEW, regenerated on demand (SC-0068) — never committed
+# (committed snapshots rot; the substance is gated live by tests/coverage-corpus.test.ts).
+*-COVERAGE-LEDGER.md
