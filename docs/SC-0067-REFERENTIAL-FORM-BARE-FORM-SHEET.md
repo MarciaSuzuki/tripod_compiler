@@ -1,6 +1,22 @@
 # SC-0067 — Phase 1 (R1) — `referential_form` bare-form calibration sheet
 
-> **Status: CALIBRATION — awaiting Marcia's word.** Nothing applied yet. This sheet enumerates
+> **RULED by Marcia 2026-06-20 (Evaluator re-verified the full 136 first).** Decision: **approve all
+> §7 recommendations**, with two carve-outs —
+> - **§2C Jonah divine-names:** strip to bare (`ELOHIM` / `YHWH` / `YHWH_ELOHIM`), alternation
+>   preserved across slots; **HOLD `ELOHIM_TO_YHWH_SHIFT`** (a transition, not a form — untouched).
+> - **§2D patterns:** **defer `ALTERNATES_MOTHER_IN_LAW_AND_NAOMI` and `NAMED_THEN_ADDRESSED` to
+>   Phase 3** (untouched); strip the other 8.
+>
+> Net apply: **~30 strip-values + 1 drop** (the `SELF_REFERENCE_REFUSING_OWN_NAME` slot) across the FMs,
+> with the coupled CL echoes + 2 divergent CL variants reconciled; **3 occurrences held/deferred**, the rest kept.
+>
+> **⚠ ONE HOLD surfaced during apply (2026-06-20):** `MY_DAUGHTER_INTIMATE` (§1 #12) is **entangled with a
+> newly-found sibling slot family `address_form`** that R1 did not scope (the Evaluator's "3 sub-families,
+> no 4th" bounded the `referential_form` family; `address_form` is outside it). Stripping it in
+> `referential_form` only would split the same file. **`MY_DAUGHTER_INTIMATE` is HELD pending Marcia's
+> scope ruling on the `*_form` siblings — see §9.** Everything else in the ruling applies as planned.
+
+> **Status (original): CALIBRATION — awaiting Marcia's word.** Nothing applied yet. This sheet enumerates
 > every referential-form value across the 19 gold FOR_MODELs (FMs) — **all three key sub-families**
 > (`referential_form`, `*_referential_form`, `referential_form_at_verse`), **136 occurrences total** —
 > proposes the **bare surface form** per R1, and surfaces the boundary calls. After ruling, the
@@ -25,13 +41,15 @@
   - proposition event-slot `<participant>_referential_form` — **43**
   - positional `referential_form_at_verse` — **12** (10 distinct; **was missing from the first draft** —
     the original grep anchored the closing quote right after `referential_form`, so the suffixed key slipped through)
-- **84** distinct FM values (was 75; the at_verse family adds 4 brand-new strings —
-  `ESHET_CHAYIL_WOMAN_OF_WORTH`, `HE_PRONOMINAL`, `HUSBAND_OF_NAOMI`, `UNNAMED_DEITY_IN_BINDING_PAIRING` —
-  and pulls 3 previously-"CL-only" strings into the FM).
+- **82** distinct FM values (was 75; the at_verse family adds **7 new FM strings** — 4 brand-new:
+  `ESHET_CHAYIL_WOMAN_OF_WORTH`, `HE_PRONOMINAL`, `HUSBAND_OF_NAOMI`, `UNNAMED_DEITY_IN_BINDING_PAIRING`;
+  + 3 previously-"CL-only" strings now FM-located: `SHE_PRONOMINAL`, `PROPOSED_NEW_NAME_MARA_IN_SELF_SPEECH`,
+  `SELF_REFERENCE_REFUSING_OWN_NAME`).
 - **19** CL `referential_forms[].value` entries (P01–P05). After the at_verse merge only **2** are
   truly CL-only, and both are divergent variants of an at_verse value (see §5).
+- **84 distinct total** = 82 FM + 2 truly-CL-only.
 
-## Disposition summary (136 occurrences, 84 distinct FM values)
+## Disposition summary (136 occurrences · 82 distinct FM + 2 CL-only = 84 total)
 
 | § | Disposition | Distinct | FM occ. | Recommendation |
 |---|---|---|---|---|
@@ -268,3 +286,39 @@ The automatable guard (Phase 4) must match **all three** key-forms — `referent
 `*_referential_form`, **and `*referential_form_at_verse`** — or prose re-leaks through the positional
 family undetected. It must also **allow-list the blessed forms** (`UNNAMED_*`, `STRIPPED_TO_HA_ISHAH`,
 `*_PRONOMINAL`) so a naive later pass cannot strip them.
+
+---
+
+## §9 — NEW scope finding: the sibling `*_form` families (needs Marcia's word)
+
+While applying §1 #12 (`MY_DAUGHTER_INTIMATE`), the per-value count-assert revealed the value also lives
+in a **sibling slot family `address_form`** — a slot R1 did not enumerate (R1 / the verified sheet cover
+the `referential_form` family only; the Evaluator confirmed "3 sub-families, no 4th"). A repo grep finds a
+broad `*_form` landscape (~28 slot families). It splits three ways:
+
+**(a) Surface-address forms — same axis-kind as `referential_form`; R1's principle applies identically.**
+`address_form` (12 occ, 5 distinct) + close kin `addressed_form` / `directed_address_form` / `divine_address_form`:
+
+| Value | Slot | → bare | Note |
+|---|---|---|---|
+| `MY_DAUGHTER_INTIMATE` (×6) | address_form | `MY_DAUGHTER` | `_INTIMATE` register tag |
+| `MY_DAUGHTERS_INTIMATE` (×3) | address_form | `MY_DAUGHTERS` | `_INTIMATE` |
+| `MY_LORD_DEFERENTIAL` | address_form | `MY_LORD` | `_DEFERENTIAL` register tag |
+| `MY_DAUGHTER_NON_KIN_ELDER_TO_YOUNG_FOREIGNER` | address_form | `MY_DAUGHTER` | relational-analysis tail |
+| `PELONI_ALMONI_NON_NAME` | address_form | **keep** | surface "so-and-so" (= §3 keep) |
+| `DAUGHTER_FORM_OF_ADDRESS` | addressed_form | `DAUGHTER`? | meta ("X form of address") — boundary |
+| `SLEEPER` · `YHWH_MY_GOD` | directed/divine_address_form | **keep** | already bare |
+
+**(b) Speech/content forms — R2 (Phase 2) territory:** `question_form` (9), `response_form`,
+`report_variation_form`, `attestation_form`, `decree_authority_form`, `compliance_form`, `blessing_form`, …
+(word-bearing — handle with the speech strip).
+
+**(c) Structural forms — Phase 3 residue:** `binding_indefinite_place_form` (3),
+`binding_demonstrative_place_form`, `vow_structural_form`, `listing_order_form`, `line_form`,
+`movement_form`, `duration_form`, `tie_form`, … (surface constructions / structural markers).
+
+**Recommendation:** extend R1 to **(a)** now, as part of this same pair (it resolves the `MY_DAUGHTER`
+entanglement and keeps the bare-form cleanup coherent — ~5 strips: `MY_DAUGHTER` ×7-across-both-slots,
+`MY_DAUGHTERS`, `MY_LORD`; keep `PELONI_ALMONI`, `SLEEPER`, `YHWH_MY_GOD`; `DAUGHTER_FORM_OF_ADDRESS` is a
+boundary). Defer **(b)** to Phase 2 (R2) and **(c)** to Phase 3. The Phase-4 guard (§8) then widens to the
+address-kin keys too, with the same blessed allow-list.
