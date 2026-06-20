@@ -97,7 +97,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
             "being_id": "B9",
             "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "MY_DAUGHTER_INTIMATE"
+            "referential_form": "MY_DAUGHTER"
           },
           {
             "being_id": "B13",
@@ -195,7 +195,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "speaker": "B3",
         "speaker_referential_form": "NAOMI_HER_MOTHER_IN_LAW",
         "addressee": "B9",
-        "address_form": "MY_DAUGHTER_INTIMATE",
+        "address_form": "MY_DAUGHTER",
         "rest_sought": "CB_0014",
         "sought_rest_for": "B9",
         "question_form": "RHETORICAL_PROMISE_QUESTION",

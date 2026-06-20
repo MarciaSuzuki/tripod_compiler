@@ -116,7 +116,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B4",
             "role_in_scene": "HUSBAND",
             "presence": "REFERENCED",
-            "referential_form": "NAMED_AS_HUSBAND_OF_RUTH"
+            "referential_form": "HUSBAND_OF_RUTH"
           },
           {
             "being_id": "B3",
@@ -127,7 +127,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "WIDOW",
             "presence": "REFERENCED",
-            "referential_form": "RUTH_THE_MOABITESS_LEGAL_NAMING_AT_PROCEEDING"
+            "referential_form": "RUTH_THE_MOABITESS"
           },
           {
             "being_id": "B4",

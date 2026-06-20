@@ -60,7 +60,7 @@
 | 3 | **KEEP — `UNNAMED_`/`NON_NAME` family** (blessed) | 10 | 11 | **Keep** (CLAUDE.md §3.3) |
 | 4 | **KEEP — already bare** (surface forms / translit-gloss) | ~33 | ~68 | **No change** |
 | 5 | CL reconciliation | — | — | echoes track FM; CL-only → her call |
-| 10 | **(a) surface-address family** (`address_form` + kin) | 17 | 24 | 7 strip · 5 keep · 5 boundary |
+| 10 | **(a) surface-address family** (`address_form` + kin) | 17 | 24 | 8 strip · 9 keep (all ruled) |
 
 The referential family is 136 occ (81 + 43 + 12); the (a) surface-address family adds 24 occ. Word-bearing
 (b, 22 occ) routes to Phase 2 (R2); structural (c, 10 occ) to Phase 3.
@@ -373,10 +373,11 @@ the two P06 values are cited in CL prose (line 88) — bare the cited value, kee
 (= §3 keep) · `role_form: ONE_OF_OUR_REDEEMERS` (= §4 keep) · `blessing_recipient_form: THE_MAN_WHO_TOOK_NOTICE`
 (surface relative-clause, Ruth 2:19).
 
-### 10C — BOUNDARY — place/lineage referring forms (her word; lean keep)
-`doubled_place_form: EPHRATHAH_AND_BETHLEHEM` · `model_house_form: HOUSE_OF_PEREZ` · `line_form: TOLEDOT_OF_PEREZ` ·
-`living_and_dead_form: ET_HACHAYIM_VEET_HAMETIM` — all surface phrases, **lean keep**. The one likely strip:
-`destination_people_form: PEOPLE_PREVIOUSLY_UNKNOWN_TO_HER` → **`PEOPLE`**? ("previously unknown to her" is analytic).
+### 10C — BOUNDARY — place/lineage referring forms — RULED (Marcia 2026-06-20)
+**KEEP all four** (surface phrases): `doubled_place_form: EPHRATHAH_AND_BETHLEHEM` · `model_house_form: HOUSE_OF_PEREZ` ·
+`line_form: TOLEDOT_OF_PEREZ` · `living_and_dead_form: ET_HACHAYIM_VEET_HAMETIM`.
+**STRIP** `destination_people_form: PEOPLE_PREVIOUSLY_UNKNOWN_TO_HER` → **`PEOPLE`** (1 occ, P06; the analytic
+tail "previously unknown to her" is the note-home content). → (a) STRIP total is now **8 distinct / 15 occ**.
 
 ### 10D — Routed out of R1 (on record for later phases)
 - **(b) → R2 / Phase 2 (carry words, 22 occ):** `question_form` (9), `matched_action_form` (4),

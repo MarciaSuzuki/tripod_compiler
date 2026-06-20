@@ -184,7 +184,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED",
-            "referential_form": "ELOHIM_NOT_YHWH"
+            "referential_form": "ELOHIM"
           }
         ]
       },
@@ -221,7 +221,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED",
-            "referential_form": "ELOHIM_NOT_YHWH"
+            "referential_form": "ELOHIM"
           }
         ]
       },
@@ -277,7 +277,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "DIVINE_AGENT",
             "presence": "REFERENCED",
-            "referential_form": "ELOHIM_NOT_YHWH"
+            "referential_form": "ELOHIM"
           }
         ]
       },
@@ -318,7 +318,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B9",
             "role_in_scene": "DIVINE_AGENT",
             "presence": "PRESENT",
-            "referential_form": "ELOHIM_NOT_YHWH"
+            "referential_form": "ELOHIM"
           },
           {
             "being_id": "B5",

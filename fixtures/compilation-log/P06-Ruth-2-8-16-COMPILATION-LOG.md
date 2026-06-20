@@ -85,7 +85,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P06-D11",
       "decision": "Address-form encoding at component-record level.",
-      "description": "P1 carries address_form MY_DAUGHTER_NON_KIN_ELDER_TO_YOUNG_FOREIGNER for Boaz to Ruth at v.8. P10 carries address_form MY_LORD_DEFERENTIAL for Ruth to Boaz at v.13. P6 and P10 also carry name_known_status: NAME_NOT_YET_KNOWN_TO_RUTH to record that Ruth still does not know Boaz's name."
+      "description": "P1 carries address_form MY_DAUGHTER for Boaz to Ruth at v.8 (a non-kin elder addressing a young foreigner). P10 carries address_form MY_LORD for Ruth to Boaz at v.13 (deferential). P6 and P10 also carry name_known_status: NAME_NOT_YET_KNOWN_TO_RUTH to record that Ruth still does not know Boaz's name."
     }
   ],
   "vocabulary_additions": {

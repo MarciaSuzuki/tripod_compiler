@@ -101,7 +101,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "being_id": "B8",
             "role_in_scene": "DAUGHTER_IN_LAW",
             "presence": "REFERENCED",
-            "referential_form": "KINSHIP_FORM_YEBIMTEKH"
+            "referential_form": "YEBIMTEKH"
           }
         ]
       },
@@ -222,7 +222,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "STATED",
             "speaker": "B3",
             "exemplar_party": "B8",
-            "exemplar_referential_form": "KINSHIP_FORM_YEBIMTEKH",
+            "exemplar_referential_form": "YEBIMTEKH",
             "speech_act": "STATES_AS_TRUE"
           },
           {
@@ -230,7 +230,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speaker": "B3",
             "addressee": "B9",
             "exemplar_party": "B8",
-            "exemplar_referential_form": "KINSHIP_FORM_YEBIMTEKH",
+            "exemplar_referential_form": "YEBIMTEKH",
             "speech_act": "DIRECTS_HEARER_TO_RETURN"
           }
         ]
@@ -304,7 +304,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "binder": "B9",
             "bound_to_referent": "B3",
             "invoked_divine_agent": "B10",
-            "referential_form_at_verse": "UNNAMED_DEITY_IN_BINDING_PAIRING",
+            "referential_form_at_verse": "UNNAMED_DEITY",
             "nominal_equation_half": "GOD_HALF",
             "list_position": "FOURTH",
             "speech_act": "VOWS"
@@ -352,7 +352,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "speaker": "B9",
         "addressee": "B3",
         "agent_named": "B10",
-        "agent_named_referential_form": "DIVINE_NAME_FIRST_ON_RUTHS_LIPS",
+        "agent_named_referential_form": "YHWH",
         "oath_conditional_structural_force": "BINDS_BEYOND_DEATH_VIA_INEVITABLE_CONDITION",
         "speech_act": "INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT"
       },

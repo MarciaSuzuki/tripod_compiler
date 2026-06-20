@@ -60,7 +60,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P02-D6",
       "decision": "Wife-pairing withholding from P01 carried forward at P5 prior-hesed clause.",
-      "description": "Naomi's 'as you have dealt with the dead and with me' at 1:8 references B2, B4, B5 collectively as 'the dead.' P01 P9 withheld the Mahlon-Ruth and Chilion-Orpah pairings (wife_taken: B?), with pairing disclosure deferred to 4:10. Source-text discipline at P02 maintains the withholding: prior_hesed_targets is encoded as the unordered collection [B2, B4, B5, B3] (the three deceased plus Naomi as the additional referent), with prior_hesed_targets_referential_form: COLLECTIVE_THE_DEAD_AND_NAOMI_NO_PAIRING_INFERRED. The reconstructor must not infer which daughter-in-law's hesed went to which dead husband."
+      "description": "Naomi's 'as you have dealt with the dead and with me' at 1:8 references B2, B4, B5 collectively as 'the dead.' P01 P9 withheld the Mahlon-Ruth and Chilion-Orpah pairings (wife_taken: B?), with pairing disclosure deferred to 4:10. Source-text discipline at P02 maintains the withholding: prior_hesed_targets is encoded as the unordered collection [B2, B4, B5, B3] (the three deceased plus Naomi as the additional referent), with prior_hesed_targets_referential_form: THE_DEAD_AND_NAOMI. The reconstructor must not infer which daughter-in-law's hesed went to which dead husband."
     },
     {
       "decision_id": "P02-D7",
@@ -85,7 +85,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P02-D11",
       "decision": "Orpah's exit from the book encoded as referential_form change at S3 plus narrative_status marker on P14.",
-      "description": "At 1:14 the narrator names Orpah's act using the kinship form לַחֲמוֹתָהּ (her mother-in-law) rather than addressing Orpah by name. After 1:14 Orpah is not named again in the book. The structural exit is encoded by: (a) referential_form on B8 in S3 beings_in_scene as CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW; (b) narrative_status: EXITS_BOOK_HERE on the TURNED_BACK component of P14. High-risk register entry uses kind NAMING_SHIFT with exit-marker note."
+      "description": "At 1:14 the narrator names Orpah's act using the kinship form לַחֲמוֹתָהּ (her mother-in-law) rather than addressing Orpah by name. After 1:14 Orpah is not named again in the book. The structural exit is encoded by: (a) referential_form on B8 in S3 beings_in_scene as HER_MOTHER_IN_LAW; (b) narrative_status: EXITS_BOOK_HERE on the TURNED_BACK component of P14. High-risk register entry uses kind NAMING_SHIFT with exit-marker note."
     },
     {
       "decision_id": "P02-D12",
@@ -220,7 +220,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     ],
     "referential_forms": [
       {
-        "value": "CLOSED_BY_KINSHIP_FORM_HER_MOTHER_IN_LAW",
+        "value": "HER_MOTHER_IN_LAW",
         "source": "B8 at S3 / 1:14 (Orpah named only as 'her mother-in-law' at exit)",
         "status": "PROPOSED",
         "note": "Exit-marker referential form. Bounded-open."
