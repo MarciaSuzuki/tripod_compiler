@@ -46,6 +46,24 @@
 - **23 files copied fixtures → `stas/` (Ruth flat) + `stas/jonah/` (Jonah), all cmp byte-identical, 0 failures.**
 - Vault change scope: 23 files, all under `stas/`. `check-drift:vault` 0 (vault `_spec/` untouched).
 
+## Coverage ledgers — SC-0067 has zero effect (Evaluator HOLD resolved; Marcia Option A → SC-0068)
+
+The Evaluator's application-verify found the committed `fixtures/coverage/*-COVERAGE-LEDGER.md` still cite stripped
+values. Investigated:
+- **SC-0067's contribution to a correct regen = 0 diff lines, all 6** (floor-regen ≡ branch-regen, byte-identical;
+  sanity-checked the floor really carried the old forms). The ledger's `referential_forms` column **is** FM-sourced
+  (`coverage.ts:139,171`), but for committed P01–P06 in current data it is all `—` (the overlays are now `CB_` codes,
+  post-SC-0037, that carry no referential_forms); where it *is* populated (e.g. P09 `ESHET_CHAYIL_WOMAN_OF_WORTH`,
+  `NEARER_REDEEMER_UNNAMED`) it holds **kept** values SC-0067 didn't change. The surface keywords matching relies on
+  survive the strip (meta-suffixes removed, nouns kept), so reconciliation is unchanged.
+- The committed ledgers are **stale since 2026-05-30 (SC-0010)** — 15/44/24/24/30/34 diff lines vs current data
+  (`TH_→CB_`, a `B9→B8` entity reassignment, unanchored counts), **none of it SC-0067**. **No test pins them**; the
+  coverage gate regenerates fresh, so the snapshots rotted unnoticed.
+
+**Ruling (Marcia 2026-06-20):** merge SC-0067 as-is; refresh the stale ledgers under a **separate SC-0068** (a pure,
+auditable regeneration, where the `B8/B9` + `CB_` changes get reviewed on their own merits) **and durably gate or
+retire them** so they cannot rot again.
+
 ## Follow-on (flagged, not in this pair)
 - The vault `_templates/sta-vocabulary*.md` examples still show pre-R1 referential forms (e.g.
   `NAAR_NITSAV_AL_HAQOTSRIM_NAMED_BY_ROLE`) — a methodology-seeding hygiene pass, out of the "fixtures + vault stas" scope.
