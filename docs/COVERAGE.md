@@ -124,7 +124,9 @@ everything" to "adjudicate the exceptions."
   This established the **same-referent principle** (one referent ⇒ one Layer-3 code; surface variation rides
   on `referential_form`) — see SPEC_CHANGES SC-0009.
 - [x] **Scaled across the compiled corpus P01–P06.** Packets pinned for P02–P06; `tripod coverage --corpus`
-  runs all six (`fixtures/coverage/` holds one ledger each; `tests/coverage-corpus.test.ts` locks it).
+  runs all six. The substance is locked **live** by `tests/coverage-corpus.test.ts` (reconciles each FM → asserts
+  0 unanchored + block-clean). The rendered `*-COVERAGE-LEDGER.md` notes are **generated on demand and git-ignored,
+  not committed** (SC-0068 — committed snapshots rot; the test gates correctness regardless).
   **244/245 explicit accounted · 0 unanchored across the corpus** (zero hallucinated entities — the
   near-airtight "nothing added" claim, corpus-wide). Engine hardening from the run: a proper-noun **name
   match is authoritative, not vetoed by the heuristic alias gender** (the BCD prose-scan mis-guessed YHWH as
