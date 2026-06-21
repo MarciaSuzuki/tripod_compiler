@@ -332,7 +332,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "PLACED",
             "placed_party": "B13",
-            "clan_referent": "B29",
+            "clan": "B29",
             "clan_eponym": "B2",
             "list_position": "THIRD",
             "speech_act": "STATES_AS_TRUE"
@@ -376,7 +376,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "permission_granter": "B3",
-        "permission_recipient": "B9",
+        "permitted_party": "B9",
         "addressed_form": "DAUGHTER",
         "speech_act": "GRANTS_PERMISSION_TO_DO"
       },
@@ -396,7 +396,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "gleaner": "B9",
         "destination": "PL5",
         "gleaning_position_relation": "BEHIND_HARVESTERS_IN_INSTITUTIONAL_GLEANING_POSITION",
-        "harvesters_referent": "B14",
+        "harvesters": "B14",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -414,10 +414,10 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "gleaner": "B9",
         "arrived_at_portion": "PL5_BOAZ_PORTION",
-        "portion_owner": "B13",
-        "clan_referent_restated": "B29",
+        "portion_belongs_to": "B13",
+        "clan_restated": "B29",
         "clan_eponym": "B2",
-        "agent_named": "NONE",
+        "named_doer": "NONE",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -456,15 +456,15 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "GREETED",
             "greeter": "B13",
             "greeted_party": "B14",
-            "invoked_divine_agent": "B10",
+            "invoked_deity": "B10",
             "list_position": "FIRST",
             "speech_act": "WISHES_FOR_HEARER"
           },
           {
             "action": "BLESSED",
             "blesser": "B14",
-            "blessing_recipient": "B13",
-            "invoked_divine_agent": "B10",
+            "blessed_party": "B13",
+            "invoked_deity": "B10",
             "list_position": "SECOND",
             "speech_act": "WISHES_FOR_HEARER"
           }
@@ -485,7 +485,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "question_asker": "B13",
         "question_addressee": "B15",
-        "question_target_referent": "B9",
+        "question_target": "B9",
         "speech_act": "ASKS_KINSHIP_BELONGING_QUESTION"
       },
       "inter_proposition_links": {
@@ -502,7 +502,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "reporter": "B15",
         "report_addressee": "B13",
-        "report_subject_referent": "B9",
+        "reported_about": "B9",
         "report_components": [
           {
             "action": "IDENTIFIED",

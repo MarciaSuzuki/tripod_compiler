@@ -320,7 +320,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "CREED_RECITED",
       "event_specific_slots": {
         "reciter": "B1",
-        "creed_subject": "B2",
+        "creed_about": "B2",
         "creed_rhetorical_function": "ACCUSATION",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -359,7 +359,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "questioner": "B2",
         "questioned_party": "B1",
-        "question_subject": "JONAHS_ANGER",
+        "question_about": "JONAHS_ANGER",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
       },
       "inter_proposition_links": {
@@ -574,7 +574,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "questioner": "B2",
         "questioner_referential_form": "ELOHIM",
         "questioned_party": "B1",
-        "question_subject": "ANGER_OVER_PLANT",
+        "question_about": "ANGER_OVER_PLANT",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
       },
       "inter_proposition_links": {
@@ -615,8 +615,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker_referential_form": "YHWH",
         "addressed_party": "B1",
         "pitying_party": "B1",
-        "pitied_object": "O11",
-        "argument_role": "LESSER_TERM",
+        "pitied": "O11",
+        "comparison_rank": "LESSER_TERM",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -634,10 +634,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "questioner": "B2",
         "questioner_referential_form": "YHWH",
-        "pity_object": "PL1",
+        "pitied": "PL1",
         "city_descriptor": "GREAT_CITY",
         "inhabitants": "B5",
-        "argument_role": "GREATER_TERM",
+        "comparison_rank": "GREATER_TERM",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
       },
       "inter_proposition_links": {

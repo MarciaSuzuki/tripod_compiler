@@ -379,7 +379,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "secured_name_of": "B4",
         "secured_name_referential_form": "SHEM_HA_MET_NAME_OF_THE_DEAD",
-        "gate_referent": "PL7",
+        "gate": "PL7",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -444,9 +444,9 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           "B21",
           "B20"
         ],
-        "invoked_divine_agent": "B10",
+        "invoked_deity": "B10",
         "blessing_recipients": "B9",
-        "blessing_recipient_referential_form": "WOMAN_COMING_INTO_HOUSE",
+        "blessed_party_referential_form": "WOMAN_COMING_INTO_HOUSE",
         "likened_to_matriarchs": "B22",
         "house_built": "PL_ISRAEL",
         "blessing_content_kind": "FRUITFULNESS_LIKE_MATRIARCHS",
@@ -534,9 +534,9 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           "B20"
         ],
         "seed_giver": "B10",
-        "seed_recipient": "B13",
-        "seed_source": "B9",
-        "seed_source_referential_form": "THIS_YOUNG_WOMAN",
+        "seed_given_to": "B13",
+        "seed_from": "B9",
+        "seed_from_referential_form": "THIS_YOUNG_WOMAN",
         "blessing_content_kind": "SEED_FROM_THE_YOUNG_WOMAN",
         "speech_act": "WISHES_FOR_HEARER"
       },

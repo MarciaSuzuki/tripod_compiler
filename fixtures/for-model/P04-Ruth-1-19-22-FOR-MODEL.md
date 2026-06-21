@@ -308,8 +308,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "STATED",
-            "invoked_divine_agent": "B12",
-            "invoked_divine_agent_referential_form": "SHADDAI",
+            "invoked_deity": "B12",
+            "invoked_deity_referential_form": "SHADDAI",
             "list_position": "THIRD",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
@@ -344,7 +344,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "STATED",
             "state_at_departure": "FULL",
             "state_at_return": "EMPTY",
-            "agent_of_return_empty": "B10",
+            "emptied_by": "B10",
             "list_position": "FIRST",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           },
@@ -356,14 +356,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH",
-            "invoked_divine_agent": "B10",
+            "invoked_deity": "B10",
             "list_position": "THIRD",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           },
           {
             "action": "ASCRIBED",
-            "invoked_divine_agent": "B12",
-            "invoked_divine_agent_referential_form": "SHADDAI",
+            "invoked_deity": "B12",
+            "invoked_deity_referential_form": "SHADDAI",
             "list_position": "FOURTH",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }

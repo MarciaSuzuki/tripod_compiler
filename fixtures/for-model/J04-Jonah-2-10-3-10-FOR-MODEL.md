@@ -387,8 +387,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "verse_anchor": "3:1",
       "proposition_kind": "WORD_OF_YHWH_CAME",
       "event_specific_slots": {
-        "divine_source": "B2",
-        "word_recipient": "B1",
+        "from_deity": "B2",
+        "word_came_to": "B1",
         "occurrence_marker": "SECOND_TIME"
       },
       "inter_proposition_links": {
@@ -554,7 +554,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "verse_anchor": "3:6",
       "proposition_kind": "HEARD_REPORT",
       "event_specific_slots": {
-        "report_recipient": "B10",
+        "reported_to": "B10",
         "report_origin": "JONAHS_ORACLE",
         "arrival_marker": "WORD_REACHED"
       },
@@ -614,7 +614,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "decreer": "B10",
         "co_issuers": "B11",
-        "proclamation_locus": "PL1",
+        "proclamation_place": "PL1",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -725,7 +725,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "hopeful_speaker": "B10",
-        "divine_object": "B9",
+        "deity": "B9",
         "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
       "inter_proposition_links": {

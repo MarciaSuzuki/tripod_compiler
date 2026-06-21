@@ -238,7 +238,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B3",
-        "reported_subject": "B13",
+        "reported_about": "B13",
         "winnowed_grain": "O2",
         "location": "PL6",
         "timing": "TONIGHT",

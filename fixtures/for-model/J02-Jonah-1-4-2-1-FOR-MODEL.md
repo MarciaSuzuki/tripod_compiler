@@ -391,7 +391,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "FEARED",
       "event_specific_slots": {
         "fearers": "B4",
-        "fear_object": "STORM",
+        "feared": "STORM",
         "subsequent_response": "CRIED_TO_OWN_GODS",
         "crier": "EACH_MAN",
         "addressee": "OWN_GOD"
@@ -724,7 +724,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           }
         ],
-        "petitioned_subject_referential_form": "THIS_MAN"
+        "petitioned_about_referential_form": "THIS_MAN"
       },
       "inter_proposition_links": {
         "caused_by": "P17",
@@ -783,7 +783,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "WORSHIPED",
       "event_specific_slots": {
         "worshipers": "B4",
-        "fear_object": "B2",
+        "feared": "B2",
         "fear_magnitude": "GREAT",
         "worship_acts": [
           {

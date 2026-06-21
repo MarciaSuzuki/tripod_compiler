@@ -368,7 +368,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "afflicted_place": "PL_LAND_OF_JUDAH",
         "afflicting_event": "O1",
-        "agent_named": "NONE"
+        "named_doer": "NONE"
       },
       "inter_proposition_links": {
         "caused_by": "P1",
@@ -446,7 +446,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
         "identified_household": ["B2", "B3", "B4", "B5"],
-        "clan_referent": "B6",
+        "clan": "B6",
         "clan_anchor_place": "PL1"
       },
       "inter_proposition_links": {
@@ -493,7 +493,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "deceased": "B2",
         "referential_form_at_verse": "HUSBAND_OF_NAOMI",
         "where": "PL2",
-        "agent_named": "NONE"
+        "named_doer": "NONE"
       },
       "inter_proposition_links": {
         "forward_link_to": "P8"
@@ -609,7 +609,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "deceased": ["B4", "B5"],
         "where": "PL2",
-        "agent_named": "NONE"
+        "named_doer": "NONE"
       },
       "inter_proposition_links": {
         "paired_with": "P7",

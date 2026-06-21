@@ -444,7 +444,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker": "B13",
         "addressee": "B19",
         "matter_disclosed": "PL5_ELIMELECH_PORTION",
-        "deceased_owner": "B2",
+        "deceased_of": "B2",
         "deceased_referential_form": "OUR_BROTHER_ELIMELECH",
         "seller": "B3",
         "seller_referential_form": "NAOMI_WHO_RETURNED_FROM_MOAB",
@@ -534,7 +534,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker": "B13",
         "addressee": "B19",
         "binding_day": "TM_DAY_OF_PURCHASE",
-        "field_source": "B3",
+        "field_from": "B3",
         "acquired_party": "B9",
         "acquired_referential_form": "THE_MOABITE_WIFE_OF_THE_DEAD",
         "deceased_husband": "B?",
@@ -608,7 +608,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "HANDED",
       "event_specific_slots": {
         "yielder": "B19",
-        "recipient": "B13",
+        "given_to": "B13",
         "directive": {
           "action": "DIRECTED",
           "speech_act": "DIRECTS_HEARER_TO_DO"

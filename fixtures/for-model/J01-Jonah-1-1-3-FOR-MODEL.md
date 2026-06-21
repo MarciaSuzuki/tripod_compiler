@@ -188,10 +188,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "verse_anchor": "1:1",
       "proposition_kind": "WORD_OF_YHWH_CAME",
       "event_specific_slots": {
-        "word_source": "B2",
-        "word_recipient": "B1",
-        "recipient_patronymic": "B3",
-        "recipient_referential_form": "JONAH_SON_OF_AMITTAI"
+        "word_from": "B2",
+        "word_came_to": "B1",
+        "patronymic": "B3",
+        "addressed_referential_form": "JONAH_SON_OF_AMITTAI"
       },
       "inter_proposition_links": {
         "forward_link_to": "P2"
@@ -230,8 +230,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         ],
         "city_descriptor": "THE_GREAT_CITY",
         "indicted_party": "B5",
-        "evil_referent": "CB_0051",
-        "divine_presence_referent": "CB_0052"
+        "evil": "CB_0051",
+        "divine_presence": "CB_0052"
       },
       "inter_proposition_links": {
         "caused_by": "P1",

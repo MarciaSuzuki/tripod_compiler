@@ -417,7 +417,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "instruction_components": [
           {
             "action": "DIRECTED",
-            "drink_source": "WATER_VESSELS",
+            "drink_from": "WATER_VESSELS",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
@@ -563,9 +563,9 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "BLESSING",
       "event_specific_slots": {
         "blesser": "B13",
-        "blessing_recipient": "B9",
-        "invoked_divine_agent": "B10",
-        "invoked_divine_agent_referential_form": "YHWH_THE_GOD_OF_ISRAEL",
+        "blessed_party": "B9",
+        "invoked_deity": "B10",
+        "invoked_deity_referential_form": "YHWH_THE_GOD_OF_ISRAEL",
         "blessing_components": [
           {
             "action": "WISHED_YHWH_TO_REPAY_HER_WORK",
@@ -792,7 +792,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "PERMITTED",
             "permitted_location": "PL_AMONG_SHEAVES",
-            "material_referent": "O11",
+            "material": "O11",
             "list_position": "FIRST",
             "speech_act": "GRANTS_PERMISSION_TO_DO"
           },
@@ -824,7 +824,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "speaker": "B13",
         "addressees": "B17",
         "for_party_to_glean": "B9",
-        "material_referent": "O11",
+        "material": "O11",
         "manner": "DELIBERATELY_INTENTIONALLY",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
