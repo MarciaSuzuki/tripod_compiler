@@ -480,7 +480,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "asker": "B3",
         "asked_party": "B9",
-        "question_subject": "WHERE_SHE_GLEANED_TODAY",
         "question_form": "DOUBLED_WHERE_AND_WHERE_WORKED",
         "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
       },
@@ -521,7 +520,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "addressee": "B3",
         "identified_man": "B13",
         "given_name": "Boaz",
-        "report_subject": "WHOM_SHE_WORKED_WITH_TODAY",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -591,7 +589,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B3",
         "identified_man": "B13",
-        "nearness_statement": "NEAR_TO_US",
         "named_redeemer_role": "B18",
         "role_form": "ONE_OF_OUR_REDEEMERS",
         "speech_act": "STATES_AS_TRUE"
@@ -617,10 +614,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "reporter_referential_form": "RUTH_THE_MOABITESS",
         "addressee": "B3",
         "reported_speaker": "B13",
-        "reported_instruction": "STAY_CLOSE_TO_YOUNG_MEN",
         "reported_worker_referent": "B17",
         "report_variation_form": "YOUNG_MEN_NOT_YOUNG_WOMEN",
-        "reported_until": "HARVEST_COMPLETE",
         "speech_act": "REPORTS_PRIOR_SPEECH_INSTRUCTION"
       },
       "inter_proposition_links": {
@@ -642,9 +637,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "counselor": "B3",
         "counseled_party": "B9",
         "address_form": "MY_DAUGHTER",
-        "counseled_action": "GO_OUT_WITH_HIS_YOUNG_WOMEN",
         "worker_companions": "B16",
-        "guarded_against": "HARM_IN_ANOTHER_FIELD",
         "avoided_field": "PL_OTHER_FIELD",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },

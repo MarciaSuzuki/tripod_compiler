@@ -413,8 +413,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "hurlers": "B4",
         "hurled_entity": "O5",
-        "hurled_into": "PL4",
-        "purpose": "LIGHTEN_SHIP"
+        "hurled_into": "PL4"
       },
       "inter_proposition_links": {
         "caused_by": "P2",
@@ -456,7 +455,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "approacher": "B6",
         "approached": "B1",
         "subsequent_speech_act_event": "REBUKING_QUESTION",
-        "question_content": "WHAT_ARE_YOU_DOING_ASLEEP",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
       },
       "inter_proposition_links": {
@@ -478,18 +476,15 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "command_components": [
           {
             "action": "DIRECTED",
-            "commanded_step": "ARISE",
             "step_order": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "CRY_OUT_TO_YOUR_GOD",
             "step_order": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
-        ],
-        "command_rationale": "MAYBE_GOD_WILL_GIVE_THOUGHT_SO_WE_NOT_PERISH"
+        ]
       },
       "inter_proposition_links": {
         "forward_link_to": "P8"
@@ -507,9 +502,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "proposers": "B4",
         "proposed_to": "ONE_ANOTHER",
-        "proposed_action": "CAST_LOTS",
         "lots": "O6",
-        "proposal_purpose": "KNOW_ON_WHOSE_ACCOUNT_THIS_EVIL",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
       "inter_proposition_links": {
@@ -526,7 +519,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "casters": "B4",
         "lots": "O6",
-        "outcome": "LOT_FELL_ON_JONAH",
         "exposed_party": "B1"
       },
       "inter_proposition_links": {
@@ -546,23 +538,18 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "interrogated": "B1",
         "question_listing": [
           {
-            "question_subject": "WHOSE_FAULT_THIS_EVIL",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
-            "question_subject": "WHAT_IS_YOUR_WORK",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
-            "question_subject": "WHERE_DO_YOU_COME_FROM",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
-            "question_subject": "WHAT_IS_YOUR_LAND",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
-            "question_subject": "FROM_WHICH_PEOPLE_ARE_YOU",
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           }
         ]
@@ -581,8 +568,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "declarer": "B1",
-        "declared_identity": "HEBREW",
-        "identity_kind": "PEOPLE_NOT_CALLING",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -600,12 +585,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "confessor": "B1",
         "confessed_divine": "B2",
-        "confessed_content": "FEARS_YHWH",
-        "divine_descriptors": [
-          "GOD_OF_HEAVEN",
-          "MAKER_OF_SEA",
-          "MAKER_OF_DRY_LAND"
-        ],
         "sea": "PL4",
         "dry_land": "PL5",
         "speech_act": "STATES_AS_TRUE"
@@ -627,7 +606,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "fearers": "B4",
         "fear_magnitude": "GREAT",
         "subsequent_speech_act_event": "PROTEST_QUESTION",
-        "question_content": "WHAT_IS_THIS_YOU_HAVE_DONE",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
       },
       "inter_proposition_links": {
@@ -647,7 +625,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "knowers": "B4",
-        "known_fact": "JONAH_FLEEING_FROM_BEFORE_YHWH",
         "fled_from": "CB_0052",
         "basis_of_knowledge": "HE_HAD_TOLD_THEM"
       },
@@ -670,10 +647,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "askers": "B4",
         "asked": "B1",
-        "question_content": "WHAT_SHALL_WE_DO_TO_YOU",
-        "desired_outcome": "SEA_QUIET_FOR_US",
         "sea": "PL4",
-        "reason_for_asking": "SEA_KEPT_GROWING_STORMIER",
         "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
       },
       "inter_proposition_links": {
@@ -693,19 +667,15 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "counsel_components": [
           {
             "action": "DIRECTED",
-            "commanded_step": "LIFT_ME",
             "step_order": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "HURL_ME_INTO_SEA",
             "step_order": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
         ],
-        "desired_outcome": "SEA_QUIET_FOR_YOU",
-        "storm_ownership_admission": "GREAT_STORM_ON_MY_ACCOUNT",
         "storm": "O4",
         "sea": "PL4"
       },
@@ -728,7 +698,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "rowers": "B4",
         "row_destination": "PL5",
         "row_effort": "DUG_OARS_IN_HARD",
-        "outcome": "COULD_NOT_REACH",
         "reason": "SEA_KEPT_GROWING_STORMIER_AGAINST_THEM"
       },
       "inter_proposition_links": {
@@ -748,16 +717,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "petitioned_divine": "B2",
         "petition_components": [
           {
-            "petition": "DO_NOT_LET_US_PERISH_FOR_THIS_MANS_LIFE",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           },
           {
-            "petition": "DO_NOT_LAY_INNOCENT_BLOOD_ON_US",
             "innocent_blood": "CB_0054",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           }
         ],
-        "petition_grounds": "YOU_YHWH_HAVE_DONE_AS_YOU_PLEASED",
         "petitioned_subject_referential_form": "THIS_MAN"
       },
       "inter_proposition_links": {

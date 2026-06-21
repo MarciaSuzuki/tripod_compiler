@@ -245,8 +245,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
-        "directive_content": "LET_IT_NOT_BE_KNOWN",
-        "protected_fact": "WOMAN_CAME_TO_THRESHING_FLOOR",
         "subject_referential_form": "HA_ISHAH_THE_WOMAN",
         "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
       },
@@ -266,7 +264,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B9",
-        "commanded_step": "HOLD_OUT_CLOAK",
         "garment": "O13",
         "compliance": "SHE_HELD_IT",
         "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -340,7 +337,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "questioner": "B3",
         "addressee": "B9",
-        "question_form": "WHO_ARE_YOU",
         "address_form": "MY_DAUGHTER",
         "question_subject": "IDENTITY_RECOGNITION_AND_STANDING",
         "speech_act": "ASKS_KINSHIP_BELONGING_QUESTION"
@@ -361,7 +357,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "reporter": "B9",
         "report_recipient": "B3",
-        "report_content": "ALL_THE_MAN_DID_FOR_HER",
         "reported_party": "B13",
         "reported_party_referential_form": "HA_ISH_THE_MAN",
         "speech_act": "STATES_AS_TRUE"
@@ -405,10 +400,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "reporter": "B9",
         "original_speaker": "B13",
-        "reported_directive": "DO_NOT_GO_EMPTY",
         "gift_destination": "B3",
         "destination_referential_form": "YOUR_MOTHER_IN_LAW_CHAMOT",
-        "empty_word_echo": "REQAM_NEGATED",
         "speech_act": "REPORTS_PRIOR_SPEECH_INSTRUCTION"
       },
       "inter_proposition_links": {
@@ -432,8 +425,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker": "B3",
         "addressee": "B9",
         "address_form": "MY_DAUGHTER",
-        "commanded_step": "SIT_STILL",
-        "until_condition": "UNTIL_SHE_KNOWS_HOW_MATTER_FALLS",
         "matter_referent": "O19",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
@@ -453,8 +444,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker": "B3",
         "subject": "B13",
         "subject_referential_form": "HA_ISH_THE_MAN",
-        "predicted_state": "WILL_NOT_REST",
-        "condition": "UNTIL_MATTER_FINISHED",
         "completion_time": "TM_TODAY",
         "matter_referent": "O19",
         "speech_act": "STATES_AS_TRUE"

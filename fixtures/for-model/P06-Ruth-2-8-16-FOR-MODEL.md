@@ -394,7 +394,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "prior_command_giver": "B13",
         "prior_command_addressees": "B17",
         "prior_prohibition_target_party": "B9",
-        "prior_prohibited_action": "TOUCH_THE_GLEANER",
         "speech_act": "REPORTS_OWN_PRIOR_PROHIBITION"
       },
       "inter_proposition_links": {
@@ -531,7 +530,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "recital_components": [
           {
             "action": "STATED",
-            "left_parties": "PARENTS_OF_ADDRESSEE",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -604,7 +602,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B13",
         "address_form": "MY_LORD",
         "name_known_status": "NAME_NOT_YET_KNOWN_TO_RUTH",
-        "wished_state": "FAVOR_IN_HIS_EYES",
         "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
       "inter_proposition_links": {
@@ -771,7 +768,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "proposition_kind": "ROSE",
       "event_specific_slots": {
         "riser": "B9",
-        "purpose": "TO_GLEAN",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -855,7 +851,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "command_components": [
           {
             "action": "DIRECTED",
-            "purpose": "FOR_HER_TO_GLEAN",
             "list_position": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },

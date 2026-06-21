@@ -1,6 +1,6 @@
 # SC-0069 — Phase 2 (R2) — speech-content strip calibration sheet
 
-> **Status: RULED by Marcia 2026-06-20 — apply pending (NOTHING APPLIED YET).** This sheet enumerates every
+> **Status: APPLIED 2026-06-20 (compiler half, on branch — Evaluator application-verify + Marcia's merge word pending; vault `cp` pending).** See [`SC-0069-APPLY-RECORD.md`](SC-0069-APPLY-RECORD.md). This sheet enumerates every
 > word-bearing speech/content slot across the 19 gold FOR_MODELs by **value-shape, not key-name**, and was
 > draft-verified by the Evaluator (the §2A/§E/§K corrections). The change lands as **one compiler+vault pair**
 > (drop the word-value, keep `speech_act` + structure; per-value count-assert + re-grep; vault byte-identical),

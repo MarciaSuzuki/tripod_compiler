@@ -429,7 +429,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "refusers": ["B8", "B9"],
         "addressee_of_refusal": "B3",
         "refusal_target_proposition": "P4",
-        "counter_action": "RETURN_WITH_NAOMI",
         "counter_destination_collective": "B31",
         "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
       },
@@ -457,7 +456,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "ASKED",
             "question_subject": "DAUGHTERS_GOING_WITH_NAOMI",
-            "question_form": "WHY_WOULD_YOU_GO_WITH_ME",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           },
           {
@@ -547,13 +545,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "lament_components": [
           {
             "action": "STATED",
-            "comparison_summary": "NAOMI_MORE_BITTER_THAN_DAUGHTERS",
             "speech_act": "STATES_LAMENT_OBSERVATION"
           },
           {
             "action": "ASCRIBED",
             "agent_named": "B10",
-            "ascription_summary": "HAND_OF_YHWH_AGAINST_NAOMI",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
         ]

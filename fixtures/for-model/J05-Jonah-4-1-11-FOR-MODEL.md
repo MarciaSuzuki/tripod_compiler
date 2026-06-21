@@ -288,8 +288,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "pray_er": "B1",
         "addressed_deity": "B2",
-        "prayer_opening": "WAS_THIS_NOT_MY_WORD",
-        "prior_location_recalled": "ON_OWN_SOIL",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
       },
       "inter_proposition_links": {
@@ -306,9 +304,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B1",
-        "explained_prior_action": "FLIGHT_TO_TARSHISH",
         "flight_destination": "PL2",
-        "reason_marker": "FOR_I_KNEW",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -325,13 +321,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "reciter": "B1",
         "creed_subject": "B2",
-        "creed_attributes": [
-          "GRACIOUS",
-          "COMPASSIONATE",
-          "SLOW_TO_ANGER",
-          "ABOUNDING_IN_HESED",
-          "RELENTING_OF_EVIL"
-        ],
         "creed_rhetorical_function": "ACCUSATION",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -353,8 +342,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "petitioner": "B1",
         "addressed_deity": "B2",
-        "petition": "TAKE_MY_LIFE",
-        "stated_rationale": "DEATH_BETTER_THAN_LIFE",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
       "inter_proposition_links": {
@@ -372,7 +359,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "questioner": "B2",
         "questioned_party": "B1",
-        "question_form": "IS_IT_GOOD_THAT_IT_BURNS_TO_YOU",
         "question_subject": "JONAHS_ANGER",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
       },
@@ -570,8 +556,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "APPEAL",
       "event_specific_slots": {
         "petitioner": "B1",
-        "petition": "ASK_TO_DIE",
-        "stated_rationale": "DEATH_BETTER_THAN_LIFE",
         "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
       "inter_proposition_links": {
@@ -590,7 +574,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "questioner": "B2",
         "questioner_referential_form": "ELOHIM",
         "questioned_party": "B1",
-        "question_form": "IS_IT_GOOD_THAT_IT_BURNS_OVER_QIQAYON",
         "question_subject": "ANGER_OVER_PLANT",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
       },
@@ -612,7 +595,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "answerer": "B1",
         "answered_to": "B2",
-        "answer": "IT_IS_GOOD_THAT_IT_BURNS_TO_ME",
         "intensity": "EVEN_TO_DEATH",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -634,11 +616,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "addressed_party": "B1",
         "pitying_party": "B1",
         "pitied_object": "O11",
-        "jonah_non_involvement": [
-          "DID_NOT_LABOR",
-          "DID_NOT_GROW"
-        ],
-        "plant_lifespan": "CHILD_OF_A_NIGHT_PERISHED_IN_A_NIGHT",
         "argument_role": "LESSER_TERM",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -657,12 +634,9 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "questioner": "B2",
         "questioner_referential_form": "YHWH",
-        "question_form": "SHOULD_I_NOT_PITY_NINEVEH",
         "pity_object": "PL1",
         "city_descriptor": "GREAT_CITY",
         "inhabitants": "B5",
-        "inhabitant_count": "MORE_THAN_120000",
-        "inhabitant_descriptor": "CANNOT_TELL_RIGHT_FROM_LEFT",
         "argument_role": "GREATER_TERM",
         "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
       },

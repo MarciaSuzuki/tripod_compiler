@@ -398,8 +398,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "perceiver": "B13",
         "perceived_being": "B9",
         "perceived_as": "A_WOMAN",
-        "location": "CB_0042",
-        "attention_marker": "HINNEH"
+        "location": "CB_0042"
       },
       "inter_proposition_links": {
         "caused_by": "P5",
@@ -418,7 +417,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "asker": "B13",
         "addressee": "B9",
-        "question_form": "WHO_ARE_YOU",
         "referential_form_at_verse": "HA_ISH_THE_MAN",
         "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
       },
@@ -437,7 +435,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B13",
-        "self_identification": "I_AM_RUTH_YOUR_SERVANT",
         "self_referential_form": "RUTH_YOUR_SERVANT_AMAH",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -459,7 +456,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "petitioner": "B9",
         "petitioned": "B13",
-        "petition_content": "SPREAD_YOUR_WING_OVER_SERVANT",
         "invoked_image": "CB_0037",
         "self_referential_form": "AMAH_SERVANT",
         "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -482,7 +478,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "declarer": "B9",
         "addressee": "B13",
-        "declared_ground": "YOU_ARE_A_REDEEMER",
         "redeemer_role": "B18",
         "redeemer_concept": "CB_0001",
         "speech_act": "STATES_AS_TRUE"
@@ -529,7 +524,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "declarer": "B13",
         "praised_party": "B9",
         "hesed_concept": "CB_0011",
-        "hesed_comparison": "LAST_BETTER_THAN_FIRST",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -551,9 +545,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "declarer": "B13",
         "about_party": "B9",
-        "abstained_from": "GOING_AFTER_YOUNG_MEN",
         "young_men": "B?",
-        "scope": "WHETHER_POOR_OR_RICH",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -574,11 +566,9 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "address_form": "MY_DAUGHTER",
         "reassurance_components": [
           {
-            "directive": "DO_NOT_FEAR",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           },
           {
-            "pledge_content": "ALL_THAT_YOU_SAY_I_WILL_DO",
             "speech_act": "VOWS"
           }
         ]
@@ -603,7 +593,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "knowing_public": "B21",
         "public_venue": "PL7",
         "gate_concept": "CB_0006",
-        "known_fact": "RUTH_IS_WOMAN_OF_WORTH",
         "worth_concept": "CB_0032",
         "about_party": "B9",
         "referential_form_at_verse": "ESHET_CHAYIL_WOMAN_OF_WORTH",
@@ -628,9 +617,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "declarer": "B13",
-        "owned_role": "REDEEMER",
         "redeemer_concept": "CB_0001",
-        "affirmation_marker": "TRULY",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -649,7 +636,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "declarer": "B13",
         "disclosed_party": "B19",
-        "disclosure": "A_REDEEMER_NEARER_THAN_I",
         "redeemer_concept": "CB_0001",
         "referential_form": "NEARER_REDEEMER_UNNAMED",
         "speech_act": "STATES_AS_TRUE"
@@ -675,7 +661,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "instructor": "B13",
         "instructed": "B9",
         "action": "DIRECTED",
-        "commanded_step": "LODGE_THE_NIGHT",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
       "inter_proposition_links": {
@@ -696,14 +681,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker": "B13",
         "protocol_components": [
           {
-            "condition": "IF_NEARER_REDEEMS",
-            "outcome": "GOOD_LET_HIM_REDEEM",
             "redeemer": "B19",
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "condition": "IF_HE_REFUSES",
-            "outcome": "I_WILL_REDEEM_YOU",
             "self_redeemer": "B13",
             "speech_act": "VOWS"
           }
@@ -728,7 +709,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "VOW",
       "event_specific_slots": {
         "swearer": "B13",
-        "oath_formula": "AS_YHWH_LIVES",
         "invoked_divine_witness": "B10",
         "speech_act": "INVOKES_DIVINE_AS_OATH_GUARANTOR"
       },
@@ -750,7 +730,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "instructor": "B13",
         "instructed": "B9",
         "action": "DIRECTED",
-        "commanded_step": "LIE_DOWN_UNTIL_MORNING",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
       "inter_proposition_links": {
