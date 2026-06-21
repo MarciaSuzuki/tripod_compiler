@@ -1,11 +1,19 @@
 # SC-0069 — Phase 2 (R2) — speech-content strip calibration sheet
 
-> **Status: CALIBRATION — awaiting Marcia's word. NOTHING APPLIED.** This sheet enumerates every
-> word-bearing speech/content slot across the 19 gold FOR_MODELs by **value-shape, not key-name**,
-> proposes a disposition per group, and surfaces the boundary calls. After ruling, the changes land
-> as **one compiler+vault pair** (FM amendments — drop the word-value, keep `speech_act` + structure;
-> coupled CL keep-image/echoes reconciled; per-value count-assert + re-grep; vault byte-identical),
+> **Status: RULED by Marcia 2026-06-20 — apply pending (NOTHING APPLIED YET).** This sheet enumerates every
+> word-bearing speech/content slot across the 19 gold FOR_MODELs by **value-shape, not key-name**, and was
+> draft-verified by the Evaluator (the §2A/§E/§K corrections). The change lands as **one compiler+vault pair**
+> (drop the word-value, keep `speech_act` + structure; per-value count-assert + re-grep; vault byte-identical),
 > mirroring the SC-0067 (R1) idiom.
+>
+> **THE RULINGS (locked, Marcia 2026-06-20):**
+> - **§A speech-content + §B forms + §F-leave** — **APPROVED** ("Approve all three"; §A is the complete §K list).
+> - **§C command/instruction content** — **DROP as speech**.
+> - **§D load-bearing formulas** — **DROP with explicit sign-off** (recorded here as her bless).
+> - **§E the P03 vow rungs** — **KEEP as structure → Phase 3** (Marcia chose the conservative pole (i)).
+> - **CONDITION (Evaluator, confirms at apply):** the apply must explicitly **KEEP `agent_named`** — a
+>   structural pointer (NONE / B-code), and `NONE` is **load-bearing** (the significant-absence of a named
+>   agent; the P01↔P02 inverse the CLs flag). It is already never a drop candidate; the keep is made explicit.
 
 > **SC-ID:** SC-0069 is the next free number (reconfirmed 2026-06-20 vs `SPEC_CHANGES.md` highest =
 > SC-0068, `gh pr list` = 0 open). The oral-pipeline Stage 2 also eyes SC-0069 — **binding allocation
@@ -380,7 +388,10 @@ intensity · manner · from_seat · final_position · position · destination_qu
 residents · proposed_to · purpose_role · added_descriptor · animal_scope · drink_source · ⚠state_at_departure ·
 ⚠state_at_return · ⚠shown_quantity · ⚠timing · **plus the R1-done (a) address forms** (address_form, addressed_form,
 directed_address_form, divine_address_form, role_form, model_house_form, doubled_place_form, destination_people_form,
-blessing_recipient_form, begetter_name_form, begotten_name_form, living_and_dead_form).
+blessing_recipient_form, begetter_name_form, begotten_name_form, living_and_dead_form). **Plus the
+structural pointer `agent_named`** (7× P01/P02/P03/P05; values NONE/B10 — never in the candidate pool, kept
+explicitly per the Evaluator's apply condition; **`agent_named: NONE` is load-bearing** — the significant-absence
+of a named agent, the P01-famine/deaths ↔ P02-YHWH-gives-bread structural inverse the CLs flag).
 
 **Phase 3 — (c) structural forms + narrated events (13 keys / 17 occ):** vow_structural_form · binding_*_place_form
 (also §E) · listing_order_form · movement_form · attestation_form · acquired_from_form · tie_form ·
