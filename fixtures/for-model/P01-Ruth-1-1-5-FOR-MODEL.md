@@ -388,7 +388,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "accompanying_household": ["B3", "B4", "B5"],
         "origin": "PL1",
         "destination": "PL2",
-        "purpose": "SOJOURN",
         "departure_intent_marker": "CB_0030"
       },
       "inter_proposition_links": {

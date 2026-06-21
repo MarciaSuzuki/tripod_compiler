@@ -252,7 +252,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "refuser": "B9",
         "addressee": "B3",
-        "refused_action": "TURN_BACK_FROM_FOLLOWING_NAOMI",
         "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
       },
       "inter_proposition_links": {

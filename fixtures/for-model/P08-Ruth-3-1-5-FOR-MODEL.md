@@ -199,7 +199,6 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "rest_sought": "CB_0014",
         "sought_rest_for": "B9",
         "question_form": "RHETORICAL_PROMISE_QUESTION",
-        "stated_purpose": "THAT_IT_MAY_BE_WELL_WITH_YOU",
         "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
       "inter_proposition_links": {
@@ -240,11 +239,9 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
       "event_specific_slots": {
         "speaker": "B3",
         "reported_subject": "B13",
-        "reported_activity": "WINNOWING_BARLEY",
         "winnowed_grain": "O2",
         "location": "PL6",
         "timing": "TONIGHT",
-        "attention_marker": "HINNEH",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -264,26 +261,22 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "instruction_components": [
           {
             "action": "DIRECTED",
-            "commanded_step": "WASH",
             "step_order": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "ANOINT_SELF",
             "step_order": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "PUT_ON_GARMENTS",
             "garment": "O13",
             "step_order": "THIRD",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "GO_DOWN_TO_FLOOR",
             "destination": "PL6",
             "step_order": "FOURTH",
             "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -306,9 +299,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
       "event_specific_slots": {
         "speaker": "B3",
         "instructed_party": "B9",
-        "prohibition": "BE_KNOWN_TO_THE_MAN",
         "the_man_referential_form": "THE_MAN_HA_ISH",
-        "until_condition": "HE_FINISHES_EATING_AND_DRINKING",
         "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
       },
       "inter_proposition_links": {
@@ -325,8 +316,6 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
       "event_specific_slots": {
         "speaker": "B3",
         "instructed_party": "B9",
-        "timing_condition": "WHEN_HE_LIES_DOWN",
-        "directive": "MARK_PLACE_WHERE_HE_LIES",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
       "inter_proposition_links": {
@@ -346,20 +335,17 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "instruction_components": [
           {
             "action": "DIRECTED",
-            "commanded_step": "GO_IN",
             "step_order": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "UNCOVER_FEET",
             "uncovered_place": "CB_0042",
             "step_order": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "LIE_DOWN",
             "step_order": "THIRD",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
@@ -382,7 +368,6 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "speaker": "B3",
         "future_speaker": "B13",
         "the_man_referential_form": "THE_MAN_HA_ISH",
-        "handoff_content": "HE_WILL_TELL_YOU_WHAT_TO_DO",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -401,7 +386,6 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B3",
-        "assent_content": "ALL_THAT_YOU_SAY_I_WILL_DO",
         "assent_completeness": "TOTAL_NO_QUESTIONS",
         "speech_act": "STATES_AS_TRUE"
       },

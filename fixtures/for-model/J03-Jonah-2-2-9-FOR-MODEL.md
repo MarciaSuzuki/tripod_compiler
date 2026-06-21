@@ -250,7 +250,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "caller": "B1",
         "called_to": "B2",
-        "called_out_of": "DISTRESS",
         "answered_by": "B2",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -269,7 +268,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "crier": "B1",
         "cried_from": "PL6",
         "heard_by": "B2",
-        "thing_heard": "CRY_VOICE",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -287,7 +285,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "caster": "B2",
         "cast_one": "B1",
-        "cast_into": "THE_DEEP",
         "cast_location": "PL4",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -303,9 +300,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "verse_anchor": "2:3",
       "proposition_kind": "ENGULFED",
       "event_specific_slots": {
-        "engulfing_flood": "FLOOD",
         "engulfed_one": "B1",
-        "overpassing_waters": "BREAKERS_AND_WAVES",
         "waters_owner": "B2",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -323,7 +318,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B1",
-        "lament_content": "DRIVEN_FROM_BEFORE_YHWH_EYES",
         "banished_from": "B2",
         "speech_act": "STATES_LAMENT_OBSERVATION"
       },
@@ -340,7 +334,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "AFFIRMED_RESOLVE",
       "event_specific_slots": {
         "resolver": "B1",
-        "resolved_action": "LOOK_AGAIN",
         "directed_toward": "PL7",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -359,11 +352,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "verse_anchor": "2:5",
       "proposition_kind": "ENGULFED",
       "event_specific_slots": {
-        "engulfing_waters": "WATERS",
-        "engulf_extent": "UP_TO_THE_THROAT",
         "surrounding_deep": "O7",
         "wrapping_weeds": "O8",
-        "weeds_wrapped_around": "HEAD",
         "engulfed_one": "B1",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -382,9 +372,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DESCENDED",
       "event_specific_slots": {
         "descender": "B1",
-        "descended_to": "ROOTS_OF_THE_MOUNTAINS",
-        "enclosing_barrier": "EARTH_BARS",
-        "barrier_duration": "FOREVER",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -422,7 +409,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "fainting_soul_of": "B1",
         "rememberer": "B1",
         "remembered_one": "B2",
-        "remembering_occasion": "AT_SOUL_FAINTING",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -480,8 +466,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "vower": "B1",
         "vow_recipient": "B2",
-        "sacrifice_manner": "VOICE_OF_THANKSGIVING",
-        "vow_payment": "PAY_WHAT_VOWED",
         "contrast_with_proposition": "P12",
         "speech_act": "VOWS"
       },
@@ -498,7 +482,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "declarer": "B1",
-        "declared_thesis": "SALVATION_BELONGS_TO_YHWH",
         "salvation_owner": "B2",
         "speech_act": "STATES_AS_TRUE"
       },

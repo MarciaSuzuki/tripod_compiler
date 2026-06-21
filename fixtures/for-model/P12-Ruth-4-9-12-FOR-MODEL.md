@@ -282,7 +282,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "declarer": "B13",
         "addressed_elders": "B20",
         "addressed_assembly": "B21",
-        "witness_summons_form": "YOU_ARE_WITNESSES_TODAY",
         "summons_day": "TM_TODAY",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -380,10 +379,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "secured_name_of": "B4",
         "secured_name_referential_form": "SHEM_HA_MET_NAME_OF_THE_DEAD",
-        "not_cut_off_from": [
-          "HIS_KINDRED",
-          "GATE_OF_HIS_PLACE"
-        ],
         "gate_referent": "PL7",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -406,7 +401,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "declarer": "B13",
-        "witness_summons_form": "YOU_ARE_WITNESSES_TODAY",
         "summons_day": "TM_TODAY",
         "repeats_proposition": "P1",
         "speech_act": "STATES_AS_TRUE"
@@ -428,7 +422,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "responding_assembly": "B21",
         "responding_elders": "B20",
-        "response_form": "WE_ARE_WITNESSES",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -455,7 +448,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "blessing_recipients": "B9",
         "blessing_recipient_referential_form": "WOMAN_COMING_INTO_HOUSE",
         "likened_to_matriarchs": "B22",
-        "matriarch_deed": "BUILT_THE_HOUSE_OF_ISRAEL",
         "house_built": "PL_ISRAEL",
         "blessing_content_kind": "FRUITFULNESS_LIKE_MATRIARCHS",
         "speech_act": "WISHES_FOR_THIRD_PARTY"

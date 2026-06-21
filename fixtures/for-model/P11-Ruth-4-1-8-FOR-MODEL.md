@@ -360,7 +360,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "passer_by": "B19",
         "passing_location": "PL7",
         "identified_as": "REDEEMER_OF_WHOM_BOAZ_SPOKE",
-        "attention_marker": "BEHOLD_HINNEH",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -388,13 +387,11 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "directives": [
           {
             "action": "DIRECTED",
-            "commanded_step": "TURN_ASIDE",
             "step_order": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "SIT_HERE",
             "step_order": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
@@ -424,7 +421,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "elder_designation": "TEN_MEN_OF_TOWN_ELDERS",
         "directive": {
           "action": "DIRECTED",
-          "commanded_step": "SIT_HERE",
           "speech_act": "DIRECTS_HEARER_TO_DO"
         },
         "compliance": "THEY_SAT"
@@ -452,7 +448,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "deceased_referential_form": "OUR_BROTHER_ELIMELECH",
         "seller": "B3",
         "seller_referential_form": "NAOMI_WHO_RETURNED_FROM_MOAB",
-        "selling_status": "FIELD_OFFERED_FOR_SALE",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -473,14 +468,11 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B13",
         "addressee": "B19",
-        "disclosure_idiom": "UNCOVER_YOUR_EAR",
         "offer": {
           "action": "DIRECTED",
-          "commanded_step": "BUY_THE_FIELD",
           "speech_act": "DIRECTS_HEARER_TO_DO"
         },
-        "witnesses_before_whom": "B20",
-        "witness_designation": "THOSE_SEATED_AND_ELDERS_OF_MY_PEOPLE"
+        "witnesses_before_whom": "B20"
       },
       "inter_proposition_links": {
         "caused_by": "P5",
@@ -501,19 +493,12 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "addressee": "B19",
         "conditional_terms": [
           {
-            "condition": "IF_WILL_REDEEM",
-            "directive": "LET_HIM_REDEEM",
             "speech_act": "GRANTS_PERMISSION_TO_DO"
           },
           {
-            "condition": "IF_WILL_NOT_REDEEM",
-            "directive": "TELL_BOAZ",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
-        ],
-        "purpose": "THAT_I_MAY_KNOW",
-        "queue_basis": "NO_ONE_BESIDES_YOU_TO_REDEEM",
-        "queue_position": "BOAZ_IS_AFTER_YOU"
+        ]
       },
       "inter_proposition_links": {
         "forward_link_to": "P8"
@@ -529,7 +514,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B19",
         "addressee": "B13",
-        "claim": "I_WILL_REDEEM",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -576,9 +560,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "verse_anchor": "4:5b",
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
-        "stated_purpose": "RAISE_UP_NAME_OF_THE_DEAD",
         "name_borne_by": "B?",
-        "inheritance_locus": "DEAD_MANS_INHERITANCE",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -603,8 +585,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "speaker": "B19",
         "addressee": "B13",
-        "refusal": "CANNOT_REDEEM_FOR_MYSELF",
-        "stated_reason": "LEST_I_RUIN_MY_OWN_INHERITANCE",
         "contrast_with_proposition": "P8",
         "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
       },
@@ -629,13 +609,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "yielder": "B19",
         "recipient": "B13",
-        "yielded_right": "RIGHT_OF_REDEMPTION",
         "directive": {
           "action": "DIRECTED",
-          "commanded_step": "REDEEM_FOR_YOURSELF",
           "speech_act": "DIRECTS_HEARER_TO_DO"
         },
-        "repeated_reason": "I_CANNOT_REDEEM",
         "speech_act": "REFUSES_REQUEST_WITH_COUNTER_DECLARATION"
       },
       "inter_proposition_links": {
@@ -704,7 +681,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "confirmation_components": [
           {
             "action": "DIRECTED",
-            "commanded_step": "BUY_FOR_YOURSELF",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {

@@ -412,24 +412,20 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "charge_components": [
           {
             "action": "DIRECTED",
-            "commanded_step": "ARISE",
             "step_order": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "GO_TO_NINEVEH",
             "step_order": "SECOND",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "CALL_OUT_TO_HER",
             "step_order": "THIRD",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
-        ],
-        "message_withheld_marker": "THE_CALL_I_TELL_YOU"
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P3",
@@ -509,9 +505,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "proclaimer": "B1",
         "addressed_city": "PL1",
-        "oracle_deadline": "FORTY_DAYS_MORE",
-        "oracle_pronouncement": "NINEVEH_OVERTHROWN",
-        "pronouncement_ambiguity": "RUIN_OR_TURNING",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -622,7 +615,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "decreer": "B10",
         "co_issuers": "B11",
         "proclamation_locus": "PL1",
-        "decree_authority_form": "BY_DECREE_OF_KING_AND_NOBLES",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -647,17 +639,14 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "abstention_commands": [
           {
             "action": "DIRECTED",
-            "commanded_step": "TASTE_NOTHING",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "NOT_GRAZE",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "NOT_DRINK_WATER",
             "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
           }
         ]
@@ -683,13 +672,11 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "decree_commands": [
           {
             "action": "DIRECTED",
-            "commanded_step": "COVER_WITH_SACKCLOTH",
             "garment": "O9",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "CRY_TO_GOD",
             "addressed_deity": "B9",
             "intensity": "MIGHTILY",
             "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -714,13 +701,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "turning_commands": [
           {
             "action": "DIRECTED",
-            "commanded_step": "TURN_FROM_EVIL_WAY",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "TURN_FROM_VIOLENCE",
-            "violence_locus": "IN_THEIR_HANDS",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
         ]
@@ -741,14 +725,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "hopeful_speaker": "B10",
-        "hope_marker": "WHO_KNOWS",
         "divine_object": "B9",
-        "hoped_divine_turning": [
-          "TURN",
-          "RELENT",
-          "TURN_FROM_BURNING_ANGER"
-        ],
-        "hoped_outcome": "WE_WILL_NOT_PERISH",
         "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
       "inter_proposition_links": {

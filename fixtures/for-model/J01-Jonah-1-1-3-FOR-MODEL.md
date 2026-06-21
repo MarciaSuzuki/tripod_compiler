@@ -212,27 +212,23 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "command_components": [
           {
             "action": "DIRECTED",
-            "commanded_step": "ARISE",
             "step_order": "FIRST",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "GO_TO_CITY",
             "step_order": "SECOND",
             "destination": "PL1",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           },
           {
             "action": "DIRECTED",
-            "commanded_step": "CALL_OUT_AGAINST",
             "step_order": "THIRD",
             "target": "PL1",
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
         ],
         "city_descriptor": "THE_GREAT_CITY",
-        "reason_for_errand": "EVIL_COME_UP_BEFORE_YHWH",
         "indicted_party": "B5",
         "evil_referent": "CB_0051",
         "divine_presence_referent": "CB_0052"

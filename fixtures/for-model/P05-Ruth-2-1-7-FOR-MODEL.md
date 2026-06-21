@@ -360,9 +360,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "requester": "B9",
         "addressee": "B3",
-        "requested_action": "GLEAN_AMONG_EARS_OF_GRAIN_IN_FIELD",
         "destination": "PL5",
-        "qualification": "AFTER_ONE_IN_WHOSE_EYES_FAVOR_IS_FOUND",
         "speech_act": "REQUESTS_PERMISSION_TO_DO"
       },
       "inter_proposition_links": {
@@ -380,7 +378,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "permission_granter": "B3",
         "permission_recipient": "B9",
         "addressed_form": "DAUGHTER",
-        "granted_action": "GO_AND_GLEAN_AS_REQUESTED",
         "speech_act": "GRANTS_PERMISSION_TO_DO"
       },
       "inter_proposition_links": {

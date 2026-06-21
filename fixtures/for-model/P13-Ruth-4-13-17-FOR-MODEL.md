@@ -327,7 +327,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "blessing_speakers": "B24",
         "blessing_addressee": "B3",
         "invoked_divine_agent": "B10",
-        "blessing_form": "BARUKH_YHWH",
         "blessing_content_kind": "HAS_NOT_LEFT_WITHOUT_REDEEMER_TODAY",
         "redeemer_referent": "B?",
         "speech_act": "STATES_AS_TRUE"
@@ -353,7 +352,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "BLESSING",
       "event_specific_slots": {
         "wish_speakers": "B24",
-        "wish_content_kind": "NAME_CALLED_OUT",
         "name_bearer": "B?",
         "where": "PL_ISRAEL",
         "speech_act": "WISHES_FOR_THIRD_PARTY"
@@ -376,8 +374,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "declared_speakers": "B24",
         "subject_child": "B?",
-        "future_role_first": "RESTORER_OF_LIFE",
-        "future_role_second": "SUSTAINER_OF_OLD_AGE",
         "beneficiary": "B3",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -396,8 +392,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "declared_speakers": "B24",
         "praised_bearer": "B9",
         "bearer_referential_form": "DAUGHTER_IN_LAW_WHO_LOVES_YOU",
-        "relation_to_naomi": "LOVES_NAOMI",
-        "comparative_measure": "BETTER_THAN_SEVEN_SONS",
         "child_borne": "B?",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -456,7 +450,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "NAMED",
       "event_specific_slots": {
         "naming_speakers": "B24",
-        "naming_proclamation": "SON_BORN_TO_NAOMI",
         "reckoned_to": "B3",
         "named_child": "B?",
         "speech_act": "STATES_AS_TRUE"
