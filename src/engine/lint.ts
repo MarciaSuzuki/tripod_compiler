@@ -4,11 +4,14 @@ import { loadSpecJson } from "../spec/load.js";
  * The Level-3 lint (docs/COVERAGE.md stack: legal · complete · **atomic-bare-plain** · true).
  * A 4th deterministic verifier beside validate/coverage. It flags, in the *content* layers — Level 3
  * propositions and §3C — the four drift classes from `_methodology/level3and3Ccontentdiscipline.md`:
- *   - forbidden grammatical / linguistic vocabulary (R4) — whole-word, in prose only (not slot-names),
+ *   - forbidden grammatical / linguistic vocabulary (R4) — whole-word, in prose/values (slot KEY names
+ *     are guarded separately — see slot-NAME role vocabulary below),
  *   - interpretive-label patterns (R3) — "image-rhyme", "triplet", "speech-act of", …,
  *   - conditioning-in-Q&A (R5) — "Register?/Self-form?/Forward-link?" lines (meaning map),
  *   - compound / non-atomic answers (R2) — ';', ' and ' in a Q&A answer,
- *   - §3C that is not an entity (R1) — an object that is really an event / framing / literary pattern.
+ *   - §3C that is not an entity (R1) — an object that is really an event / framing / literary pattern,
+ *   - slot-NAME role vocabulary (SC-0070) — an event_specific_slots KEY name carrying grammatical/thematic-role
+ *     vocabulary (agent/recipient/subject/…), the WEIRD-priming the method bans; ess-scoped, allow-lists speaker/addressee.
  * It SURFACES drift; the human judges (and relocates insight, never deletes it).
  */
 
@@ -20,7 +23,8 @@ export type LintRule =
   | "section_3c_not_entity"
   | "meta_question"
   | "link_in_level3"
-  | "l3_free_text";
+  | "l3_free_text"
+  | "slot_name_role_vocab";
 
 /** A reviewer-accepted lint exception attached to a finding (downgrades it from drift to accepted). */
 export interface AcceptedLintException {
@@ -88,6 +92,10 @@ interface Lexicon {
   // answer. Deliberately NOT in scanProse (which also runs on FOR_MODEL fields + §3C notes), so they
   // never fire on a closed-list speech_act value or a relocation note — both out of scope for the sweep.
   answer_labels?: string[];
+  // SC-0070: forbidden grammatical/thematic-role TOKENS in event_specific_slots KEY names (the slot-name
+  // guard), and the allow-list of fundamental communicative-event roles exempted from it.
+  forbidden_slot_name_tokens?: string[];
+  slot_name_allow?: string[];
 }
 
 let _lex: Lexicon | undefined;
@@ -207,6 +215,33 @@ export function lintForModel(json: any, file = ""): LintReport {
         findings.push({ rule: "l3_free_text", tier: 1, location: `${prop.prop_id}.${path}`, match: val.slice(0, 40), context: val.slice(0, 90) });
     };
     walkL3(prop?.event_specific_slots, "event_specific_slots");
+  }
+
+  // SC-0070: the slot-NAME role-vocabulary guard. scanProse (R4) runs on prose/values only, so slot KEY
+  // names carrying banned grammatical/thematic-role vocabulary slipped through with lint green (Marcia's
+  // catch). Walk every event_specific_slots key (incl. nested *_components), token-split on "_", and BLOCK
+  // any key whose tokens include a banned role term. Allow-list the fundamental communicative roles
+  // (speaker/addressee). Scoped to event_specific_slots ONLY — never the L2 objects_in_scene/object_id namespace.
+  {
+    const lex = lexicon();
+    const banned = new Set((lex.forbidden_slot_name_tokens ?? []).map((t) => t.toLowerCase()));
+    const allow = new Set((lex.slot_name_allow ?? []).map((t) => t.toLowerCase()));
+    if (banned.size) {
+      for (const prop of json.level_3_propositions ?? []) {
+        const walkKeys = (val: unknown, path: string): void => {
+          if (Array.isArray(val)) val.forEach((v, i) => walkKeys(v, `${path}/${i}`));
+          else if (val && typeof val === "object")
+            for (const [k, v] of Object.entries(val as Record<string, unknown>)) {
+              if (!allow.has(k.toLowerCase())) {
+                const tok = k.toLowerCase().split("_").find((t) => banned.has(t));
+                if (tok) findings.push({ rule: "slot_name_role_vocab", tier: 1, location: `${prop.prop_id}.${path}/${k}`, match: k, context: `slot name '${k}' carries role token '${tok}'` });
+              }
+              walkKeys(v, `${path}/${k}`);
+            }
+        };
+        walkKeys(prop?.event_specific_slots, "event_specific_slots");
+      }
+    }
   }
 
   return finalize(findings, file, "FOR_MODEL");

@@ -34,8 +34,8 @@
       "sha256": "d30775f44ae17e57999f7d2622e35a0c96f61fcfacb7b34e42acd9da06852c3e"
     },
     "lint-lexicon.json": {
-      "version": "0.2.0",
-      "sha256": "5bfa0e3fa9afdb8b90912865185a95c8596a7e1c3c58f90000ed748e2f3bb8f2"
+      "version": "0.3.0",
+      "sha256": "4feadfe0652529494d5a767f2d4858d4a7c4de776597730048a7606b868281bf"
     },
     "lint-exceptions.json": {
       "version": "0.1.4",
@@ -138,8 +138,8 @@
       "sha256": "2bd1a6cdcdee6d07f8da25ba56208a92f12045a1a947d1716e9823b765014cf5"
     },
     "drafter/fm-drafter-prompt.md": {
-      "version": "fm-drafter-0.1.5",
-      "sha256": "217825228ee1a41e9202f172bbfdbfaf166f1377b660b73d9379a3fcd1b5e5e6"
+      "version": "fm-drafter-0.1.6",
+      "sha256": "4ec9130c2f2442ca9b555c6675b1e78359d80c51691dbb4c27b288b83d890ae8"
     }
   }
 }

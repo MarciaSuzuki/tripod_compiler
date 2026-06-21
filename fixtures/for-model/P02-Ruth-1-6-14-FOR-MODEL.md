@@ -286,7 +286,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "verse_anchor": "1:6b",
       "proposition_kind": "GAVE",
       "event_specific_slots": {
-        "agent_named": "B10",
+        "named_doer": "B10",
         "people_provided_for": "B31",
         "provision_kind": "BREAD",
         "where_implied": "PL_LAND_OF_JUDAH"
@@ -307,14 +307,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "departure_components": [
           {
             "action": "AROSE_TO_RETURN",
-            "subject": "B3",
+            "about": "B3",
             "accompanying_household": ["B8", "B9"],
             "from_place": "PL2",
             "speech_act": "STATES_AS_TRUE"
           },
           {
             "action": "WENT_OUT",
-            "subject": "B3",
+            "about": "B3",
             "accompanying_household": ["B8", "B9"],
             "from_place": "PL2",
             "speech_act": "STATES_AS_TRUE"
@@ -360,7 +360,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "blesser": "B3",
         "blessing_recipients": ["B8", "B9"],
-        "invoked_divine_agent": "B10",
+        "invoked_deity": "B10",
         "blessing_content_kind": "HESED",
         "prior_hesed_targets": ["B2", "B4", "B5", "B3"],
         "prior_hesed_targets_referential_form": "THE_DEAD_AND_NAOMI",
@@ -382,7 +382,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "blesser": "B3",
         "blessing_recipients": ["B8", "B9"],
-        "invoked_divine_agent": "B10",
+        "invoked_deity": "B10",
         "blessing_content_kind": "MENUCHA_REST",
         "speech_act": "WISHES_FOR_HEARER"
       },
@@ -455,12 +455,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "ASKED",
-            "question_subject": "DAUGHTERS_GOING_WITH_NAOMI",
+            "question_about": "DAUGHTERS_GOING_WITH_NAOMI",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           },
           {
             "action": "ASKED",
-            "question_subject": "SONS_IN_NAOMIS_WOMB",
+            "question_about": "SONS_IN_NAOMIS_WOMB",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           }
         ],
@@ -514,12 +514,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressees": ["B8", "B9"],
         "question_components": [
           {
-            "question_subject": "WAITING_FOR_HYPOTHETICAL_SONS_TO_GROW",
+            "question_about": "WAITING_FOR_HYPOTHETICAL_SONS_TO_GROW",
             "list_position": "FIRST",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           },
           {
-            "question_subject": "RESTRAINING_FROM_HUSBANDS_MEANWHILE",
+            "question_about": "RESTRAINING_FROM_HUSBANDS_MEANWHILE",
             "list_position": "SECOND",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           }
@@ -549,7 +549,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "ASCRIBED",
-            "agent_named": "B10",
+            "named_doer": "B10",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"
           }
         ]
@@ -594,7 +594,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "TURNED_BACK",
-            "subject": "B8",
+            "about": "B8",
             "narrative_status": "EXITS_BOOK_HERE",
             "speech_act": "STATES_AS_TRUE"
           }

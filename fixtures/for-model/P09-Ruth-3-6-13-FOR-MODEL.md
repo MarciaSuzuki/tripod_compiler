@@ -499,7 +499,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "blessing_speaker": "B13",
         "blessing_recipients": "B9",
-        "invoked_divine_agent": "B10",
+        "invoked_deity": "B10",
         "address_form": "MY_DAUGHTER",
         "blessing_content_kind": "BLESSED_OF_YHWH",
         "speech_act": "WISHES_FOR_HEARER"

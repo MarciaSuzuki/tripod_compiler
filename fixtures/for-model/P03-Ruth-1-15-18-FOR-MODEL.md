@@ -274,7 +274,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "VOWED",
             "binder": "B9",
-            "bound_to_referent": "B3",
+            "bound_to": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_GO",
             "matched_action_form": "I_WILL_GO",
             "list_position": "FIRST",
@@ -283,7 +283,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "VOWED",
             "binder": "B9",
-            "bound_to_referent": "B3",
+            "bound_to": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_LODGE",
             "matched_action_form": "I_WILL_LODGE",
             "list_position": "SECOND",
@@ -292,7 +292,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "VOWED",
             "binder": "B9",
-            "bound_to_referent": "B3",
+            "bound_to": "B3",
             "bound_to_collective": "B31",
             "nominal_equation_half": "PEOPLE_HALF",
             "list_position": "THIRD",
@@ -301,8 +301,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "VOWED",
             "binder": "B9",
-            "bound_to_referent": "B3",
-            "invoked_divine_agent": "B10",
+            "bound_to": "B3",
+            "invoked_deity": "B10",
             "referential_form_at_verse": "UNNAMED_DEITY",
             "nominal_equation_half": "GOD_HALF",
             "list_position": "FOURTH",
@@ -311,7 +311,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "VOWED",
             "binder": "B9",
-            "bound_to_referent": "B3",
+            "bound_to": "B3",
             "binding_indefinite_place_form": "WHERE_YOU_DIE",
             "matched_action_form": "I_WILL_DIE",
             "binding_domain": "IDENTITY_AT_LIMIT_OF_EXISTENCE",
@@ -321,7 +321,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "VOWED",
             "binder": "B9",
-            "bound_to_referent": "B3",
+            "bound_to": "B3",
             "binding_demonstrative_place_form": "THERE_DEMONSTRATIVE_LINKING_TO_DEATH_PLACE",
             "matched_action_form": "I_WILL_BE_BURIED",
             "binding_domain": "PLACE_OF_FINAL_REST",
@@ -350,8 +350,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B3",
-        "agent_named": "B10",
-        "agent_named_referential_form": "YHWH",
+        "named_doer": "B10",
+        "named_doer_referential_form": "YHWH",
         "oath_conditional_structural_force": "BINDS_BEYOND_DEATH_VIA_INEVITABLE_CONDITION",
         "speech_act": "INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT"
       },

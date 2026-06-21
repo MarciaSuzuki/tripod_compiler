@@ -301,7 +301,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "ENGULFED",
       "event_specific_slots": {
         "engulfed_one": "B1",
-        "waters_owner": "B2",
+        "waters_belong_to": "B2",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -465,7 +465,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "VOW",
       "event_specific_slots": {
         "vower": "B1",
-        "vow_recipient": "B2",
+        "vowed_to": "B2",
         "contrast_with_proposition": "P12",
         "speech_act": "VOWS"
       },
@@ -482,7 +482,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "declarer": "B1",
-        "salvation_owner": "B2",
+        "salvation_belongs_to": "B2",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {},

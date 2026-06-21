@@ -498,7 +498,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "blesser": "B3",
         "blessing_recipients": "B13",
-        "blessing_recipient_form": "THE_MAN_WHO_TOOK_NOTICE",
+        "blessed_party_form": "THE_MAN_WHO_TOOK_NOTICE",
         "blessing_content_kind": "MAY_HE_BE_BLESSED",
         "speech_act": "WISHES_FOR_THIRD_PARTY"
       },
@@ -539,7 +539,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "blesser": "B3",
         "addressee": "B9",
         "blessing_recipients": "B13",
-        "invoked_divine_agent": "B10",
+        "invoked_deity": "B10",
         "blessing_content_kind": "BLESSED_BY_YHWH",
         "speech_act": "WISHES_FOR_THIRD_PARTY"
       },
@@ -560,7 +560,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B3",
-        "hesed_antecedent": "LEFT_OPEN_YHWH_OR_THE_MAN",
+        "hesed_from": "LEFT_OPEN_YHWH_OR_THE_MAN",
         "hesed_holds": [
           "THE_LIVING",
           "THE_DEAD"
@@ -614,7 +614,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "reporter_referential_form": "RUTH_THE_MOABITESS",
         "addressee": "B3",
         "reported_speaker": "B13",
-        "reported_worker_referent": "B17",
+        "reported_worker": "B17",
         "report_variation_form": "YOUNG_MEN_NOT_YOUNG_WOMEN",
         "speech_act": "REPORTS_PRIOR_SPEECH_INSTRUCTION"
       },

@@ -245,7 +245,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B13",
-        "subject_referential_form": "HA_ISHAH_THE_WOMAN",
+        "about_referential_form": "HA_ISHAH_THE_WOMAN",
         "speech_act": "DIRECTS_HEARER_NOT_TO_DO"
       },
       "inter_proposition_links": {
@@ -338,7 +338,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "questioner": "B3",
         "addressee": "B9",
         "address_form": "MY_DAUGHTER",
-        "question_subject": "IDENTITY_RECOGNITION_AND_STANDING",
+        "question_about": "IDENTITY_RECOGNITION_AND_STANDING",
         "speech_act": "ASKS_KINSHIP_BELONGING_QUESTION"
       },
       "inter_proposition_links": {
@@ -356,7 +356,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "reporter": "B9",
-        "report_recipient": "B3",
+        "reported_to": "B3",
         "reported_party": "B13",
         "reported_party_referential_form": "HA_ISH_THE_MAN",
         "speech_act": "STATES_AS_TRUE"
@@ -377,7 +377,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "SHOWED",
       "event_specific_slots": {
         "shower": "B9",
-        "shown_object": "O16",
+        "shown": "O16",
         "shown_quantity": "SIX_MEASURES",
         "giver_reported": "B13",
         "giver_referential_form": "HA_ISH_THE_MAN",
@@ -425,7 +425,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker": "B3",
         "addressee": "B9",
         "address_form": "MY_DAUGHTER",
-        "matter_referent": "O19",
+        "matter": "O19",
         "speech_act": "DIRECTS_HEARER_TO_DO"
       },
       "inter_proposition_links": {
@@ -442,10 +442,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B3",
-        "subject": "B13",
-        "subject_referential_form": "HA_ISH_THE_MAN",
+        "about": "B13",
+        "about_referential_form": "HA_ISH_THE_MAN",
         "completion_time": "TM_TODAY",
-        "matter_referent": "O19",
+        "matter": "O19",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {},

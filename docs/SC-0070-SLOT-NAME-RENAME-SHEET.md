@@ -1,7 +1,9 @@
 # SC-0070 — Slot-NAME role-vocabulary rename + the slot-name lint extension
 
-> **Status: CALIBRATION — awaiting the Evaluator's draft-verify, then Marcia's final-name confirmation.**
-> Nothing applied. This sheet maps every `event_specific_slots` **key** that leaks banned role-theory
+> **Status: RULED + APPLIED 2026-06-20 (compiler + vault FM pair on branch — Evaluator application-verify +
+> Marcia's merge word pending).** Marcia confirmed all 55 names (flagged ones as listed + clean families as
+> proposed), lint blocks all banned field-names, `agent_named→named_doer` (the significant-absence refinement
+> set aside for a later SC). See [`SC-0070-APPLY-RECORD.md`](SC-0070-APPLY-RECORD.md). This sheet maps every `event_specific_slots` **key** that leaks banned role-theory
 > vocabulary to a proposed non-role-theory name, and specifies the lint extension that makes the leak
 > impossible. Mirrors the R1/R2 rhythm: sheet → draft-verify → rule → apply (one compiler+vault pair).
 
