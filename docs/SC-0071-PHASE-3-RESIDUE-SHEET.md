@@ -1,6 +1,9 @@
 # SC-0071 — Phase 3 (the triage residue) — calibration sheet
 
-> **Status: CALIBRATION — awaiting the Evaluator's draft-verify, then Marcia's ruling. NOTHING APPLIED.**
+> **Status: RULED + APPLIED 2026-06-20 (compiler + vault pair on branch — Evaluator application-verify +
+> Marcia's merge word pending).** Marcia ruled (after the Evaluator's draft-verify): §D1 keep · §D5 keep the
+> preserve_form pair as-is · §D6 + the form-side decompose to governed verbs · §D4 resolve-to-form (J03→YHWH,
+> P07→NAOMI, J05→YHWH + an explicit `NAMING_SHIFT` note in the J05 CL per §B). See [`SC-0071-APPLY-RECORD.md`](SC-0071-APPLY-RECORD.md).
 > The last content-cleanup phase of the sentence-token triage ([[tripod-sentence-token-triage]]). R1
 > (SC-0067, surface forms) · R2 (SC-0069, speech words) · the slot-name rename (SC-0070) are MERGED. This
 > sheet enumerates the **residue** by value-shape — the **(c) structural `*_form` slots**, the **3 held R1

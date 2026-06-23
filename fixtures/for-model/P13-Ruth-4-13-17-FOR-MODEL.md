@@ -264,7 +264,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "taker": "B13",
         "wife_taken": "B9",
-        "resulting_relation_form": "BECAME_HIS_WIFE",
         "consummation_marker": "CAME_TO_HER"
       },
       "inter_proposition_links": {

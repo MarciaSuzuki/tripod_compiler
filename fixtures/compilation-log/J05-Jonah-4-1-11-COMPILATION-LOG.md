@@ -204,6 +204,14 @@ pilot: "pilot-2"
       "note": "Deterministic skeleton: the high-risk register audit (figures to keep, naming shifts, structural absences) is judgment and is deferred to Agent 3 / the READING_QUALITY gate. This is a placeholder so the COMPILATION-LOG is schema-valid; it is not a finding.",
       "required_in_audit": true,
       "source_in_meaning_map": "(skeleton — pending judgment)"
+    },
+    {
+      "id": "R2",
+      "kind": "NAMING_SHIFT",
+      "applies_to": "(whole pericope — the divine name across Jonah 4)",
+      "note": "SC-0071 Phase 3 §B: the deity's name alternates deliberately across the scene — Elohim-dominant through the appointings (the plant/worm/wind: ELOHIM, with the hinge form YHWH_ELOHIM at v.6) and YHWH at the frame (the prayer v.2-3 and the close). The B2 scene referential_form was resolved from the analysis-value ELOHIM_TO_YHWH_SHIFT to the bare name YHWH (the frame/terminus name); this note preserves the deliberate alternation explicitly so it is not left to re-inference. The per-moment names remain recorded in the appointer/questioner referential_form slots. Reconstructor must preserve the Elohim->YHWH movement, not flatten it to one name.",
+      "required_in_audit": true,
+      "source_in_meaning_map": "Jonah 4 — the divine-name alternation (the resolved B2 referential_form + this note)"
     }
   ],
   "cross_pericope_pair_verification": {
