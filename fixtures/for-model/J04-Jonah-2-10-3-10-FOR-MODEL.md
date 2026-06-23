@@ -596,8 +596,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "step_order": "FOURTH",
             "speech_act": "STATES_AS_TRUE"
           }
-        ],
-        "movement_form": "STAIRCASE_DOWN_THRONE_TO_ASHES"
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P11",

@@ -473,7 +473,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
-            "action": "STATED_SELF_AS_FOREIGNER",
+            "action": "STATED",
             "list_position": "THIRD",
             "speech_act": "STATES_AS_TRUE"
           }
@@ -568,12 +568,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "invoked_deity_referential_form": "YHWH_THE_GOD_OF_ISRAEL",
         "blessing_components": [
           {
-            "action": "WISHED_YHWH_TO_REPAY_HER_WORK",
+            "action": "BLESSED",
             "list_position": "FIRST",
             "speech_act": "WISHES_FOR_HEARER"
           },
           {
-            "action": "WISHED_FULL_WAGES_FROM_YHWH_UNDER_WHOSE_WINGS_SHE_TOOK_REFUGE",
+            "action": "BLESSED",
             "list_position": "SECOND",
             "speech_act": "WISHES_FOR_HEARER"
           }
@@ -625,7 +625,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B13",
         "response_components": [
           {
-            "action": "STATED_THAT_HE_COMFORTED_HER",
+            "action": "STATED",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },

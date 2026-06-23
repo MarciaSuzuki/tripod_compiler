@@ -89,7 +89,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B2",
             "role_in_scene": "DIVINE_AGENT",
             "presence": "PRESENT",
-            "referential_form": "NAMED_THEN_ADDRESSED"
+            "referential_form": "YHWH"
           }
         ]
       },

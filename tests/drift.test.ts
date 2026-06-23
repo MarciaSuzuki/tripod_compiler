@@ -146,13 +146,13 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
       }
       totalQuar += r.counts.quarantined;
     }
-    expect(totalQuar).toBe(15); // SC-0023: 8 comm-func + SC-0025: 7 held action — each used once across P01–P06
+    expect(totalQuar).toBe(10); // SC-0023: 8 comm-func + SC-0071: 2 held action (5 decomposed to governed verbs in Phase 3) — each used once across P01–P06
   });
 
   it("quarantineWatch parks each value once in P01–P06 (no recurrence yet)", () => {
     const reports = ALL_FM.map((stem) => validateArtifact(FM(`${stem}-FOR-MODEL.md`)));
     const watch = quarantineWatch(reports);
-    expect(watch.length).toBe(15); // 8 comm-func (SC-0023) + 7 held action (SC-0025)
+    expect(watch.length).toBe(10); // 8 comm-func (SC-0023) + 2 held action (SC-0025; 5 decomposed in SC-0071 Phase 3)
     expect(watch.every((w) => !w.recurs)).toBe(true);
   });
 
@@ -196,17 +196,14 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
 
 describe("SC-0025 — action-slot enforcement (the nested-component action axis)", () => {
   const ACTION_QUAR = quarantineSets()["action"]!;
-  const HELD7 = [
-    "ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH",
-    "WISHED_YHWH_TO_REPAY_HER_WORK",
-    "WISHED_FULL_WAGES_FROM_YHWH_UNDER_WHOSE_WINGS_SHE_TOOK_REFUGE",
-    "STATED_THAT_HE_COMFORTED_HER",
+  // SC-0071 Phase 3: 5 of the original held-7 were decomposed to governed verbs (→ ASCRIBED/STATED/BLESSED);
+  // the 2 that remain quarantined carry preserve_form=true (the Ruth 2:13 pair, kept verbatim per Marcia's ruling).
+  const HELD2 = [
     "STATED_THAT_HE_SPOKE_TO_HEART_OF_HIS_SHIFCHAH",
     "STATED_SHE_IS_NOT_AS_ONE_OF_HIS_SHIFCHOT",
-    "STATED_SELF_AS_FOREIGNER",
   ];
 
-  it("action is convergent, seeded with 31 verbs; the 7 held are quarantined, not approved (disjoint)", () => {
+  it("action is convergent, seeded with 31 verbs; the 2 held are quarantined, not approved (disjoint)", () => {
     expect(axisClass("action")).toBe("convergent");
     const entries = loadApprovedEnumerations().axes["action"] ?? [];
     const approved = new Set(entries.map((e) => e.value));
@@ -215,15 +212,15 @@ describe("SC-0025 — action-slot enforcement (the nested-component action axis)
     // (first action-axis growth: SC-0064 sitting B1, +8 ruled by Marcia 2026-06-12).
     expect(entries.filter((e) => e.sc_ref === "SC-0025").length).toBe(31);
     expect(approved.size).toBeGreaterThanOrEqual(31);
-    expect(ACTION_QUAR.size).toBe(7);
-    for (const v of HELD7) {
+    expect(ACTION_QUAR.size).toBe(2);
+    for (const v of HELD2) {
       expect(ACTION_QUAR.has(v), `${v} quarantined`).toBe(true);
       expect(approved.has(v), `${v} NOT approved`).toBe(false);
     }
     for (const v of ACTION_QUAR) expect(approved.has(v), v).toBe(false);
   });
 
-  it("the held-7 surface as `quarantined` on the action axis across the corpus, never `drift`/`block`", () => {
+  it("the held-2 surface as `quarantined` on the action axis across the corpus, never `drift`/`block`", () => {
     let held = 0;
     for (const stem of ALL_FM) {
       const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
@@ -234,7 +231,7 @@ describe("SC-0025 — action-slot enforcement (the nested-component action axis)
         held++;
       }
     }
-    expect(held).toBe(7); // the 7 held action labels, each used once across P01–P06
+    expect(held).toBe(2); // the 2 held action labels (the preserve_form=true Ruth 2:13 pair), each used once across P01–P06
   });
 
   it("the engine REACHES a nested *_components[] action and drifts on an unseen verb", () => {
@@ -254,7 +251,7 @@ describe("SC-0025 — action-slot enforcement (the nested-component action axis)
     });
     expect(vocabularyFindings(mk("VOWED"), driftBaseline()).filter((f) => f.axis === "action").length).toBe(0);
     expect(
-      vocabularyFindings(mk("STATED_SELF_AS_FOREIGNER"), driftBaseline()).find((f) => f.axis === "action")?.severity,
+      vocabularyFindings(mk("STATED_THAT_HE_SPOKE_TO_HEART_OF_HIS_SHIFCHAH"), driftBaseline()).find((f) => f.axis === "action")?.severity,
     ).toBe("quarantined");
   });
 

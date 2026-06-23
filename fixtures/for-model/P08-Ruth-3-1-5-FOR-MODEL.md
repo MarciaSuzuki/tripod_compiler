@@ -221,7 +221,6 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "identified_kinsman": "B13",
         "kinsman_referential_form": "OUR_KINSMAN_MODA",
         "named_tie": "B16",
-        "tie_form": "RUTH_WAS_WITH_HIS_YOUNG_WOMEN",
         "question_form": "RHETORICAL_RECOGNITION_QUESTION",
         "speech_act": "STATES_AS_TRUE"
       },

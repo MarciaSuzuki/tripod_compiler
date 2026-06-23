@@ -355,7 +355,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
           },
           {
-            "action": "ASCRIBED_COURTROOM_TESTIMONY_TO_YHWH",
+            "action": "ASCRIBED",
             "invoked_deity": "B10",
             "list_position": "THIRD",
             "speech_act": "ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT"

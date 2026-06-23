@@ -197,7 +197,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B3",
             "role_in_scene": "MOTHER_IN_LAW",
             "presence": "PRESENT",
-            "referential_form": "ALTERNATES_MOTHER_IN_LAW_AND_NAOMI"
+            "referential_form": "NAOMI"
           },
           {
             "being_id": "B9",
