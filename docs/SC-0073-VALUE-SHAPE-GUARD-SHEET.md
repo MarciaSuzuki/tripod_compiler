@@ -6,6 +6,12 @@
 > Evaluator draft-verify → Marcia rules the design → Architect applies → Evaluator application-verify
 > → Marcia's merge word**. No lint rule, no lexicon edit, no FM touched until Marcia rules §6.
 
+> **Evaluator draft-verify: PASS (2026-06-26).** Independently rebuilt the exemption model and re-ran on
+> `9f7f64c` — load-bearing claim reproduced exactly (0 non-exempt ≥4-token; UNCOVERED=[]; the 2 Ruth 2:13
+> clauses resolved from `preserve_form` refs and confirmed on the quarantine list). Two corrections folded
+> in: §4 residual sub-counts fixed to unique-by-value **49 / 43** (= 92; the earlier 54/46 were per-
+> placement); added bite-test 12, the `preserve_form`-⊆-exempt anti-drift invariant. Design ready for §6 ruling.
+
 > **SC-ID:** SC-0073 (reconfirmed 2026-06-26 vs the canonical `SPEC_CHANGES.md`, highest live = SC-0072;
 > `gh pr list` = 0 open PRs in both repos). The oral-pipeline Stage 2 also wants a number — **binding
 > allocation is at apply** (whoever lands first); this sheet reserves SC-0073 for the guard.
@@ -157,11 +163,15 @@ Full output: `tripod-eval-artifacts/PHASE4-VALUE-SHAPE-CENSUS-9f7f64c.txt` (scri
 | E7 preserve-form clause | 2 |
 | **TRUE_RESIDUAL (non-exempt)** | **103 occ / 92 unique** |
 
-**The residual, bucketed by token count:**
+**The residual, bucketed by token count (unique values — sums to the 92 above):**
 
-- **2 tokens — 54 unique** (`BARLEY_HARVEST`, `SIX_MEASURES`, `OFFERED_SACRIFICE`, `SAT_DOWN`, …)
-- **3 tokens — 46 unique** (`ABOUT_AN_EPHAH`, `BELLY_OF_FISH`, `EAST_OF_CITY`, …)
+- **2 tokens — 49 unique** (`BARLEY_HARVEST`, `SIX_MEASURES`, `OFFERED_SACRIFICE`, `SAT_DOWN`, …)
+- **3 tokens — 43 unique** (`ABOUT_AN_EPHAH`, `BELLY_OF_FISH`, `EAST_OF_CITY`, …)
 - **≥4 tokens — 0.**
+
+(49 + 43 = 92. NB: counted by *unique value*. The same value can sit in several slots/pericopes, so a
+per-(value, slot, pericope) tally runs higher — 54 / 46 placements — but the guard exempts by value, so the
+unique-value count is the one that matters here.)
 
 → **A ≥4-token test on the non-exempt remainder yields 0 findings on the clean corpus.** ✔
 
@@ -174,7 +184,7 @@ false positive (e.g. drop E7 and the two Ruth 2:13 clauses get flagged; drop E5 
 
 ### The borderline band — Marcia's eye (§6 decision)
 
-The 3-token residual (46 values) is the band just **under** the ≥4 line. Most are clean compact labels
+The 3-token residual (43 unique values) is the band just **under** the ≥4 line. Most are clean compact labels
 (`SECOND_NAMED_BRIDE`, `THREE_DAYS_WALK`, `HERD_AND_FLOCK`). A handful read a little **clause-y**:
 
 | value | slot | pericope |
@@ -223,6 +233,11 @@ values are not.
 9. A code value (`TM_PERIOD_OF_JUDGES`, `PL_LAND_OF_JUDAH`) → 0 (E3).
 10. A governed action verb (`DREW_OFF_SANDAL`) and a 3-token compact label (`BARLEY_HARVEST`) → 0.
 11. **Whole-corpus guard:** linting all 19 fixtures yields **0** `value_shape_prose` findings.
+12. **Anti-drift invariant (Evaluator's hardening, draft-verify 2026-06-26):** for every fixture, *every*
+    `preserve_form: true` value (resolved from the `fidelity.elements`/`groups` refs) is on the guard's
+    exempt set. This pins the E7 exemption to the FM flags themselves, so the guard can never silently drift
+    away from a future-added protected clause even if `quarantined-vocabulary.json` lags. (Confirmed today by
+    hand: P06's two refs → the two Ruth 2:13 clauses → both on the quarantine list.)
 
 ---
 
@@ -261,7 +276,8 @@ Evaluator before assuming compiler-only**, per the risk-tiered-verification rule
 1. Allocate SC-0073 in `SPEC_CHANGES.md` (reconfirm next-free + 0 open PRs at apply).
 2. Add the `value_shape_prose` rule to `lint.ts`; add params to `lint-lexicon.json`; bump
    `schema_version` → `0.4.0`; re-pin (`pins.json` + pin table + sha).
-3. Add `tests/value-shape-lint.test.ts` (the §5 bite-tests, both ways).
+3. Add `tests/value-shape-lint.test.ts` (the §5 bite-tests, both ways — incl. test 12, the
+   `preserve_form`-⊆-exempt anti-drift invariant).
 4. **Gates (must hold, unchanged):** `validate` 19/19 0-drift · `check-drift` 0 (+`:vault` 0 @ v0.20) ·
    coverage 14/14 · gold-diff unchanged · id-check 19 · lint 38/0 · **whole-corpus `value_shape_prose` =
    0** · board green · `vitest` green incl. the new bite-tests.
