@@ -34,8 +34,8 @@
       "sha256": "d30775f44ae17e57999f7d2622e35a0c96f61fcfacb7b34e42acd9da06852c3e"
     },
     "lint-lexicon.json": {
-      "version": "0.3.0",
-      "sha256": "4feadfe0652529494d5a767f2d4858d4a7c4de776597730048a7606b868281bf"
+      "version": "0.4.0",
+      "sha256": "4a7ecddd170672c89aa1a828c4425b9e0333200f2a27f584509ed57004a6d267"
     },
     "lint-exceptions.json": {
       "version": "0.1.4",

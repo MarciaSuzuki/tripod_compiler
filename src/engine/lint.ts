@@ -1,4 +1,5 @@
-import { loadSpecJson } from "../spec/load.js";
+import { loadSpecJson, loadValidationRules } from "../spec/load.js";
+import { loadApprovedEnumerations, loadQuarantinedVocabulary } from "../spec/enumerations.js";
 
 /**
  * The Level-3 lint (docs/COVERAGE.md stack: legal · complete · **atomic-bare-plain** · true).
@@ -12,6 +13,10 @@ import { loadSpecJson } from "../spec/load.js";
  *   - §3C that is not an entity (R1) — an object that is really an event / framing / literary pattern,
  *   - slot-NAME role vocabulary (SC-0070) — an event_specific_slots KEY name carrying grammatical/thematic-role
  *     vocabulary (agent/recipient/subject/…), the WEIRD-priming the method bans; ess-scoped, allow-lists speaker/addressee.
+ *   - value-SHAPE prose (SC-0073) — a sentence-shaped UPPER_SNAKE slot VALUE in event_specific_slots: the
+ *     value analogue of the slot-name guard, closing the post-Jonah sentence-token triage. Membership-exempt
+ *     first (approved-enum/closed-list/code/referential-family/kept-form/4-keeps/preserve-clause), THEN a
+ *     ≥N-token shape test on the remainder; the now-clean seed can't drift back into prose.
  * It SURFACES drift; the human judges (and relocates insight, never deletes it).
  */
 
@@ -24,7 +29,8 @@ export type LintRule =
   | "meta_question"
   | "link_in_level3"
   | "l3_free_text"
-  | "slot_name_role_vocab";
+  | "slot_name_role_vocab"
+  | "value_shape_prose";
 
 /** A reviewer-accepted lint exception attached to a finding (downgrades it from drift to accepted). */
 export interface AcceptedLintException {
@@ -96,11 +102,43 @@ interface Lexicon {
   // guard), and the allow-list of fundamental communicative-event roles exempted from it.
   forbidden_slot_name_tokens?: string[];
   slot_name_allow?: string[];
+  // SC-0073: the value-SHAPE prose guard's parameters. min_tokens = the underscore-token threshold above
+  // which a non-exempt UPPER_SNAKE ess VALUE is sentence-shaped (BLOCK). The other three are the
+  // guard-specific allow-lists (the membership exemptions E1/E2/E3/E7 derive live from the pinned
+  // approved-enumerations / validation-rules closed_lists / quarantined-vocabulary and are NOT re-listed
+  // here, so the allow-list can never drift from canon).
+  value_shape_prose_min_tokens?: number;
+  value_shape_kept_form_slots?: string[]; // E5: slot KEYS whose values are kept structural forms
+  value_shape_referential_address_slots?: string[]; // E4: the R1 address-form slot KEYS (besides *referential_form)
+  value_shape_explicit_keeps?: string[]; // E6: the 4 ruled-KEEP VALUES (3 sit in non-kept-form slots)
 }
 
 let _lex: Lexicon | undefined;
 function lexicon(): Lexicon {
   return (_lex ??= loadSpecJson<Lexicon>("lint-lexicon.json"));
+}
+
+/**
+ * SC-0073 value-shape guard — the membership exemptions that derive LIVE from the pinned spec files
+ * (so they can never drift from canon, unlike a hand-copied list):
+ *   - approved : every approved-enumerations value, any axis (E1 — incl. the governed action verbs)
+ *   - closed   : every validation-rules closed_list value (E2 — genre/register/speech_act/…)
+ *   - quarantined : every quarantined-vocabulary value (E7 — the 2 Ruth 2:13 preserve_form clauses)
+ *   - code     : the L3 registry ID namespaces (E3 — B/PL/O/TM/TH/CB/FIG/I/D)
+ * The slot-key exemptions (E4 referential family, E5 kept-form slots) and the value-keep list (E6) are
+ * guard-specific and live in lint-lexicon.json. Memoized like the lexicon.
+ */
+interface ValueShapeExemptSets { approved: Set<string>; closed: Set<string>; quarantined: Set<string>; code: RegExp; }
+let _vsExempt: ValueShapeExemptSets | undefined;
+function valueShapeExemptSets(): ValueShapeExemptSets {
+  if (_vsExempt) return _vsExempt;
+  const approved = new Set<string>();
+  for (const vals of Object.values(loadApprovedEnumerations().axes ?? {})) for (const e of vals) approved.add(e.value);
+  const closed = new Set<string>();
+  for (const [k, v] of Object.entries(loadValidationRules().closed_lists)) if (!k.startsWith("FORBIDDEN") && Array.isArray(v)) for (const s of v) closed.add(s);
+  const quarantined = new Set<string>();
+  for (const vals of Object.values(loadQuarantinedVocabulary().axes ?? {})) for (const e of vals) quarantined.add(e.value);
+  return (_vsExempt = { approved, closed, quarantined, code: /^(?:B\d|PL\d|PL_|O\d|O_|TM_|TH_|CB_|FIG_|I\d|D\d)/ });
 }
 
 // §3C R1 signals: an "object" id/label that actually denotes an event, a referential framing, or a
@@ -240,6 +278,48 @@ export function lintForModel(json: any, file = ""): LintReport {
             }
         };
         walkKeys(prop?.event_specific_slots, "event_specific_slots");
+      }
+    }
+  }
+
+  // SC-0073: the value-SHAPE prose guard (the value analogue of SC-0070; closes the sentence-token triage).
+  // A sentence-shaped UPPER_SNAKE VALUE in event_specific_slots is prose-in-disguise (e.g.
+  // WISHED_FULL_WAGES_FROM_YHWH_UNDER_WHOSE_WINGS_SHE_TOOK_REFUGE). Length alone can't separate it from
+  // settled long vocabulary (DIRECTS_HEARER_TO_DO, HA_ISH_THE_MAN, SIX_STEP_LADDER_…), so we EXEMPT BY
+  // MEMBERSHIP FIRST, then apply a ≥N-token shape test to the remainder. Post-SC-0072 the non-exempt
+  // remainder has 0 values of ≥4 tokens (calibration: docs/SC-0073-VALUE-SHAPE-GUARD-SHEET.md §4), so the
+  // guard is silent on the clean corpus while still BLOCKing a re-introduced clause. ess-scoped, BLOCK.
+  {
+    const lex = lexicon();
+    const minTokens = lex.value_shape_prose_min_tokens ?? 4;
+    const keptFormSlots = new Set(lex.value_shape_kept_form_slots ?? []);
+    const addressSlots = new Set(lex.value_shape_referential_address_slots ?? []);
+    const explicitKeeps = new Set(lex.value_shape_explicit_keeps ?? []);
+    if (minTokens > 0) {
+      const ex = valueShapeExemptSets(); // E1/E2/E3/E7 — derived live from the pinned spec files
+      const isMultiwordUpperSnake = (s: string) => /^[A-Z0-9]+(?:_[A-Z0-9]+)+$/.test(s);
+      // E4: the referential-form family is keyed off the slot KEY (a descriptive referring expression),
+      // matching validate's axisClass: any key ending referential_form / referential_form_at_verse, plus
+      // the ruled R1 address slots (address_form / divine_address_form / …).
+      const isReferentialKey = (k: string) =>
+        k.endsWith("referential_form") || k.endsWith("referential_form_at_verse") || addressSlots.has(k);
+      const exempt = (key: string, val: string): boolean =>
+        ex.code.test(val) || ex.approved.has(val) || ex.closed.has(val) || ex.quarantined.has(val) ||
+        explicitKeeps.has(val) || isReferentialKey(key) || keptFormSlots.has(key);
+      for (const prop of json.level_3_propositions ?? []) {
+        // walk every ess value (incl. nested *_components), tracking the value's immediate slot KEY
+        const walkVals = (node: unknown, key: string, path: string): void => {
+          if (typeof node === "string") {
+            if (isMultiwordUpperSnake(node) && !exempt(key, node)) {
+              const n = node.split("_").length;
+              if (n >= minTokens)
+                findings.push({ rule: "value_shape_prose", tier: 1, location: `${prop.prop_id}.${path}`, match: node, context: `slot '${key}' value is sentence-shaped (${n} tokens)` });
+            }
+          } else if (Array.isArray(node)) node.forEach((v, i) => walkVals(v, key, `${path}[${i}]`));
+          else if (node && typeof node === "object")
+            for (const [k, v] of Object.entries(node as Record<string, unknown>)) walkVals(v, k, `${path}/${k}`);
+        };
+        walkVals(prop?.event_specific_slots, "event_specific_slots", "event_specific_slots");
       }
     }
   }
