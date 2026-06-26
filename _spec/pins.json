@@ -137,6 +137,78 @@
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "2bd1a6cdcdee6d07f8da25ba56208a92f12045a1a947d1716e9823b765014cf5"
     },
+    "source/esther/E01.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "a299ccb6c380450e693f6e5db88c5f33fb0c070938487c3301dc2b1c6f1790de"
+    },
+    "source/esther/E02.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "5ab8e158201258664db92b25fed83559d6c9e3b9d38e21c946bf3efe2b85617f"
+    },
+    "source/esther/E03.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "ed720a488a389662d0e7df98102cc7438d358d91d842feda72eb3e51d99cf36c"
+    },
+    "source/esther/E04.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "19b16db503f0bc98392d3998bde4e864d5e30706f167234e14fd9e45702a89d7"
+    },
+    "source/esther/E05.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "2131c2add6727a8db43f7bbf06f546b8c5e3e10226689087e83ecc1b77e3aabf"
+    },
+    "source/esther/E06.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "fe2b8456ce0dbce4064600a597de8fbabb3e2ffeef9b10ba283201907a7a86ee"
+    },
+    "source/esther/E07.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "8fd46d925c6b46822f21dc87e85d1c83eda6dc86c5bd81605f19894cb9a48957"
+    },
+    "source/esther/E08.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "86cf95f7a260bc87f6e7a80c13588bcbe4726a02d0c8ea60f394ab65967a1539"
+    },
+    "source/esther/E09.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "c6913ff6acaf3e4e2ba144920d37c35fecc169a84f2c714758423952c39b481d"
+    },
+    "source/esther/E10.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "3522c47fbf2e3f10a6487c6062129eeedb18519f92943d77b10c1c245653952d"
+    },
+    "source/esther/E11.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "910f146d33848d0a56278b841bc7699f72571a97b596212b59724b0c80d722c2"
+    },
+    "source/esther/E12.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "11447ae9818b486cdc3640cff2e0657e6d3d043a33cf0561226fae9c070e39a4"
+    },
+    "source/esther/E13.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "4066bfb213b551174a84e48c954f7366528b94a6417122e3f305b187a8bcc85a"
+    },
+    "source/esther/E14.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "879462c4443d684deb68c78d82bbc399bbba9f4a7ebac745d1c67046cd6a8f9b"
+    },
+    "source/esther/E15.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "b44fa94129babf7e46a0bb18da6570e8e3283458b199315571d0208365db09ac"
+    },
+    "source/esther/E16.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "f8e6c31846059ef374454ec7d5885398d80f077d25bc9d2c602825627a075fd9"
+    },
+    "source/esther/E17.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "28dd51cc0264605afe7e03e109fbcea3f5507f71f3af55f9df485d27d3c8556e"
+    },
+    "source/esther/E18.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "693bc783237c88a1597020ecb31668ea320b9e686c92849ea42dda09a5d9be46"
+    },
     "drafter/fm-drafter-prompt.md": {
       "version": "fm-drafter-0.1.6",
       "sha256": "4ec9130c2f2442ca9b555c6675b1e78359d80c51691dbb4c27b288b83d890ae8"
