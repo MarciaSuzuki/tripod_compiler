@@ -336,7 +336,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "convener": "B13",
         "ascended_to": "PL7",
-        "ascent": "WENT_UP_TO_GATE",
+        "ascent": "WENT_UP",
         "seating_act": "SAT_DOWN",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -359,7 +359,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "passer_by": "B19",
         "passing_location": "PL7",
-        "identified_as": "REDEEMER_OF_WHOM_BOAZ_SPOKE",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -396,7 +395,16 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "speech_act": "DIRECTS_HEARER_TO_DO"
           }
         ],
-        "compliance": "TURNED_ASIDE_AND_SAT"
+        "compliance_components": [
+          {
+            "action": "TURNED_ASIDE",
+            "speech_act": "STATES_AS_TRUE"
+          },
+          {
+            "action": "SAT",
+            "speech_act": "STATES_AS_TRUE"
+          }
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P2",
@@ -418,7 +426,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "convener": "B13",
         "elders_taken": "B20",
         "elder_count": "TEN",
-        "elder_designation": "TEN_MEN_OF_TOWN_ELDERS",
         "directive": {
           "action": "DIRECTED",
           "speech_act": "DIRECTS_HEARER_TO_DO"
@@ -633,7 +640,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           "REDEEMING",
           "EXCHANGING"
         ],
-        "custom_purpose": "TO_CONFIRM_EVERY_MATTER",
+        "custom_purpose": "CONFIRMATION",
         "temporal_setting": "TM_FORMER_TIMES",
         "realm": "PL_ISRAEL",
         "speech_act": "STATES_AS_TRUE"
@@ -655,8 +662,18 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "NARRATOR_FRAME",
       "event_specific_slots": {
         "frame_type": "CUSTOM_DESCRIPTION",
-        "custom_act": "DREW_OFF_SANDAL_AND_GAVE_TO_FELLOW",
-        "custom_token": "O26",
+        "custom_act_components": [
+          {
+            "action": "DREW_OFF_SANDAL",
+            "speech_act": "STATES_AS_TRUE"
+          },
+          {
+            "action": "GAVE",
+            "given_token": "O26",
+            "given_to": "FELLOW",
+            "speech_act": "STATES_AS_TRUE"
+          }
+        ],
         "attestation_name": "THE_ATTESTATION_IN_ISRAEL",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -688,8 +705,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "attestation_token": "O26",
             "speech_act": "STATES_AS_TRUE"
           }
-        ],
-        "attestation_form": "SANDAL_DRAWN_OFF"
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P12",

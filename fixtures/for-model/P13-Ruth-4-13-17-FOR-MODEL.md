@@ -285,8 +285,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "giver": "B10",
         "gift_given": "CONCEPTION",
-        "given_to": "B9",
-        "divine_act_marker": "SECOND_DIRECT_DIVINE_ACT"
+        "given_to": "B9"
       },
       "inter_proposition_links": {
         "caused_by": "P1",
@@ -326,7 +325,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "blessing_speakers": "B24",
         "blessing_addressee": "B3",
         "invoked_deity": "B10",
-        "blessing_content_kind": "HAS_NOT_LEFT_WITHOUT_REDEEMER_TODAY",
         "redeemer": "B?",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -412,7 +410,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "taker": "B3",
         "child_taken": "B?",
-        "placement": "SET_ON_BOSOM_CHEQ"
+        "placement": "ON_BOSOM"
       },
       "inter_proposition_links": {
         "forward_link_to": "P9"

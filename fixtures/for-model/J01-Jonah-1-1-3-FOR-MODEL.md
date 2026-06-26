@@ -296,7 +296,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "payer": "B1",
         "fare_paid": "O2",
         "boarded_vessel": "O1",
-        "descent_marker": "GOING_DOWN_INTO_SHIP",
+        "descent_marker": "GOING_DOWN",
         "sail_companions": "B4",
         "intended_destination": "PL2",
         "fled_from_presence": "CB_0052",

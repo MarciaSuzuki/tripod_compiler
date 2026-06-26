@@ -455,16 +455,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "ASKED",
-            "question_about": "DAUGHTERS_GOING_WITH_NAOMI",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           },
           {
             "action": "ASKED",
-            "question_about": "SONS_IN_NAOMIS_WOMB",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           }
-        ],
-        "dissuasion_target": "LEVIRATE_STYLE_REMARRIAGE_THROUGH_NAOMI"
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P8",
@@ -514,17 +511,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressees": ["B8", "B9"],
         "question_components": [
           {
-            "question_about": "WAITING_FOR_HYPOTHETICAL_SONS_TO_GROW",
             "list_position": "FIRST",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           },
           {
-            "question_about": "RESTRAINING_FROM_HUSBANDS_MEANWHILE",
             "list_position": "SECOND",
             "speech_act": "ASKS_RHETORICAL_QUESTION_AS_DISSUASION"
           }
-        ],
-        "dissuasion_target": "IMPOSSIBILITY_OF_DAUGHTERS_WAITING_ON_HYPOTHETICAL_SONS"
+        ]
       },
       "inter_proposition_links": {
         "caused_by": "P10",

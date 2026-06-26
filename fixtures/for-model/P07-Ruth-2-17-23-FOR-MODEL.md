@@ -461,7 +461,16 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "giver": "B9",
         "given_to_mother_in_law": "B3",
         "gift_leftover": "O10",
-        "brought_out_first": "BROUGHT_OUT_THEN_GAVE"
+        "gift_action_components": [
+          {
+            "action": "BROUGHT_OUT",
+            "speech_act": "STATES_AS_TRUE"
+          },
+          {
+            "action": "GAVE",
+            "speech_act": "STATES_AS_TRUE"
+          }
+        ]
       },
       "inter_proposition_links": {
         "forward_link_to": "P7"
@@ -499,7 +508,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "blesser": "B3",
         "blessing_recipients": "B13",
         "blessed_party_form": "THE_MAN_WHO_TOOK_NOTICE",
-        "blessing_content_kind": "MAY_HE_BE_BLESSED",
         "speech_act": "WISHES_FOR_THIRD_PARTY"
       },
       "inter_proposition_links": {
@@ -560,7 +568,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B3",
-        "hesed_from": "LEFT_OPEN_YHWH_OR_THE_MAN",
         "hesed_holds": [
           "THE_LIVING",
           "THE_DEAD"

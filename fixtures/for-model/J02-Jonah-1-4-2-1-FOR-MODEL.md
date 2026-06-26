@@ -375,7 +375,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "storm_magnitude": "GREAT",
         "location": "PL4",
         "imperiled_vessel": "O1",
-        "vessel_peril": "ABOUT_TO_BREAK_APART"
+        "vessel_peril": "NEAR_BREAKING"
       },
       "inter_proposition_links": {
         "caused_by": "P1",
@@ -392,7 +392,9 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "fearers": "B4",
         "feared": "STORM",
-        "subsequent_response": "CRIED_TO_OWN_GODS",
+        "subsequent_response": {
+          "action": "CRIED"
+        },
         "crier": "EACH_MAN",
         "addressee": "OWN_GOD"
       },
@@ -431,7 +433,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "WENT_DOWN",
       "event_specific_slots": {
         "descender": "B1",
-        "destination": "FAR_HOLD_OF_SHIP",
+        "destination": "SHIP_HOLD",
         "subsequent_states": [
           "LAY_DOWN",
           "FELL_DEEP_ASLEEP"
@@ -626,7 +628,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "knowers": "B4",
         "fled_from": "CB_0052",
-        "basis_of_knowledge": "HE_HAD_TOLD_THEM"
+        "basis_of_knowledge": {
+          "action": "TOLD",
+          "teller": "B1"
+        }
       },
       "inter_proposition_links": {
         "caused_by": "P12",
@@ -697,8 +702,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "rowers": "B4",
         "row_destination": "PL5",
-        "row_effort": "DUG_OARS_IN_HARD",
-        "reason": "SEA_KEPT_GROWING_STORMIER_AGAINST_THEM"
+        "row_effort": "ROWED_HARD",
+        "reason": "SEA_GROWING_STORMIER"
       },
       "inter_proposition_links": {
         "caused_by": "P16",
@@ -787,7 +792,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "fear_magnitude": "GREAT",
         "worship_acts": [
           {
-            "worship_act": "FEARED_YHWH_GREAT_FEAR",
+            "worship_act": "FEARED",
             "speech_act": "STATES_AS_TRUE"
           },
           {
