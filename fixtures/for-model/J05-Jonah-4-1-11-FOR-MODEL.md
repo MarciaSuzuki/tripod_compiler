@@ -412,8 +412,10 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "builder": "B1",
         "shelter_built": "O13",
         "shelter_purpose": "SHADE",
-        "post_build_position": "SAT_UNDER_IN_SHADE",
-        "watch_intent": "UNTIL_SEE_CITY_FATE"
+        "post_build_position": {
+          "action": "SAT"
+        },
+        "watch_intent": "SEE_CITY_FATE"
       },
       "inter_proposition_links": {
         "forward_link_to": "P9"
@@ -484,7 +486,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "appointer": "B2",
         "appointer_referential_form": "ELOHIM",
         "appointed_creature": "B13",
-        "appointment_timing": "RISING_OF_DAWN_NEXT_DAY"
+        "appointment_timing": "DAWN_NEXT_DAY"
       },
       "inter_proposition_links": {
         "forward_link_to": "P13"

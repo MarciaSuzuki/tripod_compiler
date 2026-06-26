@@ -207,7 +207,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "LAY_DOWN",
       "event_specific_slots": {
         "reclining_woman": "B9",
-        "position": "MARGELOT_PLACE_OF_HIS_FEET",
+        "position": "MARGELOT",
         "until_boundary": "BOQER_MORNING",
         "referential_form_at_verse": "HA_ISHAH_THE_WOMAN"
       },
@@ -226,7 +226,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "ROSE",
       "event_specific_slots": {
         "riser": "B9",
-        "timing": "BEFORE_ONE_COULD_RECOGNIZE_ANOTHER",
+        "timing": "BEFORE_RECOGNITION",
         "referential_form_at_verse": "SHE_PRONOMINAL"
       },
       "inter_proposition_links": {

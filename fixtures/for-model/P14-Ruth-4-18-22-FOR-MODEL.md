@@ -304,7 +304,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "begetter_name": "Jesse",
         "begotten": "B26",
         "begotten_name": "David",
-        "begotten_role": "LINE_TERMINUS_THE_KING"
+        "begotten_role": "LINE_TERMINUS"
       },
       "inter_proposition_links": {},
       "cb_flags": [

@@ -316,7 +316,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "POSITIONED",
             "kinsman": "B13",
             "kinship_anchor_being": "B3",
-            "kinship_anchor_relation": "WIDOW_OF_DECEASED_ANCESTOR",
+            "kinship_anchor_relation": "WIDOW",
             "deceased_ancestor": "B2",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
@@ -395,7 +395,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "gleaner": "B9",
         "destination": "PL5",
-        "gleaning_position_relation": "BEHIND_HARVESTERS_IN_INSTITUTIONAL_GLEANING_POSITION",
+        "gleaning_position_relation": "BEHIND_HARVESTERS",
         "harvesters": "B14",
         "speech_act": "STATES_AS_TRUE"
       },
@@ -507,7 +507,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           {
             "action": "IDENTIFIED",
             "identified_party": "B9",
-            "epithet_voice_layer": "THIRD_PARTY_FIELD_COMMUNITY_VOICE_FIRST_OCCURRENCE_IN_BETHLEHEM",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -523,7 +522,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "REPORTED",
             "quoted_prior_speaker": "B9",
             "quoted_prior_speech_act": "REQUESTS_PERMISSION_TO_DO",
-            "quoted_prior_action": "GLEAN_AND_GATHER_AMONG_SHEAVES_AFTER_REAPERS",
             "list_position": "THIRD",
             "speech_act": "REPORTS_PRIOR_SPEECH_REQUEST"
           },

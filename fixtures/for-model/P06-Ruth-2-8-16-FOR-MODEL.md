@@ -460,7 +460,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "speaker": "B9",
         "addressee": "B13",
-        "name_known_status": "NAME_NOT_YET_KNOWN_TO_RUTH",
         "exchange_components": [
           {
             "action": "ASKED",
@@ -535,7 +534,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "action": "STATED",
-            "moab_naming_status": "WITHHELD_IN_BOAZ_SPEECH",
             "list_position": "SECOND",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -601,7 +599,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "speaker": "B9",
         "addressee": "B13",
         "address_form": "MY_LORD",
-        "name_known_status": "NAME_NOT_YET_KNOWN_TO_RUTH",
         "speech_act": "STATES_HOPED_FOR_CONDITION"
       },
       "inter_proposition_links": {

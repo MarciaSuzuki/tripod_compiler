@@ -746,7 +746,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "perceiver": "B9",
         "whose_deeds": "B5",
-        "perceived_content": "TURNED_FROM_EVIL_WAY"
+        "perceived_content": "TURNED_FROM_EVIL"
       },
       "inter_proposition_links": {
         "caused_by": "P16",
@@ -764,8 +764,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "RELENTED",
       "event_specific_slots": {
         "relenter": "B9",
-        "relented_of": "DISASTER_HE_HAD_SPOKEN",
-        "non_execution_marker": "DID_NOT_DO_IT"
+        "relented_of": "DISASTER",
+        "non_execution_marker": "NOT_EXECUTED"
       },
       "inter_proposition_links": {
         "caused_by": "P18",

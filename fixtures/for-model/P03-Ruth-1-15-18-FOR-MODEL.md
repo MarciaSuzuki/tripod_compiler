@@ -352,7 +352,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "addressee": "B3",
         "named_doer": "B10",
         "named_doer_referential_form": "YHWH",
-        "oath_conditional_structural_force": "BINDS_BEYOND_DEATH_VIA_INEVITABLE_CONDITION",
         "speech_act": "INVOKES_SELF_CURSE_AS_OATH_ENFORCEMENT"
       },
       "inter_proposition_links": {
@@ -377,7 +376,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "action": "SAW",
             "perceiver": "B3",
             "perceived": "B9",
-            "narrator_interior_access_scope": "GIVEN_TO_RUTHS_RESOLVE_WITHHELD_FROM_NAOMIS_RESPONSE",
             "list_position": "FIRST",
             "speech_act": "STATES_AS_TRUE"
           },

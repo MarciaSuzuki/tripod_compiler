@@ -480,7 +480,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "worthy_deed_place": "PL8",
         "name_proclamation_place": "PL1",
         "doubled_place_form": "EPHRATHAH_AND_BETHLEHEM",
-        "blessing_content_kind": "WORTH_AND_RENOWN_IN_LINEAGE_TOWN",
         "speech_act": "WISHES_FOR_HEARER"
       },
       "inter_proposition_links": {
@@ -537,7 +536,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "seed_given_to": "B13",
         "seed_from": "B9",
         "seed_from_referential_form": "THIS_YOUNG_WOMAN",
-        "blessing_content_kind": "SEED_FROM_THE_YOUNG_WOMAN",
         "speech_act": "WISHES_FOR_HEARER"
       },
       "inter_proposition_links": {

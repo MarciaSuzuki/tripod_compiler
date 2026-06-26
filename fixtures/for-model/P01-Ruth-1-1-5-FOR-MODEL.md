@@ -404,7 +404,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "verse_anchor": "1:2a",
       "proposition_kind": "NAMED",
       "event_specific_slots": {
-        "naming_order": "PARALLEL_PARENTS_THEN_TWO_SONS",
         "naming_components": [
           {
             "named_party": "B2",
