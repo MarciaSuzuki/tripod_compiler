@@ -101,6 +101,10 @@
       "version": "aliases-0.1.6",
       "sha256": "6b8043d20b1c45dc6f47f305aac3107f82033e09f8035975a1003dbbeb5d0e7f"
     },
+    "registry/esther.aliases.json": {
+      "version": "aliases-0.1.6",
+      "sha256": "697569be2c00a55c56ce5397be3ffd673cf36c8aa37dd19ce501d673bae4569e"
+    },
     "registry/concepts.json": {
       "version": "0.6.0",
       "sha256": "44e1d4f059c1be83463180d870e1e0dc7d3e7299de95efc53504b7492bb179a0"
