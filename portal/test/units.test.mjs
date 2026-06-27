@@ -7,6 +7,7 @@ import { buildFeedbackUrl, renderFeedbackButtons, KIND } from '../src/lib/feedba
 import { renderMarkdown } from '../src/lib/markdown.mjs';
 import { renderJsonTree } from '../src/lib/jsontree.mjs';
 import { escapeHtml, slugify } from '../src/lib/html.mjs';
+import { indexPage } from '../src/lib/pages.mjs';
 
 // ---- frontmatter ------------------------------------------------------------
 
@@ -36,6 +37,37 @@ test('extractFencedJson pulls the fenced block and parses it', () => {
   assert.deepEqual(extractFencedJson(body, 'x.md'), { a: 1 });
   assert.throws(() => extractFencedJson('no fence', 'x.md'), /no fenced/);
   assert.throws(() => extractFencedJson('```json\n{nope}\n```', 'x.md'), /does not parse/);
+});
+
+// ---- index page: per-book expandable cards ----------------------------------
+
+test('indexPage groups passages under one expandable card per book, collapsed by default', () => {
+  const books = [
+    {
+      title: 'Ruth',
+      pericopes: [
+        { id: 'P01', bcv: 'Ruth 1:1-5', title: 'Famine', has: { map: true, forModel: true, log: true } },
+        { id: 'P02', bcv: 'Ruth 1:6-14', title: 'Return', has: { map: true, forModel: false, log: false } },
+      ],
+    },
+    {
+      title: 'Jonah',
+      pericopes: [{ id: 'J01', bcv: 'Jonah 1:1-3', title: 'Call', has: { map: true, forModel: true, log: true } }],
+    },
+  ];
+  const html = indexPage({ cfg: {}, books, buildInfo: { commit: 'x', builtAt: 'y' }, formConfigured: true });
+
+  // one disclosure card per book, all collapsed (no `open`) so the home page is compact
+  assert.equal((html.match(/<details class="book">/g) || []).length, 2);
+  assert.doesNotMatch(html, /<details class="book" open>/);
+
+  // summary carries the book name + a correctly pluralized passage count
+  assert.match(html, /<summary class="bookcard">[\s\S]*?Ruth[\s\S]*?2 passages/);
+  assert.match(html, /Jonah<\/span>\s*<span class="bookcount">1 passage</); // singular, not "1 passages"
+
+  // passage links remain in the DOM even while collapsed — deep links keep working
+  assert.match(html, /pericopes\/P01\.html/);
+  assert.match(html, /pericopes\/J01\.html/);
 });
 
 // ---- wikilinks --------------------------------------------------------------

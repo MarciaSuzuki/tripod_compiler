@@ -39,16 +39,25 @@ ${contentHtml}
 }
 
 export function indexPage({ cfg, books, buildInfo, formConfigured }) {
+  // Each book is a collapsed disclosure card: the home page shows one card per
+  // book, and clicking it opens that book's passages in place (native
+  // <details>/<summary> — no client JS). The passage links stay in the DOM even
+  // while collapsed, so deep links and search still work.
   const bookSections = books
-    .map(
-      (b) => `
-<section class="book">
-  <h2>${escapeHtml(b.title)}</h2>
+    .map((b) => {
+      const n = b.pericopes.length;
+      const count = `${n} ${n === 1 ? 'passage' : 'passages'}`;
+      return `
+<details class="book">
+  <summary class="bookcard">
+    <span class="bookname">${escapeHtml(b.title)}</span>
+    <span class="bookcount">${escapeHtml(count)}</span>
+  </summary>
   <ul class="cards">
     ${b.pericopes.map(pericopeCard).join('\n    ')}
   </ul>
-</section>`
-    )
+</details>`;
+    })
     .join('\n');
 
   const formNote = formConfigured
@@ -80,7 +89,11 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
   and document already filled in. Hebrew words appear throughout — hover over a highlighted name or term to see its Hebrew form.</p>
   ${formNote}
 </section>
-${bookSections}`;
+<section class="books">
+  <h2>Passages by book</h2>
+  <p class="note">Choose a book to open it and see its passages.</p>
+  ${bookSections}
+</section>`;
 }
 
 function pericopeCard(p) {
