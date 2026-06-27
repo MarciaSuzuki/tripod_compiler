@@ -103,7 +103,7 @@
     },
     "registry/esther.aliases.json": {
       "version": "aliases-0.1.6",
-      "sha256": "1051718eb74d9dd471faeb8a84b15e2b99a9c1682a8bb354c3933b0975544f7e"
+      "sha256": "e2d05cd3e229bc13fae99922f766c103fb892259996fe9df9ff35f58dbbc98df"
     },
     "registry/concepts.json": {
       "version": "0.6.0",

@@ -24,7 +24,7 @@ per-book Layer-3 registry growth only. Entity count **41 → 51**.
   the open towns · **TM_ADAR** += the 13th / 14th / 15th of Adar.
 
 **Compiler** — `_spec/registry/esther.aliases.json` regenerated (51 entities: 24 PERSON / 8 PLACE /
-10 THING / 4 TIME / 5 INSTITUTION) + re-pinned (`aliases-0.1.6`, sha `1051718e…`) + SPEC_CHANGES SC-0077
+10 THING / 4 TIME / 5 INSTITUTION) + re-pinned (`aliases-0.1.6`, sha `e2d05cd3…`) + SPEC_CHANGES SC-0077
 row + this apply-record.
 
 ## Grounding (BHSA-vetted spans; Evaluator citation-fixes applied)
@@ -39,9 +39,13 @@ Every `hebrew` = BHSA voc_lex; every `appears_in` computed/anchored from the pin
 - **B24 eunuchs** = `saris` class span E02·E03·E04·E05·E08·E11·E12 (distinct from the seven of 1:10 = B14
   and the named individuals B7/B8/B9/B11/B12/B13).
 - **B23 Haman's friends** = E10·E11 (the E04 `ahav` is "love" generically — correctly excluded).
+- **B19 the empire's officials** = **E01·E07·E14·E15** — span includes **E01** by Marcia's ruling
+  (2026-06-27, post-Evaluator-verify): B19's alias "princes of the provinces" (`שָׂרֵי הַמְּדִינוֹת`) appears
+  at 1:3 (E01) in the opening-banquet guest list, so the entity is genuinely present there; ruled (a)
+  add E01 over (b) decree-executing-scope-only. (Re-pinned after the fix: sha `e2d05cd3…`.)
 
 ## Acceptance — all green
-- `check-drift` exit 0 — `registry/esther.aliases.json vendored:ok` (pin sha `1051718e…`).
+- `check-drift` exit 0 — `registry/esther.aliases.json vendored:ok` (pin sha `e2d05cd3…`).
 - **Byte-identical rebuild** from the vault BCD.
 - **No CB/FIG re-mint** (concepts/figures `vendored:ok`, untouched).
 - `id-check` unchanged baseline (Esther has no FMs yet); board **395 | 1 skipped**.
