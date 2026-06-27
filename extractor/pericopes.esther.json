@@ -1,0 +1,25 @@
+{
+  "book": "ESTHER",
+  "bhsa_book": "Esther",
+  "_note": "Esther pericope → verse-range map (SC-0074; deliberate seed-expansion — court narrative, royal decrees, banquets, the lots/Purim, and the never-named God as a significant_absence goldmine). start/end are HEBREW versification (BHSA-native); bcv is English. NOTE bhsa_book is the ETCBC BHSA Latin book name 'Esther' (verified against the tf/2021 `book` feature: book name 'Esther', 10 chapters, 167 verses, chapter totals 22/23/15/17/14/14/10/17/32/3). Esther's Hebrew and English versification COINCIDE (unlike Jonah at the fish) — no offset. DIVISION ruled by Marcia 2026-06-26 (Evaluator-verified: tiles 1:1–10:3, no gaps/overlaps, 167 verses, 18 pericopes, max unit 14v): seams at 1:9│10, 2:4│5, 4:8│9 plus chapter boundaries. Mirror pairs to encode as cross-pericope figures/cross_ref in the maps: decree E07 ↔ counter-decree E14 · Haman's rise E06 ↔ fall E12 · reversal fulcrum E11. Run via: extract_bhsa.py E01 --pericopes extractor/pericopes.esther.json --out _spec/source/esther/E01.json.",
+  "pericopes": {
+    "E01": { "bcv": "Esther 1:1-9",   "start": [1, 1],   "end": [1, 9] },
+    "E02": { "bcv": "Esther 1:10-22", "start": [1, 10],  "end": [1, 22] },
+    "E03": { "bcv": "Esther 2:1-4",   "start": [2, 1],   "end": [2, 4] },
+    "E04": { "bcv": "Esther 2:5-18",  "start": [2, 5],   "end": [2, 18] },
+    "E05": { "bcv": "Esther 2:19-23", "start": [2, 19],  "end": [2, 23] },
+    "E06": { "bcv": "Esther 3:1-6",   "start": [3, 1],   "end": [3, 6] },
+    "E07": { "bcv": "Esther 3:7-15",  "start": [3, 7],   "end": [3, 15] },
+    "E08": { "bcv": "Esther 4:1-8",   "start": [4, 1],   "end": [4, 8] },
+    "E09": { "bcv": "Esther 4:9-17",  "start": [4, 9],   "end": [4, 17] },
+    "E10": { "bcv": "Esther 5:1-14",  "start": [5, 1],   "end": [5, 14] },
+    "E11": { "bcv": "Esther 6:1-14",  "start": [6, 1],   "end": [6, 14] },
+    "E12": { "bcv": "Esther 7:1-10",  "start": [7, 1],   "end": [7, 10] },
+    "E13": { "bcv": "Esther 8:1-8",   "start": [8, 1],   "end": [8, 8] },
+    "E14": { "bcv": "Esther 8:9-17",  "start": [8, 9],   "end": [8, 17] },
+    "E15": { "bcv": "Esther 9:1-10",  "start": [9, 1],   "end": [9, 10] },
+    "E16": { "bcv": "Esther 9:11-19", "start": [9, 11],  "end": [9, 19] },
+    "E17": { "bcv": "Esther 9:20-32", "start": [9, 20],  "end": [9, 32] },
+    "E18": { "bcv": "Esther 10:1-3",  "start": [10, 1],  "end": [10, 3] }
+  }
+}
