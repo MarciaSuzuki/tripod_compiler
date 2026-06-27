@@ -158,6 +158,51 @@ describe("Thread B fidelity model — SC-0027 (P03 vow)", () => {
   });
 });
 
+// SC-0075: the note `type` envelope guard. The 13 SC-0064 compilation-logs carried
+// frontmatter type "compilation-log" instead of the canonical "sta-compilation-log";
+// the body-only validator stayed green while the portal approved-only gate aborted the
+// deploy. This guard makes the envelope drift a hard block at validate time.
+describe("note-type envelope guard (SC-0075)", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "tripod-nt-"));
+  const write = (name: string, body: string) => {
+    const f = join(tmp, name);
+    writeFileSync(f, body);
+    return f;
+  };
+  const goldCL = readFileSync(join(CL_FIX, "P07-Ruth-2-17-23-COMPILATION-LOG.md"), "utf8");
+  const goldFM = readFileSync(join(FIX, "P01-Ruth-1-1-5-FOR-MODEL.md"), "utf8");
+
+  it("the gold corpus carries the canonical envelope on all 19 CLs (post-fix)", () => {
+    for (const f of compLogs) {
+      const r = validateArtifact(join(CL_FIX, f));
+      expect(r.findings.some((x) => x.code === "note-type"), `${f} surfaced a note-type finding`).toBe(false);
+    }
+  });
+
+  it("BLOCKS a compilation-log whose envelope dropped the sta- prefix (the exact portal-blocker drift)", () => {
+    const drifted = goldCL.replace('type: "sta-compilation-log"', 'type: "compilation-log"');
+    const r = validateArtifact(write("drifted-COMPILATION-LOG.md", drifted));
+    expect(r.artifact).toBe("COMPILATION-LOG"); // still detected by filename
+    expect(r.ok).toBe(false);
+    const nt = r.findings.find((x) => x.code === "note-type");
+    expect(nt?.severity).toBe("block");
+    expect(nt?.location).toBe("frontmatter.type");
+    expect(nt?.message).toContain('expected "sta-compilation-log"');
+  });
+
+  it("BLOCKS a FOR_MODEL carrying a compilation-log envelope (cross-class mislabel)", () => {
+    const drifted = goldFM.replace('type: "sta-for-model"', 'type: "sta-compilation-log"');
+    const r = validateArtifact(write("mislabeled-FOR-MODEL.md", drifted));
+    expect(r.ok).toBe(false);
+    expect(r.findings.some((x) => x.code === "note-type" && x.message.includes('expected "sta-for-model"'))).toBe(true);
+  });
+
+  it("is SILENT when the envelope is correct", () => {
+    const r = validateArtifact(write("clean-COMPILATION-LOG.md", goldCL));
+    expect(r.findings.some((x) => x.code === "note-type")).toBe(false);
+  });
+});
+
 describe("spec integrity", () => {
   it("vendored schemas match their pins", () => {
     for (const d of checkDrift()) expect(d.vendoredOk, `${d.file} drifted from pin`).toBe(true);

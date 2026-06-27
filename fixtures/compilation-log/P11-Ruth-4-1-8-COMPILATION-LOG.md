@@ -1,5 +1,5 @@
 ---
-type: "compilation-log"
+type: "sta-compilation-log"
 pericope: "P11"
 status: "valid"
 pilot: "pilot-2"

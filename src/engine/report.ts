@@ -19,6 +19,7 @@ export type Severity = "block" | "drift" | "quarantined" | "descriptive" | "prop
 
 export type FindingCode =
   | "schema"
+  | "note-type"
   | "closed-list"
   | "referential-integrity"
   | "drift"

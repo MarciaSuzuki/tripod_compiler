@@ -1,5 +1,5 @@
 ---
-type: "compilation-log"
+type: "sta-compilation-log"
 pericope: "J03"
 status: "valid"
 pilot: "pilot-2"
