@@ -320,6 +320,12 @@ export function lintForModel(json: any, file = ""): LintReport {
             for (const [k, v] of Object.entries(node as Record<string, unknown>)) walkVals(v, k, `${path}/${k}`);
         };
         walkVals(prop?.event_specific_slots, "event_specific_slots", "event_specific_slots");
+        // SC-0078: the proposition-level `status` (realis modality) is a sibling of event_specific_slots,
+        // so the ess walk above never reaches it — feed it through the same shape+exemption logic so a
+        // prose-shaped status (e.g. CONTENT_THAT_THE_KING_GRANTED_LEAVE) BLOCKs at the proposition level too
+        // (component-level status rides inside ess and is already covered). The 6 seed values are 1 token →
+        // below the ≥4-token line → never fire.
+        walkVals(prop?.status, "status", "status");
       }
     }
   }

@@ -25,10 +25,12 @@ export function compileSchema(schema: object): Validator {
 }
 
 /**
- * Structural validation = Layer 1. ajv enforces the schema shape AND the closed-list enums
- * (GENRE_GROUP, GENRE, REGISTER, SPEECH_ACT, …) that the schema references — so closed-list
- * violations surface here as `block`. An `enum` failure is tagged `closed-list`; everything
- * else `schema`.
+ * Structural validation = Layer 1. ajv enforces the schema shape AND every closed-list enum the
+ * for_model_schema actually references via a `$defs/*_value` enum (GENRE_GROUP, GENRE, REGISTER,
+ * NARRATIVE_FRAMING) — so those closed-list violations surface here as `block` (an `enum` failure is
+ * tagged `closed-list`; everything else `schema`). NOTE: SPEECH_ACT is NOT in the schema — it rides on
+ * components inside the permissive event_specific_slots, which ajv does not inspect — so its closed-list
+ * BLOCK is enforced in the engine (vocabulary.ts, SC-0078 A2), not here.
  */
 export function structuralFindings(validate: Validator, json: unknown): Finding[] {
   if (validate(json)) return [];

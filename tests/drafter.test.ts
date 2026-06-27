@@ -174,7 +174,7 @@ describe("drafter digests — the data the prompt's rules point at", () => {
     expect(d).toMatch(/RELIGIOUS_WORSHIP/);
     expect(d).toMatch(/genre_group NARRATIVE → pericope register is INFORMAL_CASUAL/);
     expect(d).toMatch(/agent · patient · theme/);
-    expect(d).toMatch(/SPEECH_ACT \(26\)/);
+    expect(d).toMatch(/SPEECH_ACT \(33\)/);
   });
   it("axes digest renders every L2 axis with its approved values", () => {
     const d = approvedAxesDigest();

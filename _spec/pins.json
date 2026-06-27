@@ -3,8 +3,8 @@
   "tagset_version": "TRIPOD_STA_v2_0",
   "schemas": {
     "validation-rules.json": {
-      "version": "v0.17",
-      "sha256": "34a7db46d6ef3115b8b80b1300d8b9b896a47c741fec12566e52ef0140f7f2cb"
+      "version": "v0.18",
+      "sha256": "6d36fc11883e375f32e3c3076ebc9ec531b7b61c7096692e7df868b6521f8a82"
     },
     "compilation-log.schema.json": {
       "version": "v0.8",
@@ -19,8 +19,8 @@
       "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
     },
     "approved-enumerations.json": {
-      "version": "v0.20",
-      "sha256": "d3069ba6e8c89f3856ce1dde6fe6e84d1410e557458fc10e5654a78159332b02"
+      "version": "v0.21",
+      "sha256": "b3f6e7ccf70a821dc47c007d740b032a7bc8621bf1677f9100e606c187bb159c"
     },
     "quarantined-vocabulary.json": {
       "version": "0.3.0",
