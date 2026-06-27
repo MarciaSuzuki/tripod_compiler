@@ -17,7 +17,7 @@ export type ArtifactKind =
 export function detectArtifact(path: string, frontmatterType?: string, json?: unknown): ArtifactKind {
   const n = basename(path).toUpperCase();
   if (n.includes("FOR-MODEL") || frontmatterType === "sta-for-model") return "FOR_MODEL";
-  if (n.includes("COMPILATION-LOG") || frontmatterType === "compilation-log") return "COMPILATION-LOG";
+  if (n.includes("COMPILATION-LOG") || frontmatterType === "sta-compilation-log") return "COMPILATION-LOG";
   if (n.includes("BCD-DELTA") || frontmatterType === "bcd-delta") return "BCD-DELTA";
   if (n.includes("VERIFICATION-INPUT") || frontmatterType === "verification-input") return "VERIFICATION-INPUT";
   // SC-0065: an oral STA arrives as raw .json — no FOR-MODEL filename, no frontmatter type. Detect
@@ -29,6 +29,22 @@ export function detectArtifact(path: string, frontmatterType?: string, json?: un
   }
   return "UNKNOWN";
 }
+
+/**
+ * SC-0075: the canonical note `type` envelope value each artifact class must carry.
+ * The Review Portal's approved-only gate keys on these exact strings, so a drifted
+ * envelope (e.g. the 13 SC-0064 compilation-logs that carried "compilation-log" instead
+ * of "sta-compilation-log") deploys-red at the portal while the body-only validator stays
+ * green. Enforcing the envelope HERE makes that drift a hard block at validate time.
+ * Oral STA arrive as raw .json with no frontmatter type (detected by body signature) and
+ * are exempt — the check fires only when a type envelope is actually present.
+ */
+export const CANONICAL_NOTE_TYPE: Partial<Record<ArtifactKind, string>> = {
+  FOR_MODEL: "sta-for-model",
+  "COMPILATION-LOG": "sta-compilation-log",
+  "BCD-DELTA": "bcd-delta",
+  "VERIFICATION-INPUT": "verification-input",
+};
 
 const validators = new Map<ArtifactKind, Validator>();
 function validatorFor(kind: ArtifactKind): Validator | null {
@@ -82,6 +98,21 @@ export function validateArtifact(path: string): ValidationReport {
   }
 
   const findings: Finding[] = [...structuralFindings(validator, note.json)];
+
+  // SC-0075: enforce the note `type` envelope against the canonical per-class value the
+  // portal gate keys on. Fires only when a type envelope is present (oral raw-.json STA,
+  // detected by body signature, carry none and are exempt).
+  const noteType = note.frontmatter["type"];
+  const canonicalType = CANONICAL_NOTE_TYPE[kind];
+  if (noteType && canonicalType && noteType !== canonicalType) {
+    findings.push({
+      severity: "block",
+      code: "note-type",
+      location: "frontmatter.type",
+      message: `note type envelope is "${noteType}", expected "${canonicalType}" for a ${kind} (the portal approved-only gate keys on this)`,
+    });
+  }
+
   if (kind === "FOR_MODEL") {
     findings.push(...vocabularyFindings(note.json as any, driftBaseline()));
     // SC-0065: oral artifacts (source_domain = oral_archive) get the bead-span integrity pass

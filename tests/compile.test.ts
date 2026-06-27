@@ -169,7 +169,7 @@ describe("Slice 2 — gap report emits as a schema-valid COMPILATION-LOG (item 3
   const log = compileCompilationLog(mm, result);
 
   it("validates block-clean via Slice 1 (compilation-log schema)", () => {
-    const note = `---\ntype: "compilation-log"\npericope: "P01"\n---\n\n# P01 COMPILATION-LOG (skeleton)\n\n\`\`\`json\n${JSON.stringify(log, null, 2)}\n\`\`\`\n`;
+    const note = `---\ntype: "sta-compilation-log"\npericope: "P01"\n---\n\n# P01 COMPILATION-LOG (skeleton)\n\n\`\`\`json\n${JSON.stringify(log, null, 2)}\n\`\`\`\n`;
     const f = join(tmp, "P01-Ruth-1-1-5-COMPILATION-LOG.md");
     writeFileSync(f, note);
     const r = validateArtifact(f);

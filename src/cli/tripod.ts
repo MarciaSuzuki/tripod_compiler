@@ -113,7 +113,7 @@ program
       const log = compileCompilationLog(mm, result);
       const note =
         `---\n` +
-        `type: "compilation-log"\n` +
+        `type: "sta-compilation-log"\n` +  // SC-0075: canonical envelope the portal gate keys on
         `pericope: "${mm.pericope ?? ""}"\n` +
         `status: "skeleton"\n` +
         `pilot: "pilot-2"\n` +
