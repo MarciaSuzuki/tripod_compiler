@@ -1,5 +1,5 @@
 import type { Finding } from "./report.js";
-import { axisClass } from "../spec/load.js";
+import { axisClass, closedList } from "../spec/load.js";
 import { quarantineSets } from "../spec/enumerations.js";
 
 /** Entity-registry code shapes (Layer 3). CB_/FIG_ are handled separately (flag arrays). */
@@ -21,6 +21,8 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
   const seedSets: Record<string, Set<string>> = {};
   for (const [k, v] of Object.entries(seeds)) seedSets[k] = new Set(v as string[]);
   const quarantine = quarantineSets();
+  // SC-0078 (A2): the closed cross-corpus SPEECH_ACT layer, for the component-level membership BLOCK.
+  const speechActs = new Set(closedList("SPEECH_ACT"));
 
   const drift = (value: unknown, seedKey: string, location: string) => {
     if (typeof value !== "string") return;
@@ -126,6 +128,21 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
     } else if (val && typeof val === "object") {
       for (const [k, v] of Object.entries(val)) {
         if (k === "action" && typeof v === "string") drift(v, "action", `${location}/${k}`);
+        // SC-0078: component-level realis `status` (bounded-open convergent) drifts like `action`.
+        if (k === "status" && typeof v === "string") drift(v, "status", `${location}/${k}`);
+        // SC-0078 (A2): `speech_act` is a CLOSED cross-corpus list. It rides on components inside the
+        // permissive event_specific_slots, so ajv never sees it — this walk is the only place that
+        // reaches it. A component value outside the closed list is a hard BLOCK (mirror of `action`,
+        // but closed-not-bounded). Adding a value requires a governed SC, never a silent accept.
+        if (k === "speech_act" && typeof v === "string" && !speechActs.has(v))
+          findings.push({
+            severity: "block",
+            code: "closed-list",
+            location: `${location}/${k}`,
+            axis: "speech_act",
+            value: v,
+            message: `'${v}' is not in the closed SPEECH_ACT list — closed cross-corpus layer, BLOCK (promote via a governed SC, never silently)`,
+          });
         collectCodes(v, `${location}/${k}`);
       }
     }
@@ -134,6 +151,8 @@ export function vocabularyFindings(json: any, seeds: Record<string, string[]>): 
   props.forEach((p, pi) => {
     const at = `/level_3_propositions/${pi}`;
     drift(p?.proposition_kind, "proposition_kind", `${at}/proposition_kind`);
+    // SC-0078: proposition-level realis `status` (bounded-open; omit for the ASSERTED default).
+    drift(p?.status, "status", `${at}/status`);
     collectCodes(p?.event_specific_slots, `${at}/event_specific_slots`);
     const links = p?.inter_proposition_links ?? {};
     for (const key of ["forward_link_to", "caused_by", "paired_with", "back_reference_to_proposition"]) {
