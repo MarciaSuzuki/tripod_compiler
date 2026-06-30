@@ -35,11 +35,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
   "level_1": {
     "arc_elements": [
       "AFFLICTION_LEARNED",
-      "PRIVATE_MOURNING",
+      "PUBLIC_LAMENT",
       "SHARED_LAMENT",
-      "GRIEF_REACHES_QUEEN",
+      "NEWS_RECEPTION",
       "CHANNEL_OPENED",
-      "CHARGE_LAID"
+      "ACCUSATION_LAID"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -52,34 +52,34 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     "tone_elements": [
       "RAW",
       "WEIGHTED",
-      "REPORTED_PLAINLY",
+      "ECONOMICAL",
       "URGENT",
-      "GATHERING"
+      "RISING"
     ],
     "pace_elements": [
-      "STEPWISE",
-      "WIDENING",
-      "HURRIED"
+      "STEADY",
+      "WIDENS",
+      "BRISK"
     ],
     "communicative_function_elements": [
-      "LANDS_THE_DECREE",
-      "WIDENS_TO_A_PEOPLE",
+      "PUBLISHES",
+      "ADVANCES",
       "INFORMS_THE_QUEEN",
-      "OPENS_THE_CHANNEL",
-      "LAYS_THE_CHARGE"
+      "OPENS",
+      "ACCUSES"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "4:1-2",
-      "scene_kind": "PUBLIC_MOURNING_AT_THE_GATE_SCENE",
+      "scene_kind": "LAMENT_SCENE",
       "scene_communicative_purpose": "Shows the decree's weight landing first on Mordecai, whose open mourning is carried into the city but stopped at the palace threshold.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B1",
-            "role_in_scene": "MOURNER",
+            "role_in_scene": "COMPLAINANT",
             "presence": "PRESENT"
           }
         ]
@@ -108,13 +108,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "4:3",
-      "scene_kind": "EMPIRE_WIDE_LAMENT_SCENE",
+      "scene_kind": "LAMENT_SCENE",
       "scene_communicative_purpose": "Widens the grief from one man to the whole people, showing the decree's reach measured in mourning.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B17",
-            "role_in_scene": "MOURNING_PEOPLE",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "PRESENT_COLLECTIVE"
           }
         ]
@@ -147,7 +147,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B1",
-            "role_in_scene": "MOURNER",
+            "role_in_scene": "COMPLAINANT",
             "presence": "PRESENT"
           }
         ]
@@ -180,7 +180,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B8",
-            "role_in_scene": "MESSENGER",
+            "role_in_scene": "COURIERS",
             "presence": "PRESENT",
             "referential_form": "THE_KINGS_EUNUCH_HATHACH"
           },
@@ -191,12 +191,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B3",
-            "role_in_scene": "THREAT_AUTHOR",
+            "role_in_scene": "ACCUSER",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "IMPERILLED_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED"
           }
         ]
@@ -228,7 +228,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "4:1",
-      "proposition_kind": "LEARNED",
+      "proposition_kind": "HEARD_REPORT",
       "event_specific_slots": {
         "learner": "B1",
         "learned_extent": "ALL",
@@ -244,7 +244,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "4:1",
-      "proposition_kind": "TORE_GARMENTS",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "tearer": "B1",
         "torn_thing": "CLOTHES",
@@ -261,7 +261,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "4:1",
-      "proposition_kind": "DONNED_MOURNING_GARB",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "donner": "B1",
         "garb_worn": ["SACKCLOTH", "ASHES"]
@@ -294,7 +294,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "4:1",
-      "proposition_kind": "CRIED_OUT",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "crier": "B1",
         "cry_uttered": "A_CRY",
@@ -311,7 +311,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S1",
       "verse_anchor": "4:2",
-      "proposition_kind": "CAME_AS_FAR_AS",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "comer": "B1",
         "reached_limit": "BEFORE_THE_GATE",
@@ -328,7 +328,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S1",
       "verse_anchor": "4:2",
-      "proposition_kind": "GATE_PROHIBITION_FOR_THE_MOURNING_DRESSED",
+      "proposition_kind": "DECLARED",
       "status": "NORM",
       "event_specific_slots": {
         "barred_place": "BEFORE_THE_GATE",
@@ -347,7 +347,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S2",
       "verse_anchor": "4:3",
-      "proposition_kind": "GREAT_MOURNING_PROVINCE_BY_PROVINCE",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "mourning_quality": "GREAT",
         "mourners": "B17",
@@ -365,7 +365,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "4:3",
-      "proposition_kind": "FASTED_AND_WEPT",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "mourners": "B17",
         "grief_acts": ["A_FAST", "WEEPING", "WAILING"]
@@ -381,7 +381,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S2",
       "verse_anchor": "4:3",
-      "proposition_kind": "LAY_IN_MOURNING_GARB",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "liers_down": "THE_MANY",
         "lain_in": ["SACKCLOTH", "ASHES"]
@@ -396,7 +396,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S3",
       "verse_anchor": "4:4",
-      "proposition_kind": "TOLD",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "tellers": ["ESTHERS_MAIDS", "HER_EUNUCHS"],
         "told_one": "B2"
@@ -411,7 +411,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S3",
       "verse_anchor": "4:4",
-      "proposition_kind": "DISTRESSED",
+      "proposition_kind": "FEARED",
       "event_specific_slots": {
         "distressed_one": "B2",
         "degree": "VERY"
@@ -427,7 +427,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "4:4",
-      "proposition_kind": "SENT_TO_RECLOTHE",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "sender": "B2",
         "thing_sent": "GARMENTS",
@@ -455,7 +455,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S3",
       "verse_anchor": "4:4",
-      "proposition_kind": "REFUSED",
+      "proposition_kind": "DECLINED",
       "event_specific_slots": {
         "refuser": "B1",
         "refused_thing": "GARMENTS"
@@ -470,7 +470,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S4",
       "verse_anchor": "4:5",
-      "proposition_kind": "CALLED",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "caller": "B2",
         "called_one": "B8",
@@ -488,7 +488,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P16",
       "scene_link": "S4",
       "verse_anchor": "4:5",
-      "proposition_kind": "CHARGED_TO_LEARN",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "charger": "B2",
         "charged_messenger": "B8",
@@ -528,7 +528,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P18",
       "scene_link": "S4",
       "verse_anchor": "4:7",
-      "proposition_kind": "TOLD",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "teller": "B1",
         "told_one": "B8",
@@ -546,7 +546,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P19",
       "scene_link": "S4",
       "verse_anchor": "4:7",
-      "proposition_kind": "REPORTED_THE_SILVER_SUM",
+      "proposition_kind": "HEARD_REPORT",
       "status": "RECALLED",
       "event_specific_slots": {
         "voiced_within": "P18",
@@ -571,7 +571,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P20",
       "scene_link": "S4",
       "verse_anchor": "4:8",
-      "proposition_kind": "GAVE_THE_WRITTEN_DECREE",
+      "proposition_kind": "GAVE",
       "event_specific_slots": {
         "giver": "B1",
         "given_to": "B8",
@@ -611,7 +611,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P22",
       "scene_link": "S4",
       "verse_anchor": "4:8",
-      "proposition_kind": "CHARGED_TO_PLEAD_WITH_THE_KING",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "charger": "B1",
         "charged_one": "B2",

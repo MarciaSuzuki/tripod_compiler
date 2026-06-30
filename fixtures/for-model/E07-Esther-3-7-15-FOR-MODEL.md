@@ -54,7 +54,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "ACCUSATION_LAID",
       "DESTRUCTION_PROPOSED_AND_BOUGHT",
       "AUTHORITY_GRANTED",
-      "DECREE_ISSUED",
+      "ROYAL_DECREE",
       "PEOPLE_CONDEMNED"
     ],
     "context_elements": [
@@ -66,18 +66,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "COLD",
-      "ADMINISTRATIVE",
+      "PROCEDURAL",
       "RESTRAINED",
-      "RITUAL",
+      "CEREMONIAL",
       "CHILLING"
     ],
     "pace_elements": [
       "DELIBERATE",
-      "ACCELERATING",
+      "ACCELERATES",
       "PROCEDURAL"
     ],
     "communicative_function_elements": [
-      "FIXES_THE_DEADLINE",
+      "FIXES",
       "ACCUSES",
       "GRANTS",
       "PUBLISHES",
@@ -96,7 +96,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "PLOTTER",
+            "role_in_scene": "ADVERSARY",
             "presence": "PRESENT",
             "referential_form": "HAMAN_THE_PLOTTER"
           },
@@ -138,7 +138,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "3:8-11",
-      "scene_kind": "ACCUSATION_AND_GRANT_SCENE",
+      "scene_kind": "AUTHORITY_GRANT_SCENE",
       "scene_communicative_purpose": "Shows the destruction proposed, bought, and granted — the king handing Haman the ring and the people without even asking their name.",
 
       "beings_in_scene": {
@@ -151,12 +151,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B4",
-            "role_in_scene": "GRANTING_AUTHORITY",
+            "role_in_scene": "KING",
             "presence": "PRESENT"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "ACCUSED_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED",
             "referential_form": "A_CERTAIN_PEOPLE"
           }
@@ -188,24 +188,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "3:12-15",
-      "scene_kind": "DECREE_DISPATCH_SCENE",
+      "scene_kind": "DECREE_SCENE",
       "scene_communicative_purpose": "Shows the sentence made unbreakable and sent across the empire — and the chilling close: the two men drinking while the capital reels.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "DECREE_COMMANDER",
+            "role_in_scene": "SCRIBES",
             "presence": "PRESENT"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SOVEREIGN",
+            "role_in_scene": "KING",
             "presence": "PRESENT"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "CONDEMNED_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED",
             "referential_form": "ALL_THE_JEWS"
           },
@@ -268,7 +268,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "3:7",
-      "proposition_kind": "LOT_CAST_FOR_DAY",
+      "proposition_kind": "CAST_LOTS",
       "event_specific_slots": {
         "lot_cast": "TH_PUR_LOT",
         "lot_also_called": "the_goral",
@@ -292,11 +292,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S2",
       "verse_anchor": "3:8",
-      "proposition_kind": "ACCUSATION_LAID",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "accusation_components": [
           {
-            "action": "ACCUSED",
+            "action": "STATED",
             "accuser": "B3",
             "addressee": "B4",
             "accused": "B17",
@@ -327,7 +327,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "status": "NORM"
           },
           {
-            "action": "URGED_INTOLERANCE",
+            "action": "PROPOSED",
             "accuser": "B3",
             "addressee": "B4",
             "tolerated_party": "B17",
@@ -346,11 +346,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S2",
       "verse_anchor": "3:9",
-      "proposition_kind": "DESTRUCTION_PROPOSED_FOR_PAYMENT",
+      "proposition_kind": "PROPOSED",
       "event_specific_slots": {
         "proposal_components": [
           {
-            "action": "PROPOSED_DESTRUCTION",
+            "action": "PROPOSED",
             "proposer": "B3",
             "addressee": "B4",
             "destroyed_party": "B17",
@@ -382,7 +382,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_link": "S2",
       "verse_anchor": "3:9",
       "proposition_kind": "ROYAL_PLEASURE_CONDITION",
-      "status": "FORESEEN",
+      "status": "COUNTERFACTUAL",
       "event_specific_slots": {
         "condition_holder": "B4",
         "condition_marker": "if_it_please_the_king"
@@ -417,7 +417,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "3:10",
-      "proposition_kind": "RING_GIVEN",
+      "proposition_kind": "GAVE",
       "event_specific_slots": {
         "giver": "B4",
         "given_ring": "TH_SIGNET_RING",
@@ -436,11 +436,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "3:11",
-      "proposition_kind": "GRANT_PRONOUNCED",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "grant_components": [
           {
-            "action": "GRANTED_SILVER",
+            "action": "GAVE",
             "granter": "B4",
             "grantee": "B3",
             "granted_thing": "the_silver",
@@ -471,7 +471,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S3",
       "verse_anchor": "3:12",
-      "proposition_kind": "SCRIBES_SUMMONED",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "summoned": "B21",
         "summoned_of_whom": "B4",
@@ -491,7 +491,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S3",
       "verse_anchor": "3:12",
-      "proposition_kind": "DECREE_WRITTEN",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "decree_writ": "TH_EDICT",
         "writing_conformity": "AS_HAMAN_COMMANDED",
@@ -517,8 +517,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S3",
       "verse_anchor": "3:13",
-      "proposition_kind": "DECREE_DISPATCHED_TO_DESTROY",
-      "status": "FORESEEN",
+      "proposition_kind": "DECLARED",
+      "status": "PERMITTED",
       "event_specific_slots": {
         "dispatched_edict": "TH_EDICT",
         "carriers": "B22",
@@ -571,7 +571,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S3",
       "verse_anchor": "3:14",
-      "proposition_kind": "COPY_PUBLISHED",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "published_copy": "TH_EDICT",
         "copy_of": "the_writing",
@@ -609,7 +609,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "3:15",
-      "proposition_kind": "COURIERS_WENT_OUT",
+      "proposition_kind": "DEPARTED",
       "event_specific_slots": {
         "departer": "B22",
         "departure_manner": "driven",
@@ -628,7 +628,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S3",
       "verse_anchor": "3:15",
-      "proposition_kind": "LAW_ISSUED_AT",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "issued_law": "law",
         "issued_at": "PL1",
@@ -646,7 +646,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S3",
       "verse_anchor": "3:15",
-      "proposition_kind": "SAT_DOWN_TO_DRINK",
+      "proposition_kind": "ATE",
       "event_specific_slots": {
         "sitter": ["B4", "B3"],
         "sitting_purpose": "to_drink"

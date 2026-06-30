@@ -34,12 +34,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
   },
   "level_1": {
     "arc_elements": [
-      "SECRET_KEPT",
-      "CONSPIRACY",
+      "SECRECY_INJUNCTION",
+      "CONSPIRACY_EXPOSED",
       "DISCOVERY",
-      "WARNING_RELAYED",
+      "NEWS_RECEPTION",
       "JUSTICE_DONE",
-      "DEED_RECORDED"
+      "RECORD_SEALED"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -50,7 +50,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "TEMPORAL_CONTEXT"
     ],
     "tone_elements": [
-      "LEVEL",
+      "ECONOMICAL",
       "MATTER_OF_FACT",
       "CLIPPED",
       "WITHHOLDING",
@@ -62,7 +62,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "communicative_function_elements": [
       "CONFIRMS_HIDDEN_IDENTITY",
-      "PLANTS_UNREWARDED_LOYALTY",
+      "PLANTS",
       "RECORDS",
       "WITHHOLDS",
       "SEEDS_REVERSAL"
@@ -84,7 +84,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B2",
-            "role_in_scene": "SECRET_KEEPER",
+            "role_in_scene": "GATE_SITTER",
             "presence": "REFERENCED",
             "referential_form": "THE_QUEEN_WHO_HIDES_HER_KINDRED"
           }
@@ -110,7 +110,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "2:21-22",
-      "scene_kind": "CONSPIRACY_DISCOVERED_AND_RELAYED_SCENE",
+      "scene_kind": "CONSPIRACY_DISCLOSURE_SCENE",
       "scene_communicative_purpose": "Shows the assassination plot uncovered by Mordecai and relayed through Esther to the king, with Mordecai named as the source — planting the unrewarded-loyalty thread.",
       "beings_in_scene": {
         "entries": [
@@ -134,7 +134,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B1",
-            "role_in_scene": "DISCOVERER",
+            "role_in_scene": "GATE_SITTER",
             "presence": "PRESENT"
           },
           {
@@ -165,7 +165,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "2:23",
-      "scene_kind": "INVESTIGATION_EXECUTION_AND_RECORD_SCENE",
+      "scene_kind": "CONSPIRACY_DISCLOSURE_SCENE",
       "scene_communicative_purpose": "Closes the affair — the plot confirmed, the conspirators executed, the deed entered in the royal chronicles before the king — leaving Mordecai's loyalty recorded but unrewarded.",
       "beings_in_scene": {
         "entries": [
@@ -232,7 +232,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "2:19",
-      "proposition_kind": "SITTING_AT_GATE",
+      "proposition_kind": "SAT",
       "event_specific_slots": {
         "gate_sitter": "B1",
         "where": "PL8"
@@ -247,7 +247,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "2:20",
-      "proposition_kind": "IDENTITY_CONCEALED",
+      "proposition_kind": "IDENTIFIED",
       "status": "HABITUAL",
       "event_specific_slots": {
         "concealer": "B2",
@@ -282,7 +282,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S2",
       "verse_anchor": "2:21",
-      "proposition_kind": "SITTING_AT_GATE",
+      "proposition_kind": "SAT",
       "event_specific_slots": {
         "when": "THOSE_DAYS",
         "gate_sitter": "B1",
@@ -298,7 +298,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "2:21",
-      "proposition_kind": "ANGER_AROSE",
+      "proposition_kind": "ANGER_KINDLED",
       "event_specific_slots": {
         "angered": ["B11", "B12"],
         "office": "EUNUCHS",
@@ -316,7 +316,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "2:21",
-      "proposition_kind": "PLOTTED_AGAINST_KING",
+      "proposition_kind": "PROPOSED",
       "event_specific_slots": {
         "plotters": ["B11", "B12"],
         "intended_act_components": [
@@ -339,7 +339,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S2",
       "verse_anchor": "2:22",
-      "proposition_kind": "BECAME_KNOWN",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "made_known": "THE_MATTER",
         "learner": "B1"
@@ -355,7 +355,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "2:22",
-      "proposition_kind": "TOLD",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "teller": "B1",
         "addressee": "B2",
@@ -373,7 +373,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S2",
       "verse_anchor": "2:22",
-      "proposition_kind": "WARNED_KING",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "teller": "B2",
         "addressee": "B4",
@@ -393,7 +393,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S3",
       "verse_anchor": "2:23",
-      "proposition_kind": "INVESTIGATED",
+      "proposition_kind": "INTERROGATED",
       "event_specific_slots": {
         "investigated": "THE_MATTER"
       },
@@ -408,7 +408,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S3",
       "verse_anchor": "2:23",
-      "proposition_kind": "FOUND_TRUE",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "found": "THE_MATTER",
         "verdict": "TRUE"
@@ -424,7 +424,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "2:23",
-      "proposition_kind": "HANGED",
+      "proposition_kind": "STRUCK",
       "event_specific_slots": {
         "hanged": ["B11", "B12"],
         "count": "TWO",
@@ -441,7 +441,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S3",
       "verse_anchor": "2:23",
-      "proposition_kind": "WRITTEN_IN_CHRONICLES",
+      "proposition_kind": "NAME_PRESERVED",
       "event_specific_slots": {
         "written": "THE_MATTER",
         "into": "TH_ANNALS",

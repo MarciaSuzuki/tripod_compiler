@@ -65,18 +65,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "SETTLED",
-      "DELIBERATE",
+      "SLOWED",
       "FORWARD_LOOKING",
       "WEIGHTED_WITH_PERMANENCE",
-      "WARMED_BY_JOY"
+      "WARM"
     ],
     "pace_elements": [
-      "UNHURRIED",
+      "DELIBERATE",
       "MEASURED",
-      "ACCUMULATING"
+      "ACCUMULATES"
     ],
     "communicative_function_elements": [
-      "FOUNDS",
+      "BINDS",
       "PRESCRIBES",
       "EXPLAINS",
       "SEALS",
@@ -95,7 +95,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B1",
-            "role_in_scene": "DECREE_AUTHOR",
+            "role_in_scene": "SCRIBES",
             "presence": "PRESENT",
             "referential_form": "MORDECAI_THE_WRITER_OF_THE_LETTERS"
           },
@@ -106,7 +106,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SOVEREIGN",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           }
         ]
@@ -140,14 +140,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "9:24-26",
-      "scene_kind": "ETIOLOGY_SCENE",
+      "scene_kind": "FESTIVAL_FOUNDING_SCENE",
       "scene_communicative_purpose": "Gives the festival's name and its reason — the lot, the plot, and its reversal — so the keeping is understood, not just observed.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "ENEMY",
+            "role_in_scene": "ADVERSARY",
             "presence": "REFERENCED",
             "referential_form": "HAMAN_THE_AGAGITE_FOE_OF_THE_JEWS"
           },
@@ -158,12 +158,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B16",
-            "role_in_scene": "ENEMY_KIN",
+            "role_in_scene": "SLAIN_SONS",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SOVEREIGN",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           }
         ]
@@ -199,7 +199,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "9:27-32",
-      "scene_kind": "CONFIRMATION_SEALING_SCENE",
+      "scene_kind": "FESTIVAL_FOUNDING_SCENE",
       "scene_communicative_purpose": "Seals the festival with a second, doubly-authorized letter and a written record — making the observance permanent and binding on every generation.",
 
       "beings_in_scene": {
@@ -211,19 +211,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B2",
-            "role_in_scene": "DECREE_AUTHOR",
+            "role_in_scene": "SCRIBES",
             "presence": "PRESENT",
             "referential_form": "ESTHER_THE_QUEEN_DAUGHTER_OF_ABIHAIL"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "DECREE_AUTHOR",
+            "role_in_scene": "SCRIBES",
             "presence": "PRESENT",
             "referential_form": "MORDECAI_THE_JEW"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SOVEREIGN",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           }
         ]
@@ -263,7 +263,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "9:20",
-      "proposition_kind": "WROTE_AND_SENT",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "writer": "B1",
         "written_record": "the_words",
@@ -286,12 +286,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "9:21",
-      "proposition_kind": "CHARGED_TO_KEEP",
+      "proposition_kind": "INSTRUCTION",
       "status": "NORM",
       "event_specific_slots": {
         "charge_components": [
           {
-            "action": "CHARGED",
+            "action": "DIRECTED",
             "charger": "B1",
             "charged_party": "B17",
             "charge_borne_in": "TH_EDICT",
@@ -317,7 +317,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "9:22",
-      "proposition_kind": "KEEPING_PRESCRIBED",
+      "proposition_kind": "INSTRUCTION",
       "status": "HABITUAL",
       "event_specific_slots": {
         "ground_of_charge": "a_turning",
@@ -346,7 +346,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S1",
       "verse_anchor": "9:23",
-      "proposition_kind": "TOOK_ON_OBLIGATION",
+      "proposition_kind": "VOW",
       "event_specific_slots": {
         "obligated_party": "B17",
         "taken_on": "the_doing",
@@ -393,13 +393,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "9:25",
-      "proposition_kind": "ORDERED_REVERSAL_AND_HANGING",
+      "proposition_kind": "INSTRUCTION",
       "status": "RECALLED",
       "event_specific_slots": {
         "coming_before": "B4",
         "order_components": [
           {
-            "action": "ORDERED",
+            "action": "DIRECTED",
             "orderer": "B4",
             "order_instrument": "a_letter",
             "ordered_outcome": "a_returning",
@@ -428,7 +428,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "9:26",
-      "proposition_kind": "NAMED_AFTER_THE_LOT",
+      "proposition_kind": "RENAMING",
       "event_specific_slots": {
         "named_thing": "the_days",
         "days_qualifier": "these",
@@ -453,7 +453,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S3",
       "verse_anchor": "9:27",
-      "proposition_kind": "BOUND_THE_OBLIGATION",
+      "proposition_kind": "VOW",
       "status": "NORM",
       "event_specific_slots": {
         "binding_components": [
@@ -486,7 +486,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S3",
       "verse_anchor": "9:28",
-      "proposition_kind": "REMEMBRANCE_PERPETUATED",
+      "proposition_kind": "NAME_PRESERVED",
       "status": "NORM",
       "event_specific_slots": {
         "remembered_thing": "the_days",
@@ -508,7 +508,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S3",
       "verse_anchor": "9:29",
-      "proposition_kind": "WROTE_TO_CONFIRM",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "confirm_components": [
           {
@@ -538,7 +538,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S3",
       "verse_anchor": "9:30",
-      "proposition_kind": "SENT_THE_LETTERS",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "dispatched_letters": "TH_EDICT",
         "addressees": "B17",
@@ -562,12 +562,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S3",
       "verse_anchor": "9:31",
-      "proposition_kind": "CONFIRMED_THE_DAYS",
+      "proposition_kind": "DECLARED",
       "status": "NORM",
       "event_specific_slots": {
         "confirm_components": [
           {
-            "action": "CONFIRMED",
+            "action": "STATED",
             "confirmed_thing": "the_days",
             "days_qualifier": "the_Purim_ones",
             "kept_when": "at_their_appointed_times",
@@ -595,7 +595,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "9:32",
-      "proposition_kind": "RECORDED_IN_THE_BOOK",
+      "proposition_kind": "NAME_PRESERVED",
       "event_specific_slots": {
         "confirming_instrument": "a_word",
         "word_of": "B2",

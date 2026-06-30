@@ -37,12 +37,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
 
   "level_1": {
     "arc_elements": [
-      "EXILE_BACKGROUND",
+      "FOREIGN_RESIDENCE",
       "ORPHAN_WARDSHIP",
       "TAKEN_INTO_HAREM",
-      "FAVOR_WON",
-      "IDENTITY_CONCEALED",
-      "CROWNED_QUEEN"
+      "FAVOR_GRANTED",
+      "SECRECY_INJUNCTION",
+      "MARRIAGE_CONSUMMATED"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -56,13 +56,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     "tone_elements": [
       "RESTRAINED",
       "WATCHFUL",
-      "HELD_BREATH",
-      "QUIET_ASCENT"
+      "ANTICIPATORY",
+      "QUIETLY_ACCELERATING"
     ],
     "pace_elements": [
-      "BRISK_AT_INTRODUCTIONS",
-      "SLOWED_FOR_REGIMEN",
-      "QUICKENING_INTO_CROWNING"
+      "BRISK",
+      "SLOWED",
+      "ACCELERATES"
     ],
     "communicative_function_elements": [
       "INTRODUCES",
@@ -77,7 +77,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S1",
       "verse_range": "2:5-7",
-      "scene_kind": "EXILE_AND_WARDSHIP_SCENE",
+      "scene_kind": "NARRATOR_INTRODUCTION_SCENE",
       "scene_communicative_purpose": "Introduces Mordecai and Esther, binds them as guardian and orphan ward, and roots them in the exile of Judah — the two people and the buried Jewish identity the whole book will turn on.",
 
       "beings_in_scene": {
@@ -90,7 +90,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B2",
-            "role_in_scene": "ORPHAN_WARD",
+            "role_in_scene": "WARD",
             "presence": "PRESENT",
             "referential_form": "HADASSAH_THAT_IS_ESTHER"
           }
@@ -127,20 +127,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "2:8",
-      "scene_kind": "TAKEN_INTO_HAREM_SCENE",
+      "scene_kind": "INTAKE_SCENE",
       "scene_communicative_purpose": "Brings Esther across the threshold into the harem and into Hegai's keeping — the move that puts the hidden Jewish girl inside reach of the throne.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B2",
-            "role_in_scene": "TAKEN_GIRL",
+            "role_in_scene": "WARD",
             "presence": "PRESENT",
             "referential_form": "ESTHER"
           },
           {
             "being_id": "B7",
-            "role_in_scene": "KEEPER_OF_THE_WOMEN",
+            "role_in_scene": "GUARDIAN",
             "presence": "PRESENT",
             "referential_form": "HEGAI"
           },
@@ -184,19 +184,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B2",
-            "role_in_scene": "FAVORED_GIRL",
+            "role_in_scene": "WARD",
             "presence": "PRESENT",
             "referential_form": "THE_GIRL"
           },
           {
             "being_id": "B7",
-            "role_in_scene": "KEEPER_OF_THE_WOMEN",
+            "role_in_scene": "GUARDIAN",
             "presence": "PRESENT",
             "referential_form": "HEGAI"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "WATCHING_GUARDIAN",
+            "role_in_scene": "GUARDIAN",
             "presence": "PRESENT",
             "referential_form": "MORDECAI"
           }
@@ -224,7 +224,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S4",
       "verse_range": "2:12-14",
-      "scene_kind": "HAREM_REGIMEN_PROCEDURE_SCENE",
+      "scene_kind": "INTAKE_SCENE",
       "scene_communicative_purpose": "Slows the story to lay out the harem's machinery — the year of preparation, the single night, the un-returning aftermath — so the reader feels the length and the stakes of the turn Esther is approaching.",
 
       "beings_in_scene": {
@@ -237,7 +237,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B9",
-            "role_in_scene": "KEEPER_OF_THE_CONCUBINES",
+            "role_in_scene": "GUARDIAN",
             "presence": "REFERENCED",
             "referential_form": "SHAASHGAZ"
           }
@@ -268,14 +268,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S5",
       "verse_range": "2:15-18",
-      "scene_kind": "CROWNING_AND_BANQUET_SCENE",
+      "scene_kind": "MEAL_SCENE",
       "scene_communicative_purpose": "Brings Esther through her turn to the crown — loved, chosen over Vashti, made queen — and marks it with a banquet and empire-wide favor: the hidden Jewish girl now sits on the throne, the pivot the whole deliverance will later need.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B2",
-            "role_in_scene": "CROWNED_QUEEN",
+            "role_in_scene": "QUEEN",
             "presence": "PRESENT",
             "referential_form": "ESTHER_DAUGHTER_OF_ABIHAIL"
           },
@@ -287,13 +287,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B7",
-            "role_in_scene": "KEEPER_OF_THE_WOMEN",
+            "role_in_scene": "GUARDIAN",
             "presence": "REFERENCED",
             "referential_form": "HEGAI"
           },
           {
             "being_id": "B5",
-            "role_in_scene": "DISPLACED_QUEEN",
+            "role_in_scene": "QUEEN",
             "presence": "REFERENCED",
             "referential_form": "VASHTI"
           }
@@ -331,7 +331,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "2:5",
-      "proposition_kind": "PERSON_INTRODUCED",
+      "proposition_kind": "NARRATOR_INTRODUCES",
       "event_specific_slots": {
         "introduced_one": "B1",
         "introduced_as": "JEWISH",
@@ -351,7 +351,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "2:6",
-      "proposition_kind": "EXILE_RECALLED",
+      "proposition_kind": "TIME_ANCHOR_ESTABLISHED",
       "status": "RECALLED",
       "event_specific_slots": {
         "exiled_one": "B1",
@@ -375,7 +375,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "2:7",
-      "proposition_kind": "WARD_RAISED",
+      "proposition_kind": "BROUGHT_UP",
       "event_specific_slots": {
         "raiser": "B1",
         "raised_one": "B2",
@@ -402,7 +402,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S2",
       "verse_anchor": "2:8",
-      "proposition_kind": "GATHERED_AND_TAKEN",
+      "proposition_kind": "TOOK",
       "event_specific_slots": {
         "heard_word": "THE_KINGS_WORD",
         "word_belonging": "B4",
@@ -429,7 +429,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S3",
       "verse_anchor": "2:9",
-      "proposition_kind": "FAVOR_WON_AND_ADVANCED",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "pleasing_one": "B2",
         "pleased_one": "B7",
@@ -456,7 +456,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S3",
       "verse_anchor": "2:10",
-      "proposition_kind": "IDENTITY_WITHHELD",
+      "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
         "withholder": "B2",
         "untold_people": "HER_PEOPLE",
@@ -505,7 +505,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S4",
       "verse_anchor": "2:12",
-      "proposition_kind": "REGIMEN_PRESCRIBED",
+      "proposition_kind": "INSTRUCTION",
       "status": "NORM",
       "event_specific_slots": {
         "regulated_party": "EACH_GIRL",
@@ -623,7 +623,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S5",
       "verse_anchor": "2:16",
-      "proposition_kind": "TAKEN_TO_THE_KING",
+      "proposition_kind": "TOOK",
       "event_specific_slots": {
         "taken_one": "B2",
         "taken_to": "B4",
@@ -645,7 +645,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S5",
       "verse_anchor": "2:17",
-      "proposition_kind": "LOVED_AND_CROWNED",
+      "proposition_kind": "GAVE",
       "event_specific_slots": {
         "loving_king": "B4",
         "loved_one": "B2",

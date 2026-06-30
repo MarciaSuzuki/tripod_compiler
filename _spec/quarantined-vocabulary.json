@@ -1,22 +1,1442 @@
 {
   "_comment": "Quarantined bounded-open values (SC-0023). Used-once coin-flips with no frequency data: deliberately NOT promoted into approved-enumerations.json (so they are NOT settled types), but NOT silently excluded either. The validator surfaces every use as a `quarantined` NOTICE (severity `quarantined`, not `drift`, not silently-approved), and a RECURRENCE — the same value appearing in two or more pericopes — as an explicit RECURS notice in the corpus `quarantine watch`. A RECURS is the signal that frequency data has arrived and the value should be revisited: promote-with-provenance (it is a real type) or collapse (confirmed a one-off). Vendored + pinned (check-drift); edits are governed (SC-ref + provenance), like coverage-exceptions.json / lint-exceptions.json. Provenance: the SC-0022 comm-func triage kept all 16 leading verbs but Marcia quarantined the 8 used-once near-synonyms for the P08–P14 revisit; SC-0022 erroneously promoted them as settled; SC-0023 un-settles them here. SC-0025 (2026-06-05) adds the action axis: the 7 Thread-A held sentence-shaped action labels (SC-0024), where meaning and form diverge, are quarantined here so action enforcement does not silently bless them as types; they are the Thread B fidelity-model prototype corpus, resolved by Thread B (not frequency).",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "tagset_version": "TRIPOD_STA_v2_0",
   "sc_ref": "SC-0023",
   "axes": {
     "communicative_function_element": [
-      { "value": "TRANSMITS", "first_seen": "P01", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
-      { "value": "ANSWERS", "first_seen": "P02", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
-      { "value": "PLACES", "first_seen": "P03", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
-      { "value": "ANCHORS", "first_seen": "P05", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
-      { "value": "INTRODUCES", "first_seen": "P05", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
-      { "value": "POSITIONS", "first_seen": "P05", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
-      { "value": "DISTRIBUTES", "first_seen": "P06", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" },
-      { "value": "RECITES", "first_seen": "P06", "reason": "used-once leading verb; no frequency data — revisit at P08–P14", "sc_ref": "SC-0023" }
+      {
+        "value": "TRANSMITS",
+        "first_seen": "P01",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "ANSWERS",
+        "first_seen": "P02",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "PLACES",
+        "first_seen": "P03",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "ANCHORS",
+        "first_seen": "P05",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "INTRODUCES",
+        "first_seen": "P05",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "POSITIONS",
+        "first_seen": "P05",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "DISTRIBUTES",
+        "first_seen": "P06",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "RECITES",
+        "first_seen": "P06",
+        "reason": "used-once leading verb; no frequency data — revisit at P08–P14",
+        "sc_ref": "SC-0023"
+      },
+      {
+        "value": "ANNOUNCES",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CONDEMNS",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CONFIRMS_HIDDEN_IDENTITY",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DISMANTLES",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "EMPTIES_THE_THRONE",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GRANTS_THE_PEN",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "HANDS_TOKENS",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "INFORMS_THE_QUEEN",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "LIGHTS_THE_FUSE",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PAYS_OFF",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PRESCRIBES",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PRONOUNCES_VERDICT",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "RESOLVES",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SEALS",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat). RECURS E17,E18",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SEEDS_REVERSAL",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SETS_REFUSAL_AGAINST_HOMAGE",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SETS_TRAP",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SHOWS_DISPROPORTION",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SPRINGS_IRONY",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "STATES_THE_LIMIT",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TIES_REFUSAL_TO_IDENTITY",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TILTS",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TURNS",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TURNS_ON_A_NAME",
+        "first_seen": "E12",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TURNS_TO_FEAST",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "VOICES_PLEA",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
     ],
     "action": [
-      { "value": "STATED_THAT_HE_SPOKE_TO_HEART_OF_HIS_SHIFCHAH", "first_seen": "P06", "reason": "Thread A held label (SC-0024): meaning and form diverge (sentence-shaped, carries load-bearing detail not reducible to a bare verb). Deliberately NOT collapsed in SC-0024 and NOT enforced as a type; it is the Thread B fidelity-model prototype corpus. Resolution is Thread B (preserve vs render), not frequency; RECURS is a secondary signal if P07-P14 reuse it.", "sc_ref": "SC-0025" },
-      { "value": "STATED_SHE_IS_NOT_AS_ONE_OF_HIS_SHIFCHOT", "first_seen": "P06", "reason": "Thread A held label (SC-0024): meaning and form diverge (sentence-shaped, carries load-bearing detail not reducible to a bare verb). Deliberately NOT collapsed in SC-0024 and NOT enforced as a type; it is the Thread B fidelity-model prototype corpus. Resolution is Thread B (preserve vs render), not frequency; RECURS is a secondary signal if P07-P14 reuse it.", "sc_ref": "SC-0025" }
+      {
+        "value": "STATED_THAT_HE_SPOKE_TO_HEART_OF_HIS_SHIFCHAH",
+        "first_seen": "P06",
+        "reason": "Thread A held label (SC-0024): meaning and form diverge (sentence-shaped, carries load-bearing detail not reducible to a bare verb). Deliberately NOT collapsed in SC-0024 and NOT enforced as a type; it is the Thread B fidelity-model prototype corpus. Resolution is Thread B (preserve vs render), not frequency; RECURS is a secondary signal if P07-P14 reuse it.",
+        "sc_ref": "SC-0025"
+      },
+      {
+        "value": "STATED_SHE_IS_NOT_AS_ONE_OF_HIS_SHIFCHOT",
+        "first_seen": "P06",
+        "reason": "Thread A held label (SC-0024): meaning and form diverge (sentence-shaped, carries load-bearing detail not reducible to a bare verb). Deliberately NOT collapsed in SC-0024 and NOT enforced as a type; it is the Thread B fidelity-model prototype corpus. Resolution is Thread B (preserve vs render), not frequency; RECURS is a secondary signal if P07-P14 reuse it.",
+        "sc_ref": "SC-0025"
+      },
+      {
+        "value": "ALLEGED_DIFFERENT_LAW",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ALLEGED_DISOBEDIENCE",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ASSEMBLE",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BOUND",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BURNED",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CHARACTERIZED",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DECREED_GIVING",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DID",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FORETOLD_FALL",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GRANTED_PEOPLE",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GREW_ANGRY",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "HAND_LAID",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "LET_THEM_BRING",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "LET_THEM_SET",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OFFERED_PAYMENT",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "POINTED_TO_RECORD",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PRESCRIBED_SPEAKING",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REJOICED",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SEEKING",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "STAND_FOR_LIVES",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "WROTE",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
+    ],
+    "arc_element": [
+      {
+        "value": "ADVERSARY_NAMED",
+        "first_seen": "E12",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "AFFLICTION_LEARNED",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ANGER_SUBSIDING",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "AUTHORITY_GRANTED",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CERTIFICATION",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CHANNEL_OPENED",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "COMPELLED_HOMAGE",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "COUNSEL_OF_DESTRUCTION",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CROSS_PURPOSED_QUESTION",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DANGER_STATED",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DAY_CHOSEN_BY_LOT",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DECREE_DISPATCHED",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DELIVERANCE_MEMORIALIZED",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DESTRUCTION_PROPOSED_AND_BOUGHT",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DISCOVERY",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DISPROPORTIONATE_AIM",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "EMPIRE_TILTED",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ENEMIES_STRUCK",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ENEMY_ARRIVES",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ENEMY_MADE_HERALD",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ESCALATING_SPLENDOUR",
+        "first_seen": "E01",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "EXPOSURE",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FAVOUR_GRANTED",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FLIGHT_IN_SHAME",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "IMPERIAL_FRAME",
+        "first_seen": "E01",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "INVITATION_DOUBLED",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "IRREVOCABLE_LIMIT",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "JUSTICE_DONE",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "LONE_REFUSAL",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "LOYALTY_REMEMBERED",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "NAME_EXPLAINED",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OBLIGATION_BOUND",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OFFENSE_AT_THE_GATE",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ORPHAN_WARDSHIP",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PARALLEL_QUEEN_FEAST",
+        "first_seen": "E01",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PEOPLE_CONDEMNED",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PLUNDER_REFUSED",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted. RECURS E15,E16",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PRIDE_AT_SUMMIT",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PROVIDENCE_QUESTION",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "QUESTION_OF_LAW",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REFUSAL",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REMEDY_PROPOSED",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REQUEST_WITHHELD",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "RESOLVE",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REVERSAL_PROCLAIMED",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ROYAL_DISPLAY",
+        "first_seen": "E01",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SEALING",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SECOND_DAY_OF_ACTION",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SECOND_REQUEST_GRANTED",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SELF_INCRIMINATING_PRESCRIPTION",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SHARED_LAMENT",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SLEEPLESSNESS",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SUMMONS",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TAKEN_INTO_HAREM",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TRAP_SET",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "VACANCY",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "VERDICT_OF_FALL",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "VINDICATION",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "WRATH_AND_FALL",
+        "first_seen": "E12",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
+    ],
+    "context_element": [
+      {
+        "value": "ANCESTRAL_ENMITY_CONTEXT",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "IMPERIAL_ADMINISTRATION_CONTEXT",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ROYAL_COURT_CONTEXT",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      }
+    ],
+    "pace_element": [
+      {
+        "value": "BACK_AND_FORTH",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BREAKING_TO_ANGUISH",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BREAKING_TO_OPEN_REVERSAL",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CLIPPED",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CLOSING_FAST_AND_WIDE",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DECISIVE_CLOSE",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "INFLATING_AT_COUNCIL",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MEASURED",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OVERLAPPING",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PROCEDURAL",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TURNING_ASIDE_AT_CLOSE",
+        "first_seen": "E01",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TURNING_HARD",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
+    ],
+    "proposition_kind": [
+      {
+        "value": "ACTED",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "APPOINTED_DAY_CAME_DUE",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ASSEMBLED_FOR_DEFENSE",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BANQUET_AND_REMISSION",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BECAME_JEWS",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CANDIDATES_GATHERED",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CHARGE_OBEYED",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CITY_BEWILDERED",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "COUNSEL_APPROVED",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DAY_APPOINTED",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DAY_TURNED_OVER",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DID_AS_COMMANDED",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ENEMIES_HOPED_TO_OVERPOWER",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ESTHERS_TURN_CAME",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GATHERED",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GIVEN_TO_SHOW_AND_MAKE_KNOWN",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GLADNESS_SPREAD",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GOING_IN_PROVISIONED",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GUARDIAN_PACED",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "KING_DECREES_AND_SONS_HUNG",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "KING_REPORTS_TOLL_AND_ASKS_REQUEST",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "LAMENTED_AGAINST",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MADE",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MORDECAI_GREAT_IN_THE_HOUSE",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MORDECAI_GROWING_GREATER",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "NIGHT_THEN_NO_RETURN",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "NONE_COULD_STAND",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OFFICIALS_UPHELD_THE_JEWS",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OPEN_TOWN_JEWS_KEEP_THE_FOURTEENTH",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PEOPLE_REPORTED_TO_HAMAN",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PLOTTED_AND_CAST_LOT",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PROVIDENCE_QUESTION_POSED",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PROVINCES_REST_AND_FEAST",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PROVINCIAL_DEFENCE_AND_REST",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "QUEEN_PETITIONS_FOR_SECOND_DAY_AND_HANGING",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "READIED_FOR_DEFENSE",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "READINESS_FOR_THE_DAY",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REIGNED",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REMOVED",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "RING_REMOVED",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ROYAL_PLEASURE_CONDITION",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SECOND_DAY_KILLING_IN_SUSA",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SUSA_RESTS_AND_FEASTS",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TOUCHED",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TRIBUTE_IMPOSED",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
+    ],
+    "role_in_scene_being": [
+      {
+        "value": "ACCOUNT_GIVER",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CHARGED_ONE",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CHARGED_TO_GATHER",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "COMMANDER",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ELEVATED_SUBORDINATE",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "EUNUCHS_WHO_HURRY_HAMAN_AWAY",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "EUNUCH_WHO_POINTS_THE_GALLOWS",
+        "first_seen": "E12",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "INTENDED_VICTIM",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MAN_WHO_FLEES_IN_MOURNING",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OBEYER",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "POISONING_PRESENCE_AND_INTENDED_VICTIM",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "RECORD_PRESENCE",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "RESOLVER",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SENDER",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "UNWITTING_GUEST",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "WARNING_RELAY",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
+    ],
+    "scene_kind": [
+      {
+        "value": "ACCOUNT_AND_CHARGE_AT_THE_SQUARE_SCENE",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther: scene un-merged per QA-FINAL #33/#34 — original kept, parked pending promote ruling.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CHARGE_AND_PROVIDENCE_QUESTION_SCENE",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther: scene un-merged per QA-FINAL #33/#34 — original kept, parked pending promote ruling.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FAVOR_AND_CONCEALMENT_SCENE",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FLIGHT_AND_HOUSEHOLD_VERDICT_SCENE",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FURY_AND_GENOCIDAL_AIM_SCENE",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GATE_POSTING_AND_HIDDEN_KINDRED_SCENE",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GRIEF_REACHES_THE_QUEEN_SCENE",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OBEDIENCE_CLOSING_SCENE",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "REFUSAL_AND_QUESTION_OF_LAW_SCENE",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther: scene un-merged per QA-FINAL #33/#34 — original kept, parked pending promote ruling.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ROYAL_RECOLLECTION_SCENE",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ROYAL_SUMMONS_SCENE",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther: scene un-merged per QA-FINAL #33/#34 — original kept, parked pending promote ruling.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SECOND_DAY_AND_PROVINCIAL_RECKONING_SCENE",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "STRIKING_AND_NAMED_SONS_SCENE",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TOLL_REPORTED_AND_REQUEST_GRANTED_SCENE",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
+    ],
+    "tone_element": [
+      {
+        "value": "ABSOLUTE",
+        "first_seen": "E13",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ACCUMULATING",
+        "first_seen": "E01",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "ADMIRING",
+        "first_seen": "E01",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BRIGHTENING",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "BUSINESSLIKE",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CHILLING",
+        "first_seen": "E07",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "CLIPPED",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "COOL",
+        "first_seen": "E03",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "DISPROPORTIONATE",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FAINTLY_ABSURD",
+        "first_seen": "E02",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "FORWARD_LOOKING",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GRAVE_BENEATH_THE_COMEDY",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GRIM",
+        "first_seen": "E10",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GRIMLY_SATISFIED",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "GRINDING",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "HURRIED",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MATTER_OF_FACT",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MEASURED",
+        "first_seen": "E12",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "MENACING",
+        "first_seen": "E06",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "OFFICIAL",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "PRESSED",
+        "first_seen": "E09",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "QUIETLY_DELIGHTED",
+        "first_seen": "E11",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "QUIETLY_PROUD",
+        "first_seen": "E18",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "RAW",
+        "first_seen": "E08",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted. RECURS E08,E13",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "SHADOWED_BY_FEAR",
+        "first_seen": "E14",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "TURNING_LITURGICAL",
+        "first_seen": "E16",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "VINDICATED",
+        "first_seen": "E15",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "WATCHFUL",
+        "first_seen": "E04",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "WEIGHTED_WITH_PERMANENCE",
+        "first_seen": "E17",
+        "reason": "SC-0079 Esther: post-remap in-array co-occurrence — canonical kept, this variant parked as itself (preserve the beat).",
+        "sc_ref": "SC-0079"
+      },
+      {
+        "value": "WITHHOLDING",
+        "first_seen": "E05",
+        "reason": "SC-0079 Esther consolidation: used-once / no-frequency value parked (table target QUARANTINE) — keep original, not promoted.",
+        "sc_ref": "SC-0079"
+      }
     ]
   }
 }

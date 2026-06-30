@@ -60,20 +60,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "ADMIRING",
-      "FAINTLY_IRONIC",
+      "IRONIC",
       "ACCUMULATING",
-      "OPULENT",
-      "UNHURRIED"
+      "CEREMONIAL",
+      "SLOWED"
     ],
     "pace_elements": [
-      "UNHURRIED",
-      "ACCUMULATING",
+      "DELIBERATE",
+      "ACCUMULATES",
       "TURNING_ASIDE_AT_CLOSE"
     ],
     "communicative_function_elements": [
       "OPENS",
       "ESTABLISHES",
-      "DISPLAYS",
+      "STAGES",
       "PLANTS",
       "WITHHOLDS"
     ]
@@ -83,7 +83,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S1",
       "verse_range": "1:1-2",
-      "scene_kind": "OPENING_IMPERIAL_FRAME_SCENE",
+      "scene_kind": "OPENING_CHRONICLE_SCENE",
       "scene_communicative_purpose": "Establishes the king, the imperial span, and the throne — the world the book is set in.",
 
       "beings_in_scene": {
@@ -134,7 +134,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "1:3-4",
-      "scene_kind": "ROYAL_DISPLAY_FEAST_SCENE",
+      "scene_kind": "MEAL_SCENE",
       "scene_communicative_purpose": "Shows the king displaying his wealth and power to the empire's nobility across half a year.",
 
       "beings_in_scene": {
@@ -147,13 +147,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B18",
-            "role_in_scene": "COURT_ATTENDANTS",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT",
             "referential_form": "HIS_PRINCES_AND_SERVANTS"
           },
           {
             "being_id": "B19",
-            "role_in_scene": "PROVINCIAL_OFFICIALDOM",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT",
             "referential_form": "ARMY_NOBLES_AND_PROVINCIAL_PRINCES"
           }
@@ -190,7 +190,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "1:5-8",
-      "scene_kind": "PUBLIC_LAVISH_FEAST_SCENE",
+      "scene_kind": "MEAL_SCENE",
       "scene_communicative_purpose": "Shows the king's lavish public feast for the whole capital, where even the wine runs by royal law.",
 
       "beings_in_scene": {
@@ -228,7 +228,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S4",
       "verse_range": "1:9",
-      "scene_kind": "PARALLEL_QUEEN_FEAST_SCENE",
+      "scene_kind": "MEAL_SCENE",
       "scene_communicative_purpose": "Introduces the queen and her separate women's feast — the hinge into the coming conflict.",
 
       "beings_in_scene": {
@@ -275,7 +275,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "1:1",
-      "proposition_kind": "REIGN_ESTABLISHED",
+      "proposition_kind": "TIME_ANCHOR_ESTABLISHED",
       "event_specific_slots": {
         "reigning_king": "B4",
         "eastern_limit": "PL2",
@@ -294,7 +294,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "1:2",
-      "proposition_kind": "ENTHRONED",
+      "proposition_kind": "SAT",
       "event_specific_slots": {
         "enthroned_king": "B4",
         "kingly_capacity": "KING",
@@ -314,7 +314,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S2",
       "verse_anchor": "1:3",
-      "proposition_kind": "BANQUET_HELD",
+      "proposition_kind": "ATE",
       "event_specific_slots": {
         "banquet_host": "B4",
         "banquet_named": "MISHTEH",
@@ -334,7 +334,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S2",
       "verse_anchor": "1:4",
-      "proposition_kind": "WEALTH_DISPLAYED",
+      "proposition_kind": "SHOWED",
       "event_specific_slots": {
         "displaying_king": "B4",
         "displayed_riches": "RICHES",
@@ -354,7 +354,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S3",
       "verse_anchor": "1:5",
-      "proposition_kind": "BANQUET_HELD",
+      "proposition_kind": "ATE",
       "event_specific_slots": {
         "banquet_host": "B4",
         "banquet_named": "MISHTEH",
@@ -379,7 +379,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S3",
       "verse_anchor": "1:6",
-      "proposition_kind": "FURNISHINGS_DESCRIBED",
+      "proposition_kind": "SHOWED",
       "event_specific_slots": {
         "described_furnishings": "THE_FURNISHINGS",
         "hangings": ["WHITE_COTTON", "FINE_LINEN", "VIOLET"],
@@ -402,7 +402,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S3",
       "verse_anchor": "1:7",
-      "proposition_kind": "WINE_SERVED",
+      "proposition_kind": "ATE",
       "event_specific_slots": {
         "drink_served": "WINE",
         "wine_quality": "ROYAL",
@@ -424,7 +424,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S3",
       "verse_anchor": "1:8",
-      "proposition_kind": "DRINKING_ORDAINED",
+      "proposition_kind": "INSTRUCTION",
       "status": "NORM",
       "event_specific_slots": {
         "ordaining_king": "B4",
@@ -434,7 +434,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "governing_rule": "THE_LAW",
         "drinking_components": [
           {
-            "action": "GRANTED",
+            "action": "GAVE",
             "granting_king": "B4",
             "granted_freedom": "TO_DRINK",
             "permitted_party": "EACH_MAN",
@@ -456,7 +456,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S4",
       "verse_anchor": "1:9",
-      "proposition_kind": "BANQUET_HELD",
+      "proposition_kind": "ATE",
       "event_specific_slots": {
         "banquet_host": "B5",
         "host_capacity": "QUEEN",

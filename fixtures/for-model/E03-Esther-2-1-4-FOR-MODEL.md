@@ -38,7 +38,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "VACANCY",
       "REMEDY_PROPOSED",
       "SEARCH_SET_IN_MOTION",
-      "ROYAL_ASSENT"
+      "FAVOR_GRANTED"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -48,21 +48,21 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "AUDIENCE_KNOWLEDGE_CONTEXT"
     ],
     "tone_elements": [
-      "REFLECTIVE",
+      "QUIET",
       "WEIGHTED",
-      "BRISK",
+      "PROCEDURAL",
       "BUSINESSLIKE",
       "COOL"
     ],
     "pace_elements": [
-      "MEASURED",
-      "QUICKENING",
+      "DELIBERATE",
+      "ACCELERATES",
       "DECISIVE_CLOSE"
     ],
     "communicative_function_elements": [
-      "OPENS_VACANCY",
+      "OPENS",
       "STAGES",
-      "SETS_IN_MOTION",
+      "ADVANCES",
       "PLANTS",
       "RESOLVES"
     ]
@@ -83,7 +83,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B5",
-            "role_in_scene": "DEPOSED_QUEEN",
+            "role_in_scene": "QUEEN",
             "presence": "REFERENCED",
             "referential_form": "VASHTI_REMOVED"
           }
@@ -106,7 +106,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "2:2-4",
-      "scene_kind": "COUNSEL_PROPOSAL_SCENE",
+      "scene_kind": "CRISIS_DELIBERATION_SCENE",
       "scene_communicative_purpose": "Sets the empire-wide search in motion — the officers, the gathering to the harem under Hegai, the selection-by-pleasing — and shows the king approving it, turning a suggestion into imperial action.",
       "beings_in_scene": {
         "entries": [
@@ -118,13 +118,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B18",
-            "role_in_scene": "ROYAL_ATTENDANT",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT",
             "referential_form": "THE_KINGS_YOUNG_MEN_WHO_ATTENDED_HIM"
           },
           {
             "being_id": "B7",
-            "role_in_scene": "KEEPER_OF_THE_WOMEN",
+            "role_in_scene": "GUARDIAN",
             "presence": "REFERENCED",
             "referential_form": "HEGAI_THE_KINGS_EUNUCH"
           }
@@ -153,7 +153,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "2:1",
-      "proposition_kind": "ANGER_SUBSIDED",
+      "proposition_kind": "WRATH_SUBSIDED",
       "event_specific_slots": {
         "subsided_emotion": "ANGER",
         "emotion_holder": "B4",
@@ -182,7 +182,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "DECREED",
+            "action": "DIRECTED",
             "decree_target": "B5",
             "decreed_thing": "THE_DECREE",
             "status": "RECALLED",
@@ -218,7 +218,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S2",
       "verse_anchor": "2:2",
-      "proposition_kind": "SOUGHT",
+      "proposition_kind": "QUESTIONED",
       "status": "FORESEEN",
       "event_specific_slots": {
         "seeker": "B18",
@@ -282,7 +282,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "2:3",
-      "proposition_kind": "GIVEN",
+      "proposition_kind": "GAVE",
       "status": "FORESEEN",
       "event_specific_slots": {
         "given_thing": "COSMETICS",
@@ -317,7 +317,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "2:4",
-      "proposition_kind": "PLEASED",
+      "proposition_kind": "GRANTED",
       "event_specific_slots": {
         "pleasing_thing": "THE_MATTER",
         "pleased_one": "B4",

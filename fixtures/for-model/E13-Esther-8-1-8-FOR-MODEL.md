@@ -41,11 +41,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
   },
   "level_1": {
     "arc_elements": [
-      "REVERSAL",
-      "HANDOVER_OF_POWER",
-      "PLEA",
+      "GREAT_REVERSAL",
+      "FAVOR_GRANTED",
+      "PLEA_FOR_LIFE",
       "FAVOUR_GRANTED",
-      "COUNTER_DECREE_OPENED",
+      "ROYAL_DECREE",
       "IRREVOCABLE_LIMIT"
     ],
     "context_elements": [
@@ -60,57 +60,57 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "DECISIVE",
       "RAW",
       "WEIGHTED",
-      "CONSTRAINED",
+      "TAUT",
       "ABSOLUTE"
     ],
     "pace_elements": [
       "BRISK",
       "BREAKING_TO_ANGUISH",
-      "SETTLING_TO_GRAVITY"
+      "SETTLES"
     ],
     "communicative_function_elements": [
-      "TRANSFERS_POWER",
+      "GRANTS",
       "HANDS_TOKENS",
       "VOICES_PLEA",
       "GRANTS_THE_PEN",
       "STATES_THE_LIMIT",
-      "OPENS_COUNTER_DECREE"
+      "OPENS"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "8:1-2",
-      "scene_kind": "POWER_HANDOVER_SCENE",
+      "scene_kind": "AUTHORITY_GRANT_SCENE",
       "scene_communicative_purpose": "Shows authority and property passing from the fallen enemy to Esther and Mordecai — the house given, the ring transferred, Mordecai set in charge.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "GIVER_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT",
             "referential_form": "THE_KING"
           },
           {
             "being_id": "B2",
-            "role_in_scene": "RECEIVER_QUEEN",
+            "role_in_scene": "QUEEN",
             "presence": "PRESENT",
             "referential_form": "ESTHER_THE_QUEEN"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "RING_RECEIVER",
+            "role_in_scene": "HONORED_ONE",
             "presence": "PRESENT"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "FALLEN_ENEMY",
+            "role_in_scene": "ADVERSARY",
             "presence": "REFERENCED",
             "referential_form": "THE_ENEMY_OF_THE_JEWS"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "ENEMYS_TARGET_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED"
           }
         ]
@@ -136,30 +136,30 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "8:3-6",
-      "scene_kind": "PETITION_AT_THE_FEET_SCENE",
+      "scene_kind": "APPEAL_SCENE",
       "scene_communicative_purpose": "Shows Esther's desperate, formally-couched plea to revoke the standing death-decree, and the king's scepter-sign that she is heard — opening the question the rest of the book answers.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B2",
-            "role_in_scene": "PETITIONER",
+            "role_in_scene": "SUPPLIANT",
             "presence": "PRESENT"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "PETITIONED_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT",
             "referential_form": "THE_KING"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "PLAN_AUTHOR",
+            "role_in_scene": "SCRIBES",
             "presence": "REFERENCED",
             "referential_form": "THE_AGAGITE"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "CONDEMNED_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED"
           }
         ]
@@ -188,36 +188,36 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "8:7-8",
-      "scene_kind": "GRANT_OF_THE_PEN_SCENE",
+      "scene_kind": "AUTHORITY_GRANT_SCENE",
       "scene_communicative_purpose": "Shows the king granting Esther and Mordecai the authority to write a new decree under his seal, and stating the irrevocable-law rule that makes a counter-decree the only road to rescue.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "GRANTOR_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT",
             "referential_form": "KING_AHASUERUS"
           },
           {
             "being_id": "B2",
-            "role_in_scene": "GRANT_RECEIVER",
+            "role_in_scene": "HONORED_ONE",
             "presence": "PRESENT",
             "referential_form": "ESTHER_THE_QUEEN"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "GRANT_RECEIVER",
+            "role_in_scene": "HONORED_ONE",
             "presence": "PRESENT",
             "referential_form": "MORDECAI_THE_JEW"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "JUDGED_ENEMY",
+            "role_in_scene": "ADVERSARY",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "DECREE_SUBJECT_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED"
           }
         ]
@@ -271,7 +271,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "8:1",
-      "proposition_kind": "CAME_BEFORE",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "comer": "B1",
         "came_before": "B4",
@@ -325,7 +325,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "8:2",
-      "proposition_kind": "SET_OVER",
+      "proposition_kind": "APPOINTED",
       "event_specific_slots": {
         "setter": "B2",
         "set_one": "B1",
@@ -342,7 +342,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "8:3",
-      "proposition_kind": "SPOKE_AGAIN",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B2",
         "spoke_before": "B4",
@@ -359,7 +359,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "8:3",
-      "proposition_kind": "FELL_DOWN",
+      "proposition_kind": "PROSTRATED",
       "event_specific_slots": {
         "faller": "B2",
         "fell_before": "FEET",
@@ -391,7 +391,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "8:3",
-      "proposition_kind": "PLEADED",
+      "proposition_kind": "APPEAL",
       "event_specific_slots": {
         "pleader": "B2",
         "pleaded_with": "B4",
@@ -414,7 +414,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S2",
       "verse_anchor": "8:4",
-      "proposition_kind": "HELD_OUT",
+      "proposition_kind": "GRANTED",
       "event_specific_slots": {
         "holder_out": "B4",
         "held_out": "TH_SCEPTER",
@@ -447,7 +447,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S2",
       "verse_anchor": "8:4",
-      "proposition_kind": "STOOD_BEFORE",
+      "proposition_kind": "APPROACHED",
       "event_specific_slots": {
         "stander": "B2",
         "stood_before": "B4"
@@ -463,7 +463,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S2",
       "verse_anchor": "8:5",
-      "proposition_kind": "SAID",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B2",
         "addressee": "B4",
@@ -503,7 +503,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S2",
       "verse_anchor": "8:5",
-      "proposition_kind": "PETITIONED_FOR_COUNTER_WRITING",
+      "proposition_kind": "APPEAL",
       "event_specific_slots": {
         "voiced_within": "P13",
         "petitioner": "B2",
@@ -533,7 +533,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S2",
       "verse_anchor": "8:6",
-      "proposition_kind": "ASKED_HOW_TO_BEAR",
+      "proposition_kind": "ASKED",
       "event_specific_slots": {
         "voiced_within": "P13",
         "asker": "B2",
@@ -555,7 +555,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P16",
       "scene_link": "S2",
       "verse_anchor": "8:6",
-      "proposition_kind": "ASKED_HOW_TO_BEAR",
+      "proposition_kind": "ASKED",
       "event_specific_slots": {
         "voiced_within": "P13",
         "asker": "B2",
@@ -576,7 +576,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P17",
       "scene_link": "S3",
       "verse_anchor": "8:7",
-      "proposition_kind": "SAID",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speaker": "B4",
         "speaker_named": "AHASUERUS",
@@ -617,7 +617,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P19",
       "scene_link": "S3",
       "verse_anchor": "8:7",
-      "proposition_kind": "HANGED",
+      "proposition_kind": "STRUCK",
       "status": "RECALLED",
       "event_specific_slots": {
         "voiced_within": "P17",
@@ -640,7 +640,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P20",
       "scene_link": "S3",
       "verse_anchor": "8:8",
-      "proposition_kind": "GRANTED_WRITING",
+      "proposition_kind": "DECLARED",
       "status": "PERMITTED",
       "event_specific_slots": {
         "voiced_within": "P17",
@@ -663,7 +663,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P21",
       "scene_link": "S3",
       "verse_anchor": "8:8",
-      "proposition_kind": "GRANTED_SEALING",
+      "proposition_kind": "DECLARED",
       "status": "PERMITTED",
       "event_specific_slots": {
         "voiced_within": "P17",
@@ -684,7 +684,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P22",
       "scene_link": "S3",
       "verse_anchor": "8:8b",
-      "proposition_kind": "IRREVOCABLE_DECREE_RULE",
+      "proposition_kind": "DECLARED",
       "status": "NORM",
       "event_specific_slots": {
         "voiced_within": "P17",

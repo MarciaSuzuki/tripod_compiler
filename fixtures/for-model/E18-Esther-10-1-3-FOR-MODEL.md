@@ -44,15 +44,15 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
 
   "level_1": {
     "arc_elements": [
-      "IMPERIAL_FRAME_RETURNS",
+      "RECORD_SEALED",
       "CERTIFICATION",
-      "ELEVATION",
+      "PUBLIC_HONOR",
       "VINDICATION",
       "SEALING"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
-      "IMPERIAL_CONTEXT",
+      "POLITICAL_CONTEXT",
       "KINSHIP_CONTEXT",
       "INSTITUTIONAL_CONTEXT",
       "AUDIENCE_KNOWLEDGE_CONTEXT",
@@ -62,17 +62,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "SETTLED",
       "OFFICIAL",
       "QUIETLY_PROUD",
-      "FINAL"
+      "DECISIVE"
     ],
     "pace_elements": [
-      "SLOWING",
-      "WIDENING"
+      "SLOWED",
+      "WIDENS"
     ],
     "communicative_function_elements": [
       "CLOSES",
-      "RE_ESTABLISHES",
-      "CERTIFIES",
-      "EXALTS",
+      "ESTABLISHES",
+      "RECORDS",
+      "ELEVATES",
       "SEALS"
     ]
   },
@@ -81,7 +81,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S1",
       "verse_range": "10:1",
-      "scene_kind": "IMPERIAL_FRAME_CLOSING_SCENE",
+      "scene_kind": "NARRATOR_FRAMING_CLOSE_SCENE",
       "scene_communicative_purpose": "Re-establishes the empire's full reach and the king's standing power as the book closes — the wide frame returning at the end.",
 
       "beings_in_scene": {
@@ -115,7 +115,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "10:2",
-      "scene_kind": "CHRONICLE_CERTIFICATION_SCENE",
+      "scene_kind": "NARRATOR_FRAMING_CLOSE_SCENE",
       "scene_communicative_purpose": "Certifies the whole account as recorded imperial history and binds the king's might to Mordecai's rise — sealing the story in the official annals.",
 
       "beings_in_scene": {
@@ -164,7 +164,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "10:3",
-      "scene_kind": "CLOSING_PORTRAIT_SCENE",
+      "scene_kind": "NARRATOR_FRAMING_CLOSE_SCENE",
       "scene_communicative_purpose": "Closes the book with the portrait of Mordecai exalted yet self-giving — the once-endangered Jew now second to the throne, using his power for his people's good and peace.",
 
       "beings_in_scene": {
@@ -182,7 +182,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B17",
-            "role_in_scene": "KINDRED_PEOPLE",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "REFERENCED"
           }
         ]
@@ -213,7 +213,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_link": "S1",
       "verse_anchor": "10:1",
       "proposition_kind": "TRIBUTE_IMPOSED",
-      "status": "HABITUAL",
       "event_specific_slots": {
         "imposer": "B4",
         "imposer_standing": "KING",
@@ -232,8 +231,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S2",
       "verse_anchor": "10:2",
-      "proposition_kind": "RECORD_CITED",
-      "status": "RECALLED",
+      "proposition_kind": "HEARD_REPORT",
       "event_specific_slots": {
         "citing_components": [
           {
@@ -263,8 +261,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S3",
       "verse_anchor": "10:3",
-      "proposition_kind": "STANDING_STATUS_CHARACTERIZED",
-      "status": "NORM",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "characterized_one": "B1",
         "characterized_referential_form": "THE_JEW",
@@ -283,7 +280,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "STATES_AS_TRUE"
           },
           {
-            "action": "SPEAKING",
+            "action": "STATED",
             "speaker": "B1",
             "spoken_peace": "PEACE",
             "addressee": "KINDRED",

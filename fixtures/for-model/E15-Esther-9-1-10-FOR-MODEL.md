@@ -44,7 +44,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
 
   "level_1": {
     "arc_elements": [
-      "APPOINTED_DAY_ARRIVED",
+      "ENEMY_STRUCK",
       "GREAT_REVERSAL",
       "EMPIRE_TILTED",
       "ENEMIES_STRUCK",
@@ -59,19 +59,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "RESTRAINED",
-      "LEDGER_LIKE",
+      "ECONOMICAL",
       "SOBER",
       "VINDICATED",
       "CEREMONIAL"
     ],
     "pace_elements": [
-      "STACKED",
-      "QUICK_AT_OPEN",
-      "SLOWED_FOR_THE_TALLY"
+      "ACCUMULATES",
+      "BRISK",
+      "SLOWED"
     ],
     "communicative_function_elements": [
       "FIXES",
-      "OVERTURNS",
+      "REVERSES",
       "TILTS",
       "TALLIES",
       "WITHHOLDS"
@@ -82,7 +82,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S1",
       "verse_range": "9:1-4",
-      "scene_kind": "REVERSAL_AND_EMPIRE_TILT_SCENE",
+      "scene_kind": "REVERSAL_SCENE",
       "scene_communicative_purpose": "States the great reversal of the appointed day and shows the empire itself tilting toward the Jews out of dread of them and of the rising Mordecai.",
 
       "beings_in_scene": {
@@ -94,17 +94,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B20",
-            "role_in_scene": "ADVERSARIES",
+            "role_in_scene": "SLAIN_FOES",
             "presence": "PRESENT"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SOVEREIGN",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "DREADED_ONE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED",
             "referential_form": "THE_DREAD_OF_MORDECAI"
           },
@@ -147,12 +147,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B17",
-            "role_in_scene": "STRIKING_PEOPLE",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "PRESENT"
           },
           {
             "being_id": "B20",
-            "role_in_scene": "STRUCK_ADVERSARIES",
+            "role_in_scene": "SLAIN_FOES",
             "presence": "PRESENT"
           },
           {
@@ -162,7 +162,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B3",
-            "role_in_scene": "ARCHENEMY_FATHER",
+            "role_in_scene": "LINEAGE_REFERENT",
             "presence": "REFERENCED",
             "referential_form": "THE_FOE_OF_THE_JEWS"
           }
@@ -256,7 +256,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_link": "S1",
       "verse_anchor": "9:2",
       "proposition_kind": "ASSEMBLED_FOR_DEFENSE",
-      "status": "PERMITTED",
       "event_specific_slots": {
         "assembler": "B17",
         "assembly_place": "THEIR_OWN_CITIES",
@@ -294,7 +293,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S1",
       "verse_anchor": "9:2",
-      "proposition_kind": "DREAD_FELL",
+      "proposition_kind": "FEARED",
       "event_specific_slots": {
         "dread_of": "B17",
         "dread_fallen_on": "THE_PEOPLES",
@@ -330,7 +329,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S1",
       "verse_anchor": "9:3",
-      "proposition_kind": "DREAD_FELL",
+      "proposition_kind": "FEARED",
       "event_specific_slots": {
         "dread_of": "B1",
         "dread_fallen_on": "B19"
@@ -383,7 +382,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S2",
       "verse_anchor": "9:5",
-      "proposition_kind": "STRUCK_THE_ENEMIES",
+      "proposition_kind": "STRUCK",
       "event_specific_slots": {
         "striker": "B17",
         "struck": "B20",
@@ -402,7 +401,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S2",
       "verse_anchor": "9:5",
-      "proposition_kind": "DEALT_AS_THEY_PLEASED",
+      "proposition_kind": "STRUCK",
       "event_specific_slots": {
         "doer": "B17",
         "done_to": "B20",
@@ -420,7 +419,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S2",
       "verse_anchor": "9:6",
-      "proposition_kind": "SLEW_IN_THE_CITADEL",
+      "proposition_kind": "STRUCK",
       "event_specific_slots": {
         "slayer": "B17",
         "slain": "B20",
@@ -440,7 +439,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S2",
       "verse_anchor": "9:7-9",
-      "proposition_kind": "SLEW_THE_TEN_SONS",
+      "proposition_kind": "STRUCK",
       "event_specific_slots": {
         "slayer": "B17",
         "slain": "B16",
@@ -471,7 +470,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S2",
       "verse_anchor": "9:10",
-      "proposition_kind": "IDENTIFIED_THE_SONS",
+      "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
         "identified": "B16",
         "identified_count": "TEN",
@@ -492,8 +491,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P16",
       "scene_link": "S2",
       "verse_anchor": "9:10",
-      "proposition_kind": "WITHHELD_HAND_FROM_PLUNDER",
-      "status": "PERMITTED",
+      "proposition_kind": "DECLINED",
       "event_specific_slots": {
         "restrainer": "B17",
         "withheld_spoil": "THE_PLUNDER",
