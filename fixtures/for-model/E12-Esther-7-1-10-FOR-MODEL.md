@@ -34,11 +34,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
   },
   "level_1": {
     "arc_elements": [
-      "RENEWED_OFFER",
+      "FAVOR_GRANTED",
       "PLEA_FOR_LIFE",
       "ADVERSARY_NAMED",
       "WRATH_AND_FALL",
-      "REVERSAL_COMPLETED"
+      "GREAT_REVERSAL"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -50,46 +50,46 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "MEASURED",
-      "TIGHTENING",
-      "FURIOUS",
-      "GRIMLY_IRONIC",
-      "SUDDENLY_FINAL"
+      "TAUT",
+      "HEATED",
+      "IRONIC",
+      "DECISIVE"
     ],
     "pace_elements": [
       "DELIBERATE",
-      "BREAKING_INTO_A_RUN",
-      "SETTLING_TO_STILLNESS"
+      "ACCELERATES",
+      "SETTLES"
     ],
     "communicative_function_elements": [
-      "REOPENS_THE_OFFER",
-      "STATES_THE_DANGER",
+      "REACTIVATES",
+      "STATES_DANGER",
       "TURNS_ON_A_NAME",
-      "ENACTS_THE_REVERSAL",
-      "CLOSES_TWO_THREADS"
+      "REVERSES",
+      "CLOSES"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "7:1-2",
-      "scene_kind": "SECOND_BANQUET_RENEWED_OFFER_SCENE",
+      "scene_kind": "MEAL_SCENE",
       "scene_communicative_purpose": "Sets the second banquet and the king's renewed, open-ended offer — the door through which Esther will finally speak.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "HOST_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT",
             "referential_form": "THE_KING"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "HONOURED_GUEST",
+            "role_in_scene": "HONORED_ONE",
             "presence": "PRESENT"
           },
           {
             "being_id": "B2",
-            "role_in_scene": "QUEEN_HOST",
+            "role_in_scene": "QUEEN",
             "presence": "PRESENT",
             "referential_form": "ESTHER_THE_QUEEN"
           }
@@ -112,19 +112,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "7:3-4",
-      "scene_kind": "PLEA_FOR_LIFE_SCENE",
+      "scene_kind": "APPEAL_SCENE",
       "scene_communicative_purpose": "Delivers Esther's plea — risking herself to set the danger to her people before the king, still without naming the man behind it.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B2",
-            "role_in_scene": "PETITIONER",
+            "role_in_scene": "SUPPLIANT",
             "presence": "PRESENT",
             "referential_form": "ESTHER_THE_QUEEN"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "PETITIONED_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT",
             "referential_form": "THE_KING"
           }
@@ -146,13 +146,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "7:5-6",
-      "scene_kind": "DEMAND_AND_NAMING_SCENE",
+      "scene_kind": "EXPOSURE_SCENE",
       "scene_communicative_purpose": "Delivers the naming — the single word that turns the accuser into the accused and exposes Haman to the king's wrath.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "DEMANDER",
+            "role_in_scene": "ACCUSER",
             "presence": "PRESENT",
             "referential_form": "KING_AHASUERUS"
           },
@@ -164,7 +164,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B3",
-            "role_in_scene": "THE_NAMED_ADVERSARY",
+            "role_in_scene": "ADVERSARY",
             "presence": "PRESENT"
           }
         ]
@@ -184,24 +184,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S4",
       "verse_range": "7:7-8",
-      "scene_kind": "WRATH_FALL_AND_VERDICT_SCENE",
+      "scene_kind": "REVERSAL_SCENE",
       "scene_communicative_purpose": "Shows the king's wrath breaking out, Haman's desperate fall, and the king's furious misreading of it as assault — sealing Haman's doom.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "ENRAGED_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT",
             "referential_form": "THE_KING"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "DOOMED_SUPPLIANT",
+            "role_in_scene": "SUPPLIANT",
             "presence": "PRESENT"
           },
           {
             "being_id": "B2",
-            "role_in_scene": "QUEEN_ON_WHOSE_COUCH_HE_FALLS",
+            "role_in_scene": "QUEEN",
             "presence": "PRESENT",
             "referential_form": "ESTHER_THE_QUEEN"
           }
@@ -224,7 +224,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S5",
       "verse_range": "7:9-10",
-      "scene_kind": "GALLOWS_AND_WRATH_SUBSIDES_SCENE",
+      "scene_kind": "REVERSAL_SCENE",
       "scene_communicative_purpose": "Closes the reversal: the gallows built for Mordecai claims Haman, the king's order is carried out, and his anger settles.",
       "beings_in_scene": {
         "entries": [
@@ -235,18 +235,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B4",
-            "role_in_scene": "ORDERING_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT",
             "referential_form": "THE_KING"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "THE_HANGED_ADVERSARY",
+            "role_in_scene": "ADVERSARY",
             "presence": "PRESENT_BECOMES_DECEASED"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "INTENDED_VICTIM_OF_THE_GALLOWS",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED",
             "referential_form": "MORDECAI_WHO_SPOKE_GOOD_FOR_THE_KING"
           }
@@ -275,7 +275,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "7:1",
-      "proposition_kind": "CAME_TO_DRINK",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "comer": "B4",
         "accompanying": "B3",
@@ -294,7 +294,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "7:2",
-      "proposition_kind": "RENEWED_OPEN_OFFER",
+      "proposition_kind": "PROPOSED",
       "event_specific_slots": {
         "speaker": "B4",
         "addressee": "B2",
@@ -330,7 +330,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S2",
       "verse_anchor": "7:3",
-      "proposition_kind": "PETITIONED_FOR_LIFE_AND_PEOPLE",
+      "proposition_kind": "APPEAL",
       "event_specific_slots": {
         "petitioner": "B2",
         "petitioner_standing": "QUEEN",
@@ -361,7 +361,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S2",
       "verse_anchor": "7:4",
-      "proposition_kind": "STATED_GROUNDS_OF_PLEA",
+      "proposition_kind": "APPEAL",
       "event_specific_slots": {
         "voiced_within": "P3",
         "stater": "B2",
@@ -398,7 +398,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S3",
       "verse_anchor": "7:5",
-      "proposition_kind": "DEMANDED_THE_CULPRIT",
+      "proposition_kind": "INTERROGATED",
       "event_specific_slots": {
         "speaker": "B4",
         "addressee": "B2",
@@ -420,7 +420,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S3",
       "verse_anchor": "7:6",
-      "proposition_kind": "NAMED_THE_ADVERSARY",
+      "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
         "speaker": "B2",
         "named_one": "B3",
@@ -439,7 +439,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S3",
       "verse_anchor": "7:6",
-      "proposition_kind": "SEIZED_WITH_TERROR",
+      "proposition_kind": "FEARED",
       "event_specific_slots": {
         "terrified_one": "B3",
         "before_whom": ["B4", "B2"]
@@ -455,7 +455,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S4",
       "verse_anchor": "7:7",
-      "proposition_kind": "ROSE_IN_WRATH",
+      "proposition_kind": "ANGER_KINDLED",
       "event_specific_slots": {
         "riser": "B4",
         "in_what": "WRATH",
@@ -473,7 +473,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S4",
       "verse_anchor": "7:7",
-      "proposition_kind": "STOOD_TO_BEG_FOR_LIFE",
+      "proposition_kind": "APPEAL",
       "event_specific_slots": {
         "stander": "B3",
         "begging_for": "A_LIFE",
@@ -496,7 +496,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S4",
       "verse_anchor": "7:8",
-      "proposition_kind": "RETURNED_TO_THE_BANQUET",
+      "proposition_kind": "RETURNED",
       "event_specific_slots": {
         "returner": "B4",
         "from_where": "PALACE_GARDEN",
@@ -513,7 +513,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S4",
       "verse_anchor": "7:8",
-      "proposition_kind": "FELL_ON_THE_COUCH",
+      "proposition_kind": "PROSTRATED",
       "event_specific_slots": {
         "faller": "B3",
         "onto_what": "A_COUCH",
@@ -530,7 +530,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S4",
       "verse_anchor": "7:8",
-      "proposition_kind": "CRIED_OUT_ALLEGING_ASSAULT",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speaker": "B4",
         "alleged_act": "AN_ASSAULT",
@@ -552,7 +552,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S4",
       "verse_anchor": "7:8",
-      "proposition_kind": "FACE_COVERED",
+      "proposition_kind": "TOOK",
       "event_specific_slots": {
         "covered_part": "A_FACE",
         "covered_party": "B3",
@@ -571,7 +571,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S5",
       "verse_anchor": "7:9",
-      "proposition_kind": "POINTED_OUT_THE_GALLOWS",
+      "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
         "speaker": "B13",
         "speaker_standing": "EUNUCH",
@@ -596,7 +596,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S5",
       "verse_anchor": "7:9",
-      "proposition_kind": "ORDERED_THE_HANGING",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B4",
         "ordered_act": "HANGING",
@@ -615,7 +615,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P16",
       "scene_link": "S5",
       "verse_anchor": "7:10",
-      "proposition_kind": "HANGED_ON_HIS_OWN_GALLOWS",
+      "proposition_kind": "STRUCK",
       "event_specific_slots": {
         "hanged_one": "B3",
         "on_what": "TH_GALLOWS",

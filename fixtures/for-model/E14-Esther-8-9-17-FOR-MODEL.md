@@ -44,11 +44,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
 
   "level_1": {
     "arc_elements": [
-      "COUNTER_DECREE_ISSUED",
-      "RESCUE_GRANTED",
+      "ROYAL_DECREE",
+      "FAVOR_GRANTED",
       "REVERSAL_PROCLAIMED",
-      "HONOR_BESTOWED",
-      "DREAD_TURNED_TO_GLADNESS"
+      "PUBLIC_HONOR",
+      "GREAT_REVERSAL"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -66,7 +66,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "pace_elements": [
       "BRISK",
-      "RISING",
+      "RISES",
       "WIDENS"
     ],
     "communicative_function_elements": [
@@ -74,7 +74,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "GRANTS",
       "PUBLISHES",
       "REVERSES",
-      "SPREADS"
+      "ADVANCES"
     ]
   },
 
@@ -82,19 +82,19 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S1",
       "verse_range": "8:9-10",
-      "scene_kind": "DECREE_DISPATCH_SCENE",
+      "scene_kind": "DECREE_SCENE",
       "scene_communicative_purpose": "Shows the imperial writing-machine turning over again — same scribes, ring, couriers, and reach — now to issue the rescue.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B1",
-            "role_in_scene": "DECREE_AUTHOR",
+            "role_in_scene": "SCRIBES",
             "presence": "PRESENT"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SOVEREIGN",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           },
           {
@@ -160,24 +160,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "8:11-13",
-      "scene_kind": "DECREE_GRANT_SCENE",
+      "scene_kind": "DECREE_SCENE",
       "scene_communicative_purpose": "Voices the legal grant itself — the right to live and defend, set on the very day of the threatened slaughter — the death-decree turned inside out.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "GRANTING_AUTHORITY",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "GRANT_BENEFICIARY",
+            "role_in_scene": "HONORED_ONE",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B20",
-            "role_in_scene": "ATTACKERS",
+            "role_in_scene": "SLAIN_FOES",
             "presence": "REFERENCED"
           }
         ]
@@ -211,7 +211,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "8:14-15",
-      "scene_kind": "PUBLIC_HONOR_SCENE",
+      "scene_kind": "PROCLAMATION_SCENE",
       "scene_communicative_purpose": "Shows the rescue racing outward and its human face: the once-mourning Mordecai robed in royal honour, and the capital's cheer.",
 
       "beings_in_scene": {
@@ -229,7 +229,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B4",
-            "role_in_scene": "SOVEREIGN",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           }
         ]
@@ -266,7 +266,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S4",
       "verse_range": "8:16-17",
-      "scene_kind": "REVERSAL_SPREAD_SCENE",
+      "scene_kind": "REVERSAL_SCENE",
       "scene_communicative_purpose": "Shows the reversal spreading to the whole realm — dread turned to light and feasting — and its shadow: outsiders joining the Jews out of fear.",
 
       "beings_in_scene": {
@@ -278,7 +278,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B17",
-            "role_in_scene": "DREADED_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED",
             "referential_form": "THE_DREAD_OF_THE_JEWS"
           }
@@ -313,7 +313,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "8:9",
-      "proposition_kind": "SUMMONED",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "summoner": "B1",
         "summoned": "B21",
@@ -334,7 +334,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "8:9",
-      "proposition_kind": "DECREE_WRITTEN",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "decree_writ": "TH_EDICT",
         "commander": "B1",
@@ -360,7 +360,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "8:10",
-      "proposition_kind": "WROTE_IN_NAME_OF",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "writer": "B1",
         "name_invoked": "B4",
@@ -378,7 +378,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S1",
       "verse_anchor": "8:10",
-      "proposition_kind": "SEALED",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "sealer": "B1",
         "sealing_instrument": "TH_SIGNET_RING",
@@ -396,7 +396,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "8:10",
-      "proposition_kind": "DISPATCHED",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "sender": "B1",
         "dispatched_edict": "TH_EDICT",
@@ -417,12 +417,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "8:11",
-      "proposition_kind": "GRANTED_RIGHT",
+      "proposition_kind": "GRANTED",
       "status": "PERMITTED",
       "event_specific_slots": {
         "grant_components": [
           {
-            "action": "GRANTED",
+            "action": "GAVE",
             "granter": "B4",
             "grantee": "B17",
             "grant_scope": "every_city",
@@ -455,7 +455,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "8:11",
-      "proposition_kind": "GRANTED_LEAVE_TO_DESTROY",
+      "proposition_kind": "GRANTED",
       "status": "PERMITTED",
       "event_specific_slots": {
         "grantee": "B17",
@@ -475,7 +475,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speech_act": "PRESCRIBES_AS_LAW"
           },
           {
-            "action": "WIPE_OUT",
+            "action": "ANNIHILATE",
             "permitted_party": "B17",
             "target": "B20",
             "target_extent": ["children", "women"],
@@ -506,8 +506,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P18",
       "scene_link": "S2",
       "verse_anchor": "8:11",
-      "proposition_kind": "ATTACK_CONDITION",
-      "status": "FORESEEN",
+      "proposition_kind": "DECLARED",
+      "status": "NORM",
       "event_specific_slots": {
         "attacker": "B20",
         "attacked": "B17"
@@ -544,8 +544,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "8:13",
-      "proposition_kind": "COPY_PUBLISHED",
-      "status": "PERMITTED",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "published_copy": "TH_EDICT",
         "copy_of": "the_writing",
@@ -603,7 +602,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S3",
       "verse_anchor": "8:14",
-      "proposition_kind": "LAW_GIVEN_AT",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "given_law": "law",
         "given_at": "PL1",
@@ -620,7 +619,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "8:15",
-      "proposition_kind": "WENT_OUT_IN_HONOR",
+      "proposition_kind": "DEPARTED",
       "event_specific_slots": {
         "departer": "B1",
         "departed_from_before": "B4",
@@ -649,7 +648,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "rejoicing_components": [
           {
-            "action": "SHOUTED",
+            "action": "CRIED",
             "rejoicer": "PL1",
             "speech_act": "STATES_AS_TRUE"
           },
@@ -671,7 +670,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S4",
       "verse_anchor": "8:16",
-      "proposition_kind": "REVERSAL_RECEIVED",
+      "proposition_kind": "GRANTED",
       "event_specific_slots": {
         "reversal_receiver": "B17",
         "received_state": ["light", "gladness", "joy", "honour"]

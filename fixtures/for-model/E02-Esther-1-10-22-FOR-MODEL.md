@@ -54,9 +54,9 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "REFUSAL",
       "ROYAL_RAGE",
       "QUESTION_OF_LAW",
-      "COUNSEL_AND_EDICT",
+      "ROYAL_DECREE",
       "DECREE_DISPATCHED",
-      "THRONE_EMPTIED"
+      "SEARCH_SET_IN_MOTION"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -66,11 +66,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "AUDIENCE_KNOWLEDGE_CONTEXT"
     ],
     "tone_elements": [
-      "TENSE",
+      "TAUT",
       "FAINTLY_ABSURD",
       "DISPROPORTIONATE",
-      "ACCELERATING",
-      "OMINOUS"
+      "RISING",
+      "COLD"
     ],
     "pace_elements": [
       "TURNING_HARD",
@@ -78,9 +78,9 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "CLOSING_FAST_AND_WIDE"
     ],
     "communicative_function_elements": [
-      "OPENS_CONFLICT",
-      "PLANTS_THE_ENGINE",
-      "ESTABLISHES_IRREVOCABLE_LAW",
+      "OPENS",
+      "PLANTS",
+      "ESTABLISHES",
       "EMPTIES_THE_THRONE",
       "WITHHOLDS"
     ]
@@ -103,7 +103,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B14",
-            "role_in_scene": "ROYAL_ATTENDANTS",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT",
             "referential_form": "THE_SEVEN_EUNUCHS_WHO_SERVE_BEFORE_HIM"
           },
@@ -159,13 +159,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B14",
-            "role_in_scene": "ROYAL_ATTENDANTS",
+            "role_in_scene": "NOBLES",
             "presence": "REFERENCED",
             "referential_form": "THE_EUNUCHS"
           },
           {
             "being_id": "B15",
-            "role_in_scene": "ROYAL_COUNCIL",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT",
             "referential_form": "WISE_MEN_WHO_KNOW_THE_TIMES"
           }
@@ -193,20 +193,20 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "1:16-20",
-      "scene_kind": "COUNSEL_AND_VOICED_EDICT_SCENE",
+      "scene_kind": "DECREE_SCENE",
       "scene_communicative_purpose": "Shows the king's nearest counsellor magnifying a private refusal into an empire-wide threat and answering it with a voiced, irrevocable decree — the engine of the whole book set running.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B10",
-            "role_in_scene": "COUNSELLOR",
+            "role_in_scene": "ADVISERS",
             "presence": "PRESENT",
             "referential_form": "MEMUCAN"
           },
           {
             "being_id": "B15",
-            "role_in_scene": "ROYAL_COUNCIL",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT",
             "referential_form": "THE_KINGS_PRINCES"
           },
@@ -252,7 +252,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S4",
       "verse_range": "1:21-22",
-      "scene_kind": "DECREE_RATIFIED_AND_DISPATCHED_SCENE",
+      "scene_kind": "DECREE_SCENE",
       "scene_communicative_purpose": "Shows the king ratifying the decree and dispatching it across the whole empire — a private refusal sealed as published, irrevocable law.",
 
       "beings_in_scene": {
@@ -265,13 +265,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B15",
-            "role_in_scene": "ROYAL_COUNCIL",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT",
             "referential_form": "THE_PRINCES"
           },
           {
             "being_id": "B10",
-            "role_in_scene": "COUNSELLOR",
+            "role_in_scene": "ADVISERS",
             "presence": "REFERENCED",
             "referential_form": "MEMUCAN"
           }
@@ -305,7 +305,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "1:10",
-      "proposition_kind": "COMMANDED",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "commanding_king": "B4",
         "king_named": "AHASUERUS",
@@ -328,7 +328,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "1:11",
-      "proposition_kind": "DISPLAY_COMMANDED",
+      "proposition_kind": "INSTRUCTION",
       "status": "FORESEEN",
       "event_specific_slots": {
         "commanded_within": "P1",
@@ -353,7 +353,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S2",
       "verse_anchor": "1:12",
-      "proposition_kind": "REFUSED",
+      "proposition_kind": "DECLINED",
       "event_specific_slots": {
         "refuser": "B5",
         "refuser_capacity": "QUEEN",
@@ -407,7 +407,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S2",
       "verse_anchor": "1:14",
-      "proposition_kind": "STOOD_NEAR",
+      "proposition_kind": "APPROACHED",
       "event_specific_slots": {
         "near_party": "B15",
         "near_to": "B4",
@@ -429,7 +429,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "1:15",
-      "proposition_kind": "ASKED_FOR_RULING",
+      "proposition_kind": "ASKED",
       "event_specific_slots": {
         "questioner": "B4",
         "governing_rule": "THE_LAW",
@@ -454,7 +454,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S3",
       "verse_anchor": "1:16",
-      "proposition_kind": "ALLEGED_WRONGDOING",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "alleger": "B10",
         "spoken_before": ["B4", "B15"],
@@ -477,7 +477,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S3",
       "verse_anchor": "1:17",
-      "proposition_kind": "CONTEMPT_FORESEEN",
+      "proposition_kind": "DECLARED",
       "status": "FORESEEN",
       "event_specific_slots": {
         "voiced_within": "P7",
@@ -505,7 +505,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S3",
       "verse_anchor": "1:18",
-      "proposition_kind": "REPROACH_FORESEEN",
+      "proposition_kind": "DECLARED",
       "status": "FORESEEN",
       "event_specific_slots": {
         "voiced_within": "P7",
@@ -530,8 +530,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S3",
       "verse_anchor": "1:19",
-      "proposition_kind": "EDICT_PROPOSED",
-      "status": "PERMITTED",
+      "proposition_kind": "PROPOSED",
       "event_specific_slots": {
         "proposer": "B10",
         "addressed_to": "B4",
@@ -542,7 +541,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "character": "IRREVOCABLE",
         "decree_components": [
           {
-            "action": "DECREED_NOT_COMING",
+            "action": "DIRECTED",
             "barred_one": "B5",
             "barred_from": "B4",
             "speech_act": "PROPOSES_COURSE_OF_ACTION"
@@ -571,7 +570,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S3",
       "verse_anchor": "1:20",
-      "proposition_kind": "HONOUR_FORESEEN",
+      "proposition_kind": "DECLARED",
       "status": "FORESEEN",
       "event_specific_slots": {
         "voiced_within": "P10",
@@ -618,8 +617,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S4",
       "verse_anchor": "1:22",
-      "proposition_kind": "EDICT_DISPATCHED",
-      "status": "PERMITTED",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "sender": "B4",
         "sent": "TH_EDICT",
@@ -631,7 +629,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "in_each_tongue": "ITS_TONGUE",
         "decree_content_components": [
           {
-            "action": "PRESCRIBED_RULING",
+            "action": "DIRECTED",
             "ruler": "EVERY_MAN",
             "rules_in": "HIS_HOUSE",
             "speech_act": "PRESCRIBES_AS_LAW"

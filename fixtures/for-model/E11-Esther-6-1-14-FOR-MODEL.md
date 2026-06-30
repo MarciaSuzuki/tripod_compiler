@@ -42,14 +42,14 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "ENEMY_ARRIVES",
       "CROSS_PURPOSED_QUESTION",
       "SELF_INCRIMINATING_PRESCRIPTION",
-      "COMMAND_REVERSED",
+      "ROYAL_DECREE",
       "ENEMY_MADE_HERALD",
       "FLIGHT_IN_SHAME",
       "VERDICT_OF_FALL"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
-      "ROYAL_COURT_CONTEXT",
+      "INSTITUTIONAL_CONTEXT",
       "PHYSICAL_LOCATION",
       "KINSHIP_CONTEXT",
       "AUDIENCE_KNOWLEDGE_CONTEXT",
@@ -59,11 +59,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "TAUT",
       "QUIETLY_DELIGHTED",
       "IRONIC",
-      "ACCELERATING",
+      "RISING",
       "GRAVE_BENEATH_THE_COMEDY"
     ],
     "pace_elements": [
-      "QUICK",
+      "BRISK",
       "OVERLAPPING",
       "BREAKING_TO_OPEN_REVERSAL"
     ],
@@ -80,34 +80,34 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S1",
       "verse_range": "6:1-3",
-      "scene_kind": "SLEEPLESS_NIGHT_CHRONICLE_SCENE",
+      "scene_kind": "SLEEPLESS_NIGHT_SCENE",
       "scene_communicative_purpose": "Sets up the reversal: a sleepless king, the chronicle read, Mordecai's unrewarded loyalty surfaced at the decisive moment.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "SLEEPLESS_KING_WHO_ASKS",
+            "role_in_scene": "KING",
             "presence": "PRESENT"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "LOYAL_MAN_FOUND_UNREWARDED",
+            "role_in_scene": "GATE_SITTER",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B11",
-            "role_in_scene": "EXPOSED_PLOTTER",
+            "role_in_scene": "CONSPIRATOR",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B12",
-            "role_in_scene": "EXPOSED_PLOTTER",
+            "role_in_scene": "CONSPIRATOR",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B18",
-            "role_in_scene": "ATTENDANTS_WHO_ANSWER",
+            "role_in_scene": "ADVISERS",
             "presence": "PRESENT"
           }
         ]
@@ -137,29 +137,29 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "6:4-9",
-      "scene_kind": "CROSS_PURPOSED_AUDIENCE_SCENE",
+      "scene_kind": "AUDIENCE_SCENE",
       "scene_communicative_purpose": "Springs the irony: Haman, come to ask for Mordecai's death, mistakes himself for the man to be honoured and prescribes the most lavish honours he can imagine.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "KING_WHO_WITHHOLDS_THE_NAME",
+            "role_in_scene": "KING",
             "presence": "PRESENT"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "ENEMY_WHO_PRESCRIBES_HIS_OWN_HUMILIATION",
+            "role_in_scene": "ADVERSARY",
             "presence": "PRESENT"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "UNNAMED_MAN_THE_KING_MEANS",
+            "role_in_scene": "HONORED_ONE",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B19",
-            "role_in_scene": "NOBLE_RANK_NAMED_IN_HAMANS_PLAN",
+            "role_in_scene": "LINEAGE_REFERENT",
             "presence": "REFERENCED"
           }
         ]
@@ -202,24 +202,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "6:10-11",
-      "scene_kind": "REVERSAL_PROCESSION_SCENE",
+      "scene_kind": "REVERSAL_SCENE",
       "scene_communicative_purpose": "Executes the reversal: the king orders Haman to do every honour, to the letter, for Mordecai — and Haman carries it out with his own hands and voice.",
 
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "KING_WHO_TURNS_THE_PRESCRIPTION_BACK",
+            "role_in_scene": "KING",
             "presence": "PRESENT"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "ENEMY_FORCED_TO_HONOUR_HIS_TARGET",
+            "role_in_scene": "ADVERSARY",
             "presence": "PRESENT"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "MAN_HONOURED_THROUGH_THE_CITY",
+            "role_in_scene": "HONORED_ONE",
             "presence": "PRESENT",
             "referential_form": "MORDECAI_THE_JEW"
           }
@@ -264,7 +264,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B1",
-            "role_in_scene": "MAN_WHO_RETURNS_UNMOVED",
+            "role_in_scene": "REFUSER",
             "presence": "PRESENT",
             "referential_form": "MORDECAI_THE_JEW"
           },
@@ -275,23 +275,23 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B6",
-            "role_in_scene": "WIFE_WHO_PRONOUNCES_THE_FALL",
+            "role_in_scene": "ADVISERS",
             "presence": "PRESENT"
           },
           {
             "being_id": "B23",
-            "role_in_scene": "ADVISERS_WHO_PRONOUNCE_THE_FALL",
+            "role_in_scene": "ADVISERS",
             "presence": "PRESENT"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "LINEAGE_NAMED_AS_GROUND_OF_THE_FALL",
+            "role_in_scene": "LINEAGE_REFERENT",
             "presence": "REFERENCED",
             "referential_form": "THE_SEED_OF_THE_JEWS"
           },
           {
             "being_id": "B2",
-            "role_in_scene": "QUEEN_WHOSE_BANQUET_AWAITS",
+            "role_in_scene": "QUEEN",
             "presence": "REFERENCED"
           },
           {
@@ -330,7 +330,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "6:1",
-      "proposition_kind": "SLEEP_FLED",
+      "proposition_kind": "FEARED",
       "event_specific_slots": {
         "sleepless_party": "B4",
         "when": "THAT_NIGHT"
@@ -346,7 +346,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "6:1",
-      "proposition_kind": "ORDERED_BROUGHT",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B4",
         "brought": "TH_ANNALS",
@@ -365,7 +365,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "6:1",
-      "proposition_kind": "WAS_READ",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "read_record": "TH_ANNALS",
         "read_before": "B4"
@@ -382,7 +382,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S1",
       "verse_anchor": "6:2",
-      "proposition_kind": "WAS_FOUND_WRITTEN",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "found_record_form": "WRITTEN",
         "exposer": "B1",
@@ -405,7 +405,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "6:3",
-      "proposition_kind": "ASKED_WHAT_WAS_DONE",
+      "proposition_kind": "ASKED",
       "event_specific_slots": {
         "speaker": "B4",
         "asked_about": "B1",
@@ -425,7 +425,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S1",
       "verse_anchor": "6:3",
-      "proposition_kind": "ANSWERED_NOTHING_DONE",
+      "proposition_kind": "ANSWERED",
       "event_specific_slots": {
         "speaker": "B18",
         "answered": "NOTHING",
@@ -444,7 +444,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "6:4",
-      "proposition_kind": "ASKED_WHO_IS_THERE",
+      "proposition_kind": "ASKED",
       "event_specific_slots": {
         "speaker": "B4",
         "asked": "WHO",
@@ -479,7 +479,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "6:4",
-      "proposition_kind": "CAME_ON_ERRAND",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "errand_holder": "B3",
         "errand_addressee": "B4",
@@ -502,7 +502,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S2",
       "verse_anchor": "6:5",
-      "proposition_kind": "ANSWERED_WHO_STANDS",
+      "proposition_kind": "ANSWERED",
       "event_specific_slots": {
         "speaker": "B18",
         "answered_standing": "B3",
@@ -521,7 +521,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S2",
       "verse_anchor": "6:5",
-      "proposition_kind": "COMMANDED_TO_ENTER",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B4",
         "commanded": "LET_HIM_COME",
@@ -539,7 +539,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S2",
       "verse_anchor": "6:6",
-      "proposition_kind": "CAME_IN",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "comer": "B3"
       },
@@ -555,7 +555,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S2",
       "verse_anchor": "6:6",
-      "proposition_kind": "ASKED_HOW_TO_HONOUR",
+      "proposition_kind": "ASKED",
       "event_specific_slots": {
         "speaker": "B4",
         "addressee": "B3",
@@ -577,7 +577,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S2",
       "verse_anchor": "6:6",
-      "proposition_kind": "THOUGHT_IN_HEART",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "speaker": "B3",
         "addressee": "B3",
@@ -599,7 +599,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S2",
       "verse_anchor": "6:7",
-      "proposition_kind": "ANSWERED_ABOUT_THE_MAN",
+      "proposition_kind": "ANSWERED",
       "event_specific_slots": {
         "speaker": "B3",
         "addressee": "B4",
@@ -620,13 +620,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P16",
       "scene_link": "S2",
       "verse_anchor": "6:8",
-      "proposition_kind": "PRESCRIBED_HONOURS",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B3",
         "addressee": "B4",
         "prescribe_components": [
           {
-            "action": "LET_THEM_BRING",
+            "action": "PERMITTED",
             "brought": "TH_ROYAL_ROBE",
             "robe_worn_by": "B4",
             "status": "FORESEEN",
@@ -660,7 +660,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P17",
       "scene_link": "S2",
       "verse_anchor": "6:9",
-      "proposition_kind": "PRESCRIBED_HANDING",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B3",
         "handed_objects": ["TH_ROYAL_ROBE", "TH_ROYAL_HORSE"],
@@ -681,7 +681,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P18",
       "scene_link": "S2",
       "verse_anchor": "6:9",
-      "proposition_kind": "PRESCRIBED_CLOTHING",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B3",
         "clothed_party": "THE_MAN",
@@ -702,7 +702,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P19",
       "scene_link": "S2",
       "verse_anchor": "6:9",
-      "proposition_kind": "PRESCRIBED_LEADING",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B3",
         "led_on": "TH_ROYAL_HORSE",
@@ -723,7 +723,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P20",
       "scene_link": "S2",
       "verse_anchor": "6:9",
-      "proposition_kind": "PRESCRIBED_CRYING",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B3",
         "cried_where": "BEFORE_HIM",
@@ -746,7 +746,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P21",
       "scene_link": "S3",
       "verse_anchor": "6:10",
-      "proposition_kind": "COMMANDED_HASTE",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B4",
         "addressee": "B3",
@@ -766,7 +766,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P22",
       "scene_link": "S3",
       "verse_anchor": "6:10",
-      "proposition_kind": "COMMANDED_TO_HONOUR_MORDECAI",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "speaker": "B4",
         "addressee": "B3",
@@ -809,7 +809,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P24",
       "scene_link": "S3",
       "verse_anchor": "6:11",
-      "proposition_kind": "CLOTHED",
+      "proposition_kind": "GAVE",
       "event_specific_slots": {
         "clother": "B3",
         "clothed_party": "B1"
@@ -826,7 +826,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P25",
       "scene_link": "S3",
       "verse_anchor": "6:11",
-      "proposition_kind": "LED",
+      "proposition_kind": "TOOK",
       "event_specific_slots": {
         "leader": "B3",
         "led_on": "TH_ROYAL_HORSE",
@@ -845,7 +845,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P26",
       "scene_link": "S3",
       "verse_anchor": "6:11",
-      "proposition_kind": "CRIED",
+      "proposition_kind": "LAMENT",
       "event_specific_slots": {
         "crier": "B3",
         "cried_where": "BEFORE_HIM",
@@ -869,7 +869,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P27",
       "scene_link": "S4",
       "verse_anchor": "6:12",
-      "proposition_kind": "RETURNED_TO",
+      "proposition_kind": "RETURNED",
       "event_specific_slots": {
         "returner": "B1",
         "destination": "PL8"
@@ -885,7 +885,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P28",
       "scene_link": "S4",
       "verse_anchor": "6:12",
-      "proposition_kind": "HURRIED_HOME",
+      "proposition_kind": "RETURNED",
       "event_specific_slots": {
         "hurrier": "B3",
         "destination": "HIS_HOUSE",
@@ -903,7 +903,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P29",
       "scene_link": "S4",
       "verse_anchor": "6:13",
-      "proposition_kind": "TOLD",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "teller": "B3",
         "told_parties": ["B6", "B23"],
@@ -923,7 +923,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P30",
       "scene_link": "S4",
       "verse_anchor": "6:13",
-      "proposition_kind": "PRONOUNCED_VERDICT",
+      "proposition_kind": "DECLARED",
       "event_specific_slots": {
         "speakers": ["B23", "B6"],
         "wife_marker": "HIS_WIFE",
@@ -931,7 +931,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "verdict_components": [
           {
             "component_id": "C1",
-            "action": "STATED_CONDITION",
+            "action": "STATED",
             "condition": "OF_JEWISH_STOCK",
             "stock_of": "B17",
             "fallen_before": "B1",
@@ -963,7 +963,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P31",
       "scene_link": "S4",
       "verse_anchor": "6:14",
-      "proposition_kind": "WERE_STILL_SPEAKING",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "speakers": ["B6", "B23"],
         "speaking_with": "B3",
@@ -998,7 +998,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P33",
       "scene_link": "S4",
       "verse_anchor": "6:14",
-      "proposition_kind": "HURRIED_AWAY",
+      "proposition_kind": "DEPARTED",
       "event_specific_slots": {
         "hurriers": "B24",
         "hurried_party": "B3",

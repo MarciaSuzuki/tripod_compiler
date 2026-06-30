@@ -34,13 +34,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
   },
   "level_1": {
     "arc_elements": [
-      "PLEA_RELAYED",
+      "NEWS_RECEPTION",
       "DANGER_STATED",
-      "EXCUSE_DISMANTLED",
+      "RESOLVE_TO_ACT",
       "PROVIDENCE_QUESTION",
       "RESOLVE",
       "SELF_SURRENDER",
-      "OBEDIENCE"
+      "OBEDIENT_DEPARTURE"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -52,36 +52,36 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "TAUT",
-      "GRAVE",
+      "SOBER",
       "PRESSED",
-      "UNFLINCHING",
+      "DECISIVE",
       "SETTLED"
     ],
     "pace_elements": [
       "BACK_AND_FORTH",
-      "TIGHTENING",
-      "RESOLVING_TO_STILLNESS"
+      "NARROWS",
+      "SETTLES"
     ],
     "communicative_function_elements": [
       "STATES_DANGER",
       "DISMANTLES",
-      "REFRAMES",
-      "RECORDS_TURN",
-      "PLANTS_UNNAMED_PROVIDENCE",
-      "CLOSES_ON_OBEDIENCE"
+      "REVERSES",
+      "RECORDS",
+      "PLANTS",
+      "CLOSES"
     ]
   },
   "level_2_scenes": [
     {
       "scene_id": "S1",
       "verse_range": "4:9-11",
-      "scene_kind": "REPORT_AND_DEATH_LAW_SCENE",
+      "scene_kind": "REPORT_SCENE",
       "scene_communicative_purpose": "Lays out the danger in exact legal terms: the death-law for the uncalled, the scepter as the only reprieve, and Esther's thirty days of silence — her reason she cannot simply act.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B8",
-            "role_in_scene": "MESSENGER",
+            "role_in_scene": "COURIERS",
             "presence": "PRESENT",
             "referential_form": "THE_KINGS_EUNUCH_HATHACH"
           },
@@ -92,7 +92,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B1",
-            "role_in_scene": "PLEA_SENDER",
+            "role_in_scene": "SUPPLIANT",
             "presence": "REFERENCED"
           },
           {
@@ -130,7 +130,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B1",
-            "role_in_scene": "CHARGER",
+            "role_in_scene": "ACCUSER",
             "presence": "PRESENT"
           },
           {
@@ -140,7 +140,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B17",
-            "role_in_scene": "IMPERILLED_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED"
           }
         ]
@@ -160,7 +160,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "4:15-16",
-      "scene_kind": "RESOLVE_AND_FAST_SCENE",
+      "scene_kind": "CONSENT_SCENE",
       "scene_communicative_purpose": "Records the turn: Esther stops refusing and commands a three-day corporate fast, resolves to enter the king's presence in defiance of the death-law, and consents in advance to her own death — 'if I perish, I perish.'",
       "beings_in_scene": {
         "entries": [
@@ -176,7 +176,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B17",
-            "role_in_scene": "FAST_KEEPERS",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "REFERENCED"
           },
           {
@@ -241,7 +241,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "4:9",
-      "proposition_kind": "CAME",
+      "proposition_kind": "ARRIVED_AT",
       "event_specific_slots": {
         "comer": "B8"
       },
@@ -255,7 +255,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "4:9",
-      "proposition_kind": "RELAYED_SPEECH",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "relayer": "B8",
         "addressee": "B2",
@@ -290,7 +290,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S1",
       "verse_anchor": "4:10",
-      "proposition_kind": "CHARGED_WITH_MESSAGE",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "charger": "B2",
         "charged_messenger": "B8",
@@ -307,7 +307,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S1",
       "verse_anchor": "4:11",
-      "proposition_kind": "DEATH_LAW_FOR_THE_UNSUMMONED",
+      "proposition_kind": "DECLARED",
       "status": "NORM",
       "event_specific_slots": {
         "voiced_within": "P4",
@@ -341,7 +341,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S1",
       "verse_anchor": "4:11",
-      "proposition_kind": "NOT_SUMMONED_FOR_INTERVAL",
+      "proposition_kind": "TIME_ANCHOR_ESTABLISHED",
+      "status": "RECALLED",
       "event_specific_slots": {
         "voiced_within": "P4",
         "unsummoned_one": "B2",
@@ -359,7 +360,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "4:12",
-      "proposition_kind": "RELAYED_SPEECH",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "addressee": "B1",
         "relayed_content": "WORDS",
@@ -377,7 +378,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P8",
       "scene_link": "S2",
       "verse_anchor": "4:13",
-      "proposition_kind": "ANSWERED_WITH_WARNING",
+      "proposition_kind": "ANSWERED",
       "event_specific_slots": {
         "speaker": "B1",
         "addressee": "B2",
@@ -401,7 +402,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "4:14",
-      "proposition_kind": "CONDITION_OF_SILENCE",
+      "proposition_kind": "DECLARED",
+      "status": "NORM",
       "event_specific_slots": {
         "voiced_within": "P8",
         "silent_one": "B2",
@@ -419,7 +421,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S2",
       "verse_anchor": "4:14",
-      "proposition_kind": "RESCUE_FROM_ANOTHER_PLACE",
+      "proposition_kind": "GRANTED",
       "status": "FORESEEN",
       "event_specific_slots": {
         "voiced_within": "P8",
@@ -439,7 +441,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S2",
       "verse_anchor": "4:14",
-      "proposition_kind": "PERISHING_FORETOLD",
+      "proposition_kind": "DECLARED",
       "status": "FORESEEN",
       "event_specific_slots": {
         "voiced_within": "P8",
@@ -477,7 +479,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "4:15",
-      "proposition_kind": "ANSWERED_WITH_RESOLVE",
+      "proposition_kind": "ANSWERED",
       "event_specific_slots": {
         "speaker": "B2",
         "addressee": "B1"
@@ -493,7 +495,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S3",
       "verse_anchor": "4:16",
-      "proposition_kind": "COMMANDED",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "voiced_within": "P13",
         "commander": "B2",
@@ -512,7 +514,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S3",
       "verse_anchor": "4:16",
-      "proposition_kind": "COMMANDED",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "voiced_within": "P13",
         "commander": "B2",
@@ -532,7 +534,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P16",
       "scene_link": "S3",
       "verse_anchor": "4:16",
-      "proposition_kind": "COMMANDED",
+      "proposition_kind": "INSTRUCTION",
       "event_specific_slots": {
         "voiced_within": "P13",
         "commander": "B2",
@@ -554,7 +556,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P17",
       "scene_link": "S3",
       "verse_anchor": "4:16",
-      "proposition_kind": "RESOLVED_TO_FAST",
+      "proposition_kind": "AFFIRMED_RESOLVE",
       "event_specific_slots": {
         "voiced_within": "P13",
         "resolver": "B2",
@@ -573,7 +575,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P18",
       "scene_link": "S3",
       "verse_anchor": "4:16",
-      "proposition_kind": "RESOLVED_TO_GO_IN",
+      "proposition_kind": "AFFIRMED_RESOLVE",
       "event_specific_slots": {
         "voiced_within": "P13",
         "resolver": "B2",
@@ -592,7 +594,8 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P19",
       "scene_link": "S3",
       "verse_anchor": "4:16",
-      "proposition_kind": "DEATH_CONSENTED_IN_ADVANCE",
+      "proposition_kind": "AFFIRMED_RESOLVE",
+      "status": "COUNTERFACTUAL",
       "event_specific_slots": {
         "voiced_within": "P13",
         "perisher": "B2",
@@ -610,7 +613,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P20",
       "scene_link": "S4",
       "verse_anchor": "4:17",
-      "proposition_kind": "PASSED_ON",
+      "proposition_kind": "DEPARTED",
       "event_specific_slots": {
         "passer": "B1"
       },

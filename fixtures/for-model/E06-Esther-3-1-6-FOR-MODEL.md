@@ -34,11 +34,11 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
   },
   "level_1": {
     "arc_elements": [
-      "ELEVATION",
+      "PUBLIC_HONOR",
       "COMPELLED_HOMAGE",
       "LONE_REFUSAL",
       "EXPOSURE",
-      "FURY",
+      "ROYAL_RAGE",
       "DISPROPORTIONATE_AIM"
     ],
     "context_elements": [
@@ -51,18 +51,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "CEREMONIAL",
-      "TIGHTENING",
+      "TAUT",
       "GRINDING",
       "MENACING",
       "COLD"
     ],
     "pace_elements": [
       "STEADY",
-      "PATIENT_THROUGH_THE_MIDDLE",
-      "ACCELERATING_TO_THREAT"
+      "DELIBERATE",
+      "ACCELERATES"
     ],
     "communicative_function_elements": [
-      "RAISES_ANTAGONIST",
+      "ELEVATES",
       "SETS_REFUSAL_AGAINST_HOMAGE",
       "TIES_REFUSAL_TO_IDENTITY",
       "SHOWS_DISPROPORTION",
@@ -73,18 +73,18 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S1",
       "verse_range": "3:1",
-      "scene_kind": "PROMOTION_SCENE",
+      "scene_kind": "APPOINTMENT_SCENE",
       "scene_communicative_purpose": "Lifts Haman to the top of the court, establishing the height from which the conflict will fall.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B4",
-            "role_in_scene": "PROMOTER_KING",
+            "role_in_scene": "KING",
             "presence": "PRESENT"
           },
           {
             "being_id": "B3",
-            "role_in_scene": "ELEVATED_FAVOURITE",
+            "role_in_scene": "ADVERSARY",
             "presence": "PRESENT",
             "referential_form": "THE_AGAGITE"
           }
@@ -107,7 +107,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S2",
       "verse_range": "3:2-4",
-      "scene_kind": "GATE_STANDOFF_SCENE",
+      "scene_kind": "GATE_CONFRONTATION_SCENE",
       "scene_communicative_purpose": "Sets one man's refusal against the whole court's homage, ties the refusal to his Jewish identity, and hands the matter to Haman.",
       "beings_in_scene": {
         "entries": [
@@ -119,17 +119,17 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B3",
-            "role_in_scene": "HOMAGE_OWED_ONE",
+            "role_in_scene": "REFUSER",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B18",
-            "role_in_scene": "BOWING_COURTIERS",
+            "role_in_scene": "NOBLES",
             "presence": "PRESENT"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "COMMANDING_AUTHORITY",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           }
         ]
@@ -160,22 +160,22 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B3",
-            "role_in_scene": "ENRAGED_FAVOURITE",
+            "role_in_scene": "ADVERSARY",
             "presence": "PRESENT"
           },
           {
             "being_id": "B1",
-            "role_in_scene": "UNBOWED_OFFENDER",
+            "role_in_scene": "REFUSER",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "TARGETED_PEOPLE",
+            "role_in_scene": "THREATENED_PEOPLE",
             "presence": "REFERENCED"
           },
           {
             "being_id": "B4",
-            "role_in_scene": "REALM_HOLDER",
+            "role_in_scene": "KING",
             "presence": "REFERENCED"
           }
         ]
@@ -200,7 +200,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "3:1",
-      "proposition_kind": "PROMOTED",
+      "proposition_kind": "APPOINTED",
       "event_specific_slots": {
         "promoter": "B4",
         "promoter_standing": "KING",
@@ -219,7 +219,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P2",
       "scene_link": "S1",
       "verse_anchor": "3:1",
-      "proposition_kind": "LIFTED_UP",
+      "proposition_kind": "APPOINTED",
       "event_specific_slots": {
         "lifter": "B4",
         "lifted": "B3"
@@ -235,7 +235,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P3",
       "scene_link": "S1",
       "verse_anchor": "3:1",
-      "proposition_kind": "SEAT_SET_ABOVE",
+      "proposition_kind": "APPOINTED",
       "event_specific_slots": {
         "setter": "B4",
         "seat_holder": "B3",
@@ -254,7 +254,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P4",
       "scene_link": "S2",
       "verse_anchor": "3:2",
-      "proposition_kind": "KNELT",
+      "proposition_kind": "PROSTRATED",
       "event_specific_slots": {
         "kneeler": "B18",
         "kneeler_extent": "ALL",
@@ -271,7 +271,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P5",
       "scene_link": "S2",
       "verse_anchor": "3:2",
-      "proposition_kind": "BOWED",
+      "proposition_kind": "PROSTRATED",
       "event_specific_slots": {
         "bower": "B18",
         "bowed_to": "B3"
@@ -286,7 +286,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P6",
       "scene_link": "S2",
       "verse_anchor": "3:2",
-      "proposition_kind": "BOWING_COMMANDED",
+      "proposition_kind": "INSTRUCTION",
       "status": "NORM",
       "event_specific_slots": {
         "commander": "B4",
@@ -304,7 +304,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P7",
       "scene_link": "S2",
       "verse_anchor": "3:2",
-      "proposition_kind": "REFUSED",
+      "proposition_kind": "DECLINED",
       "event_specific_slots": {
         "refuser": "B1",
         "refused_act": "KNEELING",
@@ -346,7 +346,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P9",
       "scene_link": "S2",
       "verse_anchor": "3:4",
-      "proposition_kind": "SPOKE_REPEATEDLY",
+      "proposition_kind": "SPOKE",
       "status": "HABITUAL",
       "event_specific_slots": {
         "speaker": "B18",
@@ -364,7 +364,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P10",
       "scene_link": "S2",
       "verse_anchor": "3:4",
-      "proposition_kind": "DID_NOT_LISTEN",
+      "proposition_kind": "DECLINED",
       "event_specific_slots": {
         "non_listener": "B1",
         "unheeded": "B18"
@@ -380,7 +380,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P11",
       "scene_link": "S2",
       "verse_anchor": "3:4",
-      "proposition_kind": "INFORMED_AGAINST",
+      "proposition_kind": "SPOKE",
       "event_specific_slots": {
         "informer": "B18",
         "informed": "B3",
@@ -400,7 +400,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P12",
       "scene_link": "S2",
       "verse_anchor": "3:4",
-      "proposition_kind": "DISCLOSED_IDENTITY",
+      "proposition_kind": "IDENTIFIED",
       "event_specific_slots": {
         "discloser": "B1",
         "disclosed_to": "B18",
@@ -418,7 +418,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P13",
       "scene_link": "S3",
       "verse_anchor": "3:5",
-      "proposition_kind": "SAW",
+      "proposition_kind": "PERCEIVED",
       "event_specific_slots": {
         "seer": "B3",
         "saw": "NOT_KNEELING",
@@ -436,7 +436,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P14",
       "scene_link": "S3",
       "verse_anchor": "3:5",
-      "proposition_kind": "FILLED_WITH_FURY",
+      "proposition_kind": "ANGER_KINDLED",
       "event_specific_slots": {
         "filled_one": "B3",
         "filled_with": "FURY"
@@ -452,7 +452,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P15",
       "scene_link": "S3",
       "verse_anchor": "3:6",
-      "proposition_kind": "SCORNED_NARROW_REVENGE",
+      "proposition_kind": "DECLINED",
       "event_specific_slots": {
         "scorner": "B3",
         "scorned_act": "STRIKING",
@@ -489,8 +489,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P17",
       "scene_link": "S3",
       "verse_anchor": "3:6",
-      "proposition_kind": "SOUGHT_TO_DESTROY",
-      "status": "FORESEEN",
+      "proposition_kind": "PROPOSED",
       "event_specific_slots": {
         "seeker": "B3",
         "sought_act": "DESTROYING",

@@ -41,12 +41,12 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
   },
   "level_1": {
     "arc_elements": [
-      "TOLL_REPORTED",
+      "ENEMY_STRUCK",
       "SECOND_REQUEST_GRANTED",
       "SECOND_DAY_OF_ACTION",
       "PLUNDER_REFUSED",
-      "REST_AND_FEASTING",
-      "FESTIVAL_ETIOLOGY"
+      "PUBLIC_FEAST",
+      "FESTIVAL_FOUNDED"
     ],
     "context_elements": [
       "STORY_WORLD_CONTEXT",
@@ -57,23 +57,23 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     ],
     "tone_elements": [
       "SOBER",
-      "EXACT",
+      "ECONOMICAL",
       "GRIMLY_SATISFIED",
       "RESTRAINED",
       "TURNING_LITURGICAL"
     ],
     "pace_elements": [
-      "SLOW_AND_CLOSE",
-      "WIDENING",
-      "ACCELERATING",
-      "SETTLING_TO_LITURGY"
+      "SLOWED",
+      "WIDENS",
+      "ACCELERATES",
+      "SETTLES"
     ],
     "communicative_function_elements": [
       "TALLIES",
       "GRANTS",
-      "INSISTS_NO_SPOIL",
-      "WIDENS_TO_EMPIRE",
-      "EXPLAINS_TWO_DAYS",
+      "WITHHOLDS",
+      "ADVANCES",
+      "EXPLAINS",
       "TURNS_TO_FEAST"
     ]
   },
@@ -104,7 +104,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
           },
           {
             "being_id": "B16",
-            "role_in_scene": "SLAIN_ENEMY_SONS",
+            "role_in_scene": "SLAIN_SONS",
             "presence": "REFERENCED",
             "referential_form": "TEN_SONS_OF_HAMAN"
           }
@@ -140,13 +140,13 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "entries": [
           {
             "being_id": "B17",
-            "role_in_scene": "DEFENDERS",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "PRESENT",
             "referential_form": "THE_JEWS_OF_SUSA"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "DEFENDERS",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "REFERENCED",
             "referential_form": "THE_REST_OF_THE_JEWS_IN_THE_PROVINCES"
           },
@@ -178,24 +178,24 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
     {
       "scene_id": "S3",
       "verse_range": "9:17-19",
-      "scene_kind": "REST_AND_FESTIVAL_ETIOLOGY_SCENE",
+      "scene_kind": "FESTIVAL_FOUNDING_SCENE",
       "scene_communicative_purpose": "Explains, by who rested on which day, why there come to be two days of feasting — the fourteenth kept by the open-town Jews, the fifteenth by the Jews of Susa — and shows the festival taking its shape: rest, gladness, feasting, and gifts of food.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B17",
-            "role_in_scene": "FEASTING_PEOPLE",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "PRESENT"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "FEASTING_PEOPLE",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "PRESENT",
             "referential_form": "THE_JEWS_OF_SUSA"
           },
           {
             "being_id": "B17",
-            "role_in_scene": "FEASTING_PEOPLE",
+            "role_in_scene": "DELIVERED_PEOPLE",
             "presence": "PRESENT",
             "referential_form": "THE_JEWS_OF_THE_OPEN_TOWNS"
           }
@@ -228,7 +228,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "prop_id": "P1",
       "scene_link": "S1",
       "verse_anchor": "9:11",
-      "proposition_kind": "TOLL_BROUGHT_BEFORE_KING",
+      "proposition_kind": "HEARD_REPORT",
       "event_specific_slots": {
         "count_of": "THE_SLAIN",
         "where": "PL1",
@@ -327,7 +327,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "scene_link": "S1",
       "verse_anchor": "9:14",
       "proposition_kind": "KING_DECREES_AND_SONS_HUNG",
-      "status": "PERMITTED",
       "event_specific_slots": {
         "speaker": "B4",
         "consent_to": "THE_DOING",
@@ -366,7 +365,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "spoil": "UNTOUCHED",
             "manner": "NO_HAND_LAID",
             "preserve_form": true,
-            "status": "NORM",
             "speech_act": "STATES_AS_TRUE"
           }
         ]
@@ -396,7 +394,6 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "spoil": "UNTOUCHED",
             "manner": "NO_HAND_LAID",
             "preserve_form": true,
-            "status": "NORM",
             "speech_act": "STATES_AS_TRUE"
           }
         ]
