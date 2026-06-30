@@ -15,8 +15,8 @@ const blockMsgs = (r: ReturnType<typeof validateArtifact>) =>
   JSON.stringify(r.findings.filter((f) => f.severity === "block"), null, 2);
 
 describe("FOR_MODEL gold fixtures (P01–P14 + J01–J05 — the full seed corpus)", () => {
-  it("vendors all 19 gold fixtures (P01–P06 hand-built + the 13 SC-0064-ruled, graduated)", () => {
-    expect(forModels).toHaveLength(19);
+  it("vendors all 37 gold fixtures (19 Ruth/Jonah + 18 Esther graduated via SC-0079)", () => {
+    expect(forModels).toHaveLength(37);
   });
 
   for (const f of forModels) {
@@ -55,8 +55,8 @@ describe("FOR_MODEL gold fixtures (P01–P14 + J01–J05 — the full seed corpu
 // makes the check load-bearing, so a malformed CL fails `npm test` instead of entering
 // the corpus as unguarded "provenance". (Vault-CL *content* staleness is SC-0008, not here.)
 describe("COMPILATION-LOG gold fixtures (P01–P14 + J01–J05 — the full seed corpus)", () => {
-  it("vendors all 19 gold compilation-logs (P01–P06 hand-built + the 13 SC-0064 close-part-2 mechanized)", () => {
-    expect(compLogs).toHaveLength(19);
+  it("vendors all 37 gold compilation-logs (19 Ruth/Jonah + 18 Esther graduated via SC-0079)", () => {
+    expect(compLogs).toHaveLength(37);
   });
 
   for (const f of compLogs) {
