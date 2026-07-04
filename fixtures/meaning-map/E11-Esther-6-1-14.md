@@ -6,9 +6,9 @@ bcv: "Esther 6:1–14"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E11-Esther-6-1-14-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain, fast voice of a storyteller telling the night the whole book turns over. There is a great deal of quoted speech here (the king's questions, Haman's misjudged answer, the king's command, the wife's omen), but quoted dialogue inside a narrative is still narration — it does not lift the register. No royal decree or written edict is *issued or read out word-for-word* in this pericope; the chronicle is summarised, not quoted, and Haman's prescription for honour is private court-advice spoken to the king, not a published law. So there is no FORMAL_OFFICIAL moment-override anywhere in E11. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL override at v.8–9 — Haman's "let them bring a royal robe… and a horse…" is advice offered to the king's face, not an edict being promulgated, so I have kept it INFORMAL_CASUAL.)* The COMMUNITY_MEMORY framing-lift is reserved for the book's open and close and does not apply here.
+The whole passage sits in INFORMAL_CASUAL — the plain, fast voice of a storyteller telling the night the whole book turns over. There is a great deal of quoted speech here (the king's questions, Haman's misjudged answer, the king's command, the wife's omen), but quoted dialogue inside a narrative is still narration — it does not lift the register. No royal decree or written edict is *issued or read out word-for-word* in this pericope; the chronicle is summarised, not quoted, and Haman's prescription for honour is private court-advice spoken to the king, not a published law. So there is no FORMAL_OFFICIAL moment-override anywhere in E11. The COMMUNITY_MEMORY framing-lift is reserved for the book's open and close and does not apply here.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -592,41 +592,3 @@ The household names "Jewish stock" as the ground of Haman's doom — but they na
   the man he meant to kill, prefiguring his fall — is the book's signature figure and may already be (or
   may earn) a FIG code spanning E10→E11→E16. The Haman-fall here mirrors his rise in E06. Not minted/assigned
   in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (v.8–9):** kept INFORMAL_CASUAL throughout, with NO FORMAL_OFFICIAL moment-override. There is
-   heavy quoted dialogue (the king's questions, Haman's prescription, the king's command, the household's
-   omen), but quoted speech inside narration does not lift the register, and no decree/edict is issued or
-   read out word-for-word here. Haman's "let them bring a royal robe…" is private court-advice to the king,
-   not a promulgated law. Confirm.
-2. **Scene division:** 4 scenes — (1) the sleepless night + the remembered record (v.1–3); (2) Haman arrives
-   + the king's cross-purposed question + Haman's prescription (v.4–9); (3) the command reversed, Haman
-   honours Mordecai (v.10–11); (4) Haman's flight + the household's verdict + the summons to the banquet
-   (v.12–14). The alternative is to split the long Scene 2 at the entrance (v.4–6 | v.7–9); I kept Haman's
-   arrival and his prescription together because they form one continuous misreading. Confirm.
-3. **Registry-delta candidates (new cast E11 surfaces):** four unregistered groups —
-   *the king's young men / attendants* (6:3,5; נַעֲרֵי הַמֶּלֶךְ מְשָׁרְתָיו), *the king's noble princes /
-   partemim* (6:9; referenced inside Haman's plan), *Haman's friends / wise men* (6:13; אֹהֲבָיו / חֲכָמָיו),
-   *the king's eunuchs who fetch Haman* (6:14; סָרִיסֵי הַמֶּלֶךְ — distinct from Bigthana/Teresh). Rule which
-   (if any) earn B-codes vs. stay descriptive. Note: *the seed of the Jews* (6:13) is referenced — likely the
-   already-registered B17 (the Jews / Jewish people); confirm I should link it to B17 rather than treat it as new.
-4. **Place-code candidates:** `PL_KINGS_GATE` (שַׁעַר הַמֶּלֶךְ, 6:10,12 — Mordecai's recurring post, appears
-   across many pericopes; strong candidate to register) and the city square (רְחֹוב הָעִיר, 6:9,11 — likely
-   stays descriptive scene-content). The outer court of the king's house (6:4) — descriptive sub-location.
-   Rule which to register.
-5. **Object-code candidate:** `TH_ROYAL_CROWN` (כֶּתֶר מַלְכוּת, 6:8 — the royal headdress set on the horse;
-   distinct from the scepter TH_SCEPTER and the signet TH_SIGNET_RING already registered). Rule whether to
-   register or keep as descriptive scene content. The robe/horse use the registered TH_ROYAL_ROBE /
-   TH_ROYAL_HORSE; the gallows uses TH_GALLOWS; the chronicle uses TH_ANNALS.
-6. **Back-references / cross-pericope links (for the FOR_MODEL compile):** the chronicle (TH_ANNALS) back-refers
-   to Mordecai's exposure of Bigthana/Teresh in E05; the gallows (TH_GALLOWS) back-refers to Haman's
-   gallows-building in E10; Haman's fall here mirrors his rise in E06; the closing summons hands forward to
-   Esther's second banquet (E12) where Haman falls. Flagging for the inter_proposition / cross_ref layer.
-7. **CB/FIG:** none minted (governed). Candidates listed in §5 — the reversal figure especially is a strong
-   book-spanning candidate. Your call.
-8. **Born-clean:** Levels 1–2 are prose; Level 3 answers are bare atoms (no sentence-shaped UPPER_SNAKE
-   values, no role-vocab); surface forms (the herald's "thus it is done," the omen "you will surely fall")
-   are kept bare and unnormalised. The SC-0073/SC-0070 guards apply at the FOR_MODEL compile (Phase 4), not here.

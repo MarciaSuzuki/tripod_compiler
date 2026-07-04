@@ -6,9 +6,9 @@ bcv: "Esther 4:9–17"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E09-Esther-4-9-17-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain narrating voice carrying an exchange of messages back and forth between two people who cannot meet. The bulk of it is quoted speech (Esther's, then Mordecai's, then Esther's again), but it is private, urgent, person-to-person speech, not public proclamation, so it stays INFORMAL_CASUAL throughout. One stretch *reports the content of a royal law* — v.11, the rule that anyone who enters the king's inner court unsummoned is put to death unless the king holds out the golden scepter. This is Esther *quoting the law to explain her danger*, not the king *issuing* a decree, so I have kept it INFORMAL_CASUAL (no FORMAL_OFFICIAL override); it is a frightened woman describing the rule that binds her, not the rule being voiced into force. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override at v.11 — the death-law is reported-by-a-character, not enacted on-stage.)* No COMMUNITY_MEMORY framing-lift here: this is mid-book, deep inside the action, not the book's open or close.
+The whole passage sits in INFORMAL_CASUAL — the plain narrating voice carrying an exchange of messages back and forth between two people who cannot meet. The bulk of it is quoted speech (Esther's, then Mordecai's, then Esther's again), but it is private, urgent, person-to-person speech, not public proclamation, so it stays INFORMAL_CASUAL throughout. One stretch *reports the content of a royal law* — v.11, the rule that anyone who enters the king's inner court unsummoned is put to death unless the king holds out the golden scepter. This is Esther *quoting the law to explain her danger*, not the king *issuing* a decree, so I have kept it INFORMAL_CASUAL (no FORMAL_OFFICIAL override); it is a frightened woman describing the rule that binds her, not the rule being voiced into force. No COMMUNITY_MEMORY framing-lift here: this is mid-book, deep inside the action, not the book's open or close.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -434,35 +434,3 @@ Nothing is said of God going with Mordecai, nor of any prayer as the fast begins
   doubled-verb resolve formula, a load-bearing surface idiom whose shape may be worth preserving; and the
   "another place" / "such a time as this" providence-gap, the book's signature unnamed-God device. Not
   minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (v.11):** kept INFORMAL_CASUAL throughout — no FORMAL_OFFICIAL override. The death-law of
-   the inner court is Esther *quoting* the rule to explain her danger, not the king *enacting* a decree
-   on-stage. The dialogue is private, urgent, person-to-person. Confirm no moment-override at v.11.
-2. **Scene division:** 4 scenes (report + the death-law · Mordecai's charge · Esther's resolve & fast ·
-   Mordecai obeys). The exchange has no change of physical location — it is divided by the turns of the
-   relayed conversation (the natural dramatic beats: danger stated → excuse broken → resolve → obedience).
-   v.17 is kept as its own short closing scene to mark the reversal (the elder now obeying the queen),
-   mirroring how short hinge-verses are set apart in the Ruth maps. Confirm the 4-way cut vs. folding
-   v.17 into Scene 3.
-3. **Registry coverage:** all principal cast already registered — B8 Hathach, B2 Esther, B1 Mordecai,
-   B17 the Jews, B4 Ahasuerus, TH_SCEPTER, I2 the law, PL1 Susa. No new B/PL/TH/TM/I code is needed.
-   Several items were carried as *scene content*, not registry entries: the inner court (sub-location of
-   the palace), the king's house, "another place," "your father's house," "my young women," the thirty
-   days, the three-day fast, "this time / a time like this." Confirm none of these should be promoted to
-   codes — I judged them descriptive/situational rather than recurring registry entities.
-4. **The hidden God (signature absence):** tracked under every scene. This pericope carries the book's
-   loudest silence — "relief and deliverance will arise from another place" and "for such a time as this"
-   both lean hard toward providence, and a three-day fast is called, yet God is never named and no prayer
-   is recorded. Flagged as the central significant_absence of the passage (Scene 2 especially).
-5. **CB/FIG:** none minted (governed). Candidates listed in §5 — the inner-court death-law/scepter,
-   the providence-gap ("another place" / "such a time as this"), the fast-without-naming-God, and the
-   "if I perish, I perish" doubled-verb resolve idiom. Your call on minting.
-6. **Load-bearing wording:** "if I perish, I perish" (the doubled אָבַדְתִּי / "perish") is an idiom of
-   resolve whose surface shape may warrant a preserve_form flag at the FOR_MODEL compile — surfaced here
-   for your ruling, not flagged in this draft.
-7. **Born-clean:** no sentence-shaped UPPER_SNAKE slot values; surface forms bare; this is map-prose
-   (Common-Reader Standard), so the SC-0073/SC-0070 guards apply at the FOR_MODEL compile (Phase 4), not here.

@@ -6,9 +6,9 @@ bcv: "Esther 7:1–10"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E12-Esther-7-1-10-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain voice of a storyteller telling how the trap closed. The voice is mostly carried in quoted speech: the king's repeated offer ("What is your request? … it shall be done"), Esther's plea ("let my life be given me … and my people"), the king's demand ("Who is he, and where is he?"), Esther's naming of the adversary, and the king's death-order ("Hang him on it"). None of this is a written decree being read out, so no FORMAL_OFFICIAL override applies — even the king's final command to hang Haman is a spoken order at the banquet, not a sealed edict. The register stays INFORMAL_CASUAL throughout. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override at v.9 — the king's "Hang him on it" is a spoken verdict in the room, not a written law of the Medes and Persians, so I have kept it INFORMAL_CASUAL.)*
+The whole passage sits in INFORMAL_CASUAL — the plain voice of a storyteller telling how the trap closed. The voice is mostly carried in quoted speech: the king's repeated offer ("What is your request? … it shall be done"), Esther's plea ("let my life be given me … and my people"), the king's demand ("Who is he, and where is he?"), Esther's naming of the adversary, and the king's death-order ("Hang him on it"). None of this is a written decree being read out, so no FORMAL_OFFICIAL override applies — even the king's final command to hang Haman is a spoken order at the banquet, not a sealed edict. The register stays INFORMAL_CASUAL throughout.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -61,7 +61,7 @@ The passage delivers the book's central reversal: the threat against the Jews is
 - Presence: PRESENT
 
 **3B — Places**
-[[PL1-Susa-the-citadel]] — (the royal palace) / Susa the citadel *(inferred setting — Susa is not named in this pericope's Hebrew; PL1's appears_in does not include E12; registry-delta flagged — see Mapper's notes)*
+[[PL1-Susa-the-citadel]] — (the royal palace) / Susa the citadel *(inferred setting — Susa is not named in this pericope's Hebrew; PL1's appears_in does not include E12; registry-delta flagged)*
 - Role: the setting of the banquet, the king's house in the capital
 - Type: royal capital / palace
 - Meaning: the seat of the throne, where the decisive scene unfolds
@@ -106,7 +106,7 @@ The king still does not know, and is not told here, that the man drinking beside
 - Relationship: king; the one whose favour she invokes ("if I have found grace in your eyes")
 - Presence: PRESENT
 
-Her people — עַמִּי / my people *(refers to [[B17-the-Jews]] the Jews — see Mapper's notes)*
+Her people — עַמִּי / my people *(refers to [[B17-the-Jews]] the Jews)*
 - Role: the condemned people Esther begs for, alongside her own life
 - Relationship: Esther's own people, sold to be destroyed by the decree
 - Presence: REFERENCED
@@ -465,37 +465,3 @@ No trial, no defence, no appeal — the verdict and the execution are immediate.
   this is the cross_ref close the kickoff names (the rise opened at E06; the gallows opened at E10/E05).
   If the project runs a Figure for the book's central peripeteia, it would open earlier and close here at
   Propositions 14–16. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (v.9):** kept INFORMAL_CASUAL throughout — no FORMAL_OFFICIAL override. The king's
-   "Hang him on it" is a spoken verdict in the room, not a written/sealed law of the Medes and Persians.
-   Confirm. (The FORMAL_OFFICIAL override is reserved for actually-voiced/written edicts, e.g. the decree
-   in earlier pericopes.)
-2. **Scene division:** 5 scenes — (1) banquet + renewed offer (v.1–2) · (2) Esther's plea (v.3–4) ·
-   (3) demand + naming (v.5–6) · (4) wrath, fall, verdict (v.7–8) · (5) gallows, hanging, wrath subsides
-   (v.9–10). The naming (v.6a) and Haman's terror (v.6b) sit in one scene but as two propositions (P6, P7);
-   I could split v.6 into its own micro-scene at the naming, but kept it with the demand. Confirm.
-3. **"My people" → registry link:** Esther's *ammi* ("my people," v.3–4) refers to the Jews, registered
-   as [[B17-the-Jews]] (appears_in includes E12-adjacent pericopes but NOT E12 in the current registry).
-   I linked it as a reference. Rule whether E12 should be added to B17's `appears_in`, or whether "my
-   people" stays purely descriptive here (the Jews are referenced, never named as "Jews" in this pericope's
-   Hebrew — Esther says only "my people").
-4. **New cast/object/time candidates:** none unregistered surfaced — the whole cast (B4, B3, B2, B13, B1,
-   I1, TH_GALLOWS) is registered. Sub-locations used descriptively (the palace garden *ginnat ha-bitan*,
-   the banquet house, Esther's couch, Haman's house) are scene venues, not registry places; rule whether
-   any (e.g. the palace garden) should earn a PL-code, since it recurs (it also appears in E01's seven-day
-   feast as the garden court).
-5. **Couch / face-covering as objects:** I kept *ha-mittah* (Esther's couch) and the face-covering as
-   scene content, not registry objects. Rule if the couch (load-bearing — the king's misreading turns on
-   it) should be registered as a TH-object.
-6. **CB/FIG:** none minted (governed). Candidates listed in §5 — the annihilation-decree concept, the
-   hidden-Jew disclosure, and the central reversal/peripeteia figure (the gallows close). Your call.
-7. **The hidden God:** tracked under every scene's Significant Absence — Esther never names God, even in
-   her life-or-death plea (she rests it on the king's favour), and the perfect timing of the reversal is
-   left to stand with no named hand behind it. This is the book's signature and is preserved here.
-8. **Cross_ref threads (for the FOR_MODEL compile, not minted here):** Haman's fall closes the rise begun
-   at E06; the gallows hanging closes the gallows-building opened at E10 (and first raised at E05). Flagged
-   for the Phase-3 inter-proposition links at compile.

@@ -6,9 +6,9 @@ bcv: "Esther 8:1–8"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E13-Esther-8-1-8-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The passage sits in INFORMAL_CASUAL — the plain narrator's voice reporting a swift turn of events in the throne room. Two stretches lift the voice. First, Esther's plea (v.5–6) is voiced speech, but it is a courtier's careful petition — the layered, deferential court formula *"If it please the king, and if I have found favour before him…"* — so it stays within INFORMAL_CASUAL as quoted speech, not a decree. Second, the king's grant in v.8 contains the book's signature constitutional rule, voiced in the king's own mouth: *"for a writing that is written in the king's name and sealed with the king's ring, there is no revoking it."* That clause states the irrevocable-decree law of the Medes and Persians as a binding rule — a FORMAL_OFFICIAL moment-override at v.8b, the legal voice surfacing inside the king's speech. The king's command to Esther and Mordecai (*"and you yourselves write… in the king's name, and seal it with the king's ring"*) is the king authorizing official action and shades toward that same FORMAL_OFFICIAL key. *(Meaning call for Marcia: confirm the FORMAL_OFFICIAL moment-override at v.8 — the irrevocable-law rule is being voiced as binding law, distinct from the surrounding narration and from Esther's petition.)*
+The passage sits in INFORMAL_CASUAL — the plain narrator's voice reporting a swift turn of events in the throne room. Two stretches lift the voice. First, Esther's plea (v.5–6) is voiced speech, but it is a courtier's careful petition — the layered, deferential court formula *"If it please the king, and if I have found favour before him…"* — so it stays within INFORMAL_CASUAL as quoted speech, not a decree. Second, the king's grant in v.8 contains the book's signature constitutional rule, voiced in the king's own mouth: *"for a writing that is written in the king's name and sealed with the king's ring, there is no revoking it."* That clause states the irrevocable-decree law of the Medes and Persians as a binding rule — a FORMAL_OFFICIAL moment-override at v.8b, the legal voice surfacing inside the king's speech. The king's command to Esther and Mordecai (*"and you yourselves write… in the king's name, and seal it with the king's ring"*) is the king authorizing official action, not voicing an edict's wording, so it stays INFORMAL_CASUAL — the counter-decree's actual words are voiced in E14, which carries the FORMAL_OFFICIAL key there.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -446,44 +446,3 @@ The king grants the pen but offers no plan, no protection, no word of how the Je
   ring that sealed the death-decree (E07) now passes to the Jew and will seal the counter-decree; a
   reversal motif that may recur. The "Agagite" tag on Haman (here and in his patronymic) carries the
   Amalek/Agag back-reference — possibly a cross-book figure. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (v.8b — FORMAL_OFFICIAL moment-override):** I applied a FORMAL_OFFICIAL moment-override at
-   8:8b, where the king voices the irrevocable-decree rule (*"a writing written in the king's name and
-   sealed with the king's ring cannot be turned back"*). This is the book's constitutional law stated as
-   binding law, distinct from the surrounding narration and from Esther's petition. The king's command to
-   write-and-seal (8:8a) shades toward the same key. Confirm the override and its exact span (just 8:8b, or
-   all of v.8).
-
-2. **Register (Esther's plea, v.5–6):** kept INFORMAL_CASUAL as quoted speech — it is a deferential court
-   petition (*"if it please the king… if I have found favour…"*), not a decree. Confirm no FORMAL_OFFICIAL
-   override for the plea itself.
-
-3. **Scene division:** 3 scenes (the handover of house+ring v.1–2 · Esther's plea v.3–6 · the king's grant
-   v.7–8). The alternative is to keep v.1–8 as one continuous throne-room audience. I split at the shift in
-   action (transfer → plea → grant) and at the change of who acts. Confirm.
-
-4. **Registry-delta candidate (new cast E13 surfaces):** **Hammedatha** (הַמְּדָתָא, 8:5) — Haman's father,
-   named only in the patronymic *"Haman son of Hammedatha the Agagite."* Rule whether he earns a B-code
-   (he is a pure genealogical marker, never an actor) or stays descriptive. He likely recurs in other
-   pericopes carrying the same full title.
-
-5. **"The enemy of the Jews" (צֹרֵר הַיְּהוּדִים, 8:1) and "the Agagite" (הָאֲגָגִי):** standing epithets
-   of Haman (B3). I carried them as descriptive titles inside the relevant beings/propositions, not as new
-   codes. Confirm they should attach to B3 as referential forms in the BCD rather than mint anything.
-
-6. **Object codes used:** TH_SIGNET_RING (the ring, v.2 + v.8), TH_SCEPTER (golden scepter, v.4),
-   TH_EDICT (the letters / death-decree Esther asks to revoke, v.5), TH_GALLOWS (the tree, v.7), and
-   I2 (the irrevocable-law rule, v.8). The "new decree to be written" (v.8) is the counter-edict — I treated
-   it as scene content (TH_EDICT family) rather than minting a separate object; confirm whether the
-   counter-decree should be tracked distinctly from Haman's edict.
-
-7. **CB/FIG:** none minted (governed). Candidates listed in §5 — the irrevocable-decree concept and the
-   signet-as-authority / Agag-Amalek figures are the strongest. Your call.
-
-8. **Born-clean:** Level 3 answers are bare atoms (events as nouns: a giving · a removing · a falling ·
-   weeping · a pleading · a rule), no sentence-shaped values, surface forms bare. The SC-0073/SC-0070
-   guards apply at the FOR_MODEL compile (Phase 4), not here.

@@ -6,9 +6,9 @@ bcv: "Esther 1:1–9"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E01-Esther-1-1-9-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain voice of a storyteller recalling a famous court. One spot lifts at v.1: the set opening phrase *vayhi bimei Achashverosh* ("and it happened in the days of Ahasuerus") raises the voice into the formal key of an old, remembered tale — COMMUNITY_MEMORY (this marks the framing, not the register). The register itself stays INFORMAL_CASUAL throughout, even where the content is grand: the narrator reports the empire's reach, the wealth, and the wine-protocol of v.8 plainly, from the outside, never adopting the voice of a decree. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override at v.8 — the wine "by the law, none compelling" is the narrator describing a protocol, not a decree being voiced, so I have kept it INFORMAL_CASUAL.)*
+The whole passage sits in INFORMAL_CASUAL — the plain voice of a storyteller recalling a famous court. One spot lifts at v.1: the set opening phrase *vayhi bimei Achashverosh* ("and it happened in the days of Ahasuerus") raises the voice into the formal key of an old, remembered tale — COMMUNITY_MEMORY (this marks the framing, not the register). The register itself stays INFORMAL_CASUAL throughout, even where the content is grand: the narrator reports the empire's reach, the wealth, and the wine-protocol of v.8 plainly, from the outside, never adopting the voice of a decree.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -377,23 +377,3 @@ Nothing is said of why the queen's feast is held apart, or of any contact betwee
 - None active yet. *(Candidate figure for Marcia: the COMMUNITY_MEMORY narrator-frame of v.1 — the
   same "in the days of…" device that opens Ruth (FIG_0007). If ruled the same global figure, it would
   flag here at Proposition 1. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (v.8):** kept INFORMAL_CASUAL throughout (no FORMAL_OFFICIAL override) — the wine-law is
-   the narrator *describing* a protocol, not a decree being voiced. Confirm.
-2. **Scene division:** 4 scenes (empire/throne · 180-day display · 7-day feast · Vashti's feast). The
-   alternative is to fold v.1–2 into the first feast; I kept the throne-frame as its own scene to mirror
-   how Ruth P01 opens on its setting. Confirm.
-3. **Registry-delta candidates (new cast E01 surfaces):** four unregistered groups —
-   *the king's princes & servants* (1:3), *the army of Persia & Media / the nobles & provincial princes*
-   (1:3), *the people of Susa great-and-small* (1:5), *the women* (1:9). Rule which (if any) earn B-codes
-   vs. stay descriptive. (This is the BCD-delta mechanism — mapping accretes the cast.)
-4. **Object/time-code candidates:** `TH_THRONE_OF_THE_KINGDOM`, `TH_ROYAL_WINE`, `TM_DAYS_OF_AHASUERUS`,
-   `TM_THIRD_YEAR_OF_THE_REIGN`. Rule which to register vs. keep as descriptive scene content.
-5. **CB/FIG:** none minted (governed). Candidates listed in §5. Esther will likely need its own concepts
-   (the Persian decree-machine) and may share Ruth's narrator-frame figure — your call.
-6. **Born-clean:** no sentence-shaped UPPER_SNAKE slot values; surface forms bare; this is map-prose
-   (Common-Reader Standard), so the SC-0073/SC-0070 guards apply at the FOR_MODEL compile (Phase 4), not here.

@@ -6,9 +6,9 @@ bcv: "Esther 8:9–17"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E14-Esther-8-9-17-FOR-MODEL]]
 active-concepts: []
@@ -204,7 +204,7 @@ The mounted couriers — הָרָצִים רֹכְבֵי הָרֶכֶשׁ / the 
 - Relationship: the king who has robed and raised Mordecai
 - Presence: REFERENCED
 
-The city of Susa — הָעִיר שׁוּשָׁן / the city of Susa *(the populace of the capital — candidate B-code; see Mapper's notes)*
+The city of Susa — הָעִיר שׁוּשָׁן / the city of Susa *(the populace of the capital — candidate B-code)*
 - Role: the capital that cheers and rejoices at Mordecai's exit
 - Relationship: the city once thrown into confusion by the first decree, now glad
 - Presence: PRESENT
@@ -479,38 +479,3 @@ The peoples "become Jews" out of dread, not faith — the text says fear, not be
   same province-span, same plunder clause). If a "mirror-edict" or "reversal-pairing" figure is minted,
   it would bind E07 and E14. Also the heaped "light/gladness/joy/honour" reversal of the earlier
   "mourning/fasting/weeping" (E08). Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register override (Scene 2) — RULED (Marcia 2026-06-27):** FORMAL_OFFICIAL applies only to the
-   decree's voiced/granted content. The grant in v.11–12 (Props 6–8 — what the king grants the Jews to do,
-   on whom, on which day) carries the override (the legal mirror of the E07 death-decree). The v.13
-   publication formula (Props 9–10 — "a copy given as law … published to all peoples … that the Jews be
-   ready") is the NARRATOR's report and stays INFORMAL_CASUAL (publication/report formulas are not tagged,
-   matching how E02 v.22's letter-sending was left untagged). Everywhere else stays INFORMAL_CASUAL.
-2. **Scene division:** 4 scenes — (1) decree written/sealed/sent (v.9–10) · (2) the grant's voiced
-   content (v.11–13) · (3) couriers ride out + Mordecai's robed exit + Susa's cheer (v.14–15) ·
-   (4) realm-wide light/gladness + the peoples becoming Jews (v.16–17). The alternative is to fold the
-   voiced grant (Scene 2) back into Scene 1's writing; I split it out precisely because it carries the
-   FORMAL_OFFICIAL register and is the load-bearing legal mirror. Confirm.
-3. **Registry-delta candidates (new cast E14 surfaces):** several unregistered groups —
-   *the king's scribes* (8:9), *the satraps/governors/provincial princes* (8:9), *the mounted couriers*
-   (8:10, 8:14), *the Jews' attackers / any hostile armed force* (8:11), *the peoples of the land* (8:17).
-   Also the populace *the city of Susa* (8:15) — used descriptively here (PL1 covers the place). Rule which
-   (if any) earn B-codes vs. stay descriptive.
-4. **Object/element notes:** TH_EDICT is used for both סְפָרִים/אִגֶּרֶת-class letters and דְּבַר־הַמֶּלֶךְ
-   ("the king's word"); I2 (dat) carries דָּת ("law"). The robe entry TH_ROYAL_ROBE absorbs the lבוּשׁ
-   מַלְכוּת / crown / תַכְרִיךְ-mantle cluster (registry lists תכריך as a hebrew_cons alias of TH_ROYAL_ROBE).
-   The horse entry TH_ROYAL_HORSE absorbs סוּס / רֶכֶשׁ (swift steeds). Confirm these groupings, or split the
-   gold crown out as its own candidate object.
-5. **CB/FIG:** none minted (governed). Candidates in §5 — the irrevocable-decree-as-rescue, the
-   courier-and-seal machinery, the great reversal, the dread-driven conversions; and the mirror-edict
-   figure binding E07↔E14. Your call.
-6. **Plunder restraint (significant absence):** the grant permits plundering the enemy's goods (8:11),
-   but the later narrative (E15/E16) records that the Jews did *not* take the plunder. I have logged the
-   permission here and noted the restraint as a forward-looking significant absence; confirm whether that
-   cross-pericope note belongs in this map or only downstream.
-7. **Born-clean:** no sentence-shaped UPPER_SNAKE slot values; surface forms bare; Level-3 answers are
-   bare atoms. The SC-0073/SC-0070 guards apply at the FOR_MODEL compile (Phase 4), not here.

@@ -6,9 +6,9 @@ bcv: "Esther 4:1–8"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E08-Esther-4-1-8-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain voice of a storyteller reporting grief, errands, and a relayed message. There is no FORMAL_OFFICIAL moment-override here. The decree (the *dat*, the law) is heavily present — it is what Mordecai has learned, what the provinces are mourning, and what Mordecai hands Hathach a written copy of — but the decree is only ever *referred to*, never *voiced*: the narrator and Mordecai talk *about* the writing, no line of the edict's own wording is spoken or read out in this pericope. So the register stays plain throughout, even across v.7–8 where Mordecai reports the silver-sum Haman promised and charges Esther to go to the king. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL override — the decree is described and physically handed over, but its own words are not quoted here, so I have kept the passage INFORMAL_CASUAL.)*
+The whole passage sits in INFORMAL_CASUAL — the plain voice of a storyteller reporting grief, errands, and a relayed message. There is no FORMAL_OFFICIAL moment-override here. The decree (the *dat*, the law) is heavily present — it is what Mordecai has learned, what the provinces are mourning, and what Mordecai hands Hathach a written copy of — but the decree is only ever *referred to*, never *voiced*: the narrator and Mordecai talk *about* the writing, no line of the edict's own wording is spoken or read out in this pericope. So the register stays plain throughout, even across v.7–8 where Mordecai reports the silver-sum Haman promised and charges Esther to go to the king.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -57,7 +57,7 @@ The middle of the city — תֹוךְ הָעִיר / the midst of the city *(sce
 - Meaning: where private grief is made public, heard by all
 - Effect on scene: turns Mordecai's mourning into a cry the whole city witnesses
 
-The king's gate — שַׁעַר הַמֶּלֶךְ / the gate of the king *(scene venue — the palace gate, a sub-setting of [[PL1-Susa-the-citadel]]; unregistered candidate place — see Mapper's notes)*
+The king's gate — שַׁעַר הַמֶּלֶךְ / the gate of the king *(scene venue — the palace gate, a sub-setting of [[PL1-Susa-the-citadel]]; unregistered candidate place)*
 - Role: the boundary Mordecai's mourning cannot cross
 - Type: the entrance to the royal precinct; Mordecai's usual post
 - Meaning: the threshold of the king's world, closed to grief-dress
@@ -207,7 +207,7 @@ Esther is shaken to the core, yet the narrator tells us nothing of what she fear
 - Presence: REFERENCED
 
 **3B — Places**
-The city square before the king's gate — רְחוֹב הָעִיר אֲשֶׁר לִפְנֵי שַׁעַר־הַמֶּלֶךְ / the open square of the city that is before the king's gate *(scene venue — the public square just outside the palace gate, a sub-setting of [[PL1-Susa-the-citadel]]; unregistered candidate place — see Mapper's notes)*
+The city square before the king's gate — רְחוֹב הָעִיר אֲשֶׁר לִפְנֵי שַׁעַר־הַמֶּלֶךְ / the open square of the city that is before the king's gate *(scene venue — the public square just outside the palace gate, a sub-setting of [[PL1-Susa-the-citadel]]; unregistered candidate place)*
 - Role: the meeting-place where Hathach finds Mordecai
 - Type: the open square in front of the palace gate
 - Meaning: the closest point grief can come to the king's world — just outside the gate
@@ -431,49 +431,3 @@ Mordecai gives Esther every reason and every proof — the sum, the writing, the
   pericope of fasting, mourning, and sackcloth-and-ashes with no God named and no prayer voiced. If the
   project mints an Esther-wide "God-absence" figure, it would flag here across Scenes 1–4. Not minted in
   this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register:** kept INFORMAL_CASUAL throughout, with NO FORMAL_OFFICIAL override. The decree (the *dat*)
-   is pervasive — learned, mourned, and physically handed over as a written copy — but it is only ever
-   *referred to* and never *voiced*: no line of the edict's own wording is quoted or read out in 4:1–8.
-   The override rule applies only where a decree is actually voiced/written-out, so I held the register
-   plain. Confirm.
-
-2. **Scene division:** 4 scenes — (1) Mordecai's mourning at the gate (v.1–2); (2) the provinces mourn
-   (v.3); (3) Esther hears, sends clothes, is refused (v.4); (4) Hathach sent, Mordecai's full account
-   and charge (v.5–8). The main alternative is to fold v.3 (the provincial mourning) into Scene 1 as a
-   widening of the same grief; I split it because it changes participant (one man → the whole people) and
-   place (the city → every province). I also kept v.5–8 as one scene because it is a single continuous
-   errand (call → go out → tell → give → charge). Confirm.
-
-3. **New-cast candidate (registry-delta):** *Esther's maids and eunuchs* (נַעֲרוֹת אֶסְתֵּר וְסָרִיסֶיהָ, 4:4) —
-   the queen's attendants who bring her word. Unregistered; surfaced as a candidate B-group. Rule whether
-   this earns a B-code or stays descriptive. (Hathach, 4:5, is already registered as **B8** and is one of
-   "the king's eunuchs set to attend her" — I treated him as the named individual and the maids/eunuchs of
-   v.4 as the unnamed group.)
-
-4. **New-place candidates (registry-delta):** two sub-locations of Susa surface here and recur across the
-   book — *the king's gate* (שַׁעַר הַמֶּלֶךְ, 4:2; Mordecai's post throughout Esther) and *the city square
-   before the king's gate* (רְחוֹב הָעִיר אֲשֶׁר לִפְנֵי שַׁעַר־הַמֶּלֶךְ, 4:6). Both are currently unregistered. The
-   king's gate in particular is a recurring, load-bearing setting in Esther (it is *the* place Mordecai sits).
-   Rule whether either earns a PL-code or stays a descriptive sub-setting of [[PL1-Susa-the-citadel]].
-
-5. **Entity-code use:** I used **TH_EDICT** for the decree throughout — though the Hebrew here is *dat* /
-   *dĕbar ha-melek* / *kĕtab ha-dat* / *patšegen* (the law, the king's word, the writing of the law, a copy),
-   not the *iggeret* (letters) form TH_EDICT is keyed to in the registry, nor the institution **I2** (the
-   *dat* as the standing Medo-Persian law). This is a genuine call: is the *written copy of the decree of
-   destruction* the same registry object as TH_EDICT (the royal edict/letters), or should it be I2 (the
-   law), or a new TH_ object? I leaned TH_EDICT because the referent is the concrete written order being
-   handed over. **Marcia: confirm which code the destruction-decree document takes.** **B3 Haman** and
-   **B17 the Jews** are used as registered (both referenced in Mordecai's account, v.7–8).
-
-6. **CB/FIG:** none minted (governed). Candidates listed in §5 — most notably an Esther-wide **hidden-God /
-   unaddressed-cry** figure, which this pericope is a prime instance of (fasting and mourning everywhere,
-   God named nowhere). Your call on whether to mint it.
-
-7. **Born-clean:** Levels 1–2 are prose (Common-Reader Standard); Level 3 answers are bare atoms (nouns/
-   bare actions, no sentence-shaped values, no role-vocab, surface forms bare). The SC-0073/SC-0070 guards
-   apply at the FOR_MODEL compile (Phase 4), not here.

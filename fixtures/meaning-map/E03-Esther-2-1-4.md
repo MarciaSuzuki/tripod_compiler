@@ -6,9 +6,9 @@ bcv: "Esther 2:1–4"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E03-Esther-2-1-4-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain storyteller's voice carrying the court forward after the storm of chapter 1. There is one stretch of voiced speech: the king's young men speak their proposal aloud (v.2–4), "Let them seek out beautiful young virgins for the king…" This is courtiers advising their lord, not a decree being sealed and sent — so it stays INFORMAL_CASUAL, the everyday speech of officials floating an idea, not the FORMAL_OFFICIAL key of an edict. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override over v.2–4. The plan is detailed and imperative in shape — "let the king appoint officers… let them gather" — but it is a spoken proposal inside the court, never written out as law, so I have kept it INFORMAL_CASUAL. The decree-key is reserved for actual voiced/written edicts, e.g. E02's Memucan ruling.)*
+The whole passage sits in INFORMAL_CASUAL — the plain storyteller's voice carrying the court forward after the storm of chapter 1. There is one stretch of voiced speech: the king's young men speak their proposal aloud (v.2–4), "Let them seek out beautiful young virgins for the king…" This is courtiers advising their lord, not a decree being sealed and sent — so it stays INFORMAL_CASUAL, the everyday speech of officials floating an idea, not the FORMAL_OFFICIAL key of an edict.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -248,37 +248,3 @@ No one asks whether Vashti might be restored, or whether the women have any say.
 **5B — Figure Flags**
 - None active yet. *(No figure of speech is voiced here; the "after these things" bridge-phrase is a
   narrative seam rather than a figure. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (v.2–4):** kept INFORMAL_CASUAL throughout, with NO FORMAL_OFFICIAL override on the
-   courtiers' proposal. The plan is imperative in shape ("let the king appoint… let them gather…") but
-   it is a *spoken* proposal by attendants, not a sealed/written edict — so I judged it ordinary court
-   speech, not the decree-key. Confirm. (Contrast E02, where Memucan's ruling is enacted as law and may
-   warrant the lift.)
-2. **Scene division:** 2 scenes — the king's solitary remembering (v.1) and the courtiers' proposal-and-
-   approval (v.2–4). The proposal and the king's assent are kept in one scene because v.4b ("the matter
-   pleased the king, and he did so") is the resolution of the very plan voiced in v.2–3. Alternative:
-   split v.4b off as its own approval-scene. Confirm.
-3. **Registry-delta candidates (new cast E03 surfaces):** four unregistered groups —
-   *the king's young men / attendants* (2:2, נַעֲרֵי הַמֶּלֶךְ מְשָׁרְתָיו), *the beautiful young
-   virgins* (2:2–3, the search-pool), *the provincial officers* (2:3, פְּקִידִים), and (implicitly) the
-   pool overlaps with Esther's later entry. Rule which (if any) earn B-codes vs. stay descriptive. The
-   "young men/attendants" are a recurring court chorus across Esther and may deserve a standing code.
-4. **Object/time candidates:** the cosmetics/beauty-treatments (תַּמְרוּק), the king's cooled anger
-   (חֵמָה), the recalled decree against Vashti, and the bridge-phrase "after these things" (אַחַר
-   הַדְּבָרִים הָאֵלֶּה) are all kept as descriptive scene content, not registry objects/times. Rule
-   whether any (esp. the cosmetics, which recur in the harem scenes of E04) should be registered.
-5. **Registered cast used:** B4 Ahasuerus, B5 Vashti (referenced), B7 Hegai (referenced), I4 the house
-   of the women, PL1 Susa. (B7 and I4 both have "appears_in" E03 in the registry — confirmed correct.)
-   Hegai's registry vocalization is הֵגַי; the BHSA surface form here is הֵגֶא (a spelling variant) —
-   used the registry form.
-6. **CB/FIG:** none minted (governed). Candidates in §5 (the irrevocable decree; the harem institution;
-   selection-by-pleasing). Your call on whether any are book-wide concepts worth minting.
-7. **The hidden God:** tracked under both scenes' Significant Absence — the machinery that will bring the
-   book's deliverer to the throne is set in motion as pure court business, with no naming of God.
-8. **Born-clean:** Levels 1–2 are prose; Level 3 atoms are bare nouns/actions, no sentence-shaped
-   UPPER_SNAKE values, no role-vocab; surface forms bare. SC-0070/SC-0073 guards apply at the FOR_MODEL
-   compile (Phase 4), not here.

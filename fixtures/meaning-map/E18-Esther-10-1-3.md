@@ -6,9 +6,9 @@ bcv: "Esther 10:1–3"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E18-Esther-10-1-3-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the storyteller's plain summing-up voice as the book ends. Two things lift the framing without changing the register. First, the closing colophon-formula in v.2, *halo hem ketuvim al sefer divrei hayamim* ("are they not written in the book of the chronicles…"), is the set archival phrase of the Hebrew historians; it raises the voice into the formal key of an old, official record being pointed to — a COMMUNITY_MEMORY echo that closes the book the way *vayhi bimei Achashverosh* opened it (this marks the framing, not the register). Second, the narrator reports the chronicle's content from the outside; nothing is voiced as a decree, so no FORMAL_OFFICIAL override applies — even the tribute of v.1 is described, not enacted in royal words. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override — the chronicle-formula is the narrator citing a record, not an edict being read out, so I kept it INFORMAL_CASUAL with a COMMUNITY_MEMORY closing-frame note.)*
+The whole passage sits in INFORMAL_CASUAL — the storyteller's plain summing-up voice as the book ends. Two things lift the framing without changing the register. First, the closing colophon-formula in v.2, *halo hem ketuvim al sefer divrei hayamim* ("are they not written in the book of the chronicles…"), is the set archival phrase of the Hebrew historians; it raises the voice into the formal key of an old, official record being pointed to — a COMMUNITY_MEMORY echo that closes the book the way *vayhi bimei Achashverosh* opened it (this marks the framing, not the register). Second, the narrator reports the chronicle's content from the outside; nothing is voiced as a decree, so no FORMAL_OFFICIAL override applies — even the tribute of v.1 is described, not enacted in royal words.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -246,34 +246,3 @@ God is not named even here, at the summit of the deliverance: Mordecai's rise an
   chronicles of the kings of Media and Persia" formula that here CLOSES the book and back-refers to the
   same annals at E05/E11 that OPENED the reversal. If ruled a figure, it would flag at Proposition 2 as an
   inclusio-closing device. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (whole pericope):** kept INFORMAL_CASUAL throughout, with a COMMUNITY_MEMORY closing-frame
-   note on the v.2 chronicle-formula (matching the E01 opening-frame treatment of *vayhi bimei…*). No
-   FORMAL_OFFICIAL override: the colophon is the narrator citing an official record, not an edict being
-   voiced. Confirm.
-2. **Scene division:** 3 scenes, one per verse (the king's tribute · the chronicle-seal · the Mordecai
-   portrait). The verses are each a distinct closing move — imperial frame, certification, character-seal —
-   so I gave each its own scene rather than folding all three into one colophon block. Confirm.
-3. **Back-reference (annals):** [[TH_ANNALS]] here closes an inclusio with its earlier appearances at E05
-   and E11 (the sleepless-night record that began the reversal). Flagged as the FIG candidate in §5B; the
-   STA `inter_proposition_links`/`cross_ref` should carry a back_reference to E05/E11 at Proposition 2 —
-   confirm you want that link minted at compile.
-4. **Registry-delta candidates (new objects E18 surfaces):**
-   - *Tribute / forced levy* (מַס / mas, 10:1) — candidate `TH_TRIBUTE` (or `TH_MAS`). One-off in Esther so
-     far; rule whether it earns a TH-code or stays descriptive scene content.
-   Rule which (if any) to register.
-5. **Entities used from the registry:** [[B1-Mordecai]] (with referential form "the Jew" carried at v.3),
-   [[B4-Ahasuerus]], [[B17-the-Jews]], [[TH_ANNALS]], [[PL6-Persia]], [[PL7-Media]]. I5 (the 127 provinces)
-   is *not* used here — the empire's reach is given as "land and sea-coasts," not the province-count — so I
-   left I5 out rather than force it in; confirm.
-6. **"Brothers / seed" (אֶחָיו / זַרְעוֹ, 10:3):** treated as scene content coextensive with [[B17-the-Jews]]
-   (Mordecai's people seen as kin), not as new cast. Confirm no separate B-code is wanted for "his kindred."
-7. **CB/FIG:** none minted (governed). Candidates listed in §5. The annals-colophon inclusio is the
-   strongest figure candidate in the book's closing.
-8. **Born-clean:** Level-3 answers are bare atoms (no sentence-shaped UPPER_SNAKE values, no role-vocab);
-   Levels 1–2 are map-prose (Common-Reader Standard). The "the Jew" referential form is carried as a being
-   referential_form, not baked into a clause. The SC-0073/SC-0070 guards apply at FOR_MODEL compile (Phase 4).

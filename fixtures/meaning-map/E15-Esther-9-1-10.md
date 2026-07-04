@@ -6,9 +6,9 @@ bcv: "Esther 9:1–10"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E15-Esther-9-1-10-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the storyteller's plain voice, reporting the long-feared day and how it came out. There is no decree voiced here (the edict that set this day was written out earlier, in E14), so no FORMAL_OFFICIAL override applies: the narrator only *refers* to "the king's word and his decree" (דְּבַר הַמֶּלֶךְ וְדָתֹו) as the appointed thing now coming due, rather than quoting it. The one verbal lift is the narrator's own comment at v.1 — "and it was turned over" (נַהֲפֹוךְ הוּא) — a flat, almost stunned aside marking the great reversal; it stays inside the casual register. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override — the decree is named, not spoken, so I have kept the whole pericope INFORMAL_CASUAL.)*
+The whole passage sits in INFORMAL_CASUAL — the storyteller's plain voice, reporting the long-feared day and how it came out. There is no decree voiced here (the edict that set this day was written out earlier, in E14), so no FORMAL_OFFICIAL override applies: the narrator only *refers* to "the king's word and his decree" (דְּבַר הַמֶּלֶךְ וְדָתֹו) as the appointed thing now coming due, rather than quoting it. The one verbal lift is the narrator's own comment at v.1 — "and it was turned over" (נַהֲפֹוךְ הוּא) — a flat, almost stunned aside marking the great reversal; it stays inside the casual register.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -324,40 +324,3 @@ Again no god is named over the victory, and no battle-cry, no song, no triumph-s
   intended ruin becoming the day of rescue ("it was turned over," v.1) — a strong candidate for an
   Esther-specific FIG. Also a possible **roll-of-names** figure: the ceremonial naming of the ten sons
   one by one. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register:** kept INFORMAL_CASUAL throughout, with no FORMAL_OFFICIAL override. The decree is *named*
-   ("the king's word and his decree," v.1) as the appointed thing coming due, not *voiced* — there is no
-   quoted edict in this pericope (that was E14). The narrator's "and it was turned over" (v.1) is a flat
-   aside inside the casual register. Confirm.
-2. **Scene division:** 2 scenes — (1) the reversed day and the empire tilting, v.1–4 (date, reversal,
-   assembling, dread, the officials helping out of fear of Mordecai, Mordecai's rise); (2) the striking
-   and the named sons, v.5–10 (the killing, the 500 in Susa, the ten sons named, the no-plunder seal).
-   The alternative is a 3-scene split that gives the ten-sons roll its own scene; I kept it with the
-   striking because v.5–10 is one continuous action in the capital. Confirm.
-3. **Registry-delta candidates (new cast E15 surfaces):** three unregistered groups —
-   *the enemies / those who hate the Jews* (אֹיְבֵי הַיְּהוּדִים / שֹׂנְאֵיהֶם, recurring through the
-   pericope), *the empire's officials* (the provincial chiefs, satraps, governors, and king's officers,
-   9:3), and *the five hundred men of Susa* (9:6, a counted enemy group). Rule which (if any) earn
-   B-codes vs. stay descriptive. The "enemies of the Jews" is the strongest candidate — it is a
-   standing, recurring adversary-group across E13–E17.
-4. **The ten sons' personal names:** Parshandatha, Dalphon, Aspatha, Poratha, Adalia, Aridatha,
-   Parmashta, Arisai, Aridai, Vaizatha appear only here (and the hanged-bodies note in E16). The
-   registry codes them collectively as [[B16-The-ten-sons-of-Haman]]; I did **not** mint ten individual
-   B-codes. Confirm whether the ten names should each become referential forms under B16, or stay as
-   inline named content. (They are listed atomically in Proposition 14.)
-5. **Time candidate:** "the thirteenth of Adar" — the day is the load-bearing time of the whole Purim
-   complex. [[TM_ADAR]] is registered (the month); the *day* (the 13th) recurs across E14–E17 and may
-   warrant its own TM-code or a referential form under TM_ADAR. Flagged.
-6. **CB/FIG:** none minted (governed). The great-reversal concept/figure and the no-plunder restraint
-   are the strongest Esther-specific candidates; the decree-engine likely shares whatever CB is minted
-   at E01. Your call.
-7. **Significant Absence (load-bearing):** the threefold "did not lay a hand on the plunder" (here at
-   9:10, repeated 9:15, 9:16) is the moral signature of the self-defense — I have flagged it as a hard
-   significant_absence in Scene 2, not decoration, so it survives into the FOR_MODEL as a
-   must-preserve-absence. Confirm it should carry that weight.
-8. **Born-clean:** no sentence-shaped UPPER_SNAKE slot values; surface forms bare; this is map-prose
-   (Common-Reader Standard), so the SC-0073/SC-0070 guards apply at the FOR_MODEL compile (Phase 4), not here.

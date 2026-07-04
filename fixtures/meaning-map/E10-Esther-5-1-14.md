@@ -6,9 +6,9 @@ bcv: "Esther 5:1–14"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E10-Esther-5-1-14-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain storyteller's voice, even at the dangerous moment when the queen stands unsummoned before the throne and the heavy moment when the gallows is built. The dialogue is quoted throughout (the king to Esther; Esther's two invitations; Haman's boast to his household; Zeresh and the friends' counsel), and all of it stays in the casual, lived register of people speaking to one another — no decree is voiced or written here. The king's grand formula "even to half the kingdom" (v.3, v.6) is courtly hyperbole spoken in conversation, not a published edict, so it is *not* a FORMAL_OFFICIAL moment. *(Meaning call for Marcia: confirm no register override anywhere in this pericope — there is no voiced or written edict in 5:1–14; the FORMAL_OFFICIAL key belongs to the decree-pericopes, not here.)*
+The whole passage sits in INFORMAL_CASUAL — the plain storyteller's voice, even at the dangerous moment when the queen stands unsummoned before the throne and the heavy moment when the gallows is built. The dialogue is quoted throughout (the king to Esther; Esther's two invitations; Haman's boast to his household; Zeresh and the friends' counsel), and all of it stays in the casual, lived register of people speaking to one another — no decree is voiced or written here. The king's grand formula "even to half the kingdom" (v.3, v.6) is courtly hyperbole spoken in conversation, not a published edict, so it is *not* a FORMAL_OFFICIAL moment.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -544,34 +544,3 @@ No one in the room foresees the irony the reader sees plainly — that the gallo
   the book's central reversal, opened here and closing in E12 when Haman hangs on it. This is the strongest
   cross-pericope figure in the book; it is encoded in §3C as a forward cross_ref to E12 but not minted as a
   FIG_ code in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register:** kept INFORMAL_CASUAL throughout, with NO override. There is no voiced or written edict in
-   5:1–14 — the king's "even to half the kingdom" (v.3, v.6) is courtly hyperbole spoken in conversation,
-   not a published decree, so FORMAL_OFFICIAL does not apply. Confirm.
-2. **Scene division:** 4 scenes — (1) the throne-room and scepter, v.1–3; (2) the first banquet and the
-   doubled invitation, v.4–8; (3) Haman's joy-to-fury at the gate, v.9; (4) the boast at home and the
-   gallows raised, v.10–14. The alternative is to fold v.9 (the gate) into Scene 4 (home/plot), since both
-   center on Haman's rage at Mordecai; I kept the gate as its own scene because the place changes (public
-   gate vs. private house) and v.9 is the pivot from elation to fury. Confirm.
-3. **Gallows cross_ref (load-bearing):** [[TH_GALLOWS]] the gallows is built here in pride and is the very
-   gallows Haman hangs on in E12. I encoded the forward cross_ref to E12 on the object in §3C and flagged it
-   as the book's strongest figure candidate (§5B). This is the Haman rise↔fall mirror the kickoff named —
-   confirm the cross_ref direction (E10 → E12) and whether it should be minted as a FIG_ code.
-4. **Registry-delta candidate (new cast):** *Haman's friends* (אֹהֲבָיו, "those who love him," v.10, v.14) —
-   an unregistered group that joins Zeresh in counseling the gallows. They recur (with Zeresh) in E11 as
-   well. Rule whether they earn a B-code or stay descriptive.
-5. **Registry codes used:** B1 Mordecai, B2 Esther, B3 Haman, B4 Ahasuerus, B6 Zeresh, I1 banquet (mishteh),
-   TH_SCEPTER, TH_GALLOWS — all from the registry. New descriptive places (the inner court, the throne-room,
-   the king's gate, Haman's house) are kept as scene venues / sub-locations of Susa, not minted as PL-codes;
-   rule whether any (esp. *the king's gate*, which recurs heavily through the book) should earn a PL-code.
-6. **Hidden-God tracking:** the book's signature silence is at its sharpest here — Esther survives the
-   death-space "by favor in the king's eyes" with no Name credited; the three-day fast's object is unnamed;
-   and the gallows goes up with no omen or warning while the audience alone sees the irony. Logged under each
-   scene's Significant Absence.
-7. **Born-clean:** no sentence-shaped UPPER_SNAKE slot values; Level-3 answers are bare atoms; surface forms
-   bare; this is map-prose (Common-Reader Standard). SC-0073/SC-0070 guards apply at the FOR_MODEL compile
-   (Phase 4), not here.

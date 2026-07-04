@@ -6,9 +6,9 @@ bcv: "Esther 3:1–6"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E06-Esther-3-1-6-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the storyteller's plain voice, reporting a promotion, a standoff at a gate, and a man's hidden rage from the outside. There is no decree voiced here in its own words: the king's order to bow (v.2, "for so the king had commanded concerning him") is *reported* by the narrator, not quoted as an edict, so it draws no FORMAL_OFFICIAL override. The one stretch of direct speech is the servants' nagging question to Mordecai in v.3 ("Why do you transgress the king's commandment?") — ordinary speech among courtiers, which stays INFORMAL_CASUAL. The pericope's weight is interior: Haman's fury and his silent resolve to wipe out a whole people. That interior turn is reported plainly, not lifted into a grander register. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override anywhere here — the king's command to bow is narrated, not voiced as a decree, and the real edict to destroy the Jews is only *sought* in v.6, not yet issued.)*
+The whole passage sits in INFORMAL_CASUAL — the storyteller's plain voice, reporting a promotion, a standoff at a gate, and a man's hidden rage from the outside. There is no decree voiced here in its own words: the king's order to bow (v.2, "for so the king had commanded concerning him") is *reported* by the narrator, not quoted as an edict, so it draws no FORMAL_OFFICIAL override. The one stretch of direct speech is the servants' nagging question to Mordecai in v.3 ("Why do you transgress the king's commandment?") — ordinary speech among courtiers, which stays INFORMAL_CASUAL. The pericope's weight is interior: Haman's fury and his silent resolve to wipe out a whole people. That interior turn is reported plainly, not lifted into a grander register.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -74,7 +74,7 @@ The seat of honour — כִּסְאֹו / his seat *(scene content — Haman's p
 - Function in scene: makes his new pre-eminence visible and ranked — a place higher than every other official's
 - Signals: rank conferred by the king; status that now demands homage
 
-The Agagite lineage — הָאֲגָגִי / the Agagite *(load-bearing surface phrasing — see Mapper's notes)*
+The Agagite lineage — הָאֲגָגִי / the Agagite *(load-bearing surface phrasing)*
 - What it is: the descriptor attached to Haman, marking descent from Agag, king of Amalek
 - Function in scene: plants the ancient enmity (Amalek vs. Israel) under the whole conflict to come
 - Signals: this quarrel is older than these two men — a feud with deep roots
@@ -127,7 +127,7 @@ The king's commandment — מִצְוַת הַמֶּלֶךְ / the king's comman
 - Function in scene: the rule Mordecai breaks; the grounds the servants cite against him
 - Signals: homage made compulsory by royal authority — to refuse is to "transgress"
 
-Mordecai's Jewishness — יְהוּדִי / a Jew (he is a Jew) *(load-bearing — the reason he gives; see Mapper's notes)*
+Mordecai's Jewishness — יְהוּדִי / a Jew (he is a Jew) *(load-bearing — the reason he gives)*
 - What it is: the single explanation Mordecai offers for his refusal — that he is a Jew
 - Function in scene: turns a personal standoff into a matter of peoplehood and identity
 - Signals: the refusal is rooted in who he is, not mere stubbornness; it foreshadows the threat to a whole people
@@ -336,45 +336,3 @@ Haman's leap from Mordecai to "all the Jews" is made with no stated deliberation
 - None active yet. *(Candidate figure for Marcia: "the Agagite" as a typological tag — naming Haman by an
   ancient enemy-line to load the conflict with inherited enmity. Whether this earns a Figure code, or is
   carried as load-bearing surface phrasing only, is your call. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Scene division:** 3 scenes — (1) Haman's promotion v.1 · (2) the bowing standoff at the gate v.2–4 ·
-   (3) Haman's fury and the plot v.5–6. The alternative is to fold v.1 into the gate scene; I kept the
-   promotion as its own scene because it establishes the height (and the "Agagite" tag) on which everything
-   else turns, mirroring how E01 opens on its setting before the action. Confirm.
-
-2. **Register:** kept INFORMAL_CASUAL throughout, no FORMAL_OFFICIAL override. The king's command to bow
-   (v.2) is *narrated* ("for so the king had commanded concerning him"), not quoted as an edict; the actual
-   destroying-edict is only *sought* in v.6, not yet issued (that voiced edict comes in a later pericope).
-   The one direct-speech moment — the servants' "Why do you transgress the king's commandment?" (v.3) — is
-   ordinary court speech. Confirm no override.
-
-3. **Registry-delta candidates (new cast/place E06 surfaces):**
-   - **Hammedatha** (הַמְּדָתָא, Haman's father, v.1) — named only for lineage; rule whether he earns a B-code
-     or stays a descriptive reference.
-   - **The king's servants at the gate** (עַבְדֵי הַמֶּלֶךְ אֲשֶׁר בְּשַׁעַר הַמֶּלֶךְ, v.2–4) — a recurring
-     functional group (they bow, question, and report); a strong B-code candidate.
-   - **The king's princes/officials** (הַשָּׂרִים, v.1) — the officials over whom Haman is set; rule B-code vs.
-     descriptive.
-   - **The king's gate** (שַׁעַר הַמֶּלֶךְ, v.2–3) — a recurring Esther *place* (Mordecai sits there often
-     through the book); a strong PL-code candidate. Flagged as registry-delta.
-
-4. **"The Agagite" (הָאֲגָגִי):** treated as load-bearing surface phrasing carried in Scene 1, not normalized
-   away — it ties Haman to Agag of Amalek and loads the whole feud. Confirm whether to (a) leave as surface
-   phrasing, (b) mint a Figure (typological enemy-line), or (c) mint a Concept Bank anchor (Amalek/Agag
-   enmity). Likely the same anchor will recur across Esther.
-
-5. **B17 "the Jews":** this pericope is the first the registry lists B17 appearing in; here "the Jews" enters
-   as *the threatened people* — named in the text only as "Mordecai's people" (עַם מָרְדֳּכָי) and "all the
-   Jews" (כָּל־הַיְּהוּדִים). Mordecai's referential form "the Jew" (היהודי) is the identity he discloses in
-   v.4 ("he is a Jew," יְהוּדִי) — confirm this is the registered referential form being instantiated here.
-
-6. **CB/FIG:** none minted (governed). Candidates listed in §5. The Agag/Amalek enmity is the most likely
-   Esther-specific Concept Bank anchor and will probably recur (E07, E15–E17).
-
-7. **Born-clean:** Levels 1–2 are prose; Level 3 atoms are bare (no sentence-shaped UPPER_SNAKE values, no
-   role-vocab — slot questions use plain "Who/What/Whom/Where"); surface forms bare. The SC-0073/SC-0070
-   guards apply at the FOR_MODEL compile (Phase 4), not here.

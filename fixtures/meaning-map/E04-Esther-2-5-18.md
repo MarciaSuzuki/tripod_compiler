@@ -6,9 +6,9 @@ bcv: "Esther 2:5–18"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E04-Esther-2-5-18-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The whole passage sits in INFORMAL_CASUAL — the plain reporting voice of a storyteller who introduces two new people, follows a young woman through a year of waiting, and arrives at a crowning. There is no decree voiced and no edict written out in this pericope, so no FORMAL_OFFICIAL override is taken anywhere. The closest the text comes is v.8's "word of the king and his law" and v.12's "the regulation for the women" — but in both cases the narrator is *reporting* that a rule existed and was heard, not quoting the rule's own words, so the register stays INFORMAL_CASUAL. This pericope is mid-book, not the opening or close, so no COMMUNITY_MEMORY framing lift is applied. *(Meaning call for Marcia: confirm no FORMAL_OFFICIAL moment-override — there is no voiced decree here, only the narrator describing that the king's order had gone out.)*
+The whole passage sits in INFORMAL_CASUAL — the plain reporting voice of a storyteller who introduces two new people, follows a young woman through a year of waiting, and arrives at a crowning. There is no decree voiced and no edict written out in this pericope, so no FORMAL_OFFICIAL override is taken anywhere. The closest the text comes is v.8's "word of the king and his law" and v.12's "the regulation for the women" — but in both cases the narrator is *reporting* that a rule existed and was heard, not quoting the rule's own words, so the register stays INFORMAL_CASUAL. This pericope is mid-book, not the opening or close, so no COMMUNITY_MEMORY framing lift is applied.
 
 ## 2. Level 1 — Whole-Passage Movement
 ### 2.1 Prose Arc / Shape / Argument / Burden / Concern
@@ -578,43 +578,3 @@ At the height of the book's first great reversal — an orphan exile crowned que
 - None active yet. *(Candidate figure for Marcia: the deliberate concealment of Esther's people (v.10) as
   a recurring device the book will return to (the secret kept, then revealed); and the "Hadassah, that is,
   Esther" double-naming (v.7) as a referential-pair device. Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register:** kept INFORMAL_CASUAL throughout; no FORMAL_OFFICIAL moment-override taken. The two
-   rule-references — "the king's word and his law" (v.8) and "the rule for the women" (v.12) — are the
-   narrator *reporting* that an order/procedure existed, not the decree's own words being voiced. Confirm
-   no override is wanted at either. No COMMUNITY_MEMORY lift (mid-book pericope).
-
-2. **Scene division:** 5 scenes — (1) Mordecai + Hadassah introduced (v.5–7) · (2) Esther taken into the
-   harem (v.8) · (3) favor won + people hidden + Mordecai's watch (v.9–11) · (4) the year-long regimen /
-   one-night turn machinery (v.12–14) · (5) Esther's turn → crowning → banquet (v.15–18). The chief call
-   is whether v.8 should fold into Scene 1 or Scene 3 rather than stand alone; I made the *taking* its own
-   short scene because it is the threshold-crossing into the harem. Confirm.
-
-3. **The Hadassah = Esther pair (v.7):** treated as load-bearing and kept together (registry B2 carries
-   "Hadassah" as a referential form). In Level 3, Proposition 3 decomposes it as "Raised whom? Hadassah" +
-   "Who is Hadassah? Esther" so the identification survives atomization without being bundled. Confirm this
-   is the wanted handling of the double-name.
-
-4. **Registry-delta candidates (new cast E04 surfaces):**
-   - **Beings:** *Jeconiah king of Judah* (v.6), *Nebuchadnezzar king of Babylon* (v.6), *Abihail*
-     (Esther's father, v.15) — three named individuals not yet registered; *the many young women* (v.8),
-     *the seven maids* (v.9), *the women in turn* (v.12), *the princes & servants* (v.18) — four
-     unregistered groups. Rule which (if any) earn B-codes vs. stay descriptive.
-   - Note: B9 Shaashgaz and B7 Hegai and B5 Vashti are already registered and used.
-
-5. **Object/time-code candidates:** `TM_DAY_AFTER_DAY` (Mordecai's daily watch, v.11), `TM_TWELVE_MONTHS`
-   (the regimen span, v.12) as possible time-codes; the royal crown, the ointments/portions, the
-   remission/gift, the second house of the women, and "Esther's banquet" as possible object/venue codes.
-   I kept all of these as descriptive scene content rather than minting codes. Rule which to register.
-   (`TM_TEBETH`, `I1`, `I4`, `I5` are registered and used.)
-
-6. **CB/FIG:** none minted (governed). Candidates listed in §5 — the exile, the concealed identity, the
-   harem selection-process (CB); the deliberate concealment device and the double-naming (FIG). Your call.
-
-7. **Born-clean:** Levels 1–2 are map-prose (Common-Reader Standard); Level 3 answers are bare atoms (no
-   sentence-shaped UPPER_SNAKE values, no role-vocab); surface forms bare. The SC-0073/SC-0070 guards apply
-   at the FOR_MODEL compile (Phase 4), not here.

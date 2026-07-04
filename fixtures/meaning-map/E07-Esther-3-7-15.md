@@ -6,9 +6,9 @@ bcv: "Esther 3:7–15"
 genre-group: "NARRATIVE"
 genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
-status: "draft"
+status: "complete"
 meaning-map-version: 2.0
-sta-status: "draft"
+sta-status: "pending"
 pilot: "pilot-2"
 for-model: [[E07-Esther-3-7-15-FOR-MODEL]]
 active-concepts: []
@@ -25,7 +25,7 @@ active-figures: []
 - **Register:** INFORMAL_CASUAL
 
 **Multi-level register tagging:**
-The narrator's voice is INFORMAL_CASUAL throughout — the plain telling of how a death-sentence was set in motion. But this pericope contains the book's first VOICED official acts, and those lift the register. Two moments take a FORMAL_OFFICIAL override: (1) Haman's speech to the king at v.8–9, where he lays a charge against "a certain people" and names a price in silver — a formal accusation and proposal made before the throne; and (2) the written decree itself at v.13, whose own words are spelled out — "to destroy, to kill, and to annihilate all the Jews … in one day," with their goods as plunder. These are the language of the court and the edict, not the narrator's plain report, so the decree's own wording carries FORMAL_OFFICIAL. The surrounding narration — the casting of the lot, the handing over of the ring, the couriers going out, the city left bewildered — stays INFORMAL_CASUAL. *(Meaning call for Marcia: confirm the two FORMAL_OFFICIAL moment-overrides — Haman's proposal at 3:8–9 and the edict's own words at 3:13 — and confirm the narration around them stays INFORMAL_CASUAL.)*
+The narrator's voice is INFORMAL_CASUAL throughout — the plain telling of how a death-sentence was set in motion. One moment takes a FORMAL_OFFICIAL override: the written decree itself at v.13, whose own words are spelled out — "to destroy, to kill, and to annihilate all the Jews … in one day," with their goods as plunder. That is the language of the edict itself, not the narrator's plain report, so the decree's own wording carries FORMAL_OFFICIAL. Haman's speech to the king at v.8–9 — the charge against "a certain people" and the price named in silver — is a spoken proposal made before the throne, not decree wording, so it stays INFORMAL_CASUAL (as with the courtiers' proposal in E03 and Esther's petition in E13). The surrounding narration — the casting of the lot, the handing over of the ring, the couriers going out, the city left bewildered — stays INFORMAL_CASUAL.
 
 ## 2. Level 1 — Whole-Passage Movement
 
@@ -393,34 +393,3 @@ Even here, where a whole people is condemned by name in writing, no God is named
 - None active yet. *(Candidate figure for Marcia: the three-fold death-verb piling — "to destroy, to kill,
   and to annihilate" (3:13) — a formal legal intensification; and the closing tableau-irony of the two men
   "sitting to drink" while the city is "bewildered" (3:15). Not minted/assigned in this draft.)*
-
----
-
-## Mapper's notes — open meaning calls for Marcia (this is a DRAFT proving map)
-
-1. **Register (two FORMAL_OFFICIAL moment-overrides):** the narration is INFORMAL_CASUAL, but I have flagged
-   two voiced/written official acts for a FORMAL_OFFICIAL override — (a) Haman's accusation-and-proposal speech
-   to the king at 3:8–9, and (b) the decree's own words at 3:13 ("to destroy, to kill, and to annihilate …").
-   Confirm both, and confirm the surrounding narration (lot, ring, couriers, the closing tableau) stays
-   INFORMAL_CASUAL.
-2. **Scene division:** 3 scenes — the casting of the lot (v.7) · Haman's charge and the king's ring (v.8–11) ·
-   the decree written, sealed, and sent (v.12–15). The alternative is to fold v.7 into Scene 2 (the lot and the
-   audience as one approach to the king); I kept it separate because the lot is a distinct ritual moment with its
-   own time-frame (Nisan → Adar) and is the providence-hinge the book later names Purim. Confirm.
-3. **Registry codes used:** all entities map to registered codes — [[B3-Haman]], [[B4-Ahasuerus]], [[B17-The-Jews]]
-   (the "certain people"), [[TH_PUR_LOT]], [[TH_SIGNET_RING]], [[TH_EDICT]], [[I2-The-law-dat]],
-   [[I5-The-127-provinces]], [[TM_NISAN]], [[TM_ADAR]], [[PL1-Susa-the-citadel]]. No new cast was required.
-4. **Scene-content (kept descriptive, NOT registered):** *Haman son of Hammedatha the Agagite* (a referential
-   form / patronymic of B3 — candidate B-referential-form rather than a new being); *the king's scribes* (3:12);
-   *the couriers / runners* (הָרָצִים, 3:13, 3:15); *the satraps, governors, and provincial princes* addressed by
-   the decree (3:12); *the treasury officials* — "those who do the work" (3:9); *the silver* (ten thousand talents,
-   3:9); *the king's treasuries* (3:9). Rule which (if any) earn codes vs. stay descriptive. Note: "Hammedatha
-   the Agagite" and "enemy of the Jews" may be worth registering as **referential forms of B3 (Haman)** in the BCD.
-5. **B17 referential forms surfaced:** the Jews are referred to here as *a certain people* (עַם־אֶחָד, scattered
-   and dispersed) and *the Jews* (הַיְּהוּדִים). The "certain people, never named to the king" framing is
-   load-bearing for the book's irony (the king condemns the queen's own people unknowing) — flagged as a
-   significant-absence, and the bare referential form "a certain people" may be worth recording for B17.
-6. **CB/FIG:** none minted (governed). Candidates listed in §5 — the lot/Pur, the decree-machine turned to killing,
-   the signet-ring transfer of authority, the three-verb death formula, the drinking-while-the-city-reels tableau.
-7. **Born-clean:** no sentence-shaped UPPER_SNAKE slot values; surface forms bare; this is map-prose
-   (Common-Reader Standard), so the SC-0073/SC-0070 guards apply at the FOR_MODEL compile (Phase 4), not here.
