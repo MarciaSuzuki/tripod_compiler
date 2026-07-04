@@ -94,6 +94,8 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
     <span class="roomgo">Enter the Mind →</span>
   </a>
 </section>
+<p class="toursline">Presenting to partners? <a href="atlas/tours.html">Four guided tours</a> walk the
+Meaning Mind step by step — full-screen, arrow keys, no setup.</p>
 
 <details class="about">
   <summary>First time here? What you're looking at, and how to comment</summary>

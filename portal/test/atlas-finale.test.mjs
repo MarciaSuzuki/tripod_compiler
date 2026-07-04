@@ -187,6 +187,13 @@ test('tours: the page reads complete without JS and ships only the vendored engi
   assert.equal(runBuild(repoRoot, out).status, 0);
   const tours = read(out, 'atlas/tours.html');
 
+  // Never orphaned (found live by Marcia, 2026-07-04): the tours must be
+  // reachable from the Mind HUD, the no-JS Mind index, and the Reading Room.
+  const mindIndex = read(out, 'atlas/index.html');
+  assert.match(mindIndex, /class="brandlinks"><a href="tours\.html">Guided tours/);
+  assert.match(mindIndex, /<a href="tours\.html">four guided tours<\/a>/);
+  assert.match(read(out, 'index.html'), /<a href="atlas\/tours\.html">Four guided tours<\/a>/);
+
   // Four tours, each a complete readable article (the no-JS fallback).
   assert.equal((tours.match(/<article class="tour"/g) || []).length, 4);
   for (const t of ['What is a Meaning Map?', 'From Map to Machine (STA)', 'How the vocabulary grows', 'The growing mind']) {
