@@ -150,7 +150,12 @@ test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page
   const index = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
   assert.match(index, /Tripod Method · Meaning Mind/);
   assert.match(index, /<title>Meaning Mind · /);
-  assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /Meaning Mind — the whole seed corpus, connected/);
+  // Reading Room home v2 (Marcia's ruling): the two rooms, explicit — the
+  // switcher on the header and the Mind room card carrying the ruled phrase.
+  const rrIndex = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
+  assert.match(rrIndex, /class="modeswitch"/);
+  assert.match(rrIndex, /The whole seed corpus, connected/);
+  assert.match(rrIndex, /Meaning Mind →/);
   // Tour ruling D: the trajectory count is computed, never hardcoded.
   const tours = fs.readFileSync(path.join(out, 'atlas', 'tours.html'), 'utf8');
   const g = JSON.parse(fs.readFileSync(path.join(out, 'atlas', 'global.json'), 'utf8'));

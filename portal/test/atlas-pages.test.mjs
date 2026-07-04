@@ -74,8 +74,9 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
     'entity mentions navigate into the Atlas'
   );
   assert.match(p01, /<a class="wl wl-concept" href="\.\.\/atlas\/registry\/concept\//);
-  assert.match(p01, /<nav class="sitenav"><a href="\.\.\/atlas\/index\.html">/);
-  assert.match(read(out, 'index.html'), /<nav class="sitenav"><a href="atlas\/index\.html">/);
+  // The two-mode switcher (home v2) is on every Reading-Room page.
+  assert.match(p01, /class="mode mind" href="\.\.\/atlas\/index\.html"/);
+  assert.match(read(out, 'index.html'), /class="mode mind" href="atlas\/index\.html"/);
 
   // §2.4: the ONLY script anywhere is the Atlas home's vendored brain engine
   // (the declared JS departure, PR-3); every other page ships zero JS.
