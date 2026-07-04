@@ -489,6 +489,7 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
       title: row.title,
       date: row.date,
       status: row.status,
+      highlights: row.highlights,
     };
     scById.set(row.id, node);
     globalNodes.push(node);
@@ -600,18 +601,21 @@ function sourceReader(repoRoot) {
   };
 }
 
-/** SPEC_CHANGES.md ledger rows → {id, title, date, status}, all computed. */
+/** SPEC_CHANGES.md ledger rows → {id, title, date, status, highlights}, all computed. */
 export function parseScRows(text) {
   const rows = [];
   for (const line of text.split('\n')) {
     const m = line.match(/^\|\s*(SC-\d{4})\s*\|(.*)\|(.*)\|\s*$/);
     if (!m) continue;
     const [, id, decision, statusCell] = m;
-    const bold = decision.match(/\*\*(.+?)\*\*/);
-    const title = collapse(bold ? bold[1] : decision).slice(0, 160);
+    const bolds = [...decision.matchAll(/\*\*(.+?)\*\*/g)].map((b) => collapse(b[1]).slice(0, 140));
+    const title = (bolds[0] ?? collapse(decision)).slice(0, 160);
+    // The ledger's own convention bolds a ruling's headline facts (e.g.
+    // SC-0078's "SPEECH_ACT 26 → 33") — carried verbatim as highlights.
+    const highlights = [...new Set(bolds.slice(1))].slice(0, 8);
     const date = (line.match(/20\d{2}-\d{2}-\d{2}/) ?? [null])[0];
     const status = (collapse(statusCell).match(/[A-Z]{2,}[A-Z_-]*/) ?? [null])[0];
-    rows.push({ id, title, date, status });
+    rows.push({ id, title, date, status, highlights });
   }
   return rows;
 }

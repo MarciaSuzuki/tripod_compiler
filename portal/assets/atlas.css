@@ -299,3 +299,14 @@ body.brain-on #panel { position: fixed; z-index: 6; top: 86px; right: 28px; widt
   #legend, #hint { display: none !important; }
   body.brain-on #stats { left: 28px; right: 28px; text-align: left; bottom: 8px; }
 }
+
+/* ── Vocabulary Observatory (V4, PR-4) ─────────────────────────────────── */
+.vgrid { display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 10px; }
+.vcard { border-top: 1px solid var(--line); padding: 7px 0 3px; font-size: 12px; }
+.vcard .prov { font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: .03em; margin-left: 8px; }
+.vcard .prov.drift { color: var(--amber); }
+.vcard .uses { display: block; margin-top: 3px; }
+.vcard .uses { color: var(--dimmer); font-family: var(--mono); font-size: 10px; }
+.vcard.drifted { background: rgba(255, 158, 88, 0.04); }
+ul.hl { margin: .5em 0; padding-left: 1.1em; }
+ul.hl li { font-size: 12px; color: var(--champagne); margin: .25em 0; }

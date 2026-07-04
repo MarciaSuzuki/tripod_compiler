@@ -10,6 +10,7 @@
 // HUD text only (spec §6). Reading-Room pages are never touched by this module.
 
 import { escapeHtml, escapeAttr } from '../lib/html.mjs';
+import { observatoryPage } from './observatory.mjs';
 import { renderFeedbackButtons } from '../lib/feedback.mjs';
 import { deSlug } from '../lib/registry.mjs';
 
@@ -27,6 +28,7 @@ export function atlasPages({ cfg, formCfg, atlas, buildInfo }) {
   const stats = statsLine(atlas, buildInfo);
 
   pages.set('atlas/index.html', indexPage({ cfg, formCfg, atlas, buildInfo, stats }));
+  pages.set('atlas/vocabulary.html', observatoryPage({ cfg, formCfg, atlas, stats, atlasLayout }));
 
   for (const book of atlas.books) {
     const shard = atlas.shards.get(book.id);
@@ -156,8 +158,9 @@ ${cards}
      ${axes.length} axes (${l1.length} closed · ${l2.length} bounded-open) ·
      <b>${g.counts.sc_rulings}</b> governance rulings</p>
   <p>Concept and figure pages are linked wherever they occur — from book pages, scene drill-downs,
-  and the Reading Room's highlighted terms. With JavaScript on, this page becomes the living
-  graph over the same data; everything below stays readable without it.</p>
+  and the Reading Room's highlighted terms. <a href="vocabulary.html">The Vocabulary Observatory</a>
+  shows how the controlled vocabulary grows, ruling by ruling. With JavaScript on, this page becomes
+  the living graph over the same data; everything below stays readable without it.</p>
 </div>`;
 
   return atlasLayout({
