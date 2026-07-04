@@ -167,6 +167,10 @@ test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page
   const arriving = g.books.find((b) => b.status !== 'complete');
   if (arriving) {
     assert.ok(tours.includes(`cast of ${arriving.counts.entities}`), 'arriving cast counts from the data');
+    if (arriving.counts.maps) {
+      assert.ok(tours.includes(`${arriving.counts.maps} of its maps have already landed`),
+        'landed-maps clause counts actual maps, not pericope rows');
+    }
   } else {
     assert.match(tours, /Every book here arrived the same way/);
   }

@@ -181,9 +181,10 @@ const ARRIVING_PROSE = (books) => {
     'A book lands here first as its pinned cast — and becomes a full spine by itself as its approved artifacts merge, with no one redrawing anything.';
   if (!arriving.length) return `Every book here arrived the same way. ${closer}`;
   const b = arriving[0];
-  const maps = b.status === 'compile-pending' ? `, and ${b.counts.pericopes} of her maps have already landed` : '';
+  const maps = b.counts.maps ? `, and ${b.counts.maps} of its maps have already landed` : '';
   const more = arriving.length > 1 ? ` ${arriving.length - 1} more book${arriving.length > 2 ? 's are' : ' is'} on the way.` : '';
-  return `${b.title} is arriving: her cast of ${b.counts.entities} is already pinned${maps}.${more} ${closer}`;
+  const cast = b.counts.entities ? `: its cast of ${b.counts.entities} is already pinned${maps}` : '';
+  return `${b.title} is arriving${cast}.${more} ${closer}`;
 };
 
 export function toursPage({ cfg, formCfg, atlas, stats, atlasLayout }) {
