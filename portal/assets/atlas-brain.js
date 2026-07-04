@@ -79,6 +79,7 @@
           bcv: p.bcv,
           cls: p.classification ?? null,
           arc: p.level_1?.arc_elements ?? null,
+          emo: p.emotion_attested ?? null,
           absences,
           href: `./${b.id}.html#${p.code}`,
           read: `../pericopes/${p.code}.html`,
@@ -289,7 +290,7 @@
   }
 
   /* ---------- modes (generalized to N books, zero book names in code) ---------- */
-  const MODES = ["Mind", "Books", "Cast", "Concepts", "Growth"];
+  const MODES = ["Mind", "Books", "Cast", "Concepts", "Emotion", "Growth"];
   let mode = "Mind", modeT = 0;
   const spineBooks = () => nodes.filter((n) => n.kind === "book");
   const ghostBooks = () => nodes.filter((n) => n.kind === "ghost");
@@ -354,7 +355,7 @@
       bs.forEach((b, i) => anchor(b, W * (.30 + .38 * (bs.length === 1 ? .5 : i / (bs.length - 1))), H * (.46 + .06 * (i % 2)), .004));
       ghostBooks().forEach((b, i) => anchor(b, W * .90, H * (.76 + i * .08), .006));
     }
-    if (m === "Books" || m === "Growth") booksLayout();
+    if (m === "Books" || m === "Emotion" || m === "Growth") booksLayout();
     if (m === "Cast") {
       CAST.forEach((k, i) => {
         const a = -Math.PI / 2 + i * 2 * Math.PI / CAST.length, r = R * .20;
@@ -384,6 +385,12 @@
     stopGrowth();
     caption(false); // clear BEFORE Growth starts, or the RM caption is clobbered
     if (m === "Growth" && reset) startGrowth();
+    if (m === "Emotion" && reset) {
+      // Open on the most emotion-attested pericope — data decides, not code.
+      const top = nodes.filter((n) => n.emo)
+        .sort((x, y) => Object.values(y.emo).reduce((s, c) => s + c, 0) - Object.values(x.emo).reduce((s, c) => s + c, 0))[0];
+      if (top) select(top);
+    }
   }
 
   /* ---------- growth replay (order + captions from canon) ---------- */
@@ -499,8 +506,10 @@
     return true;
   }
   const filtersActive = () => filter.book || filter.kind || filter.genre || filter.register;
+  const emoNear = (n) => !!n.emo || n.adj.some((a) => a.n.emo);
   function targetAlpha(n) {
     let t = 1;
+    if (mode === "Emotion") t = Math.min(t, emoNear(n) ? 1 : .10);
     if (filtersActive()) {
       const hit = matchesFilter(n) ||
         ((filter.genre || filter.register) && !filter.kind && n.kind !== "pericope" &&
@@ -555,6 +564,10 @@
       lastIdle = now;
       const vis = edges.filter((e) => e.a.vis && e.b.vis && e.a.alpha > .5 && e.b.alpha > .5);
       if (vis.length) { const e = vis[(rnd() * vis.length) | 0]; firePulse(e, rnd() < .5 ? e.a : e.b, .22); }
+    }
+    if (mode === "Emotion" && !RM && rnd() < .012) {
+      const emos = nodes.filter((n) => n.emo && n.vis);
+      if (emos.length) fireNode(emos[(rnd() * emos.length) | 0], .3, 4);
     }
 
     const all = $("allthreads").checked;
@@ -698,6 +711,11 @@
     if (n.hebrew) h += `<div class="heb">${esc(n.hebrew)}</div>`;
     if (n.kind === "pericope") {
       h += `<p>${esc(n.title ?? "")}</p><p class="mono" style="font-size:10px">${esc(n.bcv ?? "")}${n.cls ? " · " + esc(n.cls.genre ?? "") + " · " + esc(n.cls.register ?? "") : ""}</p>`;
+      if (n.emo) {
+        h += `<div class="grp">emotion attested in the text</div><div class="chips">` +
+          Object.entries(n.emo).map(([k, v]) => `<span class="nchip">${esc(k)}${v > 1 ? " ×" + v : ""}</span>`).join("") +
+          `</div>`;
+      }
       for (const a of n.absences ?? []) {
         h += `<div class="abs"><span class="lbl">withheld — significant absence (${esc(a.scene)}, protected)</span>${esc(a.text)}</div>`;
       }
@@ -729,6 +747,9 @@
     if (n.kind === "book" || n.kind === "ghost") {
       h += `<p>${esc(n.meta)}</p>`;
       h += group("pericopes", n.adj.filter((a) => a.n.kind === "pericope").map((a) => a.n));
+    }
+    if (n.kind === "pericope" && mode === "Emotion") {
+      h += `<div class="grp">the boundary</div><a class="nchip" style="text-decoration:none;display:inline-block" href="./emotion.html">how emotion is mapped ↗</a>`;
     }
     if (n.href) h += `<div class="grp">its page</div><a class="nchip" style="text-decoration:none;display:inline-block" href="${esc(n.href)}">open ↗</a>` + (n.read ? ` <a class="nchip" style="text-decoration:none;display:inline-block" href="${esc(n.read)}">read the documents ↗</a>` : "");
     pbody.innerHTML = h;

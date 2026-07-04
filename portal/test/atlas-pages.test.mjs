@@ -24,7 +24,7 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
 
   // V1 accept: the Ruth page shows all pericopes with REAL titles.
   const ruth = read(out, 'atlas/ruth.html');
-  assert.ok((ruth.match(/class="tile"/g) || []).length >= 14, 'all Ruth pericope tiles');
+  assert.ok((ruth.match(/class="tile( emo)?"/g) || []).length >= 14, 'all Ruth pericope tiles');
   assert.match(ruth, /The famine, the family's sojourn, and the emptying of the household/);
   assert.match(ruth, /The gate: the non-name, the field before Ruth, and the sandal/);
 
@@ -48,7 +48,7 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
   assert.match(esther, /compile-pending/);
   assert.ok((esther.match(/class="castcard"/g) || []).length >= 51, 'Esther cast from the pinned registry');
   assert.match(esther, /Pericope spine — 18 passages/);
-  assert.ok((esther.match(/class="tile"/g) || []).length >= 18, 'all 18 Esther pericopes tile the spine');
+  assert.ok((esther.match(/class="tile( emo)?"/g) || []).length >= 18, 'all 18 Esther pericopes tile the spine');
   // Structured scene/absence drill-downs derive from FOR_MODELs, which Esther does not
   // have yet — this assertion flips to assert.match at the SC-0079 compile landing.
   assert.doesNotMatch(esther, /class="absence"/);
@@ -108,7 +108,7 @@ test('atlas pages: registry-only book renders honestly from a synthetic tree', (
   assert.match(esther, /maps in progress/);
   assert.match(esther, /castcard/);
   assert.match(esther, /B19/);
-  assert.doesNotMatch(esther, /class="tile"/);
+  assert.doesNotMatch(esther, /class="tile( emo)?"/);
   rmrf(root);
 });
 
