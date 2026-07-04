@@ -291,6 +291,20 @@ body.brain-on #panel { position: fixed; z-index: 6; top: 86px; right: 28px; widt
   font-size: 16px; cursor: pointer; font-family: inherit; }
 #panel .x:hover { color: var(--ink); }
 
+#zoomctl { right: 28px; bottom: 24px; display: flex; gap: 6px; }
+.zbtn { font-family: var(--mono); font-size: 14px; width: 34px; height: 30px;
+  color: var(--dim); background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line);
+  border-radius: 6px; cursor: pointer; }
+.zbtn:hover { color: var(--gold); border-color: rgba(255, 193, 99, 0.4); }
+.zbtn:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
+
+/* Mid widths: the centered mode row collides with brand/tools — drop it
+   under the brand block instead (measureHud keeps the node field clear). */
+@media (max-width: 1360px) and (min-width: 761px) {
+  body.brain-on #modes { left: 28px; right: auto; top: 118px; transform: none;
+    justify-content: flex-start; max-width: 430px; }
+}
+
 @media (max-width: 760px) {
   #brand { max-width: 220px; } #brand h1 { font-size: 17px; }
   body.brain-on #modes { top: auto; bottom: 88px; width: 94vw; }

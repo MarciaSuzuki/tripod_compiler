@@ -192,8 +192,6 @@ function brainSkeleton(cfg) {
 <div class="hud brainui" id="brand">
   <div class="eyebrow"><b>Shema</b> · Tripod Method · Meaning Mind</div>
   <h1>The Meaning Mind</h1>
-  <p>The seed corpus as a living network. Every node is approved canon — touch one and watch its
-  synapses fire.</p>
   <p class="brandlinks"><a href="tours.html">Guided tours ▸</a> · <a href="../index.html">Reading Room</a></p>
 </div>
 <div class="hud brainui" id="modes" role="tablist" aria-label="views"></div>
@@ -206,7 +204,11 @@ function brainSkeleton(cfg) {
   <label class="switch"><input type="checkbox" id="allthreads"><span class="tr"></span>all threads</label>
 </div>
 <div class="hud brainui" id="legend"></div>
-<div class="hud brainui" id="stats"></div>
+<div class="hud brainui" id="zoomctl" role="group" aria-label="zoom the mind">
+  <button class="zbtn" data-z="out" aria-label="zoom out">−</button>
+  <button class="zbtn" data-z="reset" aria-label="reset zoom">⌂</button>
+  <button class="zbtn" data-z="in" aria-label="zoom in">+</button>
+</div>
 <div class="hud brainui" id="caption" style="display:none"><span class="id"></span><br><span class="t"></span></div>
 <div class="hud brainui" id="hint">esc or click the dark to reset · drag any node · click chips in the panel to travel</div>
 <aside id="panel" class="brainui"><button class="x" aria-label="close">×</button><div id="pbody"></div></aside>`;

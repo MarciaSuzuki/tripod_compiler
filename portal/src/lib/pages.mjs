@@ -21,7 +21,6 @@ export function layout({ cfg, title, relRoot, contentHtml, buildInfo }) {
   <a class="brand" href="${relRoot}index.html"><img class="logo" src="${relRoot}assets/shema-logo.svg" alt="Shema — Multimodal Bible Translation" height="52"></a>
   <div class="masthead">
     <a class="home" href="${relRoot}index.html">${escapeHtml(cfg.siteTitle)}</a>
-    <div class="subtitle">${escapeHtml(cfg.siteSubtitle)}</div>
     <nav class="modeswitch" aria-label="the two rooms of this site">
       <span class="mode on" aria-current="page">Reading Room</span><a class="mode mind" href="${relRoot}atlas/index.html">Meaning Mind →</a>
     </nav>
@@ -74,9 +73,6 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
   return `
 <section class="intro">
   <h1>The Reading Room</h1>
-  <p>Everything here is <strong>read-only</strong> and <strong>approved</strong>: the site rebuilds itself
-  from the project's blessed files and refuses to publish anything still in draft. Read a passage,
-  then use its buttons to ask a question or suggest a change.</p>
 </section>
 
 <section class="rooms" aria-label="the two rooms">
@@ -94,7 +90,7 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
     <span class="roomgo">Enter the Mind →</span>
   </a>
 </section>
-<p class="toursline">Presenting to partners? <a href="atlas/tours.html">Four guided tours</a> walk the
+<p class="toursline"><a href="atlas/tours.html">Four guided tours</a> walk the
 Meaning Mind step by step — full-screen, arrow keys, no setup.</p>
 
 <details class="about">
