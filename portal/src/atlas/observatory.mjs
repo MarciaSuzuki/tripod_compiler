@@ -109,9 +109,12 @@ ${values.map(valueCard).join('\n')}
             .join('')}</div>`
       )
       .join('\n');
-    const highlights = (sc.highlights ?? [])
+    let highlights = (sc.highlights ?? [])
       .map((h) => `<li>${escapeHtml(h)}</li>`)
       .join('');
+    if (sc.more_highlights > 0) {
+      highlights += `<li class="mono" style="color:var(--dimmer);list-style:none;">+ ${sc.more_highlights} more headline fact${sc.more_highlights > 1 ? 's' : ''} in the ledger row</li>`;
+    }
     return `<div class="panel" id="${escapeAttr(sc.sc)}">
   <h3 style="margin-top:0;"><span class="mono" style="color:var(--gold);letter-spacing:.1em;">${escapeHtml(sc.sc)}</span>
     <span class="mono" style="font-size:10px;color:var(--dimmer);">${escapeHtml(sc.date ?? '')} · ${escapeHtml(sc.status ?? '')}</span></h3>
@@ -121,8 +124,12 @@ ${values.map(valueCard).join('\n')}
 </div>`;
   };
 
-  const ledgerRow = (sc) =>
-    `<tr><td class="mono"><a href="${admitted.has(sc.sc) ? `#${escapeAttr(sc.sc)}` : '#'}" ${admitted.has(sc.sc) ? '' : 'style="color:var(--dim);pointer-events:none;text-decoration:none;"'}>${escapeHtml(sc.sc)}</a></td><td class="mono">${escapeHtml(sc.date ?? '—')}</td><td>${escapeHtml(sc.title ?? '')}</td><td class="mono">${escapeHtml(sc.status ?? '')}</td></tr>`;
+  const ledgerRow = (sc) => {
+    const idCell = admitted.has(sc.sc)
+      ? `<a href="#${escapeAttr(sc.sc)}">${escapeHtml(sc.sc)}</a>`
+      : `<span class="mono" style="color:var(--dim);">${escapeHtml(sc.sc)}</span>`;
+    return `<tr><td class="mono">${idCell}</td><td class="mono">${escapeHtml(sc.date ?? '—')}</td><td>${escapeHtml(sc.title ?? '')}</td><td class="mono">${escapeHtml(sc.status ?? '—')}</td></tr>`;
+  };
 
   const l1 = axes.filter((a) => a.layer === 'L1-closed');
   const l2 = axes.filter((a) => a.layer !== 'L1-closed');
@@ -160,7 +167,8 @@ ${[...l1, ...l2].map(axisSection).join('\n')}
 <div class="grp" id="timeline">The growth timeline — the rulings that admitted vocabulary</div>
 <p>${admittingScs.length} of the ${g.counts.sc_rulings} recorded rulings admitted bounded-open
 vocabulary; each card lists exactly what it let in. Bulleted lines are the ruling's own
-bolded headline facts, verbatim from the ledger.</p>
+bolded headline facts from the ledger — long ones are shortened and marked with an
+ellipsis, and anything beyond the first eight is counted, never hidden.</p>
 ${admittingScs.map(timelineCard).join('\n')}
 
 <div class="grp">The full ledger — ${g.counts.sc_rulings} rulings</div>

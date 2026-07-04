@@ -70,6 +70,18 @@ test('observatory: real tree meets the V4 acceptance bars', { skip: !haveFixture
   // The Atlas index links the observatory.
   assert.match(fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8'), /href="vocabulary\.html"/);
 
+  // Ledger parsing (verify-confirmed fixes): pipes inside cells no longer
+  // shear the status, the status heuristic never invents a label, and every
+  // recorded ruling carries a real status.
+  const scs = Object.fromEntries(g.nodes.filter((n) => n.kind === 'sc-ruling').map((n) => [n.sc, n]));
+  assert.equal(scs['SC-0037'].status, 'SHIPPED');
+  assert.equal(scs['SC-0064'].status, 'APPLIED', 'SECTION A APPLIED must parse as APPLIED');
+  assert.equal(scs['SC-0076'].status, 'APPLIED');
+  assert.equal(g.nodes.filter((n) => n.kind === 'sc-ruling' && !n.status).length, 0, 'no ruling loses its status');
+  // Highlight caps are disclosed, never silent; no keyboard-trap dead anchors.
+  assert.match(html, /more headline fact/);
+  assert.doesNotMatch(html, /href="#"/);
+
   rmrf(out);
 });
 
