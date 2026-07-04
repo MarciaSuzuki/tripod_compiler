@@ -3,7 +3,8 @@
   "siteSubtitle": "Approved Bible-translation artifacts, published read-only for external review",
   "books": [
     { "prefix": "P", "name": "RUTH", "title": "Ruth", "aliasesFile": "ruth.aliases.json" },
-    { "prefix": "J", "name": "JONAH", "title": "Jonah", "aliasesFile": "jonah.aliases.json" }
+    { "prefix": "J", "name": "JONAH", "title": "Jonah", "aliasesFile": "jonah.aliases.json" },
+    { "prefix": "E", "name": "ESTHER", "title": "Esther", "aliasesFile": "esther.aliases.json" }
   ],
   "feedbackForm": {
     "_how": "See portal/README.md § Connecting the Google Form. formBase is everything before /viewform in the form's 'Get pre-filled link' URL; entries.* are the entry.NNNN ids from that same link. Until formBase is set, the feedback buttons render as visibly disabled placeholders.",

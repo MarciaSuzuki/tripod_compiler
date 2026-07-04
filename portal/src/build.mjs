@@ -5,6 +5,8 @@
 //
 // Reads ONLY:  fixtures/{meaning-map,for-model,compilation-log}/*.md   (the blessed artifacts)
 //              _spec/registry/*.json                                   (public registries, for tooltips)
+//              _spec/approved-enumerations.json, _spec/validation-rules.json,
+//              SPEC_CHANGES.md                                         (atlas-data sources, spec §2.1)
 // Writes ONLY: the output directory (default portal/dist).
 //
 // Exit codes:  0 built · 2 APPROVED-ONLY GATE violation (nothing written) · 1 any other error.
@@ -17,6 +19,7 @@ import crypto from 'node:crypto';
 
 import { parseNote, extractFencedJson } from './lib/frontmatter.mjs';
 import { ARTIFACT_CLASSES, checkArtifact, GateError } from './lib/gate.mjs';
+import { buildAtlas } from './atlas/export.mjs';
 import { loadRegistries } from './lib/registry.mjs';
 import { renderMarkdown } from './lib/markdown.mjs';
 import { renderJsonTree } from './lib/jsontree.mjs';
@@ -205,11 +208,19 @@ function main() {
     })
   );
 
+  // ---- 4b. Atlas data (spec §3) — computed before anything is written, so a
+  // source violation (GateError, exit 2) still means nothing hits disk.
+  const atlas = buildAtlas({ repoRoot, cfg, buildInfo, pericopes: ordered, jsonOf, configPath });
+
   // ---- 5. Write (only after everything rendered cleanly) --------------------
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(path.join(outDir, 'pericopes'), { recursive: true });
   fs.mkdirSync(path.join(outDir, 'assets'), { recursive: true });
+  fs.mkdirSync(path.join(outDir, 'atlas'), { recursive: true });
   for (const [rel, html] of pages) fs.writeFileSync(path.join(outDir, rel), html);
+  for (const f of atlas.files) {
+    fs.writeFileSync(path.join(outDir, f.file), JSON.stringify(f.data, null, 2) + '\n');
+  }
   fs.copyFileSync(path.join(portalDir, 'assets', 'style.css'), path.join(outDir, 'assets', 'style.css'));
   fs.copyFileSync(path.join(portalDir, 'assets', 'shema-logo.svg'), path.join(outDir, 'assets', 'shema-logo.svg'));
   fs.writeFileSync(path.join(outDir, '.nojekyll'), '');
@@ -226,12 +237,14 @@ function main() {
       sha256: crypto.createHash('sha256').update(fs.readFileSync(a.filePath)).digest('hex'),
     })),
     pericopes: ordered.map((p) => p.id),
+    atlas: atlas.manifestSection,
   };
   fs.writeFileSync(path.join(outDir, 'build-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
 
   console.log(
     `portal: built ${ordered.length} pericope page(s) from ${artifacts.length} approved artifact(s) → ${outDir}`
   );
+  console.log(`  atlas: ${atlas.summary}`);
   for (const p of ordered) {
     const parts = [p.map && 'map', p.forModel && 'for-model', p.log && 'log'].filter(Boolean);
     console.log(`  ${p.id}: ${parts.join(' + ')}`);

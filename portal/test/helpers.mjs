@@ -14,16 +14,51 @@ export function mkTree(files = {}) {
     '_spec/registry/ruth.aliases.json': JSON.stringify({
       book: 'RUTH',
       entities: {
-        B2: { english: 'Elimelech', hebrew: 'אֱלִימֶלֶךְ', kind: 'PERSON' },
+        B2: { english: 'Elimelech', hebrew: 'אֱלִימֶלֶךְ', kind: 'PERSON', appears_in: ['P99'], referential_forms: [] },
       },
     }),
     '_spec/registry/jonah.aliases.json': JSON.stringify({ book: 'JONAH', entities: {} }),
+    '_spec/registry/esther.aliases.json': JSON.stringify({
+      book: 'ESTHER',
+      entities: {
+        B19: { english: 'Esther', hebrew: 'אֶסְתֵּר', kind: 'PERSON', appears_in: ['E01'], referential_forms: [] },
+      },
+    }),
     '_spec/registry/concepts.json': JSON.stringify({
       entries: { CB_0029: { code: 'CB_0029', name_slug: 'Judges-Era', appears_in: ['RUTH'] } },
     }),
     '_spec/registry/figures.json': JSON.stringify({
       entries: { FIG_0007: { code: 'FIG_0007', name_slug: 'Narrator-Frame', appears_in: ['RUTH'] } },
     }),
+    // Atlas-data sources (spec §2.1) — minimal but real-shaped.
+    '_spec/approved-enumerations.json': JSON.stringify({
+      version: 'v0-test',
+      tagset_version: 'TRIPOD_STA_v2_0',
+      axes: {
+        proposition_kind: [
+          { value: 'TIME_ANCHOR_ESTABLISHED', first_seen: 'P01', approved_in: 'P01', source_artifact: 'P01-Ruth-1-1-5-FOR-MODEL', sc_ref: 'SC-0006' },
+        ],
+        scene_kind: [],
+      },
+    }),
+    '_spec/validation-rules.json': JSON.stringify({
+      version: 'v0-test',
+      tagset_version: 'TRIPOD_STA_v2_0',
+      closed_lists: {
+        GENRE_GROUP: ['NARRATIVE'],
+        GENRE: ['HISTORICAL_NARRATIVE'],
+        REGISTER: ['INFORMAL_CASUAL', 'INTIMATE'],
+        NARRATIVE_FRAMING: ['COMMUNITY_MEMORY'],
+        SPEECH_ACT: ['STATES_AS_TRUE'],
+      },
+    }),
+    'SPEC_CHANGES.md': [
+      '# SPEC_CHANGES — test ledger',
+      '',
+      '| SC-ID | Decision (current binding) | Status |',
+      '|---|---|---|',
+      '| SC-0006 | **Drift convergence + approved-enumerations seed** 2026-05-29 | SHIPPED |',
+    ].join('\n'),
   };
   for (const [rel, content] of Object.entries({ ...defaults, ...files })) {
     const p = path.join(root, rel);
@@ -72,6 +107,23 @@ pilot: "pilot-2"
 
 \`\`\`json
 { "sta_id": "test_${id.toLowerCase()}", "header": { "bcv": "Ruth 9:1-5" }, "level_3_propositions": [ { "prop_id": "P1", "cb_flags": ["CB_0029"] } ] }
+\`\`\`
+`;
+}
+
+export function mkLog(id, { status = 'valid', type = 'sta-compilation-log' } = {}) {
+  return `---
+type: "${type}"
+pericope: "${id}"
+pericope-title: "A test passage"
+status: "${status}"
+pilot: "pilot-2"
+---
+
+# ${id} — COMPILATION-LOG
+
+\`\`\`json
+{ "sta_id": "test_${id.toLowerCase()}", "decisions": [] }
 \`\`\`
 `;
 }

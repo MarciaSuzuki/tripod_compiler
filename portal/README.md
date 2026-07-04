@@ -106,10 +106,39 @@ gate violation (nothing written) · `1` other error.
    JavaScript anywhere.
 4. Writes `build-manifest.json` recording every source file with its status
    and sha256 — the provenance record for any later audit.
+5. Exports the **Atlas data** (below) into `dist/atlas/`.
 
 Adding a future book = one row in `portal.config.json` (`books`: prefix,
 title, registry aliases file). An unknown pericope prefix fails the build
-with instructions, so a new book cannot appear silently half-wired.
+with instructions, so a new book cannot appear silently half-wired — and the
+book's Atlas shard, status, and cast appear from its registry automatically.
+
+## Atlas data (`dist/atlas/*.json`)
+
+The build also projects the same approved canon into graph shards the Atlas
+views consume ([src/atlas/export.mjs](src/atlas/export.mjs)): one
+`atlas/<book>.json` per configured book (nodes: book · pericope · scene ·
+proposition · being · place · object · time · institution; edges: contains ·
+participates · appears_in · flags · prop-link · uses-value) plus
+`atlas/global.json` (concept bank, figure registry, vocabulary values with
+per-value provenance, SC-ruling timeline, and the book index). Facts to know:
+
+- **Ids are fully namespaced** — `ruth/P13` the pericope is a different node
+  from `ruth/P01/prop/P13` the proposition; labels keep canon spelling.
+- **Statuses are data-derived** (complete / compile-pending / registry-only),
+  computed from what exists in `fixtures/` + the registries — a book flips
+  states the day its artifacts merge, with zero Atlas code changes.
+- **Sources are exactly the governance-approved set**: the gated fixtures,
+  `_spec/registry/*.json`, `_spec/approved-enumerations.json`,
+  `_spec/validation-rules.json`, `SPEC_CHANGES.md`, `portal.config.json`.
+  Every read is realpath-verified inside the repo and never under
+  `_working/` — a smuggled source is a build-killing gate violation (exit 2),
+  bitten in [test/atlas.test.mjs](test/atlas.test.mjs).
+- **Every shard is listed in `build-manifest.json`** with its sha256 and its
+  sources' shas, same provenance discipline as the pages.
+- A canon ref that doesn't resolve (e.g. the deliberate `B?` unknown-being
+  marker) is kept as an `unresolved` edge with the raw ref — honest, never
+  silently dropped.
 
 ## Connecting the Google Form (Marcia's 5-minute step)
 
