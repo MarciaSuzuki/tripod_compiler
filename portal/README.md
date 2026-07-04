@@ -162,7 +162,7 @@ murmuration mode changes, calm fixed-step physics). **This is the portal's one
 declared client-side-JS departure (spec §2.4)**: the engine is vendored (no CDN,
 no external host — a test enforces it), it loads on the Atlas home only, and
 without JS that page renders its full static content as the navigable fallback.
-Modes: Brain · Books · Cast · Concepts · Growth (the Growth replay walks the
+Modes: Mind · Books · Cast · Concepts · Growth (the Growth replay walks the
 seed pericope-by-pericope with real titles). Nothing in the engine is hardcoded
 to a book — ghost/"arriving" states, spines, and the replay order all derive
 from the shards, so new books onboard with zero engine changes. Level-of-detail

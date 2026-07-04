@@ -146,6 +146,7 @@
         layer: ax.layer,
         approved: ax.approved,
         attested_only: ax.attested_only,
+        href: `./vocabulary.html#${ax.axis}`,
       });
       for (const bookId of axisBooks.get(ax.axis) ?? []) edges.push([`axis/${ax.axis}`, bookId, "axis"]);
     }
@@ -288,16 +289,32 @@
   }
 
   /* ---------- modes (generalized to N books, zero book names in code) ---------- */
-  const MODES = ["Brain", "Books", "Cast", "Concepts", "Growth"];
-  let mode = "Brain", modeT = 0;
+  const MODES = ["Mind", "Books", "Cast", "Concepts", "Growth"];
+  let mode = "Mind", modeT = 0;
   const spineBooks = () => nodes.filter((n) => n.kind === "book");
   const ghostBooks = () => nodes.filter((n) => n.kind === "ghost");
   const perisOf = (b) => nodes.filter((n) => n.kind === "pericope" && n.book === b.id);
 
   function anchor(n, x, y, s) { n.ax = x; n.ay = y; n.as = s; }
 
+  // Nodes (and their labels, drawn above the node) must never wander into the
+  // HUD strip — at mid widths (~1030px) the tools row wraps and reaches deeper
+  // than the old fixed 66px floor, colliding with long axis labels. Measure
+  // the real HUD extent instead; labels sit ~20px above a node's center.
+  let TOPY = 66;
+  function measureHud() {
+    TOPY = 66;
+    for (const id of ["modes", "tools"]) {
+      const el = $(id);
+      if (!el) continue;
+      const r = el.getBoundingClientRect();
+      if (r.height > 0 && r.top < H * .4) TOPY = Math.max(TOPY, r.bottom + 34);
+    }
+  }
+
   function applyMode(m, reset = true) {
     mode = m; modeT = performance.now();
+    measureHud();
     document.querySelectorAll("#modes .chip").forEach((c) => {
       c.classList.toggle("on", c.dataset.m === m);
       c.setAttribute("aria-selected", c.dataset.m === m ? "true" : "false");
@@ -332,7 +349,7 @@
       });
     };
 
-    if (m === "Brain") {
+    if (m === "Mind") {
       const bs = spineBooks();
       bs.forEach((b, i) => anchor(b, W * (.30 + .38 * (bs.length === 1 ? .5 : i / (bs.length - 1))), H * (.46 + .06 * (i % 2)), .004));
       ghostBooks().forEach((b, i) => anchor(b, W * .90, H * (.76 + i * .08), .006));
@@ -448,7 +465,7 @@
       a.vx *= .90; a.vy *= .90;
       const v = Math.hypot(a.vx, a.vy); if (v > 2.6) { a.vx *= 2.6 / v; a.vy *= 2.6 / v; }
       a.x += a.vx; a.y += a.vy;
-      a.x = Math.max(30, Math.min(W - 30, a.x)); a.y = Math.max(66, Math.min(H - 58, a.y));
+      a.x = Math.max(30, Math.min(W - 30, a.x)); a.y = Math.max(TOPY, Math.min(H - 58, a.y));
     });
   }
 
@@ -725,8 +742,8 @@
   const modesEl = $("modes");
   MODES.forEach((m) => {
     const b = document.createElement("button");
-    b.className = "chip" + (m === "Brain" ? " on" : ""); b.dataset.m = m; b.textContent = m; b.setAttribute("role", "tab");
-    b.setAttribute("aria-selected", m === "Brain" ? "true" : "false");
+    b.className = "chip" + (m === "Mind" ? " on" : ""); b.dataset.m = m; b.textContent = m; b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", m === "Mind" ? "true" : "false");
     b.onclick = () => { select(null); applyMode(m); };
     modesEl.appendChild(b);
   });
@@ -761,7 +778,7 @@
   updateStats();
 
   resize();
-  applyMode("Brain", false);
+  applyMode("Mind", false);
   requestAnimationFrame(loop);
 
   /* Programmatic handle — used by the acceptance checks and by the guided

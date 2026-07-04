@@ -489,6 +489,8 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
       title: row.title,
       date: row.date,
       status: row.status,
+      highlights: row.highlights,
+      more_highlights: row.more_highlights,
     };
     scById.set(row.id, node);
     globalNodes.push(node);
@@ -600,18 +602,38 @@ function sourceReader(repoRoot) {
   };
 }
 
-/** SPEC_CHANGES.md ledger rows → {id, title, date, status}, all computed. */
+/** SPEC_CHANGES.md ledger rows → {id, title, date, status, highlights, more_highlights}. */
 export function parseScRows(text) {
   const rows = [];
+  // Ledger statuses are a small vocabulary; matching against it (instead of
+  // "first uppercase run") keeps 'SECTION A APPLIED' → APPLIED, never 'SECTION'.
+  const STATUS_RE = /\b(APPLIED|SHIPPED|MERGED|APPROVED|PROPOSED|DRAFTED|COMPLETE|VOID|SUPERSEDED|OPEN|PENDING)\b/;
+  const clip = (s, n) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
   for (const line of text.split('\n')) {
-    const m = line.match(/^\|\s*(SC-\d{4})\s*\|(.*)\|(.*)\|\s*$/);
-    if (!m) continue;
-    const [, id, decision, statusCell] = m;
-    const bold = decision.match(/\*\*(.+?)\*\*/);
-    const title = collapse(bold ? bold[1] : decision).slice(0, 160);
+    if (!/^\|\s*SC-\d{4}\s*\|/.test(line)) continue;
+    // Cells themselves contain pipes (escaped \| and raw | inside **bold**
+    // board summaries) — protect those before splitting on the real
+    // delimiters, or the status cell shears off mid-sentence.
+    const protectedLine = line
+      .replace(/\\\|/g, '')
+      .replace(/\*\*.*?\*\*/g, (b) => b.replace(/\|/g, ''));
+    const parts = protectedLine.split('|');
+    if (parts.length < 4) continue;
+    const restore = (s) => s.replace(//g, '|');
+    const id = parts[1].trim();
+    const decision = restore(parts.slice(2, -2).join('|'));
+    const statusCell = restore(parts[parts.length - 2]);
+    // The ledger's own convention bolds a ruling's headline facts (e.g.
+    // SC-0078's "SPEECH_ACT 26 → 33") — carried as highlights; anything
+    // shortened is marked with an ellipsis, anything beyond the cap is
+    // counted so the page can say so.
+    const rawBolds = [...decision.matchAll(/\*\*(.+?)\*\*/g)].map((b) => collapse(b[1]));
+    const title = clip(rawBolds[0] ?? collapse(decision), 160);
+    const allHighlights = [...new Set(rawBolds.slice(1))].map((h) => clip(h, 140));
+    const highlights = allHighlights.slice(0, 8);
     const date = (line.match(/20\d{2}-\d{2}-\d{2}/) ?? [null])[0];
-    const status = (collapse(statusCell).match(/[A-Z]{2,}[A-Z_-]*/) ?? [null])[0];
-    rows.push({ id, title, date, status });
+    const status = (collapse(statusCell).match(STATUS_RE) ?? [null])[0];
+    rows.push({ id, title, date, status, highlights, more_highlights: allHighlights.length - highlights.length });
   }
   return rows;
 }
