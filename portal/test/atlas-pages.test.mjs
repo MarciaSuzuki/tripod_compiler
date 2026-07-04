@@ -79,8 +79,8 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
     assert.doesNotMatch(html, /<script/i, `${rel} must ship no JS`);
     assert.match(html, /name="robots" content="noindex"/, `${rel} keeps noindex`);
   }
-  for (const rel of ['atlas/ruth.html', 'atlas/registry/ruth/B10.html', 'atlas/registry/concept/CB_0001.html']) {
-    assert.match(read(out, rel), /class="btns/, `${rel} carries the feedback buttons`);
+  for (const rel of ['atlas/index.html', 'atlas/ruth.html', 'atlas/esther.html', 'atlas/registry/ruth/B10.html', 'atlas/registry/concept/CB_0001.html']) {
+    assert.match(read(out, rel), /class="btns/, `${rel} carries the feedback buttons (§2.5: every Atlas page)`);
   }
 
   // Stats footer is computed (real counts), and the atlas stylesheet ships.
@@ -99,6 +99,50 @@ test('atlas pages: registry-only book renders honestly from a synthetic tree', (
   assert.match(esther, /castcard/);
   assert.match(esther, /B19/);
   assert.doesNotMatch(esther, /class="tile"/);
+  rmrf(root);
+});
+
+test('atlas pages: an override without its anchor key renders the bare value, never "undefined"', () => {
+  // The pinned schema makes scene_id/verse optional on override entries; a
+  // register-critical override must survive that honestly (verify-confirmed).
+  const fm = `---
+type: "sta-for-model"
+pericope: "P01"
+pericope-title: "A test passage"
+source-meaning-map: [[P01-Test]]
+status: "valid"
+pilot: "pilot-2"
+---
+
+# P01 — FOR_MODEL
+
+\`\`\`json
+{
+  "sta_id": "test_p01",
+  "header": { "bcv": "Ruth 9:1-5" },
+  "pericope_classification": {
+    "genre_group": "NARRATIVE", "genre": "HISTORICAL_NARRATIVE", "register": "INFORMAL_CASUAL",
+    "register_overrides": {
+      "scene_level": [ { "override_value": "CEREMONIAL" } ],
+      "moment_level": [ { "framing_override": "COMMUNITY_MEMORY" } ]
+    }
+  },
+  "level_1": {},
+  "level_2_scenes": [],
+  "level_3_propositions": []
+}
+\`\`\`
+`;
+  const root = mkTree({
+    'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
+    'fixtures/for-model/P01-Test-FOR-MODEL.md': fm,
+  });
+  const out = path.join(root, 'dist');
+  assert.equal(runBuild(root, out).status, 0);
+  const ruth = read(out, 'atlas/ruth.html');
+  assert.doesNotMatch(ruth, /undefined/);
+  assert.match(ruth, /class="chip amber"[^>]*>CEREMONIAL</);
+  assert.match(ruth, /class="chip amber"[^>]*>COMMUNITY_MEMORY</);
   rmrf(root);
 });
 

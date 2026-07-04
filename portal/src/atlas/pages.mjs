@@ -26,7 +26,7 @@ export function atlasPages({ cfg, formCfg, atlas, buildInfo }) {
   const pages = new Map();
   const stats = statsLine(atlas, buildInfo);
 
-  pages.set('atlas/index.html', indexPage({ cfg, atlas, buildInfo, stats }));
+  pages.set('atlas/index.html', indexPage({ cfg, formCfg, atlas, buildInfo, stats }));
 
   for (const book of atlas.books) {
     const shard = atlas.shards.get(book.id);
@@ -110,8 +110,12 @@ const pidOf = (namespacedId) => namespacedId.split('/')[1];
 
 // ---- atlas index ----------------------------------------------------------------
 
-function indexPage({ cfg, atlas, buildInfo, stats }) {
+function indexPage({ cfg, formCfg, atlas, buildInfo, stats }) {
   const g = atlas.global;
+  const feedback = renderFeedbackButtons(formCfg, {
+    pericope: 'Atlas — index',
+    artifact: 'The website itself',
+  });
   const cards = atlas.books
     .map((b) => {
       const facts =
@@ -130,7 +134,10 @@ function indexPage({ cfg, atlas, buildInfo, stats }) {
   const l2 = axes.filter((a) => a.layer !== 'L1-closed');
 
   const content = `
-<h1>The Atlas</h1>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
+  <h1>The Atlas</h1>
+  ${feedback}
+</div>
 <p>The whole Tripod seed corpus as one connected structure: every book, pericope, scene and
 proposition; every person, place and concept; every controlled-vocabulary value with the ruling
 that admitted it. These pages are generated from the same approved files as the
@@ -232,13 +239,19 @@ function spineTile(p) {
     const more = (list ?? []).length - cap;
     return items.join('') + (more > 0 ? chip(`+${more}`, '') : '');
   };
+  // The anchor key (scene_id / verse) is optional in the pinned schema; a
+  // register-critical override must still render when it's absent — as the
+  // bare value, never a literal "undefined".
   const overrides = [];
   for (const o of p.register_overrides?.scene_level ?? []) {
-    if (o.override_value) overrides.push(chip(`${o.scene_id} → ${o.override_value}`, 'amber', null, 'register override'));
+    if (!o.override_value) continue;
+    const label = o.scene_id ? `${o.scene_id} → ${o.override_value}` : o.override_value;
+    overrides.push(chip(label, 'amber', null, 'register override'));
   }
   for (const o of p.register_overrides?.moment_level ?? []) {
     const v = o.override_value ?? o.framing_override;
-    if (v) overrides.push(chip(`${o.verse} → ${v}`, 'amber', null, 'moment-level override'));
+    if (!v) continue;
+    overrides.push(chip(o.verse ? `${o.verse} → ${v}` : v, 'amber', null, 'moment-level override'));
   }
   return `<div class="tile" id="tile-${escapeAttr(p.code)}">
   <div class="row1"><span class="pid">${escapeHtml(p.code)}</span><span class="bcv">${escapeHtml(p.bcv ?? '')}</span></div>
