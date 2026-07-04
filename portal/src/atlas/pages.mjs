@@ -401,8 +401,16 @@ function entityPage({ cfg, formCfg, book, node, shard, buildInfo, stats }) {
     })
     .join('\n');
 
+  // The appears_in fact always renders (canon spelling); the chip links only
+  // when that pericope's drill-down actually exists on the book page — a
+  // registry-only book keeps plain chips until its maps merge.
+  const publishedPids = new Set(shard.nodes.filter((n) => n.kind === 'pericope').map((n) => n.code));
   const spans = (node.appears_in ?? [])
-    .map((pid) => chip(pid, 'gold', `../../${book.id}.html#${pid}`))
+    .map((pid) =>
+      publishedPids.has(pid)
+        ? chip(pid, 'gold', `../../${book.id}.html#${pid}`)
+        : chip(pid, 'amber', null, 'map in progress — not yet published')
+    )
     .join('');
   const forms = (node.referential_forms ?? []).map((f) => chip(f, 'champagne')).join('');
 
