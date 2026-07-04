@@ -165,7 +165,8 @@ ${cards}
   and the Reading Room's highlighted terms. <a href="vocabulary.html">The Vocabulary Observatory</a>
   shows how the controlled vocabulary grows, ruling by ruling; <a href="emotion.html">How emotion
   is mapped</a> shows the four-way boundary that keeps stated, withheld, inferred and displayed
-  feeling in their right places. With JavaScript on, this page becomes
+  feeling in their right places; and for presentations, <a href="tours.html">four guided tours</a>
+  walk the living views full-screen, step by step. With JavaScript on, this page becomes
   the living graph over the same data; everything below stays readable without it.</p>
 </div>`;
 
@@ -192,7 +193,8 @@ function brainSkeleton(cfg) {
   <div class="eyebrow"><b>Shema</b> · Tripod Method · Meaning Mind</div>
   <h1>The Meaning Mind</h1>
   <p>The seed corpus as a living network. Every node is approved canon — touch one and watch its
-  synapses fire. <a href="../index.html">Reading Room</a></p>
+  synapses fire.</p>
+  <p class="brandlinks"><a href="tours.html">Guided tours ▸</a> · <a href="../index.html">Reading Room</a></p>
 </div>
 <div class="hud brainui" id="modes" role="tablist" aria-label="views"></div>
 <div class="hud brainui" id="tools">

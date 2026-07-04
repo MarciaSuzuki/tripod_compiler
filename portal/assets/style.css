@@ -282,3 +282,6 @@ details.book .btitle { font-size: 1.3rem; font-weight: bold; display: inline; ma
 details.book .bmeta { color: var(--muted); font-size: 0.88rem; }
 details.book > ul.cards { padding: 0.9rem 1.1rem 1rem; margin: 0;
   display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 0.7rem; }
+
+/* Guided-tours line on the Reading Room home */
+.toursline { margin: -0.4rem 0 1.4rem; font-size: 0.92rem; color: var(--muted); }

@@ -385,3 +385,7 @@ ol.frost li { margin: .35em 0; color: var(--ink); font-size: 13.5px; }
 .tc-btn:disabled { opacity: .4; cursor: default; }
 .tc-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 body.touring { overflow: hidden; }
+
+/* Guided-tours entry in the Mind HUD */
+#brand .brandlinks { margin-top: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; }
+#brand .brandlinks a { color: var(--gold); }
