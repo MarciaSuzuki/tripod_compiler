@@ -6,9 +6,9 @@
       "PERSON": 24,
       "PLACE": 8,
       "THING": 10,
-      "TIME": 4
+      "TIME": 7
     },
-    "entities": 51
+    "entities": 54
   },
   "entities": {
     "B1": {
@@ -768,6 +768,19 @@
         "the fifteenth of Adar"
       ]
     },
+    "TM_DAYS_OF_AHASUERUS": {
+      "appears_in": [
+        "E01"
+      ],
+      "english": "In the days of Ahasuerus (the opening time-frame)",
+      "gender": null,
+      "hebrew": "בִּימֵי אֲחַשְׁוֵרֹושׁ",
+      "hebrew_cons": "בימיאחשורוש",
+      "kind": "TIME",
+      "referential_forms": [
+        "in the days of Ahasuerus"
+      ]
+    },
     "TM_NISAN": {
       "appears_in": [
         "E07"
@@ -805,6 +818,33 @@
       "kind": "TIME",
       "referential_forms": [
         "the tenth month"
+      ]
+    },
+    "TM_THIRD_YEAR_OF_THE_REIGN": {
+      "appears_in": [
+        "E01"
+      ],
+      "english": "In the third year of his reign",
+      "gender": null,
+      "hebrew": "בִּשְׁנַת שָׁלֹושׁ לְמָלְכֹו",
+      "hebrew_cons": "בשנתשלושלמלכו",
+      "kind": "TIME",
+      "referential_forms": [
+        "the third year of his reign"
+      ]
+    },
+    "TM_TWELVE_MONTHS": {
+      "appears_in": [
+        "E04"
+      ],
+      "english": "Twelve months (the preparation period)",
+      "gender": null,
+      "hebrew": "שְׁנֵים עָשָׂר חֹדֶשׁ",
+      "hebrew_cons": "שניםעשרחדש",
+      "kind": "TIME",
+      "referential_forms": [
+        "twelve months",
+        "a full year of preparation"
       ]
     }
   },

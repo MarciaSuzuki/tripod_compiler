@@ -41,13 +41,17 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
   assert.match(ruth, /Narrator never says YHWH sent the famine/);
   assert.ok((ruth.match(/class="absence"/g) || []).length >= 14, 'absences render per scene');
 
-  // V1 accept: Esther appears registry-only — cast browsable, NO artifact content.
+  // SC-0079 maps publish: Esther graduated from registry-only to maps-complete —
+  // the spine renders from the 18 complete maps; the compile (FOR_MODELs) is still pending.
+  // (The registry-only rendering itself stays covered by the synthetic-tree test below.)
   const esther = read(out, 'atlas/esther.html');
-  assert.match(esther, /maps in progress/);
+  assert.match(esther, /compile-pending/);
   assert.ok((esther.match(/class="castcard"/g) || []).length >= 51, 'Esther cast from the pinned registry');
+  assert.match(esther, /Pericope spine — 18 passages/);
+  assert.ok((esther.match(/class="tile( emo)?"/g) || []).length >= 18, 'all 18 Esther pericopes tile the spine');
+  // Structured scene/absence drill-downs derive from FOR_MODELs, which Esther does not
+  // have yet — this assertion flips to assert.match at the SC-0079 compile landing.
   assert.doesNotMatch(esther, /class="absence"/);
-  assert.doesNotMatch(esther, /Pericope spine/);
-  assert.doesNotMatch(esther, /class="tile( emo)?"/);
 
   // V3 accept: B10 (YHWH) — 4 referential forms + its Ruth pericopes as links.
   const b10 = read(out, 'atlas/registry/ruth/B10.html');
