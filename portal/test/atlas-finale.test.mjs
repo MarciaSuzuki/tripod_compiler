@@ -147,13 +147,22 @@ test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page
     assert.doesNotMatch(visible, /\b[Aa]tlas\b/, `visible "Atlas" on ${path.relative(out, page)}`);
   }
   // The ruled surfaces read Meaning Mind.
-  const index = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
+  const mindIndexRaw = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
+  const index = mindIndexRaw;
   assert.match(index, /Tripod Method · Meaning Mind/);
   assert.match(index, /<title>Meaning Mind · /);
   // Reading Room home v2 (Marcia's ruling): the two rooms, explicit — the
   // switcher on the header and the Mind room card carrying the ruled phrase.
   const rrIndex = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
   assert.match(rrIndex, /class="modeswitch"/);
+  // Marcia's removals (2026-07-04): no subtitle, no read-only intro, no
+  // "Presenting to partners?", no stats corner, no brand tagline.
+  assert.doesNotMatch(rrIndex, /published read-only for external review/);
+  assert.doesNotMatch(rrIndex, /refuses to publish anything still in draft/);
+  assert.doesNotMatch(rrIndex, /Presenting to partners\?/);
+  assert.doesNotMatch(mindIndexRaw, /id="stats"/);
+  assert.doesNotMatch(mindIndexRaw, /touch one and watch its synapses fire/);
+  assert.match(mindIndexRaw, /id="zoomctl"/);
   assert.match(rrIndex, /The whole seed corpus, connected/);
   assert.match(rrIndex, /Meaning Mind →/);
   // Tour ruling D: the trajectory count is computed, never hardcoded.

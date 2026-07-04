@@ -245,11 +245,17 @@
     }
     applyMode(mode, false);
     fireNode(p, .8);
-    if (window.__tripodBrain) updateStats(); // counts grew — keep the HUD honest
   }
 
   /* ---------- light sprites, bokeh (verbatim from the approved mock) ---------- */
   let W = 0, H = 0;
+  let zoom = 1;
+  const Z_MIN = 0.35, Z_MAX = 2.5;
+  const setZoom = (z) => { zoom = Math.max(Z_MIN, Math.min(Z_MAX, z)); };
+  const zx = (v) => W * .5 + (v - W * .5) * zoom;
+  const zy = (v) => H * .52 + (v - H * .52) * zoom;
+  const unzx = (v) => W * .5 + (v - W * .5) / zoom;
+  const unzy = (v) => H * .52 + (v - H * .52) / zoom;
   const SPR = {};
   function makeGlow(color) {
     const s = document.createElement("canvas"); s.width = s.height = 64;
@@ -545,7 +551,7 @@
         n.ox = Math.sin(now * n.w1 + n.ph) * 3.0 + Math.sin(now * n.w2 + n.ph2) * 1.3;
         n.oy = Math.cos(now * n.w1 * 1.13 + n.ph2) * 2.6 + Math.cos(now * n.w2 * .9 + n.ph) * 1.2;
       }
-      n.px = n.x + n.ox; n.py = n.y + n.oy;
+      n.px = zx(n.x + n.ox); n.py = zy(n.y + n.oy); n.rz = n.r * zoom;
       n.alpha += ((n.vis ? targetAlpha(n) : 0) - n.alpha) * .10;
       n.flash *= Math.pow(.9955, dt);
     });
@@ -606,8 +612,8 @@
     }
     nodes.forEach((n) => {
       if (n.flash > .02 && n.vis) {
-        drawGlow(n.px, n.py, n.r * 4 + 12 * n.flash, ACC_GLOW, n.flash * .5);
-        drawGlow(n.px, n.py, n.r * 1.7, "#FFFFFF", n.flash * .75);
+        drawGlow(n.px, n.py, n.rz * 4 + 12 * n.flash, ACC_GLOW, n.flash * .5);
+        drawGlow(n.px, n.py, n.rz * 1.7, "#FFFFFF", n.flash * .75);
       }
     });
     ctx.globalCompositeOperation = "source-over";
@@ -618,10 +624,10 @@
       if (n.alpha < .02 || !n.vis) return;
       const c = colorOf(n), boost = n === sel || n === hov ? 1.35 : 1;
       const breathe = RM ? 1 : 1 + Math.sin(now * .0009 + n.ph) * .06;
-      const outer = n.r * (n.r > 14 ? 3.1 : 4.4) * boost * breathe;
+      const outer = n.rz * (n.r > 14 ? 3.1 : 4.4) * boost * breathe;
       drawGlow(n.px, n.py, outer, c, .30 * n.alpha * boost);
-      drawGlow(n.px, n.py, n.r * 1.9 * boost, c, .72 * n.alpha);
-      drawGlow(n.px, n.py, Math.max(1.7, n.r * .6), "#FFFFFF", .85 * n.alpha);
+      drawGlow(n.px, n.py, n.rz * 1.9 * boost, c, .72 * n.alpha);
+      drawGlow(n.px, n.py, Math.max(1.7, n.rz * .6), "#FFFFFF", .85 * n.alpha);
     });
     ctx.globalCompositeOperation = "source-over";
 
@@ -631,17 +637,17 @@
       if (n.kind === "ghost") {
         ctx.globalAlpha = n.alpha * .8;
         ctx.strokeStyle = colorOf(n); ctx.setLineDash([3, 6]); ctx.lineWidth = .8;
-        ctx.beginPath(); ctx.arc(n.px, n.py, n.r + 6, 0, 7); ctx.stroke(); ctx.setLineDash([]);
+        ctx.beginPath(); ctx.arc(n.px, n.py, n.rz + 6, 0, 7); ctx.stroke(); ctx.setLineDash([]);
         ctx.globalAlpha = 1;
       }
       if (isSel) {
-        const pr = n.r + 8 + (RM ? 0 : Math.sin(now * .0016) * 1.4);
+        const pr = n.rz + 8 + (RM ? 0 : Math.sin(now * .0016) * 1.4);
         ctx.strokeStyle = ACC_LINE + ".65)"; ctx.lineWidth = .9;
         ctx.beginPath(); ctx.arc(n.px, n.py, pr, 0, 7); ctx.stroke();
       }
       if (q && (n.label + " " + n.id).toLowerCase().includes(q)) {
         ctx.strokeStyle = ACC_LINE + ".55)"; ctx.setLineDash([2, 4]); ctx.lineWidth = .8;
-        ctx.beginPath(); ctx.arc(n.px, n.py, n.r + 7, 0, 7); ctx.stroke(); ctx.setLineDash([]);
+        ctx.beginPath(); ctx.arc(n.px, n.py, n.rz + 7, 0, 7); ctx.stroke(); ctx.setLineDash([]);
       }
       const showLbl = n.kind === "book" || n.kind === "pericope" || n.kind === "axis" || n.kind === "ghost"
         || isSel || isHov || (sel && n.adj.some((a) => a.n === sel)) || n.deg >= 8 || (q && n.alpha > .8);
@@ -652,7 +658,7 @@
         ctx.globalAlpha = 1;
         ctx.fillStyle = "rgba(208,220,245," + (0.40 + 0.45 * n.alpha) + ")";
         ctx.textAlign = "center";
-        ctx.fillText(n.label, n.px, n.py - n.r - 9);
+        ctx.fillText(n.label, n.px, n.py - n.rz - 9);
       }
     });
     ctx.globalAlpha = 1;
@@ -674,12 +680,12 @@
     let best = null, bd = 1e9;
     nodes.forEach((n) => {
       if (!n.vis || n.alpha < .05) return;
-      const d = Math.hypot(n.px - x, n.py - y); if (d < n.r + 7 && d < bd) { bd = d; best = n; }
+      const d = Math.hypot(n.px - x, n.py - y); if (d < n.rz + 7 && d < bd) { bd = d; best = n; }
     });
     return best;
   }
   cv.addEventListener("pointermove", (e) => {
-    if (drag) { dragX = e.clientX; dragY = e.clientY; moved = true; return; }
+    if (drag) { dragX = unzx(e.clientX); dragY = unzy(e.clientY); moved = true; return; }
     const h = pick(e.clientX, e.clientY);
     if (h && h !== hov && h !== sel && h !== lastHovFired && !RM) { fireNode(h, .35, 10); lastHovFired = h; }
     hov = h; cv.style.cursor = h ? "pointer" : "default";
@@ -687,7 +693,7 @@
   cv.addEventListener("pointerdown", (e) => {
     const n = pick(e.clientX, e.clientY);
     downP = [e.clientX, e.clientY]; moved = false;
-    if (n) { drag = n; dragX = e.clientX; dragY = e.clientY; cv.setPointerCapture(e.pointerId); }
+    if (n) { drag = n; dragX = unzx(e.clientX); dragY = unzy(e.clientY); cv.setPointerCapture(e.pointerId); }
   });
   cv.addEventListener("pointerup", (e) => {
     const dist = downP ? Math.hypot(e.clientX - downP[0], e.clientY - downP[1]) : 99;
@@ -697,6 +703,19 @@
   });
   addEventListener("keydown", (e) => {
     if (e.key === "Escape") { select(null); $("search").value = ""; q = ""; }
+    if (e.key === "+" || e.key === "=") setZoom(zoom * 1.15);
+    if (e.key === "-") setZoom(zoom / 1.15);
+  });
+  cv.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    setZoom(zoom * Math.exp(-e.deltaY * 0.0015));
+  }, { passive: false });
+  document.querySelectorAll("#zoomctl .zbtn").forEach((btn) => {
+    btn.onclick = () => {
+      if (btn.dataset.z === "in") setZoom(zoom * 1.25);
+      else if (btn.dataset.z === "out") setZoom(zoom / 1.25);
+      else setZoom(1);
+    };
   });
   $("search").addEventListener("input", (e) => { q = e.target.value.trim().toLowerCase(); });
 
@@ -791,13 +810,7 @@
   ].filter(([, , c]) => c)
     .map(([k, l, c]) => `<div><i style="background:${KC[k]};box-shadow:0 0 6px ${KC[k]}"></i>${l} · ${c}</div>`).join("");
 
-  const totalCast = g.books.reduce((s, b) => s + b.counts.entities, 0);
-  function updateStats() {
-    $("stats").innerHTML =
-      `<b>${nodes.length} nodes · ${edges.length} connections</b> — computed from approved canon @ ${esc(g.generated.commit)} · ${esc(g.generated.builtAt)}<br>` +
-      `showing cast spanning ≥${spanMin} passages and concepts &amp; figures recurring in ≥${flagMin} — all ${totalCast} cast · ${g.counts.concepts} concepts · ${g.counts.figures} figures browsable in the registry pages`;
-  }
-  updateStats();
+
 
   resize();
   applyMode("Mind", false);
@@ -806,8 +819,9 @@
   /* Programmatic handle — used by the acceptance checks and by the guided
    * tours (V5) to step the live view. Read/drive only what the UI can do. */
   window.__tripodBrain = {
-    nodes, edges, byId, select, applyMode, expandPericope, filter,
+    nodes, edges, byId, select, applyMode, expandPericope, filter, setZoom,
     get mode() { return mode; },
     get selected() { return sel; },
+    get zoom() { return zoom; },
   };
 })();

@@ -58,7 +58,7 @@ test('brain: HUD skeleton carries the V2 controls (modes mount point, filters, s
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-brain-hud-'));
   assert.equal(runBuild(repoRoot, out).status, 0);
   const index = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
-  for (const id of ['id="modes"', 'id="f-book"', 'id="f-kind"', 'id="f-genre"', 'id="f-register"', 'id="search"', 'id="allthreads"', 'id="panel"', 'id="legend"', 'id="stats"']) {
+  for (const id of ['id="modes"', 'id="f-book"', 'id="f-kind"', 'id="f-genre"', 'id="f-register"', 'id="search"', 'id="allthreads"', 'id="panel"', 'id="legend"', 'id="zoomctl"']) {
     assert.ok(index.includes(id), `missing HUD element ${id}`);
   }
   // Naming ruling (Marcia, 2026-07-04): the user-facing title is "The Meaning
