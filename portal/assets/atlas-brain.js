@@ -155,9 +155,15 @@
 
   let spanMin = 2, flagMin = 2;
   let GRAPH = buildGraph(spanMin, flagMin);
-  while (GRAPH.nodes.length > NODE_BUDGET) {
+  // LOD: collapse toward hubs, data-derived. Books/pericopes/axes are the
+  // irreducible floor — if raising thresholds stops shrinking the graph,
+  // accept the floor rather than looping forever (verify-confirmed at ~16
+  // books the floor can exceed the budget).
+  let prevCount = Infinity;
+  while (GRAPH.nodes.length > NODE_BUDGET && GRAPH.nodes.length < prevCount) {
+    prevCount = GRAPH.nodes.length;
     spanMin += 1; flagMin += 1;
-    GRAPH = buildGraph(spanMin, flagMin); // LOD: collapse toward hubs, data-derived
+    GRAPH = buildGraph(spanMin, flagMin);
   }
 
   /* ---------- palette: luminous neural (the ruled v4 treatment) ---------- */
@@ -236,6 +242,7 @@
     }
     applyMode(mode, false);
     fireNode(p, .8);
+    if (window.__tripodBrain) updateStats(); // counts grew — keep the HUD honest
   }
 
   /* ---------- light sprites, bokeh (verbatim from the approved mock) ---------- */
@@ -291,7 +298,10 @@
 
   function applyMode(m, reset = true) {
     mode = m; modeT = performance.now();
-    document.querySelectorAll("#modes .chip").forEach((c) => c.classList.toggle("on", c.dataset.m === m));
+    document.querySelectorAll("#modes .chip").forEach((c) => {
+      c.classList.toggle("on", c.dataset.m === m);
+      c.setAttribute("aria-selected", c.dataset.m === m ? "true" : "false");
+    });
     const cx = W * .5, cy = H * .52, R = Math.min(W, H);
     nodes.forEach((n, i) => { n.as = 0; n.vis = true; n.aramp = 0; n.adelay = (i % 23) * 55 + rnd() * 220; });
 
@@ -355,8 +365,8 @@
     }
 
     stopGrowth();
+    caption(false); // clear BEFORE Growth starts, or the RM caption is clobbered
     if (m === "Growth" && reset) startGrowth();
-    caption(false);
   }
 
   /* ---------- growth replay (order + captions from canon) ---------- */
@@ -384,7 +394,7 @@
       } else if (gi === gOrder.length) {
         nodes.filter((n) => n.kind === "axis").forEach((n) => { n.vis = true; n.flash = .8; });
         caption(true, "THE INTERLANGUAGE",
-          `Every book speaks the same controlled vocabulary — ${g.vocabulary.axes.length} axes, every value carrying the ruling that admitted it.`);
+          `Every book speaks the same controlled vocabulary — ${g.vocabulary.axes.length} axes; approved values carry the ruling that admitted them.`);
         gTimer = setTimeout(step, 2300);
       } else {
         const ghosts = ghostBooks();
@@ -452,23 +462,32 @@
       const b = bookOf(n);
       if (b) { if (b !== filter.book) return false; }
       else if (n.kind === "cb" || n.kind === "fig") {
-        const bt = g.books.find((x) => x.id === filter.book)?.title.toUpperCase();
-        if (!(n.books ?? []).map((x) => x.toUpperCase()).includes(bt)) return false;
+        // Join on the canonical registry book name from the shard, never the
+        // display title (verify-confirmed fragility for future book titles).
+        const bn = shards.get(filter.book)?.book?.name;
+        if (!(n.books ?? []).includes(bn)) return false;
       }
     }
     if (filter.kind) {
       const kmap = { pericopes: ["pericope"], cast: ["ent"], concepts: ["cb"], figures: ["fig"], axes: ["axis"], books: ["book", "ghost"] };
       if (!(kmap[filter.kind] ?? []).includes(n.kind)) return false;
     }
-    if (filter.genre && n.kind === "pericope" && n.cls?.genre !== filter.genre) return false;
-    if (filter.register && n.kind === "pericope" && n.cls?.register !== filter.register) return false;
+    if (filter.genre || filter.register) {
+      // A value filter is a statement about pericopes: only pericopes can
+      // match directly; everything else re-lights solely via the spill below.
+      if (n.kind !== "pericope") return false;
+      if (filter.genre && n.cls?.genre !== filter.genre) return false;
+      if (filter.register && n.cls?.register !== filter.register) return false;
+    }
     return true;
   }
   const filtersActive = () => filter.book || filter.kind || filter.genre || filter.register;
   function targetAlpha(n) {
     let t = 1;
     if (filtersActive()) {
-      const hit = matchesFilter(n) || ((filter.genre || filter.register) && !filter.kind && n.adj.some((a) => a.n.kind === "pericope" && matchesFilter(a.n)));
+      const hit = matchesFilter(n) ||
+        ((filter.genre || filter.register) && !filter.kind && n.kind !== "pericope" &&
+          n.adj.some((a) => a.n.kind === "pericope" && matchesFilter(a.n)));
       t = Math.min(t, hit ? 1 : .08);
     }
     if (sel) t = Math.min(t, n === sel || n.adj.some((a) => a.n === sel) ? 1 : .10);
@@ -506,7 +525,7 @@
 
     ctx.fillStyle = "#04060F"; ctx.fillRect(0, 0, W, H);
     ctx.globalCompositeOperation = "lighter";
-    const sw = Math.sin(now * .00005), cw = Math.cos(now * .00004);
+    const sw = RM ? 0 : Math.sin(now * .00005), cw = RM ? 0 : Math.cos(now * .00004);
     drawGlow(W * (.33 + .03 * sw), H * (.42 + .03 * cw), W * .30, "#22408C", .12);
     drawGlow(W * (.72 + .025 * cw), H * (.58 + .03 * sw), W * .26, "#45307E", .09);
     bok.forEach((b) => {
@@ -707,6 +726,7 @@
   MODES.forEach((m) => {
     const b = document.createElement("button");
     b.className = "chip" + (m === "Brain" ? " on" : ""); b.dataset.m = m; b.textContent = m; b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", m === "Brain" ? "true" : "false");
     b.onclick = () => { select(null); applyMode(m); };
     modesEl.appendChild(b);
   });
@@ -733,9 +753,12 @@
     .map(([k, l, c]) => `<div><i style="background:${KC[k]};box-shadow:0 0 6px ${KC[k]}"></i>${l} · ${c}</div>`).join("");
 
   const totalCast = g.books.reduce((s, b) => s + b.counts.entities, 0);
-  $("stats").innerHTML =
-    `<b>${nodes.length} nodes · ${edges.length} connections</b> — computed from approved canon @ ${esc(g.generated.commit)} · ${esc(g.generated.builtAt)}<br>` +
-    `showing cast spanning ≥${spanMin} passages and concepts recurring in ≥${flagMin} — all ${totalCast} cast · ${g.counts.concepts} concepts · ${g.counts.figures} figures browsable in the registry pages`;
+  function updateStats() {
+    $("stats").innerHTML =
+      `<b>${nodes.length} nodes · ${edges.length} connections</b> — computed from approved canon @ ${esc(g.generated.commit)} · ${esc(g.generated.builtAt)}<br>` +
+      `showing cast spanning ≥${spanMin} passages and concepts &amp; figures recurring in ≥${flagMin} — all ${totalCast} cast · ${g.counts.concepts} concepts · ${g.counts.figures} figures browsable in the registry pages`;
+  }
+  updateStats();
 
   resize();
   applyMode("Brain", false);
