@@ -58,6 +58,7 @@
         kind: ghost ? "ghost" : "book",
         label: b.title,
         book: b.id,
+        status: b.status,
         meta: ghost
           ? `${b.counts.entities} cast entities pinned in the registry. Maps in progress — nothing is published for this book yet. This node blooms into a spine automatically the day its approved artifacts merge.`
           : `${b.counts.pericopes} pericopes · ${b.counts.scenes} scenes · ${b.counts.propositions} propositions · ${b.counts.entities} registry entities`,

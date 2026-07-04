@@ -1,5 +1,5 @@
 {
-  "siteTitle": "Tripod Method — Review Portal",
+  "siteTitle": "Tripod Method Leg One: The Exegete Portal",
   "siteSubtitle": "Approved Bible-translation artifacts, published read-only for external review",
   "books": [
     { "prefix": "P", "name": "RUTH", "title": "Ruth", "aliasesFile": "ruth.aliases.json" },

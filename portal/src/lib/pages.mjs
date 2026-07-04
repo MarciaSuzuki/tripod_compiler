@@ -22,7 +22,9 @@ export function layout({ cfg, title, relRoot, contentHtml, buildInfo }) {
   <div class="masthead">
     <a class="home" href="${relRoot}index.html">${escapeHtml(cfg.siteTitle)}</a>
     <div class="subtitle">${escapeHtml(cfg.siteSubtitle)}</div>
-    <nav class="sitenav"><a href="${relRoot}atlas/index.html">Meaning Mind — the whole seed corpus, connected →</a></nav>
+    <nav class="modeswitch" aria-label="the two rooms of this site">
+      <span class="mode on" aria-current="page">Reading Room</span><a class="mode mind" href="${relRoot}atlas/index.html">Meaning Mind →</a>
+    </nav>
   </div>
 </header>
 <main>
@@ -40,15 +42,28 @@ ${contentHtml}
 }
 
 export function indexPage({ cfg, books, buildInfo, formConfigured }) {
+  // One house, two rooms (Marcia's ruling 2026-07-04): the Reading Room is
+  // for reading and commenting on the Meaning Maps; the Meaning Mind is for
+  // exploring where everything connects. Books first — each book opens to
+  // its passages; the long instructions live collapsed until asked for.
+  const bookStatus = (b) => {
+    const complete = b.pericopes.every((x) => x.has.map && x.has.forModel && x.has.log);
+    return complete
+      ? 'maps, machine files and logs — complete'
+      : 'maps published — machine files in progress';
+  };
   const bookSections = books
     .map(
       (b) => `
-<section class="book">
-  <h2>${escapeHtml(b.title)}</h2>
+<details class="book">
+  <summary>
+    <h3 class="btitle">${escapeHtml(b.title)}</h3>
+    <span class="bmeta">${b.pericopes.length} passage${b.pericopes.length === 1 ? '' : 's'} · ${escapeHtml(bookStatus(b))}</span>
+  </summary>
   <ul class="cards">
     ${b.pericopes.map(pericopeCard).join('\n    ')}
   </ul>
-</section>`
+</details>`
     )
     .join('\n');
 
@@ -58,13 +73,30 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
 
   return `
 <section class="intro">
-  <h1>Reading room for approved Tripod passages</h1>
-  <p>This site is a reading room for the Tripod Bible-translation project. Everything here is <strong>read-only</strong>:
-  you can read and send feedback, but nothing on this site can edit the documents themselves.
-  The site only ever shows <strong>approved</strong> work — it is rebuilt automatically from the project's blessed files,
-  and the build refuses to publish anything still in draft.</p>
+  <h1>The Reading Room</h1>
+  <p>Everything here is <strong>read-only</strong> and <strong>approved</strong>: the site rebuilds itself
+  from the project's blessed files and refuses to publish anything still in draft. Read a passage,
+  then use its buttons to ask a question or suggest a change.</p>
+</section>
 
-  <h2>What you're looking at</h2>
+<section class="rooms" aria-label="the two rooms">
+  <div class="roomcard here">
+    <span class="roomtag">You are here</span>
+    <h2>Reading Room</h2>
+    <p>Read the approved Meaning Maps, passage by passage — and send questions or suggestions
+    straight from any document.</p>
+  </div>
+  <a class="roomcard mind" href="atlas/index.html">
+    <span class="roomtag">The other room</span>
+    <h2>Meaning Mind</h2>
+    <p>The whole seed corpus, connected — explore and study every passage, person, place and
+    concept as one living structure.</p>
+    <span class="roomgo">Enter the Mind →</span>
+  </a>
+</section>
+
+<details class="about">
+  <summary>First time here? What you're looking at, and how to comment</summary>
   <dl class="gloss">
     <dt>Meaning Map</dt>
     <dd>A human-readable study of one Bible passage: what the passage says — scene by scene, statement by statement —
@@ -75,13 +107,15 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
     <dt>Compilation Log</dt>
     <dd>The working record kept while the FOR_MODEL was produced from the Meaning Map: what was checked and what was flagged for attention.</dd>
   </dl>
-
-  <h2>How to give feedback</h2>
   <p>Every document has <em>Ask a question</em> and <em>Suggest a change</em> buttons that open a short form with the passage
   and document already filled in. Hebrew words appear throughout — hover over a highlighted name or term to see its Hebrew form.</p>
   ${formNote}
-</section>
-${bookSections}`;
+</details>
+
+<section class="bookshelf" aria-label="the books">
+  <h2 class="shelfhead">The books</h2>
+${bookSections}
+</section>`;
 }
 
 function pericopeCard(p) {

@@ -147,10 +147,9 @@ const TOURS = [
       },
       {
         url: './index.html',
-        mind: 'select-ghost',
-        title: 'Esther is arriving',
-        prose:
-          'Esther is arriving: her cast of fifty-one is already pinned, and her maps are landing. Watch this ring — it becomes a full spine by itself as her approved artifacts merge, with no one redrawing anything.',
+        mind: 'select-arriving',
+        title: 'Books arrive by themselves',
+        prose: null, // computed at build (Marcia's ruling): true before AND after a book graduates
       },
       {
         url: './index.html',
@@ -172,11 +171,28 @@ const TOURS = [
 const TRAJECTORY_PROSE = (n) =>
   `${n} passages today. The same structure — the same vocabulary, the same rules — holds at whole-Bible scale. That is what this pipeline is for.`;
 
+// Tour 4 step 3 (Marcia's ruling, self-updating like step 5): the specifics
+// are computed from the book index, and the closing sentence is true in
+// every state — before a book's cast lands, while its maps are landing, and
+// after it has become a spine.
+const ARRIVING_PROSE = (books) => {
+  const arriving = books.filter((b) => b.status !== 'complete');
+  const closer =
+    'A book lands here first as its pinned cast — and becomes a full spine by itself as its approved artifacts merge, with no one redrawing anything.';
+  if (!arriving.length) return `Every book here arrived the same way. ${closer}`;
+  const b = arriving[0];
+  const maps = b.counts.maps ? `, and ${b.counts.maps} of its maps have already landed` : '';
+  const more = arriving.length > 1 ? ` ${arriving.length - 1} more book${arriving.length > 2 ? 's are' : ' is'} on the way.` : '';
+  const cast = b.counts.entities ? `: its cast of ${b.counts.entities} is already pinned${maps}` : '';
+  return `${b.title} is arriving${cast}.${more} ${closer}`;
+};
+
 export function toursPage({ cfg, formCfg, atlas, stats, atlasLayout }) {
   // The trajectory step's passage count is computed from the data at every
   // build (Marcia's ruling D) — it grows by itself as books merge.
   const totalPericopes = atlas.books.reduce((n, b) => n + b.counts.pericopes, 0);
-  const proseOf = (s) => s.prose ?? TRAJECTORY_PROSE(totalPericopes);
+  const proseOf = (s) =>
+    s.prose ?? (s.mind === 'select-arriving' ? ARRIVING_PROSE(atlas.books) : TRAJECTORY_PROSE(totalPericopes));
 
   const tourArticle = (t, i) => `
 <article class="tour" id="tour-${escapeAttr(t.id)}" data-tour>

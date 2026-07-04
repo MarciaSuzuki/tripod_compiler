@@ -446,6 +446,7 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
 
     const counts = {
       pericopes: bookPericopes.length,
+      maps: bookPericopes.filter((p) => p.map).length,
       scenes: sceneCount,
       propositions: propCount,
       entities: Object.keys(entities).length,

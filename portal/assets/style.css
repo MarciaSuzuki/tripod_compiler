@@ -206,8 +206,11 @@ section.artifact-missing { background: var(--paper); border-style: dashed; }
 }
 
 @media print {
-  .btns, .ask-section, nav.crumbs { display: none; }
+  .btns, .ask-section, nav.crumbs, nav.modeswitch { display: none; }
   section.artifact { border: none; padding: 0; }
+  /* Collapsed shelves still print their passages and instructions. */
+  details::details-content { content-visibility: visible !important; }
+  details.book > summary::before, details.about > summary { list-style: none; }
 }
 
 /* ── Atlas navigation (PR-2; the §0.1-permitted addition) ──────────────────
@@ -218,3 +221,64 @@ header.site .sitenav { margin-top: 0.35rem; font-size: 0.9rem; }
 header.site .sitenav a { color: var(--accent); }
 a.wl { text-decoration: none; }
 a.wl:hover { border-bottom-style: solid; }
+
+/* ── Reading Room home v2 (Marcia's ruling, 2026-07-04): one house, two
+   rooms. The switcher lives on every Reading-Room page; the home leads with
+   the two room cards, folds the instructions, and shelves passages by book.
+   The Mind card is deliberately a small dark window into the other room —
+   connected, but never the same place. ─────────────────────────────────── */
+
+.modeswitch { margin-top: 0.5rem; display: inline-flex; border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; font-size: 0.85rem; font-family: Georgia, serif; }
+.modeswitch .mode { padding: 0.28rem 0.85rem; text-decoration: none; }
+.modeswitch .mode.on { background: var(--accent-soft); color: var(--accent); font-weight: bold; }
+.modeswitch .mode.mind { background: #0a0f1e; color: #ffc163; border-left: 1px solid var(--line); }
+.modeswitch .mode.mind:hover { background: #141b31; }
+.modeswitch .mode.mind:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+section.intro h1 { margin-bottom: 0.4rem; }
+section.intro p { max-width: 62ch; }
+
+.rooms { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem; margin: 1.4rem 0 1.2rem; }
+.roomcard { border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.3rem;
+  background: var(--card); display: block; text-decoration: none; color: inherit; position: relative; }
+.roomcard h2 { margin: 0.3rem 0 0.35rem; font-size: 1.25rem; }
+.roomcard p { margin: 0; font-size: 0.95rem; color: var(--muted); max-width: 52ch; }
+.roomtag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); font-weight: bold; }
+.roomcard.here { border-color: var(--accent); box-shadow: 0 1px 0 var(--accent); }
+.roomcard.mind { background: radial-gradient(120% 140% at 85% -20%, #1b2a55 0%, #0a0f1e 55%, #04060f 100%);
+  border-color: #2a3350; color: #d8dee8; }
+.roomcard.mind h2 { color: #ffc163; }
+.roomcard.mind p { color: #9aa5bd; }
+.roomcard.mind .roomtag { color: #59b7ff; }
+.roomcard.mind .roomgo { display: inline-block; margin-top: 0.7rem; color: #ffc163;
+  font-size: 0.9rem; border-bottom: 1px dotted #ffc163; }
+.roomcard.mind:hover { border-color: #ffc163; }
+.roomcard.mind:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+details.about { margin: 0 0 1.6rem; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--card); padding: 0; }
+details.about > summary { cursor: pointer; padding: 0.7rem 1.1rem; color: var(--accent);
+  font-weight: bold; list-style-position: inside; }
+details.about > summary:hover { background: var(--accent-soft); }
+details.about > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+details.about[open] > summary { border-bottom: 1px solid var(--line); }
+details.about > dl, details.about > p { padding: 0 1.3rem; }
+details.about > p:last-child { padding-bottom: 1rem; }
+
+.shelfhead { margin: 0 0 0.6rem; }
+details.book { border: 1px solid var(--line); border-radius: 10px; background: var(--card);
+  margin: 0.7rem 0; }
+details.book > summary { cursor: pointer; padding: 0.9rem 1.2rem; display: flex;
+  align-items: baseline; gap: 0.9rem; flex-wrap: wrap; }
+details.book > summary::before { content: '▸'; color: var(--accent); flex: none; }
+details.book[open] > summary::before { content: '▾'; }
+details.book > summary:hover { background: var(--accent-soft); }
+details.book > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+details.book[open] > summary { border-bottom: 1px solid var(--line); }
+details.book .btitle { font-size: 1.3rem; font-weight: bold; display: inline; margin: 0; }
+details.book .bmeta { color: var(--muted); font-size: 0.88rem; }
+details.book > ul.cards { padding: 0.9rem 1.1rem 1rem; margin: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 0.7rem; }

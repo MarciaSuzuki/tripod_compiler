@@ -150,13 +150,35 @@ test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page
   const index = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
   assert.match(index, /Tripod Method · Meaning Mind/);
   assert.match(index, /<title>Meaning Mind · /);
-  assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /Meaning Mind — the whole seed corpus, connected/);
+  // Reading Room home v2 (Marcia's ruling): the two rooms, explicit — the
+  // switcher on the header and the Mind room card carrying the ruled phrase.
+  const rrIndex = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
+  assert.match(rrIndex, /class="modeswitch"/);
+  assert.match(rrIndex, /The whole seed corpus, connected/);
+  assert.match(rrIndex, /Meaning Mind →/);
   // Tour ruling D: the trajectory count is computed, never hardcoded.
   const tours = fs.readFileSync(path.join(out, 'atlas', 'tours.html'), 'utf8');
   const g = JSON.parse(fs.readFileSync(path.join(out, 'atlas', 'global.json'), 'utf8'));
   const n = g.books.reduce((s, b) => s + b.counts.pericopes, 0);
   assert.ok(tours.includes(`${n} passages today.`), 'trajectory step counts from the data');
   assert.doesNotMatch(tours, /Nineteen passages/);
+  // Tour 4 step 3 is likewise self-updating (Marcia's ruling): the arriving
+  // book's cast count comes from the registry, never from prose.
+  const arriving = g.books.find((b) => b.status !== 'complete');
+  if (arriving) {
+    assert.ok(tours.includes(`cast of ${arriving.counts.entities}`), 'arriving cast counts from the data');
+    if (arriving.counts.maps) {
+      assert.ok(tours.includes(`${arriving.counts.maps} of its maps have already landed`),
+        'landed-maps clause counts actual maps, not pericope rows');
+    }
+  } else {
+    assert.match(tours, /Every book here arrived the same way/);
+  }
+  assert.doesNotMatch(tours, /fifty-one|fifty-four/);
+  assert.match(tours, /becomes a full spine by itself as its approved artifacts merge/);
+  // The ruled portal title (Marcia, 2026-07-04), on both sides of the house.
+  assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /<title>Tripod Method Leg One: The Exegete Portal</);
+  assert.match(index, /The Exegete Portal/);
   rmrf(out);
 });
 

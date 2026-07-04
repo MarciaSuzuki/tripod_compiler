@@ -48,9 +48,13 @@
       if (!B) { if (tries++ < 40) setTimeout(attempt, 250); return; }
       B.select(null); // mirror the mode chips: never act under a stale selection
       if (action.startsWith("mode:")) B.applyMode(action.slice(5));
-      if (action === "select-ghost") {
-        const ghost = B.nodes.find((n) => n.kind === "ghost");
-        if (ghost) B.select(ghost);
+      if (action === "select-ghost" || action === "select-arriving") {
+        // Mirror the build-time choice exactly: the FIRST incomplete book in
+        // config order, whatever its kind — prose and highlight must agree.
+        const arriving = B.nodes.find(
+          (n) => (n.kind === "ghost" || n.kind === "book") && n.status && n.status !== "complete"
+        );
+        if (arriving) B.select(arriving);
       }
       if (action.startsWith("focus:")) {
         const n = B.byId[action.slice(6)];
