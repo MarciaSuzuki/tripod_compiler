@@ -1,5 +1,8 @@
 # Tripod Review Portal
 
+[![review-portal](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal.yml/badge.svg)](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal.yml)
+[![portal-watchdog](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal-watchdog.yml/badge.svg)](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal-watchdog.yml)
+
 A read-only static site where **external reviewers — who do not have GitHub
 accounts — can read every approved pericope artifact, ask questions, and
 suggest changes without any ability to edit** (Marcia's ruling, 2026-06-10).
@@ -46,12 +49,40 @@ automatically on the next push — no portal change needed.
 > Create new file → paste → commit to main); full steps are in the file's
 > header comment. Until then the portal does not auto-deploy.
 
+## Deploy failures are loud (the watchdog + alarm)
+
+A deploy failure is often the approved-only gate **working** — but it must
+never be silent: in June 2026 the deploy was CI-red for a week unseen while
+the live site sat frozen (SC-0075). The watchdog
+([ci/portal-watchdog.yml](ci/portal-watchdog.yml); same one-time activation
+path as above, to `.github/workflows/portal-watchdog.yml`) makes every
+failure visible through two detectors feeding one alarm:
+
+1. **Run status** — on every completed `review-portal` run: a red run raises
+   the alarm the moment it happens; a green run closes it.
+2. **Freshness** — twice daily (and on manual dispatch): the live site's
+   `build-manifest.json` commit stamp must match `main` HEAD (45-minute grace
+   for a deploy in flight). This catches what run status cannot see: the
+   workflow not firing at all, a "green" deploy that never took, a dead site.
+
+The alarm is a single GitHub issue labeled `portal-deploy-alarm`, assigned to
+the maintainer (creation, comments, and assignment all trigger GitHub
+notifications). Repeat failures comment on the open issue — never a second
+alarm; recovery closes it with the green run linked. A stale or unreadable
+site also turns the watchdog run itself red, and the badges at the top of
+this file (also on the repo README) show both workflows' state at a glance.
+
+The alarm logic lives in [ci/deploy-alarm.mjs](ci/deploy-alarm.mjs) and
+[ci/check-freshness.mjs](ci/check-freshness.mjs), proven offline against a
+scripted fake `gh` in [test/deploy-alarm.test.mjs](test/deploy-alarm.test.mjs)
+— never a silent green, including for the alarm itself.
+
 ## Running locally
 
 ```bash
 cd portal
 npm ci
-npm test          # 25 tests, including the approved-only bite tests
+npm test          # the full suite, including the bite tests (never a silent green)
 npm run build     # → portal/dist (open dist/index.html in a browser)
 ```
 

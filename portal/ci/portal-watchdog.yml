@@ -1,0 +1,102 @@
+# Review portal — deploy-failure watchdog (PR-0 of the Portal Atlas work).
+#
+# ⚠ ACTIVATION (one-time, ~1 minute, needs a github.com web session):
+#   This file must live at .github/workflows/portal-watchdog.yml to run. It
+#   ships HERE (portal/ci/) because the local git/gh tokens lack the `workflow`
+#   OAuth scope, which GitHub requires for pushing workflow files — the same
+#   ship-here/activate-there path portal.yml itself used. To activate, copy it
+#   in the GitHub web UI: repo → Add file → Create new file → name it
+#   `.github/workflows/portal-watchdog.yml` → paste this content → commit to
+#   main. (Alternatively: run `gh auth refresh -s workflow` locally once, then
+#   land a `git mv`-style copy as a PR.)
+#
+# Why this exists (SC-0075 follow-up; Atlas spec §5 PR-0): the review-portal
+# deploy was CI-red for a week unseen — the site sat frozen while every merge
+# failed silently. A deploy failure must be VISIBLE. Two detectors, one alarm:
+#
+#   1. run-status — fires on every completed review-portal run. Red run →
+#      raise the alarm issue that moment; green run → close it (self-clearing).
+#   2. freshness — twice-daily cron (+ manual dispatch): the live site's
+#      build-manifest.json commit must match main HEAD (45-min grace for
+#      deploys in flight). Catches what run-status cannot see: the workflow
+#      not firing at all, a "green" deploy that never took, a dead Pages site.
+#
+# The alarm is a single labeled GitHub issue (portal-deploy-alarm), assigned —
+# so it produces real notifications — and never duplicated: repeat failures
+# comment on the open issue; recovery closes it. Logic + tests live in
+# portal/ci/deploy-alarm.mjs, portal/ci/check-freshness.mjs,
+# portal/test/deploy-alarm.test.mjs.
+#
+# Tier B: reads the repo + the public live site; writes only the alarm issue.
+# It never touches canon, the portal build, or the deploy pipeline —
+# .github/workflows/portal.yml is deliberately untouched by this mechanism.
+
+name: portal-watchdog
+
+on:
+  workflow_run:
+    workflows: [review-portal]
+    types: [completed]
+  schedule:
+    - cron: "23 7,19 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: portal-watchdog
+
+jobs:
+  # Detector 1: the just-completed review-portal run itself.
+  run-status:
+    if: github.event_name == 'workflow_run'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Raise or clear the deploy alarm for this run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          RUN_SHA: ${{ github.event.workflow_run.head_sha }}
+          RUN_TITLE: ${{ github.event.workflow_run.display_title }}
+        run: |
+          case "$RUN_CONCLUSION" in
+            failure|timed_out)
+              BODY="The \`review-portal\` build/deploy went red — the live portal is now frozen at its last good state and will NOT show current \`main\` until this is fixed.
+
+          - Failed run: $RUN_URL
+          - Commit: \`${RUN_SHA:0:7}\` — $RUN_TITLE
+          - Conclusion: \`$RUN_CONCLUSION\`
+
+          Triage: open the run log. A portal test / build exit 2 means an artifact in \`fixtures/\` failed the approved-only gate — fix the artifact drift upstream, never the gate (that failure mode is the system working; the silence about it was the bug). This issue closes itself on the next green run."
+              node portal/ci/deploy-alarm.mjs raise \
+                --title "Portal alarm: review-portal deploy failed" \
+                --body "$BODY"
+              ;;
+            success)
+              node portal/ci/deploy-alarm.mjs clear \
+                --body "The \`review-portal\` run for \`${RUN_SHA:0:7}\` is green ($RUN_URL) — the portal deployed. All clear."
+              ;;
+            *)
+              echo "conclusion=$RUN_CONCLUSION — no action (cancelled/skipped runs are superseded, not failures)"
+              ;;
+          esac
+
+  # Detector 2: the live site vs main (schedule + manual only).
+  freshness:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Live build-manifest.json must match main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ALARM_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: node portal/ci/check-freshness.mjs
