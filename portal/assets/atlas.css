@@ -310,3 +310,78 @@ body.brain-on #panel { position: fixed; z-index: 6; top: 86px; right: 28px; widt
 .vcard.drifted { background: rgba(255, 158, 88, 0.04); }
 ul.hl { margin: .5em 0; padding-left: 1.1em; }
 ul.hl li { font-size: 12px; color: var(--champagne); margin: .25em 0; }
+
+/* ── Emotion lens (V6 Tier 1, PR-5) — a pure-CSS toggle: with the lens on,
+   only pericopes whose text ATTESTS emotion (or carries an INTIMATE override)
+   stay lit. No JS involved; the highlights derive from exporter data. ────── */
+.emolens-label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: .06em; color: var(--dim); cursor: pointer; user-select: none;
+  margin: 6px 0 2px; }
+.emolens-label input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.emolens-label .tr { width: 32px; height: 16px; border-radius: 8px; background: rgba(255,255,255,0.09);
+  position: relative; transition: background .25s; flex: none; }
+.emolens-label .tr::after { content: ""; position: absolute; top: 3px; left: 3px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--dim); transition: left .25s, background .25s; }
+.emolens-label input:checked + .tr { background: rgba(255, 223, 166, 0.3); }
+.emolens-label input:checked + .tr::after { left: 19px; background: var(--champagne); }
+.emolens-label input:focus-visible + .tr { outline: 1px solid var(--gold); outline-offset: 2px; }
+.emolens-label:has(input:checked) ~ .bookbody .tile:not(.emo),
+.emolens-label:has(input:checked) ~ .bookbody .drill:not(.emo) { opacity: .22; }
+.emolens-label:has(input:checked) ~ .bookbody .tile.emo,
+.emolens-label:has(input:checked) ~ .bookbody .drill.emo {
+  border-color: rgba(255, 223, 166, 0.4); box-shadow: 0 0 22px rgba(255, 223, 166, 0.10); }
+.emorow { margin: 4px 0 6px; }
+
+/* Tier-2 appraisals: dashed, badged, and always JUNIOR to the absence block. */
+.appraisals { border: 1px dashed rgba(255, 158, 88, 0.35); border-radius: 6px;
+  padding: 8px 10px; margin: 6px 0; font-size: 12px; }
+.appraisals .k { display: block; font-family: var(--mono); font-size: 8.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
+.pilotbadge { display: inline-block; border: 1px solid rgba(255, 158, 88, 0.5); border-radius: 3px;
+  padding: 0 4px; margin-right: 6px; color: var(--amber); }
+.appraisal-row { margin: 3px 0; }
+
+/* Method page bits */
+.boundary { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-top: 10px; }
+.boundary .q { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--panel); }
+.boundary .q h3 { margin: 0 0 4px; font-size: 13px; }
+.boundary .q p { font-size: 12px; margin: .3em 0; }
+.boundary .q .dest { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; }
+.methodbadge { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--amber);
+  border: 1px solid rgba(255, 158, 88, 0.4); border-radius: 999px; padding: 3px 10px; }
+ol.frost { padding-left: 1.2em; }
+ol.frost li { margin: .35em 0; color: var(--ink); font-size: 13.5px; }
+
+/* ── Guided tours (V5, PR-5) ──────────────────────────────────────────────── */
+.tour { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 8px; }
+.tour h2 { font-size: 19px; }
+.tsub { color: var(--dim); margin-top: 2px; }
+.tstart { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--gold);
+  background: rgba(255, 193, 99, 0.1); border: 1px solid rgba(255, 193, 99, 0.4); border-radius: 6px;
+  padding: 8px 14px; cursor: pointer; margin: 6px 0 2px; }
+.tstart:hover { background: rgba(255, 193, 99, 0.18); }
+.tstart:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.tstep { border-left: 2px solid var(--line); padding: 2px 0 2px 14px; margin: 12px 0; }
+.tstep h3 { margin: 0 0 2px; }
+.tstep p { margin: .3em 0; color: var(--ink); font-size: 13.5px; }
+
+#tour-overlay { display: none; position: fixed; inset: 0; z-index: 50; background: var(--bg); }
+#tour-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+#tour-card { position: absolute; left: 50%; transform: translateX(-50%); bottom: 26px;
+  width: min(680px, 92vw); background: rgba(7, 10, 20, 0.94); border: 1px solid rgba(255, 193, 99, 0.35);
+  border-radius: 10px; padding: 14px 18px; backdrop-filter: blur(10px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6); }
+#tour-card .tc-eyebrow { font-family: var(--mono); font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--dim); }
+#tour-card .tc-eyebrow b { color: var(--gold); font-weight: 500; }
+#tour-card .tc-title { font-size: 16px; color: var(--bright); margin: 6px 0 4px; }
+#tour-card .tc-prose { font-size: 13.5px; color: var(--ink); line-height: 1.55; font-weight: 300; }
+#tour-card .tc-nav { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+#tour-card .tc-progress { font-size: 10px; color: var(--dimmer); letter-spacing: .06em; flex: 1; text-align: center; }
+.tc-btn { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--ink);
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 6px;
+  padding: 6px 12px; cursor: pointer; }
+.tc-btn:hover { color: var(--gold); border-color: rgba(255, 193, 99, 0.4); }
+.tc-btn:disabled { opacity: .4; cursor: default; }
+.tc-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+body.touring { overflow: hidden; }

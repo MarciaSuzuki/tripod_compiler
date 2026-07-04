@@ -24,7 +24,7 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
 
   // V1 accept: the Ruth page shows all pericopes with REAL titles.
   const ruth = read(out, 'atlas/ruth.html');
-  assert.ok((ruth.match(/class="tile"/g) || []).length >= 14, 'all Ruth pericope tiles');
+  assert.ok((ruth.match(/class="tile( emo)?"/g) || []).length >= 14, 'all Ruth pericope tiles');
   assert.match(ruth, /The famine, the family's sojourn, and the emptying of the household/);
   assert.match(ruth, /The gate: the non-name, the field before Ruth, and the sandal/);
 
@@ -47,7 +47,7 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
   assert.ok((esther.match(/class="castcard"/g) || []).length >= 51, 'Esther cast from the pinned registry');
   assert.doesNotMatch(esther, /class="absence"/);
   assert.doesNotMatch(esther, /Pericope spine/);
-  assert.doesNotMatch(esther, /class="tile"/);
+  assert.doesNotMatch(esther, /class="tile( emo)?"/);
 
   // V3 accept: B10 (YHWH) — 4 referential forms + its Ruth pericopes as links.
   const b10 = read(out, 'atlas/registry/ruth/B10.html');
@@ -104,7 +104,7 @@ test('atlas pages: registry-only book renders honestly from a synthetic tree', (
   assert.match(esther, /maps in progress/);
   assert.match(esther, /castcard/);
   assert.match(esther, /B19/);
-  assert.doesNotMatch(esther, /class="tile"/);
+  assert.doesNotMatch(esther, /class="tile( emo)?"/);
   rmrf(root);
 });
 

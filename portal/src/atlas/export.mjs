@@ -41,6 +41,14 @@ import { deSlug } from '../lib/registry.mjs';
 
 export const ATLAS_SCHEMA = 'atlas-v1';
 
+// V6 Tier-1 emotion lens: the DECLARED filter that decides which attested
+// canon values count as emotion-bearing. This is a filter over values the
+// artifacts already state (props' slots/kinds + scene kinds) — it never adds
+// a claim; every highlight it produces traces to an attested UPPER_SNAKE atom.
+// Calibrated against the spec's own examples (P02 KISSED ×3 / WEPT_ALOUD /
+// CLUNG_TO · P04 ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT · Jonah FEARED).
+export const EMOTION_LEXICON = /KISS|WEPT|WEEP|CLING|CLUNG|FEAR|LAMENT|MOURN|GRIEV|REJOIC|BITTER|DISTRESS|ANGR|WAIL|SOB/;
+
 // Registry entity kind → atlas node kind.
 const ENTITY_KIND = {
   PERSON: 'being',
@@ -221,6 +229,20 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
       const mapFm = p.map?.frontmatter ?? {};
       const classification = fm?.pericope_classification ?? null;
 
+      // Emotion attestations: lexicon-matched atoms the FOR_MODEL itself
+      // states (proposition kinds, slot values, scene kinds). Counts only.
+      const emotionAttested = {};
+      const attest = (v) => {
+        if (typeof v === 'string' && /^[A-Z0-9_]+$/.test(v) && EMOTION_LEXICON.test(v)) {
+          emotionAttested[v] = (emotionAttested[v] ?? 0) + 1;
+        }
+      };
+      for (const prop of fm?.level_3_propositions ?? []) {
+        attest(prop.proposition_kind);
+        walkSlots(prop.event_specific_slots, (_k, v) => attest(v));
+      }
+      for (const scene of fm?.level_2_scenes ?? []) attest(scene.scene_kind);
+
       addNode({
         id: pericopeId,
         kind: 'pericope',
@@ -238,6 +260,7 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
           : null,
         register_overrides: normalizeOverrides(classification?.register_overrides),
         level_1: fm?.level_1 ?? null,
+        emotion_attested: Object.keys(emotionAttested).length ? emotionAttested : null,
         artifacts: {
           map: p.map ? { path: p.map.relPath } : null,
           forModel: p.forModel
@@ -300,6 +323,7 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
           scene_kind: scene.scene_kind ?? null,
           purpose: scene.scene_communicative_purpose ?? null,
           significant_absence: scene.significant_absence ?? null,
+          emotion_appraisals: scene.emotion_appraisals?.entries ?? null,
         });
         edges.push({ kind: 'contains', from: pericopeId, to: sceneId });
         use('scene_kind', scene.scene_kind);

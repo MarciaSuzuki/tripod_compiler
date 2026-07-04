@@ -1,0 +1,160 @@
+// V5 tours + V6 emotion lens (PR-5) — the §4 accept bars. The lens must show
+// ONLY data-derived highlights; Tier 2 renders a planted appraisal block and
+// renders NOTHING without one; absences stay visually senior; the tours page
+// reads fully without JS and ships only the vendored engine.
+
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
+import { portalDir, mkTree, mkMap, runBuild, rmrf } from './helpers.mjs';
+
+const repoRoot = path.resolve(portalDir, '..');
+const haveFixtures = fs.existsSync(path.join(repoRoot, 'fixtures', 'meaning-map'));
+const read = (out, rel) => fs.readFileSync(path.join(out, rel), 'utf8');
+
+test('emotion lens: real tree lights only what canon attests', { skip: !haveFixtures }, () => {
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-emo-'));
+  assert.equal(runBuild(repoRoot, out).status, 0);
+
+  const ruthHtml = read(out, 'atlas/ruth.html');
+  const jonahHtml = read(out, 'atlas/jonah.html');
+
+  // The spec's own named attestations, present as data-derived chips.
+  assert.match(ruthHtml, /KISSED ×3/);
+  assert.match(ruthHtml, /WEPT_ALOUD/);
+  assert.match(ruthHtml, /CLUNG_TO/);
+  assert.match(ruthHtml, /ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT ×4/);
+  assert.match(jonahHtml, /FEARED ×3/);
+
+  // The lens toggle exists, is CSS-only, and P02 carries the emo class.
+  assert.match(ruthHtml, /id="emolens"/);
+  assert.match(ruthHtml, new RegExp('<div class="drill emo" id="P02"'));
+  // P14 (genealogy) attests no emotion — it must NOT carry the class.
+  assert.match(ruthHtml, new RegExp('<div class="drill" id="P14"'));
+
+  // Data honesty: the pericope pages carry no emotion labels beyond what the
+  // shards attest — spot: the words the mock hand-authored ("LAMENT_SCENE")
+  // appear only where canon has them (P04), never on P01.
+  const p01drill = ruthHtml.slice(ruthHtml.indexOf('id="P01"'), ruthHtml.indexOf('id="P02"'));
+  assert.doesNotMatch(p01drill, /class="emorow"/, 'P01 attests no emotion — no chips');
+
+  // Shard data carries the attestations (greppable provenance for the lens).
+  const shard = JSON.parse(read(out, 'atlas/ruth.json'));
+  const p02 = shard.nodes.find((n) => n.id === 'ruth/P02');
+  assert.equal(p02.emotion_attested.KISSED, 3);
+  const p14 = shard.nodes.find((n) => n.id === 'ruth/P14');
+  assert.equal(p14.emotion_attested, null);
+
+  // Method page: verbatim ruled wording.
+  const method = read(out, 'atlas/emotion.html');
+  for (const q of ['Frame of Mind', 'Influence of Relationship(s)', 'Expectation of the Event(s)',
+    'Influence of Location(s)', 'Default Response to Emotion(s)', 'Underlying Values at Play']) {
+    assert.ok(method.includes(q), `six questions verbatim: ${q}`);
+  }
+  assert.match(method, /method adopted 2026-07-02 · appraisal block piloting at Psalm 13/);
+  assert.match(method, /trumps everything/);
+  assert.match(method, /never in meaning-space/);
+  assert.match(method, /diu\.edu\/documents\/theses\/Frost_Joshua-thesis\.pdf/);
+  assert.doesNotMatch(method, /<script/i, 'method page ships no JS');
+
+  // The mind carries Emotion mode + the renamed placeholder.
+  const brain = fs.readFileSync(path.join(portalDir, 'assets', 'atlas-brain.js'), 'utf8');
+  assert.match(brain, /"Mind", "Books", "Cast", "Concepts", "Emotion", "Growth"/);
+  assert.match(read(out, 'atlas/index.html'), /placeholder="search the mind…"/);
+
+  rmrf(out);
+});
+
+const FM_WITH_APPRAISAL = `---
+type: "sta-for-model"
+pericope: "P01"
+pericope-title: "A test passage"
+source-meaning-map: [[P01-Test]]
+status: "valid"
+pilot: "pilot-2"
+---
+
+# P01 — FOR_MODEL
+
+\`\`\`json
+{
+  "sta_id": "test_p01",
+  "header": { "bcv": "Ruth 9:1-5" },
+  "pericope_classification": { "genre_group": "NARRATIVE", "genre": "HISTORICAL_NARRATIVE", "register": "INFORMAL_CASUAL" },
+  "level_1": {},
+  "level_2_scenes": [
+    {
+      "scene_id": "S1",
+      "verse_range": "9:1",
+      "scene_kind": "OPENING_CHRONICLE_SCENE",
+      "significant_absence": "Narrator never says what the speaker felt.",
+      "emotion_appraisals": {
+        "entries": [
+          { "holder": "B2", "valued": "CB_0029", "emotion": "DISTRESS", "script_stage": "COMPLAINT", "evidence_anchor": "9:1" }
+        ]
+      }
+    }
+  ],
+  "level_3_propositions": []
+}
+\`\`\`
+`;
+
+test('emotion Tier 2: a planted appraisal block renders badged and JUNIOR to the absence; no block → nothing', () => {
+  const withBlock = mkTree({
+    'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
+    'fixtures/for-model/P01-Test-FOR-MODEL.md': FM_WITH_APPRAISAL,
+  });
+  let out = path.join(withBlock, 'dist');
+  assert.equal(runBuild(withBlock, out).status, 0);
+  const page = read(out, 'atlas/ruth.html');
+  assert.match(page, /pilotbadge/);
+  assert.match(page, /DISTRESS/);
+  assert.match(page, /evidence 9:1/);
+  assert.match(page, /junior to the absence above/);
+  // Seniority: the absence block precedes the appraisal block in the scene.
+  const scene = page.slice(page.indexOf('id="P01"'));
+  assert.ok(scene.indexOf('class="absence"') < scene.indexOf('class="appraisals"'),
+    'significant_absence renders before (senior to) the appraisal');
+  rmrf(withBlock);
+
+  // Without the block: not a trace — absence of data is absence of claim.
+  const without = mkTree({
+    'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
+  });
+  out = path.join(without, 'dist');
+  assert.equal(runBuild(without, out).status, 0);
+  const clean = read(out, 'atlas/ruth.html');
+  assert.doesNotMatch(clean, /pilotbadge|appraisals|PILOT/);
+  rmrf(without);
+});
+
+test('tours: the page reads complete without JS and ships only the vendored engine', { skip: !haveFixtures }, () => {
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-tours-'));
+  assert.equal(runBuild(repoRoot, out).status, 0);
+  const tours = read(out, 'atlas/tours.html');
+
+  // Four tours, each a complete readable article (the no-JS fallback).
+  assert.equal((tours.match(/<article class="tour"/g) || []).length, 4);
+  for (const t of ['What is a Meaning Map?', 'From Map to Machine (STA)', 'How the vocabulary grows', 'The growing mind']) {
+    assert.ok(tours.includes(t), `tour present: ${t}`);
+  }
+  assert.ok((tours.match(/class="tstep"/g) || []).length >= 20, 'every step readable inline');
+  // Start buttons are hidden until the engine unhides them.
+  assert.match(tours, /<button class="tstart" hidden/);
+  // Vendored engine only; no external hosts in it.
+  const scripts = tours.match(/<script[^>]*>/gi) ?? [];
+  assert.deepEqual(scripts, ['<script src="../assets/atlas-tours.js" defer>']);
+  const engine = fs.readFileSync(path.join(portalDir, 'assets', 'atlas-tours.js'), 'utf8');
+  assert.doesNotMatch(engine, /https?:\/\//);
+  assert.ok(fs.existsSync(path.join(out, 'assets', 'atlas-tours.js')));
+  // Every step URL resolves inside the built site.
+  for (const m of tours.matchAll(/data-url="([^"]+)"/g)) {
+    const target = path.join(out, 'atlas', m[1].split('#')[0]);
+    assert.ok(fs.existsSync(target), `step target exists: ${m[1]}`);
+  }
+  rmrf(out);
+});

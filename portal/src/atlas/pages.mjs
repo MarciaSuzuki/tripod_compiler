@@ -11,6 +11,8 @@
 
 import { escapeHtml, escapeAttr } from '../lib/html.mjs';
 import { observatoryPage } from './observatory.mjs';
+import { emotionPage } from './emotion.mjs';
+import { toursPage } from './tours.mjs';
 import { renderFeedbackButtons } from '../lib/feedback.mjs';
 import { deSlug } from '../lib/registry.mjs';
 
@@ -29,6 +31,8 @@ export function atlasPages({ cfg, formCfg, atlas, buildInfo }) {
 
   pages.set('atlas/index.html', indexPage({ cfg, formCfg, atlas, buildInfo, stats }));
   pages.set('atlas/vocabulary.html', observatoryPage({ cfg, formCfg, atlas, stats, atlasLayout }));
+  pages.set('atlas/emotion.html', emotionPage({ cfg, formCfg, atlas, stats, atlasLayout }));
+  pages.set('atlas/tours.html', toursPage({ cfg, formCfg, atlas, stats, atlasLayout }));
 
   for (const book of atlas.books) {
     const shard = atlas.shards.get(book.id);
@@ -159,7 +163,9 @@ ${cards}
      <b>${g.counts.sc_rulings}</b> governance rulings</p>
   <p>Concept and figure pages are linked wherever they occur — from book pages, scene drill-downs,
   and the Reading Room's highlighted terms. <a href="vocabulary.html">The Vocabulary Observatory</a>
-  shows how the controlled vocabulary grows, ruling by ruling. With JavaScript on, this page becomes
+  shows how the controlled vocabulary grows, ruling by ruling; <a href="emotion.html">How emotion
+  is mapped</a> shows the four-way boundary that keeps stated, withheld, inferred and displayed
+  feeling in their right places. With JavaScript on, this page becomes
   the living graph over the same data; everything below stays readable without it.</p>
 </div>`;
 
@@ -194,7 +200,7 @@ function brainSkeleton(cfg) {
   <select id="f-kind" data-f="kind" aria-label="filter by node kind"></select>
   <select id="f-genre" data-f="genre" aria-label="filter by genre"></select>
   <select id="f-register" data-f="register" aria-label="filter by register"></select>
-  <input id="search" type="search" placeholder="search the brain…" aria-label="search nodes">
+  <input id="search" type="search" placeholder="search the mind…" aria-label="search nodes">
   <label class="switch"><input type="checkbox" id="allthreads"><span class="tr"></span>all threads</label>
 </div>
 <div class="hud brainui" id="legend"></div>
@@ -240,6 +246,13 @@ ${pericopes.map((p) => drillDown({ p, shard, nodes, atlas, bookId: book.id })).j
 
   const cast = castSection({ book, shard, registryOnly });
 
+  const hasEmotion = pericopes.some((p) => p.emotion_attested || hasIntimate(p));
+  const lens = registryOnly || !hasEmotion
+    ? ''
+    : `<label class="emolens-label"><input type="checkbox" id="emolens" class="emolens">
+<span class="tr"></span> emotion lens — light only what the text itself attests
+<a class="mono" style="font-size:10px;margin-left:8px;" href="emotion.html">the method ↗</a></label>`;
+
   const content = `
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
   <h1>${escapeHtml(book.title)} <span class="status ${escapeAttr(book.status)}">${escapeHtml(
@@ -248,10 +261,13 @@ ${pericopes.map((p) => drillDown({ p, shard, nodes, atlas, bookId: book.id })).j
   ${feedback}
 </div>
 ${intro}
+${lens}
+<div class="bookbody">
 ${spine}
 ${lanes}
 ${cast}
-${drill}`;
+${drill}
+</div>`;
 
   return atlasLayout({
     cfg,
@@ -262,6 +278,12 @@ ${drill}`;
     contentHtml: content,
     stats,
   });
+}
+
+function hasIntimate(p) {
+  return (p.register_overrides?.scene_level ?? [])
+    .concat(p.register_overrides?.moment_level ?? [])
+    .some((o) => o.override_value === 'INTIMATE');
 }
 
 function spineTile(p) {
@@ -286,7 +308,8 @@ function spineTile(p) {
     if (!v) continue;
     overrides.push(chip(o.verse ? `${o.verse} → ${v}` : v, 'amber', null, 'moment-level override'));
   }
-  return `<div class="tile" id="tile-${escapeAttr(p.code)}">
+  const emo = p.emotion_attested || hasIntimate(p);
+  return `<div class="tile${emo ? ' emo' : ''}" id="tile-${escapeAttr(p.code)}">
   <div class="row1"><span class="pid">${escapeHtml(p.code)}</span><span class="bcv">${escapeHtml(p.bcv ?? '')}</span></div>
   <span class="ptitle">${escapeHtml(p.title ?? '')}</span>
   ${cls ? `<div class="cls">${escapeHtml(cls.genre ?? '')} · ${escapeHtml(cls.register ?? '')}</div>` : ''}
@@ -358,6 +381,21 @@ ${figs.map(flagRow('figure', 'violet')).join('\n')}
 </div>`;
 }
 
+/** Tier-2 emotion appraisals (PILOT). Renders ONLY when a gated fixture
+ *  carries the block — inert otherwise. Placed after (and styled junior to)
+ *  significant_absence: the absence is the hard constraint and stays senior. */
+function renderAppraisals(s) {
+  if (!s.emotion_appraisals?.length) return '';
+  const rows = s.emotion_appraisals
+    .map((a) => `<div class="appraisal-row"><span class="chip amber">${escapeHtml(a.emotion ?? '')}</span>
+      <span class="mono" style="font-size:10px;color:var(--dim);">holder ${escapeHtml(a.holder ?? '—')} ·
+      values <a href="registry/concept/${escapeAttr(String(a.valued ?? '').split(' ')[0])}.html">${escapeHtml(a.valued ?? '—')}</a> ·
+      ${escapeHtml(a.script_stage ?? '')} · evidence ${escapeHtml(a.evidence_anchor ?? '—')}</span></div>`)
+    .join('\n');
+  return `<div class="appraisals"><span class="k"><span class="pilotbadge">PILOT</span> inferred appraisal — junior to the absence above</span>
+${rows}</div>`;
+}
+
 function castSection({ book, shard, registryOnly }) {
   const byKind = new Map();
   for (const n of shard.nodes) {
@@ -424,14 +462,21 @@ function drillDown({ p, shard, nodes, atlas, bookId }) {
   ${s.purpose ? `<p>${escapeHtml(s.purpose)}</p>` : ''}
   ${participants ? `<div>${participants}</div>` : ''}
   ${s.significant_absence ? `<div class="absence"><span class="k">Deliberately not said</span>${escapeHtml(s.significant_absence)}</div>` : ''}
+  ${renderAppraisals(s)}
   ${props.length ? `<details class="props"><summary>${props.length} statement${props.length > 1 ? 's' : ''} (propositions)</summary><table>${propRows}</table></details>` : ''}
 </div>`;
   };
 
-  return `<div class="drill" id="${escapeAttr(p.code)}">
+  const emoChips = p.emotion_attested
+    ? `<div class="emorow">${Object.entries(p.emotion_attested)
+        .map(([v, c]) => chip(c > 1 ? `${v} ×${c}` : v, 'champagne', null, 'attested in the text — see the method page'))
+        .join('')}</div>`
+    : '';
+  return `<div class="drill${p.emotion_attested || hasIntimate(p) ? ' emo' : ''}" id="${escapeAttr(p.code)}">
   <div class="head"><h3><span class="pid">${escapeHtml(p.code)}</span>${escapeHtml(p.title ?? '')}</h3>
   <span class="bcv mono" style="font-size:10px;color:var(--dimmer);">${escapeHtml(p.bcv ?? '')}</span>
   <a class="mono" style="font-size:10px;" href="../pericopes/${escapeAttr(p.code)}.html">read the documents ↗</a></div>
+${emoChips}
 ${scenes.map(sceneBlock).join('\n')}
 </div>`;
 }
