@@ -57,7 +57,7 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
       (b) => `
 <details class="book">
   <summary>
-    <span class="btitle">${escapeHtml(b.title)}</span>
+    <h3 class="btitle">${escapeHtml(b.title)}</h3>
     <span class="bmeta">${b.pericopes.length} passage${b.pericopes.length === 1 ? '' : 's'} · ${escapeHtml(bookStatus(b))}</span>
   </summary>
   <ul class="cards">

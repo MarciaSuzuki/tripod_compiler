@@ -206,8 +206,11 @@ section.artifact-missing { background: var(--paper); border-style: dashed; }
 }
 
 @media print {
-  .btns, .ask-section, nav.crumbs { display: none; }
+  .btns, .ask-section, nav.crumbs, nav.modeswitch { display: none; }
   section.artifact { border: none; padding: 0; }
+  /* Collapsed shelves still print their passages and instructions. */
+  details::details-content { content-visibility: visible !important; }
+  details.book > summary::before, details.about > summary { list-style: none; }
 }
 
 /* ── Atlas navigation (PR-2; the §0.1-permitted addition) ──────────────────
@@ -269,11 +272,13 @@ details.about > p:last-child { padding-bottom: 1rem; }
 details.book { border: 1px solid var(--line); border-radius: 10px; background: var(--card);
   margin: 0.7rem 0; }
 details.book > summary { cursor: pointer; padding: 0.9rem 1.2rem; display: flex;
-  align-items: baseline; gap: 0.9rem; flex-wrap: wrap; list-style-position: inside; }
+  align-items: baseline; gap: 0.9rem; flex-wrap: wrap; }
+details.book > summary::before { content: '▸'; color: var(--accent); flex: none; }
+details.book[open] > summary::before { content: '▾'; }
 details.book > summary:hover { background: var(--accent-soft); }
 details.book > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 details.book[open] > summary { border-bottom: 1px solid var(--line); }
-details.book .btitle { font-size: 1.3rem; font-weight: bold; }
+details.book .btitle { font-size: 1.3rem; font-weight: bold; display: inline; margin: 0; }
 details.book .bmeta { color: var(--muted); font-size: 0.88rem; }
 details.book > ul.cards { padding: 0.9rem 1.1rem 1rem; margin: 0;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.7rem; }
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 0.7rem; }
