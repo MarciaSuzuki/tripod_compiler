@@ -82,7 +82,7 @@ scripted fake `gh` in [test/deploy-alarm.test.mjs](test/deploy-alarm.test.mjs)
 ```bash
 cd portal
 npm ci
-npm test          # 33 tests, including the approved-only bite tests
+npm test          # the full suite, including the bite tests (never a silent green)
 npm run build     # → portal/dist (open dist/index.html in a browser)
 ```
 
