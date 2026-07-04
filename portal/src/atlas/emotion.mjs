@@ -32,7 +32,12 @@ export function emotionPage({ cfg, formCfg, atlas, stats, atlasLayout }) {
   for (const [bookId, shard] of atlas.shards) {
     for (const s of shard.nodes) {
       if (s.kind !== 'scene' || !s.significant_absence) continue;
-      if (/felt|feel|grief|mourn|emotion|inner/i.test(s.significant_absence)) {
+      const text = s.significant_absence;
+      // A withheld-feelings exhibit needs BOTH an inner-state term AND
+      // withholding phrasing — and canon's explicit "No marked absence"
+      // sentinel (P07 S1: "...withholds nothing here...") is never one.
+      if (/^\s*no marked absence/i.test(text) || /withholds nothing/i.test(text)) continue;
+      if (/felt|feel|grief|mourn|emotion|inner/i.test(text) && /never says|not say|no .*(said|word|mention)|withhold/i.test(text)) {
         withheld.push({ bookId, pid: s.id.split('/')[1], scene: s.code, text: s.significant_absence });
       }
     }

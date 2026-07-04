@@ -386,13 +386,16 @@ ${figs.map(flagRow('figure', 'violet')).join('\n')}
  *  significant_absence: the absence is the hard constraint and stays senior. */
 function renderAppraisals(s) {
   if (!s.emotion_appraisals?.length) return '';
+  const seniority = s.significant_absence
+    ? ' — junior to the absence above'
+    : ' — no absence is marked for this scene';
   const rows = s.emotion_appraisals
     .map((a) => `<div class="appraisal-row"><span class="chip amber">${escapeHtml(a.emotion ?? '')}</span>
       <span class="mono" style="font-size:10px;color:var(--dim);">holder ${escapeHtml(a.holder ?? '—')} ·
       values <a href="registry/concept/${escapeAttr(String(a.valued ?? '').split(' ')[0])}.html">${escapeHtml(a.valued ?? '—')}</a> ·
       ${escapeHtml(a.script_stage ?? '')} · evidence ${escapeHtml(a.evidence_anchor ?? '—')}</span></div>`)
     .join('\n');
-  return `<div class="appraisals"><span class="k"><span class="pilotbadge">PILOT</span> inferred appraisal — junior to the absence above</span>
+  return `<div class="appraisals"><span class="k"><span class="pilotbadge">PILOT</span> inferred appraisal${seniority}</span>
 ${rows}</div>`;
 }
 
