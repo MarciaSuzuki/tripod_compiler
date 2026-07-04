@@ -214,3 +214,88 @@ a.btn:hover { color: var(--gold); border-color: var(--gold-soft); text-decoratio
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ── The living brain (V2, PR-3) — HUD styles ported from the approved v4 mock.
+   Everything here is inert without JS: .brainui stays hidden until
+   atlas-brain.js adds body.brain-on, and the static page remains the
+   no-JS experience (spec §2.4). ─────────────────────────────────────────── */
+
+.brainui { display: none; }
+body.brain-on { overflow: hidden; }
+body.brain-on main, body.brain-on header.atlas, body.brain-on footer.atlas { display: none; }
+body.brain-on .brainui { display: block; }
+body.brain-on #stage { position: fixed; inset: 0; cursor: default; }
+
+.hud { position: fixed; z-index: 5; pointer-events: none; }
+.hud * { pointer-events: auto; }
+#brand { top: 24px; left: 28px; max-width: 330px; }
+#brand h1 { margin: .3em 0 .15em; font-size: 21px; font-weight: 500; letter-spacing: .02em; color: var(--bright); }
+#brand p { margin: 0; font-size: 12px; color: var(--dim); line-height: 1.5; font-weight: 400; }
+#brand a { color: var(--gold); }
+
+body.brain-on #modes { top: 26px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+#modes .chip { cursor: pointer; padding: 7px 13px; border-radius: 6px; transition: color .2s, background .2s, border-color .2s; }
+#modes .chip.on { background: rgba(255, 193, 99, 0.13); color: var(--gold); border-color: rgba(255, 193, 99, 0.4); }
+#modes .chip:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
+
+body.brain-on #tools { top: 26px; right: 28px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; max-width: 40vw; }
+#tools select, #search {
+  font-family: var(--mono); font-size: 11px; color: var(--ink);
+  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line); border-radius: 6px;
+  padding: 6px 8px; outline: none; transition: border-color .2s;
+}
+#tools select { appearance: none; max-width: 118px; }
+#tools select option { background: #0B1020; color: var(--ink); }
+#search { width: 130px; }
+#search:focus, #tools select:focus { border-color: rgba(255, 193, 99, 0.5); }
+#search::placeholder { color: var(--dimmer); }
+.switch { display: flex; align-items: center; gap: 8px; font-size: 10.5px; color: var(--dim); cursor: pointer;
+  font-family: var(--mono); letter-spacing: .06em; user-select: none; }
+.switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.switch .tr { width: 32px; height: 16px; border-radius: 8px; background: rgba(255, 255, 255, 0.09); position: relative; transition: background .25s; flex: none; }
+.switch .tr::after { content: ""; position: absolute; top: 3px; left: 3px; width: 10px; height: 10px; border-radius: 50%; background: var(--dim); transition: left .25s, background .25s; }
+.switch input:checked + .tr { background: rgba(255, 193, 99, 0.28); }
+.switch input:checked + .tr::after { left: 19px; background: var(--gold); }
+.switch input:focus-visible + .tr { outline: 1px solid var(--gold); outline-offset: 2px; }
+
+#legend { left: 28px; bottom: 24px; font-size: 10px; color: var(--dim); font-family: var(--mono); letter-spacing: .04em; }
+#legend div { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+#legend i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+body.brain-on #stats { right: 28px; bottom: 24px; text-align: right; font-size: 10px; color: var(--dimmer);
+  font-family: var(--mono); line-height: 1.8; max-width: 400px; letter-spacing: .03em; }
+#stats b { color: var(--dim); font-weight: 500; }
+#caption { left: 50%; bottom: 70px; transform: translateX(-50%); text-align: center; max-width: 620px;
+  font-size: 14px; color: var(--ink); text-shadow: 0 2px 16px #000; font-weight: 300; line-height: 1.5; }
+#caption .id { font-family: var(--mono); color: var(--gold); font-size: 11px; letter-spacing: .16em; }
+#hint { left: 50%; bottom: 24px; transform: translateX(-50%); font-size: 9.5px; color: var(--dimmer);
+  font-family: var(--mono); letter-spacing: .1em; }
+
+body.brain-on #panel { position: fixed; z-index: 6; top: 86px; right: 28px; width: 308px; max-height: calc(100vh - 200px);
+  overflow-y: auto; background: rgba(7, 10, 20, 0.9); border: 1px solid var(--line); border-radius: 8px;
+  padding: 16px 18px 18px; display: none; backdrop-filter: blur(10px); }
+#panel .kind { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; font-family: var(--mono); color: var(--gold); opacity: .85; }
+#panel h3 { margin: .45em 0 .1em; font-size: 18px; font-weight: 500; line-height: 1.25; color: var(--bright); }
+#panel .heb { font-size: 16px; color: var(--dim); direction: rtl; unicode-bidi: isolate; text-align: left; margin-top: 2px; }
+#panel p { font-size: 12.5px; line-height: 1.55; color: var(--dim); margin: .6em 0; font-weight: 400; }
+#panel .grp { margin: 14px 0 6px; }
+#panel .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+#panel .nchip { font-family: var(--mono); font-size: 10px; color: var(--ink);
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 5px;
+  padding: 4px 9px; cursor: pointer; transition: background .15s, border-color .15s; }
+#panel .nchip:hover { background: rgba(255, 193, 99, 0.1); border-color: rgba(255, 193, 99, 0.35); }
+#panel .abs { border: 1px dashed rgba(255, 193, 99, 0.35); border-radius: 6px; padding: 10px 12px;
+  font-size: 12px; line-height: 1.55; margin-top: 10px; color: var(--ink); font-weight: 300; }
+#panel .abs .lbl { display: block; font-family: var(--mono); font-size: 8.5px;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+#panel .x { position: absolute; top: 8px; right: 10px; background: none; border: none; color: var(--dimmer);
+  font-size: 16px; cursor: pointer; font-family: inherit; }
+#panel .x:hover { color: var(--ink); }
+
+@media (max-width: 760px) {
+  #brand { max-width: 220px; } #brand h1 { font-size: 17px; }
+  body.brain-on #modes { top: auto; bottom: 88px; width: 94vw; }
+  body.brain-on #tools { display: none; }
+  body.brain-on #panel { top: auto; bottom: 0; right: 0; left: 0; width: auto; max-height: 46vh; border-radius: 10px 10px 0 0; }
+  #legend, #hint { display: none !important; }
+  body.brain-on #stats { left: 28px; right: 28px; text-align: left; bottom: 8px; }
+}

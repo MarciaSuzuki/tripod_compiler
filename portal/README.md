@@ -154,6 +154,23 @@ Atlas nav link, and resolved `[[wikilink]]` mentions upgrading from tooltip span
 tooltip **links** into the registry pages — same classes, same tooltips, same look.
 Acceptance bars are held in [test/atlas-pages.test.mjs](test/atlas-pages.test.mjs).
 
+## The living brain (`atlas/index.html` + `assets/atlas-brain.js`)
+
+With JavaScript on, the Atlas home becomes the force-directed "brain" over the
+same shards — a faithful port of the approved v4 mock's engine (synapse firing,
+murmuration mode changes, calm fixed-step physics). **This is the portal's one
+declared client-side-JS departure (spec §2.4)**: the engine is vendored (no CDN,
+no external host — a test enforces it), it loads on the Atlas home only, and
+without JS that page renders its full static content as the navigable fallback.
+Modes: Brain · Books · Cast · Concepts · Growth (the Growth replay walks the
+seed pericope-by-pericope with real titles). Nothing in the engine is hardcoded
+to a book — ghost/"arriving" states, spines, and the replay order all derive
+from the shards, so new books onboard with zero engine changes. Level-of-detail
+is data-derived (cast ≥2 spans, concepts recurring ≥2; thresholds rise
+automatically past the node budget) and every hidden entry stays reachable on
+the registry pages. `window.__tripodBrain` exposes a small programmatic handle
+for the acceptance checks and the coming guided tours (V5).
+
 ## Connecting the Google Form (Marcia's 5-minute step)
 
 The feedback buttons ship **visibly disabled** until the Form exists. To go
