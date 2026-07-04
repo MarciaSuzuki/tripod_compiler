@@ -162,6 +162,19 @@ test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page
   const n = g.books.reduce((s, b) => s + b.counts.pericopes, 0);
   assert.ok(tours.includes(`${n} passages today.`), 'trajectory step counts from the data');
   assert.doesNotMatch(tours, /Nineteen passages/);
+  // Tour 4 step 3 is likewise self-updating (Marcia's ruling): the arriving
+  // book's cast count comes from the registry, never from prose.
+  const arriving = g.books.find((b) => b.status !== 'complete');
+  if (arriving) {
+    assert.ok(tours.includes(`cast of ${arriving.counts.entities}`), 'arriving cast counts from the data');
+  } else {
+    assert.match(tours, /Every book here arrived the same way/);
+  }
+  assert.doesNotMatch(tours, /fifty-one|fifty-four/);
+  assert.match(tours, /becomes a full spine by itself as its approved artifacts merge/);
+  // The ruled portal title (Marcia, 2026-07-04), on both sides of the house.
+  assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /<title>Tripod Method Leg One: The Exegete Portal</);
+  assert.match(index, /The Exegete Portal/);
   rmrf(out);
 });
 

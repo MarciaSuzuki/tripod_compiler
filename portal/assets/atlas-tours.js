@@ -48,9 +48,11 @@
       if (!B) { if (tries++ < 40) setTimeout(attempt, 250); return; }
       B.select(null); // mirror the mode chips: never act under a stale selection
       if (action.startsWith("mode:")) B.applyMode(action.slice(5));
-      if (action === "select-ghost") {
-        const ghost = B.nodes.find((n) => n.kind === "ghost");
-        if (ghost) B.select(ghost);
+      if (action === "select-ghost" || action === "select-arriving") {
+        const arriving =
+          B.nodes.find((n) => n.kind === "ghost") ||
+          (action === "select-arriving" && B.nodes.find((n) => n.kind === "book" && n.status && n.status !== "complete"));
+        if (arriving) B.select(arriving);
       }
       if (action.startsWith("focus:")) {
         const n = B.byId[action.slice(6)];
