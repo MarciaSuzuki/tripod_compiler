@@ -546,6 +546,12 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
       sources: f.sources,
     })),
     summary: `${shards.length} book shard(s) + global (${globalData.counts.concepts} CB · ${globalData.counts.figures} FIG · ${globalData.counts.sc_rulings} SC · ${globalData.counts.vocabulary_values} vocab values)`,
+    // Structured view for the Atlas page renderers — same objects, no re-read.
+    data: {
+      books: bookIndexRows,
+      shards: new Map(shards.map((s) => [s.data.book.id, s.data])),
+      global: globalData,
+    },
   };
 }
 

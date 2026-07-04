@@ -140,6 +140,20 @@ per-value provenance, SC-ruling timeline, and the book index). Facts to know:
   marker) is kept as an `unresolved` edge with the raw ref — honest, never
   silently dropped.
 
+## Atlas pages (`dist/atlas/*.html`)
+
+The same data renders as static Atlas pages ([src/atlas/pages.mjs](src/atlas/pages.mjs),
+[assets/atlas.css](assets/atlas.css) — the approved v4 "luminous brain" treatment,
+never loaded by a Reading-Room page): an Atlas index, one Book Atlas page per book
+(pericope spine · computed thread lanes · scene/absence drill-downs; a registry-only
+book renders its cast with a "maps in progress" badge and no artifact content), and
+one registry page per entity, concept and figure with computed backlinks. **Zero
+client-side JavaScript** — every page renders complete without JS. The only
+Reading-Room changes the Atlas makes (both declared, spec §0.1/§8.7): the header's
+Atlas nav link, and resolved `[[wikilink]]` mentions upgrading from tooltip spans to
+tooltip **links** into the registry pages — same classes, same tooltips, same look.
+Acceptance bars are held in [test/atlas-pages.test.mjs](test/atlas-pages.test.mjs).
+
 ## Connecting the Google Form (Marcia's 5-minute step)
 
 The feedback buttons ship **visibly disabled** until the Form exists. To go
