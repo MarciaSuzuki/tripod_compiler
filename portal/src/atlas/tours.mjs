@@ -1,10 +1,9 @@
 // Tripod Portal Atlas — V5 guided tours (PR-5, spec §4 V5).
 //
 // Four keyboard-stepped, full-screen tours over the LIVE views (never
-// screenshots), for partner meetings. The tour prose below is a DRAFT held
-// to the Common-Reader Prose Standard — per the spec's content gate it is
-// worded and approved by Marcia BEFORE this can merge; the Evaluator carries
-// it to her one tour at a time.
+// screenshots), for partner meetings. Tour prose per Marcia's wording ruling
+// (2026-07-04, recorded on PR #103): her words verbatim; the trajectory
+// step's passage count is computed from the data, never hardcoded.
 //
 // Progressive (§2.4): this page renders every tour as a plain readable
 // article without JavaScript — the prose IS the fallback. With JS, the
@@ -25,25 +24,26 @@ const TOURS = [
         url: '../pericopes/P01.html#meaning-map',
         title: 'The map itself',
         prose:
-          'This is a Meaning Map: a plain-language study of one Bible passage — here, the opening of Ruth. It records what the passage says and how it says it, before any translation begins.',
+          'This is a Meaning Map: a plain-language study of one Bible passage — here, the opening of Ruth. It records what the passage says and how it says it, before any translation begins. And no map stands alone: each one is made as part of a whole, and feeds a whole.',
       },
       {
         url: '../pericopes/P01.html#meaning-map',
         title: 'Scene by scene',
         prose:
-          'The map walks the passage scene by scene, in the order the text tells it. Every claim comes from the Hebrew text; nothing is added to it.',
+          'The map walks the passage scene by scene, in the order the text tells it. Every claim is checked against the Hebrew text itself — the BHSA database, a scholarly word-by-word edition of the Hebrew Bible. Nothing is added to the text.',
       },
       {
-        url: './ruth.html#P01',
-        title: 'The same passage, as structure',
+        url: './index.html',
+        mind: 'focus:ruth/P01',
+        title: 'Part of a living whole',
         prose:
-          'The Atlas shows the same passage as structure: four scenes, each with the people and places that take part in it.',
+          'Here is the same passage inside the Meaning Mind — its scenes, its people and places, connected to everything around them. A Meaning Map works in both directions at once: top-down, written from the perspective of the whole book; and bottom-up, feeding the Mind of the whole book — and, in time, the whole Bible.',
       },
       {
         url: './ruth.html#P01',
         title: 'Statements you can check',
         prose:
-          'Each scene breaks into numbered statements — small, checkable pieces of what the text says. The opening of Ruth holds thirteen of them.',
+          'Each scene breaks into numbered statements — small, checkable pieces of what the text says; the opening of Ruth holds thirteen. They are not a translation and not a paraphrase: they are the inventory of the meaning itself — what the model must faithfully reconstruct in the language of the oral archive.',
       },
       {
         url: './ruth.html#P01',
@@ -84,9 +84,9 @@ const TOURS = [
       },
       {
         url: './ruth.html#P01',
-        title: 'And the Atlas reads it back',
+        title: 'And the Meaning Mind reads it back',
         prose:
-          'The Atlas is built directly from those machine files: what you see here is the FOR_MODEL, rendered as living structure.',
+          'And the Meaning Mind reads it back: what you see here is the FOR_MODEL, rendered as living structure.',
       },
     ],
   },
@@ -150,7 +150,7 @@ const TOURS = [
         mind: 'select-ghost',
         title: 'Esther is arriving',
         prose:
-          'Esther is already arriving: her fifty-one cast entries are pinned in the registry. The dashed ring becomes a full spine by itself, the day her first approved artifacts merge.',
+          'Esther is arriving: her cast of fifty-one is already pinned, and her maps are landing. Watch this ring — it becomes a full spine by itself as her approved artifacts merge, with no one redrawing anything.',
       },
       {
         url: './index.html',
@@ -163,14 +163,21 @@ const TOURS = [
         url: './index.html',
         mind: 'mode:Mind',
         title: 'The trajectory',
-        prose:
-          'Nineteen passages today. The same structure — the same vocabulary, the same rules — holds at whole-Bible scale. That is what this pipeline is for.',
+        prose: null, // computed at build: '<N> passages today. …' — never hardcoded
       },
     ],
   },
 ];
 
+const TRAJECTORY_PROSE = (n) =>
+  `${n} passages today. The same structure — the same vocabulary, the same rules — holds at whole-Bible scale. That is what this pipeline is for.`;
+
 export function toursPage({ cfg, formCfg, atlas, stats, atlasLayout }) {
+  // The trajectory step's passage count is computed from the data at every
+  // build (Marcia's ruling D) — it grows by itself as books merge.
+  const totalPericopes = atlas.books.reduce((n, b) => n + b.counts.pericopes, 0);
+  const proseOf = (s) => s.prose ?? TRAJECTORY_PROSE(totalPericopes);
+
   const tourArticle = (t, i) => `
 <article class="tour" id="tour-${escapeAttr(t.id)}" data-tour>
   <h2><span class="mono" style="color:var(--gold);">${i + 1}</span> · ${escapeHtml(t.title)}</h2>
@@ -180,7 +187,7 @@ ${t.steps
   .map(
     (s, j) => `  <section class="tstep" data-url="${escapeAttr(s.url)}"${s.mind ? ` data-mind="${escapeAttr(s.mind)}"` : ''}>
     <h3><span class="mono" style="font-size:10px;color:var(--dimmer);">step ${j + 1}</span> ${escapeHtml(s.title)}</h3>
-    <p>${escapeHtml(s.prose)}</p>
+    <p>${escapeHtml(proseOf(s))}</p>
     <p class="mono" style="font-size:10px;"><a href="${escapeAttr(s.url)}">open this view ↗</a></p>
   </section>`
   )
@@ -190,7 +197,7 @@ ${t.steps
   const content = `
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
   <h1>Guided tours</h1>
-  ${renderFeedbackButtons(formCfg, { pericope: 'Atlas — Guided tours', artifact: 'The website itself' })}
+  ${renderFeedbackButtons(formCfg, { pericope: 'Meaning Mind — Guided tours', artifact: 'The website itself' })}
 </div>
 <p>Four short, presenter-friendly walks through the living views — for partners meeting the
 Tripod Method for the first time. With JavaScript on, each tour runs full-screen over the real
@@ -201,7 +208,7 @@ ${TOURS.map(tourArticle).join('\n')}`;
     cfg,
     title: 'Guided tours',
     relRoot: '../',
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Atlas</a> · Guided tours</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Meaning Mind</a> · Guided tours</h1>`,
     contentHtml: content,
     stats,
     scriptHtml: `<script src="../assets/atlas-tours.js" defer></script>`,

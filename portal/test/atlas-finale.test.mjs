@@ -132,6 +132,34 @@ test('emotion Tier 2: a planted appraisal block renders badged and JUNIOR to the
   rmrf(without);
 });
 
+test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page', { skip: !haveFixtures }, () => {
+  // The section reads "Meaning Mind" everywhere a visitor reads; URLs, file
+  // names and internals stay atlas-* by the same ruling (plumbing, not
+  // reading). Pinned exactly like the Tripod-Brain pin.
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-naming-'));
+  assert.equal(runBuild(repoRoot, out).status, 0);
+  const walk = (d) => fs.readdirSync(d).flatMap((f) => {
+    const p = path.join(d, f);
+    return fs.statSync(p).isDirectory() ? walk(p) : f.endsWith('.html') ? [p] : [];
+  });
+  for (const page of walk(out)) {
+    const visible = fs.readFileSync(page, 'utf8').replace(/<[^>]*>/g, ' ');
+    assert.doesNotMatch(visible, /\b[Aa]tlas\b/, `visible "Atlas" on ${path.relative(out, page)}`);
+  }
+  // The ruled surfaces read Meaning Mind.
+  const index = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
+  assert.match(index, /Tripod Method · Meaning Mind/);
+  assert.match(index, /<title>Meaning Mind · /);
+  assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /Meaning Mind — the whole seed corpus, connected/);
+  // Tour ruling D: the trajectory count is computed, never hardcoded.
+  const tours = fs.readFileSync(path.join(out, 'atlas', 'tours.html'), 'utf8');
+  const g = JSON.parse(fs.readFileSync(path.join(out, 'atlas', 'global.json'), 'utf8'));
+  const n = g.books.reduce((s, b) => s + b.counts.pericopes, 0);
+  assert.ok(tours.includes(`${n} passages today.`), 'trajectory step counts from the data');
+  assert.doesNotMatch(tours, /Nineteen passages/);
+  rmrf(out);
+});
+
 test('tours: the page reads complete without JS and ships only the vendored engine', { skip: !haveFixtures }, () => {
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-tours-'));
   assert.equal(runBuild(repoRoot, out).status, 0);

@@ -138,7 +138,7 @@ ${values.map(valueCard).join('\n')}
   const content = `
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
   <h1>Vocabulary Observatory</h1>
-  ${renderFeedbackButtons(formCfg, { pericope: 'Atlas — Vocabulary Observatory', artifact: 'The website itself' })}
+  ${renderFeedbackButtons(formCfg, { pericope: 'Meaning Mind — Vocabulary Observatory', artifact: 'The website itself' })}
 </div>
 <p>The controlled vocabulary is the interlanguage every book speaks — and it grows only under
 governance. This page is generated from the pinned spec files
@@ -158,7 +158,7 @@ bounded-open value carries the ruling that admitted it.</p>
     New values surface as <b>drift</b>, get reviewed, and enter only by ruling — with provenance.</div></div>
   <div class="bookcard"><div class="bt"><h2 style="font-size:16px;color:var(--champagne);">L3 — registry</h2></div>
     <div class="facts"><b>${totalCast}</b> cast entities · <b>${g.counts.concepts}</b> concepts · <b>${g.counts.figures}</b> figures<br>
-    Per-book casts and the global banks — browsable in the <a href="index.html">Atlas</a> registry pages.</div></div>
+    Per-book casts and the global banks — browsable in the <a href="index.html">Meaning Mind</a> registry pages.</div></div>
 </div>
 
 <div class="grp">Current size per axis — ${axes.length} axes · ${g.counts.vocabulary_values} values</div>
@@ -183,7 +183,7 @@ ${scNodes.map(ledgerRow).join('\n')}
     cfg,
     title: 'Vocabulary Observatory',
     relRoot: '../',
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Atlas</a> · Vocabulary Observatory</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Meaning Mind</a> · Vocabulary Observatory</h1>`,
     contentHtml: content,
     stats,
   });

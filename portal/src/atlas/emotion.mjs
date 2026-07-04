@@ -55,7 +55,7 @@ export function emotionPage({ cfg, formCfg, atlas, stats, atlasLayout }) {
   const content = `
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
   <h1>How emotion is mapped</h1>
-  ${renderFeedbackButtons(formCfg, { pericope: 'Atlas — Emotion method', artifact: 'The website itself' })}
+  ${renderFeedbackButtons(formCfg, { pericope: 'Meaning Mind — Emotion method', artifact: 'The website itself' })}
 </div>
 <p><span class="methodbadge">method adopted 2026-07-02 · appraisal block piloting at Psalm 13</span></p>
 <p>The Tripod Method treats emotion with the same discipline as everything else: what the text
@@ -139,7 +139,7 @@ SIL <i>Journal of Translation</i> 20(2), 2024, pp. 21–62.</p></div>`;
     cfg,
     title: 'Emotion method',
     relRoot: '../',
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Atlas</a> · Emotion</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Meaning Mind</a> · Emotion</h1>`,
     contentHtml: content,
     stats,
   });

@@ -52,6 +52,10 @@
         const ghost = B.nodes.find((n) => n.kind === "ghost");
         if (ghost) B.select(ghost);
       }
+      if (action.startsWith("focus:")) {
+        const n = B.byId[action.slice(6)];
+        if (n) { B.expandPericope(n); B.select(n); }
+      }
     };
     attempt();
   }
