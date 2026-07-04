@@ -54,7 +54,7 @@ export function atlasPages({ cfg, formCfg, atlas, buildInfo }) {
 
 // ---- shared frame --------------------------------------------------------------
 
-function atlasLayout({ cfg, title, relRoot, crumbs, contentHtml, stats }) {
+function atlasLayout({ cfg, title, relRoot, crumbs, contentHtml, stats, scriptHtml = '', overlayHtml = '' }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -62,7 +62,7 @@ function atlasLayout({ cfg, title, relRoot, crumbs, contentHtml, stats }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>${escapeHtml(title ? `${title} · Atlas · ${cfg.siteTitle}` : `Atlas · ${cfg.siteTitle}`)}</title>
-<link rel="stylesheet" href="${relRoot}assets/atlas.css">
+<link rel="stylesheet" href="${relRoot}assets/atlas.css">${scriptHtml ? `\n${scriptHtml}` : ''}
 </head>
 <body>
 <header class="atlas">
@@ -74,7 +74,7 @@ function atlasLayout({ cfg, title, relRoot, crumbs, contentHtml, stats }) {
 </header>
 <main>
 ${contentHtml}
-</main>
+</main>${overlayHtml ? `\n${overlayHtml}` : ''}
 <footer class="atlas">
   <p>${escapeHtml(stats)}</p>
   <p>Every fact on this page is generated from <b>approved canon on main</b> — the same gated files the
@@ -156,8 +156,8 @@ ${cards}
      ${axes.length} axes (${l1.length} closed · ${l2.length} bounded-open) ·
      <b>${g.counts.sc_rulings}</b> governance rulings</p>
   <p>Concept and figure pages are linked wherever they occur — from book pages, scene drill-downs,
-  and the Reading Room's highlighted terms. The interactive graph over this same data is the next
-  piece of the Atlas; these pages are its substance, readable today.</p>
+  and the Reading Room's highlighted terms. With JavaScript on, this page becomes the living
+  graph over the same data; everything below stays readable without it.</p>
 </div>`;
 
   return atlasLayout({
@@ -168,7 +168,37 @@ ${cards}
     crumbs: `<h1 style="margin:.25em 0 0;font-size:21px;">Atlas</h1>`,
     contentHtml: content,
     stats,
+    scriptHtml: `<script src="../assets/atlas-brain.js" defer></script>`,
+    overlayHtml: brainSkeleton(cfg),
   });
+}
+
+/** The living-brain HUD (V2). Server-rendered but hidden until atlas-brain.js
+ *  boots (body.brain-on) — without JS this markup stays inert and the static
+ *  page above IS the degraded, navigable experience (spec §2.4). */
+function brainSkeleton(cfg) {
+  return `
+<canvas id="stage" class="brainui" aria-label="The Tripod brain — an interactive graph of the seed corpus"></canvas>
+<div class="hud brainui" id="brand">
+  <div class="eyebrow"><b>Shema</b> · Tripod Method · Atlas</div>
+  <h1>The Tripod Brain</h1>
+  <p>The seed corpus as a living network. Every node is approved canon — touch one and watch its
+  synapses fire. <a href="../index.html">Reading Room</a></p>
+</div>
+<div class="hud brainui" id="modes" role="tablist" aria-label="views"></div>
+<div class="hud brainui" id="tools">
+  <select id="f-book" data-f="book" aria-label="filter by book"></select>
+  <select id="f-kind" data-f="kind" aria-label="filter by node kind"></select>
+  <select id="f-genre" data-f="genre" aria-label="filter by genre"></select>
+  <select id="f-register" data-f="register" aria-label="filter by register"></select>
+  <input id="search" type="search" placeholder="search the brain…" aria-label="search nodes">
+  <label class="switch"><input type="checkbox" id="allthreads"><span class="tr"></span>all threads</label>
+</div>
+<div class="hud brainui" id="legend"></div>
+<div class="hud brainui" id="stats"></div>
+<div class="hud brainui" id="caption" style="display:none"><span class="id"></span><br><span class="t"></span></div>
+<div class="hud brainui" id="hint">esc or click the dark to reset · drag any node · click chips in the panel to travel</div>
+<aside id="panel" class="brainui"><button class="x" aria-label="close">×</button><div id="pbody"></div></aside>`;
 }
 
 // ---- V1: book page ----------------------------------------------------------------

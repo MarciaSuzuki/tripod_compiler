@@ -73,10 +73,16 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
   assert.match(p01, /<nav class="sitenav"><a href="\.\.\/atlas\/index\.html">/);
   assert.match(read(out, 'index.html'), /<nav class="sitenav"><a href="atlas\/index\.html">/);
 
-  // §2.4: zero client-side JS on every atlas page; §2.5: feedback buttons present.
+  // §2.4: the ONLY script anywhere is the Atlas home's vendored brain engine
+  // (the declared JS departure, PR-3); every other page ships zero JS.
   for (const rel of ['atlas/index.html', 'atlas/ruth.html', 'atlas/esther.html', 'atlas/registry/ruth/B10.html', 'atlas/registry/concept/CB_0001.html']) {
     const html = read(out, rel);
-    assert.doesNotMatch(html, /<script/i, `${rel} must ship no JS`);
+    if (rel === 'atlas/index.html') {
+      const scripts = html.match(/<script[^>]*>/gi) ?? [];
+      assert.deepEqual(scripts, ['<script src="../assets/atlas-brain.js" defer>'], `${rel}: exactly the one vendored engine`);
+    } else {
+      assert.doesNotMatch(html, /<script/i, `${rel} must ship no JS`);
+    }
     assert.match(html, /name="robots" content="noindex"/, `${rel} keeps noindex`);
   }
   for (const rel of ['atlas/index.html', 'atlas/ruth.html', 'atlas/esther.html', 'atlas/registry/ruth/B10.html', 'atlas/registry/concept/CB_0001.html']) {
