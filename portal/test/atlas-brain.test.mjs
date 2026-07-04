@@ -61,6 +61,12 @@ test('brain: HUD skeleton carries the V2 controls (modes mount point, filters, s
   for (const id of ['id="modes"', 'id="f-book"', 'id="f-kind"', 'id="f-genre"', 'id="f-register"', 'id="search"', 'id="allthreads"', 'id="panel"', 'id="legend"', 'id="stats"']) {
     assert.ok(index.includes(id), `missing HUD element ${id}`);
   }
+  // Naming ruling (Marcia, 2026-07-04): the user-facing title is "The Meaning
+  // Mind" (h1 + the canvas accessible name, kept in sync); internal names
+  // (atlas-brain.js, brain-on, __tripodBrain) deliberately stay brain-*.
+  assert.match(index, /<h1>The Meaning Mind<\/h1>/);
+  assert.match(index, /aria-label="The Meaning Mind — an interactive graph/);
+  assert.doesNotMatch(index, /Tripod Brain/);
   rmrf(out);
 });
 

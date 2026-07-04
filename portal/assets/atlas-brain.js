@@ -289,8 +289,8 @@
   }
 
   /* ---------- modes (generalized to N books, zero book names in code) ---------- */
-  const MODES = ["Brain", "Books", "Cast", "Concepts", "Growth"];
-  let mode = "Brain", modeT = 0;
+  const MODES = ["Mind", "Books", "Cast", "Concepts", "Growth"];
+  let mode = "Mind", modeT = 0;
   const spineBooks = () => nodes.filter((n) => n.kind === "book");
   const ghostBooks = () => nodes.filter((n) => n.kind === "ghost");
   const perisOf = (b) => nodes.filter((n) => n.kind === "pericope" && n.book === b.id);
@@ -349,7 +349,7 @@
       });
     };
 
-    if (m === "Brain") {
+    if (m === "Mind") {
       const bs = spineBooks();
       bs.forEach((b, i) => anchor(b, W * (.30 + .38 * (bs.length === 1 ? .5 : i / (bs.length - 1))), H * (.46 + .06 * (i % 2)), .004));
       ghostBooks().forEach((b, i) => anchor(b, W * .90, H * (.76 + i * .08), .006));
@@ -742,8 +742,8 @@
   const modesEl = $("modes");
   MODES.forEach((m) => {
     const b = document.createElement("button");
-    b.className = "chip" + (m === "Brain" ? " on" : ""); b.dataset.m = m; b.textContent = m; b.setAttribute("role", "tab");
-    b.setAttribute("aria-selected", m === "Brain" ? "true" : "false");
+    b.className = "chip" + (m === "Mind" ? " on" : ""); b.dataset.m = m; b.textContent = m; b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", m === "Mind" ? "true" : "false");
     b.onclick = () => { select(null); applyMode(m); };
     modesEl.appendChild(b);
   });
@@ -778,7 +778,7 @@
   updateStats();
 
   resize();
-  applyMode("Brain", false);
+  applyMode("Mind", false);
   requestAnimationFrame(loop);
 
   /* Programmatic handle — used by the acceptance checks and by the guided

@@ -181,10 +181,10 @@ ${cards}
  *  page above IS the degraded, navigable experience (spec §2.4). */
 function brainSkeleton(cfg) {
   return `
-<canvas id="stage" class="brainui" aria-label="The Tripod brain — an interactive graph of the seed corpus"></canvas>
+<canvas id="stage" class="brainui" aria-label="The Meaning Mind — an interactive graph of the seed corpus"></canvas>
 <div class="hud brainui" id="brand">
   <div class="eyebrow"><b>Shema</b> · Tripod Method · Atlas</div>
-  <h1>The Tripod Brain</h1>
+  <h1>The Meaning Mind</h1>
   <p>The seed corpus as a living network. Every node is approved canon — touch one and watch its
   synapses fire. <a href="../index.html">Reading Room</a></p>
 </div>
