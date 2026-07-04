@@ -22,6 +22,7 @@ export function layout({ cfg, title, relRoot, contentHtml, buildInfo }) {
   <div class="masthead">
     <a class="home" href="${relRoot}index.html">${escapeHtml(cfg.siteTitle)}</a>
     <div class="subtitle">${escapeHtml(cfg.siteSubtitle)}</div>
+    <nav class="sitenav"><a href="${relRoot}atlas/index.html">Atlas — the whole seed corpus, connected →</a></nav>
   </div>
 </header>
 <main>

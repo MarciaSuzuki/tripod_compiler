@@ -20,6 +20,7 @@ import crypto from 'node:crypto';
 import { parseNote, extractFencedJson } from './lib/frontmatter.mjs';
 import { ARTIFACT_CLASSES, checkArtifact, GateError } from './lib/gate.mjs';
 import { buildAtlas } from './atlas/export.mjs';
+import { atlasPages } from './atlas/pages.mjs';
 import { loadRegistries } from './lib/registry.mjs';
 import { renderMarkdown } from './lib/markdown.mjs';
 import { renderJsonTree } from './lib/jsontree.mjs';
@@ -149,7 +150,15 @@ function main() {
         `pericope ${p.id}: unknown book prefix "${bookPrefix}" — add the new book to portal.config.json "books" (prefix, registry aliases file)`
       );
     }
-    const ctx = { registries, bookPrefix, published, relRoot: '../' };
+    const ctx = {
+      registries,
+      bookPrefix,
+      published,
+      relRoot: '../',
+      // Resolved registry mentions become navigable into the Atlas (V3 bar;
+      // the declared Reading-Room change alongside the header nav link).
+      atlas: { bookIdByPrefix: new Map(cfg.books.map((b) => [b.prefix, String(b.name).toLowerCase()])) },
+    };
 
     const mapFm = p.map?.frontmatter ?? p.forModel?.frontmatter ?? p.log?.frontmatter ?? {};
     const title = mapFm['pericope-title'] ?? '';
@@ -212,6 +221,9 @@ function main() {
   // source violation (GateError, exit 2) still means nothing hits disk.
   const atlas = buildAtlas({ repoRoot, cfg, buildInfo, pericopes: ordered, jsonOf, configPath });
 
+  // ---- 4c. Atlas pages (spec §4 V1 + V3) — rendered from the same data.
+  const atlasHtml = atlasPages({ cfg, formCfg, atlas: atlas.data, buildInfo });
+
   // ---- 5. Write (only after everything rendered cleanly) --------------------
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(path.join(outDir, 'pericopes'), { recursive: true });
@@ -221,7 +233,13 @@ function main() {
   for (const f of atlas.files) {
     fs.writeFileSync(path.join(outDir, f.file), JSON.stringify(f.data, null, 2) + '\n');
   }
+  for (const [rel, html] of atlasHtml) {
+    const target = path.join(outDir, rel);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, html);
+  }
   fs.copyFileSync(path.join(portalDir, 'assets', 'style.css'), path.join(outDir, 'assets', 'style.css'));
+  fs.copyFileSync(path.join(portalDir, 'assets', 'atlas.css'), path.join(outDir, 'assets', 'atlas.css'));
   fs.copyFileSync(path.join(portalDir, 'assets', 'shema-logo.svg'), path.join(outDir, 'assets', 'shema-logo.svg'));
   fs.writeFileSync(path.join(outDir, '.nojekyll'), '');
 
@@ -245,6 +263,7 @@ function main() {
     `portal: built ${ordered.length} pericope page(s) from ${artifacts.length} approved artifact(s) → ${outDir}`
   );
   console.log(`  atlas: ${atlas.summary}`);
+  console.log(`  atlas pages: ${atlasHtml.size} (index + ${atlas.data.books.length} books + registry)`);
   for (const p of ordered) {
     const parts = [p.map && 'map', p.forModel && 'for-model', p.log && 'log'].filter(Boolean);
     console.log(`  ${p.id}: ${parts.join(' + ')}`);

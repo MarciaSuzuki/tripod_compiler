@@ -209,3 +209,12 @@ section.artifact-missing { background: var(--paper); border-style: dashed; }
   .btns, .ask-section, nav.crumbs { display: none; }
   section.artifact { border: none; padding: 0; }
 }
+
+/* ── Atlas navigation (PR-2; the §0.1-permitted addition) ──────────────────
+   Two rules only: the header's Atlas link, and resolved wikilink mentions —
+   which are now navigable <a> into the Atlas registry — keeping their exact
+   original look (the .wl classes still carry color + dotted border). */
+header.site .sitenav { margin-top: 0.35rem; font-size: 0.9rem; }
+header.site .sitenav a { color: var(--accent); }
+a.wl { text-decoration: none; }
+a.wl:hover { border-bottom-style: solid; }

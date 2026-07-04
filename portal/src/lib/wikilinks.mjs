@@ -52,6 +52,10 @@ const ARTIFACT_ANCHOR = {
  *   bookPrefix,            // 'P' | 'J' — the book of the page being rendered
  *   published,             // Map pericopeId → Set of published artifact kinds
  *   relRoot,               // relative prefix to the site root ('' or '../')
+ *   atlas,                 // OPTIONAL {bookIdByPrefix: Map} — when present, resolved
+ *                          //   entity/concept/figure mentions become links into the
+ *                          //   Atlas registry pages (V3 accept bar), same classes +
+ *                          //   tooltips. Absent → the original tooltip-only spans.
  * }
  */
 export function renderWikilink(ctx, target, pipe) {
@@ -59,12 +63,22 @@ export function renderWikilink(ctx, target, pipe) {
   const cls = classifyTarget(t);
   const display = (pipe ?? '').trim();
 
+  // Same classes, same tooltip, same inner markup — the only delta when an
+  // atlas href exists is <span> → <a href>. Keeps the declared byte-change on
+  // Reading-Room pages exactly "mentions become navigable", nothing else.
+  const resolved = (klass, innerHtml, tip, href) =>
+    href
+      ? `<a class="wl ${klass}" href="${escapeAttr(href)}" title="${escapeAttr(tip)}">${innerHtml}</a>`
+      : `<span class="wl ${klass}" title="${escapeAttr(tip)}">${innerHtml}</span>`;
+
   switch (cls.kind) {
     case 'entity': {
       const e = ctx.registries.entity(ctx.bookPrefix, cls.code);
       const text = display || (cls.slug ? deSlug(cls.slug) : e?.english || cls.code);
       if (e) {
-        return `<span class="wl wl-entity" title="${escapeAttr(entityTooltip(cls.code, e))}"><bdi>${escapeHtml(text)}</bdi></span>`;
+        const bookId = ctx.atlas?.bookIdByPrefix?.get(ctx.bookPrefix);
+        const href = bookId ? `${ctx.relRoot}atlas/registry/${bookId}/${cls.code}.html` : null;
+        return resolved('wl-entity', `<bdi>${escapeHtml(text)}</bdi>`, entityTooltip(cls.code, e), href);
       }
       return unresolved(text, `${cls.code} — not in the public registry`);
     }
@@ -73,7 +87,8 @@ export function renderWikilink(ctx, target, pipe) {
       const text = display || deSlug(cls.slug ?? c?.name_slug ?? cls.code);
       if (c) {
         const tip = `${cls.code} · Concept Bank · ${deSlug(c.name_slug ?? '')}${c.appears_in ? ' · appears in ' + c.appears_in.join(', ') : ''}`;
-        return `<span class="wl wl-concept" title="${escapeAttr(tip)}">${escapeHtml(text)}</span>`;
+        const href = ctx.atlas ? `${ctx.relRoot}atlas/registry/concept/${cls.code}.html` : null;
+        return resolved('wl-concept', escapeHtml(text), tip, href);
       }
       return unresolved(text, `${cls.code} — not in the public Concept Bank registry`);
     }
@@ -82,7 +97,8 @@ export function renderWikilink(ctx, target, pipe) {
       const text = display || deSlug(cls.slug ?? f?.name_slug ?? cls.code);
       if (f) {
         const tip = `${cls.code} · Figure Registry · ${deSlug(f.name_slug ?? '')}${f.appears_in ? ' · appears in ' + f.appears_in.join(', ') : ''}`;
-        return `<span class="wl wl-figure" title="${escapeAttr(tip)}">${escapeHtml(text)}</span>`;
+        const href = ctx.atlas ? `${ctx.relRoot}atlas/registry/figure/${cls.code}.html` : null;
+        return resolved('wl-figure', escapeHtml(text), tip, href);
       }
       return unresolved(text, `${cls.code} — not in the public Figure Registry`);
     }
