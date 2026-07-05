@@ -224,7 +224,7 @@ a.btn:hover { color: var(--gold); border-color: var(--gold-soft); text-decoratio
 body.brain-on { overflow: hidden; }
 body.brain-on main, body.brain-on header.atlas, body.brain-on footer.atlas { display: none; }
 body.brain-on .brainui { display: block; }
-body.brain-on #stage { position: fixed; inset: 0; cursor: default; }
+body.brain-on #stage { position: fixed; inset: 0; cursor: grab; touch-action: none; }
 
 .hud { position: fixed; z-index: 5; pointer-events: none; }
 .hud * { pointer-events: auto; }

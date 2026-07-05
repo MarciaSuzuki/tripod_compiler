@@ -28,6 +28,17 @@ test('brain: the vendored engine reaches no external host and hardcodes no book'
   assert.doesNotMatch(codeOnly, /esther|ruth|jonah/i, 'no book name hardcoded in code');
   // Motion discipline: ambient animation is gated on prefers-reduced-motion.
   assert.match(brainSrc, /prefers-reduced-motion/);
+  // Camera + hands (Marcia's rulings): pan, zoom, and book-cluster drag whose
+  // placement PERSISTS (anchors travel with the drag), single-gesture pointer
+  // discipline, and cancel cleanup.
+  assert.match(brainSrc, /panX/);
+  assert.match(brainSrc, /m\.ax \+= dx; m\.ay \+= dy;/, 'cluster placement must move the anchors too');
+  assert.match(brainSrc, /activePtr/, 'multi-touch: one gesture, one pointer');
+  assert.match(brainSrc, /pointercancel/);
+  const css = fs.readFileSync(path.join(portalDir, 'assets', 'atlas.css'), 'utf8');
+  assert.match(css, /touch-action: none/);
+  const toursSrc = fs.readFileSync(path.join(portalDir, 'assets', 'atlas-tours.js'), 'utf8');
+  assert.match(toursSrc, /resetView\?\.\(\)/, 'tour steps reset a viewer-panned viewport');
 });
 
 test('brain: the atlas index stays a complete no-JS page (progressive, §2.4)', { skip: !haveFixtures }, () => {

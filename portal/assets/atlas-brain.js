@@ -249,13 +249,14 @@
 
   /* ---------- light sprites, bokeh (verbatim from the approved mock) ---------- */
   let W = 0, H = 0;
-  let zoom = 1;
+  let zoom = 1, panX = 0, panY = 0;
   const Z_MIN = 0.35, Z_MAX = 2.5;
   const setZoom = (z) => { zoom = Math.max(Z_MIN, Math.min(Z_MAX, z)); };
-  const zx = (v) => W * .5 + (v - W * .5) * zoom;
-  const zy = (v) => H * .52 + (v - H * .52) * zoom;
-  const unzx = (v) => W * .5 + (v - W * .5) / zoom;
-  const unzy = (v) => H * .52 + (v - H * .52) / zoom;
+  const resetView = () => { setZoom(1); panX = 0; panY = 0; };
+  const zx = (v) => W * .5 + panX + (v - W * .5) * zoom;
+  const zy = (v) => H * .52 + panY + (v - H * .52) * zoom;
+  const unzx = (v) => W * .5 + (v - W * .5 - panX) / zoom;
+  const unzy = (v) => H * .52 + (v - H * .52 - panY) / zoom;
   const SPR = {};
   function makeGlow(color) {
     const s = document.createElement("canvas"); s.width = s.height = 64;
@@ -479,7 +480,10 @@
       a.vx *= .90; a.vy *= .90;
       const v = Math.hypot(a.vx, a.vy); if (v > 2.6) { a.vx *= 2.6 / v; a.vy *= 2.6 / v; }
       a.x += a.vx; a.y += a.vy;
-      a.x = Math.max(30, Math.min(W - 30, a.x)); a.y = Math.max(TOPY, Math.min(H - 58, a.y));
+      if (!(groupDrag && groupDrag.includes(a))) {
+        a.x = Math.max(30 - W * .6, Math.min(W * 1.6 - 30, a.x));
+        a.y = Math.max(TOPY - H * .45, Math.min(H * 1.45 - 58, a.y));
+      }
     });
   }
 
@@ -676,6 +680,11 @@
 
   /* ---------- interaction ---------- */
   let drag = null, dragX = 0, dragY = 0, downP = null, moved = false, lastHovFired = null;
+  let downNode = null;                 // for click-select regardless of drag style
+  let groupDrag = null;                // a book's whole cluster, moved rigidly
+  let panning = false;
+  let lastCX = 0, lastCY = 0;          // last pointer position (screen px)
+  let activePtr = null;                // one gesture, one pointer — extra fingers are ignored
   function pick(x, y) {
     let best = null, bd = 1e9;
     nodes.forEach((n) => {
@@ -685,24 +694,61 @@
     return best;
   }
   cv.addEventListener("pointermove", (e) => {
+    if (activePtr !== null && e.pointerId !== activePtr) return;
+    if (groupDrag) {
+      // Rigid translation of the whole cluster, in physics space.
+      const dx = (e.clientX - lastCX) / zoom, dy = (e.clientY - lastCY) / zoom;
+      lastCX = e.clientX; lastCY = e.clientY;
+      for (const m of groupDrag) {
+        m.x += dx; m.y += dy; m.vx = 0; m.vy = 0;
+        // The mode layout moves WITH the placement — otherwise the anchors
+        // tow the cluster back home within seconds of release.
+        if (m.ax !== undefined) { m.ax += dx; m.ay += dy; }
+      }
+      moved = true; return;
+    }
     if (drag) { dragX = unzx(e.clientX); dragY = unzy(e.clientY); moved = true; return; }
+    if (panning) {
+      panX += e.clientX - lastCX; panY += e.clientY - lastCY;
+      lastCX = e.clientX; lastCY = e.clientY;
+      moved = true; return;
+    }
     const h = pick(e.clientX, e.clientY);
     if (h && h !== hov && h !== sel && h !== lastHovFired && !RM) { fireNode(h, .35, 10); lastHovFired = h; }
-    hov = h; cv.style.cursor = h ? "pointer" : "default";
+    hov = h; cv.style.cursor = h ? "pointer" : "grab";
   });
   cv.addEventListener("pointerdown", (e) => {
+    if (activePtr !== null) return; // a gesture is already in progress
+    activePtr = e.pointerId;
     const n = pick(e.clientX, e.clientY);
-    downP = [e.clientX, e.clientY]; moved = false;
-    if (n) { drag = n; dragX = unzx(e.clientX); dragY = unzy(e.clientY); cv.setPointerCapture(e.pointerId); }
+    downP = [e.clientX, e.clientY]; moved = false; downNode = n;
+    lastCX = e.clientX; lastCY = e.clientY;
+    try { cv.setPointerCapture(e.pointerId); } catch {}
+    if (n && (n.kind === "book" || n.kind === "ghost")) {
+      // Grab the whole book: hub + everything that belongs to it.
+      groupDrag = nodes.filter((m) => m === n || m.book === n.id);
+      cv.style.cursor = "grabbing";
+    } else if (n) {
+      drag = n; dragX = unzx(e.clientX); dragY = unzy(e.clientY);
+    } else {
+      panning = true; cv.style.cursor = "grabbing";
+    }
   });
   cv.addEventListener("pointerup", (e) => {
+    if (e.pointerId !== activePtr) return;
     const dist = downP ? Math.hypot(e.clientX - downP[0], e.clientY - downP[1]) : 99;
-    if (drag && dist < 5 && !moved) select(drag);
-    else if (!drag && dist < 5) select(null);
-    drag = null;
+    if (dist < 5 && !moved) select(downNode ?? null);
+    drag = null; groupDrag = null; panning = false; downNode = null; activePtr = null;
+    const h = pick(e.clientX, e.clientY);
+    hov = h; cv.style.cursor = h ? "pointer" : "grab";
+  });
+  cv.addEventListener("pointercancel", (e) => {
+    if (e.pointerId !== activePtr) return;
+    drag = null; groupDrag = null; panning = false; downNode = null; activePtr = null;
+    cv.style.cursor = "grab";
   });
   addEventListener("keydown", (e) => {
-    if (e.key === "Escape") { select(null); $("search").value = ""; q = ""; }
+    if (e.key === "Escape") { select(null); resetView(); $("search").value = ""; q = ""; }
     if (e.key === "+" || e.key === "=") setZoom(zoom * 1.15);
     if (e.key === "-") setZoom(zoom / 1.15);
   });
@@ -714,7 +760,7 @@
     btn.onclick = () => {
       if (btn.dataset.z === "in") setZoom(zoom * 1.25);
       else if (btn.dataset.z === "out") setZoom(zoom / 1.25);
-      else setZoom(1);
+      else resetView();
     };
   });
   $("search").addEventListener("input", (e) => { q = e.target.value.trim().toLowerCase(); });
@@ -785,7 +831,7 @@
     const b = document.createElement("button");
     b.className = "chip" + (m === "Mind" ? " on" : ""); b.dataset.m = m; b.textContent = m; b.setAttribute("role", "tab");
     b.setAttribute("aria-selected", m === "Mind" ? "true" : "false");
-    b.onclick = () => { select(null); applyMode(m); };
+    b.onclick = () => { select(null); resetView(); applyMode(m); };
     modesEl.appendChild(b);
   });
 
@@ -819,9 +865,10 @@
   /* Programmatic handle — used by the acceptance checks and by the guided
    * tours (V5) to step the live view. Read/drive only what the UI can do. */
   window.__tripodBrain = {
-    nodes, edges, byId, select, applyMode, expandPericope, filter, setZoom,
+    nodes, edges, byId, select, applyMode, expandPericope, filter, setZoom, resetView,
     get mode() { return mode; },
     get selected() { return sel; },
     get zoom() { return zoom; },
+    get pan() { return { x: panX, y: panY }; },
   };
 })();
