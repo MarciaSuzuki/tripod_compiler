@@ -660,9 +660,15 @@
         if (n.kind === "ent" || n.kind === "cb" || n.kind === "fig")
           ctx.font = '400 10.5px -apple-system,"SF Pro Text","Helvetica Neue",sans-serif';
         ctx.globalAlpha = 1;
-        ctx.fillStyle = "rgba(208,220,245," + (0.40 + 0.45 * n.alpha) + ")";
-        ctx.textAlign = "center";
-        ctx.fillText(n.label, n.px, n.py - n.rz - 9);
+        // Labels fade with their node — no bright floor — so dim sources (selection,
+        // Emotion, filters, search) mute unselected text too. Exception: the selected
+        // or pointer-hovered node's label stays readable even while its alpha is held low.
+        const lblA = isSel || isHov ? Math.max(.85 * n.alpha, .75) : .85 * n.alpha;
+        if (lblA > .01) {
+          ctx.fillStyle = "rgba(208,220,245," + lblA + ")";
+          ctx.textAlign = "center";
+          ctx.fillText(n.label, n.px, n.py - n.rz - 9);
+        }
       }
     });
     ctx.globalAlpha = 1;
