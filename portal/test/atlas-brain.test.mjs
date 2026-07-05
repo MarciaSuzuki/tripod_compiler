@@ -36,11 +36,13 @@ test('brain: the vendored engine reaches no external host and hardcodes no book'
   assert.match(brainSrc, /activePtr/, 'multi-touch: one gesture, one pointer');
   assert.match(brainSrc, /pointercancel/);
   // Focus discipline (Marcia's ruling): labels fade with their node — no additive
-  // brightness floor holding dimmed text bright. Only the selected/hovered node's
-  // label may floor up, for readability under the pointer.
+  // brightness floor holding dimmed text bright. Only the selected node, the node
+  // under the pointer, and search hits (ring and letters must agree) may floor up.
   assert.doesNotMatch(brainSrc, /0\.40 \+ 0\.45 \* n\.alpha/, 'dimmed labels must not keep a bright floor');
-  assert.match(brainSrc, /isSel \|\| isHov \? Math\.max\(\.85 \* n\.alpha, \.75\) : \.85 \* n\.alpha/,
-    'label alpha follows n.alpha, floored only for the selected/hovered node');
+  assert.match(brainSrc, /isSel \|\| isHov \|\| isHit \? Math\.max\(\.85 \* n\.alpha, \.75\) : \.85 \* n\.alpha/,
+    'label alpha follows n.alpha, floored only for selected/hovered/search-hit nodes');
+  assert.match(brainSrc, /addEventListener\("pointerleave", \(\) => \{ hov = null; \}\)/,
+    'hover must not outlive the pointer — a stale hov would pin one dimmed label bright');
   const css = fs.readFileSync(path.join(portalDir, 'assets', 'atlas.css'), 'utf8');
   assert.match(css, /touch-action: none/);
   const toursSrc = fs.readFileSync(path.join(portalDir, 'assets', 'atlas-tours.js'), 'utf8');
