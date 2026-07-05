@@ -92,6 +92,7 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
 </section>
 <p class="toursline"><a href="atlas/tours.html">Four guided tours</a> walk the
 Meaning Mind step by step — full-screen, arrow keys, no setup.</p>
+<p class="toursline"><a href="tripod-method.html">The Tripod Method — three legs, three translation roles →</a></p>
 
 <details class="about">
   <summary>First time here? What you're looking at, and how to comment</summary>

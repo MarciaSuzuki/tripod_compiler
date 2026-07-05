@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tripod Method — Three Legs, Three Translation Roles</title>
+<style>
+  :root{
+    --paper:#F7F5EF;
+    --card:#FFFDF8;
+    --ink:#22201B;
+    --ink-soft:#6E6759;
+    --line:#DDD7C8;
+    --block:#2A2620;
+    --exegete:#9A5B12;
+    --exegete-soft:#B07A33;
+    --performer:#2E6B3E;
+    --performer-soft:#4F8A5E;
+    --facilitator:#24549C;
+    --facilitator-soft:#4A72B0;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);margin:0;}
+  .wrap{max-width:1020px;margin:0 auto;padding:56px 24px 72px;}
+  a{color:var(--facilitator);}
+  a:focus-visible{outline:2px solid var(--facilitator);outline-offset:2px;}
+
+  /* ---------- type ---------- */
+  .eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 18px;}
+  h1{font-size:clamp(34px,5vw,48px);line-height:1.08;font-weight:600;margin:0 0 26px;text-wrap:balance;letter-spacing:-.01em;}
+  h2{font-size:clamp(23px,3vw,28px);line-height:1.2;font-weight:600;margin:0 0 10px;text-wrap:balance;}
+  .section-sub{font-size:16px;line-height:1.6;color:var(--ink-soft);max-width:64ch;margin:0 0 26px;}
+  p{font-size:16.5px;line-height:1.68;margin:0 0 16px;}
+  section{margin-top:72px;}
+
+  /* ---------- header ---------- */
+  .shema{display:flex;gap:22px;align-items:flex-start;border-left:3px solid var(--ink);padding:6px 0 6px 22px;margin:0 0 26px;}
+  .shema .heb{font-size:44px;line-height:1;font-weight:600;margin-top:2px;}
+  .shema p{margin:0;font-size:17.5px;line-height:1.62;font-style:italic;max-width:56ch;}
+  .shema p b{font-style:normal;}
+  .deck{font-size:18.5px;line-height:1.62;max-width:62ch;margin:0 0 40px;}
+
+  /* ---------- naming strip ---------- */
+  .naming{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0 6px;}
+  .naming-caption{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 16px;}
+  .naming-row{display:grid;grid-template-columns:64px 200px 1fr auto;gap:10px;align-items:baseline;padding:9px 0;border-top:1px dotted var(--line);}
+  .naming-row:first-of-type{border-top:none;}
+  .n-leg{font-family:var(--sans);font-size:11px;letter-spacing:.1em;font-weight:700;}
+  .n-new{font-size:19px;font-weight:600;}
+  .n-what{font-size:14.5px;font-style:italic;color:var(--ink-soft);}
+  .n-keep{font-family:var(--sans);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
+  .l1{color:var(--exegete);} .l2{color:var(--performer);} .l3{color:var(--facilitator);}
+
+  /* ---------- 3D viewer ---------- */
+  .viewer-grid{display:grid;grid-template-columns:minmax(0,1fr) 312px;gap:20px;align-items:start;margin-top:8px;}
+  .stage-card{background:var(--card);border:1px solid var(--line);border-radius:12px;position:relative;overflow:hidden;}
+  .stage-card svg{display:block;width:100%;height:auto;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;}
+  .stage-card svg.dragging{cursor:grabbing;}
+  .stage-hint{position:absolute;left:14px;bottom:10px;font-family:var(--sans);font-size:11px;color:var(--ink-soft);pointer-events:none;}
+  .leg-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;}
+  .leg-buttons button{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.02em;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;color:var(--ink-soft);}
+  .leg-buttons button.b1{color:var(--exegete);} .leg-buttons button.b2{color:var(--performer);}
+  .leg-buttons button.b3{color:var(--facilitator);} .leg-buttons button.b0{color:var(--ink);}
+  .leg-buttons button:hover{border-color:currentColor;}
+  .leg-buttons button:focus-visible{outline:2px solid var(--facilitator);outline-offset:2px;}
+  .leg-buttons button[aria-pressed="true"]{background:currentColor;border-color:currentColor;}
+  .leg-buttons button[aria-pressed="true"] span{color:#FFFDF8;}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px 16px;border-top:4px solid var(--line);}
+  .panel .p-kicker{font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 8px;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+  .panel .p-close{font-family:var(--sans);font-size:12px;border:none;background:none;color:var(--ink-soft);cursor:pointer;padding:2px 6px;border-radius:6px;}
+  .panel .p-close:hover{background:rgba(0,0,0,.06);}
+  .panel h3{font-size:22px;font-weight:600;margin:0 0 2px;}
+  .panel .p-listens{font-style:italic;font-size:14px;color:var(--ink-soft);margin:0 0 10px;}
+  .panel .p-asks{font-size:15px;margin:0 0 12px;}
+  .panel .p-quality{font-size:13.5px;margin:0 0 4px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .panel .p-quality b{font-variant:small-caps;letter-spacing:.03em;font-size:15px;}
+  .panel ul{list-style:none;margin:0;padding:0;}
+  .panel li{padding:8px 0;border-top:1px dotted var(--line);font-size:13.5px;line-height:1.5;color:var(--ink-soft);}
+  .panel li:first-child{border-top:none;}
+  .panel li b{display:block;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--ink);}
+  .panel .p-note{margin:12px 0 0;font-size:12.5px;font-style:italic;color:var(--ink-soft);}
+  .panel .p-body{font-size:14px;line-height:1.6;color:var(--ink);margin:0 0 12px;}
+  .panel .p-legend{list-style:none;margin:0;padding:0;}
+  .panel .p-legend li{display:flex;align-items:baseline;gap:9px;}
+  .panel .p-legend .dot{width:10px;height:10px;border-radius:50%;flex:none;position:relative;top:1px;}
+
+  /* viewer svg text */
+  svg text{font-family:var(--sans);}
+  .vhalo{paint-order:stroke;stroke:#FFFDF8;stroke-width:3.5px;stroke-linejoin:round;}
+  .v-title{font-size:13px;font-weight:700;letter-spacing:.05em;}
+  .v-world{font-size:10.5px;font-weight:700;letter-spacing:.1em;}
+  .v-pot{font-size:13px;font-weight:700;letter-spacing:.08em;fill:var(--ink);}
+  .v-hub{font-size:9.5px;font-weight:700;letter-spacing:.07em;fill:var(--ink);}
+  .v-chip{font-size:10px;font-weight:600;}
+  svg.compact .v-world{display:none;}
+  svg.compact .v-title{font-size:11px;}
+
+  /* ---------- role cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 22px 18px;border-top-width:4px;display:flex;flex-direction:column;}
+  .card dl{flex:1;}
+  .card.k1{border-top-color:var(--exegete);}
+  .card.k2{border-top-color:var(--performer);}
+  .card.k3{border-top-color:var(--facilitator);}
+  .card .kicker{font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 8px;}
+  .card h3{font-size:24px;font-weight:600;margin:0 0 4px;}
+  .card .listens{font-style:italic;font-size:15px;color:var(--ink-soft);margin:0 0 14px;}
+  .card .asks{font-size:16.5px;line-height:1.5;margin:0 0 16px;}
+  .card dl{margin:0;}
+  .card dt{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:14px 0 4px;}
+  .card dd{margin:0;font-size:14px;line-height:1.58;}
+  .card code{font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.045);padding:1px 4px;border-radius:4px;}
+  .discipline{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.5;}
+  .discipline b{font-variant:small-caps;letter-spacing:.04em;font-size:16px;}
+
+  /* ---------- schema strip ---------- */
+  .schema{display:grid;grid-template-columns:1fr auto 1.25fr auto 1fr;gap:0;align-items:stretch;margin:26px 0 20px;}
+  .sbox{border-radius:10px;padding:18px;border:1.5px solid;}
+  .sbox .tok{font-family:var(--mono);font-size:13px;font-weight:700;display:block;margin-bottom:8px;}
+  .sbox p{font-size:13.5px;line-height:1.55;margin:0;color:var(--ink);}
+  .sbox.s1{border-color:var(--exegete);background:rgba(154,91,18,.06);}
+  .sbox.s1 .tok{color:var(--exegete);}
+  .sbox.s2{border-color:var(--facilitator);background:rgba(36,84,156,.06);}
+  .sbox.s2 .tok{color:var(--facilitator);}
+  .sbox.s3{border-color:var(--performer);background:rgba(46,107,62,.06);}
+  .sbox.s3 .tok{color:var(--performer);}
+  .slink{display:flex;align-items:center;padding:0 10px;font-family:var(--sans);font-size:16px;color:var(--ink-soft);}
+  .schema-caption{max-width:66ch;color:var(--ink);}
+
+  /* ---------- closing ---------- */
+  .closing{background:var(--block);color:#EFEBE2;border-radius:12px;padding:36px 38px;margin-top:72px;}
+  .closing p{font-size:17px;line-height:1.7;max-width:66ch;}
+  .closing p:last-of-type{margin-bottom:0;}
+  .closing .heb-line{font-size:19px;margin-top:22px;font-style:italic;color:#CFC8B8;}
+  .closing .heb-line b{font-style:normal;font-size:24px;color:#EFEBE2;}
+  footer{margin-top:56px;font-family:var(--sans);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:16px;}
+
+  @media (max-width:880px){
+    .cards,.fails{grid-template-columns:1fr;}
+    .viewer-grid{grid-template-columns:1fr;}
+    .schema{grid-template-columns:1fr;}
+    .slink{padding:8px 0;justify-content:center;transform:rotate(90deg);width:24px;margin:0 auto;}
+    .naming-row{grid-template-columns:52px 1fr;}
+    .n-new{grid-column:2;}
+    .n-what{grid-column:2;}
+    .n-keep{grid-column:2;white-space:normal;}
+    .shema .heb{font-size:34px;}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <p class="eyebrow">The Tripod Method · AI-assisted oral Bible translation</p>
+    <h1>Three Legs, Three Translation Roles</h1>
+
+    <div class="shema">
+      <div class="heb" aria-hidden="true">שְׁמַע</div>
+      <p><b>Shema — “hear.”</b> Before anything can be said well, three listenings have to happen.
+      The <b class="l1">Exegete</b> listens to the Text. The <b class="l2">Performer</b> listens to the People.
+      The <b class="l3">Facilitator</b> makes sure they hear each other.</p>
+    </div>
+
+    <p class="deck">The Exegete searches out the biblical meaning and world, and keeps the Meaning
+    Maps. The Performer carries the community’s voice and world, and keeps the Oral Archive. The
+    Facilitator tends the third space where the two worlds meet, and keeps the Concept Bank.</p>
+
+    <div class="naming">
+      <p class="naming-caption">Three roles, three treasuries</p>
+      <div class="naming-row">
+        <span class="n-leg l1">LEG 1</span>
+        <span class="n-new l1">The Exegete</span>
+        <span class="n-what">the search for the biblical meaning and world</span>
+        <span class="n-keep">keeps the Meaning Maps</span>
+      </div>
+      <div class="naming-row">
+        <span class="n-leg l2">LEG 2</span>
+        <span class="n-new l2">The Performer</span>
+        <span class="n-what">the community’s voice, language, and world</span>
+        <span class="n-keep">keeps the Oral Archive</span>
+      </div>
+      <div class="naming-row">
+        <span class="n-leg l3">LEG 3</span>
+        <span class="n-new l3">The Facilitator</span>
+        <span class="n-what">the third space where the two worlds meet</span>
+        <span class="n-keep">keeps the Concept Bank</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2>The whole architecture, on three legs</h2>
+
+    <div class="viewer-grid">
+      <div>
+        <div class="stage-card">
+          <svg id="tripod3d" viewBox="0 0 900 620" role="img" aria-label="Interactive tripod in three dimensions: the Exegete, Performer, and Facilitator legs meet at the hub that carries the reviewable oral draft. Use the buttons below to bring each part forward.">
+            <g id="scene"></g>
+          </svg>
+          <div class="stage-hint">it turns on its own — drag to look around · click a leg</div>
+        </div>
+        <div class="leg-buttons" role="group" aria-label="Bring a part of the tripod forward">
+          <button class="b1" data-sel="exegete" aria-pressed="false"><span>Leg 1 · The Exegete</span></button>
+          <button class="b2" data-sel="performer" aria-pressed="false"><span>Leg 2 · The Performer</span></button>
+          <button class="b3" data-sel="facilitator" aria-pressed="false"><span>Leg 3 · The Facilitator</span></button>
+          <button class="b0" data-sel="hub" aria-pressed="false"><span>The Meeting Point</span></button>
+        </div>
+      </div>
+      <aside class="panel" id="legPanel" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section>
+    <h2>Each leg, in full</h2>
+    <div class="cards">
+      <article class="card k1">
+        <p class="kicker">Leg 1 · the Text side</p>
+        <h3 class="l1">The Exegete</h3>
+        <p class="listens">listens to the Text — the biblical world</p>
+        <p class="asks"><em>What did this mean, there and then?</em></p>
+        <dl>
+          <dt>Keeps</dt>
+          <dd>Meaning Maps — arc, scenes, propositions, significant absences. STA / FOR_MODEL, the
+          machine-facing structure. The BCD registry — beings, places, objects, times, institutions,
+          referential forms. Compilation Logs — triage, decisions, red-lines. All of it lives in the
+          wiki vault, the Exegete’s workshop.</dd>
+          <dt>At scale</dt>
+          <dd>The Tripod Compiler — reader, vocabulary guard, validator, audit. It does the Exegete’s
+          mechanical work, under Leg 3’s vocabulary law.</dd>
+          <dt>In the model family</dt>
+          <dd>The gold supervision: reviewed Meaning Map + STA is what the models learn
+          meaning-structure from.</dd>
+        </dl>
+        <p class="discipline"><b class="l1">trustworthy</b> — nothing invented, everything traceable to its source.</p>
+      </article>
+
+      <article class="card k2">
+        <p class="kicker">Leg 2 · the voice side</p>
+        <h3 class="l2">The Performer</h3>
+        <p class="listens">listens to the People from inside — the community’s world</p>
+        <p class="asks"><em>How do we already say such things — narrate, lament, bless, proclaim?</em></p>
+        <dl>
+          <dt>Keeps</dt>
+          <dd>The Oral Archive — recordings of real speech, tagged with the shared
+          vocabulary (<code>LA_RECORDING</code>). The community’s own genres and registers. The music
+          of the language — acoustemes, pitch.</dd>
+          <dt>In the model family</dt>
+          <dd>The Performer model — monolingual by design, trained only on the community’s own voice,
+          so it has no foreign accent to fall back into — and the pitch-conditioned vocoder.</dd>
+        </dl>
+        <p class="discipline"><b class="l2">intelligible · appropriate · appealing</b> — nothing foreign; Scripture that sounds like home.</p>
+      </article>
+
+      <article class="card k3">
+        <p class="kicker">Leg 3 · the third space</p>
+        <h3 class="l3">The Facilitator</h3>
+        <p class="listens">listens to both — keeper of the third space, where the worlds meet</p>
+        <p class="asks"><em>Did the meaning cross? Can we show that it did?</em></p>
+        <dl>
+          <dt>Keeps — no sources, only agreements</dt>
+          <dd>Nothing here could exist with only one world present. The Concept Bank
+          (<code>CB_####</code>) and Figure Registry (<code>FIG_####</code>) — the ledger of settled
+          negotiations. The shared controlled vocabulary — one schema, two profiles, the same Layer-1
+          lists on both worlds. How emotion is encoded — tone, register, speech acts. The three-layer
+          guard — closed lists block, bounded lists warn of drift, registries propose with provenance.
+          Control packets — <code>must_preserve_absences</code>, register claims, red-lines.</dd>
+          <dt>In the pipeline</dt>
+          <dd>Adaptive fusion — the machine side of the meeting point — under the hard rule
+          <em>never invent content</em>: the third space is machine-checked, never
+          machine-imagined.</dd>
+        </dl>
+        <p class="discipline"><b class="l3">verified</b> — nothing crosses unchecked; no drift passes silently.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>The bridge is not a metaphor. It is a schema.</h2>
+    <p class="section-sub">If the third space is the room where the worlds meet, this is the beam
+    that holds it up — in the data itself.</p>
+    <div class="schema">
+      <div class="sbox s1">
+        <span class="tok">BIBLICAL_PASSAGE</span>
+        <p>The Text-side profile — Meaning Maps, STA, the BCD, Concept-Bank and Figure flags.</p>
+      </div>
+      <div class="slink" aria-hidden="true">⟷</div>
+      <div class="sbox s2">
+        <span class="tok">SHARED LAYER 1</span>
+        <p>4 genre groups · 31 genres · 7 registers · speech acts — one closed interlanguage,
+        load-bearing on both sides.</p>
+      </div>
+      <div class="slink" aria-hidden="true">⟷</div>
+      <div class="sbox s3">
+        <span class="tok">LA_RECORDING</span>
+        <p>The voice-side profile — the community’s recordings, tagged with the very same lists.</p>
+      </div>
+    </div>
+    <p class="schema-caption">One STA schema carries two artifact profiles. What makes Leg 3 a leg —
+    and not a good intention — is that the bridge is load-bearing in the data: change one list and
+    both worlds feel it. That is why keeping it — versioning it, guarding its drift — is a role,
+    not a chore.</p>
+  </section>
+
+  <div class="closing">
+    <p><strong>Why name the legs after people?</strong> Because artifacts don’t collaborate; people
+    do. A tripod of collections would be a filing system; a tripod of roles is a team — and each
+    treasury is held by someone with a face. The models in the pipeline are apprentices to the
+    team’s own crafts: the AI does not replace the team — it scales the team.</p>
+    <p>Even the names are third-space work: the method describes itself in categories translation
+    teams already own — exegete, performer, facilitator — rather than in the language of pipelines
+    and models. To find, in the hearers’ own world, the form that carries your meaning: the Tripod
+    begins by doing to itself what it asks of every translation.</p>
+    <p class="heb-line"><b>שְׁמַע</b> — hear. Three listenings, one Word heard.</p>
+  </div>
+
+  <footer>Tripod Method · Shema Bible Translation / OBT Lab — concept note, July 2026<br>
+  A note for the project’s own history: in the earliest drafts, the legs were named for their
+  treasuries — Meaning Maps, Oral Archive, Concept Bank.</footer>
+</main>
+
+<script>
+(function(){
+  var svg = document.getElementById('tripod3d');
+  if (!svg) return;
+  var scene = document.getElementById('scene');
+  var panel = document.getElementById('legPanel');
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var C = { exegete:'#9A5B12', performer:'#2E6B3E', facilitator:'#24549C',
+            ink:'#2A2620', paper:'#FFFDF8', soft:'#6E6759', strut:'#A39B8A' };
+
+  var PARTS = {
+    exegete: { num:1, side:'the Text side', title:'The Exegete', color:C.exegete,
+      listens:'listens to the Text — the biblical world',
+      asks:'What did this mean, there and then?',
+      quality:'Trustworthy', qnote:'nothing invented, everything traceable',
+      world:'THE BIBLICAL WORLD', worldsub:'trustworthy',
+      artifacts:[
+        {s:'Biblical text',        n:'Biblical text — Hebrew · Greek', d:'the source, where the search begins'},
+        {s:'Meaning Map',          n:'Meaning Map', d:'arc · scenes · propositions · significant absences'},
+        {s:'BCD registry',         n:'BCD registry', d:'beings, places, objects, times, referential forms'},
+        {s:'Compiler · validator', n:'Compiler · validator', d:'the Exegete’s workbench at scale'},
+        {s:'Compilation Log',      n:'Compilation Log', d:'triage, decisions, red-lines'},
+        {s:'STA / FOR_MODEL',      n:'STA / FOR_MODEL', d:'the machine-facing structure'} ] },
+    performer: { num:2, side:'the voice side', title:'The Performer', color:C.performer,
+      listens:'listens to the People from inside — the community’s world',
+      asks:'How do we already say such things — narrate, lament, bless, proclaim?',
+      quality:'Intelligible · Appropriate · Appealing', qnote:'Scripture that sounds like home',
+      world:'THE COMMUNITY’S WORLD', worldsub:'intelligible · appropriate · appealing',
+      artifacts:[
+        {s:'Community voice',    n:'Community voice & orature', d:'how the people already speak'},
+        {s:'Oral Archive',       n:'Oral Archive', d:'recordings of real speech (LA_RECORDING)'},
+        {s:'Genres · registers', n:'Their genres · their registers', d:'narrative, lament, blessing, proclamation'},
+        {s:'Performer model',    n:'Performer model', d:'monolingual — trained only on the community’s own voice'} ] },
+    facilitator: { num:3, side:'the third space', title:'The Facilitator', color:C.facilitator,
+      listens:'listens to both — keeper of the third space',
+      asks:'Did the meaning cross? Can we show that it did?',
+      quality:'Verified', qnote:'nothing crosses unchecked',
+      world:'THE THIRD SPACE', worldsub:'verified',
+      note:'No sources, only agreements — nothing here could exist with only one world present.',
+      artifacts:[
+        {s:'Shared vocabulary (L1)', n:'Shared vocabulary — the L1 lists', d:'one interlanguage, load-bearing on both sides'},
+        {s:'3-layer guard',          n:'3-layer guard', d:'closed lists block · bounded lists warn · registries propose'},
+        {s:'Concept Bank',           n:'Concept Bank — CB_####', d:'settled agreements between the worlds'},
+        {s:'Figure Registry',        n:'Figure Registry — FIG_####', d:'how figures cross — or are kept'},
+        {s:'Emotion encoding',       n:'Emotion encoding', d:'tone · register · speech acts'},
+        {s:'Control packets',        n:'Control packets', d:'must_preserve_absences · register claims · red-lines'} ] },
+    hub: { side:'held in common', title:'The Meeting Point', color:C.ink,
+      listens:'in the team: internalization — in the pipeline: adaptive fusion',
+      asks:'Everything meets here; nothing reaches the platform except through it.',
+      artifacts:[
+        {n:'Internalization ⇄ adaptive fusion', d:'the meeting itself, human and machine'},
+        {n:'Acousteme + pitch manifest', d:'what the meeting emits'},
+        {n:'Pitch-conditioned vocoder', d:'gives it breath and voice'},
+        {n:'Reviewable oral draft', d:'community-owned Scripture, on the platform'},
+        {n:'Community testing', d:'the People weigh it'},
+        {n:'Consultant check', d:'the verification portal — nothing counts unchecked'} ] }
+  };
+
+  var LEGS = ['exegete','performer','facilitator'];
+  var PHI = { exegete:150*Math.PI/180, performer:30*Math.PI/180, facilitator:270*Math.PI/180 };
+  var R = 230, APEX = [0,300,0], TILT = 0.30, F = 1500;
+  var th = -0.62, thT = null, sel = null;
+  var W = 900, H = 620, S = 1, cx = 450, cy = 496;
+  var dragging = false, down = false, axis = null, lastX = 0, lastY = 0, dragged = 0, resumeAt = 0;
+
+  function foot(id){ var a = PHI[id]; return [R*Math.cos(a), 0, R*Math.sin(a)]; }
+  function radial(id,r){ var a = PHI[id]; return [Math.cos(a)*r, 0, Math.sin(a)*r]; }
+  function add3(A,B){ return [A[0]+B[0], A[1]+B[1], A[2]+B[2]]; }
+  function lerp3(A,B,t){ return [A[0]+(B[0]-A[0])*t, A[1]+(B[1]-A[1])*t, A[2]+(B[2]-A[2])*t]; }
+  function proj(P){
+    var c = Math.cos(th), s = Math.sin(th);
+    var X = P[0]*c + P[2]*s, Z = -P[0]*s + P[2]*c;
+    var ct = Math.cos(TILT), st = Math.sin(TILT);
+    var Y2 = P[1]*ct - Z*st, Z2 = P[1]*st + Z*ct;
+    var k = F/(F - Z2);
+    return { x: cx + X*k*S, y: cy - Y2*k*S, k: k*S, d: Z2 };
+  }
+  function circlePath(center, r, n){
+    var d = '';
+    for (var i = 0; i <= n; i++){
+      var a = i/n * 2*Math.PI;
+      var q = proj(add3(center, [r*Math.cos(a), 0, r*Math.sin(a)]));
+      d += (i ? 'L' : 'M') + q.x.toFixed(1) + ' ' + q.y.toFixed(1);
+    }
+    return d + 'Z';
+  }
+  function arcPath(center, r, a0, a1, n){
+    var d = '';
+    for (var i = 0; i <= n; i++){
+      var a = a0 + (a1-a0)*i/n;
+      var q = proj(add3(center, [r*Math.cos(a), 0, r*Math.sin(a)]));
+      d += (i ? 'L' : 'M') + q.x.toFixed(1) + ' ' + q.y.toFixed(1);
+    }
+    return d;
+  }
+  function mk(tag, attrs, cls){
+    var el = document.createElementNS(NS, tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    if (cls) el.setAttribute('class', cls);
+    scene.appendChild(el);
+    return el;
+  }
+  function mkText(cls, content, anchor){
+    var el = mk('text', {'text-anchor': anchor || 'middle'}, cls);
+    el.textContent = content;
+    return el;
+  }
+
+  // ---- build scene nodes (once) ----
+  var shadow = mk('path', {fill:'rgba(34,32,27,.05)'});
+  var legs = {};
+  LEGS.forEach(function(id){
+    var P = PARTS[id], L = {};
+    if (id === 'facilitator'){
+      L.padA = mk('path', {fill:'rgba(154,91,18,.07)', stroke:'rgba(154,91,18,.45)', 'stroke-width':1.2});
+      L.padB = mk('path', {fill:'rgba(46,107,62,.07)', stroke:'rgba(46,107,62,.45)', 'stroke-width':1.2});
+      L.lens = mk('path', {fill:'rgba(36,84,156,.4)'});
+    } else {
+      var rgb = id === 'exegete' ? '154,91,18' : '46,107,62';
+      L.pad = mk('path', {fill:'rgba('+rgb+',.09)', stroke:'rgba('+rgb+',.4)', 'stroke-width':1.2});
+    }
+    L.line = mk('line', {stroke:P.color, 'stroke-linecap':'round'});
+    L.hit  = mk('line', {stroke:'rgba(0,0,0,0)', 'stroke-width':30, 'stroke-linecap':'round',
+                         'data-sel':id, cursor:'pointer'});
+    L.foot = mk('ellipse', {fill:P.color});
+    L.t1 = mkText('v-title vhalo', 'LEG '+P.num+' · '+P.title.toUpperCase());
+    L.w1 = mkText('v-world vhalo', P.world);
+    L.t1.setAttribute('fill', P.color);
+    L.w1.setAttribute('fill', P.color);
+    L.t1.setAttribute('data-sel', id); L.t1.setAttribute('cursor','pointer');
+    L.chips = P.artifacts.map(function(a){
+      var w = a.s.length*5.6 + 18;
+      var g = { w:w,
+        rect: mk('rect', {rx:10, height:20, fill:C.paper, stroke:P.color, 'stroke-width':1.2, 'data-sel':id}),
+        text: mkText('v-chip', a.s) };
+      g.text.setAttribute('fill', P.color);
+      return g;
+    });
+    legs[id] = L;
+  });
+  var strut1 = mk('line', {stroke:C.strut, 'stroke-width':2});
+  var strut2 = mk('line', {stroke:C.strut, 'stroke-width':2});
+  var stem    = mk('line', {stroke:C.ink});
+  var stemHit = mk('line', {stroke:'rgba(0,0,0,0)', 'stroke-width':20, 'data-sel':'hub', cursor:'pointer'});
+  var potBot  = mk('path', {fill:'#1D1A16', 'data-sel':'hub', cursor:'pointer'});
+  var potTop  = mk('path', {fill:C.ink, 'data-sel':'hub', cursor:'pointer'});
+  var rims = [C.exegete, C.facilitator, C.performer].map(function(col){
+    return mk('path', {fill:'none', stroke:col, 'stroke-linecap':'round'});
+  });
+  var potT1 = mkText('v-pot vhalo', 'THE TRIPOD CONCEPT');
+  var hubHit = mk('circle', {fill:'rgba(0,0,0,0)', 'data-sel':'hub', cursor:'pointer'});
+  var hub    = mk('circle', {fill:C.paper, stroke:C.ink, 'stroke-width':2, 'data-sel':'hub', cursor:'pointer'});
+  var hubT1 = mkText('v-hub vhalo', 'THE MEETING POINT');
+
+  // ---- layout / resize ----
+  function layout(){
+    W = svg.clientWidth || 900;
+    H = Math.round(W * 0.74);
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    S = W/900; cx = W/2; cy = H*0.73;
+    svg.classList.toggle('compact', W < 560);
+    dirty = true;
+  }
+
+  // ---- render ----
+  var dirty = true;
+  function render(){
+    var order = [];
+    function put(el, d){ order.push([el, d]); }
+    put(shadow, -9999); shadow.setAttribute('d', circlePath([0,0,0], 305, 36));
+
+    var pA = proj(APEX);
+    LEGS.forEach(function(id){
+      var L = legs[id], P = PARTS[id];
+      var Fp = foot(id), pF = proj(Fp);
+      var dim = (sel && sel !== id) ? 0.3 : 1;
+      var wAvg = (pA.k + pF.k)/2;
+
+      if (L.pad){ L.pad.setAttribute('d', circlePath(Fp, 58, 24)); put(L.pad, pF.d - 40); L.pad.setAttribute('opacity', dim); }
+      else {
+        var tan = [-Math.sin(PHI[id]), 0, Math.cos(PHI[id])];
+        var cA = add3(Fp, [tan[0]*26, 0, tan[2]*26]), cB = add3(Fp, [-tan[0]*26, 0, -tan[2]*26]);
+        L.padA.setAttribute('d', circlePath(cA, 46, 24)); put(L.padA, pF.d - 40);
+        L.padB.setAttribute('d', circlePath(cB, 46, 24)); put(L.padB, pF.d - 40);
+        L.lens.setAttribute('d', circlePath(Fp, 15, 16)); put(L.lens, pF.d - 39);
+        L.padA.setAttribute('opacity', dim); L.padB.setAttribute('opacity', dim); L.lens.setAttribute('opacity', dim);
+      }
+      L.line.setAttribute('x1', pA.x); L.line.setAttribute('y1', pA.y);
+      L.line.setAttribute('x2', pF.x); L.line.setAttribute('y2', pF.y);
+      L.line.setAttribute('stroke-width', (sel === id ? 13 : 10) * wAvg);
+      L.line.setAttribute('opacity', dim);
+      L.hit.setAttribute('x1', pA.x); L.hit.setAttribute('y1', pA.y);
+      L.hit.setAttribute('x2', pF.x); L.hit.setAttribute('y2', pF.y);
+      var dLine = (pA.d + pF.d)/2;
+      put(L.line, dLine); put(L.hit, dLine + 1);
+
+      L.foot.setAttribute('cx', pF.x); L.foot.setAttribute('cy', pF.y);
+      L.foot.setAttribute('rx', 13*pF.k); L.foot.setAttribute('ry', 5*pF.k);
+      L.foot.setAttribute('opacity', dim);
+      put(L.foot, pF.d - 20);
+
+      var fade = Math.max(0.4, Math.min(1, 0.62 + 0.38 * (dLine + 200)/400)) * dim * (sel === id ? 0 : 1);
+      var tAnchor = proj(add3(lerp3(APEX, Fp, 0.52), radial(id, 62)));
+      L.t1.setAttribute('x', tAnchor.x); L.t1.setAttribute('y', tAnchor.y);
+      L.t1.setAttribute('opacity', fade);
+      put(L.t1, tAnchor.d + 60);
+
+      var wFade = Math.max(0.35, Math.min(1, 0.6 + 0.4 * (pF.d + 200)/400)) * dim;
+      L.w1.setAttribute('x', pF.x); L.w1.setAttribute('y', pF.y + 46);
+      L.w1.setAttribute('opacity', wFade);
+      put(L.w1, pF.d - 10);
+
+      var showChips = (sel === id);
+      L.chips.forEach(function(g, i){
+        if (!showChips){ g.rect.setAttribute('opacity', 0); g.text.setAttribute('opacity', 0); return; }
+        var t = 0.92 - i * (0.7 / Math.max(1, L.chips.length - 1));
+        var q = proj(add3(lerp3(APEX, Fp, t), radial(id, 50)));
+        g.rect.setAttribute('x', q.x - g.w/2); g.rect.setAttribute('y', q.y - 10);
+        g.rect.setAttribute('width', g.w);
+        g.text.setAttribute('x', q.x); g.text.setAttribute('y', q.y + 3.5);
+        g.rect.setAttribute('opacity', 1); g.text.setAttribute('opacity', 1);
+        put(g.rect, q.d + 500); put(g.text, q.d + 501);
+      });
+    });
+
+    var mF = lerp3(APEX, foot('facilitator'), 0.5);
+    var m1 = lerp3(APEX, foot('exegete'), 0.5);
+    var m2 = lerp3(APEX, foot('performer'), 0.5);
+    var sDim = sel && sel !== 'hub' ? 0.35 : 0.8;
+    [[strut1, mF, m1], [strut2, mF, m2]].forEach(function(row){
+      var a = proj(row[1]), b = proj(row[2]);
+      row[0].setAttribute('x1', a.x); row[0].setAttribute('y1', a.y);
+      row[0].setAttribute('x2', b.x); row[0].setAttribute('y2', b.y);
+      row[0].setAttribute('opacity', sDim);
+      put(row[0], (a.d + b.d)/2);
+    });
+
+    var hubDim = (sel && sel !== 'hub') ? 0.45 : 1;
+    var pS = proj([0,344,0]);
+    stem.setAttribute('x1', pA.x); stem.setAttribute('y1', pA.y);
+    stem.setAttribute('x2', pS.x); stem.setAttribute('y2', pS.y);
+    stem.setAttribute('stroke-width', 5*pA.k); stem.setAttribute('opacity', hubDim);
+    stemHit.setAttribute('x1', pA.x); stemHit.setAttribute('y1', pA.y);
+    stemHit.setAttribute('x2', pS.x); stemHit.setAttribute('y2', pS.y);
+    put(stem, pA.d + 5); put(stemHit, pA.d + 6);
+
+    potBot.setAttribute('d', circlePath([0,342,0], 78, 28));
+    potTop.setAttribute('d', circlePath([0,356,0], 78, 28));
+    potBot.setAttribute('opacity', hubDim); potTop.setAttribute('opacity', hubDim);
+    var dPot = proj([0,350,0]).d;
+    put(potBot, dPot + 8); put(potTop, dPot + 10);
+    rims.forEach(function(rim, i){
+      rim.setAttribute('d', arcPath([0,357,0], 78, i*2*Math.PI/3 + 0.06, (i+1)*2*Math.PI/3 - 0.06, 12));
+      rim.setAttribute('stroke-width', 4.5*pA.k);
+      rim.setAttribute('opacity', hubDim);
+      put(rim, dPot + 12);
+    });
+    var pL1 = proj([0,404,0]);
+    potT1.setAttribute('x', pL1.x); potT1.setAttribute('y', pL1.y); potT1.setAttribute('opacity', hubDim);
+    put(potT1, dPot + 20);
+
+    hub.setAttribute('cx', pA.x); hub.setAttribute('cy', pA.y); hub.setAttribute('r', (sel === 'hub' ? 22 : 19)*pA.k);
+    hub.setAttribute('opacity', hubDim);
+    hubHit.setAttribute('cx', pA.x); hubHit.setAttribute('cy', pA.y); hubHit.setAttribute('r', 30*pA.k);
+    put(hub, pA.d + 30); put(hubHit, pA.d + 31);
+    var pH = proj([0,254,0]);
+    hubT1.setAttribute('x', pH.x); hubT1.setAttribute('y', pH.y); hubT1.setAttribute('opacity', hubDim);
+    put(hubT1, pA.d + 32);
+
+    order.sort(function(a,b){ return a[1] - b[1]; });
+    for (var i = 0; i < order.length; i++) scene.appendChild(order[i][0]);
+  }
+
+  // ---- panel ----
+  function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function renderPanel(){
+    if (!sel){
+      panel.style.borderTopColor = '';
+      panel.innerHTML =
+        '<p class="p-kicker">The tripod, in the round</p>' +
+        '<h3>Three legs, one meeting point</h3>' +
+        '<p class="p-listens">standing in two worlds — and in the space between them</p>' +
+        '<p class="p-body">Drag the tripod to look around, or click a leg to bring it forward and see everything it carries. What rests on top is owned by the community.</p>' +
+        '<ul class="p-legend">' +
+        [['exegete','Trustworthy'],['performer','Intelligible · Appropriate · Appealing'],['facilitator','Verified']].map(function(row){
+          var P = PARTS[row[0]];
+          return '<li><span class="dot" style="background:'+P.color+'"></span><span><span style="font-weight:600;color:'+P.color+'">'+P.title+'</span> — '+row[1].toLowerCase()+'</span></li>';
+        }).join('') +
+        '<li><span class="dot" style="background:'+C.ink+'"></span><span><span style="font-weight:600">The meeting point</span> — held in common</span></li>' +
+        '</ul>';
+      return;
+    }
+    var P = PARTS[sel];
+    panel.style.borderTopColor = P.color;
+    var kick = (P.num ? 'Leg ' + P.num + ' · ' : '') + P.side;
+    panel.innerHTML =
+      '<p class="p-kicker"><span>' + esc(kick) + '</span><button class="p-close" type="button">✕ close</button></p>' +
+      '<h3 style="color:' + P.color + '">' + esc(P.title) + '</h3>' +
+      '<p class="p-listens">' + esc(P.listens) + '</p>' +
+      '<p class="p-asks"><em>' + esc(P.asks) + '</em></p>' +
+      (P.quality ? '<p class="p-quality"><b style="color:' + P.color + '">' + esc(P.quality) + '</b> — ' + esc(P.qnote) + '</p>' : '') +
+      '<ul>' + P.artifacts.map(function(a){ return '<li><b>' + esc(a.n) + '</b>' + esc(a.d) + '</li>'; }).join('') + '</ul>' +
+      (P.note ? '<p class="p-note">' + esc(P.note) + '</p>' : '');
+  }
+  panel.addEventListener('click', function(e){
+    if (e.target.closest('.p-close')) select(sel);
+  });
+
+  // ---- selection ----
+  var buttons = document.querySelectorAll('.leg-buttons button');
+  function select(id){
+    sel = (sel === id) ? null : id;
+    buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-sel') === sel)); });
+    renderPanel();
+    if (sel && sel !== 'hub'){
+      var target = PHI[sel] - Math.PI/2;
+      var dt = (target - th) % (2*Math.PI);
+      if (dt > Math.PI) dt -= 2*Math.PI;
+      if (dt < -Math.PI) dt += 2*Math.PI;
+      thT = th + dt;
+      if (reduced){ th = thT; thT = null; }
+    } else { thT = null; }
+    resumeAt = performance.now() + 1200;
+    dirty = true;
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ select(b.getAttribute('data-sel')); });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && sel) select(sel); });
+
+  // ---- drag / click ----
+  svg.addEventListener('pointerdown', function(e){
+    down = true; axis = null; dragged = 0; lastX = e.clientX; lastY = e.clientY;
+  });
+  svg.addEventListener('pointermove', function(e){
+    if (!down) return;
+    var dx = e.clientX - lastX, dy = e.clientY - lastY;
+    if (axis === null && (Math.abs(dx) > 5 || Math.abs(dy) > 5))
+      axis = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
+    if (axis === 'h'){
+      if (!dragging){ dragging = true; svg.classList.add('dragging'); try{ svg.setPointerCapture(e.pointerId); }catch(_){}}
+      th -= dx * 0.006; thT = null;
+      dragged += Math.abs(dx);
+      lastX = e.clientX; lastY = e.clientY;
+      dirty = true;
+      e.preventDefault();
+    }
+  });
+  function endDrag(){
+    down = false;
+    if (dragging){ dragging = false; svg.classList.remove('dragging'); resumeAt = performance.now() + 3000; }
+  }
+  svg.addEventListener('pointerup', endDrag);
+  svg.addEventListener('pointercancel', endDrag);
+  svg.addEventListener('click', function(e){
+    if (dragged > 6){ dragged = 0; return; }
+    var t = e.target.closest ? e.target.closest('[data-sel]') : null;
+    if (t) select(t.getAttribute('data-sel'));
+  });
+
+  // ---- loop ----
+  function tick(now){
+    var cw = svg.clientWidth;
+    if (cw && Math.abs(cw - W) > 1) layout();
+    var animating = false;
+    if (thT !== null){
+      th += (thT - th) * 0.09;
+      if (Math.abs(thT - th) < 0.002){ th = thT; thT = null; }
+      animating = true;
+    } else if (!sel && !dragging && !reduced && now > resumeAt){
+      th += 0.0028; animating = true;
+    }
+    if (animating || dirty){ render(); dirty = false; }
+    requestAnimationFrame(tick);
+  }
+
+  layout();
+  window.addEventListener('resize', function(){ layout(); render(); });
+  renderPanel();
+  render();
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

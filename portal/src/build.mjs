@@ -25,6 +25,7 @@ import { loadRegistries } from './lib/registry.mjs';
 import { renderMarkdown } from './lib/markdown.mjs';
 import { renderJsonTree } from './lib/jsontree.mjs';
 import { sectionAskUrlFactory } from './lib/feedback.mjs';
+import { renderMethodPage } from './lib/method-page.mjs';
 import { layout, indexPage, pericopePage } from './lib/pages.mjs';
 
 const portalDir = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '..');
@@ -215,6 +216,17 @@ function main() {
       buildInfo,
       contentHtml: indexPage({ cfg, books, buildInfo, formConfigured }),
     })
+  );
+
+  // The Tripod Method page — Marcia's approved artifact, vendored byte-identical
+  // plus exactly the two ruled insertions (see lib/method-page.mjs). Rendered
+  // here, before the write phase, so a pin mismatch aborts with nothing on disk.
+  pages.set(
+    'tripod-method.html',
+    renderMethodPage(
+      fs.readFileSync(path.join(portalDir, 'assets', 'tripod-method-source.html'), 'utf8'),
+      formCfg
+    )
   );
 
   // ---- 4b. Atlas data (spec §3) — computed before anything is written, so a
