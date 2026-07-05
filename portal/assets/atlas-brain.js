@@ -649,18 +649,25 @@
         ctx.strokeStyle = ACC_LINE + ".65)"; ctx.lineWidth = .9;
         ctx.beginPath(); ctx.arc(n.px, n.py, pr, 0, 7); ctx.stroke();
       }
-      if (q && (n.label + " " + n.id).toLowerCase().includes(q)) {
+      const isHit = !!q && (n.label + " " + n.id).toLowerCase().includes(q);
+      if (isHit) {
         ctx.strokeStyle = ACC_LINE + ".55)"; ctx.setLineDash([2, 4]); ctx.lineWidth = .8;
         ctx.beginPath(); ctx.arc(n.px, n.py, n.rz + 7, 0, 7); ctx.stroke(); ctx.setLineDash([]);
       }
       const showLbl = n.kind === "book" || n.kind === "pericope" || n.kind === "axis" || n.kind === "ghost"
-        || isSel || isHov || (sel && n.adj.some((a) => a.n === sel)) || n.deg >= 8 || (q && n.alpha > .8);
+        || isSel || isHov || (sel && n.adj.some((a) => a.n === sel)) || n.deg >= 8 || isHit || (q && n.alpha > .8);
       if (showLbl) {
         ctx.font = (n.kind === "book" ? "500 13px" : "400 10px") + ' ui-monospace,"SF Mono",Menlo,monospace';
         if (n.kind === "ent" || n.kind === "cb" || n.kind === "fig")
           ctx.font = '400 10.5px -apple-system,"SF Pro Text","Helvetica Neue",sans-serif';
         ctx.globalAlpha = 1;
-        ctx.fillStyle = "rgba(208,220,245," + (0.40 + 0.45 * n.alpha) + ")";
+        // Labels fade with their node — no bright floor — so dim sources (selection,
+        // Emotion, filters, search) mute unselected text too. Exceptions that stay
+        // readable while a dim source holds their node low: the selected node, the
+        // node under the pointer, and search hits — a hit's dashed ring is drawn
+        // above, and the ring and its letters must agree.
+        const lblA = isSel || isHov || isHit ? Math.max(.85 * n.alpha, .75) : .85 * n.alpha;
+        ctx.fillStyle = "rgba(208,220,245," + lblA + ")";
         ctx.textAlign = "center";
         ctx.fillText(n.label, n.px, n.py - n.rz - 9);
       }
@@ -744,9 +751,13 @@
   });
   cv.addEventListener("pointercancel", (e) => {
     if (e.pointerId !== activePtr) return;
-    drag = null; groupDrag = null; panning = false; downNode = null; activePtr = null;
+    drag = null; groupDrag = null; panning = false; downNode = null; activePtr = null; hov = null;
     cv.style.cursor = "grab";
   });
+  // Hover must not outlive the pointer: a mouse crossing onto the panel/HUD and a
+  // lifted touch both fire pointerleave — a stale hov would keep one dimmed node's
+  // label floored bright with no pointer anywhere near it.
+  cv.addEventListener("pointerleave", () => { hov = null; });
   addEventListener("keydown", (e) => {
     if (e.key === "Escape") { select(null); resetView(); $("search").value = ""; q = ""; }
     if (e.key === "+" || e.key === "=") setZoom(zoom * 1.15);
