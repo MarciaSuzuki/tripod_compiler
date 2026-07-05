@@ -206,11 +206,11 @@ function brainSkeleton(cfg) {
 <div class="hud brainui" id="legend"></div>
 <div class="hud brainui" id="zoomctl" role="group" aria-label="zoom the mind">
   <button class="zbtn" data-z="out" aria-label="zoom out">−</button>
-  <button class="zbtn" data-z="reset" aria-label="reset zoom">⌂</button>
+  <button class="zbtn" data-z="reset" aria-label="reset view">⌂</button>
   <button class="zbtn" data-z="in" aria-label="zoom in">+</button>
 </div>
 <div class="hud brainui" id="caption" style="display:none"><span class="id"></span><br><span class="t"></span></div>
-<div class="hud brainui" id="hint">esc or click the dark to reset · drag any node · click chips in the panel to travel</div>
+<div class="hud brainui" id="hint">drag the dark to move the map · scroll to zoom · grab a book to move its whole cluster · esc resets</div>
 <aside id="panel" class="brainui"><button class="x" aria-label="close">×</button><div id="pbody"></div></aside>`;
 }
 

@@ -47,6 +47,7 @@
       const B = frame.contentWindow && frame.contentWindow.__tripodBrain;
       if (!B) { if (tries++ < 40) setTimeout(attempt, 250); return; }
       B.select(null); // mirror the mode chips: never act under a stale selection
+      B.resetView?.(); // …nor under a stale viewport (viewer may have panned)
       if (action.startsWith("mode:")) B.applyMode(action.slice(5));
       if (action === "select-ghost" || action === "select-arriving") {
         // Mirror the build-time choice exactly: the FIRST incomplete book in
