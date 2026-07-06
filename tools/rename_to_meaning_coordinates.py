@@ -115,6 +115,18 @@ def main():
                 path = m['dst']
         return path
 
+    def pre_of(path):
+        """Reverse translation (post-mv -> pre-mv) so re-runs can match the
+        committed live/exempt lists, which carry pre-mv names where the spec
+        wrote them that way."""
+        for m in mvs:
+            if not m.get('dir') and path == m['dst']:
+                path = m['src']
+        for m in mvs:
+            if m.get('dir') and path.startswith(m['dst'] + '/'):
+                path = m['src'] + path[len(m['dst']):]
+        return path
+
     # ---- req 10: refusals -----------------------------------------------------
     if not rerun:
         # pre-existing new-family tokens must be zero
@@ -134,8 +146,8 @@ def main():
         for h in hits:
             if h.startswith('tools/rename'):
                 continue  # the committed kit carries old tokens by design
-            hp = post_mv(h)
-            if h not in live and hp not in live and not is_frozen(h) and not is_frozen(hp):
+            hs = {h, post_mv(h), pre_of(h)}
+            if not (hs & live) and not any(is_frozen(x) for x in hs):
                 die(f"unclassified census hit: {h} contains {e['old']!r} but is on neither list")
     # bare-token classification
     idents = mp['identifiers'][repo]
@@ -153,10 +165,9 @@ def main():
     for h in bare:
         if h.startswith('tools/rename'):
             continue
-        hp = post_mv(h)
-        if (h not in ident_files and hp not in ident_files and h not in keep
-                and not is_frozen(h) and not is_frozen(hp)
-                and h not in rule_files and h not in hand and hp not in hand):
+        hs = {h, post_mv(h), pre_of(h)}
+        if (not (hs & ident_files) and not (hs & keep) and not (hs & hand)
+                and not any(is_frozen(x) for x in hs) and h not in rule_files):
             die(f"bare-token hit in undisposed file: {h}")
 
     # ---- pass 1: git mv (req 5) ----------------------------------------------
