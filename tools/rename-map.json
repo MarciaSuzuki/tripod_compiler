@@ -1,0 +1,780 @@
+{
+ "_doc": "SC-0080 rename kit — FOR_MODEL -> Meaning Coordinates. Built from the committed census per RENAME-BUILD-SPEC-MEANING-COORDINATES.md. Applied by tools/rename_to_meaning_coordinates.py.",
+ "requires_merged": {
+  "compiler": "953f2f9e37e40fc46678066e389c08f211b84c84",
+  "vault": "d1d0fb46d7a778391c9f1d98e8aea84f29364b3b"
+ },
+ "branch": "rename-meaning-coordinates",
+ "main_ref": {
+  "compiler": "origin/main",
+  "vault": "shemaobt/main"
+ },
+ "pre_rename_tag": {
+  "compiler": "v0.5.0-pre-rename",
+  "vault": "pre-rename-mc"
+ },
+ "global": [
+  {
+   "old": "sta-for-model",
+   "new": "sta-meaning-coordinates"
+  },
+  {
+   "old": "FOR_MODELs",
+   "new": "MCs"
+  },
+  {
+   "old": "forModels",
+   "new": "mcNotes"
+  },
+  {
+   "old": "FOR-MODEL",
+   "new": "MEANING-COORDINATES"
+  },
+  {
+   "old": "FOR_MODEL",
+   "new": "MEANING_COORDINATES",
+   "new_scope_b": "Meaning Coordinates"
+  },
+  {
+   "old": "for_model",
+   "new": "meaning_coordinates"
+  },
+  {
+   "old": "for-model",
+   "new": "meaning-coordinates"
+  },
+  {
+   "old": "ForModel",
+   "new": "MeaningCoordinates"
+  },
+  {
+   "old": "forModel",
+   "new": "meaningCoordinates"
+  }
+ ],
+ "scope_b": {
+  "compiler": [
+   "README.md",
+   "CLAUDE.md",
+   "docs/ARCHITECT-ROLE.md",
+   "docs/COVERAGE.md",
+   "docs/PROGRESS.md",
+   "docs/SC-0078-MODALITY-AUTHORING-GUIDE.md",
+   "portal/README.md",
+   "_spec/README.md",
+   "fixtures/coverage/README.md",
+   "portal/assets/tripod-method-source.html",
+   "portal/src/atlas/tours.mjs"
+  ],
+  "vault": [
+   "CLAUDE.md",
+   "COMMON-MISTAKES-REGISTER.md",
+   "_canon/ruth-pericope-index.md",
+   "_methodology/common-reader-prose-standard.md",
+   "_methodology/level3and3Ccontentdiscipline.md"
+  ]
+ },
+ "identifiers": {
+  "compiler": [
+   {
+    "pattern": "\\bfmScenes\\b",
+    "new": "mcScenes",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmScene\\b",
+    "new": "mcScene",
+    "files": [
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmPath\\b",
+    "new": "mcPath",
+    "files": [
+     "src/audit/id-align-ledger.ts",
+     "src/cli/tripod.ts",
+     "src/engine/id-align.ts",
+     "tests/graduation-batch-1.test.ts",
+     "tests/graduation-batch-2.test.ts",
+     "tests/jonah-j01.test.ts",
+     "tests/jonah-j02.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bwriteFm\\b",
+    "new": "writeMc",
+    "files": [
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmDir\\b",
+    "new": "mcDir",
+    "files": [
+     "src/cli/tripod.ts"
+    ]
+   },
+   {
+    "pattern": "\\bMAP_NOT_FM\\b",
+    "new": "MAP_NOT_MC",
+    "files": [
+     "_spec/id-alignment-exceptions.json",
+     "src/audit/id-align-ledger.ts",
+     "src/engine/id-align.ts",
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bFM_NOT_MAP\\b",
+    "new": "MC_NOT_MAP",
+    "files": [
+     "_spec/id-alignment-exceptions.json",
+     "src/audit/id-align-ledger.ts",
+     "src/engine/id-align.ts",
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bmap\\-not\\-FM\\b",
+    "new": "map-not-MC",
+    "files": [
+     "src/audit/id-align-ledger.ts",
+     "src/engine/id-align.ts",
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bFM\\-not\\-map\\b",
+    "new": "MC-not-map",
+    "files": [
+     "src/audit/id-align-ledger.ts",
+     "src/engine/id-align.ts",
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bFM_DIR\\b",
+    "new": "MC_DIR",
+    "files": [
+     "tests/compile.test.ts",
+     "tests/coverage-corpus.test.ts",
+     "tests/value-shape-lint.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmSet\\b",
+    "new": "mcSet",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bALL_FM\\b",
+    "new": "ALL_MC",
+    "files": [
+     "tests/drift.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmFiles\\b",
+    "new": "mcFiles",
+    "files": [
+     "src/cli/tripod.ts",
+     "tests/compile.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmCodesAligned\\b",
+    "new": "mcCodesAligned",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmWithFlags\\b",
+    "new": "mcWithFlags",
+    "files": [
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmWith\\b",
+    "new": "mcWith",
+    "files": [
+     "tests/coverage.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmFlags\\b",
+    "new": "mcFlags",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bP02_FM\\b",
+    "new": "P02_MC",
+    "files": [
+     "tests/drift.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bP06_FM\\b",
+    "new": "P06_MC",
+    "files": [
+     "tests/drift.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmSourceByCode\\b",
+    "new": "mcSourceByCode",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bpairedFm\\b",
+    "new": "pairedMc",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bleftoverFm\\b",
+    "new": "leftoverMc",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmOnly\\b",
+    "new": "mcOnly",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmList\\b",
+    "new": "mcList",
+    "files": [
+     "tests/id-align.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmCodes\\b",
+    "new": "mcCodes",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bFmCode\\b",
+    "new": "McCode",
+    "files": [
+     "src/engine/id-align.ts"
+    ]
+   },
+   {
+    "pattern": "\\bwithFm\\b",
+    "new": "withMc",
+    "files": [
+     "src/cli/tripod.ts"
+    ]
+   },
+   {
+    "pattern": "\\bgoldFM\\b",
+    "new": "goldMC",
+    "files": [
+     "tests/validate.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfmSection\\b",
+    "new": "mcSection",
+    "files": [
+     "portal/src/lib/pages.mjs"
+    ]
+   },
+   {
+    "pattern": "\\bWORKED_FM\\b",
+    "new": "WORKED_MC",
+    "files": [
+     "src/drafter/assemble.ts"
+    ]
+   },
+   {
+    "pattern": "\\bNoFM\\b",
+    "new": "NoMC",
+    "files": [
+     "portal/test/gate.test.mjs"
+    ]
+   },
+   {
+    "pattern": "\\bFM_WITH_APPRAISAL\\b",
+    "new": "MC_WITH_APPRAISAL",
+    "files": [
+     "portal/test/atlas-finale.test.mjs"
+    ]
+   },
+   {
+    "pattern": "\\bFM_RICH\\b",
+    "new": "MC_RICH",
+    "files": [
+     "portal/test/atlas.test.mjs"
+    ]
+   },
+   {
+    "pattern": "--fm-dir",
+    "new": "--mc-dir",
+    "files": []
+   },
+   {
+    "pattern": "\\bfm-drafter\\b",
+    "new": "mc-drafter",
+    "files": [
+     "docs/PROGRESS.md",
+     "src/cli/tripod.ts",
+     "src/drafter/assemble.ts",
+     "src/drafter/digest.ts",
+     "tests/drafter.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bFMs\\b",
+    "new": "MCs",
+    "files": [
+     "_spec/approved-enumerations.json",
+     "_spec/id-alignment-exceptions.json",
+     "docs/COVERAGE.md",
+     "docs/PROGRESS.md",
+     "docs/RECURRING-ERROR-DISCIPLINE.md",
+     "fixtures/coverage/README.md",
+     "tests/compile.test.ts",
+     "tests/drift.test.ts",
+     "tests/graduation-batch-3.test.ts",
+     "tests/jonah-j02.test.ts",
+     "tests/modality.test.ts",
+     "tests/value-shape-lint.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bFM\\b",
+    "new": "MC",
+    "files": [
+     "_spec/approved-enumerations.json",
+     "_spec/id-alignment-exceptions.json",
+     "docs/COVERAGE.md",
+     "docs/PROGRESS.md",
+     "docs/RECURRING-ERROR-DISCIPLINE.md",
+     "fixtures/coverage/README.md",
+     "tests/compile.test.ts",
+     "tests/drift.test.ts",
+     "tests/graduation-batch-3.test.ts",
+     "tests/jonah-j02.test.ts",
+     "tests/modality.test.ts",
+     "tests/value-shape-lint.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfm\\b",
+    "new": "mc",
+    "files": [
+     "portal/src/atlas/export.mjs",
+     "portal/test/atlas-pages.test.mjs",
+     "src/cli/tripod.ts",
+     "tests/coverage.test.ts",
+     "tests/slot-name-lint.test.ts",
+     "tests/lint.test.ts",
+     "tests/compile.test.ts",
+     "tests/coverage-p01.test.ts",
+     "tests/coverage-corpus.test.ts",
+     "tests/value-shape-lint.test.ts",
+     "tests/modality.test.ts"
+    ]
+   },
+   {
+    "pattern": "\\bfm\\b",
+    "new": "mc",
+    "files": [
+     "tests/id-align.test.ts"
+    ],
+    "exclude_lines": [
+     [
+      97,
+      103
+     ]
+    ]
+   }
+  ],
+  "vault": [
+   {
+    "pattern": "\\bFMs\\b",
+    "new": "MCs",
+    "files": [
+     "bcd/objects/O10-Roasted-Grain.md",
+     "bcd/places/PL5_ELIMELECH_PORTION-Elimelechs-Portion-of-the-Field.md"
+    ]
+   },
+   {
+    "pattern": "\\bFM\\b",
+    "new": "MC",
+    "files": [
+     "bcd/objects/O10-Roasted-Grain.md",
+     "bcd/places/PL5_ELIMELECH_PORTION-Elimelechs-Portion-of-the-Field.md"
+    ]
+   }
+  ]
+ },
+ "renames": {
+  "compiler": [
+   {
+    "src": "fixtures/for-model",
+    "dst": "fixtures/meaning-coordinates",
+    "dir": true
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E01-Esther-1-1-9-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E01-Esther-1-1-9-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E02-Esther-1-10-22-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E02-Esther-1-10-22-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E03-Esther-2-1-4-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E03-Esther-2-1-4-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E04-Esther-2-5-18-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E04-Esther-2-5-18-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E05-Esther-2-19-23-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E05-Esther-2-19-23-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E06-Esther-3-1-6-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E06-Esther-3-1-6-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E07-Esther-3-7-15-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E07-Esther-3-7-15-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E08-Esther-4-1-8-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E08-Esther-4-1-8-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E09-Esther-4-9-17-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E09-Esther-4-9-17-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E10-Esther-5-1-14-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E10-Esther-5-1-14-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E11-Esther-6-1-14-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E11-Esther-6-1-14-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E12-Esther-7-1-10-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E12-Esther-7-1-10-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E13-Esther-8-1-8-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E13-Esther-8-1-8-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E14-Esther-8-9-17-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E14-Esther-8-9-17-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E15-Esther-9-1-10-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E15-Esther-9-1-10-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E16-Esther-9-11-19-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E16-Esther-9-11-19-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E17-Esther-9-20-32-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E17-Esther-9-20-32-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/E18-Esther-10-1-3-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/E18-Esther-10-1-3-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/J01-Jonah-1-1-3-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/J01-Jonah-1-1-3-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/J02-Jonah-1-4-2-1-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/J02-Jonah-1-4-2-1-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/J03-Jonah-2-2-9-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/J03-Jonah-2-2-9-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/J04-Jonah-2-10-3-10-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/J04-Jonah-2-10-3-10-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/J05-Jonah-4-1-11-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/J05-Jonah-4-1-11-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P01-Ruth-1-1-5-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P01-Ruth-1-1-5-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P02-Ruth-1-6-14-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P02-Ruth-1-6-14-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P03-Ruth-1-15-18-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P03-Ruth-1-15-18-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P04-Ruth-1-19-22-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P04-Ruth-1-19-22-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P05-Ruth-2-1-7-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P05-Ruth-2-1-7-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P06-Ruth-2-8-16-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P06-Ruth-2-8-16-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P07-Ruth-2-17-23-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P07-Ruth-2-17-23-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P08-Ruth-3-1-5-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P08-Ruth-3-1-5-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P09-Ruth-3-6-13-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P09-Ruth-3-6-13-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P10-Ruth-3-14-18-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P10-Ruth-3-14-18-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P11-Ruth-4-1-8-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P11-Ruth-4-1-8-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P12-Ruth-4-9-12-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P12-Ruth-4-9-12-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P13-Ruth-4-13-17-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P13-Ruth-4-13-17-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "fixtures/meaning-coordinates/P14-Ruth-4-18-22-FOR-MODEL.md",
+    "dst": "fixtures/meaning-coordinates/P14-Ruth-4-18-22-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "_spec/drafter/fm-drafter-prompt.md",
+    "dst": "_spec/drafter/mc-drafter-prompt.md"
+   }
+  ],
+  "vault": [
+   {
+    "src": "stas/P01-Ruth-1-1-5-FOR-MODEL.md",
+    "dst": "stas/P01-Ruth-1-1-5-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P02-Ruth-1-6-14-FOR-MODEL.md",
+    "dst": "stas/P02-Ruth-1-6-14-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P03-Ruth-1-15-18-FOR-MODEL.md",
+    "dst": "stas/P03-Ruth-1-15-18-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P04-Ruth-1-19-22-FOR-MODEL.md",
+    "dst": "stas/P04-Ruth-1-19-22-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P05-Ruth-2-1-7-FOR-MODEL.md",
+    "dst": "stas/P05-Ruth-2-1-7-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P06-Ruth-2-8-16-FOR-MODEL.md",
+    "dst": "stas/P06-Ruth-2-8-16-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P07-Ruth-2-17-23-FOR-MODEL.md",
+    "dst": "stas/P07-Ruth-2-17-23-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P08-Ruth-3-1-5-FOR-MODEL.md",
+    "dst": "stas/P08-Ruth-3-1-5-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P09-Ruth-3-6-13-FOR-MODEL.md",
+    "dst": "stas/P09-Ruth-3-6-13-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P10-Ruth-3-14-18-FOR-MODEL.md",
+    "dst": "stas/P10-Ruth-3-14-18-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P11-Ruth-4-1-8-FOR-MODEL.md",
+    "dst": "stas/P11-Ruth-4-1-8-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P12-Ruth-4-9-12-FOR-MODEL.md",
+    "dst": "stas/P12-Ruth-4-9-12-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P13-Ruth-4-13-17-FOR-MODEL.md",
+    "dst": "stas/P13-Ruth-4-13-17-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/P14-Ruth-4-18-22-FOR-MODEL.md",
+    "dst": "stas/P14-Ruth-4-18-22-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E01-Esther-1-1-9-FOR-MODEL.md",
+    "dst": "stas/esther/E01-Esther-1-1-9-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E02-Esther-1-10-22-FOR-MODEL.md",
+    "dst": "stas/esther/E02-Esther-1-10-22-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E03-Esther-2-1-4-FOR-MODEL.md",
+    "dst": "stas/esther/E03-Esther-2-1-4-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E04-Esther-2-5-18-FOR-MODEL.md",
+    "dst": "stas/esther/E04-Esther-2-5-18-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E05-Esther-2-19-23-FOR-MODEL.md",
+    "dst": "stas/esther/E05-Esther-2-19-23-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E06-Esther-3-1-6-FOR-MODEL.md",
+    "dst": "stas/esther/E06-Esther-3-1-6-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E07-Esther-3-7-15-FOR-MODEL.md",
+    "dst": "stas/esther/E07-Esther-3-7-15-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E08-Esther-4-1-8-FOR-MODEL.md",
+    "dst": "stas/esther/E08-Esther-4-1-8-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E09-Esther-4-9-17-FOR-MODEL.md",
+    "dst": "stas/esther/E09-Esther-4-9-17-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E10-Esther-5-1-14-FOR-MODEL.md",
+    "dst": "stas/esther/E10-Esther-5-1-14-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E11-Esther-6-1-14-FOR-MODEL.md",
+    "dst": "stas/esther/E11-Esther-6-1-14-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E12-Esther-7-1-10-FOR-MODEL.md",
+    "dst": "stas/esther/E12-Esther-7-1-10-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E13-Esther-8-1-8-FOR-MODEL.md",
+    "dst": "stas/esther/E13-Esther-8-1-8-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E14-Esther-8-9-17-FOR-MODEL.md",
+    "dst": "stas/esther/E14-Esther-8-9-17-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E15-Esther-9-1-10-FOR-MODEL.md",
+    "dst": "stas/esther/E15-Esther-9-1-10-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E16-Esther-9-11-19-FOR-MODEL.md",
+    "dst": "stas/esther/E16-Esther-9-11-19-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E17-Esther-9-20-32-FOR-MODEL.md",
+    "dst": "stas/esther/E17-Esther-9-20-32-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/esther/E18-Esther-10-1-3-FOR-MODEL.md",
+    "dst": "stas/esther/E18-Esther-10-1-3-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/jonah/J01-Jonah-1-1-3-FOR-MODEL.md",
+    "dst": "stas/jonah/J01-Jonah-1-1-3-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/jonah/J02-Jonah-1-4-2-1-FOR-MODEL.md",
+    "dst": "stas/jonah/J02-Jonah-1-4-2-1-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/jonah/J03-Jonah-2-2-9-FOR-MODEL.md",
+    "dst": "stas/jonah/J03-Jonah-2-2-9-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/jonah/J04-Jonah-2-10-3-10-FOR-MODEL.md",
+    "dst": "stas/jonah/J04-Jonah-2-10-3-10-MEANING-COORDINATES.md"
+   },
+   {
+    "src": "stas/jonah/J05-Jonah-4-1-11-FOR-MODEL.md",
+    "dst": "stas/jonah/J05-Jonah-4-1-11-MEANING-COORDINATES.md"
+   }
+  ]
+ },
+ "exempt_file": {
+  "compiler": "tools/rename-exempt-compiler.txt",
+  "vault": "tools/rename-exempt-vault.txt"
+ },
+ "live_file": {
+  "compiler": "tools/rename-live-compiler.txt",
+  "vault": "tools/rename-live-vault.txt"
+ },
+ "keep_bare_fm": [
+  "_spec/source/jonah/J05.json",
+  "extractor/build_aliases.py",
+  "extractor/build_concept_figure_registry.py",
+  "portal/src/build.mjs",
+  "portal/src/lib/frontmatter.mjs",
+  "portal/src/lib/markdown.mjs",
+  "portal/src/lib/pages.mjs",
+  "src/audit/coverage-ledger.ts",
+  "src/audit/id-align-ledger.ts",
+  "src/reader/meaning-map.ts"
+ ],
+ "hand_edits": [
+  "_spec/validation-rules.json",
+  "_spec/compilation-log.schema.json",
+  "_spec/verification-input.schema.json",
+  "_spec/approved-enumerations.json",
+  "_spec/lint-lexicon.json",
+  "_spec/pins.json",
+  "_spec/drafter/mc-drafter-prompt.md",
+  "portal/src/lib/gate.mjs",
+  "portal/src/lib/pages.mjs",
+  "SPEC_CHANGES.md",
+  "CLAUDE.md",
+  "README.md",
+  "docs/PROGRESS.md"
+ ],
+ "hand_edits_vault": [
+  "CLAUDE.md"
+ ]
+}
