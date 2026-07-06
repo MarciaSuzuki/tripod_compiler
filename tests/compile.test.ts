@@ -155,8 +155,15 @@ describe("Slice 2 — gold diff (item 1) matches the committed regression baseli
   it("recomputed gold diff equals the baseline (extractor + gold unchanged)", () => {
     expect(current).toEqual(baseline);
   });
-  it("gold agreement on the comparable deterministic layer is high (>=90%); P01/P03 exact", () => {
-    for (const d of current) expect(d.agreementPct, `${d.pericope} agreement`).toBeGreaterThanOrEqual(90);
+  it("gold agreement: Ruth/Jonah >=90% (P01/P03 exact); Esther >=80% (ruled seed trait)", () => {
+    // Marcia's SC-0079 close ruling (2026-07-06): the Esther maps were published as ruled while
+    // the FOR_MODELs were vocabulary-corrected, so map<->FM divergence there is a designed seed
+    // characteristic, not drift. The 90 bar stays for Ruth/Jonah; Esther asserts a >=80 floor so
+    // a real regression still trips (six passages sit at 81-88: E16/E08/E03/E07/E02/E11).
+    for (const d of current) {
+      const floor = d.pericope.startsWith("E") ? 80 : 90;
+      expect(d.agreementPct, `${d.pericope} agreement`).toBeGreaterThanOrEqual(floor);
+    }
     expect(current.find((d: any) => d.pericope === "P01")!.agreementPct).toBe(100);
     expect(current.find((d: any) => d.pericope === "P03")!.agreementPct).toBe(100);
   });

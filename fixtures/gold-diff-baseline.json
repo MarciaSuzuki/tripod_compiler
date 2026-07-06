@@ -1,5 +1,277 @@
 [
   {
+    "pericope": "E01",
+    "matched": 23,
+    "divergent": 1,
+    "agreementPct": 96,
+    "judgmentPlaceholders": 43,
+    "divergences": [
+      {
+        "field": "S1/place/I5",
+        "note": "I5 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E02",
+    "matched": 23,
+    "divergent": 3,
+    "agreementPct": 88,
+    "judgmentPlaceholders": 62,
+    "divergences": [
+      {
+        "field": "S3/place/I5",
+        "note": "I5 not in gold"
+      },
+      {
+        "field": "S4/place/I5",
+        "note": "I5 not in gold"
+      },
+      {
+        "field": "S4/place/PL6",
+        "note": "PL6 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E03",
+    "matched": 12,
+    "divergent": 2,
+    "agreementPct": 86,
+    "judgmentPlaceholders": 38,
+    "divergences": [
+      {
+        "field": "S2/being/B7",
+        "note": "B7:REFERENCED (named in the plan; not yet acting) not in gold"
+      },
+      {
+        "field": "S2/place/I5",
+        "note": "I5 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E04",
+    "matched": 30,
+    "divergent": 1,
+    "agreementPct": 97,
+    "judgmentPlaceholders": 79,
+    "divergences": [
+      {
+        "field": "S5/place/I5",
+        "note": "I5 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E05",
+    "matched": 22,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 51,
+    "divergences": []
+  },
+  {
+    "pericope": "E06",
+    "matched": 17,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 60,
+    "divergences": []
+  },
+  {
+    "pericope": "E07",
+    "matched": 19,
+    "divergent": 3,
+    "agreementPct": 86,
+    "judgmentPlaceholders": 50,
+    "divergences": [
+      {
+        "field": "S3/being/B3",
+        "note": "B3:PRESENT (his command is the content of the writing) not in gold"
+      },
+      {
+        "field": "S3/being/B17",
+        "note": "B17:REFERENCED (the object of the decree) not in gold"
+      },
+      {
+        "field": "S3/place/I5",
+        "note": "I5 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E08",
+    "matched": 20,
+    "divergent": 4,
+    "agreementPct": 83,
+    "judgmentPlaceholders": 68,
+    "divergences": [
+      {
+        "field": "S2/being/B17",
+        "note": "B17:PRESENT (as a scattered, collective body) not in gold"
+      },
+      {
+        "field": "S2/place/I5",
+        "note": "I5 not in gold"
+      },
+      {
+        "field": "S3/being/B1",
+        "note": "B1:PRESENT (at a distance, by message and errand) not in gold"
+      },
+      {
+        "field": "S4/being/B2",
+        "note": "B2:PRESENT (sending, by her servant) not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E09",
+    "matched": 24,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 73,
+    "divergences": []
+  },
+  {
+    "pericope": "E10",
+    "matched": 22,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 99,
+    "divergences": []
+  },
+  {
+    "pericope": "E11",
+    "matched": 21,
+    "divergent": 3,
+    "agreementPct": 88,
+    "judgmentPlaceholders": 108,
+    "divergences": [
+      {
+        "field": "S1/being/B1",
+        "note": "B1:REFERENCED (named in the chronicle; not yet on stage) not in gold"
+      },
+      {
+        "field": "S2/being/B1",
+        "note": "B1:REFERENCED (the unnamed \"man the king delights to honour\") not in gold"
+      },
+      {
+        "field": "S3/being/B1",
+        "note": "B1:PRESENT (referential form: \"the Jew,\" \"who sits in the king's gate\") not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E12",
+    "matched": 26,
+    "divergent": 2,
+    "agreementPct": 93,
+    "judgmentPlaceholders": 64,
+    "divergences": [
+      {
+        "field": "S1/place/PL1",
+        "note": "PL1 not in gold"
+      },
+      {
+        "field": "S2/being/B17",
+        "note": "B17:REFERENCED not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E13",
+    "matched": 23,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 73,
+    "divergences": []
+  },
+  {
+    "pericope": "E14",
+    "matched": 23,
+    "divergent": 2,
+    "agreementPct": 92,
+    "judgmentPlaceholders": 67,
+    "divergences": [
+      {
+        "field": "S1/place/I5",
+        "note": "I5 not in gold"
+      },
+      {
+        "field": "S4/place/I5",
+        "note": "I5 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E15",
+    "matched": 16,
+    "divergent": 1,
+    "agreementPct": 94,
+    "judgmentPlaceholders": 56,
+    "divergences": [
+      {
+        "field": "S1/place/I5",
+        "note": "I5 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E16",
+    "matched": 22,
+    "divergent": 5,
+    "agreementPct": 81,
+    "judgmentPlaceholders": 43,
+    "divergences": [
+      {
+        "field": "S1/being/B16",
+        "note": "B16:REFERENCED (slain; bodies displayed) not in gold"
+      },
+      {
+        "field": "S2/being/B17",
+        "note": "B17:REFERENCED (summary report) not in gold"
+      },
+      {
+        "field": "S2/place/I5",
+        "note": "I5 not in gold"
+      },
+      {
+        "field": "S2/time/TM_ADAR",
+        "note": "TM_ADAR not in gold"
+      },
+      {
+        "field": "S2/time/TM_ADAR",
+        "note": "TM_ADAR not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E17",
+    "matched": 22,
+    "divergent": 2,
+    "agreementPct": 92,
+    "judgmentPlaceholders": 43,
+    "divergences": [
+      {
+        "field": "S1/place/I5",
+        "note": "I5 not in gold"
+      },
+      {
+        "field": "S3/place/I5",
+        "note": "I5 not in gold"
+      }
+    ]
+  },
+  {
+    "pericope": "E18",
+    "matched": 18,
+    "divergent": 0,
+    "agreementPct": 100,
+    "judgmentPlaceholders": 25,
+    "divergences": []
+  },
+  {
     "pericope": "J01",
     "matched": 23,
     "divergent": 0,
