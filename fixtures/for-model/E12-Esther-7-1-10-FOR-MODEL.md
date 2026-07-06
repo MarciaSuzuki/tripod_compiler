@@ -407,7 +407,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
         "asked_where": "HIS_PLACE",
         "filled_by": "A_HEART",
         "to_do": "SUCH_A_THING",
-        "speech_act": "ASKS_DELIBERATIVE_QUESTION"
+        "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
       },
       "inter_proposition_links": {
         "caused_by": "P4",

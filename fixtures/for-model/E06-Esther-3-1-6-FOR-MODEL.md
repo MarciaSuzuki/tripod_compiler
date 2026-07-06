@@ -291,8 +291,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
       "event_specific_slots": {
         "commander": "B4",
         "commanded_act": "BOWING",
-        "concerning": "B3",
-        "speech_act": "PRESCRIBES_AS_LAW"
+        "concerning": "B3"
       },
       "inter_proposition_links": {
         "forward_link_to": "P7"
@@ -331,7 +330,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "challenge": "WHY_TRANSGRESS",
             "transgressed_thing": "COMMANDMENT",
             "commandment_giver": "B4",
-            "speech_act": "ASKS_DELIBERATIVE_QUESTION"
+            "speech_act": "ASKS_RHETORICAL_QUESTION_AS_PROTEST"
           }
         ]
       },

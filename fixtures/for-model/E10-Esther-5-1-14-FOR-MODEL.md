@@ -444,7 +444,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "speaker": "B4",
             "addressee": "B2",
             "asked": "WHAT_IS_IT",
-            "speech_act": "ASKS_DELIBERATIVE_QUESTION"
+            "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
             "action": "PROPOSED",
@@ -453,7 +453,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "offered_extent": "HALF_THE_KINGDOM",
             "to_be_given_to": "B2",
             "status": "FORESEEN",
-            "speech_act": "PETITIONS_FOR_GRANT"
+            "speech_act": "PROPOSES_COURSE_OF_ACTION"
           }
         ]
       },
@@ -557,7 +557,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "asked": "PETITION",
             "at_event": "MISHTEH",
             "event_course": "OF_WINE",
-            "speech_act": "ASKS_DELIBERATIVE_QUESTION"
+            "speech_act": "ASKS_INFORMATION_SEEKING_QUESTION"
           },
           {
             "action": "PROPOSED",
@@ -566,7 +566,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "offered_extent": "HALF_THE_KINGDOM",
             "to_be_done_for": "B2",
             "status": "FORESEEN",
-            "speech_act": "PETITIONS_FOR_GRANT"
+            "speech_act": "PROPOSES_COURSE_OF_ACTION"
           }
         ]
       },

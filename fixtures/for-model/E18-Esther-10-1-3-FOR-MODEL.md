@@ -239,7 +239,7 @@ This page renders the FOR_MODEL JSON as a wiki-addressable artifact. The canonic
             "citer": "NARRATOR",
             "cited_record": "TH_ANNALS",
             "record_of_kings": "MEDIA_AND_PERSIA",
-            "speech_act": "ASKS_DELIBERATIVE_QUESTION"
+            "speech_act": "STATES_AS_TRUE"
           }
         ],
         "recorded_might_holder": "B4",
