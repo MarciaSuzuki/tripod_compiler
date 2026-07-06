@@ -212,7 +212,9 @@ describe("SC-0025 — action-slot enforcement (the nested-component action axis)
     // (first action-axis growth: SC-0064 sitting B1, +8 ruled by Marcia 2026-06-12).
     expect(entries.filter((e) => e.sc_ref === "SC-0025").length).toBe(31);
     expect(approved.size).toBeGreaterThanOrEqual(31);
-    expect(ACTION_QUAR.size).toBe(2);
+    // SC-0079 (Esther seed-expansion) governed-parks additional action variants into the
+    // quarantine ledger; the 2 SC-0025 Ruth held-forms remain quarantined + disjoint (below).
+    expect(ACTION_QUAR.size).toBeGreaterThanOrEqual(2);
     for (const v of HELD2) {
       expect(ACTION_QUAR.has(v), `${v} quarantined`).toBe(true);
       expect(approved.has(v), `${v} NOT approved`).toBe(false);

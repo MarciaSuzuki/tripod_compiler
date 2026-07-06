@@ -7,8 +7,8 @@
       "sha256": "6d36fc11883e375f32e3c3076ebc9ec531b7b61c7096692e7df868b6521f8a82"
     },
     "compilation-log.schema.json": {
-      "version": "v0.8",
-      "sha256": "ff315586c9e70ea57fa17fa1635226e6f0ed8b8a8b5898cf0803c4f3fe8fdae3"
+      "version": "v0.9",
+      "sha256": "80ff2d40bc3eb36903685013e0651659ceb78274ba5e7991f7011011dc34f447"
     },
     "bcd-delta.schema.json": {
       "version": "v0.5",
@@ -19,12 +19,12 @@
       "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
     },
     "approved-enumerations.json": {
-      "version": "v0.21",
-      "sha256": "b3f6e7ccf70a821dc47c007d740b032a7bc8621bf1677f9100e606c187bb159c"
+      "version": "v0.22",
+      "sha256": "1e3eed4c0350c110752bc907b005c2f3cf327aaed7dd411d5f8182c8213ec710"
     },
     "quarantined-vocabulary.json": {
-      "version": "0.3.0",
-      "sha256": "5d6bcad897f1c1223a3d6eaaa8cb95a25bbbd366543b4bf2f4618da21fb05623"
+      "version": "0.4.0",
+      "sha256": "02e22b2b78972044188ecdbd30e51feb17437ed2fd58c10571c1820d5c56edd1"
     }
   },
   "_sources_comment": "Frozen BHSA extracts + the derived entity alias table (docs/SOURCE_AND_SCALING.md, docs/COVERAGE.md), generated OFFLINE by extractor/*.py from local BHSA tf/2021 + the wiki BCD, plus the hand-authored coverage-exceptions sign-off ledger. The Concept-Bank + Figure-Registry indices are GLOBAL / canon-wide (registry/concepts.json + figures.json — SC-0037: one code per concept/figure across the whole Bible, so the Facilitator anchors them consistently everywhere), vendored OFFLINE by extractor/build_concept_figure_registry.py from the canon-wide concepts/ + figures/ notes so `tripod id-check` can verify CB_/FIG_ reference-integrity + name-binding. (The per-book CAST — beings/places/objects, the *.aliases.json tables — stays per-book.) All pinned by sha256 so coverage reconciliation + id-check are reproducible. Source extracts: regenerate via the recorded extractor/build commands. coverage-exceptions.json: a governed reviewer sign-off — edits are recorded (SC-ref + provenance) and re-pinned.",
