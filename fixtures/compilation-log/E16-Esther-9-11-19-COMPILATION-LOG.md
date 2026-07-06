@@ -1,11 +1,11 @@
 ---
 type: "sta-compilation-log"
 pericope: "E16"
-status: "skeleton"
+status: "valid"
 pilot: "pilot-2"
 ---
 
-# E16 — Esther 9:11–19 — COMPILATION-LOG (skeleton gap report)
+# E16 — Esther 9:11–19 — COMPILATION-LOG
 
 ```json
 {
@@ -14,30 +14,63 @@ pilot: "pilot-2"
   "bcv": "Esther 9:11-19",
   "pericope_id": "P16",
   "pericope_title": "The Susa toll, Esther's second request, and the two days of feasting",
-  "compiled_at": "2026-05-29",
+  "compiled_at": "2026-07-06",
   "review_status": {
     "meaning_map_status": "PARSED_BY_COMPILER",
-    "sta_compilation_status": "SKELETON_DETERMINISTIC",
+    "sta_compilation_status": "WORKFLOW_AUTHORED_REVIEWER_RULED",
     "community_verified": false,
     "translation_team_verified": false,
     "consultant_review_required": true,
     "production_use": false
   },
-  "confidence_overall": "LOW",
-  "confidence_overall_note": "Deterministic skeleton from the approved Meaning Map. 12 beings + 4 place codes extracted, 0 flags carried, 72 judgment gaps deferred. Extract-only: no controlled-vocabulary values assigned by the compiler.",
+  "confidence_overall": "MEDIUM",
+  "confidence_overall_note": "Judgment half authored by the SC-0079 hand-authoring fan-out (adversarially cold-read) and ruled by Marcia: the promote ruling 2026-06-28 (option 1 + the action=4 amendment), the Evaluator's 52 QA corrections, the modality cold-read (fix-stream A), and the speech-act decision card 2026-07-06. The graduated FOR_MODEL validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints (enum v0.22 per-value provenance); the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
   "compilation_decisions": [
     {
       "decision_id": "P16-D1",
       "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 72 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
+    },
+    {
+      "decision_id": "P16-D2",
+      "decision": "FOR_MODEL judgment half authored modality-aware by the SC-0079 fan-out; adversarially cold-read.",
+      "description": "Authored 2026-06-28 by the SC-0079 authoring fan-out (workflow wf_63e8a4e6-a77: author -> self-validate-to-0-block -> adversarial cold-read), grounded in the pinned BHSA packet, the approved Meaning Map, and the 54-entity registry. SC-0078 modality applied at authoring time (bounded-open status axis; ASSERTED = omit)."
+    },
+    {
+      "decision_id": "P16-D3",
+      "decision": "Fix-stream B (Marcia's ruled remapping + Evaluator QA + dedup) and fix-stream A (modality cold-read) applied.",
+      "description": "Fix-stream B per SC-0079-remapping-LOCKED.json: Marcia's promote ruling 2026-06-28 (option 1 + the action=4 amendment), the Evaluator's QA-FINAL 52 corrections, and the surgical per-array dedup-by-parking (canonical kept; co-occurring variants parked as themselves in quarantined-vocabulary 0.4.0). Fix-stream A: the deterministic modality status edits from the Evaluator's cold-read — A is authoritative for status over B. Applied 2026-06-29 on sc-0079-esther-compile. This pericope's A-edits: P4 status dropped; P5/P6 component NORM dropped."
     }
   ],
   "vocabulary_additions": {
     "proposition_kinds": [],
-    "scene_kinds": [],
+    "scene_kinds": [
+      {
+        "value": "FESTIVAL_FOUNDING_SCENE",
+        "source": "E16-Esther-9-11-19-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "status": "CONFIRMED",
+        "note": "Mechanized from enum v0.22 provenance: axis scene_kind, first_seen E16 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
+      }
+    ],
     "presence_values": [],
     "referential_forms": [],
-    "other": []
+    "other": [],
+    "arc_elements": [
+      {
+        "value": "FESTIVAL_FOUNDED",
+        "source": "E16-Esther-9-11-19-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "status": "CONFIRMED",
+        "note": "Mechanized from enum v0.22 provenance: axis arc_element, first_seen E16 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
+      }
+    ],
+    "communicative_function_elements": [
+      {
+        "value": "EXPLAINS",
+        "source": "E16-Esther-9-11-19-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "status": "CONFIRMED",
+        "note": "Mechanized from enum v0.22 provenance: axis communicative_function_element, first_seen E16 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
+      }
+    ]
   },
   "proposition_kind_slot_sets": [],
   "high_risk_register_audit": [
@@ -55,11 +88,16 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": false,
-    "every_proposition_has_cb_flags_and_figure_flags": false,
+    "for_model_contains_only_inference_signal": true,
+    "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
-    "speech_act_present_on_all_component_records": false,
-    "speech_act_values_used": [],
+    "speech_act_present_on_all_component_records": true,
+    "speech_act_values_used": [
+      "ASKS_DELIBERATIVE_QUESTION",
+      "PETITIONS_FOR_GRANT",
+      "PRESCRIBES_AS_LAW",
+      "STATES_AS_TRUE"
+    ],
     "discourse_threads_tracked_in_audit_only": true,
     "known_limitations_tracked_in_audit_only": true,
     "high_risk_register_complete": false,
@@ -69,10 +107,9 @@ pilot: "pilot-2"
     "no_reviewer_facing_prompts_in_compilation_log": true
   },
   "known_limitations": [
-    "Deterministic skeleton (tripod compile): 72 judgment gaps remain as typed __TODO__ placeholders carrying their source-prose span.",
-    "Judgment gaps by field — role_in_scene:12, referential_form:12, proposition_kind:9, event_specific_slots:9, inter_proposition_links:9, being_id:3, object_id:3, scene_kind:3, time_id:2, book_context_ref:1, register_overrides:1, arc_elements:1, context_elements:1, tone_elements:1, pace_elements:1, communicative_function_elements:1, beings_in_scene:1, place_id:1, (granularity):1.",
-    "Propositions are at MEANING-MAP granularity (9); the FOR_MODEL may decompose multi-event propositions further (judgment, Agent 3).",
-    "Controlled-vocabulary tokens (scene_kind, proposition_kind, role/function), event_specific_slots, inter_proposition_links, referential_form, and the L1 element arrays are judgment — deferred to Agent 3 (Slice 4). No values were invented."
+    "Mechanized ruled log (SC-0079 compile close): the judgment half was workflow-authored and reviewer-ruled; vocabulary_additions are assembled from the enum v0.22 per-value provenance (first_seen = this pericope).",
+    "The high-risk register audit (figures to keep, naming shifts, structural absences) is NOT hand-authored — the R1 placeholder remains honest; it is judgment for the READING_QUALITY gate.",
+    "Propositions stay at meaning-map granularity; multi-event propositions decompose in-slot per the granularity contract."
   ]
 }
 ```

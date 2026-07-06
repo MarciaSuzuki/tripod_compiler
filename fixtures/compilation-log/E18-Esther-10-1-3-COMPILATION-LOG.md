@@ -1,11 +1,11 @@
 ---
 type: "sta-compilation-log"
 pericope: "E18"
-status: "skeleton"
+status: "valid"
 pilot: "pilot-2"
 ---
 
-# E18 — Esther 10:1–3 — COMPILATION-LOG (skeleton gap report)
+# E18 — Esther 10:1–3 — COMPILATION-LOG
 
 ```json
 {
@@ -14,22 +14,37 @@ pilot: "pilot-2"
   "bcv": "Esther 10:1-3",
   "pericope_id": "P18",
   "pericope_title": "The book closes: the king's tribute and Mordecai's greatness in the chronicles",
-  "compiled_at": "2026-05-29",
+  "compiled_at": "2026-07-06",
   "review_status": {
     "meaning_map_status": "PARSED_BY_COMPILER",
-    "sta_compilation_status": "SKELETON_DETERMINISTIC",
+    "sta_compilation_status": "WORKFLOW_AUTHORED_REVIEWER_RULED",
     "community_verified": false,
     "translation_team_verified": false,
     "consultant_review_required": true,
     "production_use": false
   },
-  "confidence_overall": "LOW",
-  "confidence_overall_note": "Deterministic skeleton from the approved Meaning Map. 8 beings + 2 place codes extracted, 0 flags carried, 43 judgment gaps deferred. Extract-only: no controlled-vocabulary values assigned by the compiler.",
+  "confidence_overall": "MEDIUM",
+  "confidence_overall_note": "Judgment half authored by the SC-0079 hand-authoring fan-out (adversarially cold-read) and ruled by Marcia: the promote ruling 2026-06-28 (option 1 + the action=4 amendment), the Evaluator's 52 QA corrections, the modality cold-read (fix-stream A), and the speech-act decision card 2026-07-06. The graduated FOR_MODEL validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints (enum v0.22 per-value provenance); the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
   "compilation_decisions": [
     {
       "decision_id": "P18-D1",
       "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 43 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
+    },
+    {
+      "decision_id": "P18-D2",
+      "decision": "FOR_MODEL judgment half authored modality-aware by the SC-0079 fan-out; adversarially cold-read.",
+      "description": "Authored 2026-06-28 by the SC-0079 authoring fan-out (workflow wf_63e8a4e6-a77: author -> self-validate-to-0-block -> adversarial cold-read), grounded in the pinned BHSA packet, the approved Meaning Map, and the 54-entity registry. SC-0078 modality applied at authoring time (bounded-open status axis; ASSERTED = omit)."
+    },
+    {
+      "decision_id": "P18-D3",
+      "decision": "Fix-stream B (Marcia's ruled remapping + Evaluator QA + dedup) and fix-stream A (modality cold-read) applied.",
+      "description": "Fix-stream B per SC-0079-remapping-LOCKED.json: Marcia's promote ruling 2026-06-28 (option 1 + the action=4 amendment), the Evaluator's QA-FINAL 52 corrections, and the surgical per-array dedup-by-parking (canonical kept; co-occurring variants parked as themselves in quarantined-vocabulary 0.4.0). Fix-stream A: the deterministic modality status edits from the Evaluator's cold-read — A is authoritative for status over B. Applied 2026-06-29 on sc-0079-esther-compile. This pericope's A-edits: P1/P2/P3 status dropped."
+    },
+    {
+      "decision_id": "P18-D4",
+      "decision": "Marcia's speech-act decision card applied (ruled 2026-07-06, all 6 + the E10 rider).",
+      "description": "P2 (10:2): the colophon component ASKS_DELIBERATIVE_QUESTION -> STATES_AS_TRUE (the rhetorical question performs an attestation; no new closed-list member minted — seed-freeze discipline; the interrogative shape stays preserved in the map prose). Card: tripod-eval-artifacts/ESTHER-SPEECH-ACT-DECISION-CARD.md."
     }
   ],
   "vocabulary_additions": {
@@ -55,11 +70,13 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": false,
-    "every_proposition_has_cb_flags_and_figure_flags": false,
+    "for_model_contains_only_inference_signal": true,
+    "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
-    "speech_act_present_on_all_component_records": false,
-    "speech_act_values_used": [],
+    "speech_act_present_on_all_component_records": true,
+    "speech_act_values_used": [
+      "STATES_AS_TRUE"
+    ],
     "discourse_threads_tracked_in_audit_only": true,
     "known_limitations_tracked_in_audit_only": true,
     "high_risk_register_complete": false,
@@ -69,10 +86,9 @@ pilot: "pilot-2"
     "no_reviewer_facing_prompts_in_compilation_log": true
   },
   "known_limitations": [
-    "Deterministic skeleton (tripod compile): 43 judgment gaps remain as typed __TODO__ placeholders carrying their source-prose span.",
-    "Judgment gaps by field — role_in_scene:8, referential_form:8, object_id:4, scene_kind:3, proposition_kind:3, event_specific_slots:3, inter_proposition_links:3, place_id:2, book_context_ref:1, register_overrides:1, arc_elements:1, context_elements:1, tone_elements:1, pace_elements:1, communicative_function_elements:1, being_id:1, (granularity):1.",
-    "Propositions are at MEANING-MAP granularity (3); the FOR_MODEL may decompose multi-event propositions further (judgment, Agent 3).",
-    "Controlled-vocabulary tokens (scene_kind, proposition_kind, role/function), event_specific_slots, inter_proposition_links, referential_form, and the L1 element arrays are judgment — deferred to Agent 3 (Slice 4). No values were invented."
+    "Mechanized ruled log (SC-0079 compile close): the judgment half was workflow-authored and reviewer-ruled; vocabulary_additions are assembled from the enum v0.22 per-value provenance (first_seen = this pericope).",
+    "The high-risk register audit (figures to keep, naming shifts, structural absences) is NOT hand-authored — the R1 placeholder remains honest; it is judgment for the READING_QUALITY gate.",
+    "Propositions stay at meaning-map granularity; multi-event propositions decompose in-slot per the granularity contract."
   ]
 }
 ```
