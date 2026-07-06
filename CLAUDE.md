@@ -1,5 +1,7 @@
 # Tripod Compiler — Project Brief & Build Guide
 
+> **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
+
 > **Current state: see [`docs/PROGRESS.md`](docs/PROGRESS.md).** This brief is the original
 > scoping handoff and is now partly stale (e.g. it says 2 artifacts — pilot-2 has 4; it suggests
 > zod — we consume the pinned JSON-Schemas via ajv). `docs/PROGRESS.md` overrides it on conflict.

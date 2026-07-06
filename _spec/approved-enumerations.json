@@ -1,6 +1,6 @@
 {
   "$comment": "Growing registry of APPROVED convergent bounded-open enumeration values, with provenance. Seeded from canonical P01 (SC-0006); grows by governed promotion (tripod promote) as pericope COMPILATION-LOG vocabulary_additions are CONFIRMED. Replaces drift_detector.canonical_p01_enumerations as the live drift baseline for convergent axes. Descriptive/open axes (role/function/_kind _examples, referential_form) are NOT tracked here — they never converge. Vendored + pinned into the compiler; promotions are logged in VOCABULARY_LOG.md and re-pinned.",
-  "version": "v0.22",
+  "version": "v0.23",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date": "2026-06-05",
   "seeded_from": "validation-rules.json drift_detector.canonical_p01_enumerations (convergent axes only)",

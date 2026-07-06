@@ -137,7 +137,7 @@ function pericopeCard(p) {
 export function pericopePage({ cfg, p, formCfg, wikilinkCtx }) {
   const tocItems = [
     `<a href="#meaning-map">Meaning Map</a>`,
-    p.meaningCoordinatesHtml ? `<a href="#meaning-coordinates">MEANING_COORDINATES</a>` : null,
+    p.meaningCoordinatesHtml ? `<a href="#meaning-coordinates">Meaning Coordinates</a>` : null,
     p.logHtml ? `<a href="#compilation-log">Compilation Log</a>` : null,
   ].filter(Boolean);
 
@@ -158,18 +158,20 @@ ${p.mapHtml}
 
   const mcSection = p.meaningCoordinatesHtml
     ? `
-<section class="artifact" id="for-model">
+<span id="for-model" aria-hidden="true"></span>
+<section class="artifact" id="meaning-coordinates">
   <div class="secthead">
-    <h2>MEANING_COORDINATES (STA)</h2>
-    ${renderFeedbackButtons(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'MEANING_COORDINATES (STA)' })}
+    <h2>Meaning Coordinates (STA)</h2>
+    ${renderFeedbackButtons(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'Meaning Coordinates (STA)' })}
   </div>
   <p class="artifact-gloss">The machine-readable version of the map — the exact file the translation software will use, shown as an expandable outline.
   Click a line to fold or unfold it.</p>
   ${p.meaningCoordinatesHtml}
 </section>`
     : `
-<section class="artifact artifact-missing" id="for-model">
-  <h2>MEANING_COORDINATES (STA)</h2>
+<span id="for-model" aria-hidden="true"></span>
+<section class="artifact artifact-missing" id="meaning-coordinates">
+  <h2>Meaning Coordinates (STA)</h2>
   <p class="artifact-gloss">Not yet authored for this passage — so far, the Meaning Map above is the approved artifact.</p>
 </section>`;
 

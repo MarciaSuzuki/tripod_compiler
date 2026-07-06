@@ -446,6 +446,9 @@
   "SPEC_CHANGES.md",
   "CLAUDE.md",
   "README.md",
-  "docs/PROGRESS.md"
+  "docs/PROGRESS.md",
+  "tests/oral-cardume.test.ts",
+  "fixtures/gold-diff-baseline.json",
+  "portal/src/lib/method-page.mjs"
  ]
 }

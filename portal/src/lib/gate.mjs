@@ -24,7 +24,7 @@ export const ARTIFACT_CLASSES = {
     dir: 'meaning-coordinates',
     type: 'sta-meaning-coordinates',
     requiredStatus: 'valid',
-    label: 'MEANING_COORDINATES (STA)',
+    label: 'Meaning Coordinates (STA)',
   },
   'compilation-log': {
     dir: 'compilation-log',

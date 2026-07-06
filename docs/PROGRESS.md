@@ -1,5 +1,7 @@
 # PROGRESS — continue-here checkpoint
 
+> **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
+
 > The live state of `tripod_compiler`. Read this first; it overrides the brief where they differ.
 > `CLAUDE.md` is the original scoping handoff and is now partly **stale** — see "Decisions that
 > refined CLAUDE.md" below. `main` is green through **PR #10** (P03 promotion). The **P04–P06 batch

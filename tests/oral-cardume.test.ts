@@ -26,7 +26,7 @@ describe("oral profile — gold Cardume STA (SC-0065)", () => {
   it("is detected as a MEANING_COORDINATES and validates block-clean", () => {
     const r = validateArtifact(ORAL);
     expect(r.artifact).toBe("MEANING_COORDINATES");
-    expect(r.specVersion).toBe("v0.18");
+    expect(r.specVersion).toBe("v0.19");
     expect(r.counts.block, blockMsgs(r)).toBe(0);
     expect(r.ok).toBe(true);
   });

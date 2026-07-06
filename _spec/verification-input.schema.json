@@ -3,7 +3,7 @@
   "$id": "https://tripod.example.org/oral-retro-verification/verification-input-v1.schema.json",
   "title": "Verification Input",
   "description": "JSON loaded by the OBT Retro-Verification app to drive a team review session for one pericope. Pairs with verification-report.schema.json, which defines the app's session output. Produced by Agent 4 at pipeline Step G; reviewed by Agent 1 at Gate H.",
-  "version": "v1.1",
+  "version": "v1.2",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date_locked": "2026-05-29",
   "type": "object",

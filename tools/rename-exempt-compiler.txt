@@ -139,7 +139,7 @@ _spec/approved-enumerations.json :: ^  "growth_log":
 docs/PROGRESS.md :: for-model-template
 fixtures/meaning-coordinates/*.md :: ^drafter:
 fixtures/compilation-log/*.md :: fm-drafter
-portal/src/lib/pages.mjs :: id="for-model"
+portal/src/lib/pages.mjs :: <span id="for-model"
 CLAUDE.md :: formerly FOR_MODEL
 README.md :: formerly FOR_MODEL
 docs/PROGRESS.md :: formerly FOR_MODEL

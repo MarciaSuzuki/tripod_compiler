@@ -3,6 +3,8 @@
 [![review-portal](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal.yml/badge.svg)](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal.yml)
 [![portal-watchdog](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal-watchdog.yml/badge.svg)](https://github.com/MarciaSuzuki/tripod_compiler/actions/workflows/portal-watchdog.yml)
 
+> **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
+
 The upstream artifact-production toolchain for the **Tripod Method** of AI-assisted oral
 Bible translation (Shema Bible Translation / OBT Lab). It sits beside the
 `ruth-pilot-b-wiki` Obsidian vault (the source of truth) and does the repeated, mechanical

@@ -3,24 +3,24 @@
   "tagset_version": "TRIPOD_STA_v2_0",
   "schemas": {
     "validation-rules.json": {
-      "version": "v0.18",
-      "sha256": "6d36fc11883e375f32e3c3076ebc9ec531b7b61c7096692e7df868b6521f8a82"
+      "version": "v0.19",
+      "sha256": "c909a9793f57544dca9bcfce0d5403f31e0a906a105cdf617237579d7a6eafb5"
     },
     "compilation-log.schema.json": {
-      "version": "v0.9",
-      "sha256": "80ff2d40bc3eb36903685013e0651659ceb78274ba5e7991f7011011dc34f447"
+      "version": "v0.10",
+      "sha256": "fc49ec72e6ee8573e58084fe8b3ed546c78d30093d0ec56bf7db273a890a8ea7"
     },
     "bcd-delta.schema.json": {
       "version": "v0.5",
       "sha256": "07a236c957f1429c51d81b8e012ad291298263134ce50dcc2ea7c0640e40d682"
     },
     "verification-input.schema.json": {
-      "version": "v1.1",
-      "sha256": "03e51d5aa0363df6512a40779fb5858c4bfe60d58025a72afe8f3320623835d1"
+      "version": "v1.2",
+      "sha256": "dd2c92621e3f3722a1735a937c5016dbaa6299e9a5726fe3e59f4bc9ce9ec867"
     },
     "approved-enumerations.json": {
-      "version": "v0.22",
-      "sha256": "1e3eed4c0350c110752bc907b005c2f3cf327aaed7dd411d5f8182c8213ec710"
+      "version": "v0.23",
+      "sha256": "7cdda82ef22dcc191ca3289157383db5a192956f86c613e6f2090c3dfb6ed352"
     },
     "quarantined-vocabulary.json": {
       "version": "0.4.0",
@@ -34,8 +34,8 @@
       "sha256": "d30775f44ae17e57999f7d2622e35a0c96f61fcfacb7b34e42acd9da06852c3e"
     },
     "lint-lexicon.json": {
-      "version": "0.4.0",
-      "sha256": "4a7ecddd170672c89aa1a828c4425b9e0333200f2a27f584509ed57004a6d267"
+      "version": "0.4.1",
+      "sha256": "ffb5d816e55dd068bef4b3ed3d9725d1babdf37a190e45ed62a154df344fb3e1"
     },
     "lint-exceptions.json": {
       "version": "0.1.4",
@@ -43,7 +43,7 @@
     },
     "id-alignment-exceptions.json": {
       "version": "0.3.0",
-      "sha256": "5b2760572a0cb1fda20ce7c1e188b835a60468813acd88614d6b2af947b5a29a"
+      "sha256": "06cd4dcbf2b9254da04c497ec79f2aa57d0b48b4688659678f487bf69fa9b13d"
     },
     "source/ruth/P01.json": {
       "version": "extractor-0.1.0/bhsa-2021",
@@ -213,9 +213,9 @@
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "693bc783237c88a1597020ecb31668ea320b9e686c92849ea42dda09a5d9be46"
     },
-    "drafter/fm-drafter-prompt.md": {
-      "version": "fm-drafter-0.1.6",
-      "sha256": "4ec9130c2f2442ca9b555c6675b1e78359d80c51691dbb4c27b288b83d890ae8"
+    "drafter/mc-drafter-prompt.md": {
+      "version": "mc-drafter-0.2.0",
+      "sha256": "753a5dad43ea69fc3d2c8c4c7c125ac185ae4b647c52217d08ff5be8729abac7"
     }
   }
 }
