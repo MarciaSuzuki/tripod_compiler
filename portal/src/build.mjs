@@ -3,7 +3,7 @@
 //
 //   node src/build.mjs [--root <repo>] [--out <dir>] [--config <file>]
 //
-// Reads ONLY:  fixtures/{meaning-map,for-model,compilation-log}/*.md   (the blessed artifacts)
+// Reads ONLY:  fixtures/{meaning-map,meaning-coordinates,compilation-log}/*.md   (the blessed artifacts)
 //              _spec/registry/*.json                                   (public registries, for tooltips)
 //              _spec/approved-enumerations.json, _spec/validation-rules.json,
 //              SPEC_CHANGES.md                                         (atlas-data sources, spec §2.1)
@@ -102,7 +102,7 @@ function main() {
   const registries = loadRegistries(repoRoot, cfg.books);
   const pericopes = new Map();
   const ensure = (id) => {
-    if (!pericopes.has(id)) pericopes.set(id, { id, map: null, forModel: null, log: null });
+    if (!pericopes.has(id)) pericopes.set(id, { id, map: null, meaningCoordinates: null, log: null });
     return pericopes.get(id);
   };
 
@@ -118,7 +118,7 @@ function main() {
       const id = fm['pericope'];
       if (!id) throw new Error(`${a.relPath}: artifact has no pericope field`);
       const p = ensure(id);
-      const slot = a.classKey === 'for-model' ? 'forModel' : 'log';
+      const slot = a.classKey === 'meaning-coordinates' ? 'meaningCoordinates' : 'log';
       if (p[slot]) throw new Error(`duplicate ${a.classKey} for ${id}: ${p[slot].relPath} and ${a.relPath}`);
       p[slot] = a;
     }
@@ -128,7 +128,7 @@ function main() {
   for (const [id, p] of pericopes) {
     const set = new Set();
     if (p.map) set.add('meaning-map');
-    if (p.forModel) set.add('for-model');
+    if (p.meaningCoordinates) set.add('meaning-coordinates');
     if (p.log) set.add('compilation-log');
     published.set(id, set);
   }
@@ -161,17 +161,17 @@ function main() {
       atlas: { bookIdByPrefix: new Map(cfg.books.map((b) => [b.prefix, String(b.name).toLowerCase()])) },
     };
 
-    const mapFm = p.map?.frontmatter ?? p.forModel?.frontmatter ?? p.log?.frontmatter ?? {};
+    const mapFm = p.map?.frontmatter ?? p.meaningCoordinates?.frontmatter ?? p.log?.frontmatter ?? {};
     const title = mapFm['pericope-title'] ?? '';
-    const bcv = mapFm['bcv'] ?? jsonOf(p.forModel, p.relPath)?.header?.bcv ?? '';
+    const bcv = mapFm['bcv'] ?? jsonOf(p.meaningCoordinates, p.relPath)?.header?.bcv ?? '';
 
     let mapHtml = `<p class="note">The Meaning Map for this passage is not published yet.</p>`;
     if (p.map) {
       const askUrl = sectionAskUrlFactory(formCfg, { pericope: `${p.id} — ${bcv}`, artifact: 'Meaning Map' });
       mapHtml = renderMarkdown(ctx, p.map.body, { headingPrefix: 'map', sectionAskUrl: askUrl }).html;
     }
-    const forModelHtml = p.forModel
-      ? renderJsonTree(ctx, jsonOf(p.forModel), { openDepth: 2 })
+    const meaningCoordinatesHtml = p.meaningCoordinates
+      ? renderJsonTree(ctx, jsonOf(p.meaningCoordinates), { openDepth: 2 })
       : null;
     const logHtml = p.log ? renderJsonTree(ctx, jsonOf(p.log), { openDepth: 1 }) : null;
 
@@ -186,7 +186,7 @@ function main() {
           cfg,
           formCfg,
           wikilinkCtx: ctx,
-          p: { id: p.id, bcv, title, mapFrontmatter: mapFm, mapHtml, forModelHtml, logHtml },
+          p: { id: p.id, bcv, title, mapFrontmatter: mapFm, mapHtml, meaningCoordinatesHtml, logHtml },
         }),
       })
     );
@@ -201,7 +201,7 @@ function main() {
           id: p.id,
           bcv: p.map?.frontmatter?.bcv ?? '',
           title: p.map?.frontmatter?.['pericope-title'] ?? '',
-          has: { map: !!p.map, forModel: !!p.forModel, log: !!p.log },
+          has: { map: !!p.map, meaningCoordinates: !!p.meaningCoordinates, log: !!p.log },
         })),
     }))
     .filter((b) => b.pericopes.length > 0);
@@ -279,7 +279,7 @@ function main() {
   console.log(`  atlas: ${atlas.summary}`);
   console.log(`  atlas pages: ${atlasHtml.size} (index + ${atlas.data.books.length} books + registry)`);
   for (const p of ordered) {
-    const parts = [p.map && 'map', p.forModel && 'for-model', p.log && 'log'].filter(Boolean);
+    const parts = [p.map && 'map', p.meaningCoordinates && 'meaning-coordinates', p.log && 'log'].filter(Boolean);
     console.log(`  ${p.id}: ${parts.join(' + ')}`);
   }
 }

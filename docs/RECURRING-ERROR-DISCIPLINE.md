@@ -7,7 +7,7 @@
 
 ---
 
-**The discipline (Marcia + evaluator, 2026-06-08):** escalate recurring *process* errors the same way the project escalates recurring *vocabulary* — by recurrence. Apply the recurrence-watch to ourselves: a process error that recurs **≥2–3×** is promoted from "documented" to "enforced." Documenting an error *reduces* it; gating it *ends* it. (Proof: `COMMON-MISTAKES-REGISTER` M2.1 — "no prose in structured sections" — was written down, yet the same error recurred in the FM as SC-0027's `meaning` field, because a register that's *read* doesn't enforce; only a check that *runs* does.)
+**The discipline (Marcia + evaluator, 2026-06-08):** escalate recurring *process* errors the same way the project escalates recurring *vocabulary* — by recurrence. Apply the recurrence-watch to ourselves: a process error that recurs **≥2–3×** is promoted from "documented" to "enforced." Documenting an error *reduces* it; gating it *ends* it. (Proof: `COMMON-MISTAKES-REGISTER` M2.1 — "no prose in structured sections" — was written down, yet the same error recurred in the MC as SC-0027's `meaning` field, because a register that's *read* doesn't enforce; only a check that *runs* does.)
 
 **Fix hierarchy — always reach for the highest that fits:**
 1. **Make it structurally impossible** (e.g. SC-0030's parallel fidelity layer makes Level-3 purity structural, not convention).

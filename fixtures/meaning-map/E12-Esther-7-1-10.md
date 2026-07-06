@@ -10,7 +10,7 @@ status: "complete"
 meaning-map-version: 2.0
 sta-status: "complete"
 pilot: "pilot-2"
-for-model: [[E12-Esther-7-1-10-FOR-MODEL]]
+meaning-coordinates: [[E12-Esther-7-1-10-MEANING-COORDINATES]]
 active-concepts: []
 active-figures: []
 ---

@@ -24,11 +24,11 @@ pilot: "pilot-2"
     "production_use": false
   },
   "confidence_overall": "MEDIUM",
-  "confidence_overall_note": "Judgment half machine-drafted (SC-0063, patch-only contract) and ruled by Marcia axis-by-axis under SC-0064 (§A–§E + arc_element). The graduated FOR_MODEL validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints; the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
+  "confidence_overall_note": "Judgment half machine-drafted (SC-0063, patch-only contract) and ruled by Marcia axis-by-axis under SC-0064 (§A–§E + arc_element). The graduated MEANING_COORDINATES validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints; the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
   "compilation_decisions": [
     {
       "decision_id": "P05-D1",
-      "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
+      "decision": "Deterministically compiled a MEANING_COORDINATES skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 97 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
     },
     {
@@ -39,44 +39,44 @@ pilot: "pilot-2"
     {
       "decision_id": "P05-D3",
       "decision": "Ruled by Marcia under SC-0064 (the batch ruling), axis by axis.",
-      "description": "§A–§E + the five §B axes (action+tone, proposition_kind, role_in_scene_being, scene_kind, arc_element) ruled across 2026-06-12→19; 23 vocabulary addition(s) CONFIRMED for promotion for this pericope (per-axis ruling-logs in _working/J05/J05-SC-0064-*-RULING-LOG.md). Renames/collapses applied to the FOR_MODEL as recorded amendments where ruled."
+      "description": "§A–§E + the five §B axes (action+tone, proposition_kind, role_in_scene_being, scene_kind, arc_element) ruled across 2026-06-12→19; 23 vocabulary addition(s) CONFIRMED for promotion for this pericope (per-axis ruling-logs in _working/J05/J05-SC-0064-*-RULING-LOG.md). Renames/collapses applied to the MEANING_COORDINATES as recorded amendments where ruled."
     }
   ],
   "vocabulary_additions": {
     "proposition_kinds": [
       {
         "value": "QUESTIONED",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (proposition_kind Group B)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (proposition_kind Group B)",
         "status": "CONFIRMED",
         "note": "God's probing question 'is it good that it burns to you?' (4:4). Kept distinct (Marcia's B-2 keep) from ASKED (plain info-seeking, promoted Group A) and INTERROGATED (rapid-fire) — three distinct question speech-acts."
       },
       {
         "value": "MADE_SHELTER",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
         "status": "CONFIRMED",
         "note": "Clean event-kind mint (proposition_kind bulk — no cross-axis/collapse/prose issue). P8: 'making a booth... sitting under it in the shade.' Jonah builds his own watcher's shade (O13); no approved kind covers constructing a shelter."
       },
       {
         "value": "REJOICED",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
         "status": "CONFIRMED",
         "note": "Clean event-kind mint (proposition_kind bulk — no cross-axis/collapse/prose issue). P11: 'rejoicing... over the qiqayon, a great joy' — the only joy in the book."
       },
       {
         "value": "STRUCK",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
         "status": "CONFIRMED",
         "note": "Clean event-kind mint (proposition_kind bulk — no cross-axis/collapse/prose issue). P13: 'striking... the worm struck the qiqayon, and it withered.' Reused at P15 (the sun strikes Jonah's head)."
       },
       {
         "value": "ANGER_KINDLED",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (proposition_kind Group C)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (proposition_kind Group C)",
         "status": "CONFIRMED",
         "note": "Jonah's burning anger (4:1 'it was evil to Jonah, a great evil, and his anger burned'). Kept (Group C glance — passes strip-to-type: a discrete becoming-angry event-beat, not a content-restatement)."
       },
       {
         "value": "CREED_RECITED",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (proposition_kind Group C)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (proposition_kind Group C)",
         "status": "CONFIRMED",
         "note": "The five-fold creed recited as accusation (4:2 'gracious and compassionate, slow to anger, abounding in hesed, relenting of evil', CB_0058). Kept (Group C glance — passes: a recitation act)."
       }
@@ -84,25 +84,25 @@ pilot: "pilot-2"
     "scene_kinds": [
       {
         "value": "ANGRY_PRAYER_SCENE",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
         "status": "CONFIRMED",
         "note": "Scene-kind (Marcia 2026-06-13 bulk-tick). MM S1: Jonah burns and prays a furious, accusatory prayer asking to die (4:1-3); no approved scene_kind covers an angry complaint-prayer."
       },
       {
         "value": "APPOINTMENT_SCENE",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
         "status": "CONFIRMED",
         "note": "Scene-kind (Marcia 2026-06-13 bulk-tick). MM S3 (4:6-8): YHWH-God appoints plant, worm, and wind in sequence — the book's quiet signature verb building the object lesson."
       },
       {
         "value": "CLOSING_ARGUMENT_SCENE",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
         "status": "CONFIRMED",
         "note": "Scene-kind (Marcia 2026-06-13 bulk-tick). MM S4 (4:9-11): the sharpened question, Jonah's defiant answer, and YHWH's argument from plant to city left hanging — the book's open end."
       },
       {
         "value": "WATCH_POST_SCENE",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (scene_kind)",
         "status": "CONFIRMED",
         "note": "Scene-kind (Marcia 2026-06-13 bulk-tick). MM S2 (4:4-5): God's question hangs unanswered while Jonah goes out, builds a booth, and sits to watch the city; no approved scene_kind fits."
       }
@@ -113,55 +113,55 @@ pilot: "pilot-2"
     "arc_elements": [
       {
         "value": "ANGER_AT_DIVINE_MERCY",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'The mercy that saved Nineveh lands on Jonah as a great evil, and he burns.'"
       },
       {
         "value": "APPOINTED_OBJECT_LESSON",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'God's appointings come one a verse: a qiqayon plant... a worm... a cutting east wind' — the staged lesson."
       },
       {
         "value": "ARGUMENT_FROM_LESSER_TO_GREATER",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'YHWH's argument from the lesser to the greater: you pitied a plant... and I, should I not pity Nineveh.'"
       },
       {
         "value": "DEATH_WISH",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'He asks to die' (and again at 4:8) — the recurring death-request."
       },
       {
         "value": "DIVINE_PROBING_QUESTION",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'gets a question instead — is it good that it burns to you?'"
       },
       {
         "value": "LOSS_OF_COMFORT",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'a worm at dawn that kills the plant; a cutting east wind and a hammering sun, until he faints.'"
       },
       {
         "value": "UNANSWERED_QUESTION_CLOSE",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'No one answers. The book ends inside the question.'"
       },
       {
         "value": "WITHDRAWAL_TO_WATCH",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. 2.1: 'walks out east of the city to watch what will become of it.'"
       },
       {
         "value": "MOTIVE_DISCLOSED",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19); renamed from WITHHELD_MOTIVE_DISCLOSED (strip-to-type: the delayed-disclosure type is MOTIVE_DISCLOSED). 2.1: 'His prayer finally says what the story has withheld since the flight: this is why I ran.'"
       }
@@ -169,7 +169,7 @@ pilot: "pilot-2"
     "tone_elements": [
       {
         "value": "HEATED",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-2026-06-12T16-11-20-694Z (claude-opus-4-8, request 84c5070972afc2d7…) · declared mint (fills.json) · ruled tick by Marcia 2026-06-12 (SC-0064 §B sitting 1, item 8)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-2026-06-12T16-11-20-694Z (claude-opus-4-8, request 84c5070972afc2d7…) · declared mint (fills.json) · ruled tick by Marcia 2026-06-12 (SC-0064 §B sitting 1, item 8)",
         "status": "CONFIRMED",
         "note": "The chapter runs on heat — Jonah burns, the sun blazes, the east wind cuts dry (MM 2.3); no approved tone token names the governing heat/anger texture."
       }
@@ -177,19 +177,19 @@ pilot: "pilot-2"
     "role_in_scene_beings": [
       {
         "value": "COMPLAINANT",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
         "status": "CONFIRMED",
         "note": "Cluster survivor (Principle A, Marcia 2026-06-13): absorbs AFFLICTED_ONE + RESPONDENT (Jonah's transient ch.4 states; WATCHER kept as the other defining posture). MM S1 role prose: 'the angry pray-er; the one who asks to die'; 3F: 'turns Israel's oldest praise into a prophet's accusation.'"
       },
       {
         "value": "WATCHER",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
         "status": "CONFIRMED",
         "note": "Scene role (Principle A, Marcia 2026-06-13). MM S2 role prose: 'the unanswering one — he walks out and sits down to watch'; 3F: 'The watcher's post east of the city stages the lesson.'"
       },
       {
         "value": "ANIMAL_REFERENT",
-        "source": "J05-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
+        "source": "J05-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T16-11-20-694Z (claude-opus-4-8, req 84c5070972afc2d7…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
         "status": "CONFIRMED",
         "note": "Scene role (Principle A, Marcia 2026-06-13). MM S4 role prose: 'the book's last word — the animals stand inside the final mercy'; the same beasts of the J04 decree."
       }
@@ -219,7 +219,7 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
     "speech_act_present_on_all_component_records": true,

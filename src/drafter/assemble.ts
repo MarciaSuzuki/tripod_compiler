@@ -10,9 +10,9 @@ import { approvedAxesDigest, closedListsDigest, registryDigest } from "./digest.
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const FIXTURES = join(ROOT, "fixtures");
 
-/** The blessed structural reference pair shown to the drafter (map beside its gold FOR_MODEL). */
+/** The blessed structural reference pair shown to the drafter (map beside its gold MEANING_COORDINATES). */
 const WORKED_MAP = join(FIXTURES, "meaning-map", "P01-Ruth-1-1-5.md");
-const WORKED_FM = join(FIXTURES, "for-model", "P01-Ruth-1-1-5-FOR-MODEL.md");
+const WORKED_MC = join(FIXTURES, "meaning-coordinates", "P01-Ruth-1-1-5-MEANING-COORDINATES.md");
 
 export interface DraftRequest {
   /** the pinned drafter system prompt, verbatim */
@@ -49,14 +49,14 @@ export function assembleDraftRequest(mmPath: string): DraftRequest {
   const compile = compileSkeleton(mm);
   const book = bookOf(mm);
 
-  const system = readFileSync(join(SPEC_DIR, "drafter", "fm-drafter-prompt.md"), "utf8");
+  const system = readFileSync(join(SPEC_DIR, "drafter", "mc-drafter-prompt.md"), "utf8");
 
   const worked =
     "## WORKED EXAMPLE — the blessed P01 pair (structural reference: shape, slot-naming, token style)\n\n" +
     "### P01 Meaning Map\n\n" +
     readFileSync(WORKED_MAP, "utf8") +
-    "\n\n### P01 gold FOR_MODEL\n\n" +
-    readFileSync(WORKED_FM, "utf8");
+    "\n\n### P01 gold MEANING_COORDINATES\n\n" +
+    readFileSync(WORKED_MC, "utf8");
 
   const stableBlocks = [closedListsDigest(), approvedAxesDigest(), worked, registryDigest(book)];
 

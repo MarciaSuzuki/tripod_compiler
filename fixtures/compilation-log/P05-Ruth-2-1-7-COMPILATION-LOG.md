@@ -3,7 +3,7 @@ type: "sta-compilation-log"
 pericope: "P05"
 pericope-title: "Boaz introduced as kinsman; Ruth's gleaning initiative; her chance arrival in Boaz's portion; the foreman's report"
 source-meaning-map: [[P05-Ruth-2-1-7]]
-source-for-model: [[P05-Ruth-2-1-7-FOR-MODEL]]
+source-meaning-coordinates: [[P05-Ruth-2-1-7-MEANING-COORDINATES]]
 related-bcd-delta: [[P05-Ruth-2-1-7-BCD-DELTA]]
 status: "valid"
 pilot: "pilot-2"
@@ -50,7 +50,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P05-D4",
       "decision": "B13 Boaz referential_form at S1 set to NAMED per external reviewer recommendation endorsed at Gate C close.",
-      "description": "The Wave 1 B13-Boaz.md page pre-declared three referential_forms: NAMED, NAMED_AT_FIRST_SIGHT_WITH_CHAYIL_ATTRIBUTE, LEGAL_PERFORMATIVE_NAMING. At Gate C close, the external reviewer recommended NAMED for the S1 introduction-frame; the recommendation was endorsed. Rationale: the cleaner two-layer encoding (NAMED + FIG_0090 figure_flag + TH_ISH_GIBBOR_CHAYIL_INTRODUCTION_FORMULA structural object in S1 objects_in_scene) keeps the bounded-open referential_form vocabulary minimal at the FOR_MODEL layer. The chayil-attribute weight is carried by FIG_0090 + CB_0032 + FIG_0134 (chayil cross-pair tracker). Boaz uses NAMED throughout S1-S4."
+      "description": "The Wave 1 B13-Boaz.md page pre-declared three referential_forms: NAMED, NAMED_AT_FIRST_SIGHT_WITH_CHAYIL_ATTRIBUTE, LEGAL_PERFORMATIVE_NAMING. At Gate C close, the external reviewer recommended NAMED for the S1 introduction-frame; the recommendation was endorsed. Rationale: the cleaner two-layer encoding (NAMED + FIG_0090 figure_flag + TH_ISH_GIBBOR_CHAYIL_INTRODUCTION_FORMULA structural object in S1 objects_in_scene) keeps the bounded-open referential_form vocabulary minimal at the MEANING_COORDINATES layer. The chayil-attribute weight is carried by FIG_0090 + CB_0032 + FIG_0134 (chayil cross-pair tracker). Boaz uses NAMED throughout S1-S4."
     },
     {
       "decision_id": "P05-D5",
@@ -80,7 +80,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P05-D10",
       "decision": "Miqreh chance-providence frame at P5 v.3 encoded with agent_named: NONE; do_not_decide: true; providence-coincidence ambiguity preserved.",
-      "description": "The vayyiqer-miqreha double-cognate construction at v.3 is the narrator's signature providence-without-naming move. Encoded in FOR_MODEL P5 with agent_named: NONE; do not attribute to YHWH. The structural object TH_VAYYIQER_MIQREHA_DOUBLE_COGNATE_CONSTRUCTION captures the construction in S3 objects_in_scene. Recorded as high_risk_register_audit R4 STRUCTURAL_PROVIDENCE_WITHOUT_NAMING_AGENT_WITHHELD with do_not_decide: true. The construction holds ambiguity between coincidence and providence; flattening to plain 'she happened to come' or to plain 'YHWH led her' loses the irony in either direction."
+      "description": "The vayyiqer-miqreha double-cognate construction at v.3 is the narrator's signature providence-without-naming move. Encoded in MEANING_COORDINATES P5 with agent_named: NONE; do not attribute to YHWH. The structural object TH_VAYYIQER_MIQREHA_DOUBLE_COGNATE_CONSTRUCTION captures the construction in S3 objects_in_scene. Recorded as high_risk_register_audit R4 STRUCTURAL_PROVIDENCE_WITHOUT_NAMING_AGENT_WITHHELD with do_not_decide: true. The construction holds ambiguity between coincidence and providence; flattening to plain 'she happened to come' or to plain 'YHWH led her' loses the irony in either direction."
     },
     {
       "decision_id": "P05-D11",
@@ -90,7 +90,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P05-D12",
       "decision": "B29 Clan-of-Elimelech twice-naming at S1 v.1 + S3 v.3 encoded as deliberate narrator bracketing of Ruth's chance-arrival with the kin-frame.",
-      "description": "The narrator names the clan of Elimelech at v.1 (Boaz's introduction-frame) and again at v.3 (immediately after the vayyiqer-miqreha construction — 'who was of the clan of Elimelech'). The twice-naming is structurally significant: the narrator brackets Ruth's chance-arrival with the same kin-frame at both ends, so the audience sees the kin-link the characters do not yet see. Encoded in FOR_MODEL with B29 REFERENCED at S1 + S3 beings_in_scene, the clan-locator phrase as a structural object at S1 (TH_CLAN_OF_ELIMELECH_LOCATOR_PHRASE), and the clan-frame restatement at S3 (TH_CLAN_FRAME_RESTATED_AT_CHANCE_ARRIVAL). Recorded as high_risk_register_audit R2 STRUCTURAL_BRACKETING_CLAN_FRAME."
+      "description": "The narrator names the clan of Elimelech at v.1 (Boaz's introduction-frame) and again at v.3 (immediately after the vayyiqer-miqreha construction — 'who was of the clan of Elimelech'). The twice-naming is structurally significant: the narrator brackets Ruth's chance-arrival with the same kin-frame at both ends, so the audience sees the kin-link the characters do not yet see. Encoded in MEANING_COORDINATES with B29 REFERENCED at S1 + S3 beings_in_scene, the clan-locator phrase as a structural object at S1 (TH_CLAN_OF_ELIMELECH_LOCATOR_PHRASE), and the clan-frame restatement at S3 (TH_CLAN_FRAME_RESTATED_AT_CHANCE_ARRIVAL). Recorded as high_risk_register_audit R2 STRUCTURAL_BRACKETING_CLAN_FRAME."
     },
     {
       "decision_id": "P05-D13",
@@ -637,7 +637,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "id": "R4",
       "kind": "STRUCTURAL_PROVIDENCE_WITHOUT_NAMING_AGENT_WITHHELD",
       "applies_to": "FIG_0015 VAYYIQER_MIQREHA at v.3 (P5) — double-cognate chance-providence construction",
-      "note": "REQUIRED keep-image on FIG_0015. The narrator's signature providence-without-naming move: the construction holds ambiguity between coincidence and providence; YHWH is not named as agent. Flattening to plain 'she happened to come' or to plain 'YHWH led her' loses the irony in either direction. Reconstructor must preserve the ambiguity. agent_named: NONE in FOR_MODEL P5; do not infer divine agency.",
+      "note": "REQUIRED keep-image on FIG_0015. The narrator's signature providence-without-naming move: the construction holds ambiguity between coincidence and providence; YHWH is not named as agent. Flattening to plain 'she happened to come' or to plain 'YHWH led her' loses the irony in either direction. Reconstructor must preserve the ambiguity. agent_named: NONE in MEANING_COORDINATES P5; do not infer divine agency.",
       "required_in_audit": true,
       "do_not_decide": true,
       "carries_forward_to": "P11_compilation_log",
@@ -718,7 +718,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "id": "R13",
       "kind": "TEXTUAL_CLARITY_FLAG",
       "applies_to": "PL_HA_BAYIT_FIELD_SHELTER shelter-rest clause at v.7b — Hebrew syntax and precise referent textually disputed across major commentaries",
-      "note": "The Hebrew 'זֶה שִׁבְתָּהּ הַבַּיִת מְעָט' is textually disputed; readings range from 'she has rested only a little in the shelter' to 'she has not rested even for a moment.' Encoded in FOR_MODEL P9 fifth component with textual_clarity_flag: true. Reconstructor must hold the ambiguity open; do not resolve. The PL_HA_BAYIT_FIELD_SHELTER place-code is registered in BCD-DELTA with notes on the textual uncertainty; the syntactic uncertainty is at the proposition-level only.",
+      "note": "The Hebrew 'זֶה שִׁבְתָּהּ הַבַּיִת מְעָט' is textually disputed; readings range from 'she has rested only a little in the shelter' to 'she has not rested even for a moment.' Encoded in MEANING_COORDINATES P9 fifth component with textual_clarity_flag: true. Reconstructor must hold the ambiguity open; do not resolve. The PL_HA_BAYIT_FIELD_SHELTER place-code is registered in BCD-DELTA with notes on the textual uncertainty; the syntactic uncertainty is at the proposition-level only.",
       "required_in_audit": true,
       "do_not_decide": true,
       "source_in_meaning_map": "Section 3B Scene 4 (PL_HA_BAYIT_FIELD_SHELTER); Section 3C Scene 4 (TH_DISPUTED_SHELTER_REST_CLAUSE); Section 4 Proposition P9 fifth Q&A"
@@ -837,7 +837,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "every_being_in_propositions_declared_in_scenes": true,
     "every_place_in_propositions_declared_in_scenes": true,

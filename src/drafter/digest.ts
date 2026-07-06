@@ -1,8 +1,8 @@
 import { loadSpecJson } from "../spec/load.js";
 
 /**
- * Deterministic context digests for the FOR_MODEL drafter (SC-0063).
- * Rules live in the pinned prompt (_spec/drafter/fm-drafter-prompt.md); the DATA the rules
+ * Deterministic context digests for the MEANING_COORDINATES drafter (SC-0063).
+ * Rules live in the pinned prompt (_spec/drafter/mc-drafter-prompt.md); the DATA the rules
  * point at is rendered here from the pinned spec files, so the prompt does not drift when an
  * enumeration grows. Everything renders in pinned-file order — byte-stable for caching and
  * for the dry-run reproducibility guarantee.

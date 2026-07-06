@@ -3,7 +3,7 @@ import type { Referent, SourcePacket, AliasTable, AliasEntry, CoarseKind, Concer
 /**
  * Coverage reconciliation (docs/COVERAGE.md). Reconciles the BHSA referent set R (the finite
  * set of referring expressions fixed by the source text) against the map's entity-mention set M
- * (every B#/PL#/O#/TM# usage in the FOR_MODEL), into three buckets + an honest score.
+ * (every B#/PL#/O#/TM# usage in the MEANING_COORDINATES), into three buckets + an honest score.
  *
  * The asymmetry the doc insists on is preserved in code:
  *   - UNANCHORED_ENTITY ("nothing added") is near-mechanical: each non-abstract map entity must
@@ -72,7 +72,7 @@ export function expandVerseRange(range: string): string[] {
   return out;
 }
 
-// ───────────────────────── M: entity mentions from the FOR_MODEL ─────────────────────────
+// ───────────────────────── M: entity mentions from the MEANING_COORDINATES ─────────────────────────
 
 export interface EntityMention {
   entity_id: string;
@@ -123,10 +123,10 @@ function collectSlotEntityIds(node: unknown, acc: Set<string>): void {
   }
 }
 
-export function extractMentions(forModel: any): EntityMention[] {
+export function extractMentions(meaningCoordinates: any): EntityMention[] {
   const map = new Map<string, EntityMention>();
 
-  for (const scene of forModel.level_2_scenes ?? []) {
+  for (const scene of meaningCoordinates.level_2_scenes ?? []) {
     const verses = expandVerseRange(String(scene.verse_range ?? ""));
     const sceneSrc = `scene:${scene.scene_id ?? "?"}`;
     for (const [group, idKey] of SCENE_GROUPS) {
@@ -145,7 +145,7 @@ export function extractMentions(forModel: any): EntityMention[] {
     }
   }
 
-  for (const prop of forModel.level_3_propositions ?? []) {
+  for (const prop of meaningCoordinates.level_3_propositions ?? []) {
     const v = reduceVerse(String(prop.verse_anchor ?? ""));
     if (!v) continue;
     const ids = new Set<string>();
@@ -345,9 +345,9 @@ function matchesException(e: CoverageException, pericope: string, kind: Coverage
   return e.entity_id === keys.entity_id;
 }
 
-export function reconcile(packet: SourcePacket, forModel: any, aliases: AliasTable, exceptions: CoverageException[] = []): CoverageLedger {
+export function reconcile(packet: SourcePacket, meaningCoordinates: any, aliases: AliasTable, exceptions: CoverageException[] = []): CoverageLedger {
   const exForPericope = exceptions.filter((e) => e.pericope === packet.pericope);
-  const mentions = extractMentions(forModel);
+  const mentions = extractMentions(meaningCoordinates);
   const byVerse = new Map<string, EntityMention[]>();
   for (const m of mentions) for (const v of m.verses) (byVerse.get(v) ?? byVerse.set(v, []).get(v)!).push(m);
 

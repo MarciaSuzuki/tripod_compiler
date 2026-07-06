@@ -3,7 +3,7 @@ import path from 'node:path';
 // THE APPROVED-ONLY GATE.
 //
 // Acceptance contract items 1 + 2: the portal renders ONLY blessed artifacts —
-// meaning maps with status "complete", FOR_MODELs and compilation logs with
+// meaning maps with status "complete", MCs and compilation logs with
 // status "valid" — and only from their expected directories under fixtures/.
 // This is a build test, not a convention: ANY artifact that fails these checks
 // aborts the whole build (exit code 2) before a single page is written.
@@ -20,11 +20,11 @@ export const ARTIFACT_CLASSES = {
     requiredStatus: 'complete',
     label: 'Meaning Map',
   },
-  'for-model': {
-    dir: 'for-model',
-    type: 'sta-for-model',
+  'meaning-coordinates': {
+    dir: 'meaning-coordinates',
+    type: 'sta-meaning-coordinates',
     requiredStatus: 'valid',
-    label: 'FOR_MODEL (STA)',
+    label: 'Meaning Coordinates (STA)',
   },
   'compilation-log': {
     dir: 'compilation-log',

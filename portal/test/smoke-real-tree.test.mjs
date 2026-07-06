@@ -31,13 +31,13 @@ test('the real fixtures tree builds clean', { skip: !haveFixtures }, () => {
   assert.match(p01, /wl-entity/);
   assert.match(p01, /[֐-׿]/, 'expected Hebrew text in tooltips');
 
-  // J01: fully authored — map + FOR_MODEL + compilation log. All 19 pericopes have now
+  // J01: fully authored — map + MEANING_COORDINATES + compilation log. All 19 pericopes have now
   // graduated, so no real fixture is map-only; the "Not yet authored" placeholder branch
   // (pages.mjs) is retained for future genuinely-absent artifacts but no longer triggered
   // by the real tree. SC-0075 (this assertion previously encoded the day-one map-only state).
   const j01 = fs.readFileSync(path.join(out, 'pericopes', 'J01.html'), 'utf8');
   assert.doesNotMatch(j01, /Not yet authored for this passage/);
-  assert.match(j01, /id="for-model"/);
+  assert.match(j01, /id="meaning-coordinates"/);
   assert.match(j01, /id="compilation-log"/);
 
   // the Shema logo ships and every page's header references it (relRoot-correct)

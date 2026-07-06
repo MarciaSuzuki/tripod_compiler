@@ -8,7 +8,7 @@ import { driftBaseline } from "../spec/enumerations.js";
 import { tally, type Finding, type ValidationReport } from "./report.js";
 
 export type ArtifactKind =
-  | "FOR_MODEL"
+  | "MEANING_COORDINATES"
   | "COMPILATION-LOG"
   | "BCD-DELTA"
   | "VERIFICATION-INPUT"
@@ -16,16 +16,16 @@ export type ArtifactKind =
 
 export function detectArtifact(path: string, frontmatterType?: string, json?: unknown): ArtifactKind {
   const n = basename(path).toUpperCase();
-  if (n.includes("FOR-MODEL") || frontmatterType === "sta-for-model") return "FOR_MODEL";
+  if (n.includes("MEANING-COORDINATES") || frontmatterType === "sta-meaning-coordinates") return "MEANING_COORDINATES";
   if (n.includes("COMPILATION-LOG") || frontmatterType === "sta-compilation-log") return "COMPILATION-LOG";
   if (n.includes("BCD-DELTA") || frontmatterType === "bcd-delta") return "BCD-DELTA";
   if (n.includes("VERIFICATION-INPUT") || frontmatterType === "verification-input") return "VERIFICATION-INPUT";
-  // SC-0065: an oral STA arrives as raw .json — no FOR-MODEL filename, no frontmatter type. Detect
-  // it by signature: an STA/FOR_MODEL carries sta_id + a level_3_propositions array. The sibling
+  // SC-0065: an oral STA arrives as raw .json — no MEANING-COORDINATES filename, no frontmatter type. Detect
+  // it by signature: an STA/MEANING_COORDINATES carries sta_id + a level_3_propositions array. The sibling
   // artifacts (compilation-log / bcd-delta / verification-input) have neither, so this stays tight.
   if (json && typeof json === "object") {
     const j = json as Record<string, unknown>;
-    if (typeof j["sta_id"] === "string" && Array.isArray(j["level_3_propositions"])) return "FOR_MODEL";
+    if (typeof j["sta_id"] === "string" && Array.isArray(j["level_3_propositions"])) return "MEANING_COORDINATES";
   }
   return "UNKNOWN";
 }
@@ -40,7 +40,7 @@ export function detectArtifact(path: string, frontmatterType?: string, json?: un
  * are exempt — the check fires only when a type envelope is actually present.
  */
 export const CANONICAL_NOTE_TYPE: Partial<Record<ArtifactKind, string>> = {
-  FOR_MODEL: "sta-for-model",
+  MEANING_COORDINATES: "sta-meaning-coordinates",
   "COMPILATION-LOG": "sta-compilation-log",
   "BCD-DELTA": "bcd-delta",
   "VERIFICATION-INPUT": "verification-input",
@@ -51,8 +51,8 @@ function validatorFor(kind: ArtifactKind): Validator | null {
   if (validators.has(kind)) return validators.get(kind)!;
   let schema: object;
   switch (kind) {
-    case "FOR_MODEL":
-      schema = loadValidationRules().for_model_schema as object;
+    case "MEANING_COORDINATES":
+      schema = loadValidationRules().meaning_coordinates_schema as object;
       break;
     case "COMPILATION-LOG":
       schema = loadSpecJson("compilation-log.schema.json");
@@ -73,7 +73,7 @@ function validatorFor(kind: ArtifactKind): Validator | null {
 
 /**
  * Validate one artifact note. All four locked schemas are ingested structurally (Layer 1 via
- * ajv); the deep Layer-2/3 + register-critical vocabulary pass currently leads with FOR_MODEL
+ * ajv); the deep Layer-2/3 + register-critical vocabulary pass currently leads with MEANING_COORDINATES
  * (decision E — BCD-DELTA → COMPILATION-LOG → VERIFICATION-INPUT vocab passes follow).
  */
 export function validateArtifact(path: string): ValidationReport {
@@ -113,7 +113,7 @@ export function validateArtifact(path: string): ValidationReport {
     });
   }
 
-  if (kind === "FOR_MODEL") {
+  if (kind === "MEANING_COORDINATES") {
     findings.push(...vocabularyFindings(note.json as any, driftBaseline()));
     // SC-0065: oral artifacts (source_domain = oral_archive) get the bead-span integrity pass
     // (tiling + nesting) — the audio analogue of the biblical scene/verse-coverage invariants.

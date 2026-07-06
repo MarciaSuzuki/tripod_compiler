@@ -7,19 +7,19 @@ import { reconcile, type CoverageLedger } from "../src/engine/coverage.js";
 
 /**
  * Corpus-wide coverage acceptance over the full compiled Ruth pilot (P01–P06). Reconciles every
- * gold FOR_MODEL against its pinned BHSA packet, applying the pinned reviewer sign-offs
+ * gold MEANING_COORDINATES against its pinned BHSA packet, applying the pinned reviewer sign-offs
  * (coverage-exceptions.json) exactly as `tripod coverage` does. (P07–P14 are not yet compiled — no
- * FOR_MODEL — so they are out of scope until those pericopes are mapped.)
+ * MEANING_COORDINATES — so they are out of scope until those pericopes are mapped.)
  */
 
-const FM_DIR = "fixtures/for-model";
+const MC_DIR = "fixtures/meaning-coordinates";
 const aliases = loadAliasTable("ruth");
 const exceptions = loadCoverageExceptions();
 
 function ledgerFor(pericope: string, exc = exceptions): CoverageLedger {
-  const fm = readdirSync(FM_DIR).find((f) => f.startsWith(pericope) && f.endsWith(".md"))!;
+  const mc = readdirSync(MC_DIR).find((f) => f.startsWith(pericope) && f.endsWith(".md"))!;
   const packet = loadSourcePacket(sourcePacketPath("ruth", pericope));
-  return reconcile(packet, readArtifactNote(join(FM_DIR, fm)).json as any, aliases, exc);
+  return reconcile(packet, readArtifactNote(join(MC_DIR, mc)).json as any, aliases, exc);
 }
 
 const PERICOPES = ["P01", "P02", "P03", "P04", "P05", "P06"];

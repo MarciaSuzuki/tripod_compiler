@@ -122,7 +122,7 @@ describe("matchScore", () => {
 
 describe("extractMentions", () => {
   it("pulls beings/places/objects from scenes (verse-range expanded) and prop slots", () => {
-    const fm = {
+    const mc = {
       level_2_scenes: [
         {
           scene_id: "S1", verse_range: "1:1-2",
@@ -136,7 +136,7 @@ describe("extractMentions", () => {
         { prop_id: "P3", verse_anchor: "1:1b", event_specific_slots: { household_head: "B2", accompanying_household: ["B3"], origin: "PL1" } },
       ],
     };
-    const m = extractMentions(fm);
+    const m = extractMentions(mc);
     const byId = Object.fromEntries(m.map((x) => [x.entity_id, x]));
     expect(byId.B2.verses.sort()).toEqual(["1:1", "1:2"]);
     expect(byId.B2.referential_forms).toContain("UNNAMED_MAN_FROM_BETHLEHEM");
@@ -148,7 +148,7 @@ describe("extractMentions", () => {
 
 // ───────────────────────── reconcile: the three buckets ─────────────────────────
 
-function fmWith(scenes: any[], props: any[] = []) {
+function mcWith(scenes: any[], props: any[] = []) {
   return { level_2_scenes: scenes, level_3_propositions: props };
 }
 
@@ -160,7 +160,7 @@ describe("reconcile — clean pericope", () => {
     ref({ surface: "רָעָ֖ב", gloss: "hunger", verse: "1:1" }),
     ref({ surface: "בֵּ֥ית לֶ֖חֶם", gloss: "Bethlehem", referent_class: "proper_noun", kind_candidates: ["PLACE"], verse: "1:1" }),
   ]);
-  const fm = fmWith([
+  const mc = mcWith([
     {
       scene_id: "S1", verse_range: "1:1",
       beings_in_scene: { entries: [
@@ -172,7 +172,7 @@ describe("reconcile — clean pericope", () => {
       times_in_scene: { entries: null },
     },
   ]);
-  const led = reconcile(p, fm, ALIASES);
+  const led = reconcile(p, mc, ALIASES);
 
   it("matches all explicit referents and blocks nothing", () => {
     expect(led.ok).toBe(true);
@@ -197,10 +197,10 @@ describe("reconcile — possible omission (proper noun absent from map)", () => 
     ref({ surface: "נָעֳמִ֜י", gloss: "Naomi", referent_class: "proper_noun", gender: "f", verse: "1:1" }),
   ]);
   // map has Naomi but NOT Boaz, though B2 (a male) is present → Boaz must still be flagged
-  const fm = fmWith([
+  const mc = mcWith([
     { scene_id: "S1", verse_range: "1:1", beings_in_scene: { entries: [{ being_id: "B2", presence: "PRESENT" }, { being_id: "B3", presence: "PRESENT" }] } },
   ]);
-  const led = reconcile(p, fm, ALIASES);
+  const led = reconcile(p, mc, ALIASES);
   it("flags the unmapped named referent as a blocker", () => {
     expect(led.ok).toBe(false);
     expect(led.score.proper_unmapped).toBe(1);
@@ -216,10 +216,10 @@ describe("reconcile — possible omission (proper noun absent from map)", () => 
 describe("reconcile — possible hallucination (unanchored entity)", () => {
   const p = packet([ref({ surface: "בֹּ֫עַז", gloss: "Boaz", referent_class: "proper_noun", gender: "m", verse: "1:2" })]);
   // map invents a TIME entity at 1:2 where the only source expression is a person's proper noun
-  const fm = fmWith([
+  const mc = mcWith([
     { scene_id: "S1", verse_range: "1:2", times_in_scene: { entries: [{ time_id: "TM_INVENTED" }] }, beings_in_scene: { entries: [{ being_id: "B13", presence: "PRESENT" }] } },
   ]);
-  const led = reconcile(p, fm, { book: "RUTH", entities: { ...ALIASES.entities, B13: { kind: "PERSON", english: "Boaz", hebrew: "בֹּעַז", hebrew_cons: "בעז", referential_forms: [], gender: "m" } } });
+  const led = reconcile(p, mc, { book: "RUTH", entities: { ...ALIASES.entities, B13: { kind: "PERSON", english: "Boaz", hebrew: "בֹּעַז", hebrew_cons: "בעז", referential_forms: [], gender: "m" } } });
   it("blocks the TIME entity that nothing in the text can host", () => {
     const un = led.unanchored_entities.find((e) => e.entity_id === "TM_INVENTED");
     expect(un).toBeTruthy();
@@ -237,14 +237,14 @@ describe("reconcile — implied subjects + abstract overlays", () => {
     ref({ surface: "יָּבֹ֥אוּ", gloss: "come", referent_class: "implied_subject", person: "p3", number: "pl", gender: "m", verse: "1:1" }),
     ref({ surface: "רָעָ֖ב", gloss: "hunger", verse: "1:1" }),
   ]);
-  const fm = fmWith([
+  const mc = mcWith([
     {
       scene_id: "S1", verse_range: "1:1",
       beings_in_scene: { entries: [{ being_id: "B2", presence: "PRESENT" }] },
       objects_in_scene: { entries: [{ object_id: "O1" }, { object_id: "TH_WAYHI_FORMULA" }, { object_id: "CB_0030" }] },
     },
   ]);
-  const led = reconcile(p, fm, ALIASES);
+  const led = reconcile(p, mc, ALIASES);
   it("always flags implied subjects (with the impersonal hint) and never blocks on them", () => {
     expect(led.score.implied_flagged).toBe(2);
     const vayhi = led.unmapped_source.find((u) => u.gloss === "be");
@@ -266,11 +266,11 @@ describe("reconcile — reviewer-accepted exceptions downgrade blockers", () => 
       ref({ surface: "אִ֜ישׁ", gloss: "man", gender: "m", verse: "1:1" }),
       ref({ surface: "בֹּ֫עַז", gloss: "Boaz", referent_class: "proper_noun", gender: "m", verse: "1:1" }),
     ]);
-    const fm = { level_2_scenes: [{ scene_id: "S1", verse_range: "1:1", beings_in_scene: { entries: [{ being_id: "B2", referential_form: "UNNAMED_MAN_FROM_BETHLEHEM" }] } }], level_3_propositions: [] };
-    const blocked = reconcile(p, fm, ALIASES, []);
+    const mc = { level_2_scenes: [{ scene_id: "S1", verse_range: "1:1", beings_in_scene: { entries: [{ being_id: "B2", referential_form: "UNNAMED_MAN_FROM_BETHLEHEM" }] } }], level_3_propositions: [] };
+    const blocked = reconcile(p, mc, ALIASES, []);
     expect(blocked.ok).toBe(false);
     expect(blocked.blockers).toHaveLength(1); // only Boaz
-    const accepted = reconcile(p, fm, ALIASES, [
+    const accepted = reconcile(p, mc, ALIASES, [
       { pericope: "PX", kind: "UNMAPPED_SOURCE", gloss: "Boaz", verse: "1:1", reason: "EPITHET_INTERNAL", accepted_by: "tester" },
     ]);
     expect(accepted.ok).toBe(true);
@@ -282,10 +282,10 @@ describe("reconcile — reviewer-accepted exceptions downgrade blockers", () => 
   it("accepts an UNANCHORED_ENTITY by entity_id, and ignores a non-matching exception", () => {
     // a pronoun (minor, can't host a TIME entity, never itself a blocker) leaves TM_INVENTED as the lone blocker
     const p = packet([ref({ surface: "ה֥וּא", gloss: "he", referent_class: "pronoun", verse: "1:2" })]);
-    const fm = { level_2_scenes: [{ scene_id: "S1", verse_range: "1:2", times_in_scene: { entries: [{ time_id: "TM_INVENTED" }] } }], level_3_propositions: [] };
-    expect(reconcile(p, fm, ALIASES, []).ok).toBe(false);
-    expect(reconcile(p, fm, ALIASES, [{ pericope: "PX", kind: "UNANCHORED_ENTITY", entity_id: "TM_OTHER", reason: "x" }]).ok).toBe(false); // wrong id
-    const accepted = reconcile(p, fm, ALIASES, [{ pericope: "PX", kind: "UNANCHORED_ENTITY", entity_id: "TM_INVENTED", reason: "ACCEPTED_SETTING" }]);
+    const mc = { level_2_scenes: [{ scene_id: "S1", verse_range: "1:2", times_in_scene: { entries: [{ time_id: "TM_INVENTED" }] } }], level_3_propositions: [] };
+    expect(reconcile(p, mc, ALIASES, []).ok).toBe(false);
+    expect(reconcile(p, mc, ALIASES, [{ pericope: "PX", kind: "UNANCHORED_ENTITY", entity_id: "TM_OTHER", reason: "x" }]).ok).toBe(false); // wrong id
+    const accepted = reconcile(p, mc, ALIASES, [{ pericope: "PX", kind: "UNANCHORED_ENTITY", entity_id: "TM_INVENTED", reason: "ACCEPTED_SETTING" }]);
     expect(accepted.ok).toBe(true);
     expect(accepted.unanchored_entities.find((e) => e.entity_id === "TM_INVENTED")?.accepted?.reason).toBe("ACCEPTED_SETTING");
   });

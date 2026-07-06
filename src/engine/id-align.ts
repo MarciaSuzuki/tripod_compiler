@@ -15,20 +15,20 @@ import { readArtifactNote } from "../reader/obsidian.js";
  * SC-0018 — the cross-artifact entity-ID alignment checker (the 5th deterministic verifier:
  * legal · complete · atomic-bare-plain · **aligned** · true).
  *
- * THE PRINCIPLE (ruled by Marcia, 2026-06-01): the prose Meaning Map and the FOR_MODEL are the
+ * THE PRINCIPLE (ruled by Marcia, 2026-06-01): the prose Meaning Map and the MEANING_COORDINATES are the
  * two halves of one training pair. An entity named in one must be the SAME canonical code the
  * other uses — verifiable by machine, not by a human's eye. This module is **diagnostic, add-only**
  * tooling: it FIXES NOTHING. It produces the inventory; the human rules it; a later pass aligns.
  *
  * THE LOCKED CONVENTION it enforces:
  *  - Canonical entity ID = the BARE CODE (B2, O1, PL_LAND_OF_JUDAH, CB_0012, TM_*, FIG_*, I*) — what
- *    the FOR_MODEL + BCD use and what the schema patterns enforce.
+ *    the MEANING_COORDINATES + BCD use and what the schema patterns enforce.
  *  - Maps carry the code in the wikilink target: [[CODE-Slug]] / [[CODE-Slug|Display]] / [[CODE]].
  *    The code = the wikilink target (before any `|`), up to but NOT including the first hyphen `-`;
  *    if no hyphen, the whole target. Sound because codes never contain a hyphen — asserted from the
  *    pinned schema patterns at startup (`assertNoHyphenInCodePatterns`).
  *
- * The entity-code namespaces are DERIVED from the pinned FOR_MODEL schema `$defs` (being_id/place_id/
+ * The entity-code namespaces are DERIVED from the pinned MEANING_COORDINATES schema `$defs` (being_id/place_id/
  * object_id/time_id + cb/figure ids), never hardcoded — the same drift discipline this tool exists for.
  */
 
@@ -112,7 +112,7 @@ const ID_DEFS = ["b_code", "place_id", "object_id", "time_id", "cb_id", "figure_
  */
 export function loadSchemaNamespaces(): SchemaNamespaces {
   const rules = loadValidationRules();
-  const defs = (rules.for_model_schema as any)?.["$defs"] ?? {};
+  const defs = (rules.meaning_coordinates_schema as any)?.["$defs"] ?? {};
   const byDef: Record<string, Namespace> = {};
   const compiled: Array<{ def: string; re: RegExp }> = [];
   for (const def of ID_DEFS) {
@@ -145,7 +145,7 @@ export function assertNoHyphenInCodePatterns(byDef: Record<string, Namespace>): 
     // hyphen that is an operator, not a literal admitted character.) We probe a spread of shapes that
     // would tell us a hyphen slipped through: prefixed, numbered, snake-bodied, and embedded.
     const probes = ns.prefixes.flatMap((p) => [`${p}-X`, `${p}1-X`, `${p}_A-B`, `${p}X-Y`, `${p}1-2`]);
-    probes.push("A-B", "FOR-MODEL", "PL-X", "B-1");
+    probes.push("A-B", "MEANING-COORDINATES", "PL-X", "B-1");
     for (const probe of probes) {
       if (re.test(probe)) {
         throw new Error(
@@ -214,7 +214,7 @@ function harvestMapWikilinks(raw: string, ns: SchemaNamespaces): MapWikilink[] {
     out.push({ raw: inner, code, slug, display, isEntity, section, scene, refKind });
   };
 
-  // frontmatter links (active-concepts, active-figures, for-model, audit, source-meaning-map…)
+  // frontmatter links (active-concepts, active-figures, meaning-coordinates, audit, source-meaning-map…)
   for (const m of fm.matchAll(/\[\[([^\]]+)\]\]/g)) emit(m[1]!, "frontmatter", null, false);
 
   // body: walk top-level (##) sections; within "3." walk per-scene (###) blocks + their bold sub-blocks.
@@ -262,9 +262,9 @@ function harvestMapWikilinks(raw: string, ns: SchemaNamespaces): MapWikilink[] {
   return out;
 }
 
-// ───────────────────────── FOR_MODEL code extraction ─────────────────────────
+// ───────────────────────── MEANING_COORDINATES code extraction ─────────────────────────
 
-export interface FmCode {
+export interface McCode {
   code: string;
   scene: string | null; // scene container codes; null = pericope-level (cb/figure flags) or prop slot
   source: "scene_container" | "pericope_flag" | "slot_value";
@@ -278,16 +278,16 @@ const SCENE_GROUPS: Array<[string, string]> = [
 ];
 
 /**
- * FOR_MODEL codes: the scene-container entity ids (`level_2_scenes[].{…}_in_scene.entries[].*_id`),
+ * MEANING_COORDINATES codes: the scene-container entity ids (`level_2_scenes[].{…}_in_scene.entries[].*_id`),
  * the pericope-level `cb_flags[]` / `figure_flags[]` (attached per-scene via the proposition's
  * scene_link), and — secondary — being-codes used as `event_specific_slots` *values* (`^B\d+$`).
  * Excludes referential_form, role/function tokens, action, speech_act (names / L2 values, not codes).
  */
-export function extractForModelCodes(forModel: any): FmCode[] {
-  const out: FmCode[] = [];
+export function extractMeaningCoordinatesCodes(meaningCoordinates: any): McCode[] {
+  const out: McCode[] = [];
   const beingRe = /^B\d+$/;
 
-  for (const scene of forModel.level_2_scenes ?? []) {
+  for (const scene of meaningCoordinates.level_2_scenes ?? []) {
     const sceneId = typeof scene.scene_id === "string" ? scene.scene_id : null;
     for (const [group, idKey] of SCENE_GROUPS) {
       const entries = scene?.[group]?.entries;
@@ -301,7 +301,7 @@ export function extractForModelCodes(forModel: any): FmCode[] {
 
   // pericope-level cb_flags / figure_flags, carried on propositions. Attribute each to its scene
   // (via scene_link) so the per-scene alignment can see them; also recorded pericope-wide.
-  for (const prop of forModel.level_3_propositions ?? []) {
+  for (const prop of meaningCoordinates.level_3_propositions ?? []) {
     const scene = typeof prop.scene_link === "string" ? prop.scene_link : null;
     for (const f of prop.cb_flags ?? []) if (typeof f === "string") out.push({ code: f, scene, source: "pericope_flag" });
     for (const f of prop.figure_flags ?? []) if (typeof f === "string") out.push({ code: f, scene, source: "pericope_flag" });
@@ -314,15 +314,15 @@ export function extractForModelCodes(forModel: any): FmCode[] {
 }
 
 /**
- * The FOR_MODEL's declared flag set — the real home of CB_/FIG_ codes on the machine side
+ * The MEANING_COORDINATES's declared flag set — the real home of CB_/FIG_ codes on the machine side
  * (SC-0018 R1): the union of every proposition's `cb_flags[]` / `figure_flags[]`. NOT scene-container
  * `object_id`s and NOT `cross_ref` free-text (a CB_/FIG_ code mentioned only in a `cross_ref` string —
  * e.g. P06's "…closes at P09 with FIG_0131…" — is a cross-reference, not a flag on this pericope).
  */
-export function extractForModelFlags(forModel: any): { cb: Set<string>; fig: Set<string> } {
+export function extractMeaningCoordinatesFlags(meaningCoordinates: any): { cb: Set<string>; fig: Set<string> } {
   const cb = new Set<string>();
   const fig = new Set<string>();
-  for (const prop of forModel.level_3_propositions ?? []) {
+  for (const prop of meaningCoordinates.level_3_propositions ?? []) {
     for (const f of prop.cb_flags ?? []) if (typeof f === "string") cb.add(f);
     for (const f of prop.figure_flags ?? []) if (typeof f === "string") fig.add(f);
   }
@@ -382,7 +382,7 @@ export function normalizeSlug(slug: string): string {
 
 /**
  * CB_/FIG_ codes are FLAGS, not §3 structural entities (SC-0018 R1). They live in the map's
- * frontmatter `active-concepts`/`active-figures` + the §5 Flags section, and in the FOR_MODEL's
+ * frontmatter `active-concepts`/`active-figures` + the §5 Flags section, and in the MEANING_COORDINATES's
  * `cb_flags`/`figure_flags` — NOT in the §3 entity blocks / scene containers. So they are pulled out
  * of the structural symmetric-difference and compared as flag SETS (map flag-set ↔ FM flag-set).
  */
@@ -450,7 +450,7 @@ export interface MapFlagSet {
  * This mirrors the meaning-map reader's flag rule (`applyFlags` uses the bullet's first wikilink), so
  * a CB_/FIG_ wikilink that only appears inside a flag bullet's *narration* (e.g. P06 §5A's parenthetical
  * "…closes at P09 where [[FIG_0131-…]] fires") is NOT counted — it is a cross-reference, not a flag,
- * exactly as the FOR_MODEL keeps it in `cross_ref` free-text, not in `figure_flags`.
+ * exactly as the MEANING_COORDINATES keeps it in `cross_ref` free-text, not in `figure_flags`.
  */
 export function harvestMapFlags(raw: string): MapFlagSet {
   const cb = new Set<string>();
@@ -503,7 +503,7 @@ export function harvestMapFlags(raw: string): MapFlagSet {
 export type Severity = "ERROR" | "MISALIGN" | "FLAG" | "ACCEPTED";
 
 export interface RefIntegrityFinding {
-  side: "MAP" | "FOR_MODEL";
+  side: "MAP" | "MEANING_COORDINATES";
   code: string;
   where: string; // scene/section context
   severity: "ERROR" | "ACCEPTED";
@@ -513,7 +513,7 @@ export interface RefIntegrityFinding {
 }
 
 export interface UnverifiableFinding {
-  side: "MAP" | "FOR_MODEL";
+  side: "MAP" | "MEANING_COORDINATES";
   code: string;
   where: string;
   reason: string; // UNVERIFIABLE_NO_REGISTRY
@@ -526,7 +526,7 @@ export interface UnverifiableFinding {
  * counted nowhere in the failure totals, and excluded from the structural misalignment diff.
  */
 export interface WithheldReferentFinding {
-  side: "MAP" | "FOR_MODEL";
+  side: "MAP" | "MEANING_COORDINATES";
   code: string;
   where: string;
   reason: "WITHHELD_REFERENT";
@@ -545,7 +545,7 @@ export interface NameBindingFinding {
 
 export interface MisalignFinding {
   scope: string; // "S1" | "pericope"
-  direction: "MAP_NOT_FM" | "FM_NOT_MAP";
+  direction: "MAP_NOT_MC" | "MC_NOT_MAP";
   code: string;
   likelySameReferent?: { otherCode: string; sharedStem: string }; // the highest-value finding
   /** the code IS present on the OTHER artifact, just not in its structural set (map: as frontmatter/
@@ -557,12 +557,12 @@ export interface MisalignFinding {
 
 /**
  * A CB_/FIG_ flag present on one artifact but not the other (SC-0018 R1). Flags are compared in their
- * real homes — the map's frontmatter+§5 flag set vs the FOR_MODEL's cb_flags+figure_flags — so an
+ * real homes — the map's frontmatter+§5 flag set vs the MEANING_COORDINATES's cb_flags+figure_flags — so an
  * aligned flag never reports; only a genuine one-sided flag does.
  */
 export interface FlagMismatchFinding {
   kind: "CONCEPT" | "FIGURE";
-  direction: "MAP_NOT_FM" | "FM_NOT_MAP";
+  direction: "MAP_NOT_MC" | "MC_NOT_MAP";
   code: string;
   severity: "MISALIGN" | "ACCEPTED";
   accepted?: AcceptedIdException;
@@ -585,7 +585,7 @@ export interface AcceptedIdException {
 export interface IdAlignReport {
   pericope: string;
   mapPath: string;
-  fmPath: string;
+  mcPath: string;
   referenceIntegrity: RefIntegrityFinding[];
   unverifiable: UnverifiableFinding[]; // codes in namespaces no vendored registry tracks (now: TH_ only)
   withheldReferents: WithheldReferentFinding[]; // SC-0020: intentional `<NS>?` withheld referents (INFO)
@@ -679,7 +679,7 @@ function sharedStem(a: string, b: string, prefixes: string[]): string | null {
 const PILOT2_ARTIFACT_SUFFIXES = [
   "-VERIFICATION-INPUT-en",
   "-VERIFICATION-INPUT",
-  "-FOR-MODEL",
+  "-MEANING-COORDINATES",
   "-COMPILATION-LOG",
   "-BCD-DELTA",
   "-COVERAGE-LEDGER",
@@ -716,10 +716,10 @@ export interface CheckOpts {
 }
 
 /**
- * Run the full SC-0018 alignment check for one pericope (a map + its paired FOR_MODEL). Diagnostic
+ * Run the full SC-0018 alignment check for one pericope (a map + its paired MEANING_COORDINATES). Diagnostic
  * only — returns the inventory; mutates nothing.
  */
-export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpts = {}): IdAlignReport {
+export function checkIdAlignment(mapPath: string, mcPath: string, opts: CheckOpts = {}): IdAlignReport {
   const ns = opts.namespaces ?? loadSchemaNamespaces();
   const aliases = opts.aliases ?? loadAliasTable();
   const flagReg = opts.flagRegistry ?? buildFlagRegistry(loadConceptRegistry(), loadFigureRegistry());
@@ -727,7 +727,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
 
   const rawMap = readFileSync(mapPath, "utf8");
   const mm: MeaningMap = readMeaningMap(mapPath);
-  const fm = readArtifactNote(fmPath).json as any;
+  const fm = readArtifactNote(mcPath).json as any;
 
   const pericope = mm.pericope ?? mapBasenameStem(mapPath);
   const stem = mapBasenameStem(mapPath);
@@ -753,10 +753,10 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   // Structural/prose ENTITY refs exclude CB_/FIG_ flag codes — those are compared as flag SETS (R1),
   // not in the §3-block ↔ scene-container symmetric difference.
   const mapEntityRefs = mapLinks.filter((l) => l.isEntity && !isFlagCode(l.code));
-  const fmCodes = extractForModelCodes(fm).filter((c) => !isFlagCode(c.code));
+  const mcCodes = extractMeaningCoordinatesCodes(fm).filter((c) => !isFlagCode(c.code));
   // CB_/FIG_ flag sets in their real homes (R1): map frontmatter active-* + §5; FM cb_flags/figure_flags.
   const mapFlags = harvestMapFlags(rawMap);
-  const fmFlags = extractForModelFlags(fm);
+  const mcFlags = extractMeaningCoordinatesFlags(fm);
 
   // ── exception matching helper ──
   const exMatch = (kind: IdAlignException["kind"], keys: { code?: string; note_title?: string; scope?: string; direction?: string }): AcceptedIdException | undefined => {
@@ -781,7 +781,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   const withheldReferents: WithheldReferentFinding[] = [];
   const seenRi = new Set<string>();
   const seenWithheld = new Set<string>();
-  const checkRef = (code: string, side: "MAP" | "FOR_MODEL", where: string) => {
+  const checkRef = (code: string, side: "MAP" | "MEANING_COORDINATES", where: string) => {
     const key = `${side}|${code}`;
     if (seenRi.has(key)) return;
     seenRi.add(key);
@@ -823,11 +823,11 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     }
   };
   for (const l of mapEntityRefs) checkRef(l.code, "MAP", `${l.scene ?? l.section}`);
-  for (const c of fmCodes) checkRef(c.code, "FOR_MODEL", c.scene ?? c.source);
+  for (const c of mcCodes) checkRef(c.code, "MEANING_COORDINATES", c.scene ?? c.source);
   // CB_/FIG_ flag codes also flow from the map's flag homes (frontmatter active-* + §5) and the FM's
   // cb_flags/figure_flags — reference-integrity covers those too.
   for (const code of [...mapFlags.cb, ...mapFlags.fig]) checkRef(code, "MAP", mapFlags.whereByCode.get(code) ?? "flags");
-  for (const code of [...fmFlags.cb, ...fmFlags.fig]) checkRef(code, "FOR_MODEL", "cb/figure flag");
+  for (const code of [...mcFlags.cb, ...mcFlags.fig]) checkRef(code, "MEANING_COORDINATES", "cb/figure flag");
 
   // ── Step 3: name-binding (map slugs) ──
   const nameBinding: NameBindingFinding[] = [];
@@ -883,17 +883,17 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   // difference (the other side legitimately lacks it; that is the point of withholding).
   const isWithheld = (code: string) => isWithheldReferent(code, ns);
   const mapRefsAligned = mapEntityRefs.filter((l) => !isWithheld(l.code));
-  const fmCodesAligned = fmCodes.filter((c) => !isWithheld(c.code));
+  const mcCodesAligned = mcCodes.filter((c) => !isWithheld(c.code));
   // scene scopes present in BOTH artifacts → per-scene; everything else folds into a pericope scope.
   const mapScenes = new Set(mapRefsAligned.map((l) => l.scene).filter((s): s is string => !!s));
-  const fmScenes = new Set(fmCodesAligned.map((c) => c.scene).filter((s): s is string => !!s));
-  const alignedScenes = [...mapScenes].filter((s) => fmScenes.has(s)).sort(numericScene);
+  const mcScenes = new Set(mcCodesAligned.map((c) => c.scene).filter((s): s is string => !!s));
+  const alignedScenes = [...mapScenes].filter((s) => mcScenes.has(s)).sort(numericScene);
 
-  // "present-elsewhere" context: a code flagged map-not-FM (resp. FM-not-map) may still appear on the
+  // "present-elsewhere" context: a code flagged map-not-MC (resp. MC-not-map) may still appear on the
   // OTHER artifact, just not in its STRUCTURAL set. We record where, so the inventory distinguishes
   // "truly absent" from "present, non-structurally" (the latter is the common, easily-ruled case).
   // code → a representative non-structural map location, keyed by scene so the "present-elsewhere"
-  // annotation is scene-accurate. A FM-not-map code reported at scene S is only "present as §3 prose"
+  // annotation is scene-accurate. A MC-not-map code reported at scene S is only "present as §3 prose"
   // when the map prose-references it IN scene S; a prose mention in a different scene is recorded under
   // that other scene's key (and labelled "in §… prose" so the inventory doesn't mislead). A non-scene
   // prose home (frontmatter / §5 flags) keys to "pericope". (After the SC-0020 parity bar a same-scene
@@ -909,7 +909,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     if (!m) mapProseByScope.set(scope, (m = new Map<string, string>()));
     if (!m.has(l.code)) m.set(l.code, l.scene ? labelFor(l) : `${labelFor(l)} (pericope)`);
   }
-  /** scene-accurate "present-elsewhere" label for an FM-not-map code at `scope`: the map's same-scope
+  /** scene-accurate "present-elsewhere" label for an MC-not-map code at `scope`: the map's same-scope
    *  prose home if any, else the first cross-scene prose home found (labelled with that scene). */
   const presentElsewhereLabel = (code: string, scope: string): string | undefined => {
     const here = mapProseByScope.get(scope)?.get(code);
@@ -920,10 +920,10 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     }
     return undefined;
   };
-  const fmSourceByCode = new Map<string, string>(); // code → its FM source (slot/flag) when not a scene container
-  for (const c of fmCodesAligned) if (c.source !== "scene_container" && !fmSourceByCode.has(c.code)) fmSourceByCode.set(c.code, c.source === "pericope_flag" ? "cb/figure flag" : "proposition slot");
+  const mcSourceByCode = new Map<string, string>(); // code → its FM source (slot/flag) when not a scene container
+  for (const c of mcCodesAligned) if (c.source !== "scene_container" && !mcSourceByCode.has(c.code)) mcSourceByCode.set(c.code, c.source === "pericope_flag" ? "cb/figure flag" : "proposition slot");
 
-  // SC-0020 parity bar (the lead's ruling, 2026-06-01): a FOR_MODEL scene-entity the map references in
+  // SC-0020 parity bar (the lead's ruling, 2026-06-01): a MEANING_COORDINATES scene-entity the map references in
   // THAT SCENE's §3 prose (any wikilink in the scene's narration / role / relationship / What-Happens
   // lines — the PROSE bucket, not just the §3A–3D declared-entity header) is ALIGNED: the two artifacts
   // agree the entity is present in the scene — one DECLARES it structurally, the other NARRATES it. It is
@@ -938,37 +938,37 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     if (!set) mapProseByScene.set(l.scene, (set = new Set<string>()));
     set.add(l.code);
   }
-  /** Is FOR_MODEL code `fc` (at scene `scope`) referenced in the map's same-scene §3 prose? */
+  /** Is MEANING_COORDINATES code `fc` (at scene `scope`) referenced in the map's same-scene §3 prose? */
   const proseAlignedInScene = (fc: string, scope: string): boolean => (scope === "pericope" ? false : (mapProseByScene.get(scope)?.has(fc) ?? false));
 
-  const addMisalign = (scope: string, mapSet: Set<string>, fmSet: Set<string>) => {
-    const mapOnly = [...mapSet].filter((c) => !fmSet.has(c)).sort();
+  const addMisalign = (scope: string, mapSet: Set<string>, mcSet: Set<string>) => {
+    const mapOnly = [...mapSet].filter((c) => !mcSet.has(c)).sort();
     // SC-0020 parity bar: an FM-only code the map prose-references in THIS scene is aligned (one
     // declares, one narrates) — drop it from the symmetric difference before it can become a finding.
-    const fmOnly = [...fmSet].filter((c) => !mapSet.has(c) && !proseAlignedInScene(c, scope)).sort();
+    const mcOnly = [...mcSet].filter((c) => !mapSet.has(c) && !proseAlignedInScene(c, scope)).sort();
     // pair up likely-same-referent across the symmetric difference
-    const pairedFm = new Set<string>();
+    const pairedMc = new Set<string>();
     for (const mc of mapOnly) {
       let best: { fc: string; stem: string } | null = null;
-      for (const fc of fmOnly) {
-        if (pairedFm.has(fc)) continue;
+      for (const fc of mcOnly) {
+        if (pairedMc.has(fc)) continue;
         const st = sharedStem(mc, fc, ns.allPrefixes);
         if (st && (!best || st.length > best.stem.length)) best = { fc, stem: st };
       }
-      const acc = exMatch("MISALIGNMENT", { code: mc, scope, direction: "MAP_NOT_FM" });
+      const acc = exMatch("MISALIGNMENT", { code: mc, scope, direction: "MAP_NOT_MC" });
       misalignments.push({
-        scope, direction: "MAP_NOT_FM", code: mc,
+        scope, direction: "MAP_NOT_MC", code: mc,
         likelySameReferent: best ? { otherCode: best.fc, sharedStem: best.stem } : undefined,
-        presentElsewhere: fmSourceByCode.get(mc), // in the FM as a slot/flag, just not a scene container
+        presentElsewhere: mcSourceByCode.get(mc), // in the FM as a slot/flag, just not a scene container
         severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc,
       });
-      if (best) pairedFm.add(best.fc);
+      if (best) pairedMc.add(best.fc);
     }
-    for (const fc of fmOnly) {
+    for (const fc of mcOnly) {
       const partner = misalignments.find((m) => m.scope === scope && m.likelySameReferent?.otherCode === fc);
-      const acc = exMatch("MISALIGNMENT", { code: fc, scope, direction: "FM_NOT_MAP" });
+      const acc = exMatch("MISALIGNMENT", { code: fc, scope, direction: "MC_NOT_MAP" });
       misalignments.push({
-        scope, direction: "FM_NOT_MAP", code: fc,
+        scope, direction: "MC_NOT_MAP", code: fc,
         likelySameReferent: partner ? { otherCode: partner.code, sharedStem: partner.likelySameReferent!.sharedStem } : undefined,
         presentElsewhere: presentElsewhereLabel(fc, scope), // scene-accurate: same-scope or labelled cross-scene prose home
         severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc,
@@ -979,40 +979,40 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   if (alignedScenes.length > 0) {
     for (const s of alignedScenes) {
       const mapSet = new Set(mapRefsAligned.filter((l) => l.refKind === "STRUCTURAL" && l.scene === s).map((l) => l.code));
-      const fmSet = new Set(fmCodesAligned.filter((c) => c.scene === s).map((c) => c.code));
-      addMisalign(s, mapSet, fmSet);
+      const mcSet = new Set(mcCodesAligned.filter((c) => c.scene === s).map((c) => c.code));
+      addMisalign(s, mapSet, mcSet);
     }
     // codes outside any aligned scene (e.g. map structural refs in a scene the FM lacks) → pericope bucket
     const mapInAligned = new Set(alignedScenes);
     const leftoverMap = new Set(mapRefsAligned.filter((l) => l.refKind === "STRUCTURAL" && (!l.scene || !mapInAligned.has(l.scene))).map((l) => l.code));
-    const leftoverFm = new Set(fmCodesAligned.filter((c) => !c.scene || !mapInAligned.has(c.scene)).map((c) => c.code));
-    if (leftoverMap.size || leftoverFm.size) addMisalign("pericope", leftoverMap, leftoverFm);
+    const leftoverMc = new Set(mcCodesAligned.filter((c) => !c.scene || !mapInAligned.has(c.scene)).map((c) => c.code));
+    if (leftoverMap.size || leftoverMc.size) addMisalign("pericope", leftoverMap, leftoverMc);
   } else {
     const mapSet = new Set(mapRefsAligned.filter((l) => l.refKind === "STRUCTURAL").map((l) => l.code));
-    const fmSet = new Set(fmCodesAligned.map((c) => c.code));
-    addMisalign("pericope", mapSet, fmSet);
+    const mcSet = new Set(mcCodesAligned.map((c) => c.code));
+    addMisalign("pericope", mapSet, mcSet);
   }
 
   // ── Step 4b: CB_/FIG_ flag-set alignment (R1) ──
   // Flags are pericope-level on both sides, so they are compared as sets in their real homes — NOT in
   // the §3-block ↔ scene-container structural diff. An aligned flag never reports; a one-sided flag does.
   const flagMismatches: FlagMismatchFinding[] = [];
-  const addFlagDiff = (kind: "CONCEPT" | "FIGURE", mapSet: Set<string>, fmSet: Set<string>) => {
-    for (const code of [...mapSet].filter((c) => !fmSet.has(c)).sort()) {
-      const acc = exMatch("FLAG_MISMATCH", { code, direction: "MAP_NOT_FM" });
-      flagMismatches.push({ kind, direction: "MAP_NOT_FM", code, severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc });
+  const addFlagDiff = (kind: "CONCEPT" | "FIGURE", mapSet: Set<string>, mcSet: Set<string>) => {
+    for (const code of [...mapSet].filter((c) => !mcSet.has(c)).sort()) {
+      const acc = exMatch("FLAG_MISMATCH", { code, direction: "MAP_NOT_MC" });
+      flagMismatches.push({ kind, direction: "MAP_NOT_MC", code, severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc });
     }
-    for (const code of [...fmSet].filter((c) => !mapSet.has(c)).sort()) {
-      const acc = exMatch("FLAG_MISMATCH", { code, direction: "FM_NOT_MAP" });
-      flagMismatches.push({ kind, direction: "FM_NOT_MAP", code, severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc });
+    for (const code of [...mcSet].filter((c) => !mapSet.has(c)).sort()) {
+      const acc = exMatch("FLAG_MISMATCH", { code, direction: "MC_NOT_MAP" });
+      flagMismatches.push({ kind, direction: "MC_NOT_MAP", code, severity: acc ? "ACCEPTED" : "MISALIGN", accepted: acc });
     }
   };
-  addFlagDiff("CONCEPT", mapFlags.cb, fmFlags.cb);
-  addFlagDiff("FIGURE", mapFlags.fig, fmFlags.fig);
+  addFlagDiff("CONCEPT", mapFlags.cb, mcFlags.cb);
+  addFlagDiff("FIGURE", mapFlags.fig, mcFlags.fig);
 
   // ── Step 5: dangling note links (non-entity map wikilinks that resolve to no file) ──
   const danglingNotes: DanglingNoteFinding[] = [];
-  const resolveDirs = opts.noteResolveDirs ?? defaultNoteDirs(mapPath, fmPath);
+  const resolveDirs = opts.noteResolveDirs ?? defaultNoteDirs(mapPath, mcPath);
   const seenNote = new Set<string>();
   for (const l of mapLinks) {
     if (l.isEntity) continue;
@@ -1037,7 +1037,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
   const nameErrors = nameBinding.filter((f) => f.severity === "ERROR").length;
   const misalign = misalignments.filter((f) => f.severity === "MISALIGN").length;
   const flagMismatch = flagMismatches.filter((f) => f.severity === "MISALIGN").length;
-  const likelySameReferent = misalignments.filter((f) => f.severity !== "ACCEPTED" && f.direction === "MAP_NOT_FM" && f.likelySameReferent).length;
+  const likelySameReferent = misalignments.filter((f) => f.severity !== "ACCEPTED" && f.direction === "MAP_NOT_MC" && f.likelySameReferent).length;
   const dangling = danglingNotes.filter((f) => f.severity === "FLAG").length;
   const accepted =
     referenceIntegrity.filter((f) => f.severity === "ACCEPTED").length +
@@ -1047,7 +1047,7 @@ export function checkIdAlignment(mapPath: string, fmPath: string, opts: CheckOpt
     danglingNotes.filter((f) => f.severity === "ACCEPTED").length;
 
   return {
-    pericope, mapPath, fmPath,
+    pericope, mapPath, mcPath,
     referenceIntegrity, unverifiable, withheldReferents, nameBinding, misalignments, flagMismatches, danglingNotes,
     counts: { refErrors, nameErrors, misalign, flagMismatch, likelySameReferent, dangling, unverifiable: unverifiable.length, withheld: withheldReferents.length, accepted },
     ok: refErrors + nameErrors + misalign + flagMismatch + dangling === 0,
@@ -1062,8 +1062,8 @@ function mapBasenameStem(p: string): string {
 function numericScene(a: string, b: string): number {
   return (Number(a.replace(/\D/g, "")) || 0) - (Number(b.replace(/\D/g, "")) || 0);
 }
-function defaultNoteDirs(mapPath: string, fmPath: string): string[] {
-  return [...new Set([dirname(mapPath), dirname(fmPath)])];
+function defaultNoteDirs(mapPath: string, mcPath: string): string[] {
+  return [...new Set([dirname(mapPath), dirname(mcPath)])];
 }
 /**
  * Does a wikilink note-title resolve to an existing `.md` file in any resolve dir? Obsidian note

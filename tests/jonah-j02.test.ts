@@ -26,11 +26,11 @@ import { checkIdAlignment } from "../src/engine/id-align.js";
  *
  * J02 (the storm, Jonah 1:4–2:1) is narrative test #2: Marcia ruled the map in four groups (SC-0040)
  * and the L1 closed lists HELD — including three moment-level register shifts, all inside the closed
- * 7. The FOR_MODEL stays a skeleton in `_working/J02/` until its judgment half is authored; the map
+ * 7. The MEANING_COORDINATES stays a skeleton in `_working/J02/` until its judgment half is authored; the map
  * is the graduated fixture, and this test guards the result.
  *
  * This test also PINS the versification convention (the ruled pre-J03 rider): where English and
- * Hebrew verse numbering diverge (Jonah 2; later Psalms superscriptions etc.), the FOR_MODEL's
+ * Hebrew verse numbering diverge (Jonah 2; later Psalms superscriptions etc.), the MEANING_COORDINATES's
  * scene `verse_range` is HEBREW (BHSA-native — what coverage reconciles against the pinned packet),
  * while proposition `verse_anchor`s are ENGLISH (human-facing, like the map's bcv). J02's scene 5
  * is the first divergent case (Eng 1:17–2:1 = Heb 2:1–2); J03/J04 lean on this throughout.
@@ -44,24 +44,24 @@ const mm = readMeaningMap(MAP);
 const { skeleton, gaps } = compileSkeleton(mm);
 
 let tmp: string;
-let fmPath: string;
+let mcPath: string;
 beforeAll(() => {
   tmp = mkdtempSync(join(tmpdir(), "tripod-j02-"));
-  fmPath = join(tmp, "J02-Jonah-1-4-2-1-FOR-MODEL.md");
+  mcPath = join(tmp, "J02-Jonah-1-4-2-1-MEANING-COORDINATES.md");
   const note =
     `---\n` +
-    `type: "sta-for-model"\n` +
+    `type: "sta-meaning-coordinates"\n` +
     `pericope: "J02"\n` +
     `pericope-title: "${(mm.title ?? "").replace(/"/g, "'")}"\n` +
     `source-meaning-map: [[J02-Jonah-1-4-2-1]]\n` +
     `status: "skeleton"\n` +
     `pilot: "pilot-2"\n` +
     `---\n\n` +
-    `# J02 — ${mm.bcv ?? ""} — FOR_MODEL (SKELETON — ${gaps.length} judgment gaps)\n\n` +
+    `# J02 — ${mm.bcv ?? ""} — MEANING_COORDINATES (SKELETON — ${gaps.length} judgment gaps)\n\n` +
     "```json\n" +
     JSON.stringify(skeleton, null, 2) +
     "\n```\n";
-  writeFileSync(fmPath, note);
+  writeFileSync(mcPath, note);
 });
 afterAll(() => rmSync(tmp, { recursive: true, force: true }));
 
@@ -97,8 +97,8 @@ describe("SC-0044 — J02 (Jonah 1:4–2:1) graduation: the storm anchor", () =>
   });
 
   it("the skeleton's only schema blocks are unfilled judgment fields — ZERO on any closed-list axis", () => {
-    const r = validateArtifact(fmPath);
-    expect(r.artifact).toBe("FOR_MODEL");
+    const r = validateArtifact(mcPath);
+    expect(r.artifact).toBe("MEANING_COORDINATES");
     const blocks = r.findings.filter((f) => f.severity === "block");
     for (const b of blocks) {
       expect(b.location, `closed-list axis blocked: ${JSON.stringify(b)}`).not.toMatch(
@@ -111,7 +111,7 @@ describe("SC-0044 — J02 (Jonah 1:4–2:1) graduation: the storm anchor", () =>
       expect(b.location, `block outside the judgment-gap inventory: ${JSON.stringify(b)}`).toMatch(judgmentField);
     }
     // the pinned gap state of the unfilled skeleton (54 measured at graduation, SC-0044). If this
-    // moves: the spec changed (look), the reader changed (re-derive), or the FM began to be authored.
+    // moves: the spec changed (look), the reader changed (re-derive), or the MC began to be authored.
     expect(blocks.length).toBe(54);
   });
 
@@ -126,7 +126,7 @@ describe("SC-0044 — J02 (Jonah 1:4–2:1) graduation: the storm anchor", () =>
   });
 
   it("map ↔ skeleton entity IDs align against the JONAH alias table (18-entity cast)", () => {
-    const r = checkIdAlignment(MAP, fmPath, {
+    const r = checkIdAlignment(MAP, mcPath, {
       exceptions: loadIdAlignmentExceptions(),
       noteResolveDirs: [MM_DIR],
       aliases: loadAliasTable("jonah"),

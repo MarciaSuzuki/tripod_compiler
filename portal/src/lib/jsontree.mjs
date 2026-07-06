@@ -1,7 +1,7 @@
 import { escapeHtml, escapeAttr } from './html.mjs';
 import { entityTooltip, deSlug } from './registry.mjs';
 
-// FOR_MODEL / compilation-log JSON → a collapsible outline, rendered entirely
+// MEANING_COORDINATES / compilation-log JSON → a collapsible outline, rendered entirely
 // with native <details>/<summary> — no client-side JavaScript. Registry codes
 // inside string values (B2, CB_0029, FIG_0007, TM_PERIOD_OF_JUDGES…) get the
 // same hover tooltips as wikilinks in the prose. String values render with

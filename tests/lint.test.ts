@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { lintForModel, lintMeaningMap, applyLintExceptions, type LintException } from "../src/engine/lint.js";
+import { lintMeaningCoordinates, lintMeaningMap, applyLintExceptions, type LintException } from "../src/engine/lint.js";
 
 /**
  * The Level-3 / §3C content-discipline lint (drift-guard). Tests the four drift classes from
@@ -134,8 +134,8 @@ describe("lint — reviewer sign-off (lint-exceptions, SC-0010 pattern)", () => 
   });
 });
 
-describe("lint — FOR_MODEL", () => {
-  const fm = {
+describe("lint — MEANING_COORDINATES", () => {
+  const mc = {
     level_2_scenes: [
       {
         scene_id: "S1",
@@ -151,7 +151,7 @@ describe("lint — FOR_MODEL", () => {
       { prop_id: "P9", event_specific_slots: { residual_form: "FIRST_OCCURRENCE_OF_SURVIVAL_VERB", action: "DWELT" } },
     ],
   };
-  const r = lintForModel(fm);
+  const r = lintMeaningCoordinates(mc);
   it("flags §3C objects that are really events/framings/patterns (R1)", () => {
     expect(r.findings.some((f) => f.rule === "section_3c_not_entity" && f.match === "TH_DEATH_OF_ELIMELECH")).toBe(true);
   });
@@ -159,18 +159,18 @@ describe("lint — FOR_MODEL", () => {
     expect(r.findings.some((f) => f.rule === "forbidden_vocabulary" && f.match === "verb")).toBe(true);
     expect(r.findings.some((f) => f.context.includes("O1") && f.rule === "forbidden_vocabulary")).toBe(false);
   });
-  it("a clean FOR_MODEL has no findings", () => {
+  it("a clean MEANING_COORDINATES has no findings", () => {
     const clean = { level_2_scenes: [{ scene_id: "S1", objects_in_scene: { entries: [{ object_id: "O1", function_in_scene: "AFFLICTION" }] } }], level_3_propositions: [] };
-    expect(lintForModel(clean).ok).toBe(true);
+    expect(lintMeaningCoordinates(clean).ok).toBe(true);
   });
   it("does NOT flag a soft answer-label inside a closed-list speech_act value (out of scope)", () => {
-    // The §4-answer labels (declaration/recital/…) must never fire on a governed FOR_MODEL enum
+    // The §4-answer labels (declaration/recital/…) must never fire on a governed MEANING_COORDINATES enum
     // value or a §3C relocation note — only on a meaning-map §4 answer. Guards the scope boundary.
-    const fm = {
+    const mc = {
       level_2_scenes: [{ scene_id: "S1", objects_in_scene: { entries: [{ object_id: "CB_0011", function_in_scene: "HESED" }], _note: "§3C entities only (SC-0013): full-knowledge recital relocated to P7." } }],
       level_3_propositions: [{ prop_id: "P8", event_specific_slots: { speech_act: "REFUSES_REQUEST_WITH_COUNTER_DECLARATION" } }],
     };
-    const r = lintForModel(fm);
+    const r = lintMeaningCoordinates(mc);
     expect(r.findings.some((f) => f.rule === "interpretive_label")).toBe(false);
     expect(r.ok).toBe(true);
   });
@@ -178,16 +178,16 @@ describe("lint — FOR_MODEL", () => {
     const withMeaning = { level_2_scenes: [], level_3_propositions: [
       { prop_id: "P1", event_specific_slots: { components: [{ action: "VOWED", list_position: "FIRST", meaning: "she binds herself to go" }] } },
     ] };
-    expect(lintForModel(withMeaning).findings.some((f) => f.rule === "l3_free_text" && f.match === "meaning")).toBe(true);
+    expect(lintMeaningCoordinates(withMeaning).findings.some((f) => f.rule === "l3_free_text" && f.match === "meaning")).toBe(true);
     const withProse = { level_2_scenes: [], level_3_propositions: [
       { prop_id: "P1", event_specific_slots: { note: "this is a prose clause" } },
     ] };
-    expect(lintForModel(withProse).findings.some((f) => f.rule === "l3_free_text")).toBe(true);
+    expect(lintMeaningCoordinates(withProse).findings.some((f) => f.rule === "l3_free_text")).toBe(true);
   });
   it("SC-0030: does NOT flag UPPER_SNAKE slot values (the sentence-token triage is a separate cycle)", () => {
-    const fm = { level_2_scenes: [], level_3_propositions: [
+    const mc = { level_2_scenes: [], level_3_propositions: [
       { prop_id: "P1", event_specific_slots: { vow_structural_form: "SIX_STEP_LADDER_PATH_LODGING_PEOPLE_GOD_DEATH_BURIAL", components: [{ action: "VOWED", list_position: "FIRST" }] } },
     ] };
-    expect(lintForModel(fm).findings.some((f) => f.rule === "l3_free_text")).toBe(false);
+    expect(lintMeaningCoordinates(mc).findings.some((f) => f.rule === "l3_free_text")).toBe(false);
   });
 });

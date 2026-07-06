@@ -65,10 +65,10 @@ const TOURS = [
           'A translation team reads the Meaning Map. The translation software cannot — it needs the same meaning in a strict, checkable format.',
       },
       {
-        url: '../pericopes/P01.html#for-model',
+        url: '../pericopes/P01.html#meaning-coordinates',
         title: '…the machine reads this',
         prose:
-          'This is the FOR_MODEL file: the machine-facing version of the same map. Same scenes, same statements — now as labeled fields that software can verify piece by piece.',
+          'This is the Meaning Coordinates file: the machine-facing version of the same map. Same scenes, same statements — now as labeled fields that software can verify piece by piece.',
       },
       {
         url: '../pericopes/P01.html#compilation-log',
@@ -86,7 +86,7 @@ const TOURS = [
         url: './ruth.html#P01',
         title: 'And the Meaning Mind reads it back',
         prose:
-          'And the Meaning Mind reads it back: what you see here is the FOR_MODEL, rendered as living structure.',
+          'And the Meaning Mind reads it back: what you see here is the Meaning Coordinates, rendered as living structure.',
       },
     ],
   },

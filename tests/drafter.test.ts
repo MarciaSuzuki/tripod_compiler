@@ -141,8 +141,8 @@ describe("drafter assembly — dry-run reproducibility", () => {
   it("carries the pinned prompt, the digests, the worked P01 pair, and the pericope blocks", () => {
     const req = assembleDraftRequest(P08);
     const text = renderRequest(req);
-    expect(req.system).toMatch(/FOR_MODEL Drafter — system prompt/);
-    const pinned = JSON.parse(readFileSync("_spec/pins.json", "utf8")).sources["drafter/fm-drafter-prompt.md"].version;
+    expect(req.system).toMatch(/MEANING_COORDINATES Drafter — system prompt/);
+    const pinned = JSON.parse(readFileSync("_spec/pins.json", "utf8")).sources["drafter/mc-drafter-prompt.md"].version;
     expect(req.system).toContain(`\`${pinned}\``); // the prompt's own Pin header tracks pins.json
     expect(text).toMatch(/L1 closed lists/);
     expect(text).toMatch(/WORKED EXAMPLE — the blessed P01 pair/);

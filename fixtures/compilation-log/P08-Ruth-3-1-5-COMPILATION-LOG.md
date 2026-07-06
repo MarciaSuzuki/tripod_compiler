@@ -28,7 +28,7 @@ pilot: "pilot-2"
   "compilation_decisions": [
     {
       "decision_id": "P08-D1",
-      "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
+      "decision": "Deterministically compiled a MEANING_COORDINATES skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 50 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
     },
     {
@@ -106,7 +106,7 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
     "speech_act_present_on_all_component_records": true,

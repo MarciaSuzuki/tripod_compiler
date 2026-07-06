@@ -48,7 +48,7 @@ human-reviewed PR.
   `_methodology/`, `_templates/`.
 - **`MarciaSuzuki/tripod_compiler`** — the validator/compiler (TypeScript/ESM). **Vendors + pins** the spec
   from the vault. Holds `_spec/` (pinned schemas + `pins.json` + `lint-lexicon.json` + `lint-exceptions.json`),
-  `src/`, `fixtures/` (gold copies: `meaning-map/`, `for-model/`), `docs/`, `SPEC_CHANGES.md`, `VOCABULARY_LOG.md`.
+  `src/`, `fixtures/` (gold copies: `meaning-map/`, `meaning-coordinates/`), `docs/`, `SPEC_CHANGES.md`, `VOCABULARY_LOG.md`.
 - **The Claude GitHub App is installed** (write works). **BHSA Hebrew data is local/offline** (`…/bhsa/tf/2021`).
 - **Workflow substrate: GitHub PRs.** Build sessions open PRs; Marcia reviews/merges; governance via
   `SPEC_CHANGES.md` (append-only `SC-####`, never reuse a number).
@@ -58,11 +58,11 @@ human-reviewed PR.
 
 ## 3. Status — built · blessed · in-flight · next
 **The verification stack (built, proven):** `validate` (schema + 3-layer vocabulary, profile-aware) ·
-`check-drift` (pins by version+sha256) · `compile` (deterministic MeaningMap→FOR_MODEL skeleton, never
+`check-drift` (pins by version+sha256) · `compile` (deterministic MeaningMap→Meaning Coordinates skeleton, never
 invents) · `coverage` (BHSA reconciliation, offline; P01–P06 6/6 block-clean) · `lint` (the content-discipline
 drift-guard). Gate order: conformance → coverage → reading-quality (human).
 
-**The four artifacts** (per pericope): `FOR_MODEL` · `COMPILATION-LOG` · `BCD-DELTA` · `VERIFICATION-INPUT`.
+**The four artifacts** (per pericope): `Meaning Coordinates` · `COMPILATION-LOG` · `BCD-DELTA` · `VERIFICATION-INPUT`.
 No separate AUDIT. Tagset `TRIPOD_STA_v2_0`, pilot-2. **REGISTER is 7** (SC-0001). `artifact_profile` is
 **forbidden** (biblical-implicit). **Pilot-2 lane only** — do not build LA_RECORDING / unified vocab (Pilot-3).
 
@@ -85,12 +85,12 @@ No separate AUDIT. Tagset `TRIPOD_STA_v2_0`, pilot-2. **REGISTER is 7** (SC-0001
 
 **In-flight (Session 7 building now):** the **de-leak** (`docs/HANDOFF-PROCESS-NOTE-DELEAK.md`, likely
 **SC-0017**). Strip the SC-0013/SC-0016 *relocation notes* ("Relocated per the content discipline (SC-XXXX):
-X → Proposition N") from §3C in **maps + FOR_MODELs** — they're project worklog leaking into the source
+X → Proposition N") from §3C in **maps + MCs** — they're project worklog leaking into the source
 artifact. Keep entities + the plain "None" considered-absence; the relocation record stays in the audit docs.
 Also fixes the template + discipline doc so it can't recur. Removal-only, low-risk; fixtures-first → vault writeback.
 
 **Next (the rest of finishing Ruth, by hand):**
-1. **Author P07–P14** (~Ruth 3:6 → 4:17) — **unwritten** in pilot-2 (no verse ranges, no FOR_MODELs). The bulk
+1. **Author P07–P14** (~Ruth 3:6 → 4:17) — **unwritten** in pilot-2 (no verse ranges, no MCs). The bulk
    of remaining manual work. Coverage can't run until these are mapped (extractor `pericopes.json` stops at P06).
 2. **Common-Reader Prose Standard** — drafted + register **blessed**, **HELD** to seed
    (`docs/COMMON-READER-PROSE-STANDARD.draft.md`). The Level-1/scene **conditioning prose** to plain
@@ -172,7 +172,7 @@ the durable relocate-never-delete record. **Note:** this Architect branch holds 
 `main` — that's fine; they're working artifacts Marcia bridges from.
 
 ## 8. Operational gotchas (so you don't re-learn them the hard way)
-- **fixtures ≡ vault invariant:** compiler `fixtures/meaning-map/` and `fixtures/for-model/` are byte-identical
+- **fixtures ≡ vault invariant:** compiler `fixtures/meaning-map/` and `fixtures/meaning-coordinates/` are byte-identical
   to the vault `pericopes/` and `stas/`. Edits keep both in sync; the writeback restores the invariant.
 - **The proven cross-repo flow:** apply in compiler fixtures (gated, provable) → **vault writeback** (pause
   auto-backup; transcribe; fresh branch off `origin/main`; diff-first/no-clobber; reviewed PR) → merge the pair
@@ -188,7 +188,7 @@ the durable relocate-never-delete record. **Note:** this Architect branch holds 
 - This file, then `docs/PROGRESS.md`, `SPEC_CHANGES.md`, `docs/COVERAGE.md`, `docs/READING_QUALITY.md`,
   `docs/SOURCE_AND_SCALING.md` (compiler).
 - Vault: `_methodology/level3and3Ccontentdiscipline.md` (R1–R5), the meaning-map template, and a clean P01
-  map + FOR_MODEL (the worked reference).
+  map + Meaning Coordinates (the worked reference).
 - **Project memory** (`MEMORY.md` + files): canonical-vault-location, governance-log-home (the SC-log home
   caveat), sc-id-collisions (ledger through SC-0016), vault-auto-backup, sc0016-level3-sweep, and
   common-reader-prose-standard (held). Recalled memories reflect what was true when written — verify a named

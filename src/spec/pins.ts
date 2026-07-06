@@ -90,12 +90,12 @@ export function checkDrift(vaultSpecDir?: string): DriftResult[] {
 
 /**
  * Spec self-check: the two representations of each closed list must agree —
- * `closed_lists.X` === `for_model_schema.$defs.<x>_value.enum`. A mismatch means the spec
+ * `closed_lists.X` === `meaning_coordinates_schema.$defs.<x>_value.enum`. A mismatch means the spec
  * itself drifted internally (the kind of bug SC-0001 had to fix by hand).
  */
 export function closedListSyncIssues(): string[] {
   const rules = loadSpecJson<any>("validation-rules.json");
-  const defs = rules.for_model_schema?.$defs ?? {};
+  const defs = rules.meaning_coordinates_schema?.$defs ?? {};
   const pairs: Array<[string, string]> = [
     ["REGISTER", "register_value"],
     ["GENRE", "genre_value"],

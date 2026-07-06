@@ -1,5 +1,7 @@
 # Tripod Compiler — Project Brief & Build Guide
 
+> **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
+
 > **Current state: see [`docs/PROGRESS.md`](docs/PROGRESS.md).** This brief is the original
 > scoping handoff and is now partly stale (e.g. it says 2 artifacts — pilot-2 has 4; it suggests
 > zod — we consume the pinned JSON-Schemas via ajv). `docs/PROGRESS.md` overrides it on conflict.
@@ -19,7 +21,7 @@ Method of AI-assisted oral Bible translation (Shema Bible Translation / OBT Lab)
 which remains the source of truth. The compiler does the repeated, mechanical work the
 human currently does by hand: read Bible text + vault notes → draft/validate a **Meaning
 Map** → check it against controlled vocabulary + schema → compile the machine-facing
-**STA / FOR_MODEL** artifact → emit an **audit + registry-delta** → route uncertain items
+**STA / Meaning Coordinates** artifact → emit an **audit + registry-delta** → route uncertain items
 to human review → write approved files back to the vault. The whole downstream ML pilot
 (Facilitator → Performer → vocoder → reviewable low-resource-language oral draft) depends
 on these artifacts being **schema-valid, version-stable, and drift-controlled at Bible
@@ -79,7 +81,7 @@ There are **at least two artifact generations** in circulation. **Target `pilot-
 | `speech_act` | generic (`DIRECTS_HEARER_TO_DO`) | granular (`DIRECTS_HEARER_TO_RETURN`, `REFUSES_REQUEST_WITH_COUNTER_DECLARATION`) |
 | Register count | 6 observed | **7** (per training doc) — resolve against the authoritative list |
 | File form | bare `.md` / `.json` | Obsidian note: YAML frontmatter + `[[wikilink]]` + fenced ```json block, `status: valid` |
-| FOR_MODEL/AUDIT | split at "stage_4" | uploaded samples are single FOR_MODEL notes; confirm whether a separate AUDIT exists in pilot-2 |
+| Meaning Coordinates/AUDIT | split at "stage_4" | uploaded samples are single Meaning Coordinates notes; confirm whether a separate AUDIT exists in pilot-2 |
 
 > **The closed lists themselves drifted between versions.** Do NOT hardcode vocabulary from
 > memory or from the older docs. **Step 1 is to obtain the authoritative current vocabulary
@@ -90,30 +92,30 @@ is real across the project's own materials. This is the problem we're solving.
 
 ---
 
-## 3. Verified current schema (`TRIPOD_STA_v2_0`, from real P01 & P02 FOR_MODEL files)
+## 3. Verified current schema (`TRIPOD_STA_v2_0`, from real P01 & P02 Meaning Coordinates files)
 
-This is transcribed from two **real, valid** pilot-2 FOR_MODEL artifacts (Ruth 1:1–5 and
+This is transcribed from two **real, valid** pilot-2 Meaning Coordinates artifacts (Ruth 1:1–5 and
 1:6–14). Treat as the authoritative *structure*; verify *vocabulary values* against the spec doc.
 
 ### 3.1 File envelope (Obsidian note)
 ```
 ---
-type: "sta-for-model"
+type: "sta-meaning-coordinates"
 pericope: "P01"
 pericope-title: "..."
 source-meaning-map: [[P01-Ruth-1-1-5]]   # wikilink to the Meaning Map note
 status: "valid"
 pilot: "pilot-2"
 ---
-# P01 — Ruth 1:1–5 — FOR_MODEL
+# P01 — Ruth 1:1–5 — Meaning Coordinates
 (prose line)
 ```json
-{ ...the canonical FOR_MODEL JSON... }
+{ ...the canonical Meaning Coordinates JSON... }
 ```
 ```
 The parser must extract the fenced ```json block; the frontmatter carries routing metadata.
 
-### 3.2 FOR_MODEL JSON shape
+### 3.2 Meaning Coordinates JSON shape
 ```jsonc
 {
   "sta_id": "ruth_pericope_01_v2_0",
@@ -235,11 +237,11 @@ is added later.
   layer1.closed.yaml     # GENRE_GROUP, GENRE, REGISTER, SPEECH_ACT (+ register-override values)
   layer2.bounded.yaml    # PROPOSITION_KIND, SCENE_KIND, arc/tone/pace/comm-func elements
   registry/              # L3 per-book: beings, places, objects, times, institutions, CB, FIG
-  schema/                # zod/JSON-schema for MeaningMap, FOR_MODEL (per profile)
+  schema/                # zod/JSON-schema for MeaningMap, Meaning Coordinates (per profile)
 /src/
-  reader/   # parse Obsidian FOR_MODEL note + Meaning Map .md → typed model
+  reader/   # parse Obsidian Meaning Coordinates note + Meaning Map .md → typed model
   engine/   # 3-layer vocabulary guard (block / drift / propose) — profile-aware
-  compiler/ # MeaningMap → FOR_MODEL (Slice 2)
+  compiler/ # MeaningMap → Meaning Coordinates (Slice 2)
   audit/    # emit audit report + registry-delta (BCD-delta) — Slice 1 emits the report
   cli/      # tripod validate | compile | check-drift | propose-vocabulary
 /fixtures/  # real gold artifacts pulled from the vault (P01, P02, ...) for tests
@@ -250,8 +252,8 @@ CLAUDE.md   # this file
 ### Slice 1 — Spec + Validator (FIRST; no LLM, fully deterministic, testable)
 **Deliverables**
 1. `/_spec` — transcribe the authoritative **current (pilot-2)** vocabulary into YAML; write
-   `zod` schemas for the FOR_MODEL envelope + JSON.
-2. **Reader** — parse a FOR_MODEL Obsidian note (frontmatter + fenced JSON) and a Meaning Map
+   `zod` schemas for the Meaning Coordinates envelope + JSON.
+2. **Reader** — parse a Meaning Coordinates Obsidian note (frontmatter + fenced JSON) and a Meaning Map
    `.md` into a typed model.
 3. **Vocabulary engine** — the L1/L2/L3 rules, profile-aware.
 4. **`tripod validate <fixture>`** — emits a structured report: schema errors (block),
@@ -260,22 +262,22 @@ CLAUDE.md   # this file
 5. **Proof:** run against the gold fixtures (P01, P02, and more once gathered). The report
    should re-derive the kind of "Registry Additions / Known Limits" the human writes by hand.
 
-**Acceptance:** `tripod validate` on a known-good pilot-2 FOR_MODEL → clean (or only expected
+**Acceptance:** `tripod validate` on a known-good pilot-2 Meaning Coordinates → clean (or only expected
 drift); on a deliberately corrupted copy → precise, located errors.
 
 ### Later slices
-- **Slice 2:** `MeaningMap → FOR_MODEL` compiler (+ audit). Verify the AUDIT artifact shape
+- **Slice 2:** `MeaningMap → Meaning Coordinates` compiler (+ audit). Verify the AUDIT artifact shape
   against a real pilot-2 AUDIT first (confirm it still exists).
 - **Slice 3:** review report + approved **BCD-delta writeback** to the vault (human-gated;
   never automatic).
 - **Slice 4:** agent orchestration (Mapper / Vocabulary Guard / STA Compiler / Validator /
   Adjudicator); the **LLM drafter is built last**.
 - **Slice 5:** Bible-wide dashboard (Next.js) — pericope status, drift queue, registry
-  browser, FOR_MODEL validator, progress tracker.
+  browser, Meaning Coordinates validator, progress tracker.
 
 ### Downstream contract to preserve
-The **Facilitator (ML pilot)** is the downstream consumer of the FOR_MODEL artifacts, under a
-hard "don't invent semantic content" rule. If the compiler emits FOR_MODEL from shared TS types,
+The **Facilitator (ML pilot)** is the downstream consumer of the Meaning Coordinates artifacts, under a
+hard "don't invent semantic content" rule. If the compiler emits Meaning Coordinates from shared TS types,
 that contract becomes compiler-checked.
 
 ---
@@ -290,12 +292,12 @@ not, ask the user to re-upload them. **Get the authoritative current (pilot-2) v
    a pilot-2 / v2_0 vocabulary doc supersedes it). **This blocks `/_spec`.**
 2. **The BCD** (book context / registry) — current version. (`ruth_pilot_BCD_v0_3.md`,
    id `1J7RkQAgtlgfQIR9PjfywSiy7uCBeJpgw`.)
-3. **3–5 gold FOR_MODEL notes + their source Meaning Maps**, pilot-2. (Two are already in
+3. **3–5 gold Meaning Coordinates notes + their source Meaning Maps**, pilot-2. (Two are already in
    hand: P01 Ruth 1:1–5, P02 Ruth 1:6–14.)
 4. **Confirm:** does pilot-2 still produce a separate **AUDIT** artifact? What is its shape?
 5. **Confirm:** the **7th register** (explorer saw 6) and the **register-override value list**
    (e.g., is `COMMUNITY_MEMORY` a register or a separate axis?).
-6. **Confirm:** is `artifact_profile` written into pilot-2 FOR_MODEL, or implied?
+6. **Confirm:** is `artifact_profile` written into pilot-2 Meaning Coordinates, or implied?
 
 ### Useful Drive coordinates (from the scoping session)
 - Main vault folder "Ruth Meaning Maps and TSA Files": `1GztktSGn0zWHEbL430OoHUZ5zgXyDaxC`
@@ -307,7 +309,7 @@ not, ask the user to re-upload them. **Get the authoritative current (pilot-2) v
 
 ## 7. Open questions to resolve early
 1. Authoritative pilot-2 vocabulary source? (blocks `/_spec`)
-2. Does pilot-2 keep the FOR_MODEL **+ AUDIT** split, or fold audit elsewhere?
+2. Does pilot-2 keep the Meaning Coordinates **+ AUDIT** split, or fold audit elsewhere?
 3. Register list (6 vs 7) and the override-value list.
 4. `artifact_profile` presence/derivation.
 5. Vault access during build: pull gold files into `/fixtures` (recommended) vs operate on a
@@ -322,8 +324,8 @@ not, ask the user to re-upload them. **Get the authoritative current (pilot-2) v
 > I'm building the Tripod Compiler (TypeScript). Read `CLAUDE.md` at the repo root — it has
 > the verified `TRIPOD_STA_v2_0` schema, the 3-layer/2-profile vocabulary model, and the
 > Slice 1 plan. Before writing code: pull (from Google Drive, or I'll upload) the
-> **current pilot-2 STA vocabulary doc** and **3–5 gold FOR_MODEL notes + their Meaning
+> **current pilot-2 STA vocabulary doc** and **3–5 gold Meaning Coordinates notes + their Meaning
 > Maps**, and confirm the open questions in §7. Then build **Slice 1 (Spec + Validator)**:
-> `/_spec` from the real vocabulary, a reader for the Obsidian FOR_MODEL notes, the
+> `/_spec` from the real vocabulary, a reader for the Obsidian Meaning Coordinates notes, the
 > profile-aware 3-layer vocabulary engine, and `tripod validate` proven against the gold
 > fixtures. No LLM, no generator yet, no writeback.

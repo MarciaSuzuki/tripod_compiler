@@ -1,7 +1,7 @@
 {
   "name": "tripod-compiler",
   "version": "0.4.0",
-  "description": "Upstream artifact-production toolchain for the Tripod Method. Validator (tripod validate) + drift convergence (convergent/descriptive split, growing approved-enumerations registry; tripod promote / propose-vocabulary) + deterministic MeaningMap→FOR_MODEL skeleton compiler (tripod compile).",
+  "description": "Upstream artifact-production toolchain for the Tripod Method. Validator (tripod validate) + drift convergence (convergent/descriptive split, growing approved-enumerations registry; tripod promote / propose-vocabulary) + deterministic MeaningMap→MEANING_COORDINATES skeleton compiler (tripod compile).",
   "type": "module",
   "bin": {
     "tripod": "./dist/cli/tripod.js"

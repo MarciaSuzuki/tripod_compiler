@@ -3,7 +3,7 @@ type: "sta-compilation-log"
 pericope: "P02"
 pericope-title: "The return road begins; Naomi urges her daughters-in-law back; Orpah turns, Ruth clings"
 source-meaning-map: [[P02-Ruth-1-6-14]]
-source-for-model: [[P02-Ruth-1-6-14-FOR-MODEL]]
+source-meaning-coordinates: [[P02-Ruth-1-6-14-MEANING-COORDINATES]]
 related-bcd-delta: [[P02-Ruth-1-6-14-BCD-DELTA]]
 status: "valid"
 pilot: "pilot-2"
@@ -30,7 +30,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     "production_use": false
   },
   "confidence_overall": "MEDIUM_HIGH",
-  "confidence_overall_note": "P02 compiles cleanly with 15 propositions across 3 scenes. Meaning-map P1 was split into FOR_MODEL P1 (HEARD_REPORT) and P2 (VISITED_AND_PROVIDED) per Agent 1's gate-D guidance. Pericope-level register INFORMAL_CASUAL with two scene-level INTIMATE overrides on S2 and S3 (first multi-scene scene-level overrides in the pilot). First non-NONE agent_named in the pilot at P2 (B10 YHWH gives bread to B31 his people), structurally inverting P01 P2's agent_named: NONE. Naomi's lament-frame ascription at P12 names B10 again with opposite valence. FIG_0013 cross-pericope pair closes here at P2 (VERIFIED). FIG_0012 opens at P15 (DEFERRED). Two new working codes (B31, PL_LAND_OF_JUDAH) plus extensive new bounded-open vocabulary (proposition_kinds, scene_kinds, role-in-scene values, referential_forms) expected to drift-warn — none are closed-list violations.",
+  "confidence_overall_note": "P02 compiles cleanly with 15 propositions across 3 scenes. Meaning-map P1 was split into MEANING_COORDINATES P1 (HEARD_REPORT) and P2 (VISITED_AND_PROVIDED) per Agent 1's gate-D guidance. Pericope-level register INFORMAL_CASUAL with two scene-level INTIMATE overrides on S2 and S3 (first multi-scene scene-level overrides in the pilot). First non-NONE agent_named in the pilot at P2 (B10 YHWH gives bread to B31 his people), structurally inverting P01 P2's agent_named: NONE. Naomi's lament-frame ascription at P12 names B10 again with opposite valence. FIG_0013 cross-pericope pair closes here at P2 (VERIFIED). FIG_0012 opens at P15 (DEFERRED). Two new working codes (B31, PL_LAND_OF_JUDAH) plus extensive new bounded-open vocabulary (proposition_kinds, scene_kinds, role-in-scene values, referential_forms) expected to drift-warn — none are closed-list violations.",
   "compilation_decisions": [
     {
       "decision_id": "P02-D1",
@@ -39,8 +39,8 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     },
     {
       "decision_id": "P02-D2",
-      "decision": "Meaning-map P1 split into FOR_MODEL P1 (HEARD_REPORT) and P2 (VISITED_AND_PROVIDED).",
-      "description": "The meaning map's Proposition 1 conflates two structurally distinct events with different participant structures: Naomi's hearing-event (B3 hearer) and YHWH's visiting-and-providing-event (B10 agent_named, B31 recipient-collective). Per Agent 1's gate-D guidance the FOR_MODEL splits them. The hearing prop carries CB_0017 (kallotehah collective). The visiting prop carries CB_0016 (paqad), CB_0012 (bread), agent_named B10, and the FIG_0013 cross-pericope closure. Inter-prop link: hearing.forward_link_to = P3 (departure); visiting.paired_with = P1 (hearing references its content). The content-reference itself is encoded inside event_specific_slots as report_content_link on the hearing prop, because the inter_proposition_links schema is closed and admits no new key."
+      "decision": "Meaning-map P1 split into MEANING_COORDINATES P1 (HEARD_REPORT) and P2 (VISITED_AND_PROVIDED).",
+      "description": "The meaning map's Proposition 1 conflates two structurally distinct events with different participant structures: Naomi's hearing-event (B3 hearer) and YHWH's visiting-and-providing-event (B10 agent_named, B31 recipient-collective). Per Agent 1's gate-D guidance the MEANING_COORDINATES splits them. The hearing prop carries CB_0017 (kallotehah collective). The visiting prop carries CB_0016 (paqad), CB_0012 (bread), agent_named B10, and the FIG_0013 cross-pericope closure. Inter-prop link: hearing.forward_link_to = P3 (departure); visiting.paired_with = P1 (hearing references its content). The content-reference itself is encoded inside event_specific_slots as report_content_link on the hearing prop, because the inter_proposition_links schema is closed and admits no new key."
     },
     {
       "decision_id": "P02-D3",
@@ -80,7 +80,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P02-D10",
       "decision": "Inter-proposition link from hearing to visiting encoded inside event_specific_slots.",
-      "description": "The semantic relationship between FOR_MODEL P1 (hearing) and P2 (visiting) is 'P1 references the content of P2.' The validation-rules.json inter_proposition_links schema is closed (additionalProperties: false; admits only caused_by, forward_link_to, paired_with, purposed_for, back_reference_to_proposition). No existing key cleanly fits the content-reference relation. The structural reference is therefore encoded inside event_specific_slots as report_content_link: P2 on the hearing prop. Inter_proposition_links uses paired_with: P1 on the visiting prop to mark the pairing structurally. This preserves both the structural relation and the schema constraint."
+      "description": "The semantic relationship between MEANING_COORDINATES P1 (hearing) and P2 (visiting) is 'P1 references the content of P2.' The validation-rules.json inter_proposition_links schema is closed (additionalProperties: false; admits only caused_by, forward_link_to, paired_with, purposed_for, back_reference_to_proposition). No existing key cleanly fits the content-reference relation. The structural reference is therefore encoded inside event_specific_slots as report_content_link: P2 on the hearing prop. Inter_proposition_links uses paired_with: P1 on the visiting prop to mark the pairing structurally. This preserves both the structural relation and the schema constraint."
     },
     {
       "decision_id": "P02-D11",
@@ -387,7 +387,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "occurrences_in_pericope": [
         "P1"
       ],
-      "note": "report_content_link names the FOR_MODEL prop that holds the content of what was heard; encodes structural cross-reference inside event_specific_slots because the inter_proposition_links schema is closed."
+      "note": "report_content_link names the MEANING_COORDINATES prop that holds the content of what was heard; encodes structural cross-reference inside event_specific_slots because the inter_proposition_links schema is closed."
     },
     {
       "proposition_kind": "VISITED_AND_PROVIDED",
@@ -760,7 +760,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "every_being_in_propositions_declared_in_scenes": true,
     "every_place_in_propositions_declared_in_scenes": true,

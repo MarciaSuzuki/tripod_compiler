@@ -68,8 +68,8 @@ test('emotion lens: real tree lights only what canon attests', { skip: !haveFixt
   rmrf(out);
 });
 
-const FM_WITH_APPRAISAL = `---
-type: "sta-for-model"
+const MC_WITH_APPRAISAL = `---
+type: "sta-meaning-coordinates"
 pericope: "P01"
 pericope-title: "A test passage"
 source-meaning-map: [[P01-Test]]
@@ -77,7 +77,7 @@ status: "valid"
 pilot: "pilot-2"
 ---
 
-# P01 — FOR_MODEL
+# P01 — MEANING_COORDINATES
 
 \`\`\`json
 {
@@ -106,7 +106,7 @@ pilot: "pilot-2"
 test('emotion Tier 2: a planted appraisal block renders badged and JUNIOR to the absence; no block → nothing', () => {
   const withBlock = mkTree({
     'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
-    'fixtures/for-model/P01-Test-FOR-MODEL.md': FM_WITH_APPRAISAL,
+    'fixtures/meaning-coordinates/P01-Test-MEANING-COORDINATES.md': MC_WITH_APPRAISAL,
   });
   let out = path.join(withBlock, 'dist');
   assert.equal(runBuild(withBlock, out).status, 0);

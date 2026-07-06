@@ -10,12 +10,12 @@ import { readArtifactNote } from "../src/reader/obsidian.js";
 import { planPromotion, applyPromotion, UNCOVERED_CONVERGENT_AXES } from "../src/compiler/promote.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const FM = (n: string) => join(here, "..", "fixtures", "for-model", n);
+const MC = (n: string) => join(here, "..", "fixtures", "meaning-coordinates", n);
 const CL = (n: string) => join(here, "..", "fixtures", "compilation-log", n);
-const P02_FM = "P02-Ruth-1-6-14-FOR-MODEL.md";
+const P02_MC = "P02-Ruth-1-6-14-MEANING-COORDINATES.md";
 const P02_CL = "P02-Ruth-1-6-14-COMPILATION-LOG.md";
-const P06_FM = "P06-Ruth-2-8-16-FOR-MODEL.md";
-const ALL_FM = ["P01-Ruth-1-1-5", "P02-Ruth-1-6-14", "P03-Ruth-1-15-18", "P04-Ruth-1-19-22", "P05-Ruth-2-1-7", "P06-Ruth-2-8-16"];
+const P06_MC = "P06-Ruth-2-8-16-MEANING-COORDINATES.md";
+const ALL_MC = ["P01-Ruth-1-1-5", "P02-Ruth-1-6-14", "P03-Ruth-1-15-18", "P04-Ruth-1-19-22", "P05-Ruth-2-1-7", "P06-Ruth-2-8-16"];
 
 /** The vendored registry with one pericope's promoted values removed — reconstructs the pre-promotion
  *  baseline so the drift/convergence mechanism stays testable even though P01–P06 have all converged. */
@@ -38,7 +38,7 @@ describe("axis classification (convergent vs descriptive)", () => {
 describe("drift report split (against a pre-P06 baseline)", () => {
   // P01–P06 have all converged on the live registry, so exercise the split against a baseline that
   // lacks P06's promoted values: convergent drift (review-signal) vs descriptive (open) must separate.
-  const p06 = readArtifactNote(FM(P06_FM)).json as any;
+  const p06 = readArtifactNote(MC(P06_MC)).json as any;
   const findings = vocabularyFindings(p06, driftBaseline(registryWithout("P06")));
   it("separates convergent drift from descriptive; open axes are never counted as drift", () => {
     expect(findings.some((f) => f.severity === "drift" && f.axis)).toBe(true); // convergent review-signal
@@ -54,7 +54,7 @@ describe("drift report split (against a pre-P06 baseline)", () => {
 });
 
 describe("accumulation converges drift (P02 promoted into the registry)", () => {
-  const p02 = readArtifactNote(FM(P02_FM)).json as any;
+  const p02 = readArtifactNote(MC(P02_MC)).json as any;
   // The registry as it stood BEFORE P02 was promoted (drop P02's entries). Using this keeps the
   // mechanism test robust now that the vendored registry already contains P02 (the routine promotion ran).
   const beforeP02 = () => registryWithout("P02");
@@ -72,7 +72,7 @@ describe("accumulation converges drift (P02 promoted into the registry)", () => 
     expect(added.length).toBe(plan.promote.length);
 
     const remaining = vocabularyFindings(p02, driftBaseline(grown)).filter((f) => f.severity === "drift");
-    // Every convergent FOR_MODEL axis now has a COMPILATION-LOG intake slot (SC-0007), so promoting
+    // Every convergent MEANING_COORDINATES axis now has a COMPILATION-LOG intake slot (SC-0007), so promoting
     // P02's complete vocabulary_additions drives residual convergent drift to zero.
     expect(
       remaining,
@@ -81,7 +81,7 @@ describe("accumulation converges drift (P02 promoted into the registry)", () => 
   });
 
   it("payoff: P02 has zero convergent drift against the live (post-promotion) vendored registry", () => {
-    const r = validateArtifact(FM(P02_FM));
+    const r = validateArtifact(MC(P02_MC));
     expect(r.counts.drift).toBe(0); // promoted → converged on real vendored data
     expect(r.counts.descriptive).toBeGreaterThan(0); // open axes never converge — still informational
   });
@@ -106,9 +106,9 @@ describe("accumulation converges drift (P02 promoted into the registry)", () => 
 });
 
 describe("corpus convergence (P01–P06 all promoted)", () => {
-  it("every gold FOR_MODEL validates with zero convergent drift on the live registry", () => {
-    for (const stem of ALL_FM) {
-      const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
+  it("every gold MEANING_COORDINATES validates with zero convergent drift on the live registry", () => {
+    for (const stem of ALL_MC) {
+      const r = validateArtifact(MC(`${stem}-MEANING-COORDINATES.md`));
       expect(r.counts.block, stem).toBe(0);
       expect(r.counts.drift, stem).toBe(0); // fully converged — descriptive (open) axes may remain
     }
@@ -136,8 +136,8 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
 
   it("a quarantined value validates as a `quarantined` notice, never `drift` (the gate stays 0-drift)", () => {
     let totalQuar = 0;
-    for (const stem of ALL_FM) {
-      const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
+    for (const stem of ALL_MC) {
+      const r = validateArtifact(MC(`${stem}-MEANING-COORDINATES.md`));
       expect(r.counts.drift, stem).toBe(0);
       for (const f of r.findings.filter((f) => f.severity === "quarantined")) {
         // SC-0025: the corpus now carries action quarantine too — every quarantined finding's
@@ -150,7 +150,7 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
   });
 
   it("quarantineWatch parks each value once in P01–P06 (no recurrence yet)", () => {
-    const reports = ALL_FM.map((stem) => validateArtifact(FM(`${stem}-FOR-MODEL.md`)));
+    const reports = ALL_MC.map((stem) => validateArtifact(MC(`${stem}-MEANING-COORDINATES.md`)));
     const watch = quarantineWatch(reports);
     expect(watch.length).toBe(10); // 8 comm-func (SC-0023) + 2 held action (SC-0025; 5 decomposed in SC-0071 Phase 3)
     expect(watch.every((w) => !w.recurs)).toBe(true);
@@ -158,7 +158,7 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
 
   it("RECURS is computed from the real producer on a genuinely distinct 2nd artifact (not a relabeled clone)", () => {
     // P02 really uses ANSWERS (a quarantined verb) → its report carries a real `quarantined` finding.
-    const p02 = validateArtifact(FM("P02-Ruth-1-6-14-FOR-MODEL.md"));
+    const p02 = validateArtifact(MC("P02-Ruth-1-6-14-MEANING-COORDINATES.md"));
     expect(p02.findings.some((f) => f.severity === "quarantined" && f.value === "ANSWERS")).toBe(true);
     // A DISTINCT P08 that reuses ANSWERS: run the SAME engine producer (vocabularyFindings) on its OWN
     // content — this is the per-artifact path a real authored P08 takes, NOT a copy of P02's findings.
@@ -170,8 +170,8 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
     const p08findings = vocabularyFindings(p08json, driftBaseline());
     expect(p08findings.some((f) => f.severity === "quarantined" && f.value === "ANSWERS"), "producer flags a fresh P08's ANSWERS").toBe(true);
     const p08: ValidationReport = {
-      file: "P08-Ruth-3-1-5-FOR-MODEL.md",
-      artifact: "FOR_MODEL",
+      file: "P08-Ruth-3-1-5-MEANING-COORDINATES.md",
+      artifact: "MEANING_COORDINATES",
       specVersion: p02.specVersion,
       ok: true,
       findings: p08findings,
@@ -187,7 +187,7 @@ describe("SC-0023 — quarantined vocabulary (un-settled coin-flips; recurrence 
   });
 
   it("promote never auto-promotes a quarantined value (the skippedByQuarantine guard)", () => {
-    for (const stem of ALL_FM) {
+    for (const stem of ALL_MC) {
       const plan = planPromotion(CL(`${stem}-COMPILATION-LOG.md`), { status: "ANY", reg: loadApprovedEnumerations() });
       for (const c of plan.promote) expect(QUAR.has(c.value), `${stem}: ${c.value}`).toBe(false);
     }
@@ -224,8 +224,8 @@ describe("SC-0025 — action-slot enforcement (the nested-component action axis)
 
   it("the held-2 surface as `quarantined` on the action axis across the corpus, never `drift`/`block`", () => {
     let held = 0;
-    for (const stem of ALL_FM) {
-      const r = validateArtifact(FM(`${stem}-FOR-MODEL.md`));
+    for (const stem of ALL_MC) {
+      const r = validateArtifact(MC(`${stem}-MEANING-COORDINATES.md`));
       expect(r.counts.drift, `${stem} drift`).toBe(0);
       for (const f of r.findings.filter((f) => f.axis === "action")) {
         expect(f.severity, `${f.value}`).toBe("quarantined");
@@ -275,7 +275,7 @@ describe("SC-0025 — action-slot enforcement (the nested-component action axis)
         }
       }
     };
-    for (const stem of ALL_FM) walk(readArtifactNote(FM(`${stem}-FOR-MODEL.md`)).json, "", stem);
+    for (const stem of ALL_MC) walk(readArtifactNote(MC(`${stem}-MEANING-COORDINATES.md`)).json, "", stem);
     expect(count, "total action occurrences across P01–P06").toBe(79);
   });
 });

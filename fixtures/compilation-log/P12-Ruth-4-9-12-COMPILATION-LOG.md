@@ -24,11 +24,11 @@ pilot: "pilot-2"
     "production_use": false
   },
   "confidence_overall": "MEDIUM",
-  "confidence_overall_note": "Judgment half machine-drafted (SC-0063, patch-only contract) and ruled by Marcia axis-by-axis under SC-0064 (§A–§E + arc_element). The graduated FOR_MODEL validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints; the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
+  "confidence_overall_note": "Judgment half machine-drafted (SC-0063, patch-only contract) and ruled by Marcia axis-by-axis under SC-0064 (§A–§E + arc_element). The graduated MEANING_COORDINATES validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints; the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
   "compilation_decisions": [
     {
       "decision_id": "P12-D1",
-      "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
+      "decision": "Deterministically compiled a MEANING_COORDINATES skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 79 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
     },
     {
@@ -39,20 +39,20 @@ pilot: "pilot-2"
     {
       "decision_id": "P12-D3",
       "decision": "Ruled by Marcia under SC-0064 (the batch ruling), axis by axis.",
-      "description": "§A–§E + the five §B axes (action+tone, proposition_kind, role_in_scene_being, scene_kind, arc_element) ruled across 2026-06-12→19; 6 vocabulary addition(s) CONFIRMED for promotion for this pericope (per-axis ruling-logs in _working/P12/P12-SC-0064-*-RULING-LOG.md). Renames/collapses applied to the FOR_MODEL as recorded amendments where ruled."
+      "description": "§A–§E + the five §B axes (action+tone, proposition_kind, role_in_scene_being, scene_kind, arc_element) ruled across 2026-06-12→19; 6 vocabulary addition(s) CONFIRMED for promotion for this pericope (per-axis ruling-logs in _working/P12/P12-SC-0064-*-RULING-LOG.md). Renames/collapses applied to the MEANING_COORDINATES as recorded amendments where ruled."
     }
   ],
   "vocabulary_additions": {
     "proposition_kinds": [
       {
         "value": "ACQUIRED",
-        "source": "P12-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
+        "source": "P12-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
         "status": "CONFIRMED",
         "note": "Clean event-kind mint (proposition_kind bulk — no cross-axis/collapse/prose issue). MM P2/P3: 'I have bought all that was Elimelech's... I have bought Ruth' — the redemption-purchase; no existing proposition_kind names a legal acquisition/redemption (TOOK is take-as-wife; DECLARED is the speech frame). Reviewer may prefer a registry REDEEMED if one exists in P11."
       },
       {
         "value": "NAME_PRESERVED",
-        "source": "P12-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-13 (proposition_kind Group C)",
+        "source": "P12-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-13 (proposition_kind Group C)",
         "status": "CONFIRMED",
         "note": "Consolidated neutral type (Marcia's Group-C ruling, option a): the levirate name-preservation formula's two halves — NAME_RAISED (4:10b 'raise up the name of the dead upon his inheritance') and the sentence-shaped NAME_NOT_CUT_OFF (4:10c 'so that the name is not cut off from his kindred') — BOTH renamed to NAME_PRESERVED, one neutral kind. NAME_RAISED + NAME_NOT_CUT_OFF retire; the P12 FM's P4 + P5 are amended to NAME_PRESERVED."
       }
@@ -64,19 +64,19 @@ pilot: "pilot-2"
     "arc_elements": [
       {
         "value": "COMMUNITY_WITNESS_ATTESTATION",
-        "source": "P12-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "P12-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. MM 2.1: 'The assembly answers as one: we are witnesses' — the choral attestation; distinct from BLESSING_INVOCATION; no existing token for the witness response."
       },
       {
         "value": "DEAD_NAME_RAISED",
-        "source": "P12-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "P12-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. MM 2.1/2.4: 'to raise up the name of the dead upon his inheritance, so that the name of the dead is not cut off' — the raise-up-the-name beat, distinct from the declaration and the blessing; no existing token."
       },
       {
         "value": "PUBLIC_REDEMPTION_DECLARATION",
-        "source": "P12-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "P12-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. MM 2.1: 'Boaz turns... to the whole assembly and declares what he has done... you are witnesses today that I have bought...' — the public legal attestation that completes the redemption; no existing arc token covers a witnessed redemption declaration."
       }
@@ -84,7 +84,7 @@ pilot: "pilot-2"
     "role_in_scene_beings": [
       {
         "value": "WITNESSING_ASSEMBLY",
-        "source": "P12-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
+        "source": "P12-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-25-23-642Z (claude-opus-4-8, req 4ded8ce0a993d3b2…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
         "status": "CONFIRMED",
         "note": "Scene role (Principle A, Marcia 2026-06-13). MM 3A: 'the wider assembly called to witness alongside the elders'; TOWNSPEOPLE/PEOPLE name the group but not its scene-defining witnessing function ('you are witnesses today')."
       }
@@ -106,7 +106,7 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
     "speech_act_present_on_all_component_records": true,

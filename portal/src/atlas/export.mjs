@@ -28,8 +28,8 @@
 // observatory; the SC timeline + per-value provenance already cover PR-1.)
 //
 // compiled-from note: artifacts are not nodes in the ruled node-kind list, so
-// FOR_MODEL→map provenance is carried as pericope-node facts
-// (artifacts.forModel.source_meaning_map_ref + artifact paths) rather than as
+// MEANING_COORDINATES→map provenance is carried as pericope-node facts
+// (artifacts.meaningCoordinates.source_meaning_map_ref + artifact paths) rather than as
 // a pseudo-edge between non-nodes.
 
 import fs from 'node:fs';
@@ -169,7 +169,7 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
     const entities = registry.entities ?? {};
     const bookPericopes = byPrefix.get(book.prefix) ?? [];
     const bookArtifactSources = bookPericopes
-      .flatMap((p) => [p.map, p.forModel, p.log])
+      .flatMap((p) => [p.map, p.meaningCoordinates, p.log])
       .filter(Boolean)
       .map(artifactSource);
     allArtifactSources.push(...bookArtifactSources);
@@ -177,7 +177,7 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
     const status =
       bookPericopes.length === 0
         ? 'registry-only'
-        : bookPericopes.every((p) => p.map && p.forModel && p.log)
+        : bookPericopes.every((p) => p.map && p.meaningCoordinates && p.log)
           ? 'complete'
           : 'compile-pending';
 
@@ -225,11 +225,11 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
     // Pericopes → scenes → propositions (only what fixtures hold).
     for (const p of bookPericopes) {
       const pericopeId = `${bookId}/${p.id}`;
-      const fm = p.forModel ? jsonOf(p.forModel) : null;
+      const mc = p.meaningCoordinates ? jsonOf(p.meaningCoordinates) : null;
       const mapFm = p.map?.frontmatter ?? {};
-      const classification = fm?.pericope_classification ?? null;
+      const classification = mc?.pericope_classification ?? null;
 
-      // Emotion attestations: lexicon-matched atoms the FOR_MODEL itself
+      // Emotion attestations: lexicon-matched atoms the MEANING_COORDINATES itself
       // states (proposition kinds, slot values, scene kinds). Counts only.
       const emotionAttested = {};
       const attest = (v) => {
@@ -237,20 +237,20 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
           emotionAttested[v] = (emotionAttested[v] ?? 0) + 1;
         }
       };
-      for (const prop of fm?.level_3_propositions ?? []) {
+      for (const prop of mc?.level_3_propositions ?? []) {
         attest(prop.proposition_kind);
         walkSlots(prop.event_specific_slots, (_k, v) => attest(v));
       }
-      for (const scene of fm?.level_2_scenes ?? []) attest(scene.scene_kind);
+      for (const scene of mc?.level_2_scenes ?? []) attest(scene.scene_kind);
 
       addNode({
         id: pericopeId,
         kind: 'pericope',
         code: p.id,
         label: p.id,
-        title: mapFm['pericope-title'] ?? fm?.header?.pericope_title ?? '',
-        bcv: mapFm['bcv'] ?? fm?.header?.bcv ?? '',
-        status: p.map && p.forModel && p.log ? 'complete' : 'compile-pending',
+        title: mapFm['pericope-title'] ?? mc?.header?.pericope_title ?? '',
+        bcv: mapFm['bcv'] ?? mc?.header?.bcv ?? '',
+        status: p.map && p.meaningCoordinates && p.log ? 'complete' : 'compile-pending',
         classification: classification
           ? {
               genre_group: classification.genre_group ?? null,
@@ -259,15 +259,15 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
             }
           : null,
         register_overrides: normalizeOverrides(classification?.register_overrides),
-        level_1: fm?.level_1 ?? null,
+        level_1: mc?.level_1 ?? null,
         emotion_attested: Object.keys(emotionAttested).length ? emotionAttested : null,
         artifacts: {
           map: p.map ? { path: p.map.relPath } : null,
-          forModel: p.forModel
+          meaningCoordinates: p.meaningCoordinates
             ? {
-                path: p.forModel.relPath,
-                sta_id: fm?.sta_id ?? null,
-                source_meaning_map_ref: fm?.header?.source_meaning_map_ref ?? null,
+                path: p.meaningCoordinates.relPath,
+                sta_id: mc?.sta_id ?? null,
+                source_meaning_map_ref: mc?.header?.source_meaning_map_ref ?? null,
               }
             : null,
           log: p.log ? { path: p.log.relPath } : null,
@@ -305,12 +305,12 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
         communicative_function_elements: 'communicative_function_element',
       };
       for (const [listKey, axis] of Object.entries(AXIS_OF_L1)) {
-        for (const v of fm?.level_1?.[listKey] ?? []) use(axis, v);
+        for (const v of mc?.level_1?.[listKey] ?? []) use(axis, v);
       }
 
       // Scenes.
       const sceneIds = new Set();
-      for (const scene of fm?.level_2_scenes ?? []) {
+      for (const scene of mc?.level_2_scenes ?? []) {
         sceneCount += 1;
         const sceneId = `${pericopeId}/${scene.scene_id}`;
         sceneIds.add(scene.scene_id);
@@ -370,9 +370,9 @@ export function buildAtlas({ repoRoot, cfg, buildInfo, pericopes, jsonOf, config
 
       // Propositions.
       const propIds = new Set(
-        (fm?.level_3_propositions ?? []).map((prop) => prop.prop_id).filter(Boolean)
+        (mc?.level_3_propositions ?? []).map((prop) => prop.prop_id).filter(Boolean)
       );
-      for (const prop of fm?.level_3_propositions ?? []) {
+      for (const prop of mc?.level_3_propositions ?? []) {
         propCount += 1;
         const propId = `${pericopeId}/prop/${prop.prop_id}`;
         addNode({

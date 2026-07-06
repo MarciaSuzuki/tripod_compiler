@@ -10,7 +10,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { mkTree, mkMap, mkForModel, runBuild, rmrf } from './helpers.mjs';
+import { mkTree, mkMap, mkMeaningCoordinates, runBuild, rmrf } from './helpers.mjs';
 import { checkArtifact } from '../src/lib/gate.mjs';
 
 function freshOut(root) {
@@ -20,7 +20,7 @@ function freshOut(root) {
 test('clean tree of approved artifacts builds (exit 0, pages written)', () => {
   const root = mkTree({
     'fixtures/meaning-map/P09-Test.md': mkMap('P09'),
-    'fixtures/for-model/P09-Test-FOR-MODEL.md': mkForModel('P09'),
+    'fixtures/meaning-coordinates/P09-Test-MEANING-COORDINATES.md': mkMeaningCoordinates('P09'),
   });
   const out = freshOut(root);
   const r = runBuild(root, out);
@@ -45,10 +45,10 @@ test('BITE: a planted draft meaning map fails the whole build — exit 2, nothin
   rmrf(root);
 });
 
-test('BITE: a FOR_MODEL without status "valid" fails the build', () => {
+test('BITE: a MEANING_COORDINATES without status "valid" fails the build', () => {
   const root = mkTree({
     'fixtures/meaning-map/P09-Test.md': mkMap('P09'),
-    'fixtures/for-model/P09-Test-FOR-MODEL.md': mkForModel('P09', { status: 'complete' }),
+    'fixtures/meaning-coordinates/P09-Test-MEANING-COORDINATES.md': mkMeaningCoordinates('P09', { status: 'complete' }),
   });
   const r = runBuild(root, freshOut(root));
   assert.equal(r.status, 2);
@@ -66,24 +66,24 @@ test('BITE: a map with NO status field fails the build', () => {
 });
 
 test('BITE: wrong artifact type in the expected directory fails the build', () => {
-  // a sta-for-model note dropped into fixtures/meaning-map/
+  // a sta-meaning-coordinates note dropped into fixtures/meaning-map/
   const root = mkTree({
-    'fixtures/meaning-map/P09-Test.md': mkMap('P09', { type: 'sta-for-model' }),
+    'fixtures/meaning-map/P09-Test.md': mkMap('P09', { type: 'sta-meaning-coordinates' }),
   });
   const r = runBuild(root, freshOut(root));
   assert.equal(r.status, 2);
-  assert.match(r.stderr, /type is "sta-for-model", expected "pericope"/);
+  assert.match(r.stderr, /type is "sta-meaning-coordinates", expected "pericope"/);
   rmrf(root);
 });
 
 test('BITE: a note with unparseable frontmatter fails the build (cannot prove approval)', () => {
   const root = mkTree({
     'fixtures/meaning-map/P09-Test.md': mkMap('P09'),
-    'fixtures/meaning-map/P98-NoFM.md': '# no frontmatter at all\n',
+    'fixtures/meaning-map/P98-NoMC.md': '# no frontmatter at all\n',
   });
   const r = runBuild(root, freshOut(root));
   assert.equal(r.status, 2);
-  assert.match(r.stderr, /P98-NoFM\.md.*no YAML frontmatter/);
+  assert.match(r.stderr, /P98-NoMC\.md.*no YAML frontmatter/);
   rmrf(root);
 });
 

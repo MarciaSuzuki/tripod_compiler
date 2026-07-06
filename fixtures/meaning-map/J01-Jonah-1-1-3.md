@@ -10,7 +10,7 @@ status: "complete"
 meaning-map-version: 2.0
 sta-status: "pending"
 pilot: "pilot-2"
-for-model: [[J01-Jonah-1-1-3-FOR-MODEL]]
+meaning-coordinates: [[J01-Jonah-1-1-3-MEANING-COORDINATES]]
 active-concepts:
   - [[CB_0051-Evil-of-Nineveh]]
   - [[CB_0052-Before-the-Face-of-YHWH]]

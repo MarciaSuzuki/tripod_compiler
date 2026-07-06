@@ -162,7 +162,7 @@ describe("auditMints — silent minting becomes mechanical findings", () => {
 
 describe("calibrate — gold against itself is perfect", () => {
   it("real P02 gold vs P02 gold: zero divergences, exact arrays, full alignment", () => {
-    const note = readFileSync("fixtures/for-model/P02-Ruth-1-6-14-FOR-MODEL.md", "utf8");
+    const note = readFileSync("fixtures/meaning-coordinates/P02-Ruth-1-6-14-MEANING-COORDINATES.md", "utf8");
     const gold = JSON.parse(note.match(/```json\n([\s\S]*?)\n```/)![1]!);
     const c = calibrate(gold, gold);
     for (const [name, f] of Object.entries(c.fields)) expect({ name, divergent: f.divergent }).toEqual({ name, divergent: 0 });

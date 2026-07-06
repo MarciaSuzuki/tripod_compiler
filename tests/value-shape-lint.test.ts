@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
-import { lintForModel } from "../src/engine/lint.js";
+import { lintMeaningCoordinates } from "../src/engine/lint.js";
 import { readArtifactNote } from "../src/reader/obsidian.js";
 
 // SC-0073 — the value-SHAPE prose guard. The VALUE analogue of the SC-0070 slot-name guard and the
@@ -13,7 +13,7 @@ import { readArtifactNote } from "../src/reader/obsidian.js";
 // These tests pin it both ways (the SC-0070 test is the template). Calibration:
 // docs/SC-0073-VALUE-SHAPE-GUARD-SHEET.md.
 describe("SC-0073 value-shape prose guard", () => {
-  const vs = (fm: any) => lintForModel(fm).findings.filter((f) => f.rule === "value_shape_prose");
+  const vs = (mc: any) => lintMeaningCoordinates(mc).findings.filter((f) => f.rule === "value_shape_prose");
   const ess = (slots: any) => ({ level_3_propositions: [{ prop_id: "P1", event_specific_slots: slots }] });
 
   // ── BLOCKS (fires, tier 1) ───────────────────────────────────────────────
@@ -76,23 +76,23 @@ describe("SC-0073 value-shape prose guard", () => {
   });
 
   // ── corpus-level (the clean-seed guarantee + the anti-drift invariant) ────
-  const FM_DIR = "fixtures/for-model";
-  const fixtures = readdirSync(FM_DIR).filter((f) => f.endsWith(".md"));
+  const MC_DIR = "fixtures/meaning-coordinates";
+  const fixtures = readdirSync(MC_DIR).filter((f) => f.endsWith(".md"));
 
-  it("whole-corpus: linting all 19 FOR_MODEL fixtures yields 0 value_shape_prose findings", () => {
+  it("whole-corpus: linting all 19 MEANING_COORDINATES fixtures yields 0 value_shape_prose findings", () => {
     for (const f of fixtures) {
-      const json = readArtifactNote(join(FM_DIR, f)).json as any;
+      const json = readArtifactNote(join(MC_DIR, f)).json as any;
       expect(vs(json), `${f} value_shape_prose`).toEqual([]);
     }
   });
 
-  // Anti-drift invariant (Evaluator's hardening): every preserve_form:true value resolved from the FM
+  // Anti-drift invariant (Evaluator's hardening): every preserve_form:true value resolved from the MC
   // fidelity block must be exempt — i.e. never appear in that fixture's value_shape_prose findings. Pins
-  // E7 to the FM flags themselves, so the guard can't drift from a future-added protected clause.
+  // E7 to the MC flags themselves, so the guard can't drift from a future-added protected clause.
   it("anti-drift: every preserve_form:true value is on the exempt set (never flagged)", () => {
     let checked = 0;
     for (const f of fixtures) {
-      const json = readArtifactNote(join(FM_DIR, f)).json as any;
+      const json = readArtifactNote(join(MC_DIR, f)).json as any;
       const refs = new Set<string>();
       const add = (r: any) => r && refs.add(`${r.prop_id}|${r.slot}|${r.list_position}`);
       const fid = json.fidelity ?? {};

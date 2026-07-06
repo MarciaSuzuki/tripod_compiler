@@ -46,7 +46,7 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
   // exploring where everything connects. Books first — each book opens to
   // its passages; the long instructions live collapsed until asked for.
   const bookStatus = (b) => {
-    const complete = b.pericopes.every((x) => x.has.map && x.has.forModel && x.has.log);
+    const complete = b.pericopes.every((x) => x.has.map && x.has.meaningCoordinates && x.has.log);
     return complete
       ? 'maps, machine files and logs — complete'
       : 'maps published — machine files in progress';
@@ -100,11 +100,11 @@ Meaning Mind step by step — full-screen, arrow keys, no setup.</p>
     <dt>Meaning Map</dt>
     <dd>A human-readable study of one Bible passage: what the passage says — scene by scene, statement by statement —
     and how it says it (its tone, its pace, its level of formality). <strong>This is the main document to review.</strong></dd>
-    <dt>FOR_MODEL (also called the STA file)</dt>
+    <dt>MEANING_COORDINATES (also called the STA file)</dt>
     <dd>The same content converted into a strict, machine-readable file — the exact input the translation software will use.
     It is shown as an expandable outline. Most reviewers can skim or skip it.</dd>
     <dt>Compilation Log</dt>
-    <dd>The working record kept while the FOR_MODEL was produced from the Meaning Map: what was checked and what was flagged for attention.</dd>
+    <dd>The working record kept while the MEANING_COORDINATES was produced from the Meaning Map: what was checked and what was flagged for attention.</dd>
   </dl>
   <p>Every document has <em>Ask a question</em> and <em>Suggest a change</em> buttons that open a short form with the passage
   and document already filled in. Hebrew words appear throughout — hover over a highlighted name or term to see its Hebrew form.</p>
@@ -128,7 +128,7 @@ function pericopeCard(p) {
       </a>
       <span class="badges">
         ${badge(p.has.map, 'Meaning Map', 'Map —')}
-        ${badge(p.has.forModel, 'FOR_MODEL', 'FOR_MODEL not yet authored')}
+        ${badge(p.has.meaningCoordinates, 'MEANING_COORDINATES', 'MEANING_COORDINATES not yet authored')}
         ${badge(p.has.log, 'Log', 'Log not yet authored')}
       </span>
     </li>`;
@@ -137,7 +137,7 @@ function pericopeCard(p) {
 export function pericopePage({ cfg, p, formCfg, wikilinkCtx }) {
   const tocItems = [
     `<a href="#meaning-map">Meaning Map</a>`,
-    p.forModelHtml ? `<a href="#for-model">FOR_MODEL</a>` : null,
+    p.meaningCoordinatesHtml ? `<a href="#meaning-coordinates">Meaning Coordinates</a>` : null,
     p.logHtml ? `<a href="#compilation-log">Compilation Log</a>` : null,
   ].filter(Boolean);
 
@@ -156,20 +156,22 @@ ${p.mapHtml}
   </article>
 </section>`;
 
-  const fmSection = p.forModelHtml
+  const mcSection = p.meaningCoordinatesHtml
     ? `
-<section class="artifact" id="for-model">
+<span id="for-model" aria-hidden="true"></span>
+<section class="artifact" id="meaning-coordinates">
   <div class="secthead">
-    <h2>FOR_MODEL (STA)</h2>
-    ${renderFeedbackButtons(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'FOR_MODEL (STA)' })}
+    <h2>Meaning Coordinates (STA)</h2>
+    ${renderFeedbackButtons(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'Meaning Coordinates (STA)' })}
   </div>
   <p class="artifact-gloss">The machine-readable version of the map — the exact file the translation software will use, shown as an expandable outline.
   Click a line to fold or unfold it.</p>
-  ${p.forModelHtml}
+  ${p.meaningCoordinatesHtml}
 </section>`
     : `
-<section class="artifact artifact-missing" id="for-model">
-  <h2>FOR_MODEL (STA)</h2>
+<span id="for-model" aria-hidden="true"></span>
+<section class="artifact artifact-missing" id="meaning-coordinates">
+  <h2>Meaning Coordinates (STA)</h2>
   <p class="artifact-gloss">Not yet authored for this passage — so far, the Meaning Map above is the approved artifact.</p>
 </section>`;
 
@@ -180,7 +182,7 @@ ${p.mapHtml}
     <h2>Compilation Log</h2>
     ${renderFeedbackButtons(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'Compilation Log' })}
   </div>
-  <p class="artifact-gloss">The working record of how the FOR_MODEL was produced from the map — what was checked, and what was flagged for attention.</p>
+  <p class="artifact-gloss">The working record of how the MEANING_COORDINATES was produced from the map — what was checked, and what was flagged for attention.</p>
   ${p.logHtml}
 </section>`
     : '';
@@ -192,7 +194,7 @@ ${p.mapHtml}
   <p class="ptitle">${escapeHtml(p.title)}</p>
 </header>
 ${mapSection}
-${fmSection}
+${mcSection}
 ${logSection}`;
 }
 

@@ -25,7 +25,7 @@ export function compileCompilationLog(
   const knownLimitations: string[] = [
     `Deterministic skeleton (tripod compile): ${gaps.length} judgment gaps remain as typed __TODO__ placeholders carrying their source-prose span.`,
     `Judgment gaps by field — ${[...byField.entries()].sort((a, b) => b[1] - a[1]).map(([f, n]) => `${f}:${n}`).join(", ")}.`,
-    `Propositions are at MEANING-MAP granularity (${stats.propositions}); the FOR_MODEL may decompose multi-event propositions further (judgment, Agent 3).`,
+    `Propositions are at MEANING-MAP granularity (${stats.propositions}); the MEANING_COORDINATES may decompose multi-event propositions further (judgment, Agent 3).`,
     "Controlled-vocabulary tokens (scene_kind, proposition_kind, role/function), event_specific_slots, inter_proposition_links, referential_form, and the L1 element arrays are judgment — deferred to Agent 3 (Slice 4). No values were invented.",
   ];
 
@@ -49,7 +49,7 @@ export function compileCompilationLog(
     compilation_decisions: [
       {
         decision_id: `${pid}-D1`,
-        decision: "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
+        decision: "Deterministically compiled a MEANING_COORDINATES skeleton from the approved Meaning Map.",
         description: `Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. ${gaps.length} judgment fields left as typed placeholders for Agent 3. No values invented (extract-only).`,
       },
     ],
@@ -68,7 +68,7 @@ export function compileCompilationLog(
     cross_pericope_pair_verification: { pairs: [] },
     validation_checklist: {
       meaning_map_contains_only_story_content: true,
-      for_model_contains_only_inference_signal: false,
+      meaning_coordinates_contains_only_inference_signal: false,
       every_proposition_has_cb_flags_and_figure_flags: false,
       no_grammatical_frame_slot_names: true,
       speech_act_present_on_all_component_records: false,

@@ -13,12 +13,12 @@ import { readArtifactNote } from "../src/reader/obsidian.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const MM = (n: string) => join(here, "..", "fixtures", "meaning-map", n);
-const FM = (n: string) => join(here, "..", "fixtures", "for-model", n);
-const gold = (n: string): any => readArtifactNote(FM(n)).json;
+const MC = (n: string) => join(here, "..", "fixtures", "meaning-coordinates", n);
+const gold = (n: string): any => readArtifactNote(MC(n)).json;
 
-describe("Slice 2 — MeaningMap → FOR_MODEL skeleton (P01)", () => {
+describe("Slice 2 — MeaningMap → MEANING_COORDINATES skeleton (P01)", () => {
   const { skeleton, gaps } = compileSkeleton(readMeaningMap(MM("P01-Ruth-1-1-5.md")));
-  const g = gold("P01-Ruth-1-1-5-FOR-MODEL.md");
+  const g = gold("P01-Ruth-1-1-5-MEANING-COORDINATES.md");
   const sk = skeleton as any;
 
   it("derives sta_id + header + classification deterministically", () => {
@@ -30,7 +30,7 @@ describe("Slice 2 — MeaningMap → FOR_MODEL skeleton (P01)", () => {
     expect(sk.pericope_classification.register).toBe("INFORMAL_CASUAL");
   });
 
-  it("scene IDs + verse-ranges match the gold FOR_MODEL", () => {
+  it("scene IDs + verse-ranges match the gold MEANING_COORDINATES", () => {
     expect(sk.level_2_scenes.map((s: any) => s.scene_id)).toEqual(g.level_2_scenes.map((s: any) => s.scene_id));
     expect(sk.level_2_scenes.map((s: any) => s.verse_range)).toEqual(g.level_2_scenes.map((s: any) => s.verse_range));
   });
@@ -114,7 +114,7 @@ describe("Slice 2 — extract-only trace (item 4)", () => {
 describe("Slice 2 — chapter derivation (P05, Ruth 2)", () => {
   it("derives chapter-2 verse-ranges that match the gold", () => {
     const { skeleton } = compileSkeleton(readMeaningMap(MM("P05-Ruth-2-1-7.md")));
-    const g = gold("P05-Ruth-2-1-7-FOR-MODEL.md");
+    const g = gold("P05-Ruth-2-1-7-MEANING-COORDINATES.md");
     const ranges = (skeleton as any).level_2_scenes.map((s: any) => s.verse_range);
     expect(ranges.every((r: string) => r.startsWith("2:"))).toBe(true);
     expect(ranges).toEqual(g.level_2_scenes.map((s: any) => s.verse_range));
@@ -134,21 +134,21 @@ describe("Slice 2 — compiles all six meaning maps without error", () => {
 
 describe("Slice 2 — gold diff (item 1) matches the committed regression baseline", () => {
   // Recompute exactly as `tripod gold-diff` does — iterate the maps, pair each with its gold
-  // FOR_MODEL by pid, skip map-only fixtures — so the regression test tracks the committed baseline
-  // through graduations instead of a brittle hardcoded list (SC-0064: the 13 ruled FMs graduated,
+  // MEANING_COORDINATES by pid, skip map-only fixtures — so the regression test tracks the committed baseline
+  // through graduations instead of a brittle hardcoded list (SC-0064: the 13 ruled MCs graduated,
   // baseline 6→19).
   const MM_DIR = join(here, "..", "fixtures", "meaning-map");
-  const FM_DIR = join(here, "..", "fixtures", "for-model");
-  const fmFiles = readdirSync(FM_DIR).filter((f) => f.endsWith("-FOR-MODEL.md"));
+  const MC_DIR = join(here, "..", "fixtures", "meaning-coordinates");
+  const mcFiles = readdirSync(MC_DIR).filter((f) => f.endsWith("-MEANING-COORDINATES.md"));
   const baseline = JSON.parse(readFileSync(join(here, "..", "fixtures", "gold-diff-baseline.json"), "utf8"));
   const current = readdirSync(MM_DIR)
     .filter((f) => f.endsWith(".md"))
     .sort()
     .map((mf) => {
-      const fm = fmFiles.find((f) => f.startsWith(mf.slice(0, 3)));
-      if (!fm) return null; // map-only fixture — skipped, exactly as the CLI does
+      const mc = mcFiles.find((f) => f.startsWith(mf.slice(0, 3)));
+      if (!mc) return null; // map-only fixture — skipped, exactly as the CLI does
       const mm = readMeaningMap(join(MM_DIR, mf));
-      return goldDiff(mm, compileSkeleton(mm).skeleton, readArtifactNote(join(FM_DIR, fm)).json);
+      return goldDiff(mm, compileSkeleton(mm).skeleton, readArtifactNote(join(MC_DIR, mc)).json);
     })
     .filter((d): d is NonNullable<typeof d> => d !== null);
 
@@ -157,7 +157,7 @@ describe("Slice 2 — gold diff (item 1) matches the committed regression baseli
   });
   it("gold agreement: Ruth/Jonah >=90% (P01/P03 exact); Esther >=80% (ruled seed trait)", () => {
     // Marcia's SC-0079 close ruling (2026-07-06): the Esther maps were published as ruled while
-    // the FOR_MODELs were vocabulary-corrected, so map<->FM divergence there is a designed seed
+    // the MCs were vocabulary-corrected, so map<->MC divergence there is a designed seed
     // characteristic, not drift. The 90 bar stays for Ruth/Jonah; Esther asserts a >=80 floor so
     // a real regression still trips (six passages sit at 81-88: E16/E08/E03/E07/E02/E11).
     for (const d of current) {

@@ -24,16 +24,16 @@ pilot: "pilot-2"
     "production_use": false
   },
   "confidence_overall": "MEDIUM",
-  "confidence_overall_note": "Judgment half authored by the SC-0079 hand-authoring fan-out (adversarially cold-read) and ruled by Marcia: the promote ruling 2026-06-28 (option 1 + the action=4 amendment), the Evaluator's 52 QA corrections, the modality cold-read (fix-stream A), and the speech-act decision card 2026-07-06. The graduated FOR_MODEL validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints (enum v0.22 per-value provenance); the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
+  "confidence_overall_note": "Judgment half authored by the SC-0079 hand-authoring fan-out (adversarially cold-read) and ruled by Marcia: the promote ruling 2026-06-28 (option 1 + the action=4 amendment), the Evaluator's 52 QA corrections, the modality cold-read (fix-stream A), and the speech-act decision card 2026-07-06. The graduated MEANING_COORDINATES validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints (enum v0.22 per-value provenance); the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
   "compilation_decisions": [
     {
       "decision_id": "P06-D1",
-      "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
+      "decision": "Deterministically compiled a MEANING_COORDINATES skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 96 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
     },
     {
       "decision_id": "P06-D2",
-      "decision": "FOR_MODEL judgment half authored modality-aware by the SC-0079 fan-out; adversarially cold-read.",
+      "decision": "MEANING_COORDINATES judgment half authored modality-aware by the SC-0079 fan-out; adversarially cold-read.",
       "description": "Authored 2026-06-28 by the SC-0079 authoring fan-out (workflow wf_63e8a4e6-a77: author -> self-validate-to-0-block -> adversarial cold-read), grounded in the pinned BHSA packet, the approved Meaning Map, and the 54-entity registry. SC-0078 modality applied at authoring time (bounded-open status axis; ASSERTED = omit)."
     },
     {
@@ -52,7 +52,7 @@ pilot: "pilot-2"
     "scene_kinds": [
       {
         "value": "GATE_CONFRONTATION_SCENE",
-        "source": "E06-Esther-3-1-6-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "source": "E06-Esther-3-1-6-MEANING-COORDINATES · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
         "status": "CONFIRMED",
         "note": "Mechanized from enum v0.22 provenance: axis scene_kind, first_seen E06 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
       }
@@ -63,7 +63,7 @@ pilot: "pilot-2"
     "arc_elements": [
       {
         "value": "PUBLIC_HONOR",
-        "source": "E06-Esther-3-1-6-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "source": "E06-Esther-3-1-6-MEANING-COORDINATES · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
         "status": "CONFIRMED",
         "note": "Mechanized from enum v0.22 provenance: axis arc_element, first_seen E06 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
       }
@@ -71,19 +71,19 @@ pilot: "pilot-2"
     "role_in_scene_beings": [
       {
         "value": "ADVERSARY",
-        "source": "E06-Esther-3-1-6-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "source": "E06-Esther-3-1-6-MEANING-COORDINATES · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
         "status": "CONFIRMED",
         "note": "Mechanized from enum v0.22 provenance: axis role_in_scene_being, first_seen E06 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
       },
       {
         "value": "REFUSER",
-        "source": "E06-Esther-3-1-6-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "source": "E06-Esther-3-1-6-MEANING-COORDINATES · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
         "status": "CONFIRMED",
         "note": "Mechanized from enum v0.22 provenance: axis role_in_scene_being, first_seen E06 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
       },
       {
         "value": "THREATENED_PEOPLE",
-        "source": "E06-Esther-3-1-6-FOR-MODEL · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
+        "source": "E06-Esther-3-1-6-MEANING-COORDINATES · SC-0079 fan-out (wf_63e8a4e6-a77, 2026-06-28) + fix-stream B remap (SC-0079-remapping-LOCKED) · ruled by Marcia 2026-06-28 (option 1 + the action=4 amendment)",
         "status": "CONFIRMED",
         "note": "Mechanized from enum v0.22 provenance: axis role_in_scene_being, first_seen E06 (this pericope). Per-axis ruling basis in tripod-eval-artifacts/SC-0079-REMAPPING-QA-HANDOFF.md; dedup + quarantine ledgered in quarantined-vocabulary.json 0.4.0."
       }
@@ -105,7 +105,7 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
     "speech_act_present_on_all_component_records": true,

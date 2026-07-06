@@ -3,10 +3,10 @@ import { isTodo } from "./skeleton.js";
 
 /**
  * Gold diff (item 1): compare the skeleton's *deterministic, gold-comparable* fields against the
- * matching gold FOR_MODEL and report, per pericope:
+ * matching gold MEANING_COORDINATES and report, per pericope:
  *  - `matched`     — comparable fields equal to the gold;
  *  - `divergent`   — comparable fields where the skeleton (faithful to the MM) differs from the gold.
- *                    These are MM↔FOR_MODEL *coverage divergences* (e.g. the MM scene lists an
+ *                    These are MM↔MEANING_COORDINATES *coverage divergences* (e.g. the MM scene lists an
  *                    off-stage referent the gold omits), NOT extractor errors — a preview of
  *                    COVERAGE.md's signal;
  *  - `agreementPct`— matched / (matched + divergent) over the comparable layer;

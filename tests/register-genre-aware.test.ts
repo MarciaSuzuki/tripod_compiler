@@ -21,7 +21,7 @@ import { validateArtifact } from "../src/engine/validate.js";
  */
 
 const here = dirname(fileURLToPath(import.meta.url));
-const P01 = join(here, "..", "fixtures", "for-model", "P01-Ruth-1-1-5-FOR-MODEL.md");
+const P01 = join(here, "..", "fixtures", "meaning-coordinates", "P01-Ruth-1-1-5-MEANING-COORDINATES.md");
 
 let tmp: string;
 beforeAll(() => {
@@ -33,7 +33,7 @@ afterAll(() => rmSync(tmp, { recursive: true, force: true }));
 function variant(name: string, edits: Array<[string, string]>) {
   let text = readFileSync(P01, "utf8");
   for (const [from, to] of edits) text = text.replace(from, to);
-  const p = join(tmp, `${name}-FOR-MODEL.md`);
+  const p = join(tmp, `${name}-MEANING-COORDINATES.md`);
   writeFileSync(p, text);
   return validateArtifact(p);
 }

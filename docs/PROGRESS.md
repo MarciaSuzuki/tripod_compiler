@@ -1,5 +1,7 @@
 # PROGRESS — continue-here checkpoint
 
+> **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
+
 > The live state of `tripod_compiler`. Read this first; it overrides the brief where they differ.
 > `CLAUDE.md` is the original scoping handoff and is now partly **stale** — see "Decisions that
 > refined CLAUDE.md" below. `main` is green through **PR #10** (P03 promotion). The **P04–P06 batch
@@ -11,7 +13,7 @@
 npm install && npm run build && npm test     # 164 passed | 1 skipped (165) with python3 present — the SC-0030 floor (163) + 1 for the SC-0034 measurement-trap self-test gate. The 1 skipped is the SC-0008 vault-drift guard (runs only with TRIPOD_VAULT_SPEC set, else skips VISIBLY); without python3 the SC-0034 guard ALSO skips visibly (→ 163 + 2 skipped) — never a silent green. CL gate (SC-0026) · vault-drift guard (SC-0008) · fidelity model (SC-0027) · measurement-trap self-test (SC-0034).
 npx tsx src/cli/tripod.ts check-drift          # 6 schema pins (SC-0008: quarantined-vocabulary reclassified source→schema) + 10 source pins + sync invariant
 npm run check-drift:vault                       # SC-0008: compares the wiki _spec/ to the pins (defaults to ~/Github/ruth-pilot-b-wiki/_spec; set TRIPOD_VAULT_SPEC to override) — exits 1 on vault drift OR a missing canonical file
-npx tsx src/cli/tripod.ts validate fixtures/for-model/
+npx tsx src/cli/tripod.ts validate fixtures/meaning-coordinates/
 npx tsx src/cli/tripod.ts gold-diff
 npx tsx src/cli/tripod.ts coverage --corpus     # BHSA coverage over P01–P06: 6/6 block-clean · 245/245 explicit · 0 unanchored · 1 accepted (Israel@P06)
 npx tsx src/cli/tripod.ts lint --corpus         # SC-0016 DONE: 0 drift (0 tier-1, 0 tier-2) · 7 accepted (signed off) · exit 0 — the operating-test bar
@@ -49,10 +51,10 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
   descriptive. The convergent baseline is the **growing `_spec/approved-enumerations.json`**
   (seeded from P01); `tripod promote <COMPILATION-LOG>` accumulates approved values
   (provenance-stamped, status-gated) from `vocabulary_additions`; `tripod propose-vocabulary
-  <FOR_MODEL>` lists candidates; promotions append to `VOCABULARY_LOG.md` + re-pin. So drift
+  <Meaning Coordinates>` lists candidates; promotions append to `VOCABULARY_LOG.md` + re-pin. So drift
   converges across pericopes (e.g. P02: 86 lumped → 37 convergent + 49 descriptive).
-- **Slice 2 — deterministic MeaningMap→FOR_MODEL skeleton compiler + hardening.**
-  `tripod compile <meaning-map>` parses the MM and emits a FOR_MODEL **skeleton + gap report**:
+- **Slice 2 — deterministic MeaningMap→Meaning Coordinates skeleton compiler + hardening.**
+  `tripod compile <meaning-map>` parses the MM and emits a Meaning Coordinates **skeleton + gap report**:
   - **Extracted deterministically:** sta_id/header/classification, scene IDs + verse-ranges,
     per-scene entity IDs + presence, significant_absence, communicative purpose, proposition
     IDs/anchors/scene-links/cross-refs, Section-5 concept/figure flags.
@@ -62,9 +64,9 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
     no invented values** (`traceCheck()` guarantees every emitted token resolves to an MM span).
   - **Gap report also emits as a schema-valid COMPILATION-LOG** (`compile --out-log`, validated via
     Slice 1; gaps in `known_limitations`, extract-only attested).
-  - **`tripod gold-diff`** diffs each skeleton vs its gold FOR_MODEL on the comparable deterministic
+  - **`tripod gold-diff`** diffs each skeleton vs its gold Meaning Coordinates on the comparable deterministic
     layer; committed `fixtures/gold-diff-baseline.json` is the regression baseline. Gold agreement:
-    P01/P03 **100%**, P05 98%, P04/P06 95–96%, P02 90%. Residual divergences are **MM↔FOR_MODEL
+    P01/P03 **100%**, P05 98%, P04/P06 95–96%, P02 90%. Residual divergences are **MM↔Meaning Coordinates
     coverage differences** (the MM scene lists off-stage referents the gold omits), not extractor errors.
 - **Coverage reconciliation (`docs/COVERAGE.md`) — SHIPPED for P01.** The fidelity floor: does the map
   match the **text**, not just the schema? Built fully **offline** on a frozen BHSA extract.
@@ -97,7 +99,7 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
     fixtures + pinned alias table verified identical to the merged canonical BCD. See SPEC_CHANGES SC-0009.
   - **Corpus coverage — full compiled pilot P01–P06.** Packets extracted + pinned for P02–P06 (`_spec/
     source/ruth/`, `_spec/pins.json` → `sources`). `tripod coverage --corpus` (and variadic targets) runs
-    all pericopes with a packet + FOR_MODEL and prints a summary; `--out-dir` writes one ledger per
+    all pericopes with a packet + Meaning Coordinates and prints a summary; `--out-dir` writes one ledger per
     pericope (`fixtures/coverage/`). **Result: 244/245 explicit accounted · 0 unanchored across the whole
     corpus (zero hallucinated entities) · 1 genuine finding.** Engine fix: a proper-noun **name match is
     authoritative and not vetoed by the heuristic alias gender** (the BCD prose-scan mis-guessed YHWH as
@@ -130,7 +132,7 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
     on a false premise ("P02–P05 had no §3C entities"). **Corrective second pass** (this session) brought P02–P06
     to the blessed-P01 standard per the lead's rulings: **restored the real Concept-Bank §3C entities** the first
     pass wrongly removed — P02 (bread/hesed/blessing/rest), P04 (barley-harvest), P05 (chayil/favor/gleaning/
-    miqreh/blessing + the within-day duration), P06 (FOR_MODEL additively aligned to the map's CB_ keepers);
+    miqreh/blessing + the within-day duration), P06 (Meaning Coordinates additively aligned to the map's CB_ keepers);
     P03 §3C "None" confirmed correct. **Replaced every generic count-note with per-item relocation notes** (item →
     named destination, matching P01) and added the relocation made-real bits (kallah/Moabite/foreman →
     `referential_form`; mother's-house → `PL`). Per-item relocation audit: `docs/SC-0013-RELOCATION-AUDIT.md`
@@ -144,8 +146,8 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
   - **SC-0014 — SPEECH_ACT rename (governed L1).** `ASCRIBES_TO_DIVINE_AGENT_LAMENT_FRAME` →
     `ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT` (drops the "AGENT" role-theory jargon, R4; "GOD" not "YHWH" — SPEECH_ACT
     is cross-corpus). `validation-rules.json` **v0.6 → v0.7**, `compilation-log.schema.json` **v0.4 → v0.5**
-    (enum kept in sync), both re-pinned; P02/P04 FOR_MODELs (×5) + COMPILATION-LOGs + Agent-3 prompt + Pilot-2
-    glossary migrated. Removed the 5 FOR_MODEL `«agent»` lint findings. (Incidentally re-synced the vault `_spec/`
+    (enum kept in sync), both re-pinned; P02/P04 MCs (×5) + COMPILATION-LOGs + Agent-3 prompt + Pilot-2
+    glossary migrated. Removed the 5 Meaning Coordinates `«agent»` lint findings. (Incidentally re-synced the vault `_spec/`
     schemas, which were behind the compiler at v0.3 — missing SC-0007's slots; flagged for a vault-writeback pass.)
   - **SC-0015 — extend the Level-3 lint to the §4 operating test.** The SC-0012 lint was blind on §4: it skipped
     every `cross_ref` line, scanned only answers, and missed meta-questions + comma-compounds + collapsed counts.
@@ -153,7 +155,7 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
     question-side scan incl. same-line `**Q:**…**A:**`; comma compounds with an **entity-list guard**; §4-answer-only
     `answer_labels` (scoped so they never fire on a governed `speech_act` enum or §3C note); `+hifil`; truthful
     per-proposition reporting (location + context in the dedup key). lint-lexicon **0.1.0→0.2.0** re-pinned.
-    Corpus lint **14 (collapsed) → 150 (true)**. `lintForModel` untouched (0 FOR_MODEL findings).
+    Corpus lint **14 (collapsed) → 150 (true)**. `lintMeaningCoordinates` untouched (0 Meaning Coordinates findings).
   - **SC-0016 — the §4 content sweep (operating test, P01–P06).** Applied Marcia's per-row rulings to the 150
     findings: removed **60 inline cross_refs** (spans kept in §5A/§5B; figure-registry enrichment = deferred vault
     patch), converted **21 meta-questions** to payload (or dropped where redundant), atomized **39 compounds**,
@@ -169,14 +171,14 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
     based on a fresh branch off `origin/main` after verifying the old vault branch held only an empty auto-backup
     commit); figure proposition-spans recorded additively in vault `figures/` (32 files, 96 insertions / 0 del).
     **Task A:** new figure **FIG_0195** (Fourfold Divine Naming in Lament — the pattern, complementing FIG_0006 +
-    FIG_0086) wired into vault + fixtures (figure file + P04 BCD-DELTA + map §5B/active-figures + FOR_MODEL
+    FIG_0086) wired into vault + fixtures (figure file + P04 BCD-DELTA + map §5B/active-figures + Meaning Coordinates
     P4/P5 figure_flags); gold-diff re-baselined (P04 37→38). **Task B:** SC-0014 forward-pointer recorded (old
     value still in the Pilot-3 Layer-2 seed CSV → reconcile at Pilot-3 lock; pointer only). Delivered via a
     reviewed vault PR; vault returns to clean `main` on merge. invariant restored: vault `pericopes/` ≡ fixtures.
   - **SC-0017 — the §3C de-leak (2026-06-01).** Stripped process-commentary (SC-IDs, "per the content
     discipline", "§3C entities only", "X → Proposition N" relocation trails) from the content layers —
-    maps §3C **and** FOR_MODEL `objects_in_scene._note` (the leak was in both trees, phrased differently;
-    P01's FOR_MODEL used `(SC-0012)` an earlier narrow grep missed). Kept entities + the plain
+    maps §3C **and** Meaning Coordinates `objects_in_scene._note` (the leak was in both trees, phrased differently;
+    P01's Meaning Coordinates used `(SC-0012)` an earlier narrow grep missed). Kept entities + the plain
     considered-absence; removed the stale P04 `- PENDING (doubled-divine-name)` bullet (FIG_0195 now captures
     it). `_note` rule: drop the key where the scene has entries; reduce to minimal where `entries: null`.
     **Zero-grep across both trees** (union `relocat|SC-00\d\d|→ Prop|content discipline|§3C entities only`);
@@ -188,7 +190,7 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
     The §3C / Level-3 content-discipline arc SC-0012 → SC-0017 is closed.**
   - **SC-0018 — `tripod id-check`, the cross-artifact entity-ID alignment checker (the 5th deterministic
     check).** The verification stack is now **legal (validate) · complete (coverage) · atomic-bare-plain (lint) ·
-    aligned (id-check) · true (human)**. The prose Meaning Map and the FOR_MODEL are two halves of one training
+    aligned (id-check) · true (human)**. The prose Meaning Map and the Meaning Coordinates are two halves of one training
     pair, so an entity named in one must be the **same canonical code** the other uses — verifiable by machine.
     Locked convention: canonical ID = the **bare code**; the map carries it in the wikilink target up to the first
     hyphen (codes never contain one — the invariant is asserted from the pinned schema patterns at startup).
@@ -212,8 +214,8 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
   git** (no remote); governed spec edits are committed there locally (SC-0001/0003/0004/0005/0006).
 
 ## Decisions that refined CLAUDE.md (a fresh session must NOT follow the stale brief)
-- **Pilot-2 has FOUR artifacts**, not two: FOR_MODEL + COMPILATION-LOG + BCD-DELTA + VERIFICATION-INPUT.
-  There is **no AUDIT** (the brief's "FOR_MODEL + AUDIT" is wrong; AUDIT was split into COMPILATION-LOG
+- **Pilot-2 has FOUR artifacts**, not two: Meaning Coordinates + COMPILATION-LOG + BCD-DELTA + VERIFICATION-INPUT.
+  There is **no AUDIT** (the brief's "Meaning Coordinates + AUDIT" is wrong; AUDIT was split into COMPILATION-LOG
   + BCD-DELTA in v0.3).
 - **Validate by consuming the pinned JSON-Schemas (ajv), do NOT re-transcribe to zod** (brief §5).
   This is decision A; re-transcription would recreate the drift the tool exists to prevent.
@@ -243,11 +245,11 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
   P01 is the BLESSED worked reference (voice + structure); this chunk rolled **P02–P06 + a parity-bar engine
   refinement**, compiler-side only, STOPPING before the vault writeback for the lead's per-map review.
   **SC-0020 (entity-ID reconciliation):** the two earlier `id-check` engine tweaks + **a third — the scene-scoped
-  prose-reference parity bar** (the lead's ruling: an FM scene-entity the map narrates in *that scene's* §3 prose
+  prose-reference parity bar** (the lead's ruling: an MC scene-entity the map narrates in *that scene's* §3 prose
   is ALIGNED). It drove the **8 standing REFERENCED-being/place/object misalignments → 0**: 5 resolved by the bar
-  (P01 S4 B2/B8/B9; P02 S2 B4/B5), 3 signed off as cross-scene/FM-only coverage differences (P05 S2 PL5, S3 B2,
+  (P01 S4 B2/B8/B9; P02 S2 B4/B5), 3 signed off as cross-scene/MC-only coverage differences (P05 S2 PL5, S3 B2,
   S4 TH_WITHIN_DAY). `id-alignment-exceptions.json` 6→9 entries, re-pinned **0.2.0 → 0.3.0**.
-  **SC-0019 (prose standard):** P02–P06 conditioning prose re-voiced to the blessed P01 register + the matched FM
+  **SC-0019 (prose standard):** P02–P06 conditioning prose re-voiced to the blessed P01 register + the matched MC
   `scene_communicative_purpose`/`significant_absence` free-text. Plain≠flat held throughout (P04 lament/fourfold
   divine naming + full↔empty; P05 miqreh luck-vs-providence; P02 hesed; P06 wing-of-refuge / amah-shifchah).
   Gates green (**136 tests** · validate 6/6 0 drift · lint 0 drift / 7 accepted · coverage 6/6 · gold-diff
@@ -262,14 +264,14 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
 > SC-0007 (the previous #1 — L1/discourse/high-risk convergence) is **DONE** on
 > `claude/friendly-edison-TGdmt`; see SPEC_CHANGES.
 1. **Slice 4 — the LLM drafter — SHIPPED, phase 1 (SC-0063, 2026-06-12).** `tripod draft` fills the
-   skeleton's judgment gaps via claude-opus-4-8 under the pinned `_spec/drafter/fm-drafter-prompt.md`
+   skeleton's judgment gaps via claude-opus-4-8 under the pinned `_spec/drafter/mc-drafter-prompt.md`
    (patch-only merge; origin-aware mint audit; receipts + $25 ceiling enforced pre-dial). ALL 19
-   pericopes carry FOR_MODELs: P08 ruled (status:valid), 12 drafted awaiting the batch ruling
+   pericopes carry MCs: P08 ruled (status:valid), 12 drafted awaiting the batch ruling
    (`docs/SC-0063-BATCH-RULING-SHEET.md`); P10/P11 expose map↔schema tensions (tabled). See the
    SC-0063 ledger row for the full trail.
 2. **Coverage ledger + BHSA frozen-extract sidecar — SHIPPED across the compiled corpus P01–P06, 6/6
    block-clean** (see Shipped above; Israel adjudicated as SC-0010, gender hardened as SC-0011). Remaining:
-   (a) **extract P07–P14 when those pericopes are compiled** — they have no FOR_MODEL or decided verse ranges
+   (a) **extract P07–P14 when those pericopes are compiled** — they have no Meaning Coordinates or decided verse ranges
    yet, so coverage can't run on them (the `extractor/pericopes.json` ranges stop at P06); (b) wire coverage
    into the gate order after conformance (conformance → **coverage** → reading-quality).
 3. **Registry growth — COMPLETE for the pilot.** **P01–P06 all promoted** (registry v0.4): P02
@@ -288,7 +290,7 @@ npx tsx src/cli/tripod.ts id-check --corpus     # SC-0018/SC-0020 (5th check, AL
   as drift convergence; SC-0007 is the L1-axis convergence in Next #1; see SPEC_CHANGES.md allocation ledger).
 - **L1-axis promotion gap** (was Next #1 / SC-0007) — **RESOLVED** (SC-0007): COMPILATION-LOG v0.4 has
   the intake slots and `promote.ts` maps them, so every convergent axis is promotable. Note: `discourse_thread_state`
-  + `high_risk_register_kind` are now *promotable* but are not FOR_MODEL fields, so their drift-detection-from-source
+  + `high_risk_register_kind` are now *promotable* but are not Meaning Coordinates fields, so their drift-detection-from-source
   is still future work. Vendored-registry growth: **P01–P06 all promoted** (registry v0.4); pilot corpus fully converged.
 - **Coreference attribution & semantic additions** stay human (per `docs/COVERAGE.md` / `READING_QUALITY.md`) — not mechanizable.
 - **Two `.docx`** reference files were left in the working tree; now gitignored (`*.docx`).
