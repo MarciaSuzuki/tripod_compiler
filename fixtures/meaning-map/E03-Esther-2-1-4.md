@@ -8,7 +8,7 @@ genre: "HISTORICAL_NARRATIVE"
 register: "INFORMAL_CASUAL"
 status: "complete"
 meaning-map-version: 2.0
-sta-status: "pending"
+sta-status: "complete"
 pilot: "pilot-2"
 for-model: [[E03-Esther-2-1-4-FOR-MODEL]]
 active-concepts: []
