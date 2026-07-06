@@ -7,8 +7,8 @@
       "sha256": "6d36fc11883e375f32e3c3076ebc9ec531b7b61c7096692e7df868b6521f8a82"
     },
     "compilation-log.schema.json": {
-      "version": "v0.8",
-      "sha256": "ff315586c9e70ea57fa17fa1635226e6f0ed8b8a8b5898cf0803c4f3fe8fdae3"
+      "version": "v0.9",
+      "sha256": "80ff2d40bc3eb36903685013e0651659ceb78274ba5e7991f7011011dc34f447"
     },
     "bcd-delta.schema.json": {
       "version": "v0.5",
