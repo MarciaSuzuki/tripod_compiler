@@ -8,7 +8,7 @@ import { deSlug, entityTooltip } from './registry.mjs';
 //   [[PL_LAND_OF_JUDAH]] [[TM_PERIOD_OF_JUDGES-In-the-Days...]]      symbolic entity codes
 //   [[TH_TEN_YEARS_APPROXIMATELY-About-Ten-Years]]
 //   [[CB_0029-Judges-Era]] [[FIG_0007-Narrator-Frame...]]            global concept / figure codes
-//   [[P01-Ruth-1-1-5]] [[P01-Ruth-1-1-5-FOR-MODEL]]                  cross-artifact note links
+//   [[P01-Ruth-1-1-5]] [[P01-Ruth-1-1-5-MEANING-COORDINATES]]                  cross-artifact note links
 //   [[...|Display text]]                                             piped display override
 //
 // Resolution is best-effort BY DESIGN: an unresolvable link renders as plain
@@ -31,7 +31,7 @@ export function classifyTarget(target) {
   if ((m = ENTITY_CODE_RE.exec(t))) return { kind: 'entity', code: m[1], slug: m[2] ?? null };
   if ((m = PERICOPE_NOTE_RE.exec(t))) {
     const pericope = m[1];
-    if (t.endsWith('-FOR-MODEL')) return { kind: 'artifact', artifact: 'for-model', pericope };
+    if (t.endsWith('-MEANING-COORDINATES')) return { kind: 'artifact', artifact: 'meaning-coordinates', pericope };
     if (t.endsWith('-COMPILATION-LOG')) return { kind: 'artifact', artifact: 'compilation-log', pericope };
     if (t.endsWith('-BCD-DELTA')) return { kind: 'artifact', artifact: 'bcd-delta', pericope };
     return { kind: 'artifact', artifact: 'meaning-map', pericope };
@@ -41,7 +41,7 @@ export function classifyTarget(target) {
 
 const ARTIFACT_ANCHOR = {
   'meaning-map': 'meaning-map',
-  'for-model': 'for-model',
+  'meaning-coordinates': 'meaning-coordinates',
   'compilation-log': 'compilation-log',
 };
 

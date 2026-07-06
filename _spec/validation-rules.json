@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://tripod.example.org/ruth-pilot-2/validation-rules-v0-18.json",
-  "title": "Ruth Pilot 2 - FOR_MODEL Validation Rules + Closed Lists + Drift Detector",
-  "description": "Three-section document. (1) for_model_schema: JSON Schema for FOR_MODEL artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
+  "title": "Ruth Pilot 2 - MEANING_COORDINATES Validation Rules + Closed Lists + Drift Detector",
+  "description": "Three-section document. (1) meaning_coordinates_schema: JSON Schema for MEANING_COORDINATES artifacts. (2) closed_lists: enumerated values enforced as hard rules across all artifacts. (3) drift_detector: bounded-open enumerations seeded from canonical P01; new values trigger drift warnings at Gate F. The other three artifacts (COMPILATION-LOG, BCD-DELTA, VERIFICATION-INPUT) are governed by their own schemas referenced below.",
   "version": "v0.18",
   "tagset_version": "TRIPOD_STA_v2_0",
   "date_locked": "2026-06-27",
@@ -14,22 +14,22 @@
     "verification_input": "verification-input.schema.json v1.1"
   },
 
-  "for_model_schema": {
+  "meaning_coordinates_schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://tripod.example.org/ruth-pilot-2/for-model-v0-11.schema.json",
-    "title": "FOR_MODEL",
+    "$id": "https://tripod.example.org/ruth-pilot-2/meaning-coordinates-v0-11.schema.json",
+    "title": "MEANING_COORDINATES",
     "description": "Structural tag artifact derived from an approved meaning map. Trained on by the Seed Model alongside the meaning map.",
     "type": "object",
     "if": {
       "required": ["source_domain"],
       "properties": { "source_domain": { "const": "oral_archive" } }
     },
-    "then": { "$ref": "#/$defs/oral_for_model" },
-    "else": { "$ref": "#/$defs/biblical_for_model" },
+    "then": { "$ref": "#/$defs/oral_meaning_coordinates" },
+    "else": { "$ref": "#/$defs/biblical_meaning_coordinates" },
 
     "$defs": {
-      "biblical_for_model": {
-        "$comment": "SC-0065: the BIBLICAL_PASSAGE branch — byte-identical to the pre-SC-0065 top-level FOR_MODEL body. Biblical artifacts carry no source_domain, so the top-level if/else routes them here unchanged. The artifact_profile/registry_additions/... forbid is RETAINED here: biblical stays implicit-by-context (Decision C still holds for biblical; only the oral profile is exempted).",
+      "biblical_meaning_coordinates": {
+        "$comment": "SC-0065: the BIBLICAL_PASSAGE branch — byte-identical to the pre-SC-0065 top-level MEANING_COORDINATES body. Biblical artifacts carry no source_domain, so the top-level if/else routes them here unchanged. The artifact_profile/registry_additions/... forbid is RETAINED here: biblical stays implicit-by-context (Decision C still holds for biblical; only the oral profile is exempted).",
         "additionalProperties": false,
         "required": [
           "sta_id",
@@ -71,7 +71,7 @@
         }
       },
 
-      "oral_for_model": {
+      "oral_meaning_coordinates": {
         "$comment": "SC-0065: the LA_RECORDING (oral_archive) branch — the general-profile derivation TRIPOD_STA_GENERAL_v0_1. Shares Layer-1/2 vocabulary with biblical (one controlled vocabulary, two profiles): pericope_classification, upper_token, scene_id, prop_id, the cb/figure id shapes, the register/genre/closed lists. Adds the oral-only machinery: source_domain, provenance, bead_span anchoring, level_1_prose, and the embedded concept-bank/figure-index/compilation-log surfaces. Exegetical pointers (cb_flags/figure_flags) stay present-but-emptyable.",
         "type": "object",
         "additionalProperties": false,

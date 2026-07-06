@@ -8,7 +8,7 @@ import { validateArtifact } from "../src/engine/validate.js";
 /**
  * SC-0065 — the ORAL PROFILE validation slice. The gold Cardume oral STA
  * (cardume_passage_01_v0_1, TRIPOD_STA_GENERAL_v0_1, source_domain=oral_archive) must validate
- * under the SAME machinery that validates the biblical FOR_MODELs — the convergence the seam
+ * under the SAME machinery that validates the biblical MCs — the convergence the seam
  * note promises. It arrives as a raw .json (no Obsidian envelope): the reader falls back to
  * whole-file JSON, detectArtifact recognises it by signature, the top-level if/then/else routes
  * source_domain=oral_archive to the oral branch, and the oral bead-span pass runs.
@@ -23,9 +23,9 @@ const blockMsgs = (r: ReturnType<typeof validateArtifact>) =>
   JSON.stringify(r.findings.filter((f) => f.severity === "block"), null, 2);
 
 describe("oral profile — gold Cardume STA (SC-0065)", () => {
-  it("is detected as a FOR_MODEL and validates block-clean", () => {
+  it("is detected as a MEANING_COORDINATES and validates block-clean", () => {
     const r = validateArtifact(ORAL);
-    expect(r.artifact).toBe("FOR_MODEL");
+    expect(r.artifact).toBe("MEANING_COORDINATES");
     expect(r.specVersion).toBe("v0.18");
     expect(r.counts.block, blockMsgs(r)).toBe(0);
     expect(r.ok).toBe(true);

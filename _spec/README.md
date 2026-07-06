@@ -3,7 +3,7 @@
 The **single source of truth** for the controlled vocabulary is the locked
 `validation-rules.json`, authored and governed in the wiki vault
 (`ruth-pilot-b-wiki/_spec/validation-rules.json`). This directory **vendors a pinned copy** of
-it; the validator loads that copy and checks every controlled value in a FOR_MODEL / Meaning
+it; the validator loads that copy and checks every controlled value in a Meaning Coordinates / Meaning
 Map against it.
 
 ## Source of truth: vendor + pin + drift-check (decision A)
@@ -24,7 +24,7 @@ Map against it.
 - `closed_lists` — `GENRE_GROUP` (4), `GENRE` (31), `REGISTER` (7), `NARRATIVE_FRAMING`,
   `SPEECH_ACT` (31), plus the verification / figure / confidence / forbidden lists. A value
   outside a closed list is a **BLOCK** (hard error).
-- `for_model_schema` — JSON Schema for the FOR_MODEL envelope + structure. It mirrors each
+- `meaning_coordinates_schema` — JSON Schema for the Meaning Coordinates envelope + structure. It mirrors each
   closed list as a `$defs.*_value` enum; the array and its mirror enum must stay in sync —
   itself a validator invariant.
 - `drift_detector.canonical_p01_enumerations` — the documented L2 **bounded-open** seed (retained
@@ -54,7 +54,7 @@ in the wiki `_spec/` and are vendored/validated the same way as Slice 1 expands.
 | Path | Layer | Role |
 |---|---|---|
 | `registry/<book>.yaml` | L3 profile registry | per-book BCD codes (beings/places/objects/times/…); **propose registry addition** (BCD-delta) |
-| `schema/` | — | zod / JSON-schema derived from `for_model_schema` (Slice 1) |
+| `schema/` | — | zod / JSON-schema derived from `meaning_coordinates_schema` (Slice 1) |
 
 ## Superseded & removed (SC-0001 / decision A)
 

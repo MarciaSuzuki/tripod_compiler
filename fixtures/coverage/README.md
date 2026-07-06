@@ -14,8 +14,8 @@ stale from **2026-05-30 (SC-0010)** through SC-0067 (`TH_→CB_`, a `B9→B8` re
 caught it — no test pinned them.** Retiring the committed files is rot-proof and loses nothing, because the
 **substance is gated live**:
 
-- `tests/coverage-corpus.test.ts` reconciles every P01–P06 FOR_MODEL → asserts **0 unanchored + all six block-clean**.
+- `tests/coverage-corpus.test.ts` reconciles every P01–P06 Meaning Coordinates → asserts **0 unanchored + all six block-clean**.
 - `tripod coverage --corpus` prints the same corpus check fresh on every run.
 
-So the reconciliation correctness is always enforced from the current FMs; the ledger files are just a convenience
+So the reconciliation correctness is always enforced from the current MCs; the ledger files are just a convenience
 view you render when you want to read one.

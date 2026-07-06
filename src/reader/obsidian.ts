@@ -36,7 +36,7 @@ function parseFrontmatter(raw: string): { frontmatterRaw: string | null; body: s
   return { frontmatterRaw: block, body: raw.slice(m[0].length), kv };
 }
 
-/** Read an artifact note (FOR_MODEL / COMPILATION-LOG / BCD-DELTA / VERIFICATION-INPUT). */
+/** Read an artifact note (MEANING_COORDINATES / COMPILATION-LOG / BCD-DELTA / VERIFICATION-INPUT). */
 export function readArtifactNote(path: string): ArtifactNote {
   let raw: string;
   try {

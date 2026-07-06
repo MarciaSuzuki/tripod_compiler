@@ -3,7 +3,7 @@ type: "sta-compilation-log"
 pericope: "P03"
 pericope-title: "Naomi's last appeal; Ruth's vow; Naomi's silence"
 source-meaning-map: [[P03-Ruth-1-15-18]]
-source-for-model: [[P03-Ruth-1-15-18-FOR-MODEL]]
+source-meaning-coordinates: [[P03-Ruth-1-15-18-MEANING-COORDINATES]]
 related-bcd-delta: [[P03-Ruth-1-15-18-BCD-DELTA]]
 status: "valid"
 pilot: "pilot-2"
@@ -39,8 +39,8 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     },
     {
       "decision_id": "P03-D2",
-      "decision": "Meaning-map P3 six-binding ladder compiled as one compound FOR_MODEL proposition with six binding components, not six separate propositions.",
-      "description": "The meaning map's P3 holds Ruth's six successive bindings (path / lodging / people / God / death-place / burial-place) as one proposition with twelve Q&A pairs. For FOR_MODEL, the compound option (one UTTERED_COVENANT_BINDING_VOW proposition with vow_components carrying six binding records) was chosen over the alternative of six per-binding propositions. Rationale: the ladder is one continuous speech with one speaker and one addressee; each binding carries its own closed-list speech_act value at component-record level (VOWS_ROAD_BINDING / VOWS_RESIDENCE_BINDING / VOWS_PEOPLE_BINDING / VOWS_GOD_BINDING / VOWS_IDENTITY_BINDING / VOWS_PLACE_OF_BURIAL_BINDING), parallel to P02 P9's SPOKE_DISSUASIVE_APPEAL compound-with-component-speech_act pattern. The six bindings remain structurally distinct via list_position FIRST through SIXTH and via the separate per-component binding_phrase_form."
+      "decision": "Meaning-map P3 six-binding ladder compiled as one compound MEANING_COORDINATES proposition with six binding components, not six separate propositions.",
+      "description": "The meaning map's P3 holds Ruth's six successive bindings (path / lodging / people / God / death-place / burial-place) as one proposition with twelve Q&A pairs. For MEANING_COORDINATES, the compound option (one UTTERED_COVENANT_BINDING_VOW proposition with vow_components carrying six binding records) was chosen over the alternative of six per-binding propositions. Rationale: the ladder is one continuous speech with one speaker and one addressee; each binding carries its own closed-list speech_act value at component-record level (VOWS_ROAD_BINDING / VOWS_RESIDENCE_BINDING / VOWS_PEOPLE_BINDING / VOWS_GOD_BINDING / VOWS_IDENTITY_BINDING / VOWS_PLACE_OF_BURIAL_BINDING), parallel to P02 P9's SPOKE_DISSUASIVE_APPEAL compound-with-component-speech_act pattern. The six bindings remain structurally distinct via list_position FIRST through SIXTH and via the separate per-component binding_phrase_form."
     },
     {
       "decision_id": "P03-D3",
@@ -64,7 +64,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     },
     {
       "decision_id": "P03-D7",
-      "decision": "FIG_0001 Ruth-the-Moabitess significantly absent in P03; not activated in FOR_MODEL figure_flags.",
+      "decision": "FIG_0001 Ruth-the-Moabitess significantly absent in P03; not activated in MEANING_COORDINATES figure_flags.",
       "description": "The narrator does not label Ruth with the Moabite epithet anywhere in P03. The withholding at the moment of Ruth's covenantal binding is structural — the narrator does not undercut the binding by re-asserting the ethnic boundary. Recorded as a SIGNIFICANT_ABSENCE high-risk entry in COMPILATION-LOG; recorded in S2's significant_absence; NOT flagged in any P03 proposition's figure_flags. Carry-forward through later pericopes will resume FIG_0001 where the narrator returns to the Moabite epithet."
     },
     {
@@ -541,7 +541,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "every_being_in_propositions_declared_in_scenes": true,
     "every_place_in_propositions_declared_in_scenes": true,

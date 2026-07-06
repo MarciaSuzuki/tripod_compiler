@@ -3,7 +3,7 @@ type: "sta-compilation-log"
 pericope: "P01"
 pericope-title: "The famine, the family's sojourn, and the emptying of the household"
 source-meaning-map: [[P01-Ruth-1-1-5]]
-source-for-model: [[P01-Ruth-1-1-5-FOR-MODEL]]
+source-meaning-coordinates: [[P01-Ruth-1-1-5-MEANING-COORDINATES]]
 related-bcd-delta: [[P01-Ruth-1-1-5-BCD-DELTA]]
 status: "valid"
 pilot: "pilot-2"
@@ -43,7 +43,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P01-D2",
       "decision": "Wife pairings withheld per source-text discipline.",
-      "description": "The source text at 1:4 names Orpah and Ruth but does not pair them with their husbands. The pairing Mahlon-Ruth and Chilion-Orpah is disclosed at 4:10. The FOR_MODEL preserves the withholding structurally: P9 marriage_components use wife_taken: B? rather than naming specific brides. The reconstructor must not infer the pairing at 1:4."
+      "description": "The source text at 1:4 names Orpah and Ruth but does not pair them with their husbands. The pairing Mahlon-Ruth and Chilion-Orpah is disclosed at 4:10. The MEANING_COORDINATES preserves the withholding structurally: P9 marriage_components use wife_taken: B? rather than naming specific brides. The reconstructor must not infer the pairing at 1:4."
     },
     {
       "decision_id": "P01-D3",
@@ -53,12 +53,12 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P01-D4",
       "decision": "PL_HA_ARETZ flagged for BCD formal registration.",
-      "description": "The place reference ha-aretz (the land) appears in the meaning map as plain text (no wiki-link) and in the FOR_MODEL as PL_HA_ARETZ but does not appear in the formal PL-code registry of BCD v0.3. It is used here as a working code pending formal registration. BCD should assign it a formal PL-code at next update."
+      "description": "The place reference ha-aretz (the land) appears in the meaning map as plain text (no wiki-link) and in the MEANING_COORDINATES as PL_HA_ARETZ but does not appear in the formal PL-code registry of BCD v0.3. It is used here as a working code pending formal registration. BCD should assign it a formal PL-code at next update."
     },
     {
       "decision_id": "P01-D5",
       "decision": "Methodology metadata separated from story content; registry promotions extracted to BCD-DELTA.",
-      "description": "Per Pilot 2 v0.3 architecture: the meaning map and FOR_MODEL contain only story content. This COMPILATION-LOG contains only methodology trace. Registry additions (beings, places, objects, times, discourse-thread events, figure entries, concept-bank flags) are extracted to the paired BCD-DELTA artifact for promotion into the BCD, Figure Registry, and Concept Bank. Team-facing prompts (listen-for items, do-not-add items, discussion items) are Agent 4's responsibility in VERIFICATION-INPUT and do not appear here. The structural representation of source-text discipline (e.g., wife_taken: B? in FOR_MODEL P9) remains in FOR_MODEL because it is story content: the source text does not state the pairing, so the FOR_MODEL does not state it."
+      "description": "Per Pilot 2 v0.3 architecture: the meaning map and MEANING_COORDINATES contain only story content. This COMPILATION-LOG contains only methodology trace. Registry additions (beings, places, objects, times, discourse-thread events, figure entries, concept-bank flags) are extracted to the paired BCD-DELTA artifact for promotion into the BCD, Figure Registry, and Concept Bank. Team-facing prompts (listen-for items, do-not-add items, discussion items) are Agent 4's responsibility in VERIFICATION-INPUT and do not appear here. The structural representation of source-text discipline (e.g., wife_taken: B? in MEANING_COORDINATES P9) remains in MEANING_COORDINATES because it is story content: the source text does not state the pairing, so the MEANING_COORDINATES does not state it."
     }
   ],
 
@@ -349,7 +349,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "id": "R10",
       "kind": "WITHHELD_PAIRING_PER_SOURCE_DISCIPLINE",
       "applies_to": "Mahlon-Ruth and Chilion-Orpah pairings at 1:4 (P9)",
-      "note": "The source text does not pair the wives with their husbands at 1:4. Pairing is disclosed at 4:10. The FOR_MODEL preserves the withholding via wife_taken: B? in P9 marriage_components. Reconstructor must not infer or state the pairing here.",
+      "note": "The source text does not pair the wives with their husbands at 1:4. Pairing is disclosed at 4:10. The MEANING_COORDINATES preserves the withholding via wife_taken: B? in P9 marriage_components. Reconstructor must not infer or state the pairing here.",
       "required_in_audit": true,
       "do_not_decide": true,
       "source_in_meaning_map": "Section 4 Proposition 6 (brides named without husband-pairing in the text)"
@@ -425,7 +425,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
 
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "every_being_in_propositions_declared_in_scenes": true,
     "every_place_in_propositions_declared_in_scenes": true,

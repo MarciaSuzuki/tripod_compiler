@@ -7,13 +7,13 @@ import type { IdAlignReport } from "../engine/id-align.js";
  * accepted. Diagnostic only — the inventory is the deliverable; the human rules it.
  */
 
-const dir = (d: "MAP_NOT_FM" | "FM_NOT_MAP") => (d === "MAP_NOT_FM" ? "map-not-FM" : "FM-not-map");
+const dir = (d: "MAP_NOT_MC" | "MC_NOT_MAP") => (d === "MAP_NOT_MC" ? "map-not-MC" : "MC-not-map");
 
 /** Compact human-readable inventory for `tripod id-check` stdout (one pericope). */
 export function formatIdAlignText(r: IdAlignReport): string {
   const c = r.counts;
   const lines: string[] = [];
-  lines.push(`${r.ok ? "✓" : "✗"} ID-CHECK  ${r.pericope}  (map ${baseName(r.mapPath)} ↔ FM ${baseName(r.fmPath)})`);
+  lines.push(`${r.ok ? "✓" : "✗"} ID-CHECK  ${r.pericope}  (map ${baseName(r.mapPath)} ↔ FM ${baseName(r.mcPath)})`);
   lines.push(
     `   ${c.refErrors} ref-integrity error(s) · ${c.nameErrors} name-binding error(s) · ` +
       `${c.misalign} misalignment(s) (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.flagMismatch} flag-mismatch(es) · ${c.dangling} dangling note(s)` +
@@ -109,7 +109,7 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     `type: "id-alignment-ledger"\n` +
     `pericope: "${r.pericope}"\n` +
     `map: "${baseName(r.mapPath)}"\n` +
-    `for-model: "${baseName(r.fmPath)}"\n` +
+    `meaning-coordinates: "${baseName(r.mcPath)}"\n` +
     `status: "${status}"\n` +
     `pilot: "pilot-2"\n` +
     `sc_ref: "SC-0018"\n` +
@@ -117,7 +117,7 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     `# ${r.pericope} — CROSS-ARTIFACT ID-ALIGNMENT LEDGER\n\n` +
     `> **${c.refErrors} ref-integrity · ${c.nameErrors} name-binding · ${c.misalign} misalignment (${c.likelySameReferent} LIKELY_SAME_REFERENT) · ${c.flagMismatch} flag-mismatch · ${c.dangling} dangling · ${c.unverifiable} unverifiable · ${c.withheld} withheld-referent · ${c.accepted} accepted.**\n>\n` +
     `> SC-0018, the 5th deterministic check (legal · complete · atomic-bare-plain · **aligned** · true).\n` +
-    `> DIAGNOSTIC ONLY — the prose map and the FOR_MODEL are two halves of one training pair; an entity\n` +
+    `> DIAGNOSTIC ONLY — the prose map and the MEANING_COORDINATES are two halves of one training pair; an entity\n` +
     `> named in one must be the same canonical code the other uses. This inventory is ruled by a human; it fixes nothing.\n\n` +
     `## Reference integrity — code with no registry entry (${r.referenceIntegrity.length})\n\n` +
     `_B/PL/O/TM/I resolve via the book's per-book alias table; \`CB_\`/\`FIG_\` via the **global** \`concepts.json\`/\`figures.json\` (canon-wide, SC-0037). Unknown ⇒ **ERROR**._\n\n` +
@@ -126,13 +126,13 @@ export function renderIdAlignNote(r: IdAlignReport): string {
     `_B/PL/O/TM/I: slug = slugify(BCD English name) (trim · whitespace→\`-\` · Title-Case preserved). \`CB_\`/\`FIG_\`: slug = the registry \`name_slug\` or a known alias. Catches typos and wrong-code-on-name._\n\n` +
     table(["code", "where", "slug found", "slug expected", "canonical name", "severity"], nbRows) +
     `\n## Cross-artifact misalignment — structural symmetric difference (${r.misalignments.length})\n\n` +
-    `_Per aligned scene (map §3 ↔ FOR_MODEL scene_id), entities only (B/PL/O/TM/I/TH). \`LIKELY_SAME_REFERENT\` = an unmatched map code + FM code sharing a stem (the highest-value finding, e.g. \`TM_TEN_YEARS\` ↔ \`TH_TEN_YEARS_APPROXIMATELY\`)._\n\n` +
+    `_Per aligned scene (map §3 ↔ MEANING_COORDINATES scene_id), entities only (B/PL/O/TM/I/TH). \`LIKELY_SAME_REFERENT\` = an unmatched map code + FM code sharing a stem (the highest-value finding, e.g. \`TM_TEN_YEARS\` ↔ \`TH_TEN_YEARS_APPROXIMATELY\`)._\n\n` +
     table(["scope", "direction", "code", "tag", "severity"], maRows) +
     `\n## CB_/FIG_ flag mismatch — flag-set symmetric difference (${r.flagMismatches.length})\n\n` +
-    `_Flags are compared in their real homes: the map's frontmatter \`active-concepts\`/\`active-figures\` + §5 Flags vs the FOR_MODEL's \`cb_flags\`/\`figure_flags\`. An aligned flag never reports; only a genuinely one-sided flag does._\n\n` +
+    `_Flags are compared in their real homes: the map's frontmatter \`active-concepts\`/\`active-figures\` + §5 Flags vs the MEANING_COORDINATES's \`cb_flags\`/\`figure_flags\`. An aligned flag never reports; only a genuinely one-sided flag does._\n\n` +
     table(["kind", "direction", "code", "severity"], fmiRows) +
     `\n## Dangling note links (${r.danglingNotes.length})\n\n` +
-    `_A non-entity map \`[[Note-Title]]\` that names no real note. Known pilot-2 sibling artifacts (\`-FOR-MODEL\`/\`-COMPILATION-LOG\`/\`-BCD-DELTA\`/\`-VERIFICATION-INPUT[-en]\`/\`-COVERAGE-LEDGER\`) and discourse-thread refs (\`T#-…\`) resolve; a stale \`[[…-AUDIT]]\` still flags — pilot-2 has no AUDIT._\n\n` +
+    `_A non-entity map \`[[Note-Title]]\` that names no real note. Known pilot-2 sibling artifacts (\`-MEANING-COORDINATES\`/\`-COMPILATION-LOG\`/\`-BCD-DELTA\`/\`-VERIFICATION-INPUT[-en]\`/\`-COVERAGE-LEDGER\`) and discourse-thread refs (\`T#-…\`) resolve; a stale \`[[…-AUDIT]]\` still flags — pilot-2 has no AUDIT._\n\n` +
     table(["note", "where", "detail", "severity"], dnRows) +
     `\n## Unverifiable codes — schema-legal, no vendored registry tracks them (${uvRows.length})\n\n` +
     `_\`TH_\` (thematic overlay): legal per the schema, but vendored in no registry, so reference-integrity cannot verify it here. Surfaced, not errored. (\`CB_\`/\`FIG_\` are now verifiable — see above.)_\n\n` +

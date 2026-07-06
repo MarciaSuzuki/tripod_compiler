@@ -9,7 +9,7 @@ const asArray = (v: unknown): unknown[] => (Array.isArray(v) ? v : []);
 const sceneEntries = (node: unknown): any[] => asArray((node as any)?.entries) as any[];
 
 /**
- * Layers 2 + 3 + register-critical checks for a FOR_MODEL (the structural/Layer-1 pass is ajv).
+ * Layers 2 + 3 + register-critical checks for a MEANING_COORDINATES (the structural/Layer-1 pass is ajv).
  *  - L2 drift: bounded-open values not in the canonical-P01 seed → `drift` (review, don't block).
  *  - referential integrity: entity codes used in propositions must be declared in a scene;
  *    inter-proposition links must target real prop_ids → `block`.

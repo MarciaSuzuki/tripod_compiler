@@ -30,7 +30,7 @@ export interface CanonicalP01Enumerations {
 export interface ValidationRules {
   version: string;
   tagset_version: string;
-  for_model_schema: Record<string, unknown>;
+  meaning_coordinates_schema: Record<string, unknown>;
   closed_lists: Record<string, string[] | string>;
   drift_detector: {
     canonical_p01_enumerations: CanonicalP01Enumerations;

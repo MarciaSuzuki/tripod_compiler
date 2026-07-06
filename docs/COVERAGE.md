@@ -80,7 +80,7 @@ everything" to "adjudicate the exceptions."
 ## Algorithm sketch
 1. From the BHSA packet, build `R`: one record per referring expression
    `{verse, surface, pos, morph(person/number/gender), is_implied_subject}`.
-2. From the FOR_MODEL, build `M`: one record per entity-mention
+2. From the Meaning Coordinates, build `M`: one record per entity-mention
    `{entity_id, verse_anchor, referential_form, role}`.
 3. **Match** each `R` record to an `M` record by verse + referential_form compatibility +
    morphology agreement (gender/number must not contradict).
@@ -124,7 +124,7 @@ everything" to "adjudicate the exceptions."
   This established the **same-referent principle** (one referent ⇒ one Layer-3 code; surface variation rides
   on `referential_form`) — see SPEC_CHANGES SC-0009.
 - [x] **Scaled across the compiled corpus P01–P06.** Packets pinned for P02–P06; `tripod coverage --corpus`
-  runs all six. The substance is locked **live** by `tests/coverage-corpus.test.ts` (reconciles each FM → asserts
+  runs all six. The substance is locked **live** by `tests/coverage-corpus.test.ts` (reconciles each MC → asserts
   0 unanchored + block-clean). The rendered `*-COVERAGE-LEDGER.md` notes are **generated on demand and git-ignored,
   not committed** (SC-0068 — committed snapshots rot; the test gates correctness regardless).
   **244/245 explicit accounted · 0 unanchored across the corpus** (zero hallucinated entities — the
@@ -135,5 +135,5 @@ everything" to "adjudicate the exceptions."
   divine title "the God of Israel", qualifying the divine name, not a separately-tracked participant — no
   `PL_ISRAEL` at 2:12. Recorded as the first signed-off exception in `_spec/coverage-exceptions.json`; coverage
   downgrades it from block to ACCEPTED. Corpus is now 6/6 block-clean (245/245 accounted, 1 by sign-off).
-- [ ] **P07–P14:** not compiled yet (no FOR_MODEL, no decided verse ranges) — extend `extractor/pericopes.json`
+- [ ] **P07–P14:** not compiled yet (no Meaning Coordinates, no decided verse ranges) — extend `extractor/pericopes.json`
   and run coverage as each is mapped.

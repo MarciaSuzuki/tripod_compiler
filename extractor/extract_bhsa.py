@@ -3,7 +3,7 @@
 BHSA → Tripod source-linguistic-packet extractor (offline sidecar).
 
 Implements docs/SOURCE_AND_SCALING.md (frozen, vendored per-pericope packet) and the
-R-set ("referring expressions") that docs/COVERAGE.md reconciles against the FOR_MODEL.
+R-set ("referring expressions") that docs/COVERAGE.md reconciles against the MEANING_COORDINATES.
 
 FULLY OFFLINE: points Text-Fabric at a LOCAL BHSA feature directory via tf.fabric.Fabric.
 It never calls tf.app.use() and never touches GitHub. Resolve the path via --tf-path,

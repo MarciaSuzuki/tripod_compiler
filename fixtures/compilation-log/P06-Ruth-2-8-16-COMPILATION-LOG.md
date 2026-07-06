@@ -3,7 +3,7 @@ type: "sta-compilation-log"
 pericope: "P06"
 pericope-title: "Boaz speaks to Ruth in the field: instructions, blessing, meal, and harvester protocol"
 source-meaning-map: [[P06-Ruth-2-8-16]]
-source-for-model: [[P06-Ruth-2-8-16-FOR-MODEL]]
+source-meaning-coordinates: [[P06-Ruth-2-8-16-MEANING-COORDINATES]]
 related-bcd-delta: [[P06-Ruth-2-8-16-BCD-DELTA]]
 status: "valid"
 pilot: "pilot-2"
@@ -570,7 +570,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "every_being_in_propositions_declared_in_scenes": true,
     "every_place_in_propositions_declared_in_scenes": true,

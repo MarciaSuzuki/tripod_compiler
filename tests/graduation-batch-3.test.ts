@@ -6,13 +6,13 @@ import { fileURLToPath } from "node:url";
 import { validateArtifact } from "../src/engine/validate.js";
 
 /**
- * SC-0064 close — the FOR_MODEL graduation (the SC-0055/0062 visibility idiom, applied to FOR_MODELs).
- * The 13 machine-drafted, reviewer-ruled FOR_MODELs (P07–P14 + J01–J05) graduate from `_working/` into
- * `fixtures/for-model/` now that their judgment halves are ruled (SC-0064 §A–§E + arc_element). One
+ * SC-0064 close — the MEANING_COORDINATES graduation (the SC-0055/0062 visibility idiom, applied to MCs).
+ * The 13 machine-drafted, reviewer-ruled MCs (P07–P14 + J01–J05) graduate from `_working/` into
+ * `fixtures/meaning-coordinates/` now that their judgment halves are ruled (SC-0064 §A–§E + arc_element). One
  * anchor per pericope:
  *   - status flipped draft → valid (the graduation act),
  *   - validates block-clean with ZERO convergent drift — the payoff of the batch ruling: every L2 axis
- *     value the FM uses (arc_element, scene_kind, proposition_kind, role, action, tone) is now approved,
+ *     value the MC uses (arc_element, scene_kind, proposition_kind, role, action, tone) is now approved,
  *   - the L1 closed lists HOLD, including the two watch-points: J03 the psalm
  *     (POETIC_SUNG/PRAYER/RELIGIOUS_WORSHIP — self-classified, generalized off Ruth) and P14 the
  *     genealogy (GENEALOGY under NARRATIVE with the narrator constant).
@@ -20,27 +20,27 @@ import { validateArtifact } from "../src/engine/validate.js";
  */
 type Anchor = [file: string, staId: string, genreGroup: string, genre: string, register: string];
 const ANCHORS: Record<string, Anchor> = {
-  P07: ["P07-Ruth-2-17-23-FOR-MODEL.md", "ruth_pericope_07_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  P08: ["P08-Ruth-3-1-5-FOR-MODEL.md", "ruth_pericope_08_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  P09: ["P09-Ruth-3-6-13-FOR-MODEL.md", "ruth_pericope_09_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  P10: ["P10-Ruth-3-14-18-FOR-MODEL.md", "ruth_pericope_10_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  P11: ["P11-Ruth-4-1-8-FOR-MODEL.md", "ruth_pericope_11_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  P12: ["P12-Ruth-4-9-12-FOR-MODEL.md", "ruth_pericope_12_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  P13: ["P13-Ruth-4-13-17-FOR-MODEL.md", "ruth_pericope_13_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  P14: ["P14-Ruth-4-18-22-FOR-MODEL.md", "ruth_pericope_14_v2_0", "NARRATIVE", "GENEALOGY", "INFORMAL_CASUAL"],
-  J01: ["J01-Jonah-1-1-3-FOR-MODEL.md", "jonah_pericope_01_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  J02: ["J02-Jonah-1-4-2-1-FOR-MODEL.md", "jonah_pericope_02_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  J03: ["J03-Jonah-2-2-9-FOR-MODEL.md", "jonah_pericope_03_v2_0", "POETIC_SUNG", "PRAYER", "RELIGIOUS_WORSHIP"],
-  J04: ["J04-Jonah-2-10-3-10-FOR-MODEL.md", "jonah_pericope_04_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
-  J05: ["J05-Jonah-4-1-11-FOR-MODEL.md", "jonah_pericope_05_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P07: ["P07-Ruth-2-17-23-MEANING-COORDINATES.md", "ruth_pericope_07_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P08: ["P08-Ruth-3-1-5-MEANING-COORDINATES.md", "ruth_pericope_08_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P09: ["P09-Ruth-3-6-13-MEANING-COORDINATES.md", "ruth_pericope_09_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P10: ["P10-Ruth-3-14-18-MEANING-COORDINATES.md", "ruth_pericope_10_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P11: ["P11-Ruth-4-1-8-MEANING-COORDINATES.md", "ruth_pericope_11_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P12: ["P12-Ruth-4-9-12-MEANING-COORDINATES.md", "ruth_pericope_12_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P13: ["P13-Ruth-4-13-17-MEANING-COORDINATES.md", "ruth_pericope_13_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  P14: ["P14-Ruth-4-18-22-MEANING-COORDINATES.md", "ruth_pericope_14_v2_0", "NARRATIVE", "GENEALOGY", "INFORMAL_CASUAL"],
+  J01: ["J01-Jonah-1-1-3-MEANING-COORDINATES.md", "jonah_pericope_01_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  J02: ["J02-Jonah-1-4-2-1-MEANING-COORDINATES.md", "jonah_pericope_02_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  J03: ["J03-Jonah-2-2-9-MEANING-COORDINATES.md", "jonah_pericope_03_v2_0", "POETIC_SUNG", "PRAYER", "RELIGIOUS_WORSHIP"],
+  J04: ["J04-Jonah-2-10-3-10-MEANING-COORDINATES.md", "jonah_pericope_04_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
+  J05: ["J05-Jonah-4-1-11-MEANING-COORDINATES.md", "jonah_pericope_05_v2_0", "NARRATIVE", "HISTORICAL_NARRATIVE", "INFORMAL_CASUAL"],
 };
 
 const here = dirname(fileURLToPath(import.meta.url));
-const FIX = join(here, "..", "fixtures", "for-model");
+const FIX = join(here, "..", "fixtures", "meaning-coordinates");
 const statusOf = (text: string) => text.match(/^status:\s*"([^"]+)"/m)?.[1];
 const jsonOf = (text: string) => JSON.parse(text.match(/```json\s*(\{[\s\S]*\})\s*```/)![1]);
 
-describe("SC-0064 close — FOR_MODEL graduation (13 ruled FMs become visible)", () => {
+describe("SC-0064 close — MEANING_COORDINATES graduation (13 ruled MCs become visible)", () => {
   for (const [pid, [file, staId, gg, genre, reg]] of Object.entries(ANCHORS)) {
     describe(pid, () => {
       const path = join(FIX, file);
@@ -52,7 +52,7 @@ describe("SC-0064 close — FOR_MODEL graduation (13 ruled FMs become visible)",
 
       it("validates block-clean with ZERO convergent drift (the batch-ruling payoff)", () => {
         const r = validateArtifact(path);
-        expect(r.artifact).toBe("FOR_MODEL");
+        expect(r.artifact).toBe("MEANING_COORDINATES");
         expect(r.counts.block, JSON.stringify(r.findings.filter((f) => f.severity === "block"), null, 2)).toBe(0);
         expect(r.counts.drift).toBe(0);
         expect(r.ok).toBe(true);
@@ -70,7 +70,7 @@ describe("SC-0064 close — FOR_MODEL graduation (13 ruled FMs become visible)",
   // adversarial: the graduation guards must fire
   describe("bite-proof", () => {
     const tmp = mkdtempSync(join(tmpdir(), "tripod-grad3-"));
-    const j03 = readFileSync(join(FIX, "J03-Jonah-2-2-9-FOR-MODEL.md"), "utf8");
+    const j03 = readFileSync(join(FIX, "J03-Jonah-2-2-9-MEANING-COORDINATES.md"), "utf8");
 
     it("a status regression valid → draft is caught by the status pin", () => {
       expect(statusOf(j03)).toBe("valid");
@@ -78,7 +78,7 @@ describe("SC-0064 close — FOR_MODEL graduation (13 ruled FMs become visible)",
     });
 
     it("a closed-list (register) violation blocks", () => {
-      const f = join(tmp, "bad-register-FOR-MODEL.md");
+      const f = join(tmp, "bad-register-MEANING-COORDINATES.md");
       writeFileSync(f, j03.replace('"register": "RELIGIOUS_WORSHIP"', '"register": "BOGUS_REGISTER"'));
       const r = validateArtifact(f);
       expect(r.ok).toBe(false);
@@ -87,14 +87,14 @@ describe("SC-0064 close — FOR_MODEL graduation (13 ruled FMs become visible)",
   });
 });
 
-// SC-0064 close part 2 — the COMPILATION-LOGs catch up to the FOR_MODELs. The 12 drafted
+// SC-0064 close part 2 — the COMPILATION-LOGs catch up to the MCs. The 12 drafted
 // pericopes' skeleton gap-reports were mechanized into ruled logs (status skeleton→valid,
 // sta_compilation_status SKELETON_DETERMINISTIC→MODEL_DRAFTED_REVIEWER_RULED, vocabulary_additions
 // assembled from the per-axis ruling-logs); P08's hand-built ruled log graduated as-is.
 describe("SC-0064 close part 2 — COMPILATION-LOG mechanization (13 ruled logs)", () => {
   const CL_FIX = join(here, "..", "fixtures", "compilation-log");
   for (const [pid, [file]] of Object.entries(ANCHORS)) {
-    const clFile = file.replace("-FOR-MODEL.md", "-COMPILATION-LOG.md");
+    const clFile = file.replace("-MEANING-COORDINATES.md", "-COMPILATION-LOG.md");
     describe(pid, () => {
       const path = join(CL_FIX, clFile);
       const text = readFileSync(path, "utf8");

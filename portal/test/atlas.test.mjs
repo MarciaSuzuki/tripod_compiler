@@ -11,7 +11,7 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-import { portalDir, mkTree, mkMap, mkForModel, mkLog, runBuild, rmrf } from './helpers.mjs';
+import { portalDir, mkTree, mkMap, mkMeaningCoordinates, mkLog, runBuild, rmrf } from './helpers.mjs';
 
 const repoRoot = path.resolve(portalDir, '..');
 const haveFixtures = fs.existsSync(path.join(repoRoot, 'fixtures', 'meaning-map'));
@@ -137,7 +137,7 @@ test('atlas: real tree exports shards with namespaced ids, real spans, honest st
   }
   const ruthEntry = manifest.atlas.find((e) => e.path === 'atlas/ruth.json');
   assert.ok(ruthEntry.sources.some((s) => s.path === '_spec/registry/ruth.aliases.json'));
-  assert.ok(ruthEntry.sources.some((s) => s.path.startsWith('fixtures/for-model/P01')));
+  assert.ok(ruthEntry.sources.some((s) => s.path.startsWith('fixtures/meaning-coordinates/P01')));
   assert.equal(g.generated.commit, manifest.commit);
 
   rmrf(out);
@@ -145,8 +145,8 @@ test('atlas: real tree exports shards with namespaced ids, real spans, honest st
 
 // ---- synthetic trees: exact-shape pins ----------------------------------------
 
-const FM_RICH = `---
-type: "sta-for-model"
+const MC_RICH = `---
+type: "sta-meaning-coordinates"
 pericope: "P01"
 pericope-title: "A test passage"
 source-meaning-map: [[P01-Test]]
@@ -154,7 +154,7 @@ status: "valid"
 pilot: "pilot-2"
 ---
 
-# P01 — FOR_MODEL
+# P01 — MEANING_COORDINATES
 
 \`\`\`json
 {
@@ -216,7 +216,7 @@ pilot: "pilot-2"
 test('atlas: synthetic tree pins the exact graph shape (overrides, slots walk, unresolved links)', () => {
   const root = mkTree({
     'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
-    'fixtures/for-model/P01-Test-FOR-MODEL.md': FM_RICH,
+    'fixtures/meaning-coordinates/P01-Test-MEANING-COORDINATES.md': MC_RICH,
     'fixtures/compilation-log/P01-Test-COMPILATION-LOG.md': mkLog('P01'),
   });
   const out = path.join(root, 'dist');
@@ -292,7 +292,7 @@ test('atlas: Esther flips by data alone — registry-only → compile-pending �
   // No Esther artifacts: registry-only, cast browsable, zero artifact content.
   const bare = mkTree({
     'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
-    'fixtures/for-model/P01-Test-FOR-MODEL.md': mkForModel('P01'),
+    'fixtures/meaning-coordinates/P01-Test-MEANING-COORDINATES.md': mkMeaningCoordinates('P01'),
     'fixtures/compilation-log/P01-Test-COMPILATION-LOG.md': mkLog('P01'),
   });
   let out = path.join(bare, 'dist');
@@ -318,7 +318,7 @@ test('atlas: Esther flips by data alone — registry-only → compile-pending �
   // Full triple: complete, and B19's appears_in span materializes as an edge.
   const done = mkTree({
     'fixtures/meaning-map/E01-Test.md': mkMap('E01', { bcv: 'Esther 1:1-9' }),
-    'fixtures/for-model/E01-Test-FOR-MODEL.md': mkForModel('E01'),
+    'fixtures/meaning-coordinates/E01-Test-MEANING-COORDINATES.md': mkMeaningCoordinates('E01'),
     'fixtures/compilation-log/E01-Test-COMPILATION-LOG.md': mkLog('E01'),
   });
   out = path.join(done, 'dist');
@@ -366,7 +366,7 @@ test('atlas BITE: a source escaping the repo root entirely also dies (exit 2)', 
 test('atlas: identical inputs → byte-identical shards (deterministic export)', () => {
   const tree = {
     'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
-    'fixtures/for-model/P01-Test-FOR-MODEL.md': mkForModel('P01'),
+    'fixtures/meaning-coordinates/P01-Test-MEANING-COORDINATES.md': mkMeaningCoordinates('P01'),
     'fixtures/compilation-log/P01-Test-COMPILATION-LOG.md': mkLog('P01'),
   };
   const a = mkTree(tree);

@@ -39,7 +39,7 @@ export interface CompileResult {
 }
 
 /**
- * Deterministically compile a Meaning Map into a FOR_MODEL *skeleton*: every field derivable from
+ * Deterministically compile a Meaning Map into a MEANING_COORDINATES *skeleton*: every field derivable from
  * the MM's machine-readable structure is filled (header, classification, scene + entity IDs/presence,
  * verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs,
  * Section-5 concept/figure flags). Controlled-vocabulary tokens + event slots — the judgment Agent 3
@@ -120,7 +120,7 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
       return { place_id: p.code ?? todo(p.label) };
     });
     const objectEntries = sc.objects.map((o, i) => {
-      if (!o.code) gap(`${at}/objects_in_scene/entries/${i}/object_id`, "object_id", "no wikilink in MM — assign an O#/TH_ code (FOR_MODEL coding may differ from MM)", o.label);
+      if (!o.code) gap(`${at}/objects_in_scene/entries/${i}/object_id`, "object_id", "no wikilink in MM — assign an O#/TH_ code (MEANING_COORDINATES coding may differ from MM)", o.label);
       return { object_id: o.code ?? todo(o.label) };
     });
     const times =
@@ -142,7 +142,7 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
       gap(
         `${at}/beings_in_scene`,
         "beings_in_scene",
-        "being(s) named in scene prose but not in the 3A list — the FOR_MODEL often adds these as REFERENCED (judgment)",
+        "being(s) named in scene prose but not in the 3A list — the MEANING_COORDINATES often adds these as REFERENCED (judgment)",
         sc.beingsInProseOnly.join(", "),
       );
     if (!sc.verseRange) gap(`${at}/verse_range`, "verse_range", "could not parse a (v.X–Y) range from the scene heading");
@@ -189,7 +189,7 @@ export function compileSkeleton(mm: MeaningMap): CompileResult {
   gap(
     "/level_3_propositions",
     "(granularity)",
-    `extracted ${mm.propositions.length} propositions at MEANING-MAP granularity; the FOR_MODEL may decompose multi-event propositions further (judgment) and re-anchor flags by verse`,
+    `extracted ${mm.propositions.length} propositions at MEANING-MAP granularity; the MEANING_COORDINATES may decompose multi-event propositions further (judgment) and re-anchor flags by verse`,
   );
 
   const skeleton: Record<string, unknown> = {

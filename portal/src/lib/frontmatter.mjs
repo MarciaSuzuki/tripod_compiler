@@ -1,7 +1,7 @@
 import YAML from 'yaml';
 
 // The vault notes are Obsidian markdown: a YAML frontmatter block, then the body.
-// Obsidian wikilink values (`for-model: [[P01-...-FOR-MODEL]]`) happen to parse as
+// Obsidian wikilink values (`meaning-coordinates: [[P01-...-MEANING-COORDINATES]]`) happen to parse as
 // nested single-element arrays in standard YAML; unwrap() folds them back to the
 // bare note name so callers see plain strings.
 
@@ -45,7 +45,7 @@ export function parseNote(raw, filePath = '(unknown file)') {
   return { frontmatter: unwrap(fm), body: raw.slice(m[0].length) };
 }
 
-/** Extract the first fenced ```json block from a note body (FOR_MODEL / compilation log). */
+/** Extract the first fenced ```json block from a note body (MEANING_COORDINATES / compilation log). */
 export function extractFencedJson(body, filePath = '(unknown file)') {
   const m = /^```json\s*\r?\n([\s\S]*?)\r?\n```\s*$/m.exec(body);
   if (!m) {

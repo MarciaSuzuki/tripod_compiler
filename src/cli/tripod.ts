@@ -17,14 +17,14 @@ import { loadSourcePacket, loadAliasTable, sourcePacketPath, loadCoverageExcepti
 import { suggestReuse, type ReuseSuggestion } from "../engine/concept-check.js";
 import { reconcile } from "../engine/coverage.js";
 import { formatLedgerText, renderLedgerNote } from "../audit/coverage-ledger.js";
-import { lintForModel, lintMeaningMap, applyLintExceptions, type LintReport } from "../engine/lint.js";
+import { lintMeaningCoordinates, lintMeaningMap, applyLintExceptions, type LintReport } from "../engine/lint.js";
 import { checkIdAlignment, type IdAlignReport } from "../engine/id-align.js";
 import { formatIdAlignText, renderIdAlignNote } from "../audit/id-align-ledger.js";
 
 const program = new Command();
 program
   .name("tripod")
-  .description("Tripod Compiler — validator, drift convergence, and MeaningMap→FOR_MODEL skeleton compiler")
+  .description("Tripod Compiler — validator, drift convergence, and MeaningMap→MEANING_COORDINATES skeleton compiler")
   .version("0.4.0");
 
 program
@@ -81,9 +81,9 @@ program
 
 program
   .command("compile")
-  .description("deterministically compile a Meaning Map into a FOR_MODEL skeleton + gap report (no LLM)")
+  .description("deterministically compile a Meaning Map into a MEANING_COORDINATES skeleton + gap report (no LLM)")
   .argument("<meaning-map>", "a pericope Meaning Map .md note")
-  .option("--out <file>", "write the FOR_MODEL skeleton as a draft note")
+  .option("--out <file>", "write the MEANING_COORDINATES skeleton as a draft note")
   .option("--out-log <file>", "write the gap report as a schema-valid COMPILATION-LOG note")
   .option("--json", "print { skeleton, gaps, stats } as JSON")
   .action((mmPath: string, opts: { out?: string; outLog?: string; json?: boolean }) => {
@@ -94,14 +94,14 @@ program
       const ref = String((skeleton as any).header?.source_meaning_map_ref ?? mm.pericope ?? "");
       const note =
         `---\n` +
-        `type: "sta-for-model"\n` +
+        `type: "sta-meaning-coordinates"\n` +
         `pericope: "${mm.pericope ?? ""}"\n` +
         `pericope-title: "${(mm.title ?? "").replace(/"/g, "'")}"\n` +
         `source-meaning-map: [[${ref}]]\n` +
         `status: "skeleton"\n` +
         `pilot: "pilot-2"\n` +
         `---\n\n` +
-        `# ${mm.pericope ?? ""} — ${mm.bcv ?? ""} — FOR_MODEL (SKELETON — ${gaps.length} judgment gaps)\n\n` +
+        `# ${mm.pericope ?? ""} — ${mm.bcv ?? ""} — MEANING_COORDINATES (SKELETON — ${gaps.length} judgment gaps)\n\n` +
         `> Deterministic skeleton compiled from the Meaning Map (\`tripod compile\`). Fields set to ` +
         `\`__TODO__\` need the drafter/LLM (Slice 4); see the gap report (\`--json\`).\n\n` +
         "```json\n" +
@@ -128,7 +128,7 @@ program
       console.log(JSON.stringify({ skeleton, gaps, stats }, null, 2));
       return;
     }
-    console.log(`compiled ${mmPath} → FOR_MODEL skeleton (${skeleton["sta_id"]})`);
+    console.log(`compiled ${mmPath} → MEANING_COORDINATES skeleton (${skeleton["sta_id"]})`);
     console.log(
       `  scenes ${stats.scenes} · propositions ${stats.propositions} (MM granularity) · beings ${stats.beings} · place codes ${stats.placesWithCode} · flags carried ${stats.flagsCarried}`,
     );
@@ -145,8 +145,8 @@ program
 
 program
   .command("propose-vocabulary")
-  .description("from a FOR_MODEL, list convergent-axis drift values as candidate COMPILATION-LOG vocabulary_additions")
-  .argument("<for-model>", "a FOR_MODEL artifact note")
+  .description("from a MEANING_COORDINATES, list convergent-axis drift values as candidate COMPILATION-LOG vocabulary_additions")
+  .argument("<meaning-coordinates>", "a MEANING_COORDINATES artifact note")
   .action((path: string) => {
     const r = validateArtifact(path);
     const byAxis = new Map<string, Set<string>>();
@@ -220,26 +220,26 @@ program
 
 program
   .command("gold-diff")
-  .description("diff each fixture skeleton vs its gold FOR_MODEL: extracted-and-matched vs judgment (Slice-4 regression baseline)")
+  .description("diff each fixture skeleton vs its gold MEANING_COORDINATES: extracted-and-matched vs judgment (Slice-4 regression baseline)")
   .option("--mm-dir <dir>", "meaning-map fixtures dir", "fixtures/meaning-map")
-  .option("--fm-dir <dir>", "gold FOR_MODEL fixtures dir", "fixtures/for-model")
+  .option("--mc-dir <dir>", "gold MEANING_COORDINATES fixtures dir", "fixtures/meaning-coordinates")
   .option("--out <file>", "write the diff baseline JSON")
-  .action((opts: { mmDir: string; fmDir: string; out?: string }) => {
-    const fmFiles = readdirSync(opts.fmDir).filter((f) => f.endsWith("-FOR-MODEL.md"));
+  .action((opts: { mmDir: string; mcDir: string; out?: string }) => {
+    const mcFiles = readdirSync(opts.mcDir).filter((f) => f.endsWith("-MEANING-COORDINATES.md"));
     const diffs = readdirSync(opts.mmDir)
       .filter((f) => f.endsWith(".md"))
       .sort()
       .map((mf) => {
         const pid = mf.slice(0, 3); // P0# / J0#
-        const fm = fmFiles.find((f) => f.startsWith(pid));
-        if (!fm) {
-          // a map-only fixture (FOR_MODEL not yet graduated) is a legitimate state — skip VISIBLY, never silently
-          console.log(`${pid}: skipped — no gold FOR_MODEL in ${opts.fmDir} (map-only fixture)`);
+        const mc = mcFiles.find((f) => f.startsWith(pid));
+        if (!mc) {
+          // a map-only fixture (MEANING_COORDINATES not yet graduated) is a legitimate state — skip VISIBLY, never silently
+          console.log(`${pid}: skipped — no gold MEANING_COORDINATES in ${opts.mcDir} (map-only fixture)`);
           return null;
         }
         const mm = readMeaningMap(join(opts.mmDir, mf));
         const { skeleton } = compileSkeleton(mm);
-        return goldDiff(mm, skeleton, readArtifactNote(join(opts.fmDir, fm)).json);
+        return goldDiff(mm, skeleton, readArtifactNote(join(opts.mcDir, mc)).json);
       })
       .filter((d): d is ReturnType<typeof goldDiff> => d !== null);
     for (const d of diffs) {
@@ -256,32 +256,32 @@ program
 
 program
   .command("coverage")
-  .description("reconcile FOR_MODEL(s) against the frozen BHSA referent set (docs/COVERAGE.md): MATCHED / UNMAPPED_SOURCE / UNANCHORED_ENTITY + coverage score. One target = detailed ledger; many / --corpus = summary.")
-  .argument("[targets...]", "pericope id(s) (e.g. P01) and/or FOR_MODEL .md note path(s)")
+  .description("reconcile MEANING_COORDINATES(s) against the frozen BHSA referent set (docs/COVERAGE.md): MATCHED / UNMAPPED_SOURCE / UNANCHORED_ENTITY + coverage score. One target = detailed ledger; many / --corpus = summary.")
+  .argument("[targets...]", "pericope id(s) (e.g. P01) and/or MEANING_COORDINATES .md note path(s)")
   .option("--book <book>", "book whose pinned packet + alias table to use", "ruth")
-  .option("--fm-dir <dir>", "where to find the FOR_MODEL note when a pericope id is given", "fixtures/for-model")
-  .option("--corpus", "run every pericope that has both a pinned packet and a FOR_MODEL note")
+  .option("--mc-dir <dir>", "where to find the MEANING_COORDINATES note when a pericope id is given", "fixtures/meaning-coordinates")
+  .option("--corpus", "run every pericope that has both a pinned packet and a MEANING_COORDINATES note")
   .option("--out <file>", "write the full coverage ledger as a wiki note (single-target only)")
   .option("--out-dir <dir>", "write each pericope's ledger note into this dir (batch)")
   .option("--json", "emit the structured ledger(s) as JSON")
-  .action((targets: string[], opts: { book: string; fmDir: string; corpus?: boolean; out?: string; outDir?: string; json?: boolean }) => {
+  .action((targets: string[], opts: { book: string; mcDir: string; corpus?: boolean; out?: string; outDir?: string; json?: boolean }) => {
     const aliases = loadAliasTable(opts.book);
     const exceptions = loadCoverageExceptions();
 
     const resolveOne = (arg: string): { pericope: string; led: ReturnType<typeof reconcile>; packet: ReturnType<typeof loadSourcePacket> } => {
-      let fmPath: string;
+      let mcPath: string;
       let pericope: string;
       if (/^[A-Za-z]\d+$/.test(arg)) {
         pericope = arg.toUpperCase();
-        const f = readdirSync(opts.fmDir).find((x) => x.startsWith(pericope) && x.endsWith("-FOR-MODEL.md"));
-        if (!f) throw new Error(`no FOR_MODEL note for ${pericope} in ${opts.fmDir}`);
-        fmPath = join(opts.fmDir, f);
+        const f = readdirSync(opts.mcDir).find((x) => x.startsWith(pericope) && x.endsWith("-MEANING-COORDINATES.md"));
+        if (!f) throw new Error(`no MEANING_COORDINATES note for ${pericope} in ${opts.mcDir}`);
+        mcPath = join(opts.mcDir, f);
       } else {
-        fmPath = arg;
-        pericope = (readArtifactNote(fmPath).frontmatter.pericope ?? "").toUpperCase();
-        if (!pericope) throw new Error(`cannot determine pericope from ${fmPath} frontmatter`);
+        mcPath = arg;
+        pericope = (readArtifactNote(mcPath).frontmatter.pericope ?? "").toUpperCase();
+        if (!pericope) throw new Error(`cannot determine pericope from ${mcPath} frontmatter`);
       }
-      const note = readArtifactNote(fmPath);
+      const note = readArtifactNote(mcPath);
       const packet = loadSourcePacket(sourcePacketPath(opts.book, pericope));
       return { pericope, led: reconcile(packet, note.json as any, aliases, exceptions), packet };
     };
@@ -291,8 +291,8 @@ program
     if (opts.corpus) {
       const dir = join(SPEC_DIR, "source", opts.book.toLowerCase());
       const have = readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
-      const withFm = readdirSync(opts.fmDir).filter((f) => f.endsWith(".md"));
-      for (const p of have.sort()) if (withFm.some((f) => f.startsWith(p)) && !list.includes(p)) list.push(p);
+      const withMc = readdirSync(opts.mcDir).filter((f) => f.endsWith(".md"));
+      for (const p of have.sort()) if (withMc.some((f) => f.startsWith(p)) && !list.includes(p)) list.push(p);
     }
     if (list.length === 0) {
       console.error("no targets. Pass pericope id(s)/path(s), or --corpus to run all pinned pericopes.");
@@ -369,16 +369,16 @@ program
 program
   .command("lint")
   .description("Level-3 / §3C content-discipline lint (the drift-guard): flag forbidden grammatical vocabulary, interpretive labels, conditioning-in-Q&A, compounds, and §3C-not-an-entity. Surfaces drift; the human judges.")
-  .argument("[paths...]", "meaning-map and/or FOR_MODEL .md notes (auto-detected) and/or directories")
-  .option("--corpus", "lint fixtures/meaning-map/ + fixtures/for-model/")
+  .argument("[paths...]", "meaning-map and/or MEANING_COORDINATES .md notes (auto-detected) and/or directories")
+  .option("--corpus", "lint fixtures/meaning-map/ + fixtures/meaning-coordinates/")
   .option("--mm-dir <dir>", "meaning-map dir for --corpus", "fixtures/meaning-map")
-  .option("--fm-dir <dir>", "FOR_MODEL dir for --corpus", "fixtures/for-model")
+  .option("--mc-dir <dir>", "MEANING_COORDINATES dir for --corpus", "fixtures/meaning-coordinates")
   .option("--tier1", "show only high-confidence (tier-1) findings")
   .option("--json", "emit the structured reports as JSON")
-  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; fmDir: string; tier1?: boolean; json?: boolean }) => {
+  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; mcDir: string; tier1?: boolean; json?: boolean }) => {
     const files = [...expandPaths(paths)];
     if (opts.corpus) {
-      for (const d of [opts.mmDir, opts.fmDir]) for (const f of readdirSync(d)) if (f.endsWith(".md")) files.push(join(d, f));
+      for (const d of [opts.mmDir, opts.mcDir]) for (const f of readdirSync(d)) if (f.endsWith(".md")) files.push(join(d, f));
     }
     if (files.length === 0) {
       console.error("no targets. Pass .md note(s)/dir(s), or --corpus.");
@@ -387,8 +387,8 @@ program
     const lintExceptions = loadLintExceptions();
     const lintOne = (file: string): LintReport => {
       const raw = readFileSync(file, "utf8");
-      const isForModel = /type:\s*["']?sta-for-model/.test(raw) || /"sta_id"\s*:/.test(raw);
-      const base = isForModel ? lintForModel(readArtifactNote(file).json as any, file) : lintMeaningMap(raw, file);
+      const isMeaningCoordinates = /type:\s*["']?sta-meaning-coordinates/.test(raw) || /"sta_id"\s*:/.test(raw);
+      const base = isMeaningCoordinates ? lintMeaningCoordinates(readArtifactNote(file).json as any, file) : lintMeaningMap(raw, file);
       return applyLintExceptions(base, lintExceptions); // recorded reviewer sign-offs (SC-0010 pattern)
     };
     const reports = [...new Set(files)].sort().map(lintOne).map((r) => ({
@@ -429,20 +429,20 @@ program
   .command("id-check")
   .description(
     "SC-0018 cross-artifact entity-ID alignment (the 5th deterministic check: legal · complete · atomic-bare-plain · ALIGNED · true). " +
-      "Diagnostic only — surfaces where the prose map and the FOR_MODEL disagree on which canonical code names an entity; fixes nothing.",
+      "Diagnostic only — surfaces where the prose map and the MEANING_COORDINATES disagree on which canonical code names an entity; fixes nothing.",
   )
-  .argument("[paths...]", "meaning-map .md note(s) and/or directories; each is paired with its FOR_MODEL by P0# prefix")
-  .option("--corpus", "check every map in --mm-dir that has a paired FOR_MODEL in --fm-dir")
+  .argument("[paths...]", "meaning-map .md note(s) and/or directories; each is paired with its MEANING_COORDINATES by P0# prefix")
+  .option("--corpus", "check every map in --mm-dir that has a paired MEANING_COORDINATES in --mc-dir")
   .option("--mm-dir <dir>", "meaning-map dir", "fixtures/meaning-map")
-  .option("--fm-dir <dir>", "FOR_MODEL dir", "fixtures/for-model")
+  .option("--mc-dir <dir>", "MEANING_COORDINATES dir", "fixtures/meaning-coordinates")
   .option("--book <book>", "force one alias-table book for every map (default: derived per map from its bcv frontmatter, falling back to ruth)")
   .option("--json", "emit the structured inventory as JSON")
   .option("--out <file>", "write the full inventory as a wiki ledger note (single-target only)")
   .option("--out-dir <dir>", "write each pericope's ledger note into this dir (batch)")
-  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; fmDir: string; book?: string; json?: boolean; out?: string; outDir?: string }) => {
+  .action((paths: string[], opts: { corpus?: boolean; mmDir: string; mcDir: string; book?: string; json?: boolean; out?: string; outDir?: string }) => {
     const exceptions = loadIdAlignmentExceptions();
-    const fmFiles = readdirSync(opts.fmDir).filter((f) => f.endsWith(".md"));
-    const noteResolveDirs = [...new Set([opts.mmDir, opts.fmDir])];
+    const mcFiles = readdirSync(opts.mcDir).filter((f) => f.endsWith(".md"));
+    const noteResolveDirs = [...new Set([opts.mmDir, opts.mcDir])];
 
     // assemble the map list: explicit map paths (auto-detected from dirs) and/or --corpus.
     const mapPaths: string[] = [];
@@ -473,21 +473,21 @@ program
     const reports: IdAlignReport[] = [];
     for (const mapPath of maps) {
       const pid = (mapPath.split("/").pop() ?? "").slice(0, 3); // P0# / J0#
-      // require the FOR_MODEL suffix — a bare prefix-find in a mixed dir grabs the COMPILATION-LOG
+      // require the MEANING_COORDINATES suffix — a bare prefix-find in a mixed dir grabs the COMPILATION-LOG
       // (the same trap coverage hit at SC-0038; second instance of the class)
-      const fm = fmFiles.find((f) => f.startsWith(pid) && f.endsWith("-FOR-MODEL.md"));
-      if (!fm) {
+      const mc = mcFiles.find((f) => f.startsWith(pid) && f.endsWith("-MEANING-COORDINATES.md"));
+      if (!mc) {
         if (opts.corpus && !explicit.has(mapPath)) {
-          // a map-only fixture (FOR_MODEL not yet graduated) has nothing to align — skip VISIBLY, never silently
-          console.log(`– ${mapPath}: skipped — no paired FOR_MODEL (prefix ${pid}) in ${opts.fmDir} (map-only fixture)`);
+          // a map-only fixture (MEANING_COORDINATES not yet graduated) has nothing to align — skip VISIBLY, never silently
+          console.log(`– ${mapPath}: skipped — no paired MEANING_COORDINATES (prefix ${pid}) in ${opts.mcDir} (map-only fixture)`);
           continue;
         }
-        console.error(`✗ ${mapPath}: no paired FOR_MODEL (prefix ${pid}) in ${opts.fmDir}`);
+        console.error(`✗ ${mapPath}: no paired MEANING_COORDINATES (prefix ${pid}) in ${opts.mcDir}`);
         process.exitCode = 2;
         continue;
       }
       try {
-        reports.push(checkIdAlignment(mapPath, join(opts.fmDir, fm), { exceptions, noteResolveDirs, aliases: aliasesFor(mapPath) }));
+        reports.push(checkIdAlignment(mapPath, join(opts.mcDir, mc), { exceptions, noteResolveDirs, aliases: aliasesFor(mapPath) }));
       } catch (e) {
         console.error(`✗ ${mapPath}: ${(e as Error).message}`);
         process.exitCode = 2;
@@ -562,7 +562,7 @@ program
 
 program
   .command("draft")
-  .description("SC-0063 Slice-4 drafter: fill a FOR_MODEL skeleton's judgment gaps via the Opus API (default = dry-run, no network)")
+  .description("SC-0063 Slice-4 drafter: fill a MEANING_COORDINATES skeleton's judgment gaps via the Opus API (default = dry-run, no network)")
   .argument("<map-or-id>", "a Meaning Map .md path, or a pericope id (P08, J03) resolved in fixtures/meaning-map/")
   .option("--out <file>", "write the assembled request (dry-run artifact) to a file")
   .option("--measure", "exact input-token count via the free count_tokens endpoint (needs ANTHROPIC_API_KEY; falls back to byte estimate)")
@@ -656,28 +656,28 @@ program
     writeFileSync(join(runDir, "fills.json"), JSON.stringify(res.output, null, 2));
     writeFileSync(join(runDir, "response-raw.txt"), res.rawText);
     const note =
-      `---\ntype: "sta-for-model"\npericope: "${id}"\npericope-title: "${(req.mm.title ?? "").replace(/"/g, "'")}"\nsource-meaning-map: [[${String((req.compile.skeleton as any).header?.source_meaning_map_ref ?? "")}]]\nstatus: "draft"\npilot: "pilot-2"\ndrafter: "${res.model} · fm-drafter prompt (see _spec/pins.json) · machine-drafted, unruled"\n---\n\n` +
-      `# ${id} — ${req.mm.bcv ?? ""} — FOR_MODEL (DRAFT — machine-drafted, awaiting review)\n\n` +
+      `---\ntype: "sta-meaning-coordinates"\npericope: "${id}"\npericope-title: "${(req.mm.title ?? "").replace(/"/g, "'")}"\nsource-meaning-map: [[${String((req.compile.skeleton as any).header?.source_meaning_map_ref ?? "")}]]\nstatus: "draft"\npilot: "pilot-2"\ndrafter: "${res.model} · mc-drafter prompt (see _spec/pins.json) · machine-drafted, unruled"\n---\n\n` +
+      `# ${id} — ${req.mm.bcv ?? ""} — MEANING_COORDINATES (DRAFT — machine-drafted, awaiting review)\n\n` +
       `> Judgment gaps filled by the SC-0063 drafter (\`tripod draft --live\`); the merge layer enforced the patch-only contract. NOT canon until ruled.\n\n` +
       "```json\n" + JSON.stringify(merge.merged, null, 2) + "\n```\n";
-    writeFileSync(join(runDir, `${id}-FOR-MODEL.md`), note);
+    writeFileSync(join(runDir, `${id}-MEANING-COORDINATES.md`), note);
     console.log(`  provenance + drafted FM written to ${runDir}`);
     console.log("  next: run the gates (validate · lint · coverage · id-check) on the drafted FM — findings are the experiment data.");
   });
 
 program
   .command("calibrate")
-  .description("SC-0063 Phase B: score a drafted FOR_MODEL against its GOLD counterpart at the judgment layer (drafted-vs-gold, alignment-aware, nothing smoothed)")
-  .argument("<id>", "pericope id with a gold FOR_MODEL fixture (P01–P06) and a draft run under _working/<id>/drafts/")
+  .description("SC-0063 Phase B: score a drafted MEANING_COORDINATES against its GOLD counterpart at the judgment layer (drafted-vs-gold, alignment-aware, nothing smoothed)")
+  .argument("<id>", "pericope id with a gold MEANING_COORDINATES fixture (P01–P06) and a draft run under _working/<id>/drafts/")
   .option("--run <dir>", "a specific run directory (default: latest run-* under _working/<id>/drafts)")
   .action(async (id: string, opts: { run?: string }) => {
     const { assembleDraftRequest } = await import("../drafter/assemble.js");
     const { applyFills } = await import("../drafter/fills.js");
     const { calibrate, formatCalibration } = await import("../drafter/calibrate.js");
     const ID = id.toUpperCase();
-    const goldFile = readdirSync(join("fixtures", "for-model")).find((f) => f.toUpperCase().startsWith(`${ID}-`));
-    if (!goldFile) throw new Error(`no gold FOR_MODEL fixture for ${ID} (calibration needs one of P01–P06)`);
-    const goldNote = readFileSync(join("fixtures", "for-model", goldFile), "utf8");
+    const goldFile = readdirSync(join("fixtures", "meaning-coordinates")).find((f) => f.toUpperCase().startsWith(`${ID}-`));
+    if (!goldFile) throw new Error(`no gold MEANING_COORDINATES fixture for ${ID} (calibration needs one of P01–P06)`);
+    const goldNote = readFileSync(join("fixtures", "meaning-coordinates", goldFile), "utf8");
     const goldJson = JSON.parse(goldNote.match(/```json\n([\s\S]*?)\n```/)![1]!);
     const runDir =
       opts.run ??

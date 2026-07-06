@@ -20,7 +20,7 @@ import { reconcile } from "../src/engine/coverage.js";
  * SC-0055 — the visibility cycle: J03 + J04 + J05 + P07 graduate together (Marcia's
  * "P09 then visibility" order, 2026-06-11). Each blessed map moves byte-identical from
  * `_working/<id>/` into fixtures with the declared status flip draft→complete (the
- * SC-0044 J02 pattern); the FOR_MODEL skeletons + COMPILATION-LOGs stay `_working/`
+ * SC-0044 J02 pattern); the MEANING_COORDINATES skeletons + COMPILATION-LOGs stay `_working/`
  * until their judgment halves are authored (the SC-0038 J01 Option-1 pattern).
  *
  * One anchor per pericope, the J01/J02 idiom: the L1 closed lists hold, the fresh
@@ -123,15 +123,15 @@ for (const a of ANCHORS) {
     it(`the skeleton's only blocks are judgment fields — ZERO closed-axis; gap signature pinned at ${a.blocks}`, () => {
       const tmp = mkdtempSync(join(tmpdir(), `tripod-grad-${a.pid}-`));
       try {
-        const fmPath = join(tmp, `${a.pid}-FOR-MODEL.md`);
+        const mcPath = join(tmp, `${a.pid}-MEANING-COORDINATES.md`);
         const note =
-          `---\ntype: "sta-for-model"\npericope: "${a.pid}"\nstatus: "skeleton"\npilot: "pilot-2"\n---\n\n` +
-          `# ${a.pid} — FOR_MODEL (SKELETON — ${gaps.length} judgment gaps)\n\n` +
+          `---\ntype: "sta-meaning-coordinates"\npericope: "${a.pid}"\nstatus: "skeleton"\npilot: "pilot-2"\n---\n\n` +
+          `# ${a.pid} — MEANING_COORDINATES (SKELETON — ${gaps.length} judgment gaps)\n\n` +
           "```json\n" +
           JSON.stringify(skeleton, null, 2) +
           "\n```\n";
-        writeFileSync(fmPath, note);
-        const r = validateArtifact(fmPath);
+        writeFileSync(mcPath, note);
+        const r = validateArtifact(mcPath);
         const blocks = r.findings.filter((f) => f.severity === "block");
         for (const b of blocks) {
           expect(b.location, `closed-list axis blocked: ${JSON.stringify(b)}`).not.toMatch(

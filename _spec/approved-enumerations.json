@@ -11,217 +11,217 @@
         "value": "AROSE_TO_RETURN",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "ARRIVED_AT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "ASCRIBED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "ASKED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "ATE",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "BLESSED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "CEASED_SPEAKING",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "DIRECTED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "GREETED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "HAD_LEFTOVER",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "IDENTIFIED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "INTRODUCED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "KISSED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "NAMED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "PERMITTED",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "PLACED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "POSITIONED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "PROPOSED",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "REFUSED",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "REPORTED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "RETURNED",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "SAW",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "STATED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "TOOK_AS_WIFE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "TURNED_BACK",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "VOWED",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "WALKED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "WAS_SATISFIED",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "WENT_OUT",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "WEPT_ALOUD",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
         "value": "WERE_AT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0025"
       },
       {
@@ -284,70 +284,70 @@
         "value": "GAVE",
         "first_seen": "P07",
         "approved_in": "P07",
-        "source_artifact": "P07-Ruth-2-17-23-FOR-MODEL",
+        "source_artifact": "P07-Ruth-2-17-23-MEANING-COORDINATES",
         "sc_ref": "SC-0072"
       },
       {
         "value": "BROUGHT_OUT",
         "first_seen": "P07",
         "approved_in": "P07",
-        "source_artifact": "P07-Ruth-2-17-23-FOR-MODEL",
+        "source_artifact": "P07-Ruth-2-17-23-MEANING-COORDINATES",
         "sc_ref": "SC-0072"
       },
       {
         "value": "TURNED_ASIDE",
         "first_seen": "P11",
         "approved_in": "P11",
-        "source_artifact": "P11-Ruth-4-1-8-FOR-MODEL",
+        "source_artifact": "P11-Ruth-4-1-8-MEANING-COORDINATES",
         "sc_ref": "SC-0072"
       },
       {
         "value": "SAT",
         "first_seen": "P11",
         "approved_in": "P11",
-        "source_artifact": "P11-Ruth-4-1-8-FOR-MODEL",
+        "source_artifact": "P11-Ruth-4-1-8-MEANING-COORDINATES",
         "sc_ref": "SC-0072"
       },
       {
         "value": "CRIED",
         "first_seen": "J02",
         "approved_in": "J02",
-        "source_artifact": "J02-Jonah-1-4-2-1-FOR-MODEL",
+        "source_artifact": "J02-Jonah-1-4-2-1-MEANING-COORDINATES",
         "sc_ref": "SC-0072"
       },
       {
         "value": "TOLD",
         "first_seen": "J02",
         "approved_in": "J02",
-        "source_artifact": "J02-Jonah-1-4-2-1-FOR-MODEL",
+        "source_artifact": "J02-Jonah-1-4-2-1-MEANING-COORDINATES",
         "sc_ref": "SC-0072"
       },
       {
         "value": "ANNIHILATE",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "DESTROY",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "KILL",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "PLUNDER",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -400,42 +400,42 @@
         "value": "TIME_ANCHOR_ESTABLISHED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "FAMINE_OCCURRED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "MIGRATED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "NAMED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "DIED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "DWELT_AT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -456,189 +456,189 @@
         "value": "ARRIVED_AT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "IDENTIFIED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "REMAINED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "TOOK",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "APPEAL",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "BLESSING",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "DEPARTED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "GAVE",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "KISSED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "LAMENT",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "RETURNED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "SPOKE",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "WEPT",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "PERCEIVED",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "VOW",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "CITY_STIRRED",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "NARRATOR_FRAME",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "RENAMING",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "GLEANED",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "NARRATOR_INTRODUCES",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "ATE",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "DECLARED",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "HANDED",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "INSTRUCTION",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "PROSTRATED",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "ROSE",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "SAT",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
@@ -1002,21 +1002,21 @@
         "value": "GRANTED",
         "first_seen": "E03",
         "approved_in": "E03",
-        "source_artifact": "E03-Esther-2-1-4-FOR-MODEL",
+        "source_artifact": "E03-Esther-2-1-4-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "WENT_OUT",
         "first_seen": "E08",
         "approved_in": "E08",
-        "source_artifact": "E08-Esther-4-1-8-FOR-MODEL",
+        "source_artifact": "E08-Esther-4-1-8-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "WRATH_SUBSIDED",
         "first_seen": "E03",
         "approved_in": "E03",
-        "source_artifact": "E03-Esther-2-1-4-FOR-MODEL",
+        "source_artifact": "E03-Esther-2-1-4-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -1025,14 +1025,14 @@
         "value": "OPENING_CHRONICLE_SCENE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "BEREAVEMENT_SCENE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -1046,91 +1046,91 @@
         "value": "MARRIAGE_SCENE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "APPEAL_SCENE",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "DEPARTURE_SCENE",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "RATIFICATION_SCENE",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "VOW_SCENE",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "ARRIVAL_SCENE",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "LAMENT_SCENE",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "INITIATIVE_SCENE",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "NARRATOR_INTRODUCTION_SCENE",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "REPORT_SCENE",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "BLESSING_SCENE",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "INSTRUCTION_SCENE",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "MEAL_SCENE",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
@@ -1340,70 +1340,70 @@
         "value": "AUDIENCE_SCENE",
         "first_seen": "E10",
         "approved_in": "E10",
-        "source_artifact": "E10-Esther-5-1-14-FOR-MODEL",
+        "source_artifact": "E10-Esther-5-1-14-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "AUTHORITY_GRANT_SCENE",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "CONSPIRACY_DISCLOSURE_SCENE",
         "first_seen": "E05",
         "approved_in": "E05",
-        "source_artifact": "E05-Esther-2-19-23-FOR-MODEL",
+        "source_artifact": "E05-Esther-2-19-23-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "EXPOSURE_SCENE",
         "first_seen": "E12",
         "approved_in": "E12",
-        "source_artifact": "E12-Esther-7-1-10-FOR-MODEL",
+        "source_artifact": "E12-Esther-7-1-10-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "FESTIVAL_FOUNDING_SCENE",
         "first_seen": "E16",
         "approved_in": "E16",
-        "source_artifact": "E16-Esther-9-11-19-FOR-MODEL",
+        "source_artifact": "E16-Esther-9-11-19-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "GATE_CONFRONTATION_SCENE",
         "first_seen": "E06",
         "approved_in": "E06",
-        "source_artifact": "E06-Esther-3-1-6-FOR-MODEL",
+        "source_artifact": "E06-Esther-3-1-6-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "INTAKE_SCENE",
         "first_seen": "E04",
         "approved_in": "E04",
-        "source_artifact": "E04-Esther-2-5-18-FOR-MODEL",
+        "source_artifact": "E04-Esther-2-5-18-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "LOT_CASTING_SCENE",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "REVERSAL_SCENE",
         "first_seen": "E11",
         "approved_in": "E11",
-        "source_artifact": "E11-Esther-6-1-14-FOR-MODEL",
+        "source_artifact": "E11-Esther-6-1-14-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "SLEEPLESS_NIGHT_SCENE",
         "first_seen": "E11",
         "approved_in": "E11",
-        "source_artifact": "E11-Esther-6-1-14-FOR-MODEL",
+        "source_artifact": "E11-Esther-6-1-14-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -1412,21 +1412,21 @@
         "value": "PRESENT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "REFERENCED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "PRESENT_BECOMES_DECEASED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -1442,35 +1442,35 @@
         "value": "AFFLICTION",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "DEPARTURE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "FOREIGN_RESIDENCE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "FAMILY_LOSS",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "EMPTYING",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -2086,91 +2086,91 @@
         "value": "ACCUSATION_LAID",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "CONSPIRACY_EXPOSED",
         "first_seen": "E05",
         "approved_in": "E05",
-        "source_artifact": "E05-Esther-2-19-23-FOR-MODEL",
+        "source_artifact": "E05-Esther-2-19-23-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "ENEMY_STRUCK",
         "first_seen": "E15",
         "approved_in": "E15",
-        "source_artifact": "E15-Esther-9-1-10-FOR-MODEL",
+        "source_artifact": "E15-Esther-9-1-10-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "FAVOR_GRANTED",
         "first_seen": "E03",
         "approved_in": "E03",
-        "source_artifact": "E03-Esther-2-1-4-FOR-MODEL",
+        "source_artifact": "E03-Esther-2-1-4-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "FESTIVAL_FOUNDED",
         "first_seen": "E16",
         "approved_in": "E16",
-        "source_artifact": "E16-Esther-9-11-19-FOR-MODEL",
+        "source_artifact": "E16-Esther-9-11-19-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "GREAT_REVERSAL",
         "first_seen": "E12",
         "approved_in": "E12",
-        "source_artifact": "E12-Esther-7-1-10-FOR-MODEL",
+        "source_artifact": "E12-Esther-7-1-10-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "PLEA_FOR_LIFE",
         "first_seen": "E12",
         "approved_in": "E12",
-        "source_artifact": "E12-Esther-7-1-10-FOR-MODEL",
+        "source_artifact": "E12-Esther-7-1-10-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "PUBLIC_FEAST",
         "first_seen": "E01",
         "approved_in": "E01",
-        "source_artifact": "E01-Esther-1-1-9-FOR-MODEL",
+        "source_artifact": "E01-Esther-1-1-9-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "PUBLIC_HONOR",
         "first_seen": "E06",
         "approved_in": "E06",
-        "source_artifact": "E06-Esther-3-1-6-FOR-MODEL",
+        "source_artifact": "E06-Esther-3-1-6-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "RECORD_SEALED",
         "first_seen": "E05",
         "approved_in": "E05",
-        "source_artifact": "E05-Esther-2-19-23-FOR-MODEL",
+        "source_artifact": "E05-Esther-2-19-23-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "RESOLVE_TO_ACT",
         "first_seen": "E09",
         "approved_in": "E09",
-        "source_artifact": "E09-Esther-4-9-17-FOR-MODEL",
+        "source_artifact": "E09-Esther-4-9-17-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "ROYAL_RAGE",
         "first_seen": "E02",
         "approved_in": "E02",
-        "source_artifact": "E02-Esther-1-10-22-FOR-MODEL",
+        "source_artifact": "E02-Esther-1-10-22-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "SEARCH_SET_IN_MOTION",
         "first_seen": "E02",
         "approved_in": "E02",
-        "source_artifact": "E02-Esther-1-10-22-FOR-MODEL",
+        "source_artifact": "E02-Esther-1-10-22-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -2179,49 +2179,49 @@
         "value": "STORY_WORLD_CONTEXT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "PHYSICAL_LOCATION",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "KINSHIP_CONTEXT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "INSTITUTIONAL_CONTEXT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "TEMPORAL_CONTEXT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "AUDIENCE_KNOWLEDGE_CONTEXT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "HISTORICAL_ERA_CONTEXT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -2256,14 +2256,14 @@
         "value": "PERIL_CONTEXT",
         "first_seen": "E08",
         "approved_in": "E08",
-        "source_artifact": "E08-Esther-4-1-8-FOR-MODEL",
+        "source_artifact": "E08-Esther-4-1-8-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "POLITICAL_CONTEXT",
         "first_seen": "E02",
         "approved_in": "E02",
-        "source_artifact": "E02-Esther-1-10-22-FOR-MODEL",
+        "source_artifact": "E02-Esther-1-10-22-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -2272,35 +2272,35 @@
         "value": "RESTRAINED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "WEIGHTED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "CHRONICLE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "SOBER",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "QUIETLY_ACCELERATING",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -2370,21 +2370,21 @@
         "value": "RISING",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "STILLED",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "URGENT",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
@@ -2419,42 +2419,42 @@
         "value": "CEREMONIAL",
         "first_seen": "E01",
         "approved_in": "E01",
-        "source_artifact": "E01-Esther-1-1-9-FOR-MODEL",
+        "source_artifact": "E01-Esther-1-1-9-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "COLD",
         "first_seen": "E02",
         "approved_in": "E02",
-        "source_artifact": "E02-Esther-1-10-22-FOR-MODEL",
+        "source_artifact": "E02-Esther-1-10-22-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "DECISIVE",
         "first_seen": "E09",
         "approved_in": "E09",
-        "source_artifact": "E09-Esther-4-9-17-FOR-MODEL",
+        "source_artifact": "E09-Esther-4-9-17-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "JUBILANT",
         "first_seen": "E14",
         "approved_in": "E14",
-        "source_artifact": "E14-Esther-8-9-17-FOR-MODEL",
+        "source_artifact": "E14-Esther-8-9-17-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "SETTLED",
         "first_seen": "E09",
         "approved_in": "E09",
-        "source_artifact": "E09-Esther-4-9-17-FOR-MODEL",
+        "source_artifact": "E09-Esther-4-9-17-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "TAUT",
         "first_seen": "E02",
         "approved_in": "E02",
-        "source_artifact": "E02-Esther-1-10-22-FOR-MODEL",
+        "source_artifact": "E02-Esther-1-10-22-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -2463,14 +2463,14 @@
         "value": "STEADY",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "QUIETLY_ACCELERATING",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -2484,70 +2484,70 @@
         "value": "BRISK",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "SLOWED",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "PAUSED",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "NARROWS",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "RISES",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "SETTLES",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "HOLDS",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "WIDENS",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0021"
       },
       {
         "value": "ACCELERATES",
         "first_seen": "E03",
         "approved_in": "E03",
-        "source_artifact": "E03-Esther-2-1-4-FOR-MODEL",
+        "source_artifact": "E03-Esther-2-1-4-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "ACCUMULATES",
         "first_seen": "E01",
         "approved_in": "E01",
-        "source_artifact": "E01-Esther-1-1-9-FOR-MODEL",
+        "source_artifact": "E01-Esther-1-1-9-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -2556,133 +2556,133 @@
         "value": "ESTABLISHES",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "OPENS",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "PLANTS",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "WITHHOLDS",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "CLOSES",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "ADVANCES",
         "first_seen": "P03",
         "approved_in": "P03",
-        "source_artifact": "P03-Ruth-1-15-18-FOR-MODEL",
+        "source_artifact": "P03-Ruth-1-15-18-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "REACTIVATES",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "STAGES",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "ACCUSES",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "BINDS",
         "first_seen": "E04",
         "approved_in": "E04",
-        "source_artifact": "E04-Esther-2-5-18-FOR-MODEL",
+        "source_artifact": "E04-Esther-2-5-18-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "ELEVATES",
         "first_seen": "E04",
         "approved_in": "E04",
-        "source_artifact": "E04-Esther-2-5-18-FOR-MODEL",
+        "source_artifact": "E04-Esther-2-5-18-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "EXPLAINS",
         "first_seen": "E16",
         "approved_in": "E16",
-        "source_artifact": "E16-Esther-9-11-19-FOR-MODEL",
+        "source_artifact": "E16-Esther-9-11-19-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "FIXES",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "GRANTS",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "PUBLISHES",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "RECORDS",
         "first_seen": "E05",
         "approved_in": "E05",
-        "source_artifact": "E05-Esther-2-19-23-FOR-MODEL",
+        "source_artifact": "E05-Esther-2-19-23-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "REVERSES",
         "first_seen": "E09",
         "approved_in": "E09",
-        "source_artifact": "E09-Esther-4-9-17-FOR-MODEL",
+        "source_artifact": "E09-Esther-4-9-17-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "STATES_DANGER",
         "first_seen": "E09",
         "approved_in": "E09",
-        "source_artifact": "E09-Esther-4-9-17-FOR-MODEL",
+        "source_artifact": "E09-Esther-4-9-17-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "TALLIES",
         "first_seen": "E15",
         "approved_in": "E15",
-        "source_artifact": "E15-Esther-9-1-10-FOR-MODEL",
+        "source_artifact": "E15-Esther-9-1-10-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ],
@@ -2691,35 +2691,35 @@
         "value": "OPENED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "OPENED_AND_THREATENED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "ADVANCED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "STRUCTURALLY_ABSENT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "RESOLVED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       }
     ],
@@ -2728,112 +2728,112 @@
         "value": "STRUCTURAL_FRAMING_DEVICE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "FIGURE_FIRST_OCCURRENCE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "CROSS_OCCURRENCE_INTRA_PERICOPE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "CROSS_PERICOPE_PAIRING_FIRST_OCCURRENCE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "NAMING_SHIFT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "CUMULATIVE_LOSS_LISTING_REQUIRED_FORM",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "STRUCTURAL_ABSENCE_OF_DIVINE_AGENCY",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "STRUCTURAL_ABSENCE_OF_GRIEF",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "STRUCTURAL_ABSENCE_OF_OFFSPRING",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "NUMBER_MEASURE_EXACT_RENDERING",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "NAMING_SEQUENCE_PRESERVATION",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "WITHHELD_PAIRING_PER_SOURCE_DISCIPLINE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "TENDER_CHILD_REFERENCE_PRESERVATION",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "DISCOURSE_THREAD_OPENED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "PROVIDENTIAL_ANSWER_ANTICIPATED",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
         "value": "STRUCTURAL_CONTRAST",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0006"
       },
       {
@@ -2877,147 +2877,147 @@
         "value": "CLAN",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "DAUGHTER_IN_LAW",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "ERA_REFERENT",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "HUSBAND",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "MOTHER_IN_LAW",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "SON",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "SOURCE_GROUP",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "WIDOW",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "WIFE",
         "first_seen": "P01",
         "approved_in": "P01",
-        "source_artifact": "P01-Ruth-1-1-5-FOR-MODEL",
+        "source_artifact": "P01-Ruth-1-1-5-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "DIVINE_AGENT",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "PEOPLE",
         "first_seen": "P02",
         "approved_in": "P02",
-        "source_artifact": "P02-Ruth-1-6-14-FOR-MODEL",
+        "source_artifact": "P02-Ruth-1-6-14-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "TOWNSPEOPLE",
         "first_seen": "P04",
         "approved_in": "P04",
-        "source_artifact": "P04-Ruth-1-19-22-FOR-MODEL",
+        "source_artifact": "P04-Ruth-1-19-22-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "ANCESTOR",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "FIELD_OWNER",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "FOREMAN",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "GLEANER",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "HARVESTERS",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "KINSMAN",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "REDEEMER_KIN",
         "first_seen": "P05",
         "approved_in": "P05",
-        "source_artifact": "P05-Ruth-2-1-7-FOR-MODEL",
+        "source_artifact": "P05-Ruth-2-1-7-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "FEMALE_WORKERS",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
         "value": "MALE_WORKERS",
         "first_seen": "P06",
         "approved_in": "P06",
-        "source_artifact": "P06-Ruth-2-8-16-FOR-MODEL",
+        "source_artifact": "P06-Ruth-2-8-16-MEANING-COORDINATES",
         "sc_ref": "SC-0022"
       },
       {
@@ -3220,119 +3220,119 @@
         "value": "ACCUSER",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "ADVERSARY",
         "first_seen": "E06",
         "approved_in": "E06",
-        "source_artifact": "E06-Esther-3-1-6-FOR-MODEL",
+        "source_artifact": "E06-Esther-3-1-6-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "ADVISERS",
         "first_seen": "E02",
         "approved_in": "E02",
-        "source_artifact": "E02-Esther-1-10-22-FOR-MODEL",
+        "source_artifact": "E02-Esther-1-10-22-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "CONSPIRATOR",
         "first_seen": "E05",
         "approved_in": "E05",
-        "source_artifact": "E05-Esther-2-19-23-FOR-MODEL",
+        "source_artifact": "E05-Esther-2-19-23-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "COURIERS",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "DELIVERED_PEOPLE",
         "first_seen": "E08",
         "approved_in": "E08",
-        "source_artifact": "E08-Esther-4-1-8-FOR-MODEL",
+        "source_artifact": "E08-Esther-4-1-8-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "GATE_SITTER",
         "first_seen": "E05",
         "approved_in": "E05",
-        "source_artifact": "E05-Esther-2-19-23-FOR-MODEL",
+        "source_artifact": "E05-Esther-2-19-23-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "GUARDIAN",
         "first_seen": "E03",
         "approved_in": "E03",
-        "source_artifact": "E03-Esther-2-1-4-FOR-MODEL",
+        "source_artifact": "E03-Esther-2-1-4-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "HONORED_ONE",
         "first_seen": "E11",
         "approved_in": "E11",
-        "source_artifact": "E11-Esther-6-1-14-FOR-MODEL",
+        "source_artifact": "E11-Esther-6-1-14-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "PROVINCIAL_OFFICIALS",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "QUEEN",
         "first_seen": "E01",
         "approved_in": "E01",
-        "source_artifact": "E01-Esther-1-1-9-FOR-MODEL",
+        "source_artifact": "E01-Esther-1-1-9-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "REFUSER",
         "first_seen": "E06",
         "approved_in": "E06",
-        "source_artifact": "E06-Esther-3-1-6-FOR-MODEL",
+        "source_artifact": "E06-Esther-3-1-6-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "SCRIBES",
         "first_seen": "E07",
         "approved_in": "E07",
-        "source_artifact": "E07-Esther-3-7-15-FOR-MODEL",
+        "source_artifact": "E07-Esther-3-7-15-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "SLAIN_FOES",
         "first_seen": "E14",
         "approved_in": "E14",
-        "source_artifact": "E14-Esther-8-9-17-FOR-MODEL",
+        "source_artifact": "E14-Esther-8-9-17-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "SLAIN_SONS",
         "first_seen": "E15",
         "approved_in": "E15",
-        "source_artifact": "E15-Esther-9-1-10-FOR-MODEL",
+        "source_artifact": "E15-Esther-9-1-10-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "THREATENED_PEOPLE",
         "first_seen": "E06",
         "approved_in": "E06",
-        "source_artifact": "E06-Esther-3-1-6-FOR-MODEL",
+        "source_artifact": "E06-Esther-3-1-6-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       },
       {
         "value": "WARD",
         "first_seen": "E04",
         "approved_in": "E04",
-        "source_artifact": "E04-Esther-2-5-18-FOR-MODEL",
+        "source_artifact": "E04-Esther-2-5-18-MEANING-COORDINATES",
         "sc_ref": "SC-0079"
       }
     ]

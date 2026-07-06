@@ -10,7 +10,7 @@ status: "complete"
 meaning-map-version: 2.0
 sta-status: "pending"
 pilot: "pilot-2"
-for-model: [[J03-Jonah-2-2-9-FOR-MODEL]]
+meaning-coordinates: [[J03-Jonah-2-2-9-MEANING-COORDINATES]]
 active-concepts:
   - [[CB_0011-Hesed]]
   - [[CB_0055-Vain-Idols]]

@@ -36,7 +36,7 @@ export function mkTree(files = {}) {
       tagset_version: 'TRIPOD_STA_v2_0',
       axes: {
         proposition_kind: [
-          { value: 'TIME_ANCHOR_ESTABLISHED', first_seen: 'P01', approved_in: 'P01', source_artifact: 'P01-Ruth-1-1-5-FOR-MODEL', sc_ref: 'SC-0006' },
+          { value: 'TIME_ANCHOR_ESTABLISHED', first_seen: 'P01', approved_in: 'P01', source_artifact: 'P01-Ruth-1-1-5-MEANING-COORDINATES', sc_ref: 'SC-0006' },
         ],
         scene_kind: [],
       },
@@ -89,11 +89,11 @@ active-concepts:
 A paragraph mentioning [[B2-Elimelech]] and the concept [[CB_0029-Judges-Era]].
 
 ## 2. Level 1 — Whole-Passage Movement
-See [[${id}-Test-FOR-MODEL]] for the machine file.
+See [[${id}-Test-MEANING-COORDINATES]] for the machine file.
 `;
 }
 
-export function mkForModel(id, { status = 'valid', type = 'sta-for-model' } = {}) {
+export function mkMeaningCoordinates(id, { status = 'valid', type = 'sta-meaning-coordinates' } = {}) {
   return `---
 type: "${type}"
 pericope: "${id}"
@@ -103,7 +103,7 @@ status: "${status}"
 pilot: "pilot-2"
 ---
 
-# ${id} — FOR_MODEL
+# ${id} — MEANING_COORDINATES
 
 \`\`\`json
 { "sta_id": "test_${id.toLowerCase()}", "header": { "bcv": "Ruth 9:1-5" }, "level_3_propositions": [ { "prop_id": "P1", "cb_flags": ["CB_0029"] } ] }

@@ -33,7 +33,7 @@ export interface MMScene {
   times: MMEntity[] | null; // null when the MM says "None"
   significantAbsence: string | null;
   communicativePurpose: string | null;
-  /** B-codes that appear in the scene's prose but are NOT in its 3A list — the FOR_MODEL often
+  /** B-codes that appear in the scene's prose but are NOT in its 3A list — the MEANING_COORDINATES often
    *  adds these as REFERENCED. A judgment gap, surfaced by the compiler. */
   beingsInProseOnly: string[];
 }
@@ -175,7 +175,7 @@ function parseScene(heading: string, body: string[], chapter: string | null): MM
   const timesNone = timesBlock.some((l) => /^-?\s*None/i.test(l.trim()));
   const beings = parseEntities(block("3A"));
 
-  // beings named anywhere in the scene's prose but not in the 3A list (likely REFERENCED in the FOR_MODEL)
+  // beings named anywhere in the scene's prose but not in the 3A list (likely REFERENCED in the MEANING_COORDINATES)
   const listed = new Set(beings.map((b) => b.code).filter(Boolean));
   const mentioned = new Set<string>();
   for (const line of body) for (const m of line.matchAll(/\[\[(B\d+)[^\]]*\]\]/g)) mentioned.add(m[1]!);

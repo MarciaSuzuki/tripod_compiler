@@ -41,7 +41,7 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
   assert.match(ruth, /Narrator never says YHWH sent the famine/);
   assert.ok((ruth.match(/class="absence"/g) || []).length >= 14, 'absences render per scene');
 
-  // SC-0079 compile close: all 18 Esther pericopes carry map + FOR_MODEL + valid CL, so the
+  // SC-0079 compile close: all 18 Esther pericopes carry map + MEANING_COORDINATES + valid CL, so the
   // book graduates compile-pending -> complete, same footing as Ruth/Jonah.
   // (The registry-only rendering itself stays covered by the synthetic-tree test below.)
   const esther = read(out, 'atlas/esther.html');
@@ -50,7 +50,7 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
   assert.ok((esther.match(/class="castcard"/g) || []).length >= 51, 'Esther cast from the pinned registry');
   assert.match(esther, /Pericope spine — 18 passages/);
   assert.ok((esther.match(/class="tile( emo)?"/g) || []).length >= 18, 'all 18 Esther pericopes tile the spine');
-  // SC-0079 compile landed: Esther's FOR_MODELs exist, so the structured absence drill-downs
+  // SC-0079 compile landed: Esther's MCs exist, so the structured absence drill-downs
   // derive from them — Esther's God-absence signature must now render on the spine.
   assert.match(esther, /class="absence"/);
 
@@ -117,8 +117,8 @@ test('atlas pages: registry-only book renders honestly from a synthetic tree', (
 test('atlas pages: an override without its anchor key renders the bare value, never "undefined"', () => {
   // The pinned schema makes scene_id/verse optional on override entries; a
   // register-critical override must survive that honestly (verify-confirmed).
-  const fm = `---
-type: "sta-for-model"
+  const mc = `---
+type: "sta-meaning-coordinates"
 pericope: "P01"
 pericope-title: "A test passage"
 source-meaning-map: [[P01-Test]]
@@ -126,7 +126,7 @@ status: "valid"
 pilot: "pilot-2"
 ---
 
-# P01 — FOR_MODEL
+# P01 — MEANING_COORDINATES
 
 \`\`\`json
 {
@@ -147,7 +147,7 @@ pilot: "pilot-2"
 `;
   const root = mkTree({
     'fixtures/meaning-map/P01-Test.md': mkMap('P01'),
-    'fixtures/for-model/P01-Test-FOR-MODEL.md': fm,
+    'fixtures/meaning-coordinates/P01-Test-MEANING-COORDINATES.md': mc,
   });
   const out = path.join(root, 'dist');
   assert.equal(runBuild(root, out).status, 0);

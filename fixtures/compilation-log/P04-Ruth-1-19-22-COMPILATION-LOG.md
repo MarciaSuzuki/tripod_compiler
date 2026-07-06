@@ -3,7 +3,7 @@ type: "sta-compilation-log"
 pericope: "P04"
 pericope-title: "Naomi and Ruth arrive in Bethlehem; the women of the town react; Naomi renames herself Mara"
 source-meaning-map: [[P04-Ruth-1-19-22]]
-source-for-model: [[P04-Ruth-1-19-22-FOR-MODEL]]
+source-meaning-coordinates: [[P04-Ruth-1-19-22-MEANING-COORDINATES]]
 related-bcd-delta: [[P04-Ruth-1-19-22-BCD-DELTA]]
 status: "valid"
 pilot: "pilot-2"
@@ -39,23 +39,23 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     },
     {
       "decision_id": "P04-D2",
-      "decision": "Meaning-map P5 lament-account compiled as one compound FOR_MODEL proposition with four lament-components.",
-      "description": "The meaning map's P5 holds Naomi's four-part v.21 lament (full-empty antithetical pair + question-recall + YHWH-anah + Shaddai-hera) as one proposition with multiple Q&A. For FOR_MODEL the compound option (one SPOKE_LAMENT_WITH_DOUBLED_DIVINE_ATTRIBUTION proposition with four lament-components) was chosen over the split-into-2-3-propositions alternative. Rationale: the lament is one continuous speech with one speaker and one addressee-collective; the four components are tightly bound rhetorical moves inside a single lament-act; each component carries its own closed-list speech_act value at component-record level. Mirrors P02 P12 SPOKE_LAMENT_WITH_DIVINE_ATTRIBUTION (two components) and P03 P3 UTTERED_COVENANT_BINDING_VOW (six components) compound-speech patterns."
+      "decision": "Meaning-map P5 lament-account compiled as one compound MEANING_COORDINATES proposition with four lament-components.",
+      "description": "The meaning map's P5 holds Naomi's four-part v.21 lament (full-empty antithetical pair + question-recall + YHWH-anah + Shaddai-hera) as one proposition with multiple Q&A. For MEANING_COORDINATES the compound option (one SPOKE_LAMENT_WITH_DOUBLED_DIVINE_ATTRIBUTION proposition with four lament-components) was chosen over the split-into-2-3-propositions alternative. Rationale: the lament is one continuous speech with one speaker and one addressee-collective; the four components are tightly bound rhetorical moves inside a single lament-act; each component carries its own closed-list speech_act value at component-record level. Mirrors P02 P12 SPOKE_LAMENT_WITH_DIVINE_ATTRIBUTION (two components) and P03 P3 UTTERED_COVENANT_BINDING_VOW (six components) compound-speech patterns."
     },
     {
       "decision_id": "P04-D3",
-      "decision": "Naomi's renaming proposal compiled as one compound FOR_MODEL proposition with three components, using more-specific closed-list speech_act values.",
-      "description": "The renaming proposal at v.20 has three illocutionary moves: refuse own name, propose new name, give reason. Compiled as one REFUSED_OWN_NAME_AND_PROPOSED_RENAMING proposition with three components. Speech_act mapping uses the more-specific closed-list values where they fit: 'Do not call me Naomi' → REFUSES_USE_OF_OWN_NAME (more specific than DIRECTS_HEARER_NOT_TO_DO); 'Call me Mara' → PROPOSES_NEW_NAME_FOR_SELF (more specific than DIRECTS_HEARER_TO_DO); 'for Shaddai has dealt very bitterly with me' → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (same construction as P02 R3 hand-of-YHWH). Using more-specific values where the closed list provides them keeps the no-double-negation rule trivially satisfied: there are no negative directives in the FOR_MODEL output because REFUSES_USE_OF_OWN_NAME carries the refusal-force without a negative directive."
+      "decision": "Naomi's renaming proposal compiled as one compound MEANING_COORDINATES proposition with three components, using more-specific closed-list speech_act values.",
+      "description": "The renaming proposal at v.20 has three illocutionary moves: refuse own name, propose new name, give reason. Compiled as one REFUSED_OWN_NAME_AND_PROPOSED_RENAMING proposition with three components. Speech_act mapping uses the more-specific closed-list values where they fit: 'Do not call me Naomi' → REFUSES_USE_OF_OWN_NAME (more specific than DIRECTS_HEARER_NOT_TO_DO); 'Call me Mara' → PROPOSES_NEW_NAME_FOR_SELF (more specific than DIRECTS_HEARER_TO_DO); 'for Shaddai has dealt very bitterly with me' → ASCRIBES_AFFLICTION_TO_GOD_IN_LAMENT (same construction as P02 R3 hand-of-YHWH). Using more-specific values where the closed list provides them keeps the no-double-negation rule trivially satisfied: there are no negative directives in the MEANING_COORDINATES output because REFUSES_USE_OF_OWN_NAME carries the refusal-force without a negative directive."
     },
     {
       "decision_id": "P04-D4",
       "decision": "FIG_0001 Ruth-the-Moabitess reactivation at v.22 recorded as a high-risk register entry, not as a new figure addition.",
-      "description": "FIG_0001 was first-occurrence-registered at P01 P10 (1:4). The narrator deliberately withheld the epithet through P02 and P03 (recorded as P03 R7 SIGNIFICANT_ABSENCE). At P04 v.22 the narrator returns to the epithet at the public-arrival moment. The structural counterpart to P03 R7 is recorded in this COMPILATION-LOG as a REFERENTIAL_FORM_REACTIVATION_AFTER_WITHHOLDING high-risk entry with carries_forward_to P05. FIG_0001 is flagged in FOR_MODEL P6 figure_flags but is NOT re-added to BCD-DELTA to_figures_registry (already registered at P01). The cross_pericope_pair_verification for FIG_0001 remains DEFERRED — the figure's full arc continues across P04, P05, P07, P11, P12."
+      "description": "FIG_0001 was first-occurrence-registered at P01 P10 (1:4). The narrator deliberately withheld the epithet through P02 and P03 (recorded as P03 R7 SIGNIFICANT_ABSENCE). At P04 v.22 the narrator returns to the epithet at the public-arrival moment. The structural counterpart to P03 R7 is recorded in this COMPILATION-LOG as a REFERENTIAL_FORM_REACTIVATION_AFTER_WITHHOLDING high-risk entry with carries_forward_to P05. FIG_0001 is flagged in MEANING_COORDINATES P6 figure_flags but is NOT re-added to BCD-DELTA to_figures_registry (already registered at P01). The cross_pericope_pair_verification for FIG_0001 remains DEFERRED — the figure's full arc continues across P04, P05, P07, P11, P12."
     },
     {
       "decision_id": "P04-D5",
       "decision": "FIG_0013 Bread-house-in-Famine final close at v.22. cross_pericope_pair_verification: VERIFIED.",
-      "description": "FIG_0013 opened at P01 1:1 (famine in beit-lechem), closed first at P02 1:6 (YHWH gives bread to his people), reaches its third occurrence and final close at P04 v.22 when 'they came to Bethlehem at the beginning of the barley harvest' lands the bread-house name against the harvest-frame opening. The cross-pericope pair verification is marked VERIFIED: the harvest-frame opening at v.22 is the structural answer to the famine opening at 1:1; both the lexical bread-house name and the structural provision-pattern converge here. FIG_0013 flagged in FOR_MODEL at P1, P2, P6 (all three Bethlehem-namings in P04); not re-added to BCD-DELTA to_figures_registry."
+      "description": "FIG_0013 opened at P01 1:1 (famine in beit-lechem), closed first at P02 1:6 (YHWH gives bread to his people), reaches its third occurrence and final close at P04 v.22 when 'they came to Bethlehem at the beginning of the barley harvest' lands the bread-house name against the harvest-frame opening. The cross-pericope pair verification is marked VERIFIED: the harvest-frame opening at v.22 is the structural answer to the famine opening at 1:1; both the lexical bread-house name and the structural provision-pattern converge here. FIG_0013 flagged in MEANING_COORDINATES at P1, P2, P6 (all three Bethlehem-namings in P04); not re-added to BCD-DELTA to_figures_registry."
     },
     {
       "decision_id": "P04-D6",
@@ -70,7 +70,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P04-D8",
       "decision": "Naomi's renaming proposal does not take effect; narrator returns to 'Naomi' at v.22; recorded as STRUCTURAL_NON_ADOPTION_OF_PROPOSED_RENAMING.",
-      "description": "Naomi proposes 'Mara' at v.20 and reinforces the refusal of 'Naomi' at v.21 ('Why do you call me Naomi'). The narrator immediately uses 'Naomi' again in the v.22 narrator-frame ('So Naomi returned'). The proposal is structurally encoded at FOR_MODEL P4 as a speech-act without changing B3's underlying being. B3's refusal component carries action REFUSED + refused_name Naomi (no referential_form_at_verse); the proposal component carries referential_form_at_verse MARA; at v.22 it returns to NAMED. The reconstructor must encode the proposal as Naomi's speech-act without applying the new name in narrator voice or in later references."
+      "description": "Naomi proposes 'Mara' at v.20 and reinforces the refusal of 'Naomi' at v.21 ('Why do you call me Naomi'). The narrator immediately uses 'Naomi' again in the v.22 narrator-frame ('So Naomi returned'). The proposal is structurally encoded at MEANING_COORDINATES P4 as a speech-act without changing B3's underlying being. B3's refusal component carries action REFUSED + refused_name Naomi (no referential_form_at_verse); the proposal component carries referential_form_at_verse MARA; at v.22 it returns to NAMED. The reconstructor must encode the proposal as Naomi's speech-act without applying the new name in narrator voice or in later references."
     },
     {
       "decision_id": "P04-D9",
@@ -95,7 +95,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P04-D13",
       "decision": "CB_0017 Daughter-in-Law-Kallah caught at v.22 during meaning-map drafting (not predicted in Step A).",
-      "description": "The Step A prompt for P04 said 'CB_0017 kallah — probably not active in P04'. During meaning-map drafting the lexeme כַלָּתָהּ (kallatah, 'her daughter-in-law') was found at v.22 ('Ruth the Moabitess her daughter-in-law'). CB_0017 carries forward from P02 where it was first-occurrence-registered. Flagged in FOR_MODEL P6 cb_flags with first_occurrence_in_book_here: false. Recorded as a methodology note: future Step A composition should scan source text for lexical occurrences of pre-declared CB lexemes, not only headline rhetorical features."
+      "description": "The Step A prompt for P04 said 'CB_0017 kallah — probably not active in P04'. During meaning-map drafting the lexeme כַלָּתָהּ (kallatah, 'her daughter-in-law') was found at v.22 ('Ruth the Moabitess her daughter-in-law'). CB_0017 carries forward from P02 where it was first-occurrence-registered. Flagged in MEANING_COORDINATES P6 cb_flags with first_occurrence_in_book_here: false. Recorded as a methodology note: future Step A composition should scan source text for lexical occurrences of pre-declared CB lexemes, not only headline rhetorical features."
     },
     {
       "decision_id": "P04-D14",
@@ -105,7 +105,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P04-D15",
       "decision": "Working TM-code renamed TM_BEGINNING_OF_BARLEY_HARVEST -> TM_BARLEY_HARVEST_BEGINNING at write-back to align with Wave 1 wiki convention.",
-      "description": "Agent 3 generated the working time-code as TM_BEGINNING_OF_BARLEY_HARVEST. The Wave 1 wiki migration had pre-created the corresponding TM page under the name TM_BARLEY_HARVEST_BEGINNING (cross-referenced from TM_END_OF_BARLEY_HARVEST.md, _templates/sta-vocabulary.md, and _archive/tripod-sta-vocabulary-v0-2.md). The wiki convention follows the [HARVEST_KIND]_[POSITION] pattern (e.g., TM_END_OF_BARLEY_HARVEST). At P04 write-back the artifact ID was renamed to match the established convention rather than rename the wiki page (which would ripple through three other files). The rename was applied across all P04 working artifacts (step-A, step-B, step-C, step-D, step-E-for-model, step-E-bcd-delta, step-E-compilation-log, step-F) by Marcia's explicit instruction at write-back time; the Gate F approval covered the structural decisions, not this naming detail. Recorded here to keep the audit trail explicit."
+      "description": "Agent 3 generated the working time-code as TM_BEGINNING_OF_BARLEY_HARVEST. The Wave 1 wiki migration had pre-created the corresponding TM page under the name TM_BARLEY_HARVEST_BEGINNING (cross-referenced from TM_END_OF_BARLEY_HARVEST.md, _templates/sta-vocabulary.md, and _archive/tripod-sta-vocabulary-v0-2.md). The wiki convention follows the [HARVEST_KIND]_[POSITION] pattern (e.g., TM_END_OF_BARLEY_HARVEST). At P04 write-back the artifact ID was renamed to match the established convention rather than rename the wiki page (which would ripple through three other files). The rename was applied across all P04 working artifacts (step-A, step-B, step-C, step-D, step-E-meaning-coordinates, step-E-bcd-delta, step-E-compilation-log, step-F) by Marcia's explicit instruction at write-back time; the Gate F approval covered the structural decisions, not this naming detail. Recorded here to keep the audit trail explicit."
     }
   ],
   "vocabulary_additions": {
@@ -741,7 +741,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "every_being_in_propositions_declared_in_scenes": true,
     "every_place_in_propositions_declared_in_scenes": true,

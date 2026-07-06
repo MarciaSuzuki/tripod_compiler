@@ -43,7 +43,7 @@ export interface Finding {
 
 export interface ValidationReport {
   file: string;
-  artifact: string; // "FOR_MODEL" | "COMPILATION-LOG" | ...
+  artifact: string; // "MEANING_COORDINATES" | "COMPILATION-LOG" | ...
   specVersion: string;
   ok: boolean; // true iff no `block` findings
   findings: Finding[];

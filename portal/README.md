@@ -23,7 +23,7 @@ The build renders **only**:
 | Artifact | Source directory | Required frontmatter |
 |---|---|---|
 | Meaning Map | `fixtures/meaning-map/*.md` | `type: "pericope"` + `status: "complete"` |
-| FOR_MODEL (STA) | `fixtures/for-model/*.md` | `type: "sta-for-model"` + `status: "valid"` |
+| Meaning Coordinates (STA) | `fixtures/meaning-coordinates/*.md` | `type: "sta-meaning-coordinates"` + `status: "valid"` |
 | Compilation Log | `fixtures/compilation-log/*.md` | `type: "sta-compilation-log"` + `status: "valid"` |
 
 Any `.md` in those directories that lacks the right type or approved status —
@@ -100,7 +100,7 @@ gate violation (nothing written) · `1` other error.
    unresolvable links degrade to plain styled text (registry coverage is the
    pipeline id-check's job, not the portal's).
 3. Renders each pericope page: the Meaning Map as prose (markdown, with all
-   source HTML neutralized), the FOR_MODEL and Compilation Log as collapsible
+   source HTML neutralized), the Meaning Coordinates and Compilation Log as collapsible
    `<details>` outlines (plus a raw-JSON fallback). String values render with
    `dir="auto"` so embedded Hebrew lays out correctly. Zero client-side
    JavaScript anywhere.
@@ -195,7 +195,7 @@ live:
 | 2 | Organization / role | short answer, **optional** | no |
 | 3 | Email, if you'd like a reply | short answer, **optional** | no |
 | 4 | Which passage? | short answer | **yes** — e.g. `P03 — Ruth 1:15–18` |
-| 5 | Which document? | multiple choice: `Meaning Map` / `FOR_MODEL (STA)` / `Compilation Log` / `The whole passage` / `The website itself` | **yes** |
+| 5 | Which document? | multiple choice: `Meaning Map` / `Meaning Coordinates (STA)` / `Compilation Log` / `The whole passage` / `The website itself` | **yes** |
 | 6 | Which part? (section or verse) | short answer, optional | **yes** when asked from a section's "ask" link |
 | 7 | Question or suggestion? | multiple choice: `I have a question` / `I suggest a change` | **yes** |
 | 8 | Your question or suggestion | paragraph, **required** | no |

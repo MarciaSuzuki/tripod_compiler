@@ -10,8 +10,8 @@ import {
   slugify,
   normalizeSlug,
   isWithheldReferent,
-  extractForModelCodes,
-  extractForModelFlags,
+  extractMeaningCoordinatesCodes,
+  extractMeaningCoordinatesFlags,
   harvestMapFlags,
   buildFlagRegistry,
   isKnownPilot2Sibling,
@@ -93,24 +93,24 @@ function writeMap(name: string, scenes: string): string {
  */
 function writeMapFull(o: { name: string; activeConcepts?: string[]; activeFigures?: string[]; scenes: string; flags5?: string }): string {
   const p = join(dir, `${o.name}.md`);
-  const fmList = (key: string, items?: string[]) => (items?.length ? `${key}:\n${items.map((i) => `  - ${i}`).join("\n")}\n` : "");
+  const mcList = (key: string, items?: string[]) => (items?.length ? `${key}:\n${items.map((i) => `  - ${i}`).join("\n")}\n` : "");
   const fm =
     `---\ntype: "pericope"\npericope-num: "PT"\nbcv: "Ruth 1:1"\n` +
-    fmList("active-concepts", o.activeConcepts) +
-    fmList("active-figures", o.activeFigures) +
+    mcList("active-concepts", o.activeConcepts) +
+    mcList("active-figures", o.activeFigures) +
     `---\n`;
   const flagsSection = o.flags5 ? `\n## 5. Flags\n\n${o.flags5}\n` : "";
   writeFileSync(p, `${fm}\n# PT\n\n## 3. Level 2 — Scenes\n\n${o.scenes}\n${flagsSection}`);
   return p;
 }
 /** add cb_flags/figure_flags to an FM, carried on a single proposition linked to scene S1. */
-const fmWithFlags = (scenes: object[], cb: string[] = [], fig: string[] = []) => ({
+const mcWithFlags = (scenes: object[], cb: string[] = [], fig: string[] = []) => ({
   level_2_scenes: scenes,
   level_3_propositions: [{ prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: {}, cb_flags: cb, figure_flags: fig }],
 });
-function writeFm(name: string, json: unknown): string {
+function writeMc(name: string, json: unknown): string {
   const p = join(dir, `${name}.md`);
-  writeFileSync(p, `---\ntype: "sta-for-model"\npericope: "PT"\n---\n\n# PT FOR_MODEL\n\n\`\`\`json\n${JSON.stringify(json, null, 2)}\n\`\`\`\n`);
+  writeFileSync(p, `---\ntype: "sta-meaning-coordinates"\npericope: "PT"\n---\n\n# PT MEANING_COORDINATES\n\n\`\`\`json\n${JSON.stringify(json, null, 2)}\n\`\`\`\n`);
   return p;
 }
 /** a 3A-beings + 3B-places + 3C-objects + 3D-times scene block with declared entities. */
@@ -126,7 +126,7 @@ function scene(id: number, decls: { beings?: string[]; places?: string[]; object
     `**3E — What Happens**\nstuff happens.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`
   );
 }
-const fmScene = (id: number, c: { beings?: string[]; places?: string[]; objects?: string[]; times?: string[] }) => ({
+const mcScene = (id: number, c: { beings?: string[]; places?: string[]; objects?: string[]; times?: string[] }) => ({
   scene_id: `S${id}`,
   verse_range: `1:${id}`,
   scene_kind: "X",
@@ -184,8 +184,8 @@ describe("normalizeSlug (SC-0020) — note-title-safe name-binding comparison", 
   it("name-binding accepts the apostrophe-dropped map slug (no ERROR)", () => {
     const al: AliasTable = { book: "ruth", entities: { PL9: { kind: "PLACE", english: "Naomi's Dwelling in Bethlehem", hebrew: "", hebrew_cons: "", referential_forms: [], gender: null } } };
     const map = writeMap("apos-map", scene(1, { places: ["[[PL9-Naomis-Dwelling-in-Bethlehem]]"] }));
-    const fm = writeFm("apos-fm", { level_2_scenes: [fmScene(1, { places: ["PL9"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic({ aliases: al }));
+    const mc = writeMc("apos-mc", { level_2_scenes: [mcScene(1, { places: ["PL9"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic({ aliases: al }));
     expect(r.nameBinding.some((f) => f.code === "PL9")).toBe(false);
     expect(r.counts.nameErrors).toBe(0);
   });
@@ -202,15 +202,15 @@ describe("isWithheldReferent + WITHHELD_REFERENT (SC-0020)", () => {
     expect(isWithheldReferent("CB_0030", ns)).toBe(false);
     expect(isWithheldReferent("ZZZ?", ns)).toBe(false); // not a schema-legal entity code at all
   });
-  it("B? on the FOR_MODEL → WITHHELD_REFERENT INFO, NOT a ref-integrity error, NOT a misalignment", () => {
+  it("B? on the MEANING_COORDINATES → WITHHELD_REFERENT INFO, NOT a ref-integrity error, NOT a misalignment", () => {
     // B3 is declared on both sides; B? is an intentional withheld referent in the FM scene only.
     const map = writeMap("wh-map", scene(1, { beings: ["[[B3-Naomi]]"] }));
-    const fm = writeFm("wh-fm", { level_2_scenes: [fmScene(1, { beings: ["B3", "B?"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("wh-mc", { level_2_scenes: [mcScene(1, { beings: ["B3", "B?"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false); // not an UNKNOWN_CODE
     expect(r.counts.refErrors).toBe(0);
     expect(r.withheldReferents).toHaveLength(1);
-    expect(r.withheldReferents[0]).toMatchObject({ side: "FOR_MODEL", code: "B?", reason: "WITHHELD_REFERENT" });
+    expect(r.withheldReferents[0]).toMatchObject({ side: "MEANING_COORDINATES", code: "B?", reason: "WITHHELD_REFERENT" });
     expect(r.counts.withheld).toBe(1);
     expect(r.misalignments.some((m) => m.code === "B?")).toBe(false); // excluded from the structural diff
     expect(r.counts.misalign).toBe(0);
@@ -221,11 +221,11 @@ describe("isWithheldReferent + WITHHELD_REFERENT (SC-0020)", () => {
     // as the `wife_taken` slot value. (The slot-value collector keys on concrete `^B\d+$`, so the slot
     // occurrence alone is not separately collected — the scene-container occurrence carries the INFO.)
     const map = writeMap("wh2-map", scene(1, { beings: ["[[B3-Naomi]]"] }));
-    const fm = writeFm("wh2-fm", {
-      level_2_scenes: [fmScene(1, { beings: ["B3", "B?"] })],
+    const mc = writeMc("wh2-mc", {
+      level_2_scenes: [mcScene(1, { beings: ["B3", "B?"] })],
       level_3_propositions: [{ prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K", event_specific_slots: { wife_taken: "B?" }, inter_proposition_links: {}, cb_flags: [], figure_flags: [] }],
     });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false);
     expect(r.withheldReferents.filter((w) => w.code === "B?")).toHaveLength(1); // surfaced once
     expect(r.misalignments.some((m) => m.code === "B?")).toBe(false);
@@ -238,16 +238,16 @@ describe("isWithheldReferent + WITHHELD_REFERENT (SC-0020)", () => {
 describe("checkIdAlignment — the brief's six cases", () => {
   it("clean pair → 0 findings", () => {
     const map = writeMap("clean-map", scene(1, { beings: ["[[B2-Elimelech]]", "[[B3-Naomi]]"], places: ["[[PL1-Bethlehem-of-Judah]]"], objects: ["[[O1-Famine]]"] }));
-    const fm = writeFm("clean-fm", { level_2_scenes: [fmScene(1, { beings: ["B2", "B3"], places: ["PL1"], objects: ["O1"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("clean-mc", { level_2_scenes: [mcScene(1, { beings: ["B2", "B3"], places: ["PL1"], objects: ["O1"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.ok).toBe(true);
     expect(r.counts).toMatchObject({ refErrors: 0, nameErrors: 0, misalign: 0, dangling: 0 });
   });
 
   it("typo'd slug → name-binding ERROR", () => {
     const map = writeMap("typo-map", scene(1, { beings: ["[[B2-Elimlech]]"] })); // Elimlech, missing an 'e'
-    const fm = writeFm("typo-fm", { level_2_scenes: [fmScene(1, { beings: ["B2"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("typo-mc", { level_2_scenes: [mcScene(1, { beings: ["B2"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.counts.nameErrors).toBe(1);
     expect(r.nameBinding[0]).toMatchObject({ code: "B2", slugFound: "Elimlech", slugExpected: "Elimelech", severity: "ERROR" });
     expect(r.ok).toBe(false);
@@ -255,16 +255,16 @@ describe("checkIdAlignment — the brief's six cases", () => {
 
   it("wrong-code-on-name → name-binding ERROR (B3 with Elimelech's slug)", () => {
     const map = writeMap("wrongcode-map", scene(1, { beings: ["[[B3-Elimelech]]"] })); // B3 is Naomi, not Elimelech
-    const fm = writeFm("wrongcode-fm", { level_2_scenes: [fmScene(1, { beings: ["B3"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("wrongcode-mc", { level_2_scenes: [mcScene(1, { beings: ["B3"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.nameBinding[0]).toMatchObject({ code: "B3", slugFound: "Elimelech", slugExpected: "Naomi", severity: "ERROR" });
   });
 
   it("a TM_/TH_-style pair → misalignment tagged LIKELY_SAME_REFERENT", () => {
     const map = writeMap("lsr-map", scene(1, { objects: ["[[TM_TEN_YEARS-About-Ten-Years]]"] }));
-    const fm = writeFm("lsr-fm", { level_2_scenes: [fmScene(1, { objects: ["TH_TEN_YEARS_APPROXIMATELY"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
-    const lsr = r.misalignments.find((m) => m.direction === "MAP_NOT_FM" && m.code === "TM_TEN_YEARS");
+    const mc = writeMc("lsr-mc", { level_2_scenes: [mcScene(1, { objects: ["TH_TEN_YEARS_APPROXIMATELY"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
+    const lsr = r.misalignments.find((m) => m.direction === "MAP_NOT_MC" && m.code === "TM_TEN_YEARS");
     expect(lsr?.likelySameReferent).toMatchObject({ otherCode: "TH_TEN_YEARS_APPROXIMATELY", sharedStem: "TEN_YEARS" });
     expect(r.counts.likelySameReferent).toBe(1);
   });
@@ -274,8 +274,8 @@ describe("checkIdAlignment — the brief's six cases", () => {
     // (prose). The FM scene does not contain B2. B2 must NOT be reported as a misalignment.
     const beingBlock = "[[B3-Naomi]]\n- Role: widow\n- Relationship: widow of [[B2-Elimelech]] Elimelech";
     const map = writeMap("prose-map", `### Scene 1 — Test (v.1)\n\n**3A — Beings**\n${beingBlock}\n\n**3B — Places**\n- None\n\n**3C — Objects and Elements**\n- None\n\n**3D — Times**\n- None\n\n**3E — What Happens**\nx.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`);
-    const fm = writeFm("prose-fm", { level_2_scenes: [fmScene(1, { beings: ["B3"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("prose-mc", { level_2_scenes: [mcScene(1, { beings: ["B3"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.misalignments.some((m) => m.code === "B2")).toBe(false); // off-stage prose ref, not a scene entity
     expect(r.counts.misalign).toBe(0);
     // and B2 still passes reference-integrity (it resolves) — prose refs are checked by steps 2–3 only
@@ -288,8 +288,8 @@ describe("checkIdAlignment — the brief's six cases", () => {
     // so B2 must NOT be a misalignment (the lead's ruling), even though the map doesn't declare it in 3A.
     const beingBlock = "[[B3-Naomi]]\n- Role: widow\n- Relationship: widow of [[B2-Elimelech]] Elimelech";
     const map = writeMap("parity-same-map", `### Scene 1 — Test (v.1)\n\n**3A — Beings**\n${beingBlock}\n\n**3B — Places**\n- None\n\n**3C — Objects and Elements**\n- None\n\n**3D — Times**\n- None\n\n**3E — What Happens**\nx.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`);
-    const fm = writeFm("parity-same-fm", { level_2_scenes: [fmScene(1, { beings: ["B2", "B3"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("parity-same-mc", { level_2_scenes: [mcScene(1, { beings: ["B2", "B3"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.misalignments.some((m) => m.code === "B2")).toBe(false); // aligned by same-scene prose, dropped from the diff
     expect(r.counts.misalign).toBe(0);
     expect(r.ok).toBe(true);
@@ -305,12 +305,12 @@ describe("checkIdAlignment — the brief's six cases", () => {
       `**3E — What Happens**\nNaomi leaves [[PL1-Bethlehem-of-Judah]] the town.\n\n**3F — Communicative Purpose**\np.\n\n**Significant Absence**\nnone.\n`;
     const map = writeMap("parity-cross-map", s1 + scene(2, { beings: ["[[B2-Elimelech]]"] }));
     // FM: S1 declares B3 (aligns), S2 declares B2 (aligns) + PL1 (the cross-scene gap under test).
-    const fm = writeFm("parity-cross-fm", {
-      level_2_scenes: [fmScene(1, { beings: ["B3"] }), fmScene(2, { beings: ["B2"], places: ["PL1"] })],
+    const mc = writeMc("parity-cross-mc", {
+      level_2_scenes: [mcScene(1, { beings: ["B3"] }), mcScene(2, { beings: ["B2"], places: ["PL1"] })],
       level_3_propositions: [],
     });
-    const r = checkIdAlignment(map, fm, hermetic());
-    const s2 = r.misalignments.find((m) => m.code === "PL1" && m.scope === "S2" && m.direction === "FM_NOT_MAP");
+    const r = checkIdAlignment(map, mc, hermetic());
+    const s2 = r.misalignments.find((m) => m.code === "PL1" && m.scope === "S2" && m.direction === "MC_NOT_MAP");
     expect(s2).toBeDefined();
     expect(s2!.severity).toBe("MISALIGN"); // not resolved — PL1 is map-referenced only in S1, not S2
     expect(s2!.presentElsewhere).toMatch(/S1/); // scene-accurate: the prose home is labelled with its scene
@@ -319,19 +319,19 @@ describe("checkIdAlignment — the brief's six cases", () => {
 
   it("unknown code → reference-integrity ERROR (registered namespace, no BCD entry)", () => {
     const map = writeMap("unknown-map", scene(1, { beings: ["[[B2-Elimelech]]"] }));
-    const fm = writeFm("unknown-fm", { level_2_scenes: [fmScene(1, { beings: ["B2", "B99"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("unknown-mc", { level_2_scenes: [mcScene(1, { beings: ["B2", "B99"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     const err = r.referenceIntegrity.find((f) => f.code === "B99");
-    expect(err).toMatchObject({ side: "FOR_MODEL", reason: "UNKNOWN_CODE", severity: "ERROR" });
+    expect(err).toMatchObject({ side: "MEANING_COORDINATES", reason: "UNKNOWN_CODE", severity: "ERROR" });
     expect(r.ok).toBe(false);
   });
 
   it("a seeded exception → downgraded to ✓ ACCEPTED", () => {
     // reuse the typo case, but sign it off as a deliberate variant.
     const map = writeMap("acc-map", scene(1, { beings: ["[[B2-Elimlech]]"] }));
-    const fm = writeFm("acc-fm", { level_2_scenes: [fmScene(1, { beings: ["B2"] })], level_3_propositions: [] });
+    const mc = writeMc("acc-mc", { level_2_scenes: [mcScene(1, { beings: ["B2"] })], level_3_propositions: [] });
     const ex: IdAlignException[] = [{ pericope: "acc-map", kind: "NAME_BINDING", code: "B2", reason: "DELIBERATE_VARIANT", accepted_by: "Tester" }];
-    const r = checkIdAlignment(map, fm, hermetic({ exceptions: ex }));
+    const r = checkIdAlignment(map, mc, hermetic({ exceptions: ex }));
     expect(r.nameBinding[0]!.severity).toBe("ACCEPTED");
     expect(r.counts.nameErrors).toBe(0);
     expect(r.counts.accepted).toBe(1);
@@ -350,11 +350,11 @@ describe("R2 — CB_/FIG_ reference-integrity via the vendored concept/figure re
       scenes: scene(1, { beings: ["[[B2-Elimelech]]"], objects: ["[[TH_X-Thematic]]"] }),
       flags5: "**5A — Concept Bank Flags**\n- [[CB_0030-Sojourn-Gur]] — active at Proposition 1\n",
     });
-    const fm = writeFm("r2-ri-fm", {
-      level_2_scenes: [fmScene(1, { beings: ["B2"], objects: ["TH_X"] })],
+    const mc = writeMc("r2-ri-mc", {
+      level_2_scenes: [mcScene(1, { beings: ["B2"], objects: ["TH_X"] })],
       level_3_propositions: [{ prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: {}, cb_flags: ["CB_0030", "CB_0099"], figure_flags: ["FIG_0099"] }],
     });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const r = checkIdAlignment(map, mc, hermetic());
     // CB_0099 + FIG_0099 → ref-integrity ERRORs (legal codes, no registry entry)
     expect(r.referenceIntegrity.some((f) => f.code === "CB_0099" && f.severity === "ERROR")).toBe(true);
     expect(r.referenceIntegrity.some((f) => f.code === "FIG_0099" && f.severity === "ERROR")).toBe(true);
@@ -376,11 +376,11 @@ describe("R2 — CB_/FIG_ reference-integrity via the vendored concept/figure re
         "**5A — Concept Bank Flags**\n- [[CB_0030-Wrong-Slug]] — active at Proposition 1\n- [[CB_0029-Judges-Era]] — active at Proposition 1\n\n" +
         "**5B — Figure Flags**\n- [[FIG_0007-Narrator-Frame-from-Later-Time]] — active at Proposition 1\n",
     });
-    const fm = writeFm("r2-nb-fm", {
-      level_2_scenes: [fmScene(1, { beings: ["B2"] })],
+    const mc = writeMc("r2-nb-mc", {
+      level_2_scenes: [mcScene(1, { beings: ["B2"] })],
       level_3_propositions: [{ prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: {}, cb_flags: ["CB_0030", "CB_0029"], figure_flags: ["FIG_0007"] }],
     });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const r = checkIdAlignment(map, mc, hermetic());
     const cb30 = r.nameBinding.find((f) => f.code === "CB_0030");
     expect(cb30).toMatchObject({ slugFound: "Wrong-Slug", slugExpected: "Sojourn-Gur", severity: "ERROR" });
     // CB_0029 (right name_slug) + FIG_0007 (right name_slug) do NOT produce name-binding findings
@@ -397,11 +397,11 @@ describe("R2 — CB_/FIG_ reference-integrity via the vendored concept/figure re
       scenes: scene(1, { beings: ["[[B2-Elimelech]]"] }),
       flags5: "**5A — Concept Bank Flags**\n- [[CB_0030-CB_SOJOURN]] — active at Proposition 1\n",
     });
-    const fm = writeFm("r2-alias-fm", {
-      level_2_scenes: [fmScene(1, { beings: ["B2"] })],
+    const mc = writeMc("r2-alias-mc", {
+      level_2_scenes: [mcScene(1, { beings: ["B2"] })],
       level_3_propositions: [{ prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K", event_specific_slots: {}, inter_proposition_links: {}, cb_flags: ["CB_0030"], figure_flags: [] }],
     });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.nameBinding.some((f) => f.code === "CB_0030")).toBe(false);
   });
 });
@@ -412,7 +412,7 @@ describe("R1 — CB_/FIG_ flags are compared in their real homes (frontmatter ac
   it("aligned flags do NOT report — even though the FM also carries them as scene objects, not §3 of the map", () => {
     // CB_0030 + FIG_0007 are declared in the map's frontmatter + §5 and in the FM's cb_flags/figure_flags.
     // The FM ALSO carries CB_0030 as a scene-container object (legal object_id) — that used to read as a
-    // false "FM-not-map" misalignment. With R1, CB_/FIG_ are flag-compared, so nothing reports.
+    // false "MC-not-map" misalignment. With R1, CB_/FIG_ are flag-compared, so nothing reports.
     const map = writeMapFull({
       name: "r1-aligned-map",
       activeConcepts: ["[[CB_0030-Sojourn-Gur]]"],
@@ -420,8 +420,8 @@ describe("R1 — CB_/FIG_ flags are compared in their real homes (frontmatter ac
       scenes: scene(1, { beings: ["[[B2-Elimelech]]"] }),
       flags5: "**5A — Concept Bank Flags**\n- [[CB_0030-Sojourn-Gur]] — active at Proposition 1\n\n**5B — Figure Flags**\n- [[FIG_0007-Narrator-Frame-from-Later-Time]] — active at Proposition 1\n",
     });
-    const fm = writeFm("r1-aligned-fm", fmWithFlags([fmScene(1, { beings: ["B2"], objects: ["CB_0030"] })], ["CB_0030"], ["FIG_0007"]));
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("r1-aligned-mc", mcWithFlags([mcScene(1, { beings: ["B2"], objects: ["CB_0030"] })], ["CB_0030"], ["FIG_0007"]));
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.flagMismatches.length).toBe(0); // flags align
     expect(r.counts.flagMismatch).toBe(0);
     // and the aligned flag never surfaces as a structural misalignment
@@ -437,10 +437,10 @@ describe("R1 — CB_/FIG_ flags are compared in their real homes (frontmatter ac
       scenes: scene(1, { beings: ["[[B2-Elimelech]]"] }),
       flags5: "**5A — Concept Bank Flags**\n- [[CB_0030-Sojourn-Gur]] — active at Proposition 1\n- [[CB_0029-Judges-Era]] — active at Proposition 1\n",
     });
-    const fm = writeFm("r1-oneside-fm", fmWithFlags([fmScene(1, { beings: ["B2"] })], ["CB_0030"], ["FIG_0007"]));
-    const r = checkIdAlignment(map, fm, hermetic());
-    expect(r.flagMismatches.find((f) => f.code === "CB_0029")).toMatchObject({ kind: "CONCEPT", direction: "MAP_NOT_FM", severity: "MISALIGN" });
-    expect(r.flagMismatches.find((f) => f.code === "FIG_0007")).toMatchObject({ kind: "FIGURE", direction: "FM_NOT_MAP", severity: "MISALIGN" });
+    const mc = writeMc("r1-oneside-mc", mcWithFlags([mcScene(1, { beings: ["B2"] })], ["CB_0030"], ["FIG_0007"]));
+    const r = checkIdAlignment(map, mc, hermetic());
+    expect(r.flagMismatches.find((f) => f.code === "CB_0029")).toMatchObject({ kind: "CONCEPT", direction: "MAP_NOT_MC", severity: "MISALIGN" });
+    expect(r.flagMismatches.find((f) => f.code === "FIG_0007")).toMatchObject({ kind: "FIGURE", direction: "MC_NOT_MAP", severity: "MISALIGN" });
     expect(r.counts.flagMismatch).toBe(2);
     expect(r.ok).toBe(false);
   });
@@ -454,15 +454,15 @@ describe("R1 — CB_/FIG_ flags are compared in their real homes (frontmatter ac
       scenes: scene(1, { beings: ["[[B2-Elimelech]]"] }),
       flags5: "**5B — Figure Flags**\n- [[FIG_0007-Narrator-Frame-from-Later-Time]] — active at Proposition 1 (pairs cross-pericope with [[FIG_0013-Bread-house-in-Famine]] later)\n",
     });
-    const fm = writeFm("r1-narration-fm", fmWithFlags([fmScene(1, { beings: ["B2"] })], [], ["FIG_0007"]));
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("r1-narration-mc", mcWithFlags([mcScene(1, { beings: ["B2"] })], [], ["FIG_0007"]));
+    const r = checkIdAlignment(map, mc, hermetic());
     // FIG_0013 (narration only) must NOT show up as a map-only flag mismatch
     expect(r.flagMismatches.some((f) => f.code === "FIG_0013")).toBe(false);
     expect(r.flagMismatches.length).toBe(0);
   });
 });
 
-describe("harvestMapFlags / extractForModelFlags / isFlagCode (units)", () => {
+describe("harvestMapFlags / extractMeaningCoordinatesFlags / isFlagCode (units)", () => {
   it("isFlagCode is true for CB_/FIG_ only", () => {
     expect(isFlagCode("CB_0001")).toBe(true);
     expect(isFlagCode("FIG_0009")).toBe(true);
@@ -479,13 +479,13 @@ describe("harvestMapFlags / extractForModelFlags / isFlagCode (units)", () => {
     expect([...f.fig]).toEqual(["FIG_0007"]);
     expect(f.slugByCode.get("CB_0030")).toBe("Sojourn-Gur");
   });
-  it("extractForModelFlags reads cb_flags/figure_flags, not cross_ref free-text", () => {
-    const fm = {
+  it("extractMeaningCoordinatesFlags reads cb_flags/figure_flags, not cross_ref free-text", () => {
+    const mc = {
       level_3_propositions: [
         { cb_flags: ["CB_0030"], figure_flags: ["FIG_0007"], cross_ref: "FIG_0013 mentioned here only" },
       ],
     };
-    const f = extractForModelFlags(fm);
+    const f = extractMeaningCoordinatesFlags(mc);
     expect([...f.cb]).toEqual(["CB_0030"]);
     expect([...f.fig]).toEqual(["FIG_0007"]);
     expect(f.fig.has("FIG_0013")).toBe(false); // cross_ref text is not a flag
@@ -501,7 +501,7 @@ describe("R3 — note-resolution knows the real pilot-2 sibling suffixes + disco
       "P02-Ruth-1-6-14-BCD-DELTA",
       "P03-Ruth-1-15-18-VERIFICATION-INPUT",
       "P03-Ruth-1-15-18-VERIFICATION-INPUT-en",
-      "P01-Ruth-1-1-5-FOR-MODEL",
+      "P01-Ruth-1-1-5-MEANING-COORDINATES",
       "P01-Ruth-1-1-5-COVERAGE-LEDGER",
       "T7-Harvest-Provision",
       "T1-Naomi-Security-and-Rest",
@@ -515,8 +515,8 @@ describe("R3 — note-resolution knows the real pilot-2 sibling suffixes + disco
       `## 1. Metadata\n- artifacts: [[PT-COMPILATION-LOG]] [[PT-BCD-DELTA]] [[PT-VERIFICATION-INPUT-en]] [[PT-AUDIT]]\n` +
         `- thread: [[T7-Harvest-Provision]]\n\n## 3. Level 2 — Scenes\n\n${scene(1, { beings: ["[[B2-Elimelech]]"] })}`,
     );
-    const fm = writeFm("r3-fm", { level_2_scenes: [fmScene(1, { beings: ["B2"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("r3-mc", { level_2_scenes: [mcScene(1, { beings: ["B2"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     const dangling = r.danglingNotes.map((d) => d.raw);
     expect(dangling).toContain("PT-AUDIT"); // the one true relic still flags
     expect(dangling).not.toContain("PT-COMPILATION-LOG");
@@ -529,19 +529,19 @@ describe("R3 — note-resolution knows the real pilot-2 sibling suffixes + disco
   it("still flags a genuinely unknown non-entity [[Note]]; resolves one that exists on disk", () => {
     writeFileSync(join(dir, "Real-Note.md"), "x");
     const map = writeMap("note-map", `## 1. Metadata\n- see [[Truly-Missing-Note]] and [[Real-Note]]\n\n## 3. Level 2 — Scenes\n\n${scene(1, { beings: ["[[B2-Elimelech]]"] })}`);
-    const fm = writeFm("note-fm", { level_2_scenes: [fmScene(1, { beings: ["B2"] })], level_3_propositions: [] });
-    const r = checkIdAlignment(map, fm, hermetic());
+    const mc = writeMc("note-mc", { level_2_scenes: [mcScene(1, { beings: ["B2"] })], level_3_propositions: [] });
+    const r = checkIdAlignment(map, mc, hermetic());
     expect(r.danglingNotes.map((d) => d.raw)).toContain("Truly-Missing-Note");
     expect(r.danglingNotes.map((d) => d.raw)).not.toContain("Real-Note");
   });
 });
 
-// ───────────────────────── FOR_MODEL code extraction ─────────────────────────
+// ───────────────────────── MEANING_COORDINATES code extraction ─────────────────────────
 
-describe("extractForModelCodes", () => {
+describe("extractMeaningCoordinatesCodes", () => {
   it("collects scene-container ids, pericope cb/figure flags, and being-codes used as slot VALUES", () => {
-    const fm = {
-      level_2_scenes: [fmScene(1, { beings: ["B2"], places: ["PL1"] })],
+    const mc = {
+      level_2_scenes: [mcScene(1, { beings: ["B2"], places: ["PL1"] })],
       level_3_propositions: [
         {
           prop_id: "P1", scene_link: "S1", verse_anchor: "1:1", proposition_kind: "K",
@@ -550,7 +550,7 @@ describe("extractForModelCodes", () => {
         },
       ],
     };
-    const codes = extractForModelCodes(fm);
+    const codes = extractMeaningCoordinatesCodes(mc);
     const bySource = (s: string) => codes.filter((c) => c.source === s).map((c) => c.code);
     expect(bySource("scene_container")).toEqual(expect.arrayContaining(["B2", "PL1"]));
     expect(bySource("pericope_flag")).toEqual(expect.arrayContaining(["CB_0029", "FIG_0007"]));
@@ -565,13 +565,13 @@ describe("extractForModelCodes", () => {
 // behaviour after SC-0018 R1/R2/R3. They lock both the surviving SIGNAL and the removed NOISE.
 
 const MM = "fixtures/meaning-map";
-const FM = "fixtures/for-model";
+const FM = "fixtures/meaning-coordinates";
 // Integration runs mirror the real `tripod id-check`: they load the PINNED id-alignment exceptions, so a
 // signed-off coverage difference surfaces as ✓ ACCEPTED (still in the inventory, excluded from the failure
 // count) exactly as the CLI reports it.
 const idExceptions = loadIdAlignmentExceptions();
 const real = (pid: string, bcv: string) =>
-  checkIdAlignment(`${MM}/${pid}-${bcv}.md`, `${FM}/${pid}-${bcv}-FOR-MODEL.md`, { noteResolveDirs: [MM, FM], exceptions: idExceptions });
+  checkIdAlignment(`${MM}/${pid}-${bcv}.md`, `${FM}/${pid}-${bcv}-MEANING-COORDINATES.md`, { noteResolveDirs: [MM, FM], exceptions: idExceptions });
 
 describe("integration — real fixtures (locks the refined headline findings)", () => {
   it("P01 (post-SC-0020): TM_/TH_ now ALIGN (A4 map edit); AUDIT no longer dangles (A5); flags align; no CB/FIG noise", () => {
@@ -592,7 +592,7 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     expect(r.unverifiable.some((u) => u.code === "TH_TEN_YEARS_APPROXIMATELY")).toBe(true);
     expect(r.unverifiable.every((u) => u.code.startsWith("TH_"))).toBe(true);
     // SC-0020 parity bar (the lead's ruling): the former REFERENCED-being-in-§3A-prose gaps (B2/B8/B9 @S4)
-    // are now ALIGNED — the FOR_MODEL declares them in S4 and the map references each in S4's own §3A
+    // are now ALIGNED — the MEANING_COORDINATES declares them in S4 and the map references each in S4's own §3A
     // relationship lines (B2 in the sons' "son of …" lines; B8/B9 in Naomi's "mother-in-law of … " line).
     // P01 is fully clean: zero un-accepted misalignments.
     expect(r.misalignments.filter((m) => m.severity === "MISALIGN")).toHaveLength(0);
@@ -609,10 +609,10 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     expect(r.danglingNotes.length).toBe(0); // all of P03's note links resolve now
   });
 
-  it("P04: PL1/PL2 map-not-FM gaps + TM_BARLEY_HARVEST_BEGINNING survive; T7-Harvest-Provision no longer dangles", () => {
+  it("P04: PL1/PL2 map-not-MC gaps + TM_BARLEY_HARVEST_BEGINNING survive; T7-Harvest-Provision no longer dangles", () => {
     const r = real("P04", "Ruth-1-19-22");
-    expect(r.misalignments.some((m) => m.code === "PL1" && m.direction === "MAP_NOT_FM")).toBe(true);
-    expect(r.misalignments.some((m) => m.code === "PL2" && m.direction === "MAP_NOT_FM")).toBe(true);
+    expect(r.misalignments.some((m) => m.code === "PL1" && m.direction === "MAP_NOT_MC")).toBe(true);
+    expect(r.misalignments.some((m) => m.code === "PL2" && m.direction === "MAP_NOT_MC")).toBe(true);
     expect(r.misalignments.some((m) => m.code === "TM_BARLEY_HARVEST_BEGINNING")).toBe(true);
     expect(r.danglingNotes.some((d) => d.raw === "T7-Harvest-Provision")).toBe(false); // R3: real discourse-thread note
     expect(r.danglingNotes.length).toBe(0);
@@ -653,7 +653,7 @@ describe("integration — real fixtures (locks the refined headline findings)", 
     // It is surfaced as INFO, never a ref-integrity ERROR, and never enters the structural symmetric diff.
     expect(r.referenceIntegrity.some((f) => f.code === "B?")).toBe(false);
     expect(r.counts.refErrors).toBe(0);
-    expect(r.withheldReferents.some((w) => w.code === "B?" && w.side === "FOR_MODEL" && w.reason === "WITHHELD_REFERENT")).toBe(true);
+    expect(r.withheldReferents.some((w) => w.code === "B?" && w.side === "MEANING_COORDINATES" && w.reason === "WITHHELD_REFERENT")).toBe(true);
     expect(r.counts.withheld).toBe(1);
     expect(r.misalignments.some((m) => m.code === "B?")).toBe(false);
     expect(r.misalignments.some((m) => m.code === "PL_AMONG_SHEAVES")).toBe(true);

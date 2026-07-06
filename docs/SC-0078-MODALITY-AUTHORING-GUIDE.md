@@ -1,6 +1,6 @@
 # Level-3 modality — one-page authoring guide (SC-0078)
 
-For map authors & reviewers. **The point:** a model reading the FOR_MODEL must never mistake *said /
+For map authors & reviewers. **The point:** a model reading the Meaning Coordinates must never mistake *said /
 intended / permitted / conditional* content for *narrated fact*. Tag the non-factual units so it can't.
 
 ## The cold-read test

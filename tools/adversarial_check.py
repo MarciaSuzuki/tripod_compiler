@@ -80,7 +80,7 @@ def expect_block(target: str, mutate: tuple[str, str], cmd: str = "validate",
                            f"the mutation is a no-op; refusing to trust a clean/block result")
     mutated = src.replace(old, new, 1)
     assert mutated != src, "mutation produced identical bytes"  # belt-and-suspenders
-    fd, path = tempfile.mkstemp(suffix="-FOR-MODEL.md")
+    fd, path = tempfile.mkstemp(suffix="-MEANING-COORDINATES.md")
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
             fh.write(mutated)
@@ -97,7 +97,7 @@ def expect_block(target: str, mutate: tuple[str, str], cmd: str = "validate",
 # ───────────────────────── self-test: the 4 historical traps + the no-op guard ─────────────────────────
 
 def _self_test() -> int:
-    P03 = os.path.join(REPO, "fixtures/for-model/P03-Ruth-1-15-18-FOR-MODEL.md")
+    P03 = os.path.join(REPO, "fixtures/meaning-coordinates/P03-Ruth-1-15-18-MEANING-COORDINATES.md")
     results: list[tuple[str, bool, str]] = []
 
     def record(name: str, ok: bool, detail) -> None:

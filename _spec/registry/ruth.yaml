@@ -9,7 +9,7 @@ meta:
   bcd_source: "<FILL: current pilot-2 BCD, e.g. ruth_pilot_BCD_v0_3 or successor>"
   notes: >
     pilot-2 uses NUMERIC cb/figure codes (CB_0029, FIG_0007). Labels are not recoverable from
-    the FOR_MODEL alone — pull them from the BCD / Concept Bank / Figure Registry.
+    the MEANING_COORDINATES alone — pull them from the BCD / Concept Bank / Figure Registry.
 
 beings:        # B-codes. Each has referential_forms tracked across the book.
   complete: false

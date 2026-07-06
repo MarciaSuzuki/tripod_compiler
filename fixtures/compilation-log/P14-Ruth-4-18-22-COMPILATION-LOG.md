@@ -24,11 +24,11 @@ pilot: "pilot-2"
     "production_use": false
   },
   "confidence_overall": "MEDIUM",
-  "confidence_overall_note": "Judgment half machine-drafted (SC-0063, patch-only contract) and ruled by Marcia axis-by-axis under SC-0064 (§A–§E + arc_element). The graduated FOR_MODEL validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints; the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
+  "confidence_overall_note": "Judgment half machine-drafted (SC-0063, patch-only contract) and ruled by Marcia axis-by-axis under SC-0064 (§A–§E + arc_element). The graduated MEANING_COORDINATES validates block-clean with 0 convergent drift and is lint-clean. Mechanized log: vocabulary_additions are this pericope's ruled mints; the high-risk register audit remains the R1 placeholder (judgment, not hand-authored in this pass).",
   "compilation_decisions": [
     {
       "decision_id": "P14-D1",
-      "decision": "Deterministically compiled a FOR_MODEL skeleton from the approved Meaning Map.",
+      "decision": "Deterministically compiled a MEANING_COORDINATES skeleton from the approved Meaning Map.",
       "description": "Extracted header/classification, scene + entity IDs + presence, verse-ranges, significant_absence, communicative purpose, proposition anchors/scene-links/cross-refs, and Section-5 concept/figure flags. 47 judgment fields left as typed placeholders for Agent 3. No values invented (extract-only)."
     },
     {
@@ -39,20 +39,20 @@ pilot: "pilot-2"
     {
       "decision_id": "P14-D3",
       "decision": "Ruled by Marcia under SC-0064 (the batch ruling), axis by axis.",
-      "description": "§A–§E + the five §B axes (action+tone, proposition_kind, role_in_scene_being, scene_kind, arc_element) ruled across 2026-06-12→19; 6 vocabulary addition(s) CONFIRMED for promotion for this pericope (per-axis ruling-logs in _working/P14/P14-SC-0064-*-RULING-LOG.md). Renames/collapses applied to the FOR_MODEL as recorded amendments where ruled."
+      "description": "§A–§E + the five §B axes (action+tone, proposition_kind, role_in_scene_being, scene_kind, arc_element) ruled across 2026-06-12→19; 6 vocabulary addition(s) CONFIRMED for promotion for this pericope (per-axis ruling-logs in _working/P14/P14-SC-0064-*-RULING-LOG.md). Renames/collapses applied to the MEANING_COORDINATES as recorded amendments where ruled."
     }
   ],
   "vocabulary_additions": {
     "proposition_kinds": [
       {
         "value": "FATHERED",
-        "source": "P14-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
+        "source": "P14-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
         "status": "CONFIRMED",
         "note": "Clean event-kind mint (proposition_kind bulk — no cross-axis/collapse/prose issue). MM P2–P10: the repeated \"X fathered Y\" genealogical formula; no approved proposition_kind names a begetting event."
       },
       {
         "value": "GENEALOGY_HEADER",
-        "source": "P14-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
+        "source": "P14-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · bulk-tick by Marcia 2026-06-13 (proposition_kind)",
         "status": "CONFIRMED",
         "note": "Clean event-kind mint (proposition_kind bulk — no cross-axis/collapse/prose issue). MM P1: \"the line is named / Whose generations? Perez's\" — the toledot-formula header opening the genealogy; no approved proposition_kind names a lineage header."
       }
@@ -60,7 +60,7 @@ pilot: "pilot-2"
     "scene_kinds": [
       {
         "value": "GENEALOGY_SCENE",
-        "source": "P14-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-13 (scene_kind)",
+        "source": "P14-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-13 (scene_kind)",
         "status": "CONFIRMED",
         "note": "Scene-kind (Marcia 2026-06-13 bulk-tick). MM scene title \"The generations of Perez\" and genre GENEALOGY: the scene is a formal toledot list, a form with no approved scene_kind."
       }
@@ -71,13 +71,13 @@ pilot: "pilot-2"
     "arc_elements": [
       {
         "value": "GENEALOGICAL_DESCENT",
-        "source": "P14-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "P14-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. MM 2.1: the passage is \"a ten-name line of descent\"; no approved arc_element covers an unbroken father-to-son lineage chain."
       },
       {
         "value": "LINE_TERMINUS_REACHED",
-        "source": "P14-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-19 (arc_element)",
+        "source": "P14-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
         "note": "arc_element (Marcia 2026-06-19); renamed from LINE_ARRIVAL_AT_DAVID (strip the proper noun 'David' from a cross-Bible type; mirrors the approved role token LINE_TERMINUS for B26; David stays in the prose/referential_form). MM 2.1/2.4: the cadence \"tilts toward its last word\" and \"exists to arrive at David\" — the arrival at the terminal name is the arc's burden, with no approved element for it."
       }
@@ -85,7 +85,7 @@ pilot: "pilot-2"
     "role_in_scene_beings": [
       {
         "value": "LINE_TERMINUS",
-        "source": "P14-FOR-MODEL · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
+        "source": "P14-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-36-24-880Z (claude-opus-4-8, req cbff07622ed32986…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
         "status": "CONFIRMED",
         "note": "Scene role (Principle A, Marcia 2026-06-13). MM 3A/2.4: B26 is \"the line's arrival; David the book's destination\" — the terminal name the whole genealogy exists to reach; no approved role_in_scene_being names the endpoint of a descent line."
       }
@@ -107,7 +107,7 @@ pilot: "pilot-2"
   },
   "validation_checklist": {
     "meaning_map_contains_only_story_content": true,
-    "for_model_contains_only_inference_signal": true,
+    "meaning_coordinates_contains_only_inference_signal": true,
     "every_proposition_has_cb_flags_and_figure_flags": true,
     "no_grammatical_frame_slot_names": true,
     "speech_act_present_on_all_component_records": true,

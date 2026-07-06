@@ -25,11 +25,11 @@ import { checkIdAlignment } from "../src/engine/id-align.js";
  *
  * Jonah 1:1-3 is the first pericope of the first book the interlingua was NOT shaped around, and
  * "the L1 closed lists held on it" is the headline result of the Jonah arc (SC-0033–0037). J01's
- * FOR_MODEL is still a deterministic SKELETON (its judgment fields are unfilled `__TODO__`s awaiting
+ * MEANING_COORDINATES is still a deterministic SKELETON (its judgment fields are unfilled `__TODO__`s awaiting
  * the Slice-4 drafter), so the graduated fixture is the MAP; this test is what guards the result —
  * it must BITE on a true generality regression (a J01 classification value falling out of the closed
  * lists, or a schema block landing on a closed-list axis) while staying quiet on the expected,
- * pinned judgment gaps. When the J01 FOR_MODEL is authored and graduates, the gap-inventory
+ * pinned judgment gaps. When the J01 MEANING_COORDINATES is authored and graduates, the gap-inventory
  * assertions here are superseded deliberately (not silently).
  */
 
@@ -40,27 +40,27 @@ const MAP = join(MM_DIR, "J01-Jonah-1-1-3.md");
 const mm = readMeaningMap(MAP);
 const { skeleton, gaps } = compileSkeleton(mm);
 
-// render the skeleton as a FOR_MODEL note (the exact `tripod compile --out` envelope) so the
+// render the skeleton as a MEANING_COORDINATES note (the exact `tripod compile --out` envelope) so the
 // validator and the id-checker exercise the same artifact surface the CLI produces.
 let tmp: string;
-let fmPath: string;
+let mcPath: string;
 beforeAll(() => {
   tmp = mkdtempSync(join(tmpdir(), "tripod-j01-"));
-  fmPath = join(tmp, "J01-Jonah-1-1-3-FOR-MODEL.md");
+  mcPath = join(tmp, "J01-Jonah-1-1-3-MEANING-COORDINATES.md");
   const note =
     `---\n` +
-    `type: "sta-for-model"\n` +
+    `type: "sta-meaning-coordinates"\n` +
     `pericope: "J01"\n` +
     `pericope-title: "${(mm.title ?? "").replace(/"/g, "'")}"\n` +
     `source-meaning-map: [[J01-Jonah-1-1-3]]\n` +
     `status: "skeleton"\n` +
     `pilot: "pilot-2"\n` +
     `---\n\n` +
-    `# J01 — ${mm.bcv ?? ""} — FOR_MODEL (SKELETON — ${gaps.length} judgment gaps)\n\n` +
+    `# J01 — ${mm.bcv ?? ""} — MEANING_COORDINATES (SKELETON — ${gaps.length} judgment gaps)\n\n` +
     "```json\n" +
     JSON.stringify(skeleton, null, 2) +
     "\n```\n";
-  writeFileSync(fmPath, note);
+  writeFileSync(mcPath, note);
 });
 afterAll(() => rmSync(tmp, { recursive: true, force: true }));
 
@@ -79,8 +79,8 @@ describe("SC-0038 — J01 (Jonah 1:1-3) graduation: the generality anchor", () =
   });
 
   it("the skeleton's only schema blocks are unfilled judgment fields — ZERO on any closed-list axis", () => {
-    const r = validateArtifact(fmPath);
-    expect(r.artifact).toBe("FOR_MODEL");
+    const r = validateArtifact(mcPath);
+    expect(r.artifact).toBe("MEANING_COORDINATES");
     const blocks = r.findings.filter((f) => f.severity === "block");
 
     // a TRUE generality regression: a block on the classification / speech_act axes.
@@ -103,7 +103,7 @@ describe("SC-0038 — J01 (Jonah 1:1-3) graduation: the generality anchor", () =
     // at SC-0040 when the reader's book-general anchor fix landed (the old regex captured "Jonah"
     // as the verse anchor, which also blocked [Scene N] parsing → 5 spurious scene_link TODOs).
     // If this moves again: the spec changed (look), the reader changed (re-derive), or the
-    // FOR_MODEL began to be authored (graduate it).
+    // MEANING_COORDINATES began to be authored (graduate it).
     expect(blocks.length).toBe(18);
   });
 
@@ -118,7 +118,7 @@ describe("SC-0038 — J01 (Jonah 1:1-3) graduation: the generality anchor", () =
   });
 
   it("map ↔ skeleton entity IDs align against the JONAH alias table (book-aware id-check)", () => {
-    const r = checkIdAlignment(MAP, fmPath, {
+    const r = checkIdAlignment(MAP, mcPath, {
       exceptions: loadIdAlignmentExceptions(),
       noteResolveDirs: [MM_DIR],
       aliases: loadAliasTable("jonah"),

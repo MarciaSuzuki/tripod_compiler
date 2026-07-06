@@ -6,7 +6,7 @@ fields). Implement as `zod` schemas in `/src` and, if useful, export JSON-Schema
 other tools.
 
 ## To build (Slice 1)
-- `forModel.ts` — `zod` schema for the `TRIPOD_STA_v2_0` FOR_MODEL JSON. Use the verified
+- `meaningCoordinates.ts` — `zod` schema for the `TRIPOD_STA_v2_0` MEANING_COORDINATES JSON. Use the verified
   shape in `CLAUDE.md` §3.2. Make it **profile-aware**: `cb_flags` are
   `BIBLICAL_PASSAGE`-only.
 - `meaningMap.ts` — schema for the Meaning Map `.md` model (metadata, classification,

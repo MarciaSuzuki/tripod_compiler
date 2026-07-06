@@ -50,7 +50,7 @@ export interface LintFinding {
 
 export interface LintReport {
   file: string;
-  artifact: string; // "MEANING_MAP" | "FOR_MODEL"
+  artifact: string; // "MEANING_MAP" | "MEANING_COORDINATES"
   findings: LintFinding[];
   counts: { tier1: number; tier2: number; accepted: number; byRule: Record<string, number> };
   ok: boolean; // true iff no UN-ACCEPTED findings (reviewer-signed-off exceptions don't count as drift)
@@ -95,7 +95,7 @@ interface Lexicon {
   link_markers?: string[];
   meta_questions?: string[];
   // Softer interpretive phrasings ("declaration", "recites", …) that are drift ONLY in a §4 Q&A
-  // answer. Deliberately NOT in scanProse (which also runs on FOR_MODEL fields + §3C notes), so they
+  // answer. Deliberately NOT in scanProse (which also runs on MEANING_COORDINATES fields + §3C notes), so they
   // never fire on a closed-list speech_act value or a relocation note — both out of scope for the sweep.
   answer_labels?: string[];
   // SC-0070: forbidden grammatical/thematic-role TOKENS in event_specific_slots KEY names (the slot-name
@@ -198,7 +198,7 @@ function compoundMarker(a: string): string | null {
   return null;
 }
 
-// ───────────────────────── FOR_MODEL ─────────────────────────
+// ───────────────────────── MEANING_COORDINATES ─────────────────────────
 
 function walkStrings(node: unknown, path: string, visit: (s: string, path: string) => void): void {
   if (typeof node === "string") visit(node, path);
@@ -206,7 +206,7 @@ function walkStrings(node: unknown, path: string, visit: (s: string, path: strin
   else if (node && typeof node === "object") for (const [k, v] of Object.entries(node)) walkStrings(v, path ? `${path}.${k}` : k, visit);
 }
 
-export function lintForModel(json: any, file = ""): LintReport {
+export function lintMeaningCoordinates(json: any, file = ""): LintReport {
   const findings: LintFinding[] = [];
 
   // §3C entities-only (R1): an object whose id/function denotes an event/framing/pattern
@@ -330,7 +330,7 @@ export function lintForModel(json: any, file = ""): LintReport {
     }
   }
 
-  return finalize(findings, file, "FOR_MODEL");
+  return finalize(findings, file, "MEANING_COORDINATES");
 }
 
 // ───────────────────────── meaning map (markdown prose) ─────────────────────────
@@ -372,7 +372,7 @@ export function lintMeaningMap(md: string, file = ""): LintReport {
     if (head) { block = `§4 Prop ${head[1]}`; continue; }
 
     // 1) Inter-proposition-link / cross_ref lines do not belong inline in a Level-3 block —
-    //    they are FOR_MODEL structural fields. Flag and move on (one finding/line).
+    //    they are MEANING_COORDINATES structural fields. Flag and move on (one finding/line).
     const link = linkRes.find(({ re }) => re.test(line));
     if (link) {
       findings.push({ rule: "link_in_level3", tier: 1, location: block, match: link.m, context: line.slice(0, 90) });
@@ -421,7 +421,7 @@ function finalize(findings: LintFinding[], file: string, artifact: string): Lint
   // de-dup identical (rule, location, match, context). Context is in the key so that distinct
   // lines sharing a rule+location+match — e.g. several inline cross_refs in one proposition, each a
   // separate relocation — are counted separately (the true inventory), while a genuine re-scan of
-  // the exact same string (FOR_MODEL walkStrings) still collapses to one.
+  // the exact same string (MEANING_COORDINATES walkStrings) still collapses to one.
   const seen = new Set<string>();
   const uniq = findings.filter((f) => {
     const k = `${f.rule}|${f.location}|${f.match}|${f.context}`;

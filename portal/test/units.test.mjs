@@ -14,7 +14,7 @@ test('parseNote unwraps Obsidian wikilink values (single + list)', () => {
   const raw = `---
 type: "pericope"
 status: "complete"
-for-model: [[P01-Ruth-1-1-5-FOR-MODEL]]
+meaning-coordinates: [[P01-Ruth-1-1-5-MEANING-COORDINATES]]
 active-concepts:
   - [[CB_0029-Judges-Era]]
   - [[CB_0004-Moabite-Outsider]]
@@ -22,7 +22,7 @@ active-concepts:
 body here
 `;
   const { frontmatter, body } = parseNote(raw, 'x.md');
-  assert.equal(frontmatter['for-model'], 'P01-Ruth-1-1-5-FOR-MODEL');
+  assert.equal(frontmatter['meaning-coordinates'], 'P01-Ruth-1-1-5-MEANING-COORDINATES');
   assert.deepEqual(frontmatter['active-concepts'], ['CB_0029-Judges-Era', 'CB_0004-Moabite-Outsider']);
   assert.equal(body.trim(), 'body here');
 });
@@ -51,7 +51,7 @@ const registries = {
 const ctx = {
   registries,
   bookPrefix: 'P',
-  published: new Map([['P01', new Set(['meaning-map', 'for-model'])]]),
+  published: new Map([['P01', new Set(['meaning-map', 'meaning-coordinates'])]]),
   relRoot: '../',
 };
 
@@ -63,7 +63,7 @@ test('classifyTarget recognizes every target shape in the corpus', () => {
   assert.equal(classifyTarget('CB_0029-Judges-Era').kind, 'concept');
   assert.equal(classifyTarget('FIG_0007-Narrator-Frame').kind, 'figure');
   assert.deepEqual(classifyTarget('P01-Ruth-1-1-5'), { kind: 'artifact', artifact: 'meaning-map', pericope: 'P01' });
-  assert.deepEqual(classifyTarget('P01-Ruth-1-1-5-FOR-MODEL'), { kind: 'artifact', artifact: 'for-model', pericope: 'P01' });
+  assert.deepEqual(classifyTarget('P01-Ruth-1-1-5-MEANING-COORDINATES'), { kind: 'artifact', artifact: 'meaning-coordinates', pericope: 'P01' });
   assert.equal(classifyTarget('P01-Ruth-1-1-5-COMPILATION-LOG').artifact, 'compilation-log');
   assert.equal(classifyTarget('P01-Ruth-1-1-5-BCD-DELTA').artifact, 'bcd-delta');
 });
@@ -81,9 +81,9 @@ test('piped display text wins', () => {
 });
 
 test('published artifact link becomes a relative href; unpublished degrades to plain text', () => {
-  const pub = renderWikilink(ctx, 'P01-Ruth-1-1-5-FOR-MODEL', null);
-  assert.match(pub, /href="\.\.\/pericopes\/P01\.html#for-model"/);
-  const unpub = renderWikilink(ctx, 'P77-Ruth-9-9-9-FOR-MODEL', null);
+  const pub = renderWikilink(ctx, 'P01-Ruth-1-1-5-MEANING-COORDINATES', null);
+  assert.match(pub, /href="\.\.\/pericopes\/P01\.html#meaning-coordinates"/);
+  const unpub = renderWikilink(ctx, 'P77-Ruth-9-9-9-MEANING-COORDINATES', null);
   assert.match(unpub, /wl-plain/);
   assert.match(unpub, /Not published/);
   assert.doesNotMatch(unpub, /<a /);

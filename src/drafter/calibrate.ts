@@ -1,5 +1,5 @@
 /**
- * SC-0063 Phase B: judgment-layer calibration — score a DRAFTED FOR_MODEL against its GOLD
+ * SC-0063 Phase B: judgment-layer calibration — score a DRAFTED MEANING_COORDINATES against its GOLD
  * (hand-made, blessed) counterpart, field by field, at the judgment layer only (the
  * deterministic layer is gold-diff's job and is byte-stable by construction).
  *

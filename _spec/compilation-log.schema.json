@@ -314,7 +314,7 @@
       "additionalProperties": false,
       "required": [
         "meaning_map_contains_only_story_content",
-        "for_model_contains_only_inference_signal",
+        "meaning_coordinates_contains_only_inference_signal",
         "every_proposition_has_cb_flags_and_figure_flags",
         "no_grammatical_frame_slot_names",
         "speech_act_present_on_all_component_records",
@@ -329,7 +329,7 @@
       ],
       "properties": {
         "meaning_map_contains_only_story_content": { "type": "boolean" },
-        "for_model_contains_only_inference_signal": { "type": "boolean" },
+        "meaning_coordinates_contains_only_inference_signal": { "type": "boolean" },
         "every_proposition_has_cb_flags_and_figure_flags": { "type": "boolean" },
         "every_being_in_propositions_declared_in_scenes": { "type": "boolean" },
         "every_place_in_propositions_declared_in_scenes": { "type": "boolean" },

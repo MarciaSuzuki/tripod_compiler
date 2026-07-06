@@ -5,18 +5,18 @@ import { reconcile } from "../src/engine/coverage.js";
 
 /**
  * Acceptance test (CLAUDE.md §Slice-1 pattern, applied to coverage): `tripod coverage` on a
- * known-good pilot-2 FOR_MODEL reconciled against the REAL frozen BHSA P01 packet → clean
+ * known-good pilot-2 MEANING_COORDINATES reconciled against the REAL frozen BHSA P01 packet → clean
  * (no blockers); on a deliberately corrupted copy → precise, located blockers.
  *
  * Inputs are the pinned, offline-frozen extracts (extractor/*.py → _spec/source + _spec/registry).
  */
 
 const packet = loadSourcePacket(sourcePacketPath("ruth", "P01"));
-const fm = readArtifactNote("fixtures/for-model/P01-Ruth-1-1-5-FOR-MODEL.md").json as any;
+const mc = readArtifactNote("fixtures/meaning-coordinates/P01-Ruth-1-1-5-MEANING-COORDINATES.md").json as any;
 const aliases = loadAliasTable("ruth");
 
-describe("coverage acceptance — real P01 (Ruth 1:1-5), known-good FOR_MODEL", () => {
-  const led = reconcile(packet, fm, aliases);
+describe("coverage acceptance — real P01 (Ruth 1:1-5), known-good MEANING_COORDINATES", () => {
+  const led = reconcile(packet, mc, aliases);
 
   it("is clean: no blockers, no proper-noun omissions, no non-abstract unanchored entities", () => {
     expect(led.ok).toBe(true);
@@ -88,9 +88,9 @@ describe("coverage acceptance — real P01 (Ruth 1:1-5), known-good FOR_MODEL", 
   });
 });
 
-describe("coverage acceptance — corrupted FOR_MODEL → precise blockers", () => {
+describe("coverage acceptance — corrupted MEANING_COORDINATES → precise blockers", () => {
   it("possible omission: dropping scene 3 (the marriages) flags Orpah + Ruth as unmapped named referents", () => {
-    const tampered = structuredClone(fm);
+    const tampered = structuredClone(mc);
     tampered.level_2_scenes = tampered.level_2_scenes.filter((s: any) => s.scene_id !== "S3");
     tampered.level_3_propositions = tampered.level_3_propositions.filter((p: any) => !String(p.verse_anchor).startsWith("1:4"));
     const led = reconcile(packet, tampered, aliases);
@@ -102,7 +102,7 @@ describe("coverage acceptance — corrupted FOR_MODEL → precise blockers", () 
   });
 
   it("possible hallucination: a map entity outside the pericope's verses has nothing to host it", () => {
-    const tampered = structuredClone(fm);
+    const tampered = structuredClone(mc);
     tampered.level_2_scenes = [
       ...tampered.level_2_scenes,
       { scene_id: "SX", verse_range: "1:9", times_in_scene: { entries: [{ time_id: "TM_FABRICATED" }] } },
