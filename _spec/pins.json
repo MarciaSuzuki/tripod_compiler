@@ -213,6 +213,10 @@
       "version": "extractor-0.1.0/bhsa-2021",
       "sha256": "693bc783237c88a1597020ecb31668ea320b9e686c92849ea42dda09a5d9be46"
     },
+    "source/psalms/T13.json": {
+      "version": "extractor-0.1.0/bhsa-2021",
+      "sha256": "b3e3ad15363f01db16204a95f723fbe8c78c2eef3af1de41f851336434325bd2"
+    },
     "drafter/mc-drafter-prompt.md": {
       "version": "mc-drafter-0.2.0",
       "sha256": "753a5dad43ea69fc3d2c8c4c7c125ac185ae4b647c52217d08ff5be8729abac7"
