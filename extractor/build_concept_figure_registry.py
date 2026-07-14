@@ -76,7 +76,7 @@ def parse_frontmatter(text):
 
 # Pericope-prefix → book. The `appears-in` field lists pericopes (e.g. P07, J01); the GLOBAL bank's
 # appears_in is canon-wide (book-level). Extend this map as each new book is added.
-PERICOPE_BOOK = {"P": "RUTH", "J": "JONAH"}
+PERICOPE_BOOK = {"P": "RUTH", "J": "JONAH", "E": "ESTHER", "T": "PSALMS"}
 
 
 def books_from_appears_in(fm):

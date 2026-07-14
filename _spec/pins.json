@@ -106,12 +106,12 @@
       "sha256": "3353c0316b6bbca642643ce08b8527a07eda6c0e3fcfee5f84fe3ae1e64fd1d9"
     },
     "registry/concepts.json": {
-      "version": "0.6.0",
-      "sha256": "44e1d4f059c1be83463180d870e1e0dc7d3e7299de95efc53504b7492bb179a0"
+      "version": "0.7.0",
+      "sha256": "6f0aab849f6db9ac86bb163459177e2fbac0e2e4d143a2e768f7d898e82a5c58"
     },
     "registry/figures.json": {
-      "version": "0.6.0",
-      "sha256": "03a392f306838b32f622b6c829a1da4d108b46b33a3c12a14584f9a4e3b48608"
+      "version": "0.7.0",
+      "sha256": "3350fcfb2c2adcb7b7209623a1673b8f506eedcd0d9c999cfa929c03962d0a76"
     },
     "source/ruth/P08.json": {
       "version": "extractor-0.1.0/bhsa-2021",
@@ -220,6 +220,10 @@
     "drafter/mc-drafter-prompt.md": {
       "version": "mc-drafter-0.2.0",
       "sha256": "753a5dad43ea69fc3d2c8c4c7c125ac185ae4b647c52217d08ff5be8729abac7"
+    },
+    "registry/psalms.aliases.json": {
+      "version": "aliases-0.1.6",
+      "sha256": "fc39cb60e43ecbd7c7b5ac6c31b2ffc955495d088195783509cf1151bb9a4582"
     }
   }
 }
