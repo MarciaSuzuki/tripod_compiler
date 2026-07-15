@@ -7,17 +7,29 @@ import { spawnSync } from 'node:child_process';
 export const portalDir = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '..');
 const buildScript = path.join(portalDir, 'src', 'build.mjs');
 
+const configuredBooks = JSON.parse(
+  fs.readFileSync(path.join(portalDir, 'portal.config.json'), 'utf8')
+).books;
+
 /** Create a throwaway synthetic repo tree (fixtures + minimal registries). */
 export function mkTree(files = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-test-'));
+  // Every configured book gets an empty aliases stub — a book added to
+  // portal.config.json must never make the synthetic trees unbuildable.
+  const bookStubs = Object.fromEntries(
+    configuredBooks.map((b) => [
+      `_spec/registry/${b.aliasesFile}`,
+      JSON.stringify({ book: b.name, entities: {} }),
+    ])
+  );
   const defaults = {
+    ...bookStubs,
     '_spec/registry/ruth.aliases.json': JSON.stringify({
       book: 'RUTH',
       entities: {
         B2: { english: 'Elimelech', hebrew: 'אֱלִימֶלֶךְ', kind: 'PERSON', appears_in: ['P99'], referential_forms: [] },
       },
     }),
-    '_spec/registry/jonah.aliases.json': JSON.stringify({ book: 'JONAH', entities: {} }),
     '_spec/registry/esther.aliases.json': JSON.stringify({
       book: 'ESTHER',
       entities: {
