@@ -1,0 +1,82 @@
+{
+  "book": "PSALMS",
+  "counts": {
+    "by_kind": {
+      "PERSON": 4
+    },
+    "entities": 4
+  },
+  "entities": {
+    "B1": {
+      "appears_in": [
+        "T13"
+      ],
+      "english": "The psalmist (the praying I)",
+      "gender": null,
+      "hebrew": "אֲנִי",
+      "hebrew_cons": "אני",
+      "hebrew_cons_aliases": [
+        "לבבי",
+        "נפשי"
+      ],
+      "kind": "PERSON",
+      "referential_forms": [
+        "the praying I"
+      ]
+    },
+    "B2": {
+      "appears_in": [
+        "T13"
+      ],
+      "english": "YHWH",
+      "gender": "m",
+      "hebrew": "יְהוָה",
+      "hebrew_cons": "יהוה",
+      "hebrew_cons_aliases": [
+        "אלהי"
+      ],
+      "kind": "PERSON",
+      "referential_forms": [
+        "my God"
+      ]
+    },
+    "B3": {
+      "appears_in": [
+        "T13"
+      ],
+      "english": "The enemy",
+      "gender": null,
+      "hebrew": "אֹיֵב",
+      "hebrew_cons": "איב",
+      "hebrew_cons_aliases": [
+        "איבי"
+      ],
+      "kind": "PERSON",
+      "referential_forms": [
+        "my enemy"
+      ]
+    },
+    "B4": {
+      "appears_in": [
+        "T13"
+      ],
+      "english": "The foes (adversaries)",
+      "gender": null,
+      "hebrew": "צַר",
+      "hebrew_cons": "צר",
+      "hebrew_cons_aliases": [
+        "צרי"
+      ],
+      "kind": "PERSON",
+      "referential_forms": [
+        "my foes"
+      ]
+    }
+  },
+  "places_ner": {
+    "loaded": false
+  },
+  "schema": "tripod-entity-aliases",
+  "schema_version": "0.1.0",
+  "source": "psalms-pilot-b-wiki/bcd frontmatter (+ ETCBC places NER sheet)"
+}

@@ -2,9 +2,10 @@
   "counts": {
     "by_book": {
       "JONAH": 11,
+      "PSALMS": 3,
       "RUTH": 115
     },
-    "entries": 126
+    "entries": 129
   },
   "entries": {
     "FIG_0001": {
@@ -1066,6 +1067,30 @@
       ],
       "code": "FIG_0206",
       "name_slug": "Anger-Question-Pair"
+    },
+    "FIG_0207": {
+      "aliases": [],
+      "appears_in": [
+        "PSALMS"
+      ],
+      "code": "FIG_0207",
+      "name_slug": "Light-Up-the-Eyes"
+    },
+    "FIG_0208": {
+      "aliases": [],
+      "appears_in": [
+        "PSALMS"
+      ],
+      "code": "FIG_0208",
+      "name_slug": "Sleep-of-Death"
+    },
+    "FIG_0209": {
+      "aliases": [],
+      "appears_in": [
+        "PSALMS"
+      ],
+      "code": "FIG_0209",
+      "name_slug": "How-Long-Fourfold"
     }
   },
   "kind": "FIGURE",

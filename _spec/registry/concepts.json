@@ -2,9 +2,10 @@
   "counts": {
     "by_book": {
       "JONAH": 9,
+      "PSALMS": 6,
       "RUTH": 50
     },
-    "entries": 58
+    "entries": 62
   },
   "entries": {
     "CB_0001": {
@@ -110,6 +111,7 @@
         "CB_SHADDAI"
       ],
       "appears_in": [
+        "PSALMS",
         "RUTH"
       ],
       "code": "CB_0009",
@@ -132,6 +134,7 @@
       ],
       "appears_in": [
         "JONAH",
+        "PSALMS",
         "RUTH"
       ],
       "code": "CB_0011",
@@ -600,6 +603,50 @@
       ],
       "code": "CB_0058",
       "name_slug": "Compassion-Creed"
+    },
+    "CB_0059": {
+      "aliases": [
+        "CB_YESHUAH",
+        "CB_SALVATION"
+      ],
+      "appears_in": [
+        "PSALMS"
+      ],
+      "code": "CB_0059",
+      "name_slug": "Yeshuah-Salvation"
+    },
+    "CB_0060": {
+      "aliases": [
+        "CB_HESTER_PANIM",
+        "CB_FACE_HIDDEN"
+      ],
+      "appears_in": [
+        "PSALMS"
+      ],
+      "code": "CB_0060",
+      "name_slug": "Hester-Panim-Face-Hidden"
+    },
+    "CB_0061": {
+      "aliases": [
+        "CB_OYEV",
+        "CB_ENEMY_FOE"
+      ],
+      "appears_in": [
+        "PSALMS"
+      ],
+      "code": "CB_0061",
+      "name_slug": "Enemy-Foe"
+    },
+    "CB_0062": {
+      "aliases": [
+        "CB_BATACH",
+        "CB_TRUST"
+      ],
+      "appears_in": [
+        "PSALMS"
+      ],
+      "code": "CB_0062",
+      "name_slug": "Batach-Trust"
     }
   },
   "kind": "CONCEPT",
