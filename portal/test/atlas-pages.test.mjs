@@ -98,12 +98,17 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
   // Stats footer is computed (real counts) — the bar is equality with the PINNED
   // registries, derived by an independent parse: legitimate registry growth (an
   // SC that adds concepts/figures) must never break the deploy gate.
-  const regEntries = (f) =>
-    JSON.parse(fs.readFileSync(path.join(repoRoot, '_spec', 'registry', f), 'utf8')).entries ?? {};
-  const nConcepts = Object.keys(regEntries('concepts.json')).length;
-  const nFigures = Object.keys(regEntries('figures.json')).length;
+  const regJson = (f) =>
+    JSON.parse(fs.readFileSync(path.join(repoRoot, '_spec', 'registry', f), 'utf8'));
+  const conceptsReg = regJson('concepts.json');
+  const figuresReg = regJson('figures.json');
+  const nConcepts = Object.keys(conceptsReg.entries ?? {}).length;
+  const nFigures = Object.keys(figuresReg.entries ?? {}).length;
+  // The counts block is extractor-written; derived ≠ declared can only be corruption.
+  assert.equal(nConcepts, conceptsReg.counts?.entries, 'concepts.json self-consistent');
+  assert.equal(nFigures, figuresReg.counts?.entries, 'figures.json self-consistent');
   assert.ok(nConcepts >= 58 && nFigures >= 126, 'registries only grow (the PR-2 floor)');
-  assert.match(ruth, new RegExp(`${nConcepts} concepts · ${nFigures} figures`));
+  assert.match(ruth, new RegExp(`\\b${nConcepts} concepts · ${nFigures} figures`));
   assert.ok(fs.existsSync(path.join(out, 'assets', 'atlas.css')));
 
   rmrf(out);
