@@ -1,0 +1,8 @@
+{
+  "book": "PSALMS",
+  "bhsa_book": "Psalmi",
+  "_note": "Psalms pericope → verse-range map (SC-0082; the POETIC_SUNG seed expansion — Psalm 13 first, per the ruled seed strategy: coverage beats count, a FEW psalms, not the Psalter). start/end are HEBREW (MT/BHSA) versification; bcv is English. NOTE bhsa_book is the ETCBC Latin book name 'Psalmi' (NOT 'Psalms') — verified against the tf/2021 `book` feature at extraction (the Jonah 'Jona' lesson). Pericope IDs: prefix 'T' (Tehillim) + the PSALM NUMBER (T13 = Psalm 13) — psalms are self-contained poems, so the psalm number IS the natural pericope number (recommendation on the Phase-0 card; Marcia may re-letter before merge). VERSIFICATION (verified at extraction): MT counts the superscription as v1 — MT 13:1 = the superscription (la-menatseach mizmor le-David) alone; English vv1-4 = MT vv2-5; English vv5-6 share MT v6 (the trust-turn and the vow are ONE Masoretic verse). Map bcv/verse_anchors use ENGLISH numbering per PSALMS-MAPPING-CONVENTIONS §11; the MT offset is recorded in scene prose. The packet spans all 6 MT verses (the superscription rides as frozen source; it stays OUT of Level-3 per conventions §5).",
+  "pericopes": {
+    "T13": { "bcv": "Psalm 13:1-6", "start": [13, 1], "end": [13, 6] }
+  }
+}
