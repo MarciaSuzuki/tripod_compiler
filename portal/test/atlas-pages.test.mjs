@@ -95,8 +95,15 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
     assert.match(read(out, rel), /class="btns/, `${rel} carries the feedback buttons (§2.5: every Atlas page)`);
   }
 
-  // Stats footer is computed (real counts), and the atlas stylesheet ships.
-  assert.match(ruth, /58 concepts · 126 figures/);
+  // Stats footer is computed (real counts) — the bar is equality with the PINNED
+  // registries, derived by an independent parse: legitimate registry growth (an
+  // SC that adds concepts/figures) must never break the deploy gate.
+  const regEntries = (f) =>
+    JSON.parse(fs.readFileSync(path.join(repoRoot, '_spec', 'registry', f), 'utf8')).entries ?? {};
+  const nConcepts = Object.keys(regEntries('concepts.json')).length;
+  const nFigures = Object.keys(regEntries('figures.json')).length;
+  assert.ok(nConcepts >= 58 && nFigures >= 126, 'registries only grow (the PR-2 floor)');
+  assert.match(ruth, new RegExp(`${nConcepts} concepts · ${nFigures} figures`));
   assert.ok(fs.existsSync(path.join(out, 'assets', 'atlas.css')));
 
   rmrf(out);
