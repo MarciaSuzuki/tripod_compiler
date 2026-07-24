@@ -10,7 +10,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { portalDir, runBuild } from './helpers.mjs';
-import { KIND, renderApprovalButton, buildFeedbackUrl } from '../src/lib/feedback.mjs';
+import { KIND, APPROVAL, renderApprovalButton, buildFeedbackUrl } from '../src/lib/feedback.mjs';
 
 const repoRoot = path.resolve(portalDir, '..');
 const haveFixtures = fs.existsSync(path.join(repoRoot, 'fixtures', 'meaning-map'));
@@ -18,15 +18,18 @@ const read = (out, rel) => fs.readFileSync(path.join(out, rel), 'utf8');
 
 const FORM = {
   formBase: 'https://docs.google.com/forms/d/e/TEST',
-  entries: { pericope: 'entry.1', artifact: 'entry.2', section: 'entry.3', kind: 'entry.4' },
+  entries: { pericope: 'entry.1', artifact: 'entry.2', section: 'entry.3', kind: 'entry.4', approval: 'entry.5' },
 };
 
-test('approval: the ruled wording, exactly, as both the kind and the button label', () => {
-  assert.equal(KIND.approval, 'I read it — I approve it as it is');
+test('approval: the ruled wording as the label; the Form records approval on its own axis', () => {
+  assert.equal(APPROVAL.label, 'I read it — I approve it as it is');
+  assert.equal(APPROVAL.value, 'Yes');
+  assert.deepEqual(Object.keys(KIND), ['question', 'suggestion'], 'approval is not a kind');
 
   const live = renderApprovalButton(FORM, { pericope: 'P01 — Ruth 1:1-5', artifact: 'Meaning Map', section: 'as built abc1234 · map sha deadbeef0123' });
   assert.match(live, />I read it — I approve it as it is</, 'button label is the ruled sentence');
-  assert.match(live, /entry\.4=I\+read\+it\+%E2%80%94\+I\+approve\+it\+as\+it\+is/, 'kind prefill is the same ruled sentence');
+  assert.match(live, /entry\.5=Yes/, 'the approval question is answered Yes');
+  assert.doesNotMatch(live, /entry\.4=/, 'an approval is neither a question nor a suggestion — kind stays empty');
   assert.match(live, /entry\.3=as\+built\+abc1234\+%C2%B7\+map\+sha\+deadbeef0123/, 'the version pin rides the section field');
   assert.match(live, /target="_blank" rel="noopener"/);
 
@@ -39,6 +42,7 @@ test('approval: real build — on every published Meaning Map, only there, pinne
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-approve-'));
   assert.equal(runBuild(repoRoot, out).status, 0);
 
+  const cfgEntries = JSON.parse(fs.readFileSync(path.join(portalDir, 'portal.config.json'), 'utf8')).feedbackForm.entries;
   const manifest = JSON.parse(read(out, 'build-manifest.json'));
   const mapShaByPericope = new Map(
     manifest.artifacts.filter((a) => a.class === 'meaning-map').map((a) => [a.pericope, a.sha256])
@@ -55,7 +59,7 @@ test('approval: real build — on every published Meaning Map, only there, pinne
       // The ruled sentence appears exactly once as the visible label (the URL
       // prefill carries it percent-encoded), and only inside the map section.
       assert.equal(count, 1, `${f}: approval act present exactly once`);
-      assert.match(html, /I\+read\+it\+%E2%80%94\+I\+approve\+it\+as\+it\+is/, `${f}: kind prefill rides the URL`);
+      assert.match(html, new RegExp(`${cfgEntries.approval.replace('.', '\\.')}=Yes`), `${f}: the approval question arrives answered Yes`);
       const mapSection = html.slice(html.indexOf('id="meaning-map"'), html.indexOf('id="for-model"') !== -1 ? html.indexOf('id="for-model"') : undefined);
       assert.equal(mapSection.split('I read it — I approve it as it is').length - 1, 1,
         `${f}: the approval act lives in the Meaning Map section only`);
@@ -84,7 +88,7 @@ test('approval: the pin distinguishes versions — a different map byte, a diffe
   const shaA = crypto.createHash('sha256').update('map v1').digest('hex').slice(0, 12);
   const shaB = crypto.createHash('sha256').update('map v1 ').digest('hex').slice(0, 12);
   assert.notEqual(shaA, shaB);
-  const urlA = buildFeedbackUrl(FORM, { pericope: 'P01', artifact: 'Meaning Map', section: `as built x · map sha ${shaA}`, kind: KIND.approval });
-  const urlB = buildFeedbackUrl(FORM, { pericope: 'P01', artifact: 'Meaning Map', section: `as built x · map sha ${shaB}`, kind: KIND.approval });
+  const urlA = buildFeedbackUrl(FORM, { pericope: 'P01', artifact: 'Meaning Map', section: `as built x · map sha ${shaA}`, approval: APPROVAL.value });
+  const urlB = buildFeedbackUrl(FORM, { pericope: 'P01', artifact: 'Meaning Map', section: `as built x · map sha ${shaB}`, approval: APPROVAL.value });
   assert.notEqual(urlA, urlB, 'two versions of a map can never share an approval URL');
 });

@@ -13,13 +13,15 @@ import { escapeAttr, escapeHtml } from './html.mjs';
 //   https://docs.google.com/forms/d/e/<FORM_ID>/viewform?usp=pp_url&entry.111=...
 // formBase = everything up to /viewform, entries.* = the entry.N field ids.
 
-export const KIND = {
-  question: 'I have a question',
-  suggestion: 'I suggest a change',
-  approval: 'I read it — I approve it as it is',
-};
+export const KIND = { question: 'I have a question', suggestion: 'I suggest a change' };
 
-export function buildFeedbackUrl(formCfg, { pericope, artifact, section, kind }) {
+// The approval act (Marcia's ruling 2026-07-24). The button wears her ruled
+// sentence; the Form records it on its own question ("I have read the Meaning
+// Map and I approve it as it is"), whose affirmative option is "Yes" — approval
+// is its own axis in the Form, not a third kind.
+export const APPROVAL = { label: 'I read it — I approve it as it is', value: 'Yes' };
+
+export function buildFeedbackUrl(formCfg, { pericope, artifact, section, kind, approval }) {
   const base = formCfg?.formBase;
   if (!base || !/^https:\/\/docs\.google\.com\/forms\//.test(base)) return null;
 
@@ -32,6 +34,7 @@ export function buildFeedbackUrl(formCfg, { pericope, artifact, section, kind })
   put(entries.artifact, artifact);
   put(entries.section, section);
   put(entries.kind, kind);
+  put(entries.approval, approval);
 
   return `${base.replace(/\/$/, '')}/viewform?${params.toString()}`;
 }
@@ -79,18 +82,18 @@ export function sectionAskUrlFactory(formCfg, { pericope, artifact }) {
  * version, not the new one.
  */
 export function renderApprovalButton(formCfg, { pericope, artifact, section = null }) {
-  const approve = buildFeedbackUrl(formCfg, { pericope, artifact, section, kind: KIND.approval });
+  const approve = buildFeedbackUrl(formCfg, { pericope, artifact, section, approval: APPROVAL.value });
   if (!approve) {
     const tip = 'The feedback form is being set up — this button will go live soon.';
     return (
       `<span class="btns btns-disabled" title="${escapeAttr(tip)}">` +
-      `<span class="btn btn-disabled">${KIND.approval}</span>` +
+      `<span class="btn btn-disabled">${APPROVAL.label}</span>` +
       `</span>`
     );
   }
   return (
     `<span class="btns">` +
-    `<a class="btn" href="${escapeAttr(approve)}" target="_blank" rel="noopener">${KIND.approval}</a>` +
+    `<a class="btn" href="${escapeAttr(approve)}" target="_blank" rel="noopener">${APPROVAL.label}</a>` +
     `</span>`
   );
 }
