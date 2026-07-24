@@ -166,9 +166,15 @@ function main() {
     const bcv = mapFm['bcv'] ?? jsonOf(p.meaningCoordinates, p.relPath)?.header?.bcv ?? '';
 
     let mapHtml = `<p class="note">The Meaning Map for this passage is not published yet.</p>`;
+    let approvalPin = null;
     if (p.map) {
       const askUrl = sectionAskUrlFactory(formCfg, { pericope: `${p.id} — ${bcv}`, artifact: 'Meaning Map' });
       mapHtml = renderMarkdown(ctx, p.map.body, { headingPrefix: 'map', sectionAskUrl: askUrl }).html;
+      // The approval act's version pin: an approval covers exactly these bytes.
+      // Same hash the manifest records for this artifact; a re-blessed map gets
+      // a new sha, so older approvals visibly cover the previous version only.
+      const mapSha = crypto.createHash('sha256').update(fs.readFileSync(p.map.filePath)).digest('hex');
+      approvalPin = `as built ${buildInfo.commit} · map sha ${mapSha.slice(0, 12)}`;
     }
     const meaningCoordinatesHtml = p.meaningCoordinates
       ? renderJsonTree(ctx, jsonOf(p.meaningCoordinates), { openDepth: 2 })
@@ -186,7 +192,7 @@ function main() {
           cfg,
           formCfg,
           wikilinkCtx: ctx,
-          p: { id: p.id, bcv, title, mapFrontmatter: mapFm, mapHtml, meaningCoordinatesHtml, logHtml },
+          p: { id: p.id, bcv, title, mapFrontmatter: mapFm, mapHtml, meaningCoordinatesHtml, logHtml, approvalPin },
         }),
       })
     );

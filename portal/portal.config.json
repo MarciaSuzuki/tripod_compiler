@@ -2,19 +2,40 @@
   "siteTitle": "Tripod Method Leg One: The Exegete Portal",
   "siteSubtitle": "Approved Bible-translation artifacts, published read-only for external review",
   "books": [
-    { "prefix": "P", "name": "RUTH", "title": "Ruth", "aliasesFile": "ruth.aliases.json" },
-    { "prefix": "J", "name": "JONAH", "title": "Jonah", "aliasesFile": "jonah.aliases.json" },
-    { "prefix": "E", "name": "ESTHER", "title": "Esther", "aliasesFile": "esther.aliases.json" },
-    { "prefix": "T", "name": "PSALMS", "title": "Psalms", "aliasesFile": "psalms.aliases.json" }
+    {
+      "prefix": "P",
+      "name": "RUTH",
+      "title": "Ruth",
+      "aliasesFile": "ruth.aliases.json"
+    },
+    {
+      "prefix": "J",
+      "name": "JONAH",
+      "title": "Jonah",
+      "aliasesFile": "jonah.aliases.json"
+    },
+    {
+      "prefix": "E",
+      "name": "ESTHER",
+      "title": "Esther",
+      "aliasesFile": "esther.aliases.json"
+    },
+    {
+      "prefix": "T",
+      "name": "PSALMS",
+      "title": "Psalms",
+      "aliasesFile": "psalms.aliases.json"
+    }
   ],
   "feedbackForm": {
     "_how": "See portal/README.md § Connecting the Google Form. formBase is everything before /viewform in the form's 'Get pre-filled link' URL; entries.* are the entry.NNNN ids from that same link. Until formBase is set, the feedback buttons render as visibly disabled placeholders.",
     "formBase": "https://docs.google.com/forms/d/e/1FAIpQLScB25Ympj-9J1aC4PXzTxlAX_vKUnSCzGFyy8TFlzW4QuRCKw",
     "entries": {
-      "pericope": "entry.2065263423",
+      "pericope": "entry.311104937",
       "artifact": "entry.1235011063",
       "section": "entry.2120378004",
-      "kind": "entry.1978989975"
+      "kind": "entry.1978989975",
+      "approval": "entry.2065263423"
     }
   }
 }
