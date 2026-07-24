@@ -1,5 +1,5 @@
 import { escapeHtml, escapeAttr } from './html.mjs';
-import { renderFeedbackButtons } from './feedback.mjs';
+import { renderFeedbackButtons, renderApprovalButton } from './feedback.mjs';
 import { renderWikilink } from './wikilinks.mjs';
 
 // Page templates. Written for the actual audience: external reviewers who are
@@ -154,6 +154,7 @@ export function pericopePage({ cfg, p, formCfg, wikilinkCtx }) {
   <article class="map prose">
 ${p.mapHtml}
   </article>
+  ${p.approvalPin ? `<p class="approve-row">${renderApprovalButton(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'Meaning Map', section: p.approvalPin })}</p>` : ''}
 </section>`;
 
   const mcSection = p.meaningCoordinatesHtml

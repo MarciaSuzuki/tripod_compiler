@@ -13,7 +13,11 @@ import { escapeAttr, escapeHtml } from './html.mjs';
 //   https://docs.google.com/forms/d/e/<FORM_ID>/viewform?usp=pp_url&entry.111=...
 // formBase = everything up to /viewform, entries.* = the entry.N field ids.
 
-export const KIND = { question: 'I have a question', suggestion: 'I suggest a change' };
+export const KIND = {
+  question: 'I have a question',
+  suggestion: 'I suggest a change',
+  approval: 'I read it — I approve it as it is',
+};
 
 export function buildFeedbackUrl(formCfg, { pericope, artifact, section, kind }) {
   const base = formCfg?.formBase;
@@ -65,4 +69,28 @@ export function sectionAskUrlFactory(formCfg, { pericope, artifact }) {
     escapeHtml(
       buildFeedbackUrl(formCfg, { pericope, artifact, section: sectionText, kind: KIND.question })
     );
+}
+
+/**
+ * The approval act (Marcia's ruling 2026-07-24: her wording, Meaning Map only).
+ * One button, same Form, third kind. The section field carries the version pin
+ * — build commit + map sha — so every approval names the exact bytes it covers:
+ * if the map is ever re-blessed, older approvals visibly cover the previous
+ * version, not the new one.
+ */
+export function renderApprovalButton(formCfg, { pericope, artifact, section = null }) {
+  const approve = buildFeedbackUrl(formCfg, { pericope, artifact, section, kind: KIND.approval });
+  if (!approve) {
+    const tip = 'The feedback form is being set up — this button will go live soon.';
+    return (
+      `<span class="btns btns-disabled" title="${escapeAttr(tip)}">` +
+      `<span class="btn btn-disabled">${KIND.approval}</span>` +
+      `</span>`
+    );
+  }
+  return (
+    `<span class="btns">` +
+    `<a class="btn" href="${escapeAttr(approve)}" target="_blank" rel="noopener">${KIND.approval}</a>` +
+    `</span>`
+  );
 }
