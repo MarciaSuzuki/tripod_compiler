@@ -164,6 +164,8 @@ section.artifact-missing { background: var(--paper); border-style: dashed; }
   background: var(--card);
 }
 .btn:hover { background: var(--accent-soft); }
+button.btn { font-family: inherit; cursor: pointer; }
+.map.copying .ask-section { display: none; } /* the copied text is the map, not the UI */
 .btn-disabled { border-color: var(--off); color: var(--off); cursor: not-allowed; }
 
 /* JSON tree */

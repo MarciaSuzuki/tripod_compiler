@@ -66,10 +66,20 @@ test('brain: the atlas index stays a complete no-JS page (progressive, §2.4)', 
   assert.match(index, /<script src="\.\.\/assets\/atlas-brain\.js" defer><\/script>/);
   assert.ok(fs.existsSync(path.join(out, 'assets', 'atlas-brain.js')), 'engine ships in dist');
 
-  // The brain is the Atlas home only — no other page loads a script.
-  for (const rel of ['atlas/ruth.html', 'atlas/esther.html', 'atlas/registry/ruth/B10.html', 'index.html', 'pericopes/P01.html']) {
+  // Scripts on this site: the vendored Mind engine on the Atlas home and tours
+  // pages (pinned above and in atlas-finale), and — the one Reading-Room
+  // exception (Marcia, 2026-07-24: copy/download on the Meaning Map) — a single
+  // inline, self-contained map-tools script on pericope pages (every pericope
+  // page is swept by map-download.test; P01 spot-checked here).
+  // The progressive principle §2.4 stands — the copy control ships hidden and
+  // only JS reveals it, so the no-JS page is complete with no dead control.
+  for (const rel of ['atlas/ruth.html', 'atlas/esther.html', 'atlas/registry/ruth/B10.html', 'index.html']) {
     assert.doesNotMatch(fs.readFileSync(path.join(out, rel), 'utf8'), /<script/i, `${rel} stays script-free`);
   }
+  const pericope = fs.readFileSync(path.join(out, 'pericopes', 'P01.html'), 'utf8');
+  const scripts = pericope.match(/<script[^>]*>/gi) ?? [];
+  assert.equal(scripts.length, 1, 'pericope pages: exactly the one map-tools script');
+  assert.doesNotMatch(scripts[0], /src=/i, 'the map-tools script is inline — nothing loaded');
   rmrf(out);
 });
 
