@@ -143,12 +143,51 @@ export function pericopePage({ cfg, p, formCfg, wikilinkCtx }) {
 
   const chips = renderClassificationChips(p, wikilinkCtx);
 
+  // Copy serves the readable text (what you see is what you paste); Download
+  // serves the blessed source file itself, byte-identical — the file a reviewer
+  // keeps hashes to the same sha the manifest records and the approval pin names.
+  // The copy button needs the clipboard API, so it ships hidden and JS reveals
+  // it: the no-JS page shows no dead control.
+  const mapTools = p.mapFile
+    ? `<span class="btns">` +
+      `<button class="btn" id="copymap" type="button" aria-live="polite" hidden>Copy the map text</button>` +
+      `<a class="btn" href="${escapeAttr(p.mapFile)}" download="${escapeAttr(p.id)}-meaning-map.md" rel="nofollow">Download the map</a>` +
+      `</span>`
+    : '';
+  const mapToolsScript = p.mapFile
+    ? `
+<script>
+(function () {
+  var b = document.getElementById('copymap');
+  if (!b || !navigator.clipboard) return;
+  b.hidden = false;
+  var idle = b.textContent, busy = false;
+  b.addEventListener('click', function () {
+    if (busy) return;
+    busy = true;
+    var art = document.querySelector('article.map'), t;
+    art.classList.add('copying');
+    try { t = art.innerText; } finally { art.classList.remove('copying'); }
+    var flash = function (msg) {
+      b.textContent = msg;
+      setTimeout(function () { b.textContent = idle; busy = false; }, 1600);
+    };
+    navigator.clipboard.writeText(t).then(
+      function () { flash('Copied.'); },
+      function () { flash('Copy failed — use Download.'); }
+    );
+  });
+})();
+</script>`
+    : '';
+
   const mapSection = `
 <section class="artifact" id="meaning-map">
   <div class="secthead">
     <h2>Meaning Map</h2>
+    ${mapTools}
     ${renderFeedbackButtons(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'Meaning Map' })}
-  </div>
+  </div>${mapToolsScript}
   <p class="artifact-gloss">The human-readable study of this passage — what it says, scene by scene and statement by statement, and how it says it.</p>
   ${chips}
   <article class="map prose">

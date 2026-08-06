@@ -192,7 +192,7 @@ function main() {
           cfg,
           formCfg,
           wikilinkCtx: ctx,
-          p: { id: p.id, bcv, title, mapFrontmatter: mapFm, mapHtml, meaningCoordinatesHtml, logHtml, approvalPin },
+          p: { id: p.id, bcv, title, mapFrontmatter: mapFm, mapHtml, meaningCoordinatesHtml, logHtml, approvalPin, mapFile: p.map ? `${p.id}.map.md` : null },
         }),
       })
     );
@@ -248,6 +248,11 @@ function main() {
   fs.mkdirSync(path.join(outDir, 'assets'), { recursive: true });
   fs.mkdirSync(path.join(outDir, 'atlas'), { recursive: true });
   for (const [rel, html] of pages) fs.writeFileSync(path.join(outDir, rel), html);
+  // The downloadable map is the blessed source itself, byte-identical — its
+  // sha256 is the one the manifest records and the approval pin names.
+  for (const p of ordered) {
+    if (p.map) fs.copyFileSync(p.map.filePath, path.join(outDir, 'pericopes', `${p.id}.map.md`));
+  }
   for (const f of atlas.files) {
     fs.writeFileSync(path.join(outDir, f.file), JSON.stringify(f.data, null, 2) + '\n');
   }
