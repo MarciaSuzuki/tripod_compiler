@@ -6,24 +6,28 @@
       "prefix": "P",
       "name": "RUTH",
       "title": "Ruth",
+      "testament": "OT",
       "aliasesFile": "ruth.aliases.json"
     },
     {
       "prefix": "J",
       "name": "JONAH",
       "title": "Jonah",
+      "testament": "OT",
       "aliasesFile": "jonah.aliases.json"
     },
     {
       "prefix": "E",
       "name": "ESTHER",
       "title": "Esther",
+      "testament": "OT",
       "aliasesFile": "esther.aliases.json"
     },
     {
       "prefix": "T",
       "name": "PSALMS",
       "title": "Psalms",
+      "testament": "OT",
       "aliasesFile": "psalms.aliases.json"
     }
   ],

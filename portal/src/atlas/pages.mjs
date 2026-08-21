@@ -67,7 +67,7 @@ function atlasLayout({ cfg, title, relRoot, crumbs, contentHtml, stats, scriptHt
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>${escapeHtml(title ? `${title} · Meaning Mind · ${cfg.siteTitle}` : `Meaning Mind · ${cfg.siteTitle}`)}</title>
+<title>${escapeHtml(title ? `${title} · Meaning Ecosystem · ${cfg.siteTitle}` : `Meaning Ecosystem · ${cfg.siteTitle}`)}</title>
 <link rel="stylesheet" href="${relRoot}assets/atlas.css">${scriptHtml ? `\n${scriptHtml}` : ''}
 </head>
 <body>
@@ -119,7 +119,7 @@ const pidOf = (namespacedId) => namespacedId.split('/')[1];
 function indexPage({ cfg, formCfg, atlas, buildInfo, stats }) {
   const g = atlas.global;
   const feedback = renderFeedbackButtons(formCfg, {
-    pericope: 'Meaning Mind — index',
+    pericope: 'Meaning Ecosystem — index',
     artifact: 'The website itself',
   });
   const cards = atlas.books
@@ -141,7 +141,7 @@ function indexPage({ cfg, formCfg, atlas, buildInfo, stats }) {
 
   const content = `
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
-  <h1>The Meaning Mind</h1>
+  <h1>The Meaning Ecosystem</h1>
   ${feedback}
 </div>
   <p>The whole Tripod seed corpus as one connected structure: every book, pericope, scene and
@@ -175,7 +175,7 @@ ${cards}
     title: null,
     relRoot: '../',
 
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:21px;">Meaning Mind</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:21px;">Meaning Ecosystem</h1>`,
     contentHtml: content,
     stats,
     scriptHtml: `<script src="../assets/atlas-brain.js" defer></script>`,
@@ -188,10 +188,10 @@ ${cards}
  *  page above IS the degraded, navigable experience (spec §2.4). */
 function brainSkeleton(cfg) {
   return `
-<canvas id="stage" class="brainui" aria-label="The Meaning Mind — an interactive graph of the seed corpus"></canvas>
+<canvas id="stage" class="brainui" aria-label="The Meaning Ecosystem — an interactive graph of the seed corpus"></canvas>
 <div class="hud brainui" id="brand">
   <div class="eyebrow"><b>Tripod Exegete Portal</b> · Explore the Corpus</div>
-  <h1>The Meaning Mind</h1>
+  <h1>The Meaning Ecosystem</h1>
   <p class="brandlinks"><a href="tours.html">Guided tours ▸</a> · <a href="../index.html">Meaning Maps</a></p>
 </div>
 <div class="hud brainui" id="modes" role="tablist" aria-label="views"></div>
@@ -220,7 +220,7 @@ function bookPage({ cfg, formCfg, book, shard, atlas, buildInfo, stats }) {
   const nodes = new Map(shard.nodes.map((n) => [n.id, n]));
   const pericopes = shard.nodes.filter((n) => n.kind === 'pericope');
   const feedback = renderFeedbackButtons(formCfg, {
-    pericope: `Meaning Mind — ${book.title}`,
+    pericope: `Meaning Ecosystem — ${book.title}`,
     artifact: 'The website itself',
   });
 
@@ -278,7 +278,7 @@ ${drill}
     title: book.title,
     relRoot: '../',
 
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Meaning Mind</a> · ${escapeHtml(book.title)}</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Meaning Ecosystem</a> · ${escapeHtml(book.title)}</h1>`,
     contentHtml: content,
     stats,
   });
@@ -517,7 +517,7 @@ function entityPage({ cfg, formCfg, book, node, shard, buildInfo, stats }) {
   <h1>${escapeHtml(node.english ?? node.code)}</h1>
   ${node.hebrew ? `<span class="heb"><bdi>${escapeHtml(node.hebrew)}</bdi></span>` : ''}
   <span class="code">${escapeHtml(node.code)}</span>
-  ${renderFeedbackButtons(formCfg, { pericope: `Meaning Mind — ${node.code} (${node.english ?? node.code})`, artifact: 'The website itself' })}
+  ${renderFeedbackButtons(formCfg, { pericope: `Meaning Ecosystem — ${node.code} (${node.english ?? node.code})`, artifact: 'The website itself' })}
 </div>
 <div class="regmeta">${escapeHtml(book.title)} registry · ${escapeHtml(node.kind)}${node.gender ? ` · ${escapeHtml(node.gender)}` : ''}</div>
 ${forms ? `<div class="grp">Referential forms — how the text names this entity</div><div>${forms}</div>` : ''}
@@ -536,7 +536,7 @@ ${
     title: `${node.code} ${node.english ?? ''}`,
     relRoot: '../../../',
 
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="../../index.html">Meaning Mind</a> · <a href="../../${escapeAttr(book.id)}.html">${escapeHtml(book.title)}</a> · ${escapeHtml(node.code)}</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="../../index.html">Meaning Ecosystem</a> · <a href="../../${escapeAttr(book.id)}.html">${escapeHtml(book.title)}</a> · ${escapeHtml(node.code)}</h1>`,
     contentHtml: content,
     stats,
   });
@@ -571,7 +571,7 @@ function conceptFigurePage({ cfg, formCfg, node, atlas, buildInfo, stats }) {
 <div class="reghead">
   <h1>${escapeHtml(node.name ?? node.code)}</h1>
   <span class="code">${escapeHtml(node.code)}</span>
-  ${renderFeedbackButtons(formCfg, { pericope: `Meaning Mind — ${node.code} (${node.name ?? node.code})`, artifact: 'The website itself' })}
+  ${renderFeedbackButtons(formCfg, { pericope: `Meaning Ecosystem — ${node.code} (${node.name ?? node.code})`, artifact: 'The website itself' })}
 </div>
 <div class="regmeta">${escapeHtml(registryName)} · global${node.books?.length ? ` · appears in ${escapeHtml(node.books.join(', '))}` : ''}</div>
 ${node.aliases?.length ? `<div class="grp">Also known as</div><div>${node.aliases.map((a) => chip(deSlug(a.replace(/^CB_|^FIG_/, '')), '')).join('')}</div>` : ''}
@@ -590,7 +590,7 @@ ${stagings.length ? `<div class="grp">Staged in scenes</div><div>${stagings.join
     title: `${node.code} ${node.name ?? ''}`,
     relRoot: '../../../',
 
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="../../index.html">Meaning Mind</a> · ${escapeHtml(registryName)} · ${escapeHtml(node.code)}</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="../../index.html">Meaning Ecosystem</a> · ${escapeHtml(registryName)} · ${escapeHtml(node.code)}</h1>`,
     contentHtml: content,
     stats,
   });

@@ -19,10 +19,17 @@ test('the real fixtures tree builds clean', { skip: !haveFixtures }, () => {
   assert.equal(r.status, 0, r.stderr);
 
   const index = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
+  const library = fs.readFileSync(path.join(out, 'meaning-maps.html'), 'utf8');
+  const ruth = fs.readFileSync(path.join(out, 'books', 'ruth.html'), 'utf8');
   // day-one content: at least P01–P06 + J01 (more appear as graduations land)
   for (const id of ['P01', 'P02', 'P03', 'P04', 'P05', 'P06', 'J01']) {
     assert.match(index, new RegExp(`pericopes/${id}\\.html`), `${id} missing from index`);
   }
+  assert.match(library, /Old Testament/);
+  assert.match(library, /href="books\/ruth\.html"/);
+  assert.match(ruth, /<h1>Ruth<\/h1>/);
+  assert.match(ruth, /class="cards library-pericopes"/);
+  assert.match(ruth, /href="\.\.\/pericopes\/P01\.html"/);
 
   // a rendered page has resolved wikilinks (no [[ left), a JSON tree, Hebrew tooltips
   const p01 = fs.readFileSync(path.join(out, 'pericopes', 'P01.html'), 'utf8');

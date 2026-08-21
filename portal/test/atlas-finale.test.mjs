@@ -133,7 +133,7 @@ test('emotion Tier 2: a planted appraisal block renders badged and JUNIOR to the
 });
 
 test('portal identity: the Exegete Portal is the shared public home', { skip: !haveFixtures }, () => {
-  // Meaning Mind remains the exploration workspace, while the surrounding
+  // Meaning Ecosystem remains the exploration workspace, while the surrounding
   // product identity reads Tripod Exegete Portal.
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-naming-'));
   assert.equal(runBuild(repoRoot, out).status, 0);
@@ -145,11 +145,11 @@ test('portal identity: the Exegete Portal is the shared public home', { skip: !h
     const visible = fs.readFileSync(page, 'utf8').replace(/<[^>]*>/g, ' ');
     assert.doesNotMatch(visible, /\b[Aa]tlas\b/, `visible "Atlas" on ${path.relative(out, page)}`);
   }
-  // The ruled surfaces read Meaning Mind.
+  // The ruled surfaces read Meaning Ecosystem.
   const mindIndexRaw = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
   const index = mindIndexRaw;
   assert.match(index, /Tripod Exegete Portal.*Explore the Corpus/);
-  assert.match(index, /<title>Meaning Mind · /);
+  assert.match(index, /<title>Meaning Ecosystem · /);
   // The home routes people by task rather than presenting two competing rooms.
   const rrIndex = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
   assert.match(rrIndex, /Tripod Exegete Portal/);

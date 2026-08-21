@@ -26,7 +26,7 @@ import { renderMarkdown } from './lib/markdown.mjs';
 import { renderJsonTree } from './lib/jsontree.mjs';
 import { sectionAskUrlFactory } from './lib/feedback.mjs';
 import { renderMethodPage } from './lib/method-page.mjs';
-import { layout, indexPage, pericopePage } from './lib/pages.mjs';
+import { layout, indexPage, meaningMapsPage, bookPage, pericopePage } from './lib/pages.mjs';
 
 const portalDir = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '..');
 
@@ -201,6 +201,7 @@ function main() {
   const books = cfg.books
     .map((b) => ({
       title: b.title,
+      testament: b.testament ?? 'OT',
       pericopes: ordered
         .filter((p) => p.id.startsWith(b.prefix))
         .map((p) => ({
@@ -213,6 +214,28 @@ function main() {
     .filter((b) => b.pericopes.length > 0);
 
   const formConfigured = !!formCfg?.formBase;
+  pages.set(
+    'meaning-maps.html',
+    layout({
+      cfg,
+      title: 'Meaning Maps',
+      relRoot: '',
+      buildInfo,
+      contentHtml: meaningMapsPage({ books }),
+    })
+  );
+  for (const book of books) {
+    pages.set(
+      `books/${slugifyBook(book.title)}.html`,
+      layout({
+        cfg,
+        title: book.title,
+        relRoot: '../',
+        buildInfo,
+        contentHtml: bookPage({ book }),
+      })
+    );
+  }
   pages.set(
     'index.html',
     layout({
@@ -245,6 +268,7 @@ function main() {
   // ---- 5. Write (only after everything rendered cleanly) --------------------
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(path.join(outDir, 'pericopes'), { recursive: true });
+  fs.mkdirSync(path.join(outDir, 'books'), { recursive: true });
   fs.mkdirSync(path.join(outDir, 'assets'), { recursive: true });
   fs.mkdirSync(path.join(outDir, 'atlas'), { recursive: true });
   for (const [rel, html] of pages) fs.writeFileSync(path.join(outDir, rel), html);
@@ -308,6 +332,10 @@ function jsonOf(artifact) {
 function bookIndex(cfg, pericopeId) {
   const i = cfg.books.findIndex((b) => pericopeId.startsWith(b.prefix));
   return i === -1 ? cfg.books.length : i;
+}
+
+function slugifyBook(title) {
+  return String(title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
 function resolveCommit(repoRoot) {
