@@ -20,15 +20,9 @@ export function layout({ cfg, title, relRoot, contentHtml, buildInfo }) {
 <header class="site">
   <div class="sitebar">
     <a class="brand" href="${relRoot}index.html">
-      <span class="logo-mark" aria-hidden="true"><img class="logo" src="${relRoot}assets/shema-logo.svg" alt="" height="46"></span>
-      <span class="sr-only">${escapeHtml(cfg.siteTitle)}</span>
+      <img class="logo" src="${relRoot}assets/shema-mark.svg" alt="Shema" height="46">
+      <span class="header-title">Tripod Method</span>
     </a>
-    <nav class="primary-nav" aria-label="Portal navigation">
-      <a href="${relRoot}index.html#passages">Meaning Maps</a>
-      <a href="${relRoot}atlas/index.html">Explore the Corpus</a>
-      <a href="${relRoot}tripod-method.html">The Tripod Method</a>
-      <a href="${relRoot}index.html#using-maps">Using the Maps</a>
-    </nav>
   </div>
 </header>
 <main>
@@ -75,7 +69,7 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
   return `
 <section class="hero">
   <p class="eyebrow">The Exegete Portal · OBT Lab</p>
-  <h1>Biblical meaning, made reviewable.</h1>
+  <h1>A meaning-first approach to Bible translation</h1>
   <p class="lede">A shared home for people who want to understand, develop, review, and use Meaning Maps in translation and ministry.</p>
   <div class="hero-actions" aria-label="Start here">
     <a class="btn btn-primary" href="#passages">Read a Meaning Map</a>
