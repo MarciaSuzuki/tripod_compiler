@@ -20,7 +20,7 @@ export function layout({ cfg, title, relRoot, contentHtml, buildInfo }) {
 <header class="site">
   <div class="sitebar">
     <a class="brand" href="${relRoot}index.html">
-      <img class="logo" src="${relRoot}assets/shema-mark.svg" alt="Shema" height="46">
+      <img class="logo" src="${relRoot}assets/shema-mark.png" alt="Shema" height="46">
       <span class="header-title">Tripod Method</span>
     </a>
   </div>
