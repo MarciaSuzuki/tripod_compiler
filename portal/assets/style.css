@@ -309,11 +309,9 @@ details.book > ul.cards { padding: 0.9rem 1.1rem 1rem; margin: 0;
 body { font-size: 16px; line-height: 1.6; }
 header.site { padding: 0; background: var(--card); border-bottom: 1px solid var(--line); }
 .sitebar { max-width: 72rem; margin: 0 auto; padding: .95rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-header.site .brand { display: flex; align-items: center; gap: .8rem; margin: 0; min-width: 0; color: inherit; text-decoration: none; }
-header.site .logo { width: auto; height: 44px; }
-.logo-mark { display: block; width: 56px; height: 44px; overflow: hidden; flex: 0 0 56px; }
-.logo-mark .logo { display: block; max-width: none; height: 44px; width: auto; }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+header.site .brand { display: flex; align-items: center; gap: .9rem; margin: 0; min-width: 0; color: inherit; text-decoration: none; }
+header.site .logo { width: 42px; height: 46px; object-fit: contain; display: block; }
+.header-title { color: var(--shema-verde); font-family: var(--shema-font-sans); font-size: 1.25rem; font-weight: 700; letter-spacing: -.03em; }
 .brandcopy { display: flex; flex-direction: column; line-height: 1.2; white-space: nowrap; }
 .brandcopy strong { font-size: 1.08rem; color: var(--ink); }
 .brandcopy small { margin-top: .22rem; color: var(--muted); font: .68rem/1.2 ui-sans-serif, system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
@@ -363,9 +361,8 @@ footer.site { max-width: 72rem; padding: 1.2rem 1.5rem 3rem; }
   .sitebar { padding: .8rem .95rem; }
   .brandcopy strong { font-size: .95rem; }
   .brandcopy small { font-size: .58rem; }
-  header.site .logo { height: 36px; }
-  .logo-mark { width: 46px; height: 36px; flex-basis: 46px; }
-  .logo-mark .logo { height: 36px; }
+  header.site .logo { width: 34px; height: 38px; }
+  .header-title { font-size: 1rem; }
   .primary-nav { gap: .1rem; }
   .primary-nav a { padding: .35rem .42rem; font-size: .72rem; }
   .hero { padding: 3.5rem 0 3rem; }
