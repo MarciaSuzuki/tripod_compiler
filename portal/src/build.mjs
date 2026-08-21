@@ -266,7 +266,7 @@ function main() {
   fs.copyFileSync(path.join(portalDir, 'assets', 'atlas-brain.js'), path.join(outDir, 'assets', 'atlas-brain.js'));
   fs.copyFileSync(path.join(portalDir, 'assets', 'atlas-tours.js'), path.join(outDir, 'assets', 'atlas-tours.js'));
   fs.copyFileSync(path.join(portalDir, 'assets', 'shema-logo.svg'), path.join(outDir, 'assets', 'shema-logo.svg'));
-  fs.copyFileSync(path.join(portalDir, 'assets', 'shema-mark.svg'), path.join(outDir, 'assets', 'shema-mark.svg'));
+  fs.copyFileSync(path.join(portalDir, 'assets', 'shema-mark.png'), path.join(outDir, 'assets', 'shema-mark.png'));
   fs.writeFileSync(path.join(outDir, '.nojekyll'), '');
 
   const manifest = {
