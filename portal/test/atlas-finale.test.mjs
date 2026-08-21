@@ -132,10 +132,9 @@ test('emotion Tier 2: a planted appraisal block renders badged and JUNIOR to the
   rmrf(without);
 });
 
-test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page', { skip: !haveFixtures }, () => {
-  // The section reads "Meaning Mind" everywhere a visitor reads; URLs, file
-  // names and internals stay atlas-* by the same ruling (plumbing, not
-  // reading). Pinned exactly like the Tripod-Brain pin.
+test('portal identity: the Exegete Portal is the shared public home', { skip: !haveFixtures }, () => {
+  // Meaning Mind remains the exploration workspace, while the surrounding
+  // product identity reads Tripod Exegete Portal.
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-naming-'));
   assert.equal(runBuild(repoRoot, out).status, 0);
   const walk = (d) => fs.readdirSync(d).flatMap((f) => {
@@ -149,22 +148,20 @@ test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page
   // The ruled surfaces read Meaning Mind.
   const mindIndexRaw = fs.readFileSync(path.join(out, 'atlas', 'index.html'), 'utf8');
   const index = mindIndexRaw;
-  assert.match(index, /Tripod Method · Meaning Mind/);
+  assert.match(index, /Tripod Exegete Portal.*Explore the Corpus/);
   assert.match(index, /<title>Meaning Mind · /);
-  // Reading Room home v2 (Marcia's ruling): the two rooms, explicit — the
-  // switcher on the header and the Mind room card carrying the ruled phrase.
+  // The home routes people by task rather than presenting two competing rooms.
   const rrIndex = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
-  assert.match(rrIndex, /class="modeswitch"/);
-  // Marcia's removals (2026-07-04): no subtitle, no read-only intro, no
-  // "Presenting to partners?", no stats corner, no brand tagline.
+  assert.match(rrIndex, /Tripod Exegete Portal/);
+  assert.match(rrIndex, /Meaning Maps/);
+  assert.match(rrIndex, /Explore the Corpus/);
+  // Technical provenance remains available, but does not lead the home.
   assert.doesNotMatch(rrIndex, /published read-only for external review/);
   assert.doesNotMatch(rrIndex, /refuses to publish anything still in draft/);
   assert.doesNotMatch(rrIndex, /Presenting to partners\?/);
   assert.doesNotMatch(mindIndexRaw, /id="stats"/);
   assert.doesNotMatch(mindIndexRaw, /touch one and watch its synapses fire/);
   assert.match(mindIndexRaw, /id="zoomctl"/);
-  assert.match(rrIndex, /The whole seed corpus, connected/);
-  assert.match(rrIndex, /Meaning Mind →/);
   // Tour ruling D: the trajectory count is computed, never hardcoded.
   const tours = fs.readFileSync(path.join(out, 'atlas', 'tours.html'), 'utf8');
   const g = JSON.parse(fs.readFileSync(path.join(out, 'atlas', 'global.json'), 'utf8'));
@@ -186,8 +183,8 @@ test('naming ruling (Marcia, 2026-07-04): zero visible "Atlas" on any built page
   assert.doesNotMatch(tours, /fifty-one|fifty-four/);
   assert.match(tours, /becomes a full spine by itself as its approved artifacts merge/);
   // The ruled portal title (Marcia, 2026-07-04), on both sides of the house.
-  assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /<title>Tripod Method Leg One: The Exegete Portal</);
-  assert.match(index, /The Exegete Portal/);
+  assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /<title>Tripod Exegete Portal</);
+  assert.match(index, /Tripod Exegete Portal/);
   rmrf(out);
 });
 

@@ -75,9 +75,9 @@ test('atlas pages: real tree meets the V1 + V3 acceptance bars', { skip: !haveFi
     'entity mentions navigate into the Atlas'
   );
   assert.match(p01, /<a class="wl wl-concept" href="\.\.\/atlas\/registry\/concept\//);
-  // The two-mode switcher (home v2) is on every Reading-Room page.
-  assert.match(p01, /class="mode mind" href="\.\.\/atlas\/index\.html"/);
-  assert.match(read(out, 'index.html'), /class="mode mind" href="atlas\/index\.html"/);
+  // The shared portal navigation is on every Meaning Map page.
+  assert.match(p01, /Tripod Exegete Portal/);
+  assert.match(read(out, 'index.html'), /Explore the Corpus/);
 
   // §2.4: the ONLY script anywhere is the Atlas home's vendored brain engine
   // (the declared JS departure, PR-3); every other page ships zero JS.

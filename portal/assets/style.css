@@ -287,3 +287,201 @@ details.book > ul.cards { padding: 0.9rem 1.1rem 1rem; margin: 0;
 
 /* Guided-tours line on the Reading Room home */
 .toursline { margin: -0.4rem 0 1.4rem; font-size: 0.92rem; color: var(--muted); }
+
+/* ── Tripod Exegete Portal identity v3 ──────────────────────────────────────
+   One public portal with clear entry points. The older room-switcher rules
+   remain above for compatibility with generated fragments, but the shared
+   shell and home use the portal system below. */
+:root {
+  --ink: #202733;
+  --muted: #66707c;
+  --paper: #f7f5ef;
+  --card: #fffdf8;
+  --line: #ded8cb;
+  --accent: #a95825;
+  --accent-dark: #7c3c1a;
+  --accent-soft: #f3e8dc;
+  --blue: #24549c;
+  --blue-soft: #eaf0f8;
+  --ok: #2e6e46;
+}
+
+body { font-size: 16px; line-height: 1.6; }
+header.site { padding: 0; background: var(--card); border-bottom: 1px solid var(--line); }
+.sitebar { max-width: 72rem; margin: 0 auto; padding: .95rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+header.site .brand { display: flex; align-items: center; gap: .8rem; margin: 0; min-width: 0; color: inherit; text-decoration: none; }
+header.site .logo { width: auto; height: 44px; }
+.logo-mark { display: block; width: 56px; height: 44px; overflow: hidden; flex: 0 0 56px; }
+.logo-mark .logo { display: block; max-width: none; height: 44px; width: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.brandcopy { display: flex; flex-direction: column; line-height: 1.2; white-space: nowrap; }
+.brandcopy strong { font-size: 1.08rem; color: var(--ink); }
+.brandcopy small { margin-top: .22rem; color: var(--muted); font: .68rem/1.2 ui-sans-serif, system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+.primary-nav { display: flex; align-items: center; justify-content: flex-end; gap: .25rem; flex-wrap: wrap; font: .8rem/1.2 ui-sans-serif, system-ui, sans-serif; }
+.primary-nav a { color: var(--ink); text-decoration: none; padding: .45rem .6rem; border-radius: 999px; }
+.primary-nav a:hover, .primary-nav a:focus-visible { background: var(--accent-soft); color: var(--accent-dark); }
+main { max-width: 72rem; padding: 0 1.5rem 4rem; }
+footer.site { max-width: 72rem; padding: 1.2rem 1.5rem 3rem; }
+.eyebrow { margin: 0 0 .6rem; color: var(--accent-dark); font: .72rem/1.2 ui-sans-serif, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.hero { padding: 5.4rem 0 4.4rem; max-width: 58rem; }
+.hero h1 { margin: 0; max-width: 12ch; font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.02; letter-spacing: -.035em; }
+.hero .lede { max-width: 52ch; margin: 1.4rem 0 1.7rem; color: var(--muted); font-size: 1.25rem; line-height: 1.5; }
+.hero-actions { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: .55rem .9rem; border-radius: 6px; font: .82rem/1.2 ui-sans-serif, system-ui, sans-serif; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-secondary { background: var(--blue-soft); border-color: #c8d5e8; color: var(--blue); }
+.text-link { color: var(--accent-dark); font: .85rem/1.2 ui-sans-serif, system-ui, sans-serif; }
+.portal-paths, .using-maps, .bookshelf { border-top: 1px solid var(--line); padding: 3rem 0; }
+.section-intro h2 { margin: 0 0 1.25rem; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.path-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.path-card { min-height: 14rem; padding: 1.15rem 1.2rem 1.25rem; background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 8px; display: flex; flex-direction: column; }
+.path-card:nth-child(2) { border-top-color: var(--blue); }
+.path-card:nth-child(3) { border-top-color: var(--ok); }
+.path-card:nth-child(4) { border-top-color: #7561a8; }
+.path-number { color: var(--muted); font: .7rem ui-monospace, monospace; letter-spacing: .12em; }
+.path-card h3 { margin: .7rem 0 .35rem; font-size: 1.25rem; }
+.path-card p { margin: 0 0 1rem; color: var(--muted); font-size: .92rem; line-height: 1.45; }
+.path-card a { margin-top: auto; color: var(--accent-dark); font: .8rem ui-sans-serif, system-ui, sans-serif; }
+.using-maps > p { max-width: 64ch; font-size: 1.08rem; }
+.artifact-guide { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+.artifact-guide > div { padding: 1rem; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+.artifact-guide strong, .artifact-guide span { display: block; }
+.artifact-guide strong { color: var(--accent-dark); }
+.artifact-guide span { margin-top: .35rem; color: var(--muted); font-size: .86rem; line-height: 1.35; }
+.review-note { color: var(--muted); font-size: .9rem !important; }
+.bookshelf .section-intro { margin-bottom: 1.2rem; }
+.shelfhead { display: none; }
+
+@media (max-width: 900px) {
+  .sitebar { align-items: flex-start; flex-direction: column; gap: .7rem; }
+  .primary-nav { justify-content: flex-start; }
+  .path-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  main { padding: 0 .95rem 3rem; }
+  .sitebar { padding: .8rem .95rem; }
+  .brandcopy strong { font-size: .95rem; }
+  .brandcopy small { font-size: .58rem; }
+  header.site .logo { height: 36px; }
+  .logo-mark { width: 46px; height: 36px; flex-basis: 46px; }
+  .logo-mark .logo { height: 36px; }
+  .primary-nav { gap: .1rem; }
+  .primary-nav a { padding: .35rem .42rem; font-size: .72rem; }
+  .hero { padding: 3.5rem 0 3rem; }
+  .hero .lede { font-size: 1.05rem; }
+  .path-grid, .artifact-guide { grid-template-columns: 1fr; }
+}
+
+/* ── Shema visual language ───────────────────────────────────────────────────
+   Shared portal tokens derived from the Shema design system. The portal keeps
+   its functional class names, but now speaks the same visual language as the
+   organization: warm paper, terracotta action, olive authority, and calm
+   blue-green wayfinding. */
+:root {
+  --shema-branco: #F6F5EB;
+  --shema-areia: #C5C29F;
+  --shema-azul: #89AAA3;
+  --shema-telha: #BE4A01;
+  --shema-verde-claro: #777D45;
+  --shema-verde: #3F3E20;
+  --shema-preto: #0A0703;
+  --shema-line: rgba(63, 62, 32, .16);
+  --shema-line-strong: rgba(63, 62, 32, .32);
+  --shema-font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --shema-font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --shema-radius-sm: 8px;
+  --shema-radius-md: 14px;
+  --shema-radius-lg: 22px;
+  --shema-radius-pill: 999px;
+  --shema-shadow-sm: 0 1px 2px rgba(10, 7, 3, .06), 0 1px 1px rgba(10, 7, 3, .04);
+  --shema-shadow-md: 0 4px 12px rgba(10, 7, 3, .08), 0 1px 2px rgba(10, 7, 3, .05);
+  --ink: var(--shema-verde);
+  --muted: #68684f;
+  --paper: var(--shema-branco);
+  --card: #fffdf8;
+  --line: var(--shema-line);
+  --accent: var(--shema-telha);
+  --accent-dark: #8f3700;
+  --accent-soft: #f2e1d5;
+  --blue: #547c78;
+  --blue-soft: #e1ece9;
+  --ok: var(--shema-verde-claro);
+}
+
+body {
+  background: var(--shema-branco);
+  color: var(--shema-verde);
+  font-family: var(--shema-font-serif);
+}
+
+header.site {
+  background: rgba(246, 245, 235, .94);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom-color: var(--shema-line);
+}
+
+.sitebar { max-width: 80rem; padding: 1rem 2.5rem; }
+header.site .brand { gap: .9rem; }
+header.site .logo { height: 38px; }
+.brandcopy strong, .primary-nav, .btn, .text-link, .eyebrow,
+.path-number, .path-card a, .artifact-guide strong, .artifact-guide span,
+.review-note, .brandcopy small { font-family: var(--shema-font-sans); }
+.brandcopy strong { color: var(--shema-verde); font-weight: 700; letter-spacing: -.02em; }
+.brandcopy small { color: var(--shema-verde-claro); }
+.primary-nav { gap: .55rem; }
+.primary-nav a { color: var(--shema-verde); }
+.primary-nav a:hover, .primary-nav a:focus-visible { background: var(--shema-areia); color: var(--shema-verde); }
+
+main { max-width: 80rem; padding: 0 2.5rem 5rem; }
+.hero {
+  max-width: none;
+  margin: 0 -2.5rem;
+  padding: 5.5rem 2.5rem 6rem;
+  color: var(--shema-branco);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(246, 245, 235, .16) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 72%, rgba(246, 245, 235, .12) 0 1px, transparent 2px),
+    linear-gradient(135deg, var(--shema-telha), #9d3b00 72%, #813100);
+  background-size: 28px 28px, 36px 36px, auto;
+  border-radius: 0 0 var(--shema-radius-lg) var(--shema-radius-lg);
+}
+.hero h1, .hero .eyebrow { color: var(--shema-branco); }
+.hero h1 { font-family: var(--shema-font-sans); font-weight: 700; letter-spacing: -.055em; }
+.hero .lede { color: rgba(246, 245, 235, .88); }
+.hero .btn-primary { background: var(--shema-branco); border-color: var(--shema-branco); color: var(--shema-telha); }
+.hero .btn-primary:hover { background: var(--shema-areia); border-color: var(--shema-areia); color: var(--shema-verde); }
+.hero .text-link { color: var(--shema-branco); }
+
+.portal-paths, .using-maps, .bookshelf { border-top-color: var(--shema-line); padding: 4rem 0; }
+.section-intro h2, .path-card h3, .artifact-guide strong { color: var(--shema-verde); }
+.section-intro h2 { font-family: var(--shema-font-sans); font-weight: 700; letter-spacing: -.035em; }
+.path-grid, .artifact-guide { gap: 1.25rem; }
+.path-card, .artifact-guide > div, .roomcard, details.about, details.book {
+  background: var(--card);
+  border-color: var(--shema-line);
+  border-radius: var(--shema-radius-md);
+  box-shadow: var(--shema-shadow-sm);
+}
+.path-card { border-top: 4px solid var(--shema-telha); }
+.path-card:nth-child(2) { border-top-color: var(--shema-azul); }
+.path-card:nth-child(3) { border-top-color: var(--shema-verde-claro); }
+.path-card:nth-child(4) { border-top-color: var(--shema-verde); }
+.path-card:hover, .roomcard:hover, details.book:hover { box-shadow: var(--shema-shadow-md); }
+.path-card a, .text-link { color: var(--shema-telha); font-weight: 700; }
+.artifact-guide > div { border-top: 3px solid var(--shema-azul); }
+.artifact-guide > div:nth-child(2) { border-top-color: var(--shema-verde-claro); }
+.artifact-guide > div:nth-child(3) { border-top-color: var(--shema-telha); }
+
+footer.site {
+  max-width: none;
+  padding: 3.5rem 2.5rem;
+  background: var(--shema-verde);
+  color: var(--shema-branco);
+}
+footer.site a { color: var(--shema-areia); }
+
+@media (max-width: 620px) {
+  .sitebar, main { padding-left: 1rem; padding-right: 1rem; }
+  .hero { margin-left: -1rem; margin-right: -1rem; padding: 3.8rem 1rem 4rem; border-radius: 0 0 var(--shema-radius-md) var(--shema-radius-md); }
+}
