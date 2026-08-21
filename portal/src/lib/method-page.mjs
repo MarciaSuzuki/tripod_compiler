@@ -12,15 +12,15 @@ import { renderFeedbackButtons } from './feedback.mjs';
 // presentation. If the vendored file ever drifts from the pin, the build fails
 // loudly rather than shipping an unruled page.
 export const METHOD_PAGE_SOURCE_SHA256 =
-  '4790fb9599ecab386353ba8b74141b14cb1672e5ff5ea03c5d158108b64ece54';
+  '9c3df5a2186410e2e9a60cea914f941cb65a2fad799a4c818b3ed015989eed5a';
 
 // Both blocks carry their surrounding newlines so rendering is pure
 // concatenation at the anchors — the fidelity test strips these exact strings
 // and requires the remainder to equal the vendored source byte-for-byte.
 export function methodPageBlocks(formCfg) {
   const backLink =
-    '\n<nav class="portal-method-nav" style="max-width:1020px;margin:0 auto;padding:18px 24px 0;font-family:var(--sans);font-size:13.5px;">' +
-    '<a href="index.html">← Back to the reading room</a></nav>';
+    '\n<nav class="portal-method-nav" aria-label="Portal navigation" style="max-width:1020px;margin:0 auto;padding:18px 24px 0;font-family:var(--sans);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">' +
+    '<a href="index.html">← Tripod Exegete Portal</a><span><a href="atlas/index.html">Explore the Corpus</a> · <a href="index.html#passages">Meaning Maps</a></span></nav>';
   const feedback =
     '<footer class="portal-method-feedback">\n' +
     '<style>\n' +

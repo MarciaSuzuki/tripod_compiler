@@ -403,3 +403,43 @@ body.touring { overflow: hidden; }
 /* Guided-tours entry in the Mind HUD */
 #brand .brandlinks { margin-top: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; }
 #brand .brandlinks a { color: var(--gold); }
+
+/* ── Shema analytical room ──────────────────────────────────────────────────
+   Atlas remains a focused workspace, but its palette now belongs to the same
+   house as the Reading Room: olive depth, terracotta signals, and blue-green
+   wayfinding instead of a separate neon universe. */
+:root {
+  --bg: #252615;
+  --ink: #F6F5EB;
+  --bright: #FFFDF8;
+  --dim: #C5C29F;
+  --dimmer: #9FA078;
+  --line: rgba(246, 245, 235, .16);
+  --panel: rgba(63, 62, 32, .78);
+  --gold: #BE4A01;
+  --gold-soft: rgba(190, 74, 1, .42);
+  --champagne: #C5C29F;
+  --icebook: #B7D5D0;
+  --magenta: #D99072;
+  --violet: #B4A98A;
+  --ebl: #89AAA3;
+  --amber: #D99A55;
+  --mono: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+html { background: var(--bg); }
+body {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(900px 600px at 82% -10%, rgba(137, 170, 163, .18), transparent 62%),
+    radial-gradient(700px 500px at -10% 35%, rgba(190, 74, 1, .12), transparent 58%),
+    var(--bg);
+}
+h1, h2, h3 { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; }
+a { color: var(--champagne); }
+.panel, .bookcard, .tile, .drill, .legend, .metric {
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(10, 7, 3, .16);
+}
+.bookcard h2 { color: var(--icebook); text-shadow: none; }
+.tile .pid { text-shadow: none; }

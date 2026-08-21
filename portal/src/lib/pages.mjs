@@ -18,11 +18,16 @@ export function layout({ cfg, title, relRoot, contentHtml, buildInfo }) {
 </head>
 <body>
 <header class="site">
-  <a class="brand" href="${relRoot}index.html"><img class="logo" src="${relRoot}assets/shema-logo.svg" alt="Shema — Multimodal Bible Translation" height="52"></a>
-  <div class="masthead">
-    <a class="home" href="${relRoot}index.html">${escapeHtml(cfg.siteTitle)}</a>
-    <nav class="modeswitch" aria-label="the two rooms of this site">
-      <span class="mode on" aria-current="page">Reading Room</span><a class="mode mind" href="${relRoot}atlas/index.html">Meaning Mind →</a>
+  <div class="sitebar">
+    <a class="brand" href="${relRoot}index.html">
+      <span class="logo-mark" aria-hidden="true"><img class="logo" src="${relRoot}assets/shema-logo.svg" alt="" height="46"></span>
+      <span class="sr-only">${escapeHtml(cfg.siteTitle)}</span>
+    </a>
+    <nav class="primary-nav" aria-label="Portal navigation">
+      <a href="${relRoot}index.html#passages">Meaning Maps</a>
+      <a href="${relRoot}atlas/index.html">Explore the Corpus</a>
+      <a href="${relRoot}tripod-method.html">The Tripod Method</a>
+      <a href="${relRoot}index.html#using-maps">Using the Maps</a>
     </nav>
   </div>
 </header>
@@ -41,10 +46,7 @@ ${contentHtml}
 }
 
 export function indexPage({ cfg, books, buildInfo, formConfigured }) {
-  // One house, two rooms (Marcia's ruling 2026-07-04): the Reading Room is
-  // for reading and commenting on the Meaning Maps; the Meaning Mind is for
-  // exploring where everything connects. Books first — each book opens to
-  // its passages; the long instructions live collapsed until asked for.
+  // The portal home is task-oriented: learn, read, contribute, and apply.
   const bookStatus = (b) => {
     const complete = b.pericopes.every((x) => x.has.map && x.has.meaningCoordinates && x.has.log);
     return complete
@@ -71,31 +73,45 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
     : `<p class="note">The feedback form is still being connected — the “Ask a question” / “Suggest a change” buttons will go live shortly.</p>`;
 
   return `
-<section class="intro">
-  <h1>The Reading Room</h1>
+<section class="hero">
+  <p class="eyebrow">The Exegete Portal · OBT Lab</p>
+  <h1>Biblical meaning, made reviewable.</h1>
+  <p class="lede">A shared home for people who want to understand, develop, review, and use Meaning Maps in translation and ministry.</p>
+  <div class="hero-actions" aria-label="Start here">
+    <a class="btn btn-primary" href="#passages">Read a Meaning Map</a>
+    <a class="btn btn-secondary" href="atlas/index.html">Explore the Corpus</a>
+    <a class="text-link" href="tripod-method.html">The Tripod Method — three legs, three translation roles →</a>
+  </div>
 </section>
 
-<section class="rooms" aria-label="the two rooms">
-  <div class="roomcard here">
-    <span class="roomtag">You are here</span>
-    <h2>Reading Room</h2>
-    <p>Read the approved Meaning Maps, passage by passage — and send questions or suggestions
-    straight from any document.</p>
+<section class="portal-paths" aria-labelledby="portal-paths-title">
+  <div class="section-intro"><p class="eyebrow">Four ways to use this portal</p><h2 id="portal-paths-title">Start with what you need</h2></div>
+  <div class="path-grid">
+    <article class="path-card"><span class="path-number">01</span><h3>Learn</h3><p>Understand the Tripod Method, the three roles, and how Meaning Maps fit into the larger work.</p><a href="tripod-method.html">Learn the method →</a><a href="atlas/tours.html">Four guided tours</a></article>
+    <article class="path-card"><span class="path-number">02</span><h3>Read</h3><p>Review approved Meaning Maps passage by passage, with the supporting machine-readable records.</p><a href="#passages">Browse the passages →</a></article>
+    <article class="path-card"><span class="path-number">03</span><h3>Contribute</h3><p>Ask questions, suggest changes, and help the team strengthen the shared study of each passage.</p><a href="#using-maps">See how review works →</a></article>
+    <article class="path-card"><span class="path-number">04</span><h3>Apply</h3><p>Use the maps as a trustworthy foundation for translation, training, and ministry conversations.</p><a href="#using-maps">Using the maps →</a></article>
   </div>
-  <a class="roomcard mind" href="atlas/index.html">
-    <span class="roomtag">The other room</span>
-    <h2>Meaning Mind</h2>
-    <p>The whole seed corpus, connected — explore and study every passage, person, place and
-    concept as one living structure.</p>
-    <span class="roomgo">Enter the Mind →</span>
-  </a>
 </section>
-<p class="toursline"><a href="atlas/tours.html">Four guided tours</a> walk the
-Meaning Mind step by step — full-screen, arrow keys, no setup.</p>
-<p class="toursline"><a href="tripod-method.html">The Tripod Method — three legs, three translation roles →</a></p>
+
+<section class="using-maps" id="using-maps" aria-labelledby="using-maps-title">
+  <div class="section-intro"><p class="eyebrow">A common language for the work</p><h2 id="using-maps-title">What is a Meaning Map?</h2></div>
+  <p>A Meaning Map is a human-readable study of one biblical passage: what it says, scene by scene and statement by statement, and how it says it. It is the main document to read and review before translation begins.</p>
+  <div class="artifact-guide">
+    <div><strong>Meaning Map</strong><span>Human-readable study for people</span></div>
+    <div><strong>Meaning Coordinates</strong><span>Machine-readable structure for the translation system</span></div>
+    <div><strong>Compilation Log</strong><span>Trace of what was checked and flagged</span></div>
+  </div>
+  <p class="review-note">Every published page is read-only. Questions and suggestions go to the OBT Lab for review; they never change an artifact directly.</p>
+</section>
+
+<section class="bookshelf" id="passages" aria-labelledby="passages-title">
+  <div class="section-intro"><p class="eyebrow">Approved passage studies</p><h2 id="passages-title">Meaning Maps by book</h2></div>
+${bookSections}
+</section>
 
 <details class="about">
-  <summary>First time here? What you're looking at, and how to comment</summary>
+  <summary>About the portal and its published data</summary>
   <dl class="gloss">
     <dt>Meaning Map</dt>
     <dd>A human-readable study of one Bible passage: what the passage says — scene by scene, statement by statement —
@@ -110,11 +126,7 @@ Meaning Mind step by step — full-screen, arrow keys, no setup.</p>
   and document already filled in. Hebrew words appear throughout — hover over a highlighted name or term to see its Hebrew form.</p>
   ${formNote}
 </details>
-
-<section class="bookshelf" aria-label="the books">
-  <h2 class="shelfhead">The books</h2>
-${bookSections}
-</section>`;
+`;
 }
 
 function pericopeCard(p) {

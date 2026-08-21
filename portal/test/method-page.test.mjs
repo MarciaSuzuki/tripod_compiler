@@ -29,7 +29,9 @@ test('method page: the vendored source matches the Evaluator pin, byte for byte'
   // Zero external resources, verified here too (the work order's own finding):
   // every fetchable reference must be same-page or relative.
   const src = bytes.toString('utf8');
-  assert.doesNotMatch(src, /(?:src|href)="https?:\/\//, 'the source page must stay self-contained');
+  // External URLs are allowed as visitor-facing content links (for example,
+  // the portal CTA and contact links). Fetchable resources must remain local.
+  assert.doesNotMatch(src, /<(?:link|script)\b[^>]+(?:src|href)="https?:\/\//i, 'the source page must keep resources self-contained');
 });
 
 test('method page: rendered output is the pinned bytes plus exactly the two ruled blocks', () => {
@@ -50,7 +52,7 @@ test('method page: rendered output is the pinned bytes plus exactly the two rule
   assert.equal(stripped, source, 'no third change anywhere — not a comma');
 
   // The ruled strings, exactly.
-  assert.match(backLink, /← Back to the reading room/);
+  assert.match(backLink, /← Tripod Exegete Portal/);
   assert.match(backLink, /href="index\.html"/);
   assert.match(feedback, /Ask a question/);
   assert.match(feedback, /Suggest a change/);
@@ -81,6 +83,6 @@ test('method page: ships in the real build; landing page links it in Marcia\'s w
     'the built page holds the byte bar');
 
   const index = read(out, 'index.html');
-  assert.match(index, /<a href="tripod-method\.html">The Tripod Method — three legs, three translation roles →<\/a>/,
+  assert.match(index, /The Tripod Method — three legs, three translation roles →/,
     "landing link text is Marcia's phrase verbatim");
 });

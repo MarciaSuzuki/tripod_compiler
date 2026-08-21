@@ -6,8 +6,8 @@
 // brain (V2) arrives separately and will absorb V1 as its "Books" mode.
 //
 // Look: the ruled v4 "luminous brain" treatment (assets/atlas.css), which is
-// explicitly NOT the Reading Room's styling — Shema branding appears in the
-// HUD text only (spec §6). Reading-Room pages are never touched by this module.
+// the portal's exploration workspace. It keeps its dark analytical surface,
+// but uses the same Tripod Exegete Portal identity and navigation language.
 
 import { escapeHtml, escapeAttr } from '../lib/html.mjs';
 import { observatoryPage } from './observatory.mjs';
@@ -73,10 +73,10 @@ function atlasLayout({ cfg, title, relRoot, crumbs, contentHtml, stats, scriptHt
 <body>
 <header class="atlas">
   <div>
-    <div class="eyebrow"><b>Shema</b> · Tripod Method · Meaning Mind</div>
+    <div class="eyebrow"><b>Tripod Exegete Portal</b> · Explore the Corpus</div>
     ${crumbs}
   </div>
-  <a class="back" href="${relRoot}index.html">← Reading Room</a>
+  <a class="back" href="${relRoot}index.html">← Meaning Maps</a>
 </header>
 <main>
 ${contentHtml}
@@ -84,7 +84,7 @@ ${contentHtml}
 <footer class="atlas">
   <p>${escapeHtml(stats)}</p>
   <p>Every fact on this page is generated from <b>approved canon on main</b> — the same gated files the
-  Reading Room renders. Nothing here is hand-authored; nothing here can edit anything.</p>
+  Meaning Maps render. Nothing here is hand-authored; nothing here can edit anything.</p>
 </footer>
 </body>
 </html>
@@ -144,10 +144,10 @@ function indexPage({ cfg, formCfg, atlas, buildInfo, stats }) {
   <h1>The Meaning Mind</h1>
   ${feedback}
 </div>
-<p>The whole Tripod seed corpus as one connected structure: every book, pericope, scene and
+  <p>The whole Tripod seed corpus as one connected structure: every book, pericope, scene and
 proposition; every person, place and concept; every controlled-vocabulary value with the ruling
-that admitted it. These pages are generated from the same approved files as the
-<a href="../index.html">Reading Room</a> on every merge — they grow by themselves as the seed grows.</p>
+  that admitted it. These pages are generated from the same approved files as the
+<a href="../index.html">the Meaning Maps</a> on every merge — they grow by themselves as the seed grows.</p>
 
 <div class="grp">Books</div>
 <div class="books">
@@ -162,7 +162,7 @@ ${cards}
      ${axes.length} axes (${l1.length} closed · ${l2.length} bounded-open) ·
      <b>${g.counts.sc_rulings}</b> governance rulings</p>
   <p>Concept and figure pages are linked wherever they occur — from book pages, scene drill-downs,
-  and the Reading Room's highlighted terms. <a href="vocabulary.html">The Vocabulary Observatory</a>
+  and the Meaning Maps' highlighted terms. <a href="vocabulary.html">The Vocabulary Observatory</a>
   shows how the controlled vocabulary grows, ruling by ruling; <a href="emotion.html">How emotion
   is mapped</a> shows the four-way boundary that keeps stated, withheld, inferred and displayed
   feeling in their right places; and for presentations, <a href="tours.html">four guided tours</a>
@@ -190,9 +190,9 @@ function brainSkeleton(cfg) {
   return `
 <canvas id="stage" class="brainui" aria-label="The Meaning Mind — an interactive graph of the seed corpus"></canvas>
 <div class="hud brainui" id="brand">
-  <div class="eyebrow"><b>Shema</b> · Tripod Method · Meaning Mind</div>
+  <div class="eyebrow"><b>Tripod Exegete Portal</b> · Explore the Corpus</div>
   <h1>The Meaning Mind</h1>
-  <p class="brandlinks"><a href="tours.html">Guided tours ▸</a> · <a href="../index.html">Reading Room</a></p>
+  <p class="brandlinks"><a href="tours.html">Guided tours ▸</a> · <a href="../index.html">Meaning Maps</a></p>
 </div>
 <div class="hud brainui" id="modes" role="tablist" aria-label="views"></div>
 <div class="hud brainui" id="tools">
