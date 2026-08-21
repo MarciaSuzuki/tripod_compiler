@@ -18,13 +18,13 @@ const TOURS = [
   {
     id: 'meaning-map',
     title: 'What is a Meaning Map?',
-    sub: 'One passage — the opening of Ruth — from prose study to protected silences.',
+    sub: 'One passage — the opening of Ruth — from structured description to protected silences.',
     steps: [
       {
         url: '../pericopes/P01.html#meaning-map',
         title: 'The map itself',
         prose:
-          'This is a Meaning Map: a plain-language study of one Bible passage — here, the opening of Ruth. It records what the passage says and how it says it, before any translation begins. And no map stands alone: each one is made as part of a whole, and feeds a whole.',
+          'This is a Meaning Map: a structured description of one Bible passage\'s semantic, pragmatic, and rhetorical content — here, the opening of Ruth. It records what the passage says, how it works, and how it is expressed, so it can be reconstructed faithfully in another language.',
       },
       {
         url: '../pericopes/P01.html#meaning-map',
@@ -56,7 +56,7 @@ const TOURS = [
   {
     id: 'map-to-machine',
     title: 'From Map to Machine (STA)',
-    sub: 'How the human study becomes a file a computer can verify.',
+    sub: 'How the human description becomes a file a computer can verify.',
     steps: [
       {
         url: '../pericopes/P01.html#meaning-map',
