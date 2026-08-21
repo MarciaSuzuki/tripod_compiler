@@ -350,6 +350,58 @@ footer.site { max-width: 72rem; padding: 1.2rem 1.5rem 3rem; }
 .review-note { color: var(--muted); font-size: .9rem !important; }
 .bookshelf .section-intro { margin-bottom: 1.2rem; }
 .shelfhead { display: none; }
+.section-intro { position: relative; }
+.section-link { position: absolute; right: 0; bottom: .25rem; color: var(--shema-telha); font-family: var(--shema-font-sans); font-size: .78rem; font-weight: 700; }
+
+/* ── Meaning Maps library ───────────────────────────────────────────────────
+   A public two-level browser: Testament → book → pericope. These cards borrow
+   the useful density and progress language of the internal Meaning Map UI,
+   while reporting published artifacts rather than editor workflow states. */
+.meaning-library, .book-page { padding: 2.2rem 0 1rem; }
+.library-crumbs { margin: 0 0 2rem; font-family: var(--shema-font-sans); font-size: .8rem; }
+.library-crumbs a { color: var(--shema-telha); font-weight: 700; text-decoration: none; }
+.library-hero { max-width: 48rem; padding: 2rem 0 3.2rem; }
+.library-hero h1, .book-page-header h1 { margin: .25rem 0 .7rem; font-family: var(--shema-font-sans); font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1; letter-spacing: -.06em; color: var(--shema-verde); }
+.library-hero > p:last-child { max-width: 58ch; color: var(--muted); font-size: 1.08rem; }
+.library-section { padding: 2.5rem 0 1rem; border-top: 1px solid var(--shema-line); }
+.library-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.15rem; }
+.library-section-heading .eyebrow { margin: 0; }
+.library-section-heading h2 { margin: 0; font-family: var(--shema-font-sans); font-size: 1.45rem; color: var(--shema-verde); }
+.library-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.library-book-card { min-height: 10.5rem; display: flex; flex-direction: column; padding: 1.15rem 1.2rem 1rem; color: var(--shema-verde); background: var(--card); border: 1px solid var(--shema-line); border-radius: var(--shema-radius-md); box-shadow: var(--shema-shadow-sm); text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.library-book-card:hover, .library-book-card:focus-visible { color: var(--shema-verde); border-color: var(--shema-telha); box-shadow: var(--shema-shadow-md); transform: translateY(-2px); text-decoration: none; }
+.library-book-top { display: flex; align-items: center; justify-content: space-between; }
+.library-book-number { color: var(--shema-telha); font-family: var(--shema-font-sans); font-size: .68rem; font-weight: 700; letter-spacing: .16em; }
+.library-book-arrow { color: var(--shema-telha); font-size: 1.2rem; }
+.library-book-card h3 { margin: .8rem 0 .15rem; font-family: var(--shema-font-sans); font-size: 1.35rem; color: var(--shema-verde); }
+.library-book-card p { margin: 0 0 1rem; color: var(--muted); font-size: .86rem; }
+.library-book-card small { margin-top: .45rem; color: var(--muted); font-family: var(--shema-font-sans); font-size: .7rem; }
+.book-progress { height: .35rem; overflow: hidden; border-radius: var(--shema-radius-pill); background: rgba(197, 194, 159, .35); }
+.book-progress span { display: block; height: 100%; border-radius: inherit; background: var(--shema-telha); }
+.book-page-header { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: 1.5rem 0 1.1rem; }
+.book-page-header .eyebrow { margin: 0; }
+.book-page-stats { display: grid; grid-template-columns: auto auto; gap: .15rem .7rem; min-width: 12rem; padding: .9rem 1rem; background: var(--accent-soft); border-radius: var(--shema-radius-md); font-family: var(--shema-font-sans); }
+.book-page-stats strong { color: var(--shema-telha); font-size: 1.1rem; }
+.book-page-stats span { color: var(--muted); font-size: .72rem; align-self: center; }
+.book-page > .book-progress { height: .5rem; }
+.book-page-intro { margin: 1.1rem 0 1.4rem; color: var(--muted); }
+ul.library-pericopes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+ul.library-pericopes li.card { min-height: 10rem; display: flex; flex-direction: column; padding: 1rem 1.1rem; border-radius: var(--shema-radius-md); box-shadow: var(--shema-shadow-sm); }
+ul.library-pericopes .cardlink { flex: 1; }
+ul.library-pericopes .ptitle { color: var(--shema-verde); font-family: var(--shema-font-serif); line-height: 1.45; }
+ul.library-pericopes li.card:hover { border-color: var(--shema-telha); box-shadow: var(--shema-shadow-md); }
+
+@media (max-width: 900px) {
+  .library-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  ul.library-pericopes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .section-link { position: static; display: inline-block; margin-top: .7rem; }
+  .library-hero { padding: 1rem 0 2rem; }
+  .library-grid, ul.library-pericopes { grid-template-columns: 1fr; }
+  .book-page-header { align-items: start; flex-direction: column; gap: 1rem; }
+  .book-page-stats { width: 100%; }
+}
 
 @media (max-width: 900px) {
   .sitebar { align-items: flex-start; flex-direction: column; gap: .7rem; }

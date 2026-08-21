@@ -18,13 +18,13 @@ const TOURS = [
   {
     id: 'meaning-map',
     title: 'What is a Meaning Map?',
-    sub: 'One passage — the opening of Ruth — from prose study to protected silences.',
+    sub: 'One passage — the opening of Ruth — from structured description to protected silences.',
     steps: [
       {
         url: '../pericopes/P01.html#meaning-map',
         title: 'The map itself',
         prose:
-          'This is a Meaning Map: a plain-language study of one Bible passage — here, the opening of Ruth. It records what the passage says and how it says it, before any translation begins. And no map stands alone: each one is made as part of a whole, and feeds a whole.',
+          'This is a Meaning Map: a structured description of one Bible passage\'s semantic, pragmatic, and rhetorical content — here, the opening of Ruth. It records what the passage says, how it works, and how it is expressed, so it can be reconstructed faithfully in another language.',
       },
       {
         url: '../pericopes/P01.html#meaning-map',
@@ -37,7 +37,7 @@ const TOURS = [
         mind: 'focus:ruth/P01',
         title: 'Part of a living whole',
         prose:
-          'Here is the same passage inside the Meaning Mind — its scenes, its people and places, connected to everything around them. A Meaning Map works in both directions at once: top-down, written from the perspective of the whole book; and bottom-up, feeding the Mind of the whole book — and, in time, the whole Bible.',
+          'Here is the same passage inside the Meaning Ecosystem — its scenes, its people and places, connected to everything around them. A Meaning Map works in both directions at once: top-down, written from the perspective of the whole book; and bottom-up, feeding the ecosystem of the whole book — and, in time, the whole Bible.',
       },
       {
         url: './ruth.html#P01',
@@ -56,7 +56,7 @@ const TOURS = [
   {
     id: 'map-to-machine',
     title: 'From Map to Machine (STA)',
-    sub: 'How the human study becomes a file a computer can verify.',
+    sub: 'How the human description becomes a file a computer can verify.',
     steps: [
       {
         url: '../pericopes/P01.html#meaning-map',
@@ -84,9 +84,9 @@ const TOURS = [
       },
       {
         url: './ruth.html#P01',
-        title: 'And the Meaning Mind reads it back',
+        title: 'And the Meaning Ecosystem reads it back',
         prose:
-          'And the Meaning Mind reads it back: what you see here is the Meaning Coordinates, rendered as living structure.',
+          'And the Meaning Ecosystem reads it back: what you see here is the Meaning Coordinates, rendered as living structure.',
       },
     ],
   },
@@ -134,7 +134,7 @@ const TOURS = [
     steps: [
       {
         url: './index.html',
-        title: 'The Meaning Mind',
+        title: 'The Meaning Ecosystem',
         prose:
           'This is the seed corpus as one living structure. Every point of light is approved canon — nothing else is allowed in.',
       },
@@ -213,7 +213,7 @@ ${t.steps
   const content = `
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
   <h1>Guided tours</h1>
-  ${renderFeedbackButtons(formCfg, { pericope: 'Meaning Mind — Guided tours', artifact: 'The website itself' })}
+  ${renderFeedbackButtons(formCfg, { pericope: 'Meaning Ecosystem — Guided tours', artifact: 'The website itself' })}
 </div>
 <p>Four short, presenter-friendly walks through the living views — for partners meeting the
 Tripod Method for the first time. With JavaScript on, each tour runs full-screen over the real
@@ -224,7 +224,7 @@ ${TOURS.map(tourArticle).join('\n')}`;
     cfg,
     title: 'Guided tours',
     relRoot: '../',
-    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Meaning Mind</a> · Guided tours</h1>`,
+    crumbs: `<h1 style="margin:.25em 0 0;font-size:16px;"><a href="index.html">Meaning Ecosystem</a> · Guided tours</h1>`,
     contentHtml: content,
     stats,
     scriptHtml: `<script src="../assets/atlas-tours.js" defer></script>`,

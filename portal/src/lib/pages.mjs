@@ -1,4 +1,4 @@
-import { escapeHtml, escapeAttr } from './html.mjs';
+import { escapeHtml, escapeAttr, slugify } from './html.mjs';
 import { renderFeedbackButtons, renderApprovalButton } from './feedback.mjs';
 import { renderWikilink } from './wikilinks.mjs';
 
@@ -72,7 +72,7 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
   <h1>A meaning-first approach to Bible translation</h1>
   <p class="lede">A shared home for people who want to understand, develop, review, and use Meaning Maps in translation and ministry.</p>
   <div class="hero-actions" aria-label="Start here">
-    <a class="btn btn-primary" href="#passages">Read a Meaning Map</a>
+    <a class="btn btn-primary" href="meaning-maps.html">Read a Meaning Map</a>
     <a class="btn btn-secondary" href="atlas/index.html">Explore the Corpus</a>
     <a class="text-link" href="tripod-method.html">The Tripod Method — three legs, three translation roles →</a>
   </div>
@@ -82,17 +82,17 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
   <div class="section-intro"><p class="eyebrow">Four ways to use this portal</p><h2 id="portal-paths-title">Start with what you need</h2></div>
   <div class="path-grid">
     <article class="path-card"><span class="path-number">01</span><h3>Learn</h3><p>Understand the Tripod Method, the three roles, and how Meaning Maps fit into the larger work.</p><a href="tripod-method.html">Learn the method →</a><a href="atlas/tours.html">Four guided tours</a></article>
-    <article class="path-card"><span class="path-number">02</span><h3>Read</h3><p>Review approved Meaning Maps passage by passage, with the supporting machine-readable records.</p><a href="#passages">Browse the passages →</a></article>
-    <article class="path-card"><span class="path-number">03</span><h3>Contribute</h3><p>Ask questions, suggest changes, and help the team strengthen the shared study of each passage.</p><a href="#using-maps">See how review works →</a></article>
+    <article class="path-card"><span class="path-number">02</span><h3>Read</h3><p>Review approved Meaning Maps passage by passage, with the supporting machine-readable records.</p><a href="meaning-maps.html">Browse the library →</a></article>
+    <article class="path-card"><span class="path-number">03</span><h3>Contribute</h3><p>Ask questions, suggest changes, and help the team strengthen the shared description of each passage.</p><a href="#using-maps">See how review works →</a></article>
     <article class="path-card"><span class="path-number">04</span><h3>Apply</h3><p>Use the maps as a trustworthy foundation for translation, training, and ministry conversations.</p><a href="#using-maps">Using the maps →</a></article>
   </div>
 </section>
 
 <section class="using-maps" id="using-maps" aria-labelledby="using-maps-title">
   <div class="section-intro"><p class="eyebrow">A common language for the work</p><h2 id="using-maps-title">What is a Meaning Map?</h2></div>
-  <p>A Meaning Map is a human-readable study of one biblical passage: what it says, scene by scene and statement by statement, and how it says it. It is the main document to read and review before translation begins.</p>
+  <p>A Meaning Map is a structured description of one biblical passage's semantic, pragmatic, and rhetorical content: what it says, how it works, and how it is expressed. It is used to reconstruct the passage faithfully in another language.</p>
   <div class="artifact-guide">
-    <div><strong>Meaning Map</strong><span>Human-readable study for people</span></div>
+    <div><strong>Meaning Map</strong><span>Human-readable description for people</span></div>
     <div><strong>Meaning Coordinates</strong><span>Machine-readable structure for the translation system</span></div>
     <div><strong>Compilation Log</strong><span>Trace of what was checked and flagged</span></div>
   </div>
@@ -100,7 +100,7 @@ export function indexPage({ cfg, books, buildInfo, formConfigured }) {
 </section>
 
 <section class="bookshelf" id="passages" aria-labelledby="passages-title">
-  <div class="section-intro"><p class="eyebrow">Approved passage studies</p><h2 id="passages-title">Meaning Maps by book</h2></div>
+  <div class="section-intro"><p class="eyebrow">Approved passage descriptions</p><h2 id="passages-title">Meaning Maps by book</h2><a class="section-link" href="meaning-maps.html">Open the library →</a></div>
 ${bookSections}
 </section>
 
@@ -108,8 +108,8 @@ ${bookSections}
   <summary>About the portal and its published data</summary>
   <dl class="gloss">
     <dt>Meaning Map</dt>
-    <dd>A human-readable study of one Bible passage: what the passage says — scene by scene, statement by statement —
-    and how it says it (its tone, its pace, its level of formality). <strong>This is the main document to review.</strong></dd>
+    <dd>A structured, human-readable description of one Bible passage's semantic, pragmatic, and rhetorical content — what it says,
+    how it works, and how it is expressed. <strong>This is the main document to review before reconstruction in another language.</strong></dd>
     <dt>MEANING_COORDINATES (also called the STA file)</dt>
     <dd>The same content converted into a strict, machine-readable file — the exact input the translation software will use.
     It is shown as an expandable outline. Most reviewers can skim or skip it.</dd>
@@ -123,11 +123,60 @@ ${bookSections}
 `;
 }
 
-function pericopeCard(p) {
+export function meaningMapsPage({ books }) {
+  const section = (label, testament) => {
+    const group = books.filter((b) => b.testament === testament);
+    if (!group.length) return '';
+    return `<section class="library-section" aria-labelledby="${testament.toLowerCase()}-books-title">
+      <div class="library-section-heading"><p class="eyebrow">${testament === 'OT' ? 'The first collection' : 'The second collection'}</p><h2 id="${testament.toLowerCase()}-books-title">${label}</h2></div>
+      <div class="library-grid">${group.map(libraryBookCard).join('\n')}</div>
+    </section>`;
+  };
+
+  return `<section class="meaning-library">
+    <nav class="library-crumbs"><a href="index.html">← Tripod Exegete Portal</a></nav>
+    <header class="library-hero">
+      <p class="eyebrow">Read the published corpus</p>
+      <h1>Meaning Maps</h1>
+      <p>A book-by-book library of approved passage descriptions, with the machine-readable files and compilation records that accompany them.</p>
+    </header>
+    ${section('Old Testament', 'OT')}
+    ${section('New Testament', 'NT')}
+  </section>`;
+}
+
+export function bookPage({ book }) {
+  const complete = book.pericopes.filter((p) => p.has.map && p.has.meaningCoordinates && p.has.log).length;
+  const pct = book.pericopes.length ? Math.round((complete / book.pericopes.length) * 100) : 0;
+  return `<section class="book-page">
+    <nav class="library-crumbs"><a href="../meaning-maps.html">← Meaning Maps</a></nav>
+    <header class="book-page-header">
+      <div><p class="eyebrow">${escapeHtml(book.testament === 'OT' ? 'Old Testament' : 'New Testament')}</p><h1>${escapeHtml(book.title)}</h1></div>
+      <div class="book-page-stats"><strong>${book.pericopes.length}</strong><span>passages</span><strong>${pct}%</strong><span>complete artifact sets</span></div>
+    </header>
+    <div class="book-progress" aria-label="${pct}% of this book has complete artifact sets"><span style="width:${pct}%"></span></div>
+    <p class="book-page-intro">Choose a passage to read its Meaning Map and inspect the supporting artifacts.</p>
+    <ul class="cards library-pericopes">${book.pericopes.map((p) => pericopeCard(p, '../')).join('\n')}</ul>
+  </section>`;
+}
+
+function libraryBookCard(book) {
+  const complete = book.pericopes.filter((p) => p.has.map && p.has.meaningCoordinates && p.has.log).length;
+  const pct = book.pericopes.length ? Math.round((complete / book.pericopes.length) * 100) : 0;
+  return `<a class="library-book-card" href="books/${slugify(book.title)}.html">
+    <span class="library-book-top"><span class="library-book-number">${escapeHtml(book.testament)}</span><span class="library-book-arrow">→</span></span>
+    <h3>${escapeHtml(book.title)}</h3>
+    <p>${book.pericopes.length} passage${book.pericopes.length === 1 ? '' : 's'}</p>
+    <div class="book-progress"><span style="width:${pct}%"></span></div>
+    <small>${pct}% complete artifact sets</small>
+  </a>`;
+}
+
+function pericopeCard(p, relRoot = '') {
   const badge = (ok, okText, missingText) =>
     ok ? `<span class="badge ok">${okText}</span>` : `<span class="badge off">${missingText}</span>`;
   return `<li class="card">
-      <a class="cardlink" href="pericopes/${escapeAttr(p.id)}.html">
+      <a class="cardlink" href="${relRoot}pericopes/${escapeAttr(p.id)}.html">
         <span class="pid">${escapeHtml(p.id)}</span>
         <span class="bcv">${escapeHtml(p.bcv)}</span>
         <span class="ptitle">${escapeHtml(p.title)}</span>
@@ -194,7 +243,7 @@ export function pericopePage({ cfg, p, formCfg, wikilinkCtx }) {
     ${mapTools}
     ${renderFeedbackButtons(formCfg, { pericope: `${p.id} — ${p.bcv}`, artifact: 'Meaning Map' })}
   </div>${mapToolsScript}
-  <p class="artifact-gloss">The human-readable study of this passage — what it says, scene by scene and statement by statement, and how it says it.</p>
+  <p class="artifact-gloss">The human-readable description of this passage's semantic, pragmatic, and rhetorical content — what it says, how it works, and how it is expressed.</p>
   ${chips}
   <article class="map prose">
 ${p.mapHtml}

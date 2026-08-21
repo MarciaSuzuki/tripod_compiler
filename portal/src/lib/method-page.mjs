@@ -12,7 +12,7 @@ import { renderFeedbackButtons } from './feedback.mjs';
 // presentation. If the vendored file ever drifts from the pin, the build fails
 // loudly rather than shipping an unruled page.
 export const METHOD_PAGE_SOURCE_SHA256 =
-  '9c3df5a2186410e2e9a60cea914f941cb65a2fad799a4c818b3ed015989eed5a';
+  'ca4b8002328073b27ffc5a1422bff962ebb76fabfc140837549e80c9737df93f';
 
 // Both blocks carry their surrounding newlines so rendering is pure
 // concatenation at the anchors — the fidelity test strips these exact strings
