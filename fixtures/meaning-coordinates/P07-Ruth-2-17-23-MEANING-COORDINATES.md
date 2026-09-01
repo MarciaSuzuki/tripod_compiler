@@ -475,6 +475,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "inter_proposition_links": {
         "forward_link_to": "P7"
       },
+      "cross_ref": "FIG_0104 cross-pericope pair closes here at 2:18 (opened at P06 P15, 2:14 — the third action, had leftover, lands as the leftover food Ruth gives Naomi); FIG_0113 opens here, pairs forward to P08",
       "cb_flags": [],
       "figure_flags": [
         "FIG_0104",
@@ -579,6 +580,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P10",
         "forward_link_to": "P12"
       },
+      "cross_ref": "FIG_0111 opens here; cross-pericope pair closes at P09 (3:10). FIG_0110 opens here; pairs forward to P11 (4:5) and P12 (4:10). The blessing keeps open whose hesed has not been forsaken — YHWH's or the man's",
       "cb_flags": [
         "CB_0011",
         "CB_0039"
@@ -604,6 +606,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P9",
         "forward_link_to": "P13"
       },
+      "cross_ref": "FIG_0112 opens here; cross-pericope pair pairs forward to P09 (3:12) and P11 (4:1-6) — the nearness that carries the redeemer duty",
       "cb_flags": [
         "CB_0001"
       ],
@@ -628,6 +631,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "inter_proposition_links": {
         "forward_link_to": "P14"
       },
+      "cross_ref": "FIG_0001 narrator epithet active here at 2:21; the book-wide arc opened at P01 (1:4), runs 1:22; 2:6; 2:21; 4:5; 4:10, and closes at P12 (4:10)",
       "cb_flags": [
         "CB_0004"
       ],
@@ -675,6 +679,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P14",
         "forward_link_to": "P16"
       },
+      "cross_ref": "FIG_0012 cross-pericope pair closes here at 2:23 (opened at P02 P14, 1:14) — the same staying-close word as her first holding-fast to Naomi",
       "cb_flags": [
         "CB_0034",
         "CB_0018",
