@@ -145,6 +145,31 @@ with a real one.
 on the passage list, on Listen, on Compare (header and both strips), on Report, and in
 the Markdown report as *Fita simulada — não é uma gravação real.*
 
+### Import a Sateré acousteme pair (units.txt + wav)
+
+The Sateré acoustemization work stores each recording as two files: the audio
+(`converted_audio/<stem>.wav`) and its acousteme sequence
+(`satere_units/<stem>.units.txt`, one unit id 0–99 per 20 ms frame). That is
+the U stream without the F stream. `tools/units_to_tape.py` turns one pair into
+a Recording folder the app can import:
+
+```sh
+cd bead-compare
+python3 tools/units_to_tape.py \
+  ~/satere_project/converted_audio/MAVWYIN1DA_B01_MAT_003.wav \
+  ~/satere_project/satere_units/MAVWYIN1DA_B01_MAT_003.units.txt \
+  --codebook ~/satere_project/satere_units/satere_kmeans.pkl \
+  --out recordings/MAT_003_take1 --passage "Mateus 3" --label "take 1"
+```
+
+It writes `audio.wav` (16 kHz mono), `tape.json` and `meta.json`. The U values
+come straight from the units file. The F values are measured from the audio the
+same way the notebooks do (65–400 Hz, log-spaced, 1–31, 0 when unvoiced). The
+codebook hash is the SHA-256 of the k-means pickle, so every pair converted with
+the same pickle is comparable. The pause unit is the unit that covers most
+low-energy frames; pass `--pause-unit N` to force one. Then import the folder
+with "Importar pasta…". Two takes of the same passage give you a real Compare.
+
 ## Making a mock tape
 
 Without O Escriba, `tools/mock_tape.py` produces a plausible `tape.json` from any WAV:
