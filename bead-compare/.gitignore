@@ -1,0 +1,4 @@
+# Playwright end-to-end artefacts (npm run test:e2e)
+test-results/
+playwright-report/
+blob-report/

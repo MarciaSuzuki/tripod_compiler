@@ -32,8 +32,13 @@ src/
   cli/                tripod validate | compile | check-drift | propose-vocabulary
 fixtures/           real gold artifacts pulled from the vault (P01, P02, …) for tests
 tests/
+bead-compare/       Bead Compare — local-first web app for consultant checking of oral
+                    recordings (plays original audio only; see bead-compare/README.md)
 CLAUDE.md           project brief & build guide
 ```
+
+`bead-compare/` is a self-contained sub-project with its own `package.json`. It does
+not read or write anything the compiler, validator or gates use.
 
 ## Status
 
