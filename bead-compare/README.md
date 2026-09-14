@@ -145,6 +145,35 @@ with a real one.
 on the passage list, on Listen, on Compare (header and both strips), on Report, and in
 the Markdown report as *Fita simulada — não é uma gravação real.*
 
+## Making a Recording from acousteme files
+
+A take that went through the acoustemization pipeline exists as a WAV plus an acousteme
+file: one unit id (0–99) per 20 ms frame, usually a `.npy` array. `tools/units_to_tape.py`
+turns the pair into a Recording folder, standard library only:
+
+```sh
+python3 tools/units_to_tape.py takes/tomada1.npy --audio takes/tomada1.wav \
+    -o recordings/tomada1 --codebook satere_codebook_v1.pkl \
+    --passage "Rute 1:1-5" --language "Sateré-Mawé" --narrator "Nome" --label "tomada 1"
+```
+
+It writes `audio.wav` (any PCM WAV becomes 16 kHz mono 16-bit; one already in that form is
+copied byte for byte), `tape.json` and `meta.json`, and refuses to write a tape the importer
+would reject. The units may be a `.npy` (any integer dtype), `.npz`, `.json` (a list, or an
+object with a `units`, `acoustemes` or `acousteme_sequence` key) or plain text; ids above 99
+are refused. `f` comes from `--pitch FILE` (f0 in Hz per frame), from a `<stem>_f0.*` file
+beside the units, or from a `--pitch-column` of a 2-D array; without any of these it is
+measured on the audio with the same tracker as `mock_tape.py`. `--pause-unit auto` (the
+default) picks the unit that coincides with silence in the audio and says which. Units made
+at another hop take `--frame-rate N` (or `auto`) and are resampled to 50 frames per second.
+
+The codebook hash is what lets two takes compare, so name the codebook the same way for
+every take: `--codebook FILE` hashes the codebook file, `--codebook-hash TEXT` writes a
+hash verbatim, `--codebook-name NAME` hashes a name. Without any of them the script warns
+and uses a shared placeholder. The tape carries no `mock` flag: it is a real tape, and it
+never compares with a mock one. `recordings/` is the place for these folders (see
+`recordings/README.md`); git ignores everything in it but that README.
+
 ## Making a mock tape
 
 Without O Escriba, `tools/mock_tape.py` produces a plausible `tape.json` from any WAV:
@@ -196,8 +225,9 @@ stability above 85%. `fixtures/` is also Vite's public folder, which is what let
 
 These are the checks the brief asks for. The demo passage proves the mechanics; the
 tests mean something only with real recordings of a real passage, ideally a few minutes
-long. Prepare each take as a Recording (from O Escriba, or a WAV plus `mock_tape.py` and
-a hand-written `meta.json`) and import the takes as versions of one passage, older first.
+long. Prepare each take as a Recording (from O Escriba, from acousteme files with
+`units_to_tape.py`, or a WAV plus `mock_tape.py` and a hand-written `meta.json`) and import
+the takes as versions of one passage, older first.
 
 For every test write down:
 
@@ -434,7 +464,8 @@ bead-compare/
   tests/                  vitest unit tests (21 files) and helpers.ts
   e2e/                    Playwright smoke test (smoke.spec.ts, 12 scenarios; helpers.ts, tsconfig.json)
   fixtures/ruth-1-1-5/    the demo Recordings v1 and v2, plus a README
-  tools/                  mock_tape.py (WAV → mock tape), make_fixtures.py (the demo),
-                          tape_hash.py (reproduces a version's tape hash from tape.json)
+  tools/                  mock_tape.py (WAV → mock tape), units_to_tape.py (acoustemes + WAV → Recording),
+                          make_fixtures.py (the demo), tape_hash.py (reproduces a version's tape hash from tape.json)
+  recordings/             Recording folders made from real takes (git-ignored; only its README is tracked)
   public/                 empty; fixtures/ is the public folder
 ```

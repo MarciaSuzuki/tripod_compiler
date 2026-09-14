@@ -183,6 +183,19 @@ Every choice the brief left open, one line each. Grouped by area.
 - Any wav sample rate and channel count is accepted (mixed to mono, linearly resampled to 16 kHz); 8-, 16- and 32-bit PCM.
 - The output is deterministic (no randomness), about 2 s of work per 6 s of audio; `audio.wav` gets `tape.json` next to it, any other name gets `<name>.tape.json`, and `-o` overrides both.
 
+## Acousteme import (`tools/units_to_tape.py`)
+
+- One take of the acoustemization pipeline is a WAV plus an acousteme file: one unit id per 20 ms frame (the Phase 3 `AcoustemeBridge` reads them at `frame_duration_ms=20` and bins them with `minlength=100`), which is the tape's `u` stream as it stands. The script wraps the pair as a Recording rather than teaching the importer a fourth file type: the app keeps one input contract.
+- Standard library only, like the other tools: `.npy` is parsed by hand (header dict, dtype, byte order, C or Fortran layout), so numpy is not a requirement on the consultant's machine.
+- Ids outside 0..99 are refused, not folded: a larger codebook needs a schema decision, not a silent remap. A 2-D array wider than 8 columns is refused as a feature matrix.
+- `f` is taken from a pitch stream when one exists (Hz, quantised on the same 70–400 Hz log scale as the mock scribe, so tapes from either source agree) and otherwise measured on the audio with the mock scribe's tracker, on speech frames only; pause frames get 0.
+- `pause_unit` is detected, not assumed: the unit whose frames coincide with silence in the audio (RMS under −45 dBFS), accepted only when most of its frames are silent and it covers a good share of the silence. Otherwise no pause unit is written and the script says why.
+- Units at another hop are resampled to 50 frames per second (the mode of the covered frames) so the app's 20 ms bead holds; `--keep-frame-rate` opts out.
+- The codebook hash must be named by the caller (file, text or name); a placeholder is used with a warning so that nothing blocks a first look, but two placeholders compare whatever codebook made them.
+- The tape carries no `mock` flag. A WAV already in the expected form is copied byte for byte so `sha256sum` of the source matches the audio hash in the app.
+- The script refuses to overwrite a Recording without `--force` and checks the tape with a mirror of `checkTape` before writing.
+- Real takes live under `recordings/`, git-ignored except its README, because the repository keeps only the synthetic demo voice.
+
 ## Tape hash (`tools/tape_hash.py`)
 
 - Standard library only; prints the SHA-256 of the canonical JSON of a tape.json, the value the app shows as "Hash da fita (JSON canônico)".

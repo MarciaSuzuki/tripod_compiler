@@ -79,7 +79,7 @@ src/
 tests/                   vitest unit tests (node env; fake-indexeddb for db tests) + helpers.ts
 e2e/                     Playwright smoke test (smoke.spec.ts, helpers.ts, its own tsconfig.json)
 fixtures/                demo recordings; served as Vite publicDir so "Load demo" can fetch them
-tools/                   mock_tape.py, make_fixtures.py, tape_hash.py (reproduces Version.tape_sha256)
+tools/                   mock_tape.py, units_to_tape.py (acoustemes + WAV → Recording), make_fixtures.py, tape_hash.py (reproduces Version.tape_sha256)
 public/                  empty (fixtures/ is the public folder)
 ```
 

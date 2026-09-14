@@ -2,3 +2,7 @@
 test-results/
 playwright-report/
 blob-report/
+
+# Recording folders made from real takes (tools/units_to_tape.py); only the README is tracked
+recordings/*
+!recordings/README.md
