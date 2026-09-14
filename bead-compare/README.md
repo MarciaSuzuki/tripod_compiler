@@ -156,10 +156,9 @@ python3 tools/mock_tape.py takes/take1/audio.wav -o out.json  # explicit output 
 python3 tools/mock_tape.py takes/take1/audio.wav --silence-db -40   # a stricter pause threshold
 ```
 
-The script is pure Python and runs at about one third of real time on a laptop: a 60-second stereo 44.1 kHz file takes around 20 seconds, a five-minute recording about two minutes. Any sample rate, channel count and 8-, 16- or 32-bit PCM depth is accepted; the audio is mixed to mono and resampled to 16 kHz before analysis.
-
 Give the WAV with its folder path, or pass `-o`. The script uses the standard library
-only. It accepts any sample rate and channel count: the audio is mixed to mono and
+only and runs at about one third of real time: a 60-second stereo 44.1 kHz file takes
+around 20 seconds, a five-minute recording about two minutes. It accepts any sample rate and channel count: the audio is mixed to mono and
 resampled to 16 kHz. It reads 8-, 16- or 32-bit PCM. It takes about 2 s for 6 s of audio
 in plain Python, so a five-minute recording needs a couple of minutes. The output is
 deterministic.
