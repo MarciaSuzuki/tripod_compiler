@@ -449,8 +449,9 @@ def detect_pause_unit(u, silent):
     share_of_unit = quiet[cand] / totals[cand]
     share_of_silence = quiet[cand] / n_silent
     if totals[cand] < 10 or share_of_unit < 0.5 or share_of_silence < 0.3:
-        return None, ("unit %d is the best candidate but only %d%% of its frames are silent and it covers %d%% of the silence"
-                      % (cand, round(100 * share_of_unit), round(100 * share_of_silence)))
+        return None, ("no unit marks silence: the best candidate, unit %d, has %d frames, %d%% of them silent,"
+                      " and covers %d%% of the silence (needs 10 frames, 50%% and 30%%)"
+                      % (cand, totals[cand], round(100 * share_of_unit), round(100 * share_of_silence)))
     return cand, ("unit %d: %d%% of its frames are silent, it covers %d%% of the silence"
                   % (cand, round(100 * share_of_unit), round(100 * share_of_silence)))
 
