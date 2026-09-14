@@ -6,13 +6,16 @@ import { repo } from "../db/repo";
 import { safeFilename } from "../export/download";
 import {
   buildReport,
+  carriedRegionLabels,
   describeSpan,
   downloadText,
   formatPercent,
   formatReportDate,
   formatSeconds,
+  reportHasWarning,
   reportToJson,
   reportToMarkdown,
+  type ReportCarried,
   type ReportData,
   type ReportVersion,
 } from "../export/report";
@@ -205,7 +208,7 @@ export function Report(): JSX.Element {
     );
   }
 
-  const hasWarning = report.carried.some((c) => c.outcome === "no_change_detected");
+  const hasWarning = reportHasWarning(report);
 
   return (
     <section className="screen report">
@@ -234,10 +237,13 @@ export function Report(): JSX.Element {
       <div className="card stack">
         <h2>{t("report.summary.title")}</h2>
         <div className="report__summary">
-          <Fact value={String(report.region_count)} label={t("report.summary.regions")} />
+          <Fact
+            value={String(report.region_count)}
+            label={t(report.region_count === 1 ? "report.summary.regions_one" : "report.summary.regions_other")}
+          />
           <Fact
             value={t("report.summary.seconds", { value: formatSeconds(report.changed_seconds, lang) })}
-            label={t("report.summary.changed_seconds")}
+            label={t("compare.summary.changed")}
           />
           <Fact value={formatPercent(report.stability, lang)} label={t("report.summary.stability")} />
         </div>
@@ -266,7 +272,7 @@ export function Report(): JSX.Element {
               </thead>
               <tbody>
                 {report.regions.map((r) => (
-                  <tr key={r.index}>
+                  <tr key={r.index} id={regionRowId(r.index)} tabIndex={-1}>
                     <td className="report-table__index">{r.index + 1}</td>
                     <td className="report-table__kind">
                       <span className={"swatch swatch--" + r.kind} aria-hidden="true" />
@@ -314,11 +320,13 @@ export function Report(): JSX.Element {
                   <th scope="col">{t("report.carried.col_a")}</th>
                   <th scope="col">{t("report.carried.col_b")}</th>
                   <th scope="col">{t("report.carried.col_outcome")}</th>
+                  <th scope="col">{t("report.carried.col_status")}</th>
+                  <th scope="col">{t("report.carried.col_region")}</th>
                 </tr>
               </thead>
               <tbody>
                 {report.carried.map((c) => (
-                  <tr key={c.comment_id}>
+                  <tr key={c.comment_id} className={c.status === "resolved" ? "report__carried--resolved" : undefined}>
                     <td className="report-table__author">{c.author}</td>
                     <td className="report-table__kind">
                       <span className={"swatch swatch--" + c.kind} aria-hidden="true" />
@@ -328,8 +336,12 @@ export function Report(): JSX.Element {
                     <td>{t(c.has_audio ? "report.carried.audio_yes" : "report.carried.audio_no")}</td>
                     <td className="report-table__time">{describeSpan(c.a_start_s, c.a_end_s, lang)}</td>
                     <td className="report-table__time">{describeSpan(c.b_start_s, c.b_end_s, lang)}</td>
-                    <td>
+                    <td className="report-table__outcome">
                       <span className={"report__outcome report__outcome--" + c.outcome}>{t(`common.carry.${c.outcome}`)}</span>
+                    </td>
+                    <td className={"report__status report__status--" + c.status}>{t(`common.status.${c.status}`)}</td>
+                    <td>
+                      <RegionLinks report={report} carried={c} lang={lang} none={t("report.facts.none")} />
                     </td>
                   </tr>
                 ))}
@@ -379,6 +391,41 @@ export function Report(): JSX.Element {
 
 // ---------------------------------------------------------------------------
 
+function regionRowId(index: number): string {
+  return `report-region-${index + 1}`;
+}
+
+/**
+ * The region(s) a carried request landed on, each with its verdict — the
+ * record of the check. A tap brings the region's row into view (no anchor
+ * links: the hash is the router's).
+ */
+function RegionLinks(props: { report: ReportData; carried: ReportCarried; lang: Lang; none: string }): JSX.Element {
+  const { report, carried, lang, none } = props;
+  const labels = carriedRegionLabels(report, carried, lang);
+  if (labels.length === 0) return <>{none}</>;
+  return (
+    <span className="report__region-links">
+      {labels.map((label, k) => {
+        const index = carried.region_indexes[k];
+        const region = report.regions.find((r) => r.index === index);
+        const jump = () => {
+          const row = document.getElementById(regionRowId(index));
+          if (!row) return;
+          row.scrollIntoView({ block: "center" });
+          row.focus();
+        };
+        return (
+          <button key={index} type="button" className="report__region-link" onClick={jump}>
+            {region && <span className={"swatch swatch--" + region.kind} aria-hidden="true" />}
+            {label}
+          </button>
+        );
+      })}
+    </span>
+  );
+}
+
 function Header(props: { title: string; a: Version; b: Version; t: T; compareHref: string }): JSX.Element {
   const { title, a, b, t, compareHref } = props;
   return (
@@ -389,12 +436,12 @@ function Header(props: { title: string; a: Version; b: Version; t: T; compareHre
         <div className="report__versions">
           <span className="report__version">
             <span>{t("report.header.a_label", { label: a.label })}</span>
-            <span className="report__version-hint">{t("report.header.a_hint")}</span>
+            <span className="report__version-hint">({t("report.header.a_hint")})</span>
             <MockBadge tape={a.tape} label={t("common.mock.badge")} />
           </span>
           <span className="report__version">
             <span>{t("report.header.b_label", { label: b.label })}</span>
-            <span className="report__version-hint">{t("report.header.b_hint")}</span>
+            <span className="report__version-hint">({t("report.header.b_hint")})</span>
             <MockBadge tape={b.tape} label={t("common.mock.badge")} />
           </span>
         </div>

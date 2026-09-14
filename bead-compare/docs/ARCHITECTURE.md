@@ -31,7 +31,7 @@ when a screen truly needs it, and record the addition here.
 index.html               the single page (lang="pt-BR"); mounts /src/main.tsx
 vite.config.ts           base "./", publicDir "fixtures", outDir "dist"
 vitest.config.ts         include tests/**/*.test.ts, node environment
-playwright.config.ts     e2e: vite build + vite preview on 4173, headless Chromium
+playwright.config.ts     e2e: vite build + vite preview on 4173 (never reuses a stale server), headless Chromium
 vercel.json              buildCommand npm run build, outputDirectory dist, SPA rewrite
 tsconfig.json            src, tests, vite configs (types: vite/client, node)
 src/
@@ -79,7 +79,7 @@ src/
 tests/                   vitest unit tests (node env; fake-indexeddb for db tests) + helpers.ts
 e2e/                     Playwright smoke test (smoke.spec.ts, helpers.ts, its own tsconfig.json)
 fixtures/                demo recordings; served as Vite publicDir so "Load demo" can fetch them
-tools/                   mock_tape.py, make_fixtures.py
+tools/                   mock_tape.py, make_fixtures.py, tape_hash.py (reproduces Version.tape_sha256)
 public/                  empty (fixtures/ is the public folder)
 ```
 
@@ -109,7 +109,7 @@ export interface Region { index: number; kind: RegionKind; a: FrameRange; b: Fra
 export type Verdict = "requested_fix_confirmed" | "unrequested_ok" | "unrequested_problem" | "undecided";
 export interface PairRecord { id: string; passage_id: string; a_version_id: string; b_version_id: string; verdicts: Record<string, Verdict>; updated_at: string }
 export type CarryOutcome = "changed_here" | "no_change_detected";
-export interface CarriedComment { source: Comment; span: Span; outcome: CarryOutcome; region_indexes: number[] }
+export interface CarriedComment { source: Comment; span: Span; outcome: CarryOutcome; region_indexes: number[] /* regions overlapped on A or B; their verdicts are the record of the check */ }
 export interface CompareSummary { region_count: number; changed_seconds: number; stability: number; matched_b_frames: number; total_b_frames: number }
 
 // tape.ts
@@ -140,7 +140,8 @@ export function rangesOverlap(x: FrameRange, y: FrameRange): boolean;
 
 // carry.ts
 export class FrameMapper { constructor(a, b, alignment, aFrames, bFrames); mapFrame(frame): number; mapEnd(end): number; mapSpan(span, bVersionId): Span }
-export function carryComments(commentsA: Comment[], mapper: FrameMapper, regions: Region[], bVersionId: string): CarriedComment[];
+export function isCarriedSource(c: Comment): boolean;   // fix_requested, written on A (no carried_from), open or resolved
+export function carryComments(commentsA: Comment[], mapper: FrameMapper, regions: Region[], bVersionId: string): CarriedComment[];   // every isCarriedSource comment, in order
 
 // compare.ts
 export interface CompareResult { clustersA; clustersB; alignment; regions; summary; carried; mapper }
@@ -265,7 +266,7 @@ export interface Repo {
   addComment(c: Omit<Comment, "id" | "created_at">): Promise<Comment>;
   updateComment(id: string, patch: Partial<Omit<Comment, "id">>): Promise<Comment>;
   deleteComment(id: string): Promise<void>;                 // also removes the copies carried from it
-  syncCarriedComments(aId: string, bId: string, carried: ReadonlyArray<Pick<CarriedComment, "source" | "span">>): Promise<Comment[]>; // one status "carried" copy per source on B, keyed by carried_from; idempotent
+  syncCarriedComments(aId: string, bId: string, carried: ReadonlyArray<Pick<CarriedComment, "source" | "span">>): Promise<Comment[]>; // one copy per source on B, keyed by carried_from, status "carried" or "resolved" as the source; idempotent
   getPair(aId: string, bId: string): Promise<PairRecord | undefined>;
   setVerdict(passageId: string, aId: string, bId: string, regionKey: string, verdict: Verdict): Promise<PairRecord>;
   exportPassage(passageId: string): Promise<Blob>;          // zip, see layout below
@@ -276,8 +277,10 @@ export const repo: Repo;
 ```
 - `getVersion` is cheap to call repeatedly (it returns the stored record; the
   audio `Blob` is stored inside the version record).
-- `syncCarriedComments` also resolves a copy whose source was resolved, removes a
-  copy whose source is gone, and never touches copies carried from another A.
+- `syncCarriedComments` keeps each copy's status in step with its source
+  (resolved ↔ resolved, open ↔ carried, so a reopened source reopens its copy),
+  removes a copy whose source is gone, and never touches copies carried from
+  another A.
 
 ### Recording import (`src/db/recording.ts`)
 
@@ -314,9 +317,13 @@ candidates at the same depth is an error). `tape.json` is validated with
 Missing audio or tape is an error. Audio that is not 16 kHz mono 16-bit PCM, a
 frame rate other than 50, and a duration that disagrees with the tape by more
 than 0.5 s are warnings. Errors and warnings are diagnostics;
-`screens/importMessages.ts` translates them (`diagnosticMessage(t, lang, d)`,
-`importErrorMessage(t, lang, e)`), formatting `*_s` vars as seconds in the
-language.
+`screens/importMessages.ts` translates them (`diagnosticLine(t, lang, d)`,
+`importErrorLine(t, lang, e)`) into `{ text, detail? }`: one sentence with no
+English and none of the file's numbers, plus an optional detail (the raw
+`detail` var, or a translated `passages.import.<code>.detail` template for
+`wav_format`, `duration_mismatch` and `frame_rate_unusual`) that the passage
+card shows inside a collapsed `<TechnicalDetails>`. `*_s` vars are seconds in
+the language's notation.
 
 ### Passage zip (`src/db/passageZip.ts`)
 
@@ -441,8 +448,10 @@ export function Waveform(props: { peaks: Float32Array | null; totalFrames: numbe
 // TechnicalDetails.tsx — <details class="tech"> collapsed by default; children may show numbers.
 export function TechnicalDetails(props: { children: React.ReactNode; summary?: string }): JSX.Element;   // screens pass t("common.tech.summary")
 // SettingsPanel.tsx — right-side dialog; edits every field of Settings via useSettings, plus language, reset and clear-all.
+// The fields are <input type="text" inputmode="decimal">, never type="number" (Chromium would rewrite "0,5" as 5 before React sees it).
 export const DATA_CLEARED_EVENT = "bead-compare:data-cleared";   // dispatched on window after repo.clearAll()
-export function parseFieldValue(f: { min: number; integer: boolean }, draft: string): number | null;   // accepts "," as decimal mark
+export const FIELDS: readonly Field[];   // { group, name, min, integer } per settings field, in panel order
+export function parseFieldValue(f: { min: number; integer: boolean }, draft: string): number | null;   // "," or "." as decimal mark; null for text, exponents, values below min, fractions in integer fields
 export function SettingsPanel(props: { open: boolean; onClose(): void }): JSX.Element;
 export function MockBadge(props: { tape: Pick<Tape, "mock">; label: string }): JSX.Element | null;   // label = t("common.mock.badge")
 export function LanguageToggle(): JSX.Element;   // PT / EN buttons with aria-pressed
@@ -496,10 +505,14 @@ All four screens are rendered without props (`<PassageList/>`, `<Listen/>`,
   it with the new flag); tap a bead on either strip → that cluster alone;
   per-region verdict select saved through `repo.setVerdict` (optimistic, reverts
   on failure); the active region is tracked by `regionKey` so it survives a
-  settings change. Carried comments are derived with `compareTapes` on every
-  computation and persisted onto B with `repo.syncCarriedComments`; the list
-  offers "play on B" (or "play on A" when nothing lands on B) and "mark as
-  resolved" on the original. Refuses a codebook mismatch, a frame-rate mismatch,
+  settings change. Carried comments (open and resolved fix requests on A) are
+  derived with `compareTapes` on every computation and persisted onto B with
+  `repo.syncCarriedComments`; each row shows the request's status next to its
+  outcome, links to the region(s) it overlaps with their verdicts (a tap
+  selects and plays the region), and offers "play on B" (or "play on A" when
+  nothing lands on B), "mark as resolved" on an open request and "reopen" on a
+  resolved one; the warning line counts open requests only. Refuses a codebook
+  mismatch, a frame-rate mismatch,
   and a pair too large to align (`AlignmentTooLargeError`), each with the header,
   a translated sentence and a TechnicalDetails, before any strip is drawn. Link
   to Report. Pure helpers live in `compareLogic.ts` (connectors, highlight and
@@ -509,8 +522,10 @@ All four screens are rendered without props (`<PassageList/>`, `<Listen/>`,
 - **Report (`#/report/:aId/:bId`)**: the same computation rendered read-only:
   downloads first, the two versions' facts, the three numbers, the regions table
   with verdicts (link back to Compare to change them), the carried fix requests
-  with their outcome, the generation date, and full hashes plus the settings used
-  inside a TechnicalDetails. Same refusals as Compare. Downloads rebuild the
+  with their outcome, status and the region(s) they landed on with their
+  verdicts (a tap brings the region row into view), the generation date, and
+  full hashes plus the settings used inside a TechnicalDetails. Same refusals
+  as Compare. Downloads rebuild the
   report with a fresh timestamp and are named
   `bead-compare-<passage>-<A label>-vs-<B label>.md|json` through `safeFilename`.
 
@@ -519,7 +534,7 @@ All four screens are rendered without props (`<PassageList/>`, `<Listen/>`,
 ```ts
 export const REPORT_APP_NAME = "Bead Compare"; export const REPORT_FORMAT_VERSION = 1;
 export interface ReportRegion { index: number /* 0-based; shown as index + 1 */; kind: RegionKind; a_start_s: number; a_end_s: number; b_start_s: number; b_end_s: number; verdict: Verdict }
-export interface ReportCarried { comment_id: string; author: string; kind: CommentKind; text?: string; has_audio: boolean; a_start_s: number; a_end_s: number; b_start_s: number; b_end_s: number; outcome: CarryOutcome }
+export interface ReportCarried { comment_id: string; author: string; kind: CommentKind; status: "open" | "resolved"; text?: string; has_audio: boolean; a_start_s: number; a_end_s: number; b_start_s: number; b_end_s: number; outcome: CarryOutcome; region_indexes: number[] /* 0-based, as ReportRegion.index */ }
 export interface ReportVersion { label: string; tape_sha256: string; audio_sha256: string; mock: boolean; narrator?: string; recorded_at?: string; language?: string }
 export interface ReportData {
   generated_at: string; passage: string; a: ReportVersion; b: ReportVersion; codebook_hash: string;
@@ -529,7 +544,9 @@ export interface ReportData {
 }
 export interface BuildReportInput { passage: Passage; a: Version; b: Version; result: CompareResult; pair?: PairRecord; settings: Settings; generated_at: string }
 export function buildReport(input: BuildReportInput): ReportData;     // seconds from frames with each tape's own frame rate; missing verdict → "undecided"
-export function reportToMarkdown(r: ReportData, lang: Lang): string;   // headings and tables in the language; pipes escaped, newlines collapsed
+export function reportHasWarning(r: Pick<ReportData, "carried">): boolean;   // an OPEN request on unchanged material
+export function carriedRegionLabels(r: Pick<ReportData, "regions">, c: Pick<ReportCarried, "region_indexes">, lang: Lang): string[];   // "Região 2 — <verdict>" per region
+export function reportToMarkdown(r: ReportData, lang: Lang): string;   // headings and tables in the language; pipes escaped, newlines collapsed; carried table has status and region columns
 export function reportToJson(r: ReportData): string;
 export function formatSeconds(value: number, lang: Lang): string;      // "1,8" / "1.8"
 export function formatPercent(value: number, lang: Lang): string;      // "92,8%" / "92.8%"
@@ -556,9 +573,10 @@ the way back to the passages, with the error text inside technical details.
 ## Styling
 
 One stylesheet `src/styles.css` with tokens on `:root` (warm off-white ground,
-ink text, one teal accent, four region colours from the Okabe–Ito palette that
-remain distinguishable for colour-blind users, a steel blue for a carried
-comment that landed on a change and a vermilion for "no change detected here"),
+ink text, one teal accent, three region colours from the Okabe–Ito palette plus
+a muted purple-grey for deleted, all distinguishable for colour-blind users, a
+steel blue for a carried comment that landed on a change and the Okabe–Ito
+vermilion for "no change detected here"),
 plus one small `.css` per screen for screen-only rules. Components use class
 names, no CSS-in-JS, no UI library. `:focus-visible` outlines, an `.sr-only`
 helper, `prefers-reduced-motion` and one breakpoint at 720 px. Must work at
@@ -572,10 +590,16 @@ tablet width; phone width is best-effort.
   Recording parser, the report, the router, the settings, i18n parity, the
   strip geometry, the screen logic modules and the download names.
 - `npm run test:e2e` — Playwright (`playwright.config.ts`): builds and serves the
-  production bundle on port 4173, headless Chromium with
-  `--autoplay-policy=no-user-gesture-required` and fake media devices, a fresh
-  context per test. `e2e/smoke.spec.ts` walks the four screens through the UI,
-  including the numbers policy (no codebook, sha256 or 64-hex string outside a
-  closed `details.tech`). `e2e/tsconfig.json` type-checks the suite and the
-  config (`npx tsc -p e2e/tsconfig.json --noEmit`); the main tsconfig and vitest
-  never see `e2e/`.
+  production bundle on port 4173 (a server already there is refused, never
+  reused), headless Chromium with `--autoplay-policy=no-user-gesture-required`
+  and fake media devices, a fresh context per test. `e2e/smoke.spec.ts` (12
+  scenarios) walks the four screens through the UI: keys, markers and playback
+  on Listen, region playback and verdicts on Compare, carry-forward with resolve
+  and the report, downloads, the language toggle, the codebook refusal on
+  Compare and Report, export/import, import refusals with their technical
+  detail, the numbers policy (no codebook, sha256 or 64-hex string outside a
+  closed `details.tech`), the settings panel (live recompute, comma decimal,
+  reset) and a spoken comment recorded with the fake microphone.
+  `e2e/tsconfig.json` type-checks the suite and the config
+  (`npx tsc -p e2e/tsconfig.json --noEmit`); the main tsconfig and vitest never
+  see `e2e/`.

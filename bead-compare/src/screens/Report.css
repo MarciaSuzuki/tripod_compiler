@@ -119,7 +119,7 @@
 .report-table td {
   text-align: left;
   vertical-align: top;
-  padding: var(--space-2) var(--space-4) var(--space-2) 0;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
   border-top: var(--hairline);
 }
 .report-table th {
@@ -140,7 +140,7 @@
   font-variant-numeric: tabular-nums;
 }
 .report-table__kind {
-  white-space: nowrap;
+  min-width: 7em;
 }
 .report-table__time {
   white-space: nowrap;
@@ -151,29 +151,75 @@
   min-width: 6em;
 }
 .report-table__text {
-  min-width: 12em;
-  max-width: 28em;
+  min-width: 10em;
+  max-width: 22em;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+.report-table__outcome {
+  min-width: 9em;
 }
 
 .report__verdict--undecided {
   color: var(--ink-muted);
 }
 
+/* a rounded box, not a pill: the cell may wrap it onto two lines */
 .report__outcome {
   display: inline-block;
-  padding: 1px 9px;
-  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
   background: var(--accent-soft);
   color: var(--accent-strong);
   font-size: var(--text-tiny);
-  line-height: 1.6;
-  white-space: nowrap;
+  line-height: 1.5;
 }
 .report__outcome--no_change_detected {
   background: var(--warning-soft);
   color: color-mix(in srgb, var(--warning) 55%, var(--ink));
+}
+
+.report__status--resolved {
+  color: var(--ok);
+}
+.report__status {
+  white-space: nowrap;
+}
+.report__carried--resolved .report-table__text {
+  color: var(--ink-muted);
+}
+.report__region-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+.report__region-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border: var(--hairline);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--text-small);
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+}
+.report__region-link .swatch {
+  flex: none;
+  margin-top: 0.35em;
+}
+.report__region-link:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+.report-table tr:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
 }
 
 .report__warning {

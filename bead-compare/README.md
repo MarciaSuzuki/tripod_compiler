@@ -34,17 +34,19 @@ npm install
 npm run dev          # development server at http://localhost:5173
 npm run build        # typecheck, then a static production build in dist/
 npm run preview      # serve dist/ at http://localhost:4173
-npm test             # unit tests (vitest, 244 tests)
+npm test             # unit tests (vitest, 260 tests)
 npm run test:e2e     # Playwright smoke test against the built bundle
 npm run typecheck    # tsc only, no build
 ```
 
 `npm run test:e2e` builds the app and serves `dist/` on port 4173 by itself, then runs
-`e2e/smoke.spec.ts` in headless Chromium (about 15 s after the build). If a server is
-already running on 4173 it is reused, so stop it or rebuild after changing the app.
-`npx playwright test --repeat-each 2` runs the suite twice to catch flakes. Playwright is
-pinned to 1.56.1; a Chromium preinstalled at `/opt/pw-browsers/chromium` (or the path in
-`PLAYWRIGHT_CHROMIUM_EXECUTABLE`) is used automatically, otherwise run
+the 12 scenarios of `e2e/smoke.spec.ts` in headless Chromium (about half a minute after
+the build). A server already listening on 4173 is never reused, because the build would
+rewrite `dist/` underneath it: the run refuses to start and names the port, so stop
+`npm run preview` (or a previous run) first. `npx playwright test --repeat-each 2` runs
+the suite twice to catch flakes. `@playwright/test` is declared as `^1.56.1` and resolved
+to 1.56.1 by `package-lock.json`; a Chromium preinstalled at `/opt/pw-browsers/chromium`
+(or the path in `PLAYWRIGHT_CHROMIUM_EXECUTABLE`) is used automatically, otherwise run
 `npx playwright install chromium` once.
 
 **Deploying.** `dist/` is a static site with a relative base, so it works from any path.
@@ -64,11 +66,15 @@ browser withholds WebCrypto on an insecure page. Only the microphone needs `http
    voice is synthetic and the tapes were made by `tools/mock_tape.py`.
 3. **Listen.** Press **Ouvir** on *v1 rascunho*. Tap a bead: that group of the recording
    plays and becomes the selection. Drag across beads to select more; the selection
-   plays. Press **Adicionar comentário** (or the `c` key), type a note, save it. The
-   comment appears under the strip and as a marker on it.
-4. **Compare.** Go back with **← Passagens** and press **Comparar A e B**. The summary
-   reads **3 regiões**, **1,8 s alterados**, **92,8% de estabilidade**. Tap a region to
-   hear A, a short gap, then B. Choose a verdict for each region; verdicts are saved.
+   plays. Press **Adicionar comentário** (or the `c` key), type a comment, choose
+   **Correção solicitada** as its kind, save it. The comment appears under the strip and
+   as a marker on it.
+4. **Compare.** Go back with **← Passagens** and press **Comparar A e B**. The three
+   facts read **3** (Regiões), **1,8 s** (Alterados) and **92,8%** (Estabilidade). Tap a
+   region to hear A, a short gap, then B. Choose a verdict for each region; verdicts are
+   saved. Under **Correções solicitadas em A**, the comment from step 3 has been carried
+   onto v2 with a link to the region it landed on; once you have heard both, press
+   **Marcar como resolvido**. It stays in the list, marked **Resolvido**.
 5. **Report.** Press **Ver relatório**. Download the Markdown or the JSON file.
 
 ## The Recording input format
@@ -109,7 +115,8 @@ is fine. A missing `meta.json` is a warning; a missing `audio.wav` or `tape.json
 that is not a WAV, or a `tape.json` that breaks a rule above refuses the import. Audio
 that is not 16 kHz mono 16-bit PCM, a frame rate other than 50, and audio and tape
 durations more than 0.5 s apart are warnings. Every message appears in the interface
-language on the passage card.
+language on the passage card; what the parser itself said, and the file's own numbers,
+sit inside a *Detalhes técnicos* block under the message.
 
 ### Import a real tape from O Escriba
 
@@ -120,7 +127,9 @@ on the passage list:
 2. On its card press **Importar pasta…** and pick the Recording folder, or
    **Importar .zip…** and pick the zip. One Recording is one version.
 3. Repeat for the next take. Import the older take first: the passage keeps versions in
-   import order, and A must come before B.
+   import order, and A must come before B. On the card, the two columns of round
+   buttons choose which version is A and which is B (by default the previous one and
+   the latest); A must be above B.
 
 The version label comes from `label` in `meta.json`; without it the version is called
 `v1`, `v2`, and so on. Narrator and recording date are shown when `meta.json` has them.
@@ -147,10 +156,13 @@ python3 tools/mock_tape.py takes/take1/audio.wav -o out.json  # explicit output 
 python3 tools/mock_tape.py takes/take1/audio.wav --silence-db -40   # a stricter pause threshold
 ```
 
+The script is pure Python and runs at about one third of real time on a laptop: a 60-second stereo 44.1 kHz file takes around 20 seconds, a five-minute recording about two minutes. Any sample rate, channel count and 8-, 16- or 32-bit PCM depth is accepted; the audio is mixed to mono and resampled to 16 kHz before analysis.
+
 Give the WAV with its folder path, or pass `-o`. The script uses the standard library
-only, accepts any sample rate and channel count (mixed to mono, resampled to 16 kHz) and
-8-, 16- or 32-bit PCM. It takes about 2 s for 6 s of audio in plain Python, so a
-five-minute recording needs a couple of minutes. The output is deterministic.
+only. It accepts any sample rate and channel count: the audio is mixed to mono and
+resampled to 16 kHz. It reads 8-, 16- or 32-bit PCM. It takes about 2 s for 6 s of audio
+in plain Python, so a five-minute recording needs a couple of minutes. The output is
+deterministic.
 
 Per 20 ms frame it decides: pause when the energy of a centred 40 ms window is below
 −45 dBFS (`u` = 49, `f` = 0); otherwise `u` is a code for the spectral shape (which
@@ -197,7 +209,8 @@ For every test write down:
    verdict;
 3. whether **every requested fix was found**: on Compare, under *Correções solicitadas
    em A*, each carried request reads **Mudou aqui** (changed here) or **Sem mudança
-   detectada aqui** (no change detected here);
+   detectada aqui** (no change detected here), and links to the region it landed on
+   with that region's verdict;
 4. the **settings** used, if you changed any (the report footer records them).
 
 A sheet like this is enough:
@@ -223,11 +236,11 @@ back:
 - **Tamanho mínimo de grupo** (minimum cluster; default 3 beads = 60 ms). Raise it to
   4–6 so one- or two-bead flickers in the tape are absorbed by their neighbours before
   alignment. Fewer, longer groups mean fewer spurious mismatches.
-- **Penalidade de divergência** (mismatch penalty; default 1). Lower it to 0.5, or raise
-  *Pontuação de correspondência*, when the connector lines between the strips fan out
-  and the regions come in chains. The aligner then keeps the two takes in step and marks
-  a differing group as one substituted spot instead of a run of insertions and
-  deletions.
+- **Penalidade de divergência** (mismatch penalty; default 1). Lower it to 0.5 (type
+  `0,5` or `0.5`), or raise *Pontuação de correspondência*, when the connector lines
+  between the strips fan out and the regions come in chains. The aligner then keeps the
+  two takes in step. A differing group becomes one substituted spot instead of a run of
+  insertions and deletions.
 - **Sensibilidade de melodia** (default 3) matters when most regions read *Mesmos sons,
   outra melodia*: the narrator's natural pitch variation between takes is above the
   threshold. Raise it.
@@ -244,9 +257,12 @@ elsewhere is a useful control. Then Compare.
 
 **Expect** three regions at the three spots and every carried request marked
 **Mudou aqui**; a request on untouched material reads **Sem mudança detectada aqui** in
-the warning colour and turns on the warning line above the list. Tap each region, hear
-A then B, and choose *Correção solicitada confirmada* or one of the *Mudança não
-solicitada* verdicts.
+the warning colour and turns on the warning line above the list. Settle the settings
+before choosing verdicts (see the note under Known limits). Tap each region, hear A then
+B, and choose *Correção solicitada confirmada* or one of the *Mudança não solicitada*
+verdicts. Then press **Marcar como resolvido** on each carried request you have checked:
+it stays in the list and in the report, marked **Resolvido**, next to the region link
+that shows the verdict.
 
 **Time it.** Start the stopwatch when Compare opens and stop it at the last verdict.
 Compare that with the time it takes to listen to both takes in full (at least the sum
@@ -256,7 +272,9 @@ on a passage of a few minutes the difference is the point of the tool.
 ### Test 3 — different narrator
 
 Import the same passage read by a different narrator as B against the first narrator's
-take as A, then Compare.
+take as A, then Compare. After the import the card picks the second take as A by
+default, so use the round A button on the first narrator's take before pressing
+**Comparar A e B**.
 
 **Expect** heavy noise: many regions, a low stability score, connector lines everywhere.
 The tool aligns sound codes, not words, and two voices produce different codes even where
@@ -280,7 +298,10 @@ The settings open from the icon at the top right and are saved in this browser.
 | Apagar todos os dados locais / Clear all local data       | —                              | —                  | deletes every passage, version and comment in this browser after a confirmation                               |
 
 Group sizes and distances are counted in beads (20 ms each). Numbers accept a comma or
-a dot as the decimal mark; a value the field cannot use snaps back when you leave it.
+a dot as the decimal mark: the fields are plain text fields, so the browser cannot
+rewrite what you type (a `type="number"` field would turn `0,5` into `5`). A value the
+field cannot use — text, a negative number, a fraction in a bead count — is marked and
+snaps back when you leave it.
 
 ## Keyboard shortcuts
 
@@ -290,7 +311,7 @@ On the Listen screen:
 | ------------------ | ----------------------------------------------------------------------- |
 | `Space`            | play or pause the selection (the whole recording when nothing is selected) |
 | `←` / `→`          | grow the selection by one speech group on that side (pauses are absorbed) |
-| `Shift + ←` / `→`  | shrink the selection by one speech group from that side                 |
+| `Shift + ←` / `→`  | shrink the selection by one speech group: `Shift + →` drops its first group, `Shift + ←` its last (the arrow names the direction the boundary moves) |
 | `c`                | open the comment editor for the selection                               |
 | `Esc`              | stop playback and close the editor                                      |
 
@@ -313,8 +334,9 @@ Everything is stored in the browser, per browser profile and per site address:
 Nothing is sent anywhere. Clearing the site data in the browser deletes it all, so
 export what matters.
 
-**Export a passage.** On its card press **Exportar passagem (.zip)**. The file
-`<passage title>.zip` holds `passage.json` (the manifest), `versions/<id>/audio.wav`,
+**Export a passage.** On its card press **Exportar passagem (.zip)**. The file is named
+after the passage title with accents removed and spaces as underscores, for example
+`Rute_1-1-5_(demonstracao).zip`. It holds `passage.json` (the manifest), `versions/<id>/audio.wav`,
 `tape.json` and `meta.json` for every version, and `comments/<id>.<ext>` for every
 spoken comment. Verdicts and carried comments travel with it.
 
@@ -326,9 +348,10 @@ from the bytes in the zip.
 **Hashes.** Each version records two SHA-256 hashes. `audio_sha256` is the hash of the
 `audio.wav` bytes (`sha256sum audio.wav` reproduces it). `tape_sha256` is the hash of
 the tape's canonical JSON (the parsed tape re-serialised with `JSON.stringify`), not of
-the file's bytes, so it survives export, import and re-formatting. The interface labels
-it *Hash da fita (JSON canônico)*. Hashes are shown only inside *Detalhes técnicos* and
-in the downloaded reports.
+the file's bytes, so it survives export, import and re-formatting. `sha256sum tape.json`
+therefore does **not** reproduce it; `python3 tools/tape_hash.py path/to/tape.json`
+does (standard library only). The interface labels it *Hash da fita (JSON canônico)*.
+Hashes are shown only inside *Detalhes técnicos* and in the downloaded reports.
 
 ## Language toggle
 
@@ -366,10 +389,16 @@ drift apart.
 - **No cursor seek.** The moving cursor is a display. You cannot drag it or click the
   waveform to start from a point; tap a bead or select a span instead. Playing the whole
   recording always starts at the beginning.
-- **Carry-forward covers open fix requests only.** Notes, approvals and resolved
-  requests stay on A. Marking a carried request resolved (on Compare, or on Listen for
-  B) removes it from the Compare list and from the Report; its copy on B stays, marked
-  resolved.
+- **Carry-forward covers fix requests only.** Notes and approvals stay on A. A fix
+  request carries whether it is open or resolved: marking it resolved (on Compare, or
+  on Listen for B) keeps it in the Compare list and in the Report with the status
+  *Resolvido*, and *Reabrir* on Compare undoes that. The warning line counts open
+  requests only.
+- **Verdicts belong to the settings in force.** A verdict is stored under the region
+  computed with the current settings; change a grouping or alignment setting and the
+  regions, and with them the verdicts, disappear until the setting is restored (they
+  are not deleted). The Report always uses the current settings, so settle the settings
+  before choosing verdicts and before downloading.
 - **Degenerate pairs.** An empty B against a non-empty A reports one *deleted* region
   and 100% stability, because there are no B beads to count.
 - **Spoken comments** depend on the browser's recorder: the file is WebM or Ogg with
@@ -404,9 +433,10 @@ bead-compare/
     screens/              PassageList, Listen, Compare, Report (+ .css, *Logic.ts, importMessages.ts)
     i18n/                 I18nProvider, t(); strings/{common,passages,listen,compare,report}.ts
     export/               download.ts (blob downloads, safe file names), report.ts (Markdown, JSON)
-  tests/                  vitest unit tests (19 files) and helpers.ts
-  e2e/                    Playwright smoke test (smoke.spec.ts, helpers.ts, tsconfig.json)
+  tests/                  vitest unit tests (21 files) and helpers.ts
+  e2e/                    Playwright smoke test (smoke.spec.ts, 12 scenarios; helpers.ts, tsconfig.json)
   fixtures/ruth-1-1-5/    the demo Recordings v1 and v2, plus a README
-  tools/                  mock_tape.py (WAV → mock tape), make_fixtures.py (the demo)
+  tools/                  mock_tape.py (WAV → mock tape), make_fixtures.py (the demo),
+                          tape_hash.py (reproduces a version's tape hash from tape.json)
   public/                 empty; fixtures/ is the public folder
 ```

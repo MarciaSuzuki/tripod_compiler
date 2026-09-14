@@ -59,7 +59,7 @@ export const common = {
 
     "common.settings.title": "Configurações",
     "common.settings.description":
-      "Ajustes de como as contas são agrupadas e comparadas. Os valores padrão servem para a maioria das gravações.",
+      "Como as contas são agrupadas e comparadas. Os valores padrão servem para a maioria das gravações.",
     "common.settings.grouping": "Agrupamento",
     "common.settings.alignment": "Comparação",
     "common.settings.min_cluster_frames": "Tamanho mínimo de grupo",
@@ -90,13 +90,13 @@ export const common = {
     "common.error.frame_rate_mismatch":
       "Estas duas gravações usam taxas de quadros diferentes e não podem ser comparadas.",
     "common.error.too_large":
-      "Estas duas gravações têm grupos demais para serem comparadas com os ajustes atuais. Aumente o tamanho mínimo de grupo nas configurações.",
+      "Estas duas gravações têm grupos demais para serem comparadas com as configurações atuais. Aumente o tamanho mínimo de grupo em Configurações.",
     "common.error.generic": "Algo deu errado.",
     "common.error.with_detail": "Algo deu errado: {message}",
     "common.error.not_found": "Não encontrado.",
     "common.error.screen_failed": "Esta tela encontrou um problema e não pôde ser exibida.",
     "common.error.screen_failed.hint":
-      "Se o problema continuar, restaure os ajustes padrão; as passagens e os comentários não são apagados.",
+      "Se o problema continuar, restaure as configurações padrão; as passagens e os comentários não são apagados.",
     "common.error.screen_failed.reset": "Restaurar padrões e tentar de novo",
     "common.error.screen_failed.retry": "Tentar de novo",
     "common.error.screen_failed.home": "Voltar às passagens",
@@ -109,8 +109,7 @@ export const common = {
     "common.footer.original_only":
       "Este aplicativo toca apenas as gravações originais. Nenhum som é sintetizado.",
 
-    "common.author.label": "Nome do autor",
-    "common.author.placeholder": "Seu nome",
+    "common.author.label": "Autor(a)",
 
     "common.lang.pt": "PT",
     "common.lang.en": "EN",
@@ -171,7 +170,7 @@ export const common = {
     "common.settings.alignment": "Comparison",
     "common.settings.min_cluster_frames": "Minimum group size",
     "common.settings.min_cluster_frames.hint":
-      "Groups with fewer beads than this are merged into their left neighbour (or the right one, when the group opens the recording or follows a pause).",
+      "Groups with fewer beads than this are merged into their left neighbor (or the right one, when the group opens the recording or follows a pause).",
     "common.settings.match_score": "Match score",
     "common.settings.match_score.hint": "How much each group that sounds the same in both versions is worth.",
     "common.settings.mismatch_penalty": "Mismatch penalty",
@@ -213,8 +212,7 @@ export const common = {
 
     "common.footer.original_only": "This app plays the original recordings only. No sound is ever synthesized.",
 
-    "common.author.label": "Author name",
-    "common.author.placeholder": "Your name",
+    "common.author.label": "Author",
 
     "common.lang.pt": "PT",
     "common.lang.en": "EN",

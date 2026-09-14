@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   buildReport,
+  carriedRegionLabels,
   describeSpan,
   formatPercent,
   formatReportDate,
   formatSeconds,
+  reportHasWarning,
   reportToJson,
   reportToMarkdown,
   type ReportData,
@@ -59,7 +61,9 @@ const changed: Comment = { ...comment("A", 30, 50), id: "c-changed", text: "Troc
 const untouched: Comment = { ...comment("A", 0, 10), id: "c-untouched", text: "Repetir\ncom calma" };
 const spoken: Comment = { ...comment("A", 50, 60), id: "c-spoken", text: undefined, audio_blob: new Blob(["x"]) };
 const note: Comment = { ...comment("A", 0, 10, "note"), id: "c-note" };
-const commentsA = [changed, untouched, spoken, note];
+/** Already confirmed by the consultant: it must stay in the report, marked resolved. */
+const done: Comment = { ...comment("A", 30, 40, "fix_requested", "resolved"), id: "c-done", text: "Feito" };
+const commentsA = [changed, untouched, spoken, note, done];
 
 const result = compareTapes(tapeA, tapeB, commentsA, "B", settings);
 const GENERATED_AT = "2026-09-14T07:00:00.000Z";
@@ -71,7 +75,7 @@ function build(pair?: PairRecord): ReportData {
 describe("fixture sanity", () => {
   it("has the expected regions and carried comments", () => {
     expect(result.regions.map((r) => r.kind)).toEqual(["substituted", "inserted"]);
-    expect(result.carried.map((c) => c.outcome)).toEqual(["changed_here", "no_change_detected", "no_change_detected"]);
+    expect(result.carried.map((c) => c.outcome)).toEqual(["changed_here", "no_change_detected", "no_change_detected", "changed_here"]);
     expect(result.summary.stability).toBe(55.6);
   });
 });
@@ -168,12 +172,13 @@ describe("buildReport", () => {
     expect(build({ ...pair, verdicts: {} }).regions.map((x) => x.verdict)).toEqual(["undecided", "undecided"]);
   });
 
-  it("lists the carried fix requests with their outcome, audio flag and both spans", () => {
-    expect(r.carried).toHaveLength(3);
+  it("lists the carried fix requests with their outcome, status, regions, audio flag and both spans", () => {
+    expect(r.carried).toHaveLength(4);
     expect(r.carried[0]).toEqual({
       comment_id: "c-changed",
       author: "test",
       kind: "fix_requested",
+      status: "open",
       text: "Trocar | esta palavra",
       has_audio: false,
       a_start_s: 0.6,
@@ -181,17 +186,44 @@ describe("buildReport", () => {
       b_start_s: 0.6,
       b_end_s: 1,
       outcome: "changed_here",
+      region_indexes: [0],
     });
     expect(r.carried[1].comment_id).toBe("c-untouched");
     expect(r.carried[1].outcome).toBe("no_change_detected");
+    expect(r.carried[1].region_indexes).toEqual([]);
     expect(r.carried[1].a_start_s).toBe(0);
     expect(r.carried[1].a_end_s).toBe(0.2);
     expect(r.carried[2].comment_id).toBe("c-spoken");
     expect(r.carried[2].has_audio).toBe(true);
     expect(r.carried[2].text).toBeUndefined();
     expect("text" in r.carried[2]).toBe(false);
+    // a resolved request is kept, with its status, so the confirmation survives in the hand-off
+    expect(r.carried[3]).toMatchObject({ comment_id: "c-done", status: "resolved", outcome: "changed_here", region_indexes: [0] });
     // the note is not a fix request and is not carried
     expect(r.carried.map((c) => c.comment_id)).not.toContain("c-note");
+  });
+
+  it("names the region(s) a request landed on with their verdicts, in the report's language", () => {
+    const withVerdict = build({
+      id: "A::B",
+      passage_id: "p1",
+      a_version_id: "A",
+      b_version_id: "B",
+      verdicts: { [regionKey(result.regions[0])]: "requested_fix_confirmed" },
+      updated_at: GENERATED_AT,
+    });
+    expect(carriedRegionLabels(withVerdict, withVerdict.carried[0], "pt-BR")).toEqual(["Região 1 — Correção solicitada confirmada"]);
+    expect(carriedRegionLabels(withVerdict, withVerdict.carried[0], "en")).toEqual(["Region 1 — Requested fix confirmed"]);
+    expect(carriedRegionLabels(r, r.carried[0], "en")).toEqual(["Region 1 — Not decided yet"]);
+    expect(carriedRegionLabels(r, r.carried[1], "en")).toEqual([]);
+  });
+
+  it("warns about unchanged spots only while the request is open", () => {
+    expect(reportHasWarning(r)).toBe(true);
+    const allResolved: ReportData = { ...r, carried: r.carried.map((c) => ({ ...c, status: "resolved" as const })) };
+    expect(reportHasWarning(allResolved)).toBe(false);
+    const onlyChanged: ReportData = { ...r, carried: r.carried.filter((c) => c.outcome === "changed_here") };
+    expect(reportHasWarning(onlyChanged)).toBe(false);
   });
 });
 
@@ -238,13 +270,18 @@ describe("reportToMarkdown", () => {
     expect(regionRows[1]).toContain(translate(lang, "report.regions.point", { time: tm("0:01.4") }));
     expect(regionRows[1]).toContain(tm("0:01.4 – 0:01.8"));
 
-    // one row per carried comment, with the outcome and the audio flag
+    // one row per carried comment, with the outcome, the audio flag, the status and the region with its verdict
     const carriedRows = lines.filter((l) => l.startsWith("| test |"));
-    expect(carriedRows).toHaveLength(3);
+    expect(carriedRows).toHaveLength(4);
     expect(carriedRows[0]).toContain(translate(lang, "common.carry.changed_here"));
     expect(carriedRows[1]).toContain(translate(lang, "common.carry.no_change_detected"));
     expect(carriedRows[2]).toContain(`| ${translate(lang, "report.carried.audio_yes")} |`);
     expect(carriedRows[0]).toContain(`| ${translate(lang, "report.carried.audio_no")} |`);
+    expect(carriedRows[0]).toContain(`| ${translate(lang, "common.status.open")} |`);
+    expect(carriedRows[0]).toMatch(new RegExp(`\\| ${translate(lang, "report.carried.region", { n: 1, verdict: translate(lang, "common.verdict.requested_fix_confirmed") })} \\|$`));
+    expect(carriedRows[1]).toMatch(/\| — \|$/);
+    expect(carriedRows[3]).toContain(`| ${translate(lang, "common.status.resolved")} |`);
+    expect(md).toContain(`| ${translate(lang, "report.carried.col_status")} | ${translate(lang, "report.carried.col_region")} |`);
     expect(md).toContain(translate(lang, "report.carried.warning"));
 
     // hashes, short and full; the mock note; the settings used
@@ -286,6 +323,18 @@ describe("reportToMarkdown", () => {
     expect(en).toContain("55.6%");
     expect(en).toContain("0.8 s");
     expect(en).toContain("0:00.6 – 0:01.0");
+  });
+
+  it("leaves the warning out once every unchanged spot is resolved", () => {
+    const resolved = compareTapes(tapeA, tapeB, [{ ...untouched, status: "resolved" }, changed], "B", settings);
+    const rep = buildReport({ passage, a, b, result: resolved, settings, generated_at: GENERATED_AT });
+    expect(rep.carried.map((c) => [c.status, c.outcome])).toEqual([
+      ["resolved", "no_change_detected"],
+      ["open", "changed_here"],
+    ]);
+    const md = reportToMarkdown(rep, "pt-BR");
+    expect(md).not.toContain(translate("pt-BR", "report.carried.warning"));
+    expect(md).toContain("| Resolvido |");
   });
 
   it("says so when there are no regions and no carried comments", () => {

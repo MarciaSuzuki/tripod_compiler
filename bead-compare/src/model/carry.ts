@@ -70,10 +70,21 @@ export class FrameMapper {
 }
 
 /**
- * Carry every open `fix_requested` comment on A onto B. A carried comment whose
- * span (on A or on B) overlaps a difference region is "changed_here"; otherwise
- * "no_change_detected", which the UI shows as a warning because the team may
- * have missed the fix.
+ * True for a comment on A that carries forward: a `fix_requested` comment
+ * written on A itself (not a copy carried from an earlier version), whether
+ * it is still open or already resolved. A resolved request stays in the list
+ * so the confirmation it records is not lost from Compare and the report.
+ */
+export function isCarriedSource(c: Comment): boolean {
+  return c.kind === "fix_requested" && !c.carried_from && (c.status === "open" || c.status === "resolved");
+}
+
+/**
+ * Carry every `fix_requested` comment on A (open or resolved, see
+ * `isCarriedSource`) onto B. A carried comment whose span (on A or on B)
+ * overlaps a difference region is "changed_here" and lists those regions in
+ * `region_indexes`; otherwise "no_change_detected", which the UI shows as a
+ * warning while the request is open, because the team may have missed the fix.
  */
 export function carryComments(
   commentsA: Comment[],
@@ -83,7 +94,7 @@ export function carryComments(
 ): CarriedComment[] {
   const out: CarriedComment[] = [];
   for (const c of commentsA) {
-    if (c.kind !== "fix_requested" || c.status !== "open") continue;
+    if (!isCarriedSource(c)) continue;
     const span = mapper.mapSpan(c.span, bVersionId);
     const aRange = { start: c.span.start_frame, end: c.span.end_frame };
     const bRange = { start: span.start_frame, end: span.end_frame };

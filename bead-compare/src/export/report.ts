@@ -15,6 +15,7 @@ import { translate, type Lang } from "../i18n";
 import type {
   CarryOutcome,
   CommentKind,
+  CommentStatus,
   CompareResult,
   PairRecord,
   Passage,
@@ -45,6 +46,8 @@ export interface ReportCarried {
   comment_id: string;
   author: string;
   kind: CommentKind;
+  /** "open" until the consultant confirms the fix; "resolved" afterwards. */
+  status: CommentStatus;
   text?: string;
   has_audio: boolean;
   a_start_s: number;
@@ -52,6 +55,8 @@ export interface ReportCarried {
   b_start_s: number;
   b_end_s: number;
   outcome: CarryOutcome;
+  /** Indexes (0-based, as in `regions`) of the regions the request overlaps; their verdicts are the confirmation record. */
+  region_indexes: number[];
 }
 
 export interface ReportVersion {
@@ -137,12 +142,14 @@ export function buildReport(input: BuildReportInput): ReportData {
       comment_id: c.source.id,
       author: c.source.author,
       kind: c.source.kind,
+      status: c.source.status === "resolved" ? "resolved" : "open",
       has_audio: !!c.source.audio_blob,
       a_start_s: seconds(c.source.span.start_frame, rateA),
       a_end_s: seconds(c.source.span.end_frame, rateA),
       b_start_s: seconds(c.span.start_frame, rateB),
       b_end_s: seconds(c.span.end_frame, rateB),
       outcome: c.outcome,
+      region_indexes: [...c.region_indexes],
     };
     if (c.source.text !== undefined) item.text = c.source.text;
     return item;
@@ -162,6 +169,24 @@ export function buildReport(input: BuildReportInput): ReportData {
     settings: structuredClone(settings),
     app: { name: REPORT_APP_NAME, format_version: REPORT_FORMAT_VERSION },
   };
+}
+
+/** True when an open request landed on unchanged material: the team may have missed the fix. */
+export function reportHasWarning(r: Pick<ReportData, "carried">): boolean {
+  return r.carried.some((c) => c.status === "open" && c.outcome === "no_change_detected");
+}
+
+/**
+ * The regions a carried request overlaps, each with its verdict, as text:
+ * "Região 2 — Correção solicitada confirmada" (one entry per region).
+ */
+export function carriedRegionLabels(r: Pick<ReportData, "regions">, c: Pick<ReportCarried, "region_indexes">, lang: Lang): string[] {
+  const byIndex = new Map(r.regions.map((x) => [x.index, x]));
+  return c.region_indexes.map((i) => {
+    const region = byIndex.get(i);
+    const verdict = region ? region.verdict : "undecided";
+    return translate(lang, "report.carried.region", { n: i + 1, verdict: translate(lang, `common.verdict.${verdict}`) });
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -316,7 +341,7 @@ export function reportToMarkdown(r: ReportData, lang: Lang): string {
   if (r.carried.length === 0) {
     lines.push(tr("report.carried.empty"), "");
   } else {
-    if (r.carried.some((c) => c.outcome === "no_change_detected")) lines.push(tr("report.carried.warning"), "");
+    if (reportHasWarning(r)) lines.push(tr("report.carried.warning"), "");
     lines.push(
       ...table(
         [
@@ -327,6 +352,8 @@ export function reportToMarkdown(r: ReportData, lang: Lang): string {
           tr("report.carried.col_a"),
           tr("report.carried.col_b"),
           tr("report.carried.col_outcome"),
+          tr("report.carried.col_status"),
+          tr("report.carried.col_region"),
         ],
         r.carried.map((c) => [
           cell(c.author, none),
@@ -336,6 +363,8 @@ export function reportToMarkdown(r: ReportData, lang: Lang): string {
           describeSpan(c.a_start_s, c.a_end_s, lang),
           describeSpan(c.b_start_s, c.b_end_s, lang),
           tr(`common.carry.${c.outcome}`),
+          tr(`common.status.${c.status}`),
+          cell(carriedRegionLabels(r, c, lang).join("; "), none),
         ]),
       ),
       "",

@@ -22,7 +22,7 @@ export interface CommentListLabels {
   play: string;
   /** e.g. "Comentário falado" — accessible name of the audio element */
   audio: string;
-  /** e.g. "Trazido da versão anterior" */
+  /** e.g. "Transferido da versão anterior" */
   carried?: string;
 }
 

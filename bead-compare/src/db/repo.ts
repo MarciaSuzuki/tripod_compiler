@@ -6,7 +6,7 @@
  * `Passage.version_ids` is the ordering source of truth for versions.
  */
 
-import type { CarriedComment, Comment, Meta, Passage, PairRecord, Tape, Verdict, Version } from "../model";
+import type { CarriedComment, Comment, CommentStatus, Meta, Passage, PairRecord, Tape, Verdict, Version } from "../model";
 import { newId, sha256Hex } from "../model";
 import {
   STORE_NAMES,
@@ -40,11 +40,13 @@ export interface Repo {
   updateComment(id: string, patch: Partial<Omit<Comment, "id">>): Promise<Comment>;
   deleteComment(id: string): Promise<void>; // also removes the copies carried from it onto other versions
   /**
-   * Persist the carry-forward of A's open fix requests onto B: one comment per
-   * source with status "carried" and carried_from = source id, keyed by
-   * carried_from so repeated calls never duplicate. A copy whose source was
-   * resolved becomes resolved; a copy whose source no longer exists is removed.
-   * Returns B's carried copies after the sync.
+   * Persist the carry-forward of A's fix requests onto B: one comment per
+   * source with carried_from = source id, keyed by carried_from so repeated
+   * calls never duplicate. The copy's status follows its source: "carried"
+   * while the source is open, "resolved" once it is resolved (and back to
+   * "carried" when it is reopened). A copy whose source no longer exists, or
+   * no longer carries, is removed or resolved. Returns B's carried copies
+   * after the sync.
    */
   syncCarriedComments(aVersionId: string, bVersionId: string, carried: ReadonlyArray<Pick<CarriedComment, "source" | "span">>): Promise<Comment[]>;
   getPair(aId: string, bId: string): Promise<PairRecord | undefined>;
@@ -243,19 +245,21 @@ function syncCarriedComments(
     const copies = new Map<string, Comment>();
     for (const c of onB) if (c.carried_from) copies.set(c.carried_from, c);
 
-    // 1. Upsert one copy per open fix request on A.
+    // 1. Upsert one copy per carried fix request on A; its status mirrors the source.
     for (const item of carried) {
       const src = item.source;
       const existing = copies.get(src.id);
       const span = { version_id: bVersionId, start_frame: item.span.start_frame, end_frame: item.span.end_frame };
+      const status: CommentStatus = src.status === "resolved" ? "resolved" : "carried";
       if (existing) {
-        const next: Comment = { ...existing, span, author: src.author, kind: src.kind, text: src.text, audio_blob: src.audio_blob };
+        const next: Comment = { ...existing, span, author: src.author, kind: src.kind, status, text: src.text, audio_blob: src.audio_blob };
         if (src.text === undefined) delete next.text;
         if (src.audio_blob === undefined) delete next.audio_blob;
         const changed =
           !sameSpan(existing.span, next.span) ||
           existing.author !== next.author ||
           existing.kind !== next.kind ||
+          existing.status !== next.status ||
           existing.text !== next.text ||
           existing.audio_blob !== next.audio_blob;
         if (changed) await putIn(tx, "comments", next);
@@ -267,7 +271,7 @@ function syncCarriedComments(
           author: src.author,
           kind: src.kind,
           created_at: nowIso(),
-          status: "carried",
+          status,
           carried_from: src.id,
         };
         if (src.text !== undefined) copy.text = src.text;
@@ -277,7 +281,7 @@ function syncCarriedComments(
       }
     }
 
-    // 2. Copies of sources on A that are no longer open (or no longer exist).
+    // 2. Copies of sources on A that no longer carry (or no longer exist).
     const still = new Set(carried.map((c) => c.source.id));
     for (const [sourceId, copy] of copies) {
       if (still.has(sourceId)) continue;

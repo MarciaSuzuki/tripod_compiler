@@ -10,7 +10,7 @@ import { useI18n, type Lang, type T } from "../i18n";
 import type { Meta, Passage, Version } from "../model";
 import { parseTape, shortHash } from "../model";
 import { navigate } from "../router";
-import { diagnosticMessage, importErrorMessage } from "./importMessages";
+import { diagnosticLine, importErrorLine, type ImportLineText } from "./importMessages";
 
 /**
  * Passage list (#/): create passages, load the demo passage, import
@@ -19,11 +19,13 @@ import { diagnosticMessage, importErrorMessage } from "./importMessages";
  *
  * Hashes and frame counts appear only inside <TechnicalDetails>. Import
  * problems arrive as diagnostics ({ code, vars }) and are translated here,
- * so the consultant reads them in the interface language.
+ * so the consultant reads them in the interface language; any raw detail
+ * (parser text, the file's numbers) goes inside a TechnicalDetails under
+ * the sentence.
  */
 
-/** A line of the import report: a diagnostic to translate, or an already-final message. */
-type ImportLine = ImportDiagnostic | string;
+/** A line of the import report: a diagnostic to translate, or an already-final line. */
+type ImportLine = ImportDiagnostic | ImportLineText;
 
 interface PassageItem {
   passage: Passage;
@@ -139,7 +141,7 @@ export function PassageList(): JSX.Element {
   const { t, lang } = useI18n();
   const [items, setItems] = useState<PassageItem[] | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<ImportLineText | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [title, setTitle] = useState("");
@@ -178,7 +180,7 @@ export function PassageList(): JSX.Element {
       const done = await fn();
       if (done) setNotice(done);
     } catch (e) {
-      setError(t("common.error.with_detail", { message: errorMessage(e) }));
+      setError({ text: t("common.error.with_detail", { message: errorMessage(e) }) });
     } finally {
       setBusy(null);
       await reload();
@@ -219,7 +221,9 @@ export function PassageList(): JSX.Element {
         const passage = await repo.importPassage(file);
         return t("passages.passage.imported", { title: passage.title });
       } catch (err) {
-        throw new Error(t("passages.passage.import_failed", { message: importErrorMessage(t, lang, err) }));
+        const line = importErrorLine(t, lang, err);
+        setError({ text: t("passages.passage.import_failed", { message: line.text }), detail: line.detail });
+        return null;
       }
     });
   };
@@ -291,9 +295,9 @@ export function PassageList(): JSX.Element {
           </p>
         )}
         {error && (
-          <p className="error" role="alert">
-            {error}
-          </p>
+          <div className="error" role="alert">
+            <ImportLineView line={error} t={t} />
+          </div>
         )}
         {loadError && (
           <p className="error" role="alert">
@@ -328,6 +332,21 @@ export function PassageList(): JSX.Element {
 
 // ---------------------------------------------------------------------------
 
+/** One import sentence; its raw detail, when any, sits inside a collapsed TechnicalDetails. */
+function ImportLineView(props: { line: ImportLineText; t: T }): JSX.Element {
+  const { line, t } = props;
+  return (
+    <>
+      {line.text}
+      {line.detail && (
+        <TechnicalDetails summary={t("common.tech.summary")}>
+          <code className="tech__full">{line.detail}</code>
+        </TechnicalDetails>
+      )}
+    </>
+  );
+}
+
 interface PassageCardProps {
   item: PassageItem;
   lang: Lang;
@@ -354,7 +373,7 @@ function PassageCard(props: PassageCardProps): JSX.Element {
   const [importing, setImporting] = useState(false);
   const [importErrors, setImportErrors] = useState<ImportLine[]>([]);
   const [importWarnings, setImportWarnings] = useState<ImportLine[]>([]);
-  const lineText = (line: ImportLine): string => (typeof line === "string" ? line : diagnosticMessage(t, lang, line));
+  const lineOf = (line: ImportLine): ImportLineText => ("code" in line ? diagnosticLine(t, lang, line) : line);
   const [importNotice, setImportNotice] = useState<string | null>(null);
   const folderInput = useRef<HTMLInputElement>(null);
   const zipInput = useRef<HTMLInputElement>(null);
@@ -383,7 +402,7 @@ function PassageCard(props: PassageCardProps): JSX.Element {
     try {
       const result = await parseRecordingFiles(files);
       if (!result.recording) {
-        setImportErrors(result.errors.length > 0 ? result.errors : [t("common.error.generic")]);
+        setImportErrors(result.errors.length > 0 ? result.errors : [{ text: t("common.error.generic") }]);
         return;
       }
       const version = await repo.addVersion(passage.id, result.recording);
@@ -391,7 +410,8 @@ function PassageCard(props: PassageCardProps): JSX.Element {
       setImportNotice(t("passages.version.imported", { label: version.label }));
       await props.onChanged();
     } catch (e) {
-      setImportErrors([t("common.error.with_detail", { message: importErrorMessage(t, lang, e) })]);
+      const line = importErrorLine(t, lang, e);
+      setImportErrors([{ text: t("common.error.with_detail", { message: line.text }), detail: line.detail }]);
     } finally {
       setImporting(false);
     }
@@ -566,7 +586,9 @@ function PassageCard(props: PassageCardProps): JSX.Element {
           <p>{t("passages.version.import_errors")}</p>
           <ul>
             {importErrors.map((m, i) => (
-              <li key={i}>{lineText(m)}</li>
+              <li key={i}>
+                <ImportLineView line={lineOf(m)} t={t} />
+              </li>
             ))}
           </ul>
         </div>
@@ -576,7 +598,9 @@ function PassageCard(props: PassageCardProps): JSX.Element {
           <p>{t("passages.version.import_warnings")}</p>
           <ul>
             {importWarnings.map((m, i) => (
-              <li key={i}>{lineText(m)}</li>
+              <li key={i}>
+                <ImportLineView line={lineOf(m)} t={t} />
+              </li>
             ))}
           </ul>
         </div>

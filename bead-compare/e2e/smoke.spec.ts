@@ -18,11 +18,16 @@ import {
   loadDemo,
   mainText,
   openListen,
+  openReport,
+  openSettings,
   passageCard,
   readDownload,
   readDownloadBytes,
   strip,
   versionItem,
+  waitForCompareAudio,
+  zipEntries,
+  zipText,
 } from "./helpers";
 
 /**
@@ -40,6 +45,17 @@ import {
 const STRIP_V1 = `Contas da versão ${V1}`;
 const CODEBOOK_MISMATCH = "Estas duas gravações usam códigos de som diferentes e não podem ser comparadas.";
 const NO_CHANGE_WARNING = "Em pelo menos um ponto não foi detectada mudança.";
+const CONFIRMED = "Correção solicitada confirmada";
+
+/** The end of a "0:00,3 – 0:01,1" range text; the m:ss,d shape compares as text. */
+function endOf(range: string): string {
+  return range.split(" – ")[1] ?? "";
+}
+
+/** Read the settings the app saved in this browser (a read, never a write). */
+function storedSettings(page: import("@playwright/test").Page): Promise<unknown> {
+  return page.evaluate(() => JSON.parse(localStorage.getItem("bead-compare.settings.v1") ?? "null") as unknown);
+}
 
 test.describe("Bead Compare smoke", () => {
   test("1. passage list: empty, demo loads two mock versions, hashes only inside technical details", async ({ page }) => {
@@ -77,9 +93,10 @@ test.describe("Bead Compare smoke", () => {
     expect(after).toContain(fullHash);
   });
 
-  test("2. listen: beads render, a tap plays, a drag selects, and a comment is saved", async ({ page }) => {
+  test("2. listen: beads render, a tap plays, a drag selects, a comment is saved, keys and markers work", async ({ page }) => {
     await loadDemo(page);
     await openListen(page, V1);
+    await expect(page.locator(".mock-badge")).toHaveCount(1); // the header badge
     const beads = strip(page, STRIP_V1);
     await expect(beads).toBeVisible();
     await expect.poll(() => beads.locator("rect.bead").count()).toBeGreaterThan(10);
@@ -135,13 +152,62 @@ test.describe("Bead Compare smoke", () => {
     await expect(listed.first()).toContainText("Em aberto");
     await expect(listed.first()).toContainText("0:00,3 – 0:01,1");
     // the marker is a named button (kind, author, span)
-    await expect(beads.getByRole("button", { name: /^Correção solicitada, .+, 0:00,3 – 0:01,1$/ })).toHaveCount(1);
+    const marker = beads.getByRole("button", { name: /^Correção solicitada, .+, 0:00,3 – 0:01,1$/ });
+    await expect(marker).toHaveCount(1);
+    await expect(page.getByRole("alert")).toHaveCount(0);
+
+    // Tap the marker: its comment becomes the current one, its span the selection, and it plays.
+    const play = page.getByRole("button", { name: "Tocar", exact: true });
+    const pause = page.getByRole("button", { name: "Pausar", exact: true });
+    const stop = page.getByRole("button", { name: "Parar", exact: true });
+    const rangeText = page.locator(".listen__range .tabular");
+    await stop.click();
+    await page.getByRole("button", { name: "Limpar seleção", exact: true }).click();
+    await expect(page.getByText("Toda a gravação", { exact: true })).toBeVisible();
+    await marker.click();
+    await expect(page.locator(".comment-list .comment[aria-current='true']")).toHaveCount(1);
+    await expect(rangeText).toHaveText("0:00,3 – 0:01,1");
+    await expect(pause).toBeVisible();
+    await stop.click();
+    await expect(play).toBeVisible();
+
+    // → grows the selection by one speech group (and plays it); Space pauses and resumes.
+    await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
+    await page.keyboard.press("ArrowRight");
+    await expect(rangeText).not.toHaveText("0:00,3 – 0:01,1");
+    const grown = await rangeText.innerText();
+    expect(grown).toMatch(/^0:00,3 – 0:0\d,\d$/);
+    expect(endOf(grown) > "0:01,1").toBe(true);
+    await expect(pause).toBeVisible();
+    await stop.click();
+    await expect(play).toBeVisible();
+    await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur()); // Space on a focused button is a click
+    await page.keyboard.press("Space");
+    await expect(pause).toBeVisible();
+    await page.keyboard.press("Space");
+    await expect(play).toBeVisible(); // paused, not stopped: the cursor stays
+    await expect(beads.locator("line.strip-cursor")).toHaveCount(1);
+    await stop.click();
+    await expect(beads.locator("line.strip-cursor")).toHaveCount(0);
+
+    // Play with no selection: the whole recording, with a moving cursor.
+    await page.getByRole("button", { name: "Limpar seleção", exact: true }).click();
+    await expect(page.getByText("Toda a gravação", { exact: true })).toBeVisible();
+    await play.click();
+    await expect(pause).toBeVisible();
+    const whole = beads.locator("line.strip-cursor");
+    await expect(whole).toHaveCount(1);
+    const w0 = Number(await whole.getAttribute("x1"));
+    await expect.poll(async () => Number(await whole.getAttribute("x1")), { timeout: 5_000 }).toBeGreaterThan(w0);
+    await stop.click();
     await expect(page.getByRole("alert")).toHaveCount(0);
   });
 
-  test("3. compare: three regions in order, a verdict persists across reload", async ({ page }) => {
+  test("3. compare: three regions in order, region playback, a verdict persists across reload", async ({ page }) => {
     await loadDemo(page);
     await compareFromList(page);
+    // header (2) and both strip labels (2)
+    await expect(page.locator(".mock-badge")).toHaveCount(4);
 
     const facts = page.locator(".compare__summary .fact");
     await expect(facts).toHaveCount(3);
@@ -155,6 +221,34 @@ test.describe("Bead Compare smoke", () => {
     await expect(rows.locator(".region-row__kind")).toHaveText(["Substituído", "Inserido", "Mesmos sons, outra melodia"]);
     await expect(page.locator("svg.bead-strip")).toHaveCount(2);
 
+    // Tap the melody region (the longest, 1.3 s on each side): A plays, then, after the gap, B.
+    await waitForCompareAudio(page);
+    const stripA = strip(page, `Versão A: ${V1}`);
+    const stripB = strip(page, `Versão B: ${V2}`);
+    await rows.nth(2).locator(".region-row__main").click();
+    await expect(rows.nth(2)).toHaveAttribute("aria-current", "true");
+    await expect(page.locator(".compare__player-title")).toContainText("Região 3");
+    const loop = page.getByRole("button", { name: "Repetir", exact: true });
+    await loop.click(); // A, gap, B, gap, A… so both cursors come round
+    await expect(loop).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByRole("button", { name: "Pausar", exact: true })).toBeVisible();
+    await expect(stripA.locator("line.strip-cursor")).toHaveCount(1);
+    await expect(stripB.locator("line.strip-cursor")).toHaveCount(1);
+
+    // "Ouvir A" plays one side only; pause shows the play label again; stop clears the cursors.
+    await page.getByRole("button", { name: "Ouvir A", exact: true }).click();
+    await expect(stripB.locator("line.strip-cursor")).toHaveCount(0);
+    await expect(stripA.locator("line.strip-cursor")).toHaveCount(1);
+    await page.getByRole("button", { name: "Ouvir B", exact: true }).click();
+    await expect(stripA.locator("line.strip-cursor")).toHaveCount(0);
+    await expect(stripB.locator("line.strip-cursor")).toHaveCount(1);
+    await page.getByRole("button", { name: "Pausar", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Ouvir A e B", exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "Parar", exact: true }).click();
+    await expect(stripA.locator("line.strip-cursor")).toHaveCount(0);
+    await expect(stripB.locator("line.strip-cursor")).toHaveCount(0);
+    await expect(loop).toHaveAttribute("aria-pressed", "true");
+
     const verdict = rows.nth(0).getByRole("combobox");
     await expect(verdict).toHaveValue("undecided");
     await verdict.selectOption("requested_fix_confirmed");
@@ -167,7 +261,7 @@ test.describe("Bead Compare smoke", () => {
     await expect(page.locator(".region-row").nth(1).getByRole("combobox")).toHaveValue("undecided");
   });
 
-  test("4. carry-forward: a fix request on the substituted span changed, one on the first phrase did not", async ({ page }) => {
+  test("4. carry-forward: requests carry with their outcome, link to their region, and survive being resolved", async ({ page }) => {
     await loadDemo(page);
     await openListen(page, V1);
     const beads = strip(page, STRIP_V1);
@@ -202,12 +296,55 @@ test.describe("Bead Compare smoke", () => {
     await expect(stripB.locator("rect.strip-highlight--carried_warning")).toHaveAttribute("stroke-dasharray", "4 3");
     await expect(page.getByRole("alert")).toHaveCount(0);
 
-    // The carried copies are persisted on B: Listen on v2 lists them as carried, with no delete button.
-    await backToPassages(page);
+    // The changed request links to region 1 and shows that region's verdict; the untouched one links nowhere.
+    await expect(changed.locator(".carried-row__region")).toHaveText(["Região 1 — Ainda sem decisão"]);
+    await expect(untouched.locator(".carried-row__region")).toHaveCount(0);
+    await page.locator(".region-row").nth(0).getByRole("combobox").selectOption("requested_fix_confirmed");
+    await expect(changed.locator(".carried-row__region")).toHaveText([`Região 1 — ${CONFIRMED}`]);
+    await changed.locator(".carried-row__region").click(); // the link selects the region
+    await expect(page.locator(".region-row").nth(0)).toHaveAttribute("aria-current", "true");
+
+    // Confirming the fix: mark the request resolved. It stays listed, now "Resolvido", and can be reopened.
+    await expect(changed).toContainText("Em aberto");
+    await changed.getByRole("button", { name: "Marcar como resolvido", exact: true }).click();
+    await expect(carried).toHaveCount(2);
+    await expect(changed).toContainText("Resolvido");
+    await expect(changed.getByRole("button", { name: "Reabrir", exact: true })).toBeVisible();
+    await expect(changed.getByRole("button", { name: "Marcar como resolvido", exact: true })).toHaveCount(0);
+    await expect(untouched).toContainText("Em aberto");
+    await expect(page.getByRole("status").filter({ hasText: NO_CHANGE_WARNING })).toBeVisible(); // the open one still warns
+    await expect(page.getByRole("alert")).toHaveCount(0);
+
+    // The report keeps both, with status, outcome and the region's verdict.
+    await openReport(page);
+    const carriedTable = page.locator("table.report-table").nth(1);
+    await expect(carriedTable.locator("tbody tr")).toHaveCount(2);
+    const reportChanged = carriedTable.locator("tbody tr").filter({ hasText: "Corrigir a sílaba trocada" });
+    await expect(reportChanged).toContainText("Mudou aqui");
+    await expect(reportChanged).toContainText("Resolvido");
+    await expect(reportChanged.locator(".report__region-link")).toHaveText([`Região 1 — ${CONFIRMED}`]);
+    const reportUntouched = carriedTable.locator("tbody tr").filter({ hasText: "Primeira frase, nada mudou" });
+    await expect(reportUntouched).toContainText("Sem mudança detectada aqui");
+    await expect(reportUntouched).toContainText("Em aberto");
+    await expect(page.getByRole("status").filter({ hasText: NO_CHANGE_WARNING })).toBeVisible();
+    const [md] = await Promise.all([
+      page.waitForEvent("download"),
+      page.getByRole("button", { name: "Baixar Markdown", exact: true }).click(),
+    ]);
+    const markdown = await readDownload(md);
+    expect(markdown).toMatch(new RegExp(`^\\| .+ \\| Corrigir a sílaba trocada \\| .+ \\| Mudou aqui \\| Resolvido \\| Região 1 — ${CONFIRMED} \\|$`, "m"));
+    expect(markdown).toMatch(/^\| .+ \| Primeira frase, nada mudou \| .+ \| Sem mudança detectada aqui \| Em aberto \| — \|$/m);
+    expect(markdown).toContain("| Situação | Região |");
+
+    // The carried copies are persisted on B: Listen on v2 lists them as carried, with no delete button;
+    // the resolved one is resolved there too.
+    await page.getByRole("link", { name: "Passagens", exact: true }).click();
+    await expect(page.getByRole("heading", { level: 1, name: "Passagens" })).toBeVisible();
     await openListen(page, V2);
     const onB = page.locator(".comment-list .comment--carried");
     await expect(onB).toHaveCount(2);
-    await expect(onB.filter({ hasText: "Corrigir a sílaba trocada" })).toContainText("Transferido");
+    await expect(onB.filter({ hasText: "Corrigir a sílaba trocada" })).toContainText("Resolvido");
+    await expect(onB.filter({ hasText: "Primeira frase, nada mudou" })).toContainText("Transferido");
     await expect(onB.first().locator(".comment__carried")).toHaveText("Transferido da versão anterior");
     await expect(onB.first().getByRole("button", { name: "Excluir", exact: true })).toHaveCount(0);
     await expect(strip(page, `Contas da versão ${V2}`).locator("rect.strip-marker--carried")).toHaveCount(2);
@@ -230,11 +367,15 @@ test.describe("Bead Compare smoke", () => {
     await expect(page.getByRole("heading", { level: 1, name: DEMO_TITLE })).toBeVisible();
     await expect(page.getByText(`A: ${V1}`, { exact: true })).toBeVisible();
     await expect(page.getByText(`B: ${V2}`, { exact: true })).toBeVisible();
+    await expect(page.locator(".report__version-hint")).toHaveText(["(anterior)", "(mais recente)"]);
+    // header (2) and the two version facts (2)
+    await expect(page.locator(".mock-badge")).toHaveCount(4);
 
     const stability = page.locator(".report-fact").filter({ hasText: "Estabilidade" }).locator(".report-fact__value");
     await expect(stability).toHaveText(/^\d{1,3}(,\d)?%$/);
     const regionsFact = page.locator(".report-fact").filter({ hasText: "Regiões" }).locator(".report-fact__value");
     await expect(regionsFact).toHaveText("3");
+    await expect(page.locator(".report-fact__label")).toHaveText(["Regiões", "Alterados", "Estabilidade"]);
     await expect(page.locator("table.report-table").first().locator("tbody tr")).toHaveCount(3);
 
     const [mdDownload] = await Promise.all([
@@ -318,10 +459,22 @@ test.describe("Bead Compare smoke", () => {
     await expect(page.getByRole("alert")).toHaveText(CODEBOOK_MISMATCH);
     await expect(page.getByText(`A: ${V1}`, { exact: true })).toBeVisible();
     await expect(page.getByText(`B: ${label}`, { exact: true })).toBeVisible();
+    await expect(page.locator(".mock-badge")).toHaveCount(2); // both are mock tapes (v3 is v1's tape on another codebook)
     await expect(page.locator("svg.bead-strip")).toHaveCount(0);
     await expect(page.locator(".region-row")).toHaveCount(0);
     await expect(page.locator(".compare__summary")).toHaveCount(0);
     await expectTechnicalDetailsClosed(page);
+
+    // The report refuses the same pair the same way: no summary, no tables, the badge in the header.
+    await page.goto(page.url().replace("#/compare/", "#/report/"));
+    await expect(page).toHaveURL(/#\/report\//);
+    await expect(page.getByRole("alert")).toHaveText(CODEBOOK_MISMATCH);
+    await expect(page.getByText(`A: ${V1}`, { exact: true })).toBeVisible();
+    await expect(page.getByText(`B: ${label}`, { exact: true })).toBeVisible();
+    await expect(page.locator(".mock-badge")).toHaveCount(2);
+    await expect(page.locator(".report__summary")).toHaveCount(0);
+    await expect(page.locator("table.report-table")).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Baixar Markdown", exact: true })).toHaveCount(0);
   });
 
   test("8. export and import: the passage zip round-trips versions and comments", async ({ page }) => {
@@ -365,7 +518,7 @@ test.describe("Bead Compare smoke", () => {
     await expect(page.getByRole("alert")).toHaveCount(0);
   });
 
-  test("10. import refusal: a recording without tape.json is refused in Portuguese", async ({ page }) => {
+  test("10. import refusal: a missing or broken tape.json is refused in Portuguese, its detail inside technical details", async ({ page }) => {
     await loadDemo(page);
     const zip = buildRecordingZip({ omitTape: true });
     const zipInput = passageCard(page).locator("input[type=file][accept*='zip']");
@@ -375,6 +528,21 @@ test.describe("Bead Compare smoke", () => {
     await expect(errors).toContainText("A gravação não pôde ser importada:");
     await expect(errors).toContainText("O arquivo tape.json não foi encontrado.");
     expect(await errors.innerText()).not.toMatch(/was not found|not a WAV/);
+    await expect(passageCard(page).locator("li.version")).toHaveCount(2);
+
+    // A tape with a bead out of range: the sentence is Portuguese and number-free;
+    // the parser's own words sit inside a closed "Detalhes técnicos".
+    const broken = buildRecordingZip({ mutateTape: (t) => ((t.u as number[])[12] = 500) });
+    await zipInput.setInputFiles({ name: "quebrado.zip", mimeType: "application/zip", buffer: broken });
+    await expect(errors).toContainText("O arquivo tape.json é inválido.");
+    const visible = await errors.innerText();
+    expect(visible).not.toMatch(/out of range|\d/);
+    await expectTechnicalDetailsClosed(page);
+    const details = errors.locator("details.tech");
+    await expect(details).toHaveCount(1);
+    await details.getByText("Detalhes técnicos", { exact: true }).click();
+    await expect(details).toHaveJSProperty("open", true);
+    await expect(details.locator("code")).toHaveText("u[12] is out of range 0–99");
     await expect(passageCard(page).locator("li.version")).toHaveCount(2);
   });
 
@@ -397,5 +565,103 @@ test.describe("Bead Compare smoke", () => {
     await expect(page.locator("table.report-table").first().locator("tbody tr")).toHaveCount(3);
     await expectTechnicalDetailsClosed(page);
     expectNoTapeNumbers(await mainText(page));
+  });
+
+  test("11. settings: Compare recomputes as you type, a comma is a decimal mark, reset brings the defaults back", async ({ page }) => {
+    await loadDemo(page);
+    await compareFromList(page);
+    const rows = page.locator(".region-row");
+    await expect(rows).toHaveCount(3);
+
+    const dialog = await openSettings(page);
+    const mergeGap = dialog.getByLabel("Distância para unir regiões");
+    await expect(mergeGap).toHaveValue("10");
+    // With 200 beads of tolerance the three demo regions (59 and 25 matched beads apart) fold into one.
+    await mergeGap.fill("200");
+    await expect(rows).toHaveCount(1);
+    await expect(page.locator(".compare__summary .fact").nth(0).locator(".fact__label")).toHaveText("Região");
+
+    // "0,5" means one half, not five: the field is text, so the browser cannot rewrite it.
+    const penalty = dialog.getByLabel("Penalidade de divergência");
+    await expect(penalty).toHaveValue("1");
+    await penalty.fill("0,5");
+    await expect(penalty).toHaveValue("0,5");
+    await expect(penalty).not.toHaveAttribute("aria-invalid", "true");
+    await expect.poll(() => storedSettings(page)).toMatchObject({ alignment: { mismatch_penalty: 0.5, merge_gap_frames: 200 } });
+
+    // An unusable draft is marked and snaps back on blur, leaving the stored value alone.
+    await penalty.fill("-1");
+    await expect(penalty).toHaveAttribute("aria-invalid", "true");
+    await penalty.blur();
+    await expect(penalty).toHaveValue("0.5");
+    expect(await storedSettings(page)).toMatchObject({ alignment: { mismatch_penalty: 0.5 } });
+
+    await dialog.getByRole("button", { name: "Restaurar padrões", exact: true }).click();
+    await expect(mergeGap).toHaveValue("10");
+    await expect(penalty).toHaveValue("1");
+    await expect(rows).toHaveCount(3);
+    await expect(page.locator(".compare__summary .fact").nth(0).locator(".fact__label")).toHaveText("Regiões");
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+    await expect(page.getByRole("alert")).toHaveCount(0);
+  });
+
+  test("12. spoken comment: recorded with the microphone, it travels to B, the report and the export", async ({ page }) => {
+    await loadDemo(page);
+    await openListen(page, V1);
+    const beads = strip(page, STRIP_V1);
+    await bead(beads, "0:02,3").click();
+    await expect(page.getByText("0:02,3 – 0:02,5", { exact: true })).toBeVisible();
+
+    await page.keyboard.press("c");
+    const editor = page.locator("form.comment-editor");
+    await expect(editor).toBeVisible();
+    await editor.getByRole("textbox", { name: "Comentário", exact: true }).fill("Falar mais devagar");
+    await editor.getByRole("radio", { name: "Correção solicitada", exact: true }).check();
+    await editor.getByRole("button", { name: "Gravar comentário falado", exact: true }).click();
+    await expect(editor.getByRole("status")).toHaveText("Gravando…");
+    await page.waitForTimeout(1_200); // the fake microphone speaks for a second
+    await editor.getByRole("button", { name: "Parar de gravar", exact: true }).click();
+    await expect(editor.locator("audio.comment-editor__preview")).toHaveCount(1);
+    await expect(editor.getByRole("button", { name: "Descartar áudio", exact: true })).toBeVisible();
+    await editor.getByRole("button", { name: "Salvar", exact: true }).click();
+    await expect(editor).toBeHidden();
+
+    // On Listen the comment has text and a player for the recording.
+    const listed = page.locator(".comment-list .comment");
+    await expect(listed).toHaveCount(1);
+    await expect(listed.first()).toContainText("Falar mais devagar");
+    await expect(listed.first().locator("audio.comment__audio")).toHaveCount(1);
+    await expect(page.getByRole("alert")).toHaveCount(0);
+
+    // Carried onto B with its audio; the report marks the audio column; the copy on B plays it too.
+    await backToPassages(page);
+    await compareFromList(page);
+    const carried = page.locator(".carried-row");
+    await expect(carried).toHaveCount(1);
+    await expect(carried.first().locator("audio")).toHaveCount(1);
+    await openReport(page);
+    const carriedRow = page.locator("table.report-table").nth(1).locator("tbody tr");
+    await expect(carriedRow).toHaveCount(1);
+    await expect(carriedRow.first().locator("td").nth(3)).toHaveText("sim");
+    await page.getByRole("link", { name: "Passagens", exact: true }).click();
+    await expect(page.getByRole("heading", { level: 1, name: "Passagens" })).toBeVisible();
+    await openListen(page, V2);
+    await expect(page.locator(".comment-list .comment--carried audio.comment__audio")).toHaveCount(1);
+
+    // The export carries the recording as comments/<id>.<ext>, named in the manifest.
+    await backToPassages(page);
+    const [download] = await Promise.all([
+      page.waitForEvent("download"),
+      passageCard(page).getByRole("button", { name: "Exportar passagem (.zip)", exact: true }).click(),
+    ]);
+    const bytes = await readDownloadBytes(download);
+    const entries = zipEntries(bytes);
+    const audioFiles = Object.keys(entries).filter((name) => /^comments\/[^/]+\.(webm|ogg|mp4)$/.test(name));
+    expect(audioFiles).toHaveLength(2); // the original on A and its carried copy on B
+    for (const name of audioFiles) expect(entries[name]).toBeGreaterThan(0);
+    const manifest = JSON.parse(zipText(bytes, "passage.json")) as { comments: Array<{ audio_file: string | null; text?: string }> };
+    expect(manifest.comments.map((c) => c.audio_file).sort()).toEqual(audioFiles.sort());
+    expect(manifest.comments.every((c) => c.text === "Falar mais devagar")).toBe(true);
   });
 });

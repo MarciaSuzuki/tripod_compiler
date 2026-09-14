@@ -45,8 +45,9 @@ export const compare = {
     "compare.regions.save_failed": "Não foi possível salvar a decisão: {message}",
 
     "compare.carried.title": "Correções solicitadas em A",
-    "compare.carried.intro": "Cada correção solicitada em A é transferida ao ponto correspondente em B.",
-    "compare.carried.empty": "Nenhuma correção solicitada em aberto em A.",
+    "compare.carried.intro":
+      "Cada correção solicitada em A é transferida para o ponto correspondente em B. Depois de conferir, marque-a como resolvida; ela continua na lista com o resultado.",
+    "compare.carried.empty": "Não há correções solicitadas na versão A.",
     "compare.carried.original": "Em A: {range}",
     "compare.carried.lands": "Em B: {where}",
     "compare.carried.audio": "Comentário falado",
@@ -55,6 +56,8 @@ export const compare = {
     "compare.carried.play_a_note": "Nada corresponde a este trecho em B; o trecho original em A é tocado no lugar.",
     "compare.carried.resolve": "Marcar como resolvido",
     "compare.carried.resolve_failed": "Não foi possível marcar como resolvido: {message}",
+    "compare.carried.reopen": "Reabrir",
+    "compare.carried.reopen_failed": "Não foi possível reabrir: {message}",
     "compare.carried.warning_hint":
       "Em pelo menos um ponto não foi detectada mudança. A equipe pode ter deixado passar a correção solicitada.",
 
@@ -74,7 +77,7 @@ export const compare = {
     "compare.tech.tape_hash_b": "Hash da fita (B)",
     "compare.tech.audio_hash_a": "Hash do áudio (A)",
     "compare.tech.audio_hash_b": "Hash do áudio (B)",
-    "compare.tech.settings": "Parâmetros usados",
+    "compare.tech.settings": "Configurações usadas",
 
     "compare.state.not_found": "Versão não encontrada. Ela pode ter sido excluída.",
     "compare.state.load_failed": "Não foi possível abrir a comparação: {message}",
@@ -116,8 +119,9 @@ export const compare = {
     "compare.regions.save_failed": "The verdict could not be saved: {message}",
 
     "compare.carried.title": "Fixes requested on A",
-    "compare.carried.intro": "Each fix requested on A is carried to the matching spot on B.",
-    "compare.carried.empty": "No open fix requests on A.",
+    "compare.carried.intro":
+      "Each fix requested on A is carried to the matching spot on B. Once checked, mark it resolved; it stays in the list with its outcome.",
+    "compare.carried.empty": "No fix requests on A.",
     "compare.carried.original": "On A: {range}",
     "compare.carried.lands": "On B: {where}",
     "compare.carried.audio": "Spoken comment",
@@ -126,6 +130,8 @@ export const compare = {
     "compare.carried.play_a_note": "Nothing on B matches this span; the original span on A is played instead.",
     "compare.carried.resolve": "Mark as resolved",
     "compare.carried.resolve_failed": "The comment could not be marked resolved: {message}",
+    "compare.carried.reopen": "Reopen",
+    "compare.carried.reopen_failed": "The comment could not be reopened: {message}",
     "compare.carried.warning_hint":
       "At one or more spots no change was detected. The team may have missed the requested fix.",
 

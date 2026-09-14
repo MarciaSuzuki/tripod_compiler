@@ -235,6 +235,42 @@ describe("syncCarriedComments", () => {
   });
 });
 
+describe("syncCarriedComments: status follows the source", () => {
+  it("creates a resolved copy for a resolved source, resolves and reopens in place, and never duplicates", async () => {
+    const p = await repo.createPassage("P");
+    const v1 = await repo.addVersion(p.id, REC_A());
+    const v2 = await repo.addVersion(p.id, REC_B());
+    const open = await repo.addComment(draft(v1.id, 0, 5));
+    const done = await repo.addComment(draft(v1.id, 6, 9, { status: "resolved" }));
+    const span = (start: number, end: number) => ({ version_id: v2.id, start_frame: start, end_frame: end });
+    const byFrom = (cs: Comment[]) => Object.fromEntries(cs.map((c) => [c.carried_from!, c.status]));
+
+    // A resolved request on A still carries (it stays in Compare and the report); its copy is born resolved.
+    const first = await repo.syncCarriedComments(v1.id, v2.id, [
+      { source: open, span: span(0, 5) },
+      { source: done, span: span(6, 9) },
+    ]);
+    expect(byFrom(first)).toEqual({ [open.id]: "carried", [done.id]: "resolved" });
+    const ids = first.map((c) => c.id).sort();
+
+    // Resolving the open one (Compare's "mark as resolved") resolves its copy on the next sync; reopening carries it again.
+    const resolvedOpen = await repo.updateComment(open.id, { status: "resolved" });
+    const second = await repo.syncCarriedComments(v1.id, v2.id, [
+      { source: resolvedOpen, span: span(0, 5) },
+      { source: done, span: span(6, 9) },
+    ]);
+    expect(byFrom(second)).toEqual({ [open.id]: "resolved", [done.id]: "resolved" });
+    const reopened = await repo.updateComment(done.id, { status: "open" });
+    const third = await repo.syncCarriedComments(v1.id, v2.id, [
+      { source: resolvedOpen, span: span(0, 5) },
+      { source: reopened, span: span(6, 9) },
+    ]);
+    expect(byFrom(third)).toEqual({ [open.id]: "resolved", [done.id]: "carried" });
+    expect(third.map((c) => c.id).sort()).toEqual(ids);
+    expect(await repo.listComments(v2.id)).toHaveLength(2);
+  });
+});
+
 // ---- verdicts --------------------------------------------------------------
 
 describe("verdicts", () => {

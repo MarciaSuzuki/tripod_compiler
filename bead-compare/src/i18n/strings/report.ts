@@ -47,6 +47,8 @@ export const report = {
 
     "report.summary.title": "Resumo",
     "report.summary.regions": "Regiões",
+    "report.summary.regions_one": "Região",
+    "report.summary.regions_other": "Regiões",
     "report.summary.changed_seconds": "Segundos alterados",
     "report.summary.stability": "Estabilidade",
     "report.summary.seconds": "{value} s",
@@ -63,8 +65,9 @@ export const report = {
     "report.regions.edit": "Alterar decisões na comparação",
 
     "report.carried.title": "Correções solicitadas em A",
-    "report.carried.intro": "Cada correção solicitada em A foi transferida ao ponto correspondente em B.",
-    "report.carried.empty": "Nenhuma correção solicitada em aberto em A.",
+    "report.carried.intro":
+      "Cada correção solicitada em A foi transferida para o ponto correspondente em B. A decisão da região em que ela caiu é o registro da conferência.",
+    "report.carried.empty": "Não há correções solicitadas na versão A.",
     "report.carried.col_author": "Autor(a)",
     "report.carried.col_kind": "Tipo",
     "report.carried.col_text": "Comentário",
@@ -72,6 +75,9 @@ export const report = {
     "report.carried.col_a": "Em A",
     "report.carried.col_b": "Em B",
     "report.carried.col_outcome": "Resultado",
+    "report.carried.col_status": "Situação",
+    "report.carried.col_region": "Região",
+    "report.carried.region": "Região {n} — {verdict}",
     "report.carried.audio_yes": "sim",
     "report.carried.audio_no": "não",
     "report.carried.warning":
@@ -84,7 +90,7 @@ export const report = {
     "report.footer.title": "Sobre este relatório",
     "report.footer.generated_at": "Gerado em {date}",
     "report.footer.generated_by": "Gerado por {app} (formato {version})",
-    "report.footer.settings": "Parâmetros usados",
+    "report.footer.settings": "Configurações usadas",
     "report.footer.format_version": "Versão do formato",
 
     "report.state.loading": "Preparando o relatório…",
@@ -122,6 +128,8 @@ export const report = {
 
     "report.summary.title": "Summary",
     "report.summary.regions": "Regions",
+    "report.summary.regions_one": "Region",
+    "report.summary.regions_other": "Regions",
     "report.summary.changed_seconds": "Seconds changed",
     "report.summary.stability": "Stability",
     "report.summary.seconds": "{value} s",
@@ -138,8 +146,9 @@ export const report = {
     "report.regions.edit": "Change verdicts in the comparison",
 
     "report.carried.title": "Fixes requested on A",
-    "report.carried.intro": "Each fix requested on A was carried to the matching spot on B.",
-    "report.carried.empty": "No open fix requests on A.",
+    "report.carried.intro":
+      "Each fix requested on A was carried to the matching spot on B. The verdict of the region it landed on is the record of the check.",
+    "report.carried.empty": "No fix requests on A.",
     "report.carried.col_author": "Author",
     "report.carried.col_kind": "Kind",
     "report.carried.col_text": "Comment",
@@ -147,6 +156,9 @@ export const report = {
     "report.carried.col_a": "In A",
     "report.carried.col_b": "In B",
     "report.carried.col_outcome": "Outcome",
+    "report.carried.col_status": "Status",
+    "report.carried.col_region": "Region",
+    "report.carried.region": "Region {n} — {verdict}",
     "report.carried.audio_yes": "yes",
     "report.carried.audio_no": "no",
     "report.carried.warning":

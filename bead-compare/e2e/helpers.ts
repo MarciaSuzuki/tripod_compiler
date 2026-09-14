@@ -1,5 +1,5 @@
 import { expect, type Download, type Locator, type Page } from "@playwright/test";
-import { strToU8, zipSync } from "fflate";
+import { strToU8, unzipSync, zipSync } from "fflate";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -72,6 +72,25 @@ export async function backToPassages(page: Page): Promise<void> {
   await expect(page.getByRole("heading", { level: 1, name: "Passagens" })).toBeVisible();
 }
 
+/** From Compare, follow the report link. */
+export async function openReport(page: Page): Promise<void> {
+  await page.getByRole("link", { name: "Ver relatório", exact: true }).click();
+  await expect(page).toHaveURL(/#\/report\//);
+}
+
+/** Open the settings panel from the header icon; returns the dialog. */
+export async function openSettings(page: Page): Promise<Locator> {
+  await page.getByRole("button", { name: "Configurações", exact: true }).click();
+  const dialog = page.getByRole("dialog", { name: "Configurações" });
+  await expect(dialog).toBeVisible();
+  return dialog;
+}
+
+/** Compare's player bar appears with the hint once both recordings are decoded. */
+export async function waitForCompareAudio(page: Page): Promise<void> {
+  await expect(page.getByText("Toque em uma região para ouvir A e, em seguida, B.", { exact: true })).toBeVisible({ timeout: 30_000 });
+}
+
 // ---------------------------------------------------------------------------
 // bead strips
 
@@ -141,14 +160,18 @@ export async function readDownloadBytes(download: Download): Promise<Buffer> {
 
 /**
  * A Recording zip built from fixtures/ruth-1-1-5/v1 (audio.wav, tape.json,
- * meta.json under one folder), optionally with another codebook hash and label.
+ * meta.json under one folder), optionally with another codebook hash and
+ * label, or with the tape altered by `mutateTape` (a broken tape, say).
  */
-export function buildRecordingZip(opts: { codebookHash?: string; label?: string; omitTape?: boolean } = {}): Buffer {
+export function buildRecordingZip(
+  opts: { codebookHash?: string; label?: string; omitTape?: boolean; mutateTape?(tape: Record<string, unknown>): void } = {},
+): Buffer {
   const dir = path.join(FIXTURES_DIR, "v1");
   const tape = JSON.parse(fs.readFileSync(path.join(dir, "tape.json"), "utf8")) as Record<string, unknown>;
   const meta = JSON.parse(fs.readFileSync(path.join(dir, "meta.json"), "utf8")) as Record<string, unknown>;
   if (opts.codebookHash !== undefined) tape.codebook_hash = opts.codebookHash;
   if (opts.label !== undefined) meta.label = opts.label;
+  opts.mutateTape?.(tape);
   const files: Record<string, Uint8Array> = {
     "recording/audio.wav": new Uint8Array(fs.readFileSync(path.join(dir, "audio.wav"))),
     "recording/meta.json": strToU8(JSON.stringify(meta)),
@@ -156,6 +179,20 @@ export function buildRecordingZip(opts: { codebookHash?: string; label?: string;
   if (!opts.omitTape) files["recording/tape.json"] = strToU8(JSON.stringify(tape));
   const zipped = zipSync(files, { level: 1 });
   return Buffer.from(zipped.buffer, zipped.byteOffset, zipped.byteLength);
+}
+
+/** The entries of a zip as { path: size }. */
+export function zipEntries(bytes: Buffer): Record<string, number> {
+  const files = unzipSync(new Uint8Array(bytes.buffer, bytes.byteOffset, bytes.byteLength));
+  return Object.fromEntries(Object.entries(files).map(([name, data]) => [name, data.length]));
+}
+
+/** One text entry of a zip. */
+export function zipText(bytes: Buffer, name: string): string {
+  const files = unzipSync(new Uint8Array(bytes.buffer, bytes.byteOffset, bytes.byteLength));
+  const data = files[name];
+  if (!data) throw new Error(`no ${name} in the zip`);
+  return Buffer.from(data).toString("utf8");
 }
 
 // ---------------------------------------------------------------------------

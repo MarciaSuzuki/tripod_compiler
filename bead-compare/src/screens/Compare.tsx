@@ -56,10 +56,12 @@ import {
  * Sound comes only from AudioEngine slices of the two original recordings
  * and from the consultant's own spoken comments (<audio>).
  *
- * Carry-forward: the open fix requests on A are derived here on every
- * computation (the alignment is the source of truth) and then persisted onto
- * B as "carried" copies (repo.syncCarriedComments), so Listen on B and the
- * passage export see them too.
+ * Carry-forward: the fix requests on A (open and resolved) are derived here
+ * on every computation (the alignment is the source of truth) and then
+ * persisted onto B as copies (repo.syncCarriedComments), so Listen on B and
+ * the passage export see them too. Each carried row links to the region(s)
+ * it landed on, whose verdict is the record of the check; marking a request
+ * resolved keeps it in the list with its status.
  */
 
 const SEQUENCE_GAP_SECONDS = 0.6;
@@ -348,20 +350,22 @@ export function Compare(): JSX.Element {
     [data, aId, bId, t],
   );
 
-  const onResolve = useCallback(
-    async (c: CarriedComment) => {
+  /** Resolve or reopen the original request on A; the copy on B follows on the next sync. */
+  const setSourceStatus = useCallback(
+    async (c: CarriedComment, status: "open" | "resolved") => {
       setError(null);
       try {
-        await repo.updateComment(c.source.id, { status: "resolved" });
-        const comments = await repo.listComments(aId);
-        setCommentsA(comments);
-        setActive((prev) => (prev?.type === "carried" && prev.commentId === c.source.id ? null : prev));
+        await repo.updateComment(c.source.id, { status });
+        setCommentsA(await repo.listComments(aId));
       } catch (e) {
-        setError(t("compare.carried.resolve_failed", { message: errorMessage(e) }));
+        const key = status === "resolved" ? "compare.carried.resolve_failed" : "compare.carried.reopen_failed";
+        setError(t(key, { message: errorMessage(e) }));
       }
     },
     [aId, t],
   );
+  const onResolve = useCallback((c: CarriedComment) => setSourceStatus(c, "resolved"), [setSourceStatus]);
+  const onReopen = useCallback((c: CarriedComment) => setSourceStatus(c, "open"), [setSourceStatus]);
 
   // What is active, resolved against the current result (survives recomputation).
   const activeRegion =
@@ -495,7 +499,8 @@ export function Compare(): JSX.Element {
   const { summary, regions, carried } = result;
   const cursorA = playState && playState.versionId === a.id ? playState.frame : null;
   const cursorB = playState && playState.versionId === b.id ? playState.frame : null;
-  const hasWarning = carried.some((c) => c.outcome === "no_change_detected");
+  // The warning concerns requests still open: once resolved, the consultant has dealt with the spot.
+  const hasWarning = carried.some((c) => c.source.status === "open" && c.outcome === "no_change_detected");
   const activeTarget = activeCarried ? carriedPlayTarget(activeCarried, refs.a, refs.b) : null;
   const counts = opCounts(result.alignment);
 
@@ -685,13 +690,17 @@ export function Compare(): JSX.Element {
         ) : (
           <CarriedList
             carried={carried}
+            regions={regions}
+            pair={pair}
             activeCommentId={activeCommentId}
             refs={refs}
             audioReady={audioReady}
             t={t}
             lang={lang}
             onPlay={selectCarried}
+            onSelectRegion={selectRegion}
             onResolve={onResolve}
+            onReopen={onReopen}
           />
         )}
       </div>
@@ -898,27 +907,35 @@ const RegionList = memo(function RegionList(props: RegionListProps): JSX.Element
 
 interface CarriedListProps {
   carried: CarriedComment[];
+  regions: Region[];
+  pair: PairRecord | undefined;
   activeCommentId: string | null;
   refs: Refs;
   audioReady: boolean;
   t: T;
   lang: Lang;
   onPlay(c: CarriedComment): void;
+  onSelectRegion(region: Region): void;
   onResolve(c: CarriedComment): void;
+  onReopen(c: CarriedComment): void;
 }
 
 const CarriedList = memo(function CarriedList(props: CarriedListProps): JSX.Element {
-  const { carried, activeCommentId, refs, audioReady, t, lang } = props;
+  const { carried, regions, pair, activeCommentId, refs, audioReady, t, lang } = props;
   return (
     <ul className="carried-list">
       {carried.map((c) => {
         const active = activeCommentId !== null && c.source.id === activeCommentId;
+        const resolved = c.source.status === "resolved";
         const target = carriedPlayTarget(c, refs.a, refs.b);
         const where = sideText(t, lang, spanRange(c.span), refs.b.frameRate);
+        const linked = c.region_indexes.map((i) => regions[i]).filter((r): r is Region => r !== undefined);
         return (
           <li
             key={c.source.id}
-            className={`carried-row carried-row--${c.outcome}` + (active ? " carried-row--active" : "")}
+            className={
+              `carried-row carried-row--${c.outcome}` + (resolved ? " carried-row--resolved" : "") + (active ? " carried-row--active" : "")
+            }
             aria-current={active ? "true" : undefined}
           >
             <div className="carried-row__head">
@@ -926,6 +943,9 @@ const CarriedList = memo(function CarriedList(props: CarriedListProps): JSX.Elem
               <span className="comment__author">{c.source.author}</span>
               <span className="comment__range">
                 {t("compare.carried.original", { range: sideText(t, lang, spanRange(c.source.span), refs.a.frameRate) })}
+              </span>
+              <span className={`comment__status comment__status--${c.source.status} carried-row__status`}>
+                {t("common.status." + c.source.status)}
               </span>
               <span className={`carried-row__badge carried-row__badge--${c.outcome}`}>{t("common.carry." + c.outcome)}</span>
             </div>
@@ -942,11 +962,32 @@ const CarriedList = memo(function CarriedList(props: CarriedListProps): JSX.Elem
                 >
                   {target?.side === "a" ? t("compare.carried.play_a_instead") : t("compare.carried.play_here")}
                 </button>
-                <button type="button" className="btn btn--small" onClick={() => props.onResolve(c)}>
-                  {t("compare.carried.resolve")}
-                </button>
+                {resolved ? (
+                  <button type="button" className="btn btn--small btn--quiet" onClick={() => props.onReopen(c)}>
+                    {t("compare.carried.reopen")}
+                  </button>
+                ) : (
+                  <button type="button" className="btn btn--small" onClick={() => props.onResolve(c)}>
+                    {t("compare.carried.resolve")}
+                  </button>
+                )}
               </span>
             </div>
+            {linked.length > 0 && (
+              <div className="carried-row__regions">
+                {linked.map((r) => (
+                  <button
+                    key={regionKey(r)}
+                    type="button"
+                    className={"carried-row__region carried-row__region--" + verdictOf(pair, r)}
+                    onClick={() => props.onSelectRegion(r)}
+                  >
+                    <span className={"swatch swatch--" + r.kind} aria-hidden="true" />
+                    {t("report.carried.region", { n: r.index + 1, verdict: t("common.verdict." + verdictOf(pair, r)) })}
+                  </button>
+                ))}
+              </div>
+            )}
             {target?.side === "a" && <p className="field__hint">{t("compare.carried.play_a_note")}</p>}
           </li>
         );

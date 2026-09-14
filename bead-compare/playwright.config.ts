@@ -7,8 +7,10 @@ import fs from "node:fs";
  * Server: the real production bundle. `webServer` runs `vite build` and then
  * `vite preview --port 4173 --strictPort`, so the tests exercise exactly what
  * gets deployed (relative `base`, `fixtures/` as publicDir, hash router).
- * With `reuseExistingServer` (outside CI) an already-running preview on 4173
- * is reused, so rebuild or stop it after changing the app.
+ * A server already listening on 4173 is never reused: the build would rewrite
+ * dist/ underneath it and the first test could race a half-written bundle, so
+ * Playwright refuses to start instead and names the port. Stop that server
+ * (`npm run preview`, or a previous test run) and run again.
  *
  * Browser: headless Chromium. When `PLAYWRIGHT_CHROMIUM_EXECUTABLE` is set,
  * or the pre-installed build at /opt/pw-browsers/chromium exists, that binary
@@ -60,7 +62,7 @@ export default defineConfig({
   webServer: {
     command: `npx vite build && npx vite preview --port ${PORT} --strictPort`,
     url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 180_000,
     stdout: "ignore",
     stderr: "pipe",

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CodebookMismatchError, compareTapes } from "../src/model";
+import { CodebookMismatchError, compareTapes, isCarriedSource } from "../src/model";
 import { comment, settings, tape } from "./helpers";
 
 describe("carry-forward", () => {
@@ -65,8 +65,10 @@ describe("carry-forward", () => {
     expect(r.carried[0].span).toEqual({ version_id: "B", start_frame: 30, end_frame: 50 });
   });
 
-  it("carries only open fix_requested comments", () => {
+  it("carries open and resolved fix requests, but not notes, approvals or copies carried from elsewhere", () => {
     const t = tape([[1, 20], [2, 20]]);
+    const copy = { ...comment("A", 0, 10, "fix_requested", "carried"), id: "copy", carried_from: "elsewhere" };
+    const resolvedCopy = { ...comment("A", 0, 10, "fix_requested", "resolved"), id: "resolved-copy", carried_from: "elsewhere" };
     const r = compareTapes(
       t,
       t,
@@ -75,12 +77,34 @@ describe("carry-forward", () => {
         comment("A", 0, 10, "approved"),
         comment("A", 0, 10, "fix_requested", "resolved"),
         comment("A", 10, 20, "fix_requested", "open"),
+        copy,
+        resolvedCopy,
       ],
       "B",
       settings,
     );
-    expect(r.carried).toHaveLength(1);
-    expect(r.carried[0].source.span.start_frame).toBe(10);
+    // a resolved request stays in the list (the confirmation must not vanish from the report); its status is kept
+    expect(r.carried.map((c) => [c.source.span.start_frame, c.source.status])).toEqual([
+      [0, "resolved"],
+      [10, "open"],
+    ]);
+    expect(r.carried.map((c) => c.source.id)).not.toContain("copy");
+    expect(r.carried.map((c) => c.source.id)).not.toContain("resolved-copy");
+    expect(isCarriedSource(comment("A", 0, 10, "fix_requested", "open"))).toBe(true);
+    expect(isCarriedSource(comment("A", 0, 10, "fix_requested", "resolved"))).toBe(true);
+    expect(isCarriedSource(comment("A", 0, 10, "fix_requested", "carried"))).toBe(false);
+    expect(isCarriedSource(comment("A", 0, 10, "note"))).toBe(false);
+  });
+
+  it("lists every region a request overlaps, so the report can point at their verdicts", () => {
+    // A: X 0..20 | Y 20..40 | Z 40..60;  B: X | Y' | Z' — Y and Z both substituted, far enough apart not to merge
+    const ta = tape([[1, 20], [49, 15], [2, 20], [49, 15], [3, 20]]);
+    const tb = tape([[1, 20], [49, 15], [8, 20], [49, 15], [9, 20]]);
+    const r = compareTapes(ta, tb, [comment("A", 30, 80), comment("A", 0, 10)], "B", { ...settings, alignment: { ...settings.alignment, merge_gap_frames: 5 } });
+    expect(r.regions.map((x) => x.kind)).toEqual(["substituted", "substituted"]);
+    expect(r.carried[0].region_indexes).toEqual([0, 1]);
+    expect(r.carried[0].outcome).toBe("changed_here");
+    expect(r.carried[1].region_indexes).toEqual([]);
   });
 
   it("handles an empty A tape", () => {

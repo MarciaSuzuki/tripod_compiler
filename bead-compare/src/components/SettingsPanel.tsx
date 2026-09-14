@@ -8,8 +8,14 @@ import { useSettings } from "../settings";
 
 /**
  * Settings panel: a fixed side panel (dialog role) editing every field of
- * Settings with number inputs, one short explanation per field, a reset
- * button, a language selector and a "clear all local data" button.
+ * Settings with text fields (inputmode "decimal"), one short explanation per
+ * field, a reset button, a language selector and a "clear all local data"
+ * button.
+ *
+ * The fields are plain text fields on purpose: a `type="number"` input lets
+ * the browser sanitise what is typed before React sees it, and Chromium turns
+ * a Brazilian "0,5" into 5 without a word. Here the draft reaches
+ * `parseFieldValue` untouched, which accepts either decimal mark.
  *
  * The settings values are parameters (sizes in beads, scores), not tape
  * numbers, so they may be shown here.
@@ -19,16 +25,17 @@ import { useSettings } from "../settings";
 export const DATA_CLEARED_EVENT = "bead-compare:data-cleared";
 
 type Field =
-  | { group: "grouping"; name: keyof GroupingSettings; min: number; step: number; integer: boolean }
-  | { group: "alignment"; name: keyof AlignmentSettings; min: number; step: number; integer: boolean };
+  | { group: "grouping"; name: keyof GroupingSettings; min: number; integer: boolean }
+  | { group: "alignment"; name: keyof AlignmentSettings; min: number; integer: boolean };
 
-const FIELDS: readonly Field[] = [
-  { group: "grouping", name: "min_cluster_frames", min: 1, step: 1, integer: true },
-  { group: "alignment", name: "match_score", min: 0, step: 0.5, integer: false },
-  { group: "alignment", name: "mismatch_penalty", min: 0, step: 0.5, integer: false },
-  { group: "alignment", name: "gap_penalty", min: 0, step: 0.5, integer: false },
-  { group: "alignment", name: "merge_gap_frames", min: 0, step: 1, integer: true },
-  { group: "alignment", name: "melody_threshold", min: 0, step: 0.5, integer: false },
+/** Every field with its rule: the sizes in beads are whole numbers, the scores accept decimals; none may be negative. */
+export const FIELDS: readonly Field[] = [
+  { group: "grouping", name: "min_cluster_frames", min: 1, integer: true },
+  { group: "alignment", name: "match_score", min: 0, integer: false },
+  { group: "alignment", name: "mismatch_penalty", min: 0, integer: false },
+  { group: "alignment", name: "gap_penalty", min: 0, integer: false },
+  { group: "alignment", name: "merge_gap_frames", min: 0, integer: true },
+  { group: "alignment", name: "melody_threshold", min: 0, integer: false },
 ];
 
 const GROUPS: ReadonlyArray<Field["group"]> = ["grouping", "alignment"];
@@ -46,10 +53,14 @@ function setField(s: Settings, f: Field, value: number): Settings {
   return { ...s, alignment: { ...s.alignment, [f.name]: value } };
 }
 
-/** The number a draft string stands for, or null when it is not an acceptable value for the field. */
+/**
+ * The number a draft string stands for, or null when it is not an acceptable
+ * value for the field: a comma or a dot is the decimal mark, whitespace is
+ * ignored, a value below `min` or a fraction in an integer field is refused.
+ */
 export function parseFieldValue(f: Pick<Field, "min" | "integer">, draft: string): number | null {
   const trimmed = draft.trim().replace(",", ".");
-  if (trimmed === "") return null;
+  if (trimmed === "" || !/^[+-]?(\d+\.?\d*|\.\d+)$/.test(trimmed)) return null;
   const n = Number(trimmed);
   if (!Number.isFinite(n) || n < f.min) return null;
   if (f.integer && !Number.isInteger(n)) return null;
@@ -188,10 +199,10 @@ export function SettingsPanel(props: { open: boolean; onClose(): void }): JSX.El
                 <label key={id} className={"field" + (invalid ? " field--invalid" : "")}>
                   <span className="field__label">{t(`common.settings.${f.name}`)}</span>
                   <input
-                    type="number"
+                    type="text"
                     inputMode="decimal"
-                    min={f.min}
-                    step={f.step}
+                    autoComplete="off"
+                    spellCheck={false}
                     value={drafts[id] ?? ""}
                     aria-invalid={invalid || undefined}
                     onChange={onDraftChange(f)}
