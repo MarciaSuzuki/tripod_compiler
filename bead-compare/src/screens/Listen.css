@@ -1,0 +1,132 @@
+/* Listen screen (#/listen/:versionId). Tokens and shared classes come from styles.css;
+   only what is specific to this screen lives here. Calm: one card for listening,
+   one quiet block for comments, technical details tucked at the bottom. */
+
+.listen {
+  gap: var(--space-5);
+}
+
+/* ---------- header line ---------- */
+
+.listen__head {
+  display: grid;
+  gap: var(--space-1);
+}
+.listen__back {
+  font-size: var(--text-small);
+}
+.listen__back a {
+  text-decoration: none;
+}
+.listen__back a:hover {
+  text-decoration: underline;
+}
+.listen__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  color: var(--ink-muted);
+  font-size: var(--text-small);
+}
+.listen__meta strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.listen__meta-item + .listen__meta-item::before {
+  content: "·";
+  margin-right: var(--space-3);
+  color: var(--ink-faint);
+}
+
+/* ---------- the listening card ---------- */
+
+.listen__stage {
+  display: grid;
+  gap: var(--space-4);
+}
+.listen__strips {
+  padding: var(--space-2) 0 var(--space-1);
+}
+.listen__controls {
+  gap: var(--space-3) var(--space-5);
+}
+.listen__range {
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  min-height: 2.4em;
+}
+.listen__range .tabular {
+  color: var(--ink);
+}
+
+/* keyboard hint: a quiet row of key caps */
+.listen__keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  font-size: var(--text-tiny);
+  color: var(--ink-muted);
+}
+.listen__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.listen__keys kbd {
+  font-family: var(--font);
+  font-size: inherit;
+  line-height: 1.4;
+  padding: 0 6px;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* ---------- comments ---------- */
+
+.listen__comments {
+  display: grid;
+  gap: var(--space-3);
+}
+.listen__comments-head {
+  align-items: flex-end;
+}
+.listen__comments-tools {
+  gap: var(--space-3);
+  align-items: flex-end;
+}
+.listen__author {
+  width: 14em;
+}
+.listen__author input {
+  padding: 6px 10px;
+  font-size: var(--text-small);
+}
+.listen__editor {
+  margin-top: var(--space-1);
+}
+.listen__empty {
+  padding: var(--space-3) 0;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 720px) {
+  .listen {
+    gap: var(--space-4);
+  }
+  .listen__range {
+    width: 100%;
+  }
+  .listen__comments-tools {
+    width: 100%;
+  }
+  .listen__author {
+    flex: 1 1 10em;
+    width: auto;
+  }
+}

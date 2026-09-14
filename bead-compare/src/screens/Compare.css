@@ -1,0 +1,300 @@
+/* Compare screen (#/compare/:aId/:bId).
+   Screen-specific styles only; tokens and the shared vocabulary (btn, card,
+   row, stack, field, swatch, comment__*) come from styles.css. */
+
+/* ---------- header ---------- */
+
+.compare__versions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  margin-top: var(--space-1);
+  font-size: var(--text-small);
+  color: var(--ink);
+}
+.compare__version {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.compare__version-hint {
+  color: var(--ink-muted);
+}
+
+/* ---------- summary: three calm facts ---------- */
+
+.compare__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+}
+.fact {
+  display: grid;
+  gap: 0;
+  min-width: 6em;
+}
+.fact__value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.fact__label {
+  font-size: var(--text-small);
+  color: var(--ink-muted);
+}
+
+/* ---------- strips and the connector band ---------- */
+
+.compare__strips {
+  display: grid;
+  gap: 0;
+}
+.compare__strip-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 0 var(--space-1);
+  font-size: var(--text-tiny);
+  color: var(--ink-muted);
+}
+.compare__strip-label--b {
+  padding: var(--space-1) 0 0;
+}
+.compare__strip-tag {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.compare__connectors {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 28px;
+  overflow: hidden;
+}
+.compare__connectors svg {
+  display: block;
+}
+.connector {
+  fill: none;
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+.connector--match {
+  stroke: var(--line-strong);
+  stroke-opacity: 0.6;
+}
+.connector--mismatch {
+  stroke: var(--region-substituted);
+  stroke-opacity: 0.35;
+  stroke-dasharray: 2 3;
+}
+
+/* ---------- player bar for the active region / carried comment ---------- */
+
+.compare__player {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+  min-height: 44px;
+}
+.compare__player-what {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.compare__player-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+}
+.compare__player-sub {
+  font-size: var(--text-small);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+.compare__player-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.compare__hint {
+  color: var(--ink-muted);
+}
+
+/* ---------- region list ---------- */
+
+.region-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+.region-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  margin: 0 calc(-1 * var(--space-3));
+  border-top: var(--hairline);
+  border-radius: var(--radius-sm);
+}
+.region-row:first-child {
+  border-top: 0;
+}
+.region-row--active {
+  background: var(--accent-soft);
+}
+.region-row--active + .region-row {
+  border-top-color: transparent;
+}
+.region-row__main {
+  display: grid;
+  grid-template-columns: 2em minmax(9em, 1.1fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-width: 0;
+  padding: var(--space-1) 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.region-row__main:hover {
+  color: var(--accent-strong);
+}
+.region-row__index {
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+.region-row__kind {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+.region-row__side {
+  font-size: var(--text-small);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.region-row__tag {
+  margin-right: var(--space-1);
+  font-weight: 600;
+  color: var(--ink);
+}
+.region-row__verdict select {
+  min-width: 15em;
+  max-width: 100%;
+  font-size: var(--text-small);
+}
+.region-row__verdict select.is-undecided {
+  color: var(--ink-muted);
+}
+
+/* ---------- carried comments ---------- */
+
+.carried-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.carried-row {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--carried);
+  background: var(--surface);
+  box-shadow: var(--shadow-hairline);
+}
+.carried-row--no_change_detected {
+  border-left-color: var(--carried-warning);
+}
+.carried-row--active {
+  background: var(--accent-soft);
+}
+.carried-row__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.carried-row__badge {
+  margin-left: auto;
+  padding: 1px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: var(--text-tiny);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.carried-row__badge--no_change_detected {
+  background: var(--warning-soft);
+  color: color-mix(in srgb, var(--warning) 55%, var(--ink));
+}
+.carried-row__foot {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+.carried-row__actions {
+  margin-left: auto;
+  display: flex;
+  gap: var(--space-1);
+}
+.compare__warning {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--warning-soft);
+  color: color-mix(in srgb, var(--warning) 55%, var(--ink));
+  font-size: var(--text-small);
+}
+
+/* ---------- refusal (codebook mismatch) and empty states ---------- */
+
+.compare__refusal {
+  font-size: 1.05rem;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 720px) {
+  .region-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .region-row__main {
+    grid-template-columns: 2em minmax(0, 1fr);
+  }
+  .region-row__side {
+    grid-column: 2;
+    white-space: normal;
+  }
+  .region-row__verdict select {
+    min-width: 0;
+    width: 100%;
+  }
+  .compare__player-actions,
+  .carried-row__actions,
+  .carried-row__badge {
+    margin-left: 0;
+  }
+}

@@ -3,11 +3,151 @@ import type { StringModule } from "../index";
 /**
  * Compare screen strings (#/compare/:aId/:bId). Keys are `compare.section.item`.
  *
- * Placeholder: the Compare engineer replaces this file. Keep the named export
- * `compare`, which `src/i18n/index.tsx` imports and merges; both languages
- * must define the same keys (tests/i18n.test.ts checks).
+ * Kinds, verdicts, carry outcomes, the mock badge and the generic buttons
+ * come from common.ts and are not redefined here. Both languages must define
+ * the same keys (tests/i18n.test.ts checks).
  */
 export const compare = {
-  "pt-BR": {},
-  en: {},
+  "pt-BR": {
+    "compare.header.a_label": "A: {label}",
+    "compare.header.b_label": "B: {label}",
+    "compare.header.a_hint": "anterior",
+    "compare.header.b_hint": "mais recente",
+    "compare.header.back": "Voltar às passagens",
+    "compare.header.report": "Ver relatório",
+
+    "compare.summary.regions_one": "região",
+    "compare.summary.regions_other": "regiões",
+    "compare.summary.seconds": "{value} s",
+    "compare.summary.changed": "alterados",
+    "compare.summary.stability": "Estabilidade",
+    "compare.summary.no_regions": "Nenhuma diferença encontrada entre A e B.",
+
+    "compare.strips.a": "Versão A: {label}",
+    "compare.strips.b": "Versão B: {label}",
+    "compare.strips.connectors": "Correspondências entre A e B",
+    "compare.strips.hint": "Toque em uma região para ouvir A e, em seguida, B.",
+
+    "compare.player.play_a": "Ouvir A",
+    "compare.player.play_b": "Ouvir B",
+    "compare.player.play_both": "Ouvir A e B",
+    "compare.player.region": "Região {n}",
+    "compare.player.carried": "Correção pedida por {author}",
+    "compare.player.audio_loading": "Preparando o áudio…",
+    "compare.player.audio_failed": "Não foi possível preparar o áudio: {message}",
+
+    "compare.regions.title": "Regiões",
+    "compare.regions.side_a": "A",
+    "compare.regions.side_b": "B",
+    "compare.regions.point": "aqui, em {time}",
+    "compare.regions.select": "Ouvir a região {n}",
+    "compare.regions.verdict": "Decisão sobre a região {n}",
+    "compare.regions.save_failed": "Não foi possível salvar a decisão: {message}",
+
+    "compare.carried.title": "Correções pedidas em A",
+    "compare.carried.intro": "Cada correção pedida em A é levada ao ponto correspondente em B.",
+    "compare.carried.empty": "Nenhuma correção em aberto em A.",
+    "compare.carried.original": "Em A: {range}",
+    "compare.carried.lands": "Em B: {where}",
+    "compare.carried.audio": "Comentário falado",
+    "compare.carried.play_here": "Ouvir em B",
+    "compare.carried.play_a_instead": "Ouvir em A",
+    "compare.carried.play_a_note": "Nada corresponde a este trecho em B; toca-se o trecho original em A.",
+    "compare.carried.resolve": "Marcar como resolvido",
+    "compare.carried.resolve_failed": "Não foi possível marcar como resolvido: {message}",
+    "compare.carried.warning_hint":
+      "Em pelo menos um ponto não foi detectada mudança. A equipe pode ter deixado passar a correção pedida.",
+
+    "compare.tech.alignment_score": "Pontuação do alinhamento",
+    "compare.tech.ops": "Operações do alinhamento",
+    "compare.tech.op_match": "iguais",
+    "compare.tech.op_mismatch": "diferentes",
+    "compare.tech.op_insert_b": "inseridas em B",
+    "compare.tech.op_delete_b": "removidas de B",
+    "compare.tech.clusters_a": "Grupos em A",
+    "compare.tech.clusters_b": "Grupos em B",
+    "compare.tech.matched_frames": "Quadros de B correspondidos",
+    "compare.tech.codebook": "Codebook",
+    "compare.tech.codebook_a": "Codebook de A",
+    "compare.tech.codebook_b": "Codebook de B",
+    "compare.tech.tape_hash_a": "Hash da fita (A)",
+    "compare.tech.tape_hash_b": "Hash da fita (B)",
+    "compare.tech.audio_hash_a": "Hash do áudio (A)",
+    "compare.tech.audio_hash_b": "Hash do áudio (B)",
+    "compare.tech.settings": "Parâmetros usados",
+
+    "compare.state.not_found": "Versão não encontrada. Ela pode ter sido excluída.",
+    "compare.state.load_failed": "Não foi possível abrir a comparação: {message}",
+  },
+  en: {
+    "compare.header.a_label": "A: {label}",
+    "compare.header.b_label": "B: {label}",
+    "compare.header.a_hint": "earlier",
+    "compare.header.b_hint": "later",
+    "compare.header.back": "Back to passages",
+    "compare.header.report": "View report",
+
+    "compare.summary.regions_one": "region",
+    "compare.summary.regions_other": "regions",
+    "compare.summary.seconds": "{value} s",
+    "compare.summary.changed": "changed",
+    "compare.summary.stability": "Stability",
+    "compare.summary.no_regions": "No differences found between A and B.",
+
+    "compare.strips.a": "Version A: {label}",
+    "compare.strips.b": "Version B: {label}",
+    "compare.strips.connectors": "Matches between A and B",
+    "compare.strips.hint": "Tap a region to hear A, then B.",
+
+    "compare.player.play_a": "Play A",
+    "compare.player.play_b": "Play B",
+    "compare.player.play_both": "Play A and B",
+    "compare.player.region": "Region {n}",
+    "compare.player.carried": "Fix requested by {author}",
+    "compare.player.audio_loading": "Preparing audio…",
+    "compare.player.audio_failed": "The audio could not be prepared: {message}",
+
+    "compare.regions.title": "Regions",
+    "compare.regions.side_a": "A",
+    "compare.regions.side_b": "B",
+    "compare.regions.point": "here, at {time}",
+    "compare.regions.select": "Play region {n}",
+    "compare.regions.verdict": "Verdict for region {n}",
+    "compare.regions.save_failed": "The verdict could not be saved: {message}",
+
+    "compare.carried.title": "Fixes requested on A",
+    "compare.carried.intro": "Each fix requested on A is carried to the matching spot on B.",
+    "compare.carried.empty": "No open fix requests on A.",
+    "compare.carried.original": "On A: {range}",
+    "compare.carried.lands": "On B: {where}",
+    "compare.carried.audio": "Spoken comment",
+    "compare.carried.play_here": "Play on B",
+    "compare.carried.play_a_instead": "Play on A",
+    "compare.carried.play_a_note": "Nothing on B matches this span; the original span on A is played instead.",
+    "compare.carried.resolve": "Mark resolved",
+    "compare.carried.resolve_failed": "The comment could not be marked resolved: {message}",
+    "compare.carried.warning_hint":
+      "At one or more spots no change was detected. The team may have missed the requested fix.",
+
+    "compare.tech.alignment_score": "Alignment score",
+    "compare.tech.ops": "Alignment operations",
+    "compare.tech.op_match": "match",
+    "compare.tech.op_mismatch": "mismatch",
+    "compare.tech.op_insert_b": "inserted in B",
+    "compare.tech.op_delete_b": "deleted from B",
+    "compare.tech.clusters_a": "Clusters in A",
+    "compare.tech.clusters_b": "Clusters in B",
+    "compare.tech.matched_frames": "Matched B frames",
+    "compare.tech.codebook": "Codebook",
+    "compare.tech.codebook_a": "Codebook of A",
+    "compare.tech.codebook_b": "Codebook of B",
+    "compare.tech.tape_hash_a": "Tape hash (A)",
+    "compare.tech.tape_hash_b": "Tape hash (B)",
+    "compare.tech.audio_hash_a": "Audio hash (A)",
+    "compare.tech.audio_hash_b": "Audio hash (B)",
+    "compare.tech.settings": "Settings used",
+
+    "compare.state.not_found": "Version not found. It may have been deleted.",
+    "compare.state.load_failed": "The comparison could not be opened: {message}",
+  },
 } satisfies StringModule;
