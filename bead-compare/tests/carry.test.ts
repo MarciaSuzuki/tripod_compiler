@@ -19,6 +19,27 @@ describe("carry-forward", () => {
     expect(r.carried[0].outcome).toBe("no_change_detected");
   });
 
+  it("does not report changed_here for untouched material that merely borders an insertion", () => {
+    // A: pause 0..5 | X 5..15 | pause 15..20;  B: pause 0..5 | X 5..15 | Y 15..25 | pause 25..30
+    const ta = tape([[49, 5], [1, 10], [49, 5]]);
+    const tb = tape([[49, 5], [1, 10], [2, 10], [49, 5]]);
+    const r = compareTapes(ta, tb, [comment("A", 5, 15)], "B", settings);
+    expect(r.regions).toHaveLength(1);
+    expect(r.regions[0]).toMatchObject({ kind: "inserted", a: { start: 15, end: 15 }, b: { start: 15, end: 25 } });
+    expect(r.carried[0].span).toEqual({ version_id: "B", start_frame: 5, end_frame: 15 });
+    expect(r.carried[0].outcome).toBe("no_change_detected");
+    expect(r.carried[0].region_indexes).toEqual([]);
+  });
+
+  it("does not report changed_here for untouched material that merely borders a deletion", () => {
+    // A: X 0..10 | Y 10..20 | Z 20..30;  B: X 0..10 | Z 10..20  (Y deleted; its B point is 10)
+    const ta = tape([[1, 10], [2, 10], [3, 10]]);
+    const tb = tape([[1, 10], [3, 10]]);
+    const r = compareTapes(ta, tb, [comment("A", 0, 10), comment("A", 20, 30)], "B", settings);
+    expect(r.regions[0]).toMatchObject({ kind: "deleted", a: { start: 10, end: 20 }, b: { start: 10, end: 10 } });
+    expect(r.carried.map((c) => c.outcome)).toEqual(["no_change_detected", "no_change_detected"]);
+  });
+
   it("reports changed_here when the fixed span was substituted", () => {
     const ta = tape([[1, 20], [2, 20], [3, 20]]);
     const tb = tape([[1, 20], [9, 40], [3, 20]]);

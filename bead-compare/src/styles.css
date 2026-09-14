@@ -35,9 +35,11 @@
   --region-deleted: #8b7fa8; /* purple-grey */
   --region-melody: #0072b2; /* blue */
 
-  /* carried comments */
-  --carried: #7d8ca3; /* slate */
-  --carried-warning: #d9a521; /* amber: "no change detected here" */
+  /* carried comments: a steel blue for "changed here"; the one warning on the
+     strip ("no change detected here") is vermilion, far from the orange of a
+     substituted region, and is also drawn with a dashed outline */
+  --carried: #4f6d8f;
+  --carried-warning: #d55e00;
 
   /* comment kinds */
   --comment-note: #6b7f99;

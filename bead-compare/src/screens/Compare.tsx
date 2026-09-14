@@ -7,7 +7,7 @@ import { MockBadge } from "../components/MockBadge";
 import { PlayerControls } from "../components/PlayerControls";
 import { TechnicalDetails } from "../components/TechnicalDetails";
 import { pairId, repo } from "../db/repo";
-import { useI18n, type T } from "../i18n";
+import { useI18n, type Lang, type T } from "../i18n";
 import type {
   CarriedComment,
   Cluster,
@@ -22,7 +22,7 @@ import type {
   Verdict,
   Version,
 } from "../model";
-import { compareTapes, regionKey, shortHash } from "../model";
+import { AlignmentTooLargeError, compareTapes, regionKey, shortHash } from "../model";
 import { routePath, useRoute } from "../router";
 import { useSettings } from "../settings";
 import {
@@ -55,6 +55,11 @@ import {
  *
  * Sound comes only from AudioEngine slices of the two original recordings
  * and from the consultant's own spoken comments (<audio>).
+ *
+ * Carry-forward: the open fix requests on A are derived here on every
+ * computation (the alignment is the source of truth) and then persisted onto
+ * B as "carried" copies (repo.syncCarriedComments), so Listen on B and the
+ * passage export see them too.
  */
 
 const SEQUENCE_GAP_SECONDS = 0.6;
@@ -76,6 +81,9 @@ type AudioState = { status: "idle" } | { status: "loading" } | { status: "ready"
 
 type ActiveTarget = { type: "region"; key: string } | { type: "carried"; commentId: string } | null;
 
+/** Why the comparison cannot be shown, if it cannot. */
+type Refusal = "codebook_mismatch" | "frame_rate_mismatch" | "too_large" | null;
+
 interface Refs {
   a: TapeRef;
   b: TapeRef;
@@ -89,9 +97,9 @@ function spanRange(span: Span): FrameRange {
   return { start: span.start_frame, end: span.end_frame };
 }
 
-/** "0:03.4 – 0:04.1", or "here, at 0:03.4" for a zero-length side. */
-function sideText(t: T, range: FrameRange, frameRate: number): string {
-  const d = describeSide(range, frameRate);
+/** "0:03,4 – 0:04,1", or "here, at 0:03,4" for a zero-length side. */
+function sideText(t: T, lang: Lang, range: FrameRange, frameRate: number): string {
+  const d = describeSide(range, frameRate, lang);
   return d.kind === "range" ? d.text : t("compare.regions.point", { time: d.text });
 }
 
@@ -155,12 +163,36 @@ export function Compare(): JSX.Element {
 
   const data = load.status === "ready" ? load.data : null;
   const mismatch = data !== null && data.a.tape.codebook_hash !== data.b.tape.codebook_hash;
+  const rateMismatch = data !== null && data.a.tape.frame_rate !== data.b.tape.frame_rate;
 
-  // The whole comparison, recomputed when comments or settings change.
-  const result = useMemo<CompareResult | null>(() => {
-    if (!data || mismatch) return null;
-    return compareTapes(data.a.tape, data.b.tape, commentsA, bId, settings);
-  }, [data, mismatch, commentsA, bId, settings]);
+  // The whole comparison, recomputed when comments or settings change. Two
+  // recordings too long to align with the current grouping are refused with
+  // a message instead of an allocation that would take the tab down.
+  const computed = useMemo<{ result: CompareResult | null; tooLarge: boolean }>(() => {
+    if (!data || mismatch || rateMismatch) return { result: null, tooLarge: false };
+    try {
+      return { result: compareTapes(data.a.tape, data.b.tape, commentsA, bId, settings), tooLarge: false };
+    } catch (e) {
+      if (e instanceof AlignmentTooLargeError) return { result: null, tooLarge: true };
+      throw e;
+    }
+  }, [data, mismatch, rateMismatch, commentsA, bId, settings]);
+  const result = computed.result;
+  const refusal: Refusal = mismatch ? "codebook_mismatch" : rateMismatch ? "frame_rate_mismatch" : computed.tooLarge ? "too_large" : null;
+
+  // Persist the carried copies onto B (idempotent: keyed by carried_from).
+  useEffect(() => {
+    if (!result || !data) return;
+    let cancelled = false;
+    repo.syncCarriedComments(aId, bId, result.carried).catch((e: unknown) => {
+      if (!cancelled) setError(t("common.error.with_detail", { message: errorMessage(e) }));
+    });
+    return () => {
+      cancelled = true;
+    };
+    // `t` only changes with the language; the sync itself does not depend on it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result, data, aId, bId]);
 
   const refs = useMemo<Refs | null>(
     () =>
@@ -175,7 +207,7 @@ export function Compare(): JSX.Element {
 
   // Decode both recordings once (cached by the engine).
   useEffect(() => {
-    if (!data || mismatch) return;
+    if (!data || refusal) return;
     let cancelled = false;
     setAudio({ status: "loading" });
     const engine = AudioEngine.get();
@@ -190,7 +222,7 @@ export function Compare(): JSX.Element {
     return () => {
       cancelled = true;
     };
-  }, [data, mismatch]);
+  }, [data, refusal]);
 
   // Follow playback; stop it when the screen goes away.
   useEffect(() => {
@@ -377,7 +409,8 @@ export function Compare(): JSX.Element {
   const onToggleLoop = () => {
     const next = !loop;
     setLoop(next);
-    if (!playing) return;
+    // A paused session still holds the old flag: restart it with the new one (as Listen does).
+    if (playState === null) return;
     if (activeRegion) playRegion(activeRegion, whichRef.current, next);
     else if (activeCarried) playCarried(activeCarried, next);
   };
@@ -415,13 +448,13 @@ export function Compare(): JSX.Element {
   const { passage, a, b } = load.data;
   const title = passage?.title ?? t("common.nav.compare");
 
-  if (mismatch) {
+  if (refusal) {
     return (
       <section className="screen compare">
         <Header title={title} a={a} b={b} t={t} />
         <div className="card stack">
           <p className="compare__refusal" role="alert">
-            {t("common.error.codebook_mismatch")}
+            {t(`common.error.${refusal}`)}
           </p>
           <TechnicalDetails summary={t("common.tech.summary")}>
             <dl className="tech__list">
@@ -432,6 +465,12 @@ export function Compare(): JSX.Element {
               <dt>{t("compare.tech.codebook_b")}</dt>
               <dd>
                 <code>{shortHash(b.tape.codebook_hash)}</code>
+              </dd>
+              <dt>{t("passages.tech.frame_rate")}</dt>
+              <dd>
+                <code>
+                  {a.tape.frame_rate} / {b.tape.frame_rate}
+                </code>
               </dd>
             </dl>
           </TechnicalDetails>
@@ -492,6 +531,7 @@ export function Compare(): JSX.Element {
             onTapCluster={onTapClusterA}
             onWidth={setWidth}
             ariaLabel={t("compare.strips.a", { label: a.label })}
+            lang={lang}
           />
           <ConnectorBand connectors={connectors} width={width} label={t("compare.strips.connectors")} />
           <BeadStrip
@@ -505,6 +545,7 @@ export function Compare(): JSX.Element {
             onTapMarker={onTapHighlight}
             onTapCluster={onTapClusterB}
             ariaLabel={t("compare.strips.b", { label: b.label })}
+            lang={lang}
           />
           <div className="compare__strip-label compare__strip-label--b">
             <span className="compare__strip-tag">{t("compare.regions.side_b")}</span>
@@ -522,8 +563,8 @@ export function Compare(): JSX.Element {
                   {t("compare.player.region", { n: activeRegion.index + 1 })} · {t("common.region." + activeRegion.kind)}
                 </span>
                 <span className="compare__player-sub">
-                  {t("compare.regions.side_a")} {sideText(t, activeRegion.a, a.tape.frame_rate)} · {t("compare.regions.side_b")}{" "}
-                  {sideText(t, activeRegion.b, b.tape.frame_rate)}
+                  {t("compare.regions.side_a")} {sideText(t, lang, activeRegion.a, a.tape.frame_rate)} · {t("compare.regions.side_b")}{" "}
+                  {sideText(t, lang, activeRegion.b, b.tape.frame_rate)}
                 </span>
               </div>
               <div className="compare__player-actions">
@@ -568,7 +609,7 @@ export function Compare(): JSX.Element {
                   {t("compare.player.carried", { author: activeCarried.source.author })}
                 </span>
                 <span className="compare__player-sub">
-                  {t("compare.carried.lands", { where: sideText(t, spanRange(activeCarried.span), b.tape.frame_rate) })}
+                  {t("compare.carried.lands", { where: sideText(t, lang, spanRange(activeCarried.span), b.tape.frame_rate) })}
                 </span>
               </div>
               <div className="compare__player-actions">
@@ -622,6 +663,7 @@ export function Compare(): JSX.Element {
             frameRateA={a.tape.frame_rate}
             frameRateB={b.tape.frame_rate}
             t={t}
+            lang={lang}
             onSelect={selectRegion}
             onVerdict={onVerdict}
           />
@@ -647,6 +689,7 @@ export function Compare(): JSX.Element {
             refs={refs}
             audioReady={audioReady}
             t={t}
+            lang={lang}
             onPlay={selectCarried}
             onResolve={onResolve}
           />
@@ -789,12 +832,13 @@ interface RegionListProps {
   frameRateA: number;
   frameRateB: number;
   t: T;
+  lang: Lang;
   onSelect(region: Region): void;
   onVerdict(region: Region, verdict: Verdict): void;
 }
 
 const RegionList = memo(function RegionList(props: RegionListProps): JSX.Element {
-  const { regions, activeKey, pair, frameRateA, frameRateB, t } = props;
+  const { regions, activeKey, pair, frameRateA, frameRateB, t, lang } = props;
   return (
     <ul className="region-list">
       {regions.map((region) => {
@@ -807,24 +851,23 @@ const RegionList = memo(function RegionList(props: RegionListProps): JSX.Element
             className={"region-row" + (active ? " region-row--active" : "")}
             aria-current={active ? "true" : undefined}
           >
-            <button
-              type="button"
-              className="region-row__main"
-              onClick={() => props.onSelect(region)}
-              aria-label={t("compare.regions.select", { n })}
-            >
-              <span className="region-row__index tabular">{n}</span>
+            <button type="button" className="region-row__main" onClick={() => props.onSelect(region)}>
+              {/* The accessible name keeps the visible words: "Ouvir a região 3: Substituído A … B …". */}
+              <span className="sr-only">{t("compare.regions.select", { n })}: </span>
+              <span className="region-row__index tabular" aria-hidden="true">
+                {n}
+              </span>
               <span className="region-row__kind">
                 <span className={"swatch swatch--" + region.kind} aria-hidden="true" />
                 {t("common.region." + region.kind)}
               </span>
               <span className="region-row__side">
                 <span className="region-row__tag">{t("compare.regions.side_a")}</span>
-                {sideText(t, region.a, frameRateA)}
+                {sideText(t, lang, region.a, frameRateA)}
               </span>
               <span className="region-row__side">
                 <span className="region-row__tag">{t("compare.regions.side_b")}</span>
-                {sideText(t, region.b, frameRateB)}
+                {sideText(t, lang, region.b, frameRateB)}
               </span>
             </button>
             <label className="region-row__verdict">
@@ -859,18 +902,19 @@ interface CarriedListProps {
   refs: Refs;
   audioReady: boolean;
   t: T;
+  lang: Lang;
   onPlay(c: CarriedComment): void;
   onResolve(c: CarriedComment): void;
 }
 
 const CarriedList = memo(function CarriedList(props: CarriedListProps): JSX.Element {
-  const { carried, activeCommentId, refs, audioReady, t } = props;
+  const { carried, activeCommentId, refs, audioReady, t, lang } = props;
   return (
     <ul className="carried-list">
       {carried.map((c) => {
         const active = activeCommentId !== null && c.source.id === activeCommentId;
         const target = carriedPlayTarget(c, refs.a, refs.b);
-        const where = sideText(t, spanRange(c.span), refs.b.frameRate);
+        const where = sideText(t, lang, spanRange(c.span), refs.b.frameRate);
         return (
           <li
             key={c.source.id}
@@ -881,7 +925,7 @@ const CarriedList = memo(function CarriedList(props: CarriedListProps): JSX.Elem
               <span className="comment__dot comment__dot--fix_requested" aria-hidden="true" />
               <span className="comment__author">{c.source.author}</span>
               <span className="comment__range">
-                {t("compare.carried.original", { range: sideText(t, spanRange(c.source.span), refs.a.frameRate) })}
+                {t("compare.carried.original", { range: sideText(t, lang, spanRange(c.source.span), refs.a.frameRate) })}
               </span>
               <span className={`carried-row__badge carried-row__badge--${c.outcome}`}>{t("common.carry." + c.outcome)}</span>
             </div>

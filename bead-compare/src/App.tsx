@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { Component, useState, type ErrorInfo, type ReactNode } from "react";
 import { LanguageToggle } from "./components/LanguageToggle";
 import { SettingsPanel } from "./components/SettingsPanel";
+import { TechnicalDetails } from "./components/TechnicalDetails";
 import { I18nProvider, useI18n } from "./i18n";
+import { AlignmentTooLargeError } from "./model";
 import { routePath, useRoute, type Route } from "./router";
 import { Compare } from "./screens/Compare";
 import { Listen } from "./screens/Listen";
 import { PassageList } from "./screens/PassageList";
 import { Report } from "./screens/Report";
-import { SettingsProvider } from "./settings";
+import { SettingsProvider, useSettings } from "./settings";
 
 /**
  * App shell: header (title, language toggle, settings button), the routed
@@ -16,7 +18,74 @@ import { SettingsProvider } from "./settings";
  * Screens take no props; each reads its parameters from useRoute(). The
  * element is keyed by the route path so a screen remounts with fresh state
  * when its parameters change.
+ *
+ * The routed screen sits inside an error boundary; the header and the
+ * settings panel stay outside it, so a throw during render (a pathological
+ * setting, a corrupt record) leaves the consultant a way to reset the
+ * settings and go back to the passages instead of a blank page.
  */
+
+interface BoundaryProps {
+  children: ReactNode;
+  renderError(error: unknown, retry: () => void): ReactNode;
+}
+
+class ErrorBoundary extends Component<BoundaryProps, { error: unknown; failed: boolean }> {
+  state = { error: null as unknown, failed: false };
+
+  static getDerivedStateFromError(error: unknown): { error: unknown; failed: boolean } {
+    return { error, failed: true };
+  }
+
+  componentDidCatch(error: unknown, info: ErrorInfo): void {
+    console.error("Bead Compare: screen failed", error, info.componentStack);
+  }
+
+  render(): ReactNode {
+    if (this.state.failed) return this.props.renderError(this.state.error, () => this.setState({ error: null, failed: false }));
+    return this.props.children;
+  }
+}
+
+/** What the boundary shows: a calm message, reset/retry, and the way home. */
+function ScreenError(props: { error: unknown; retry(): void }): JSX.Element {
+  const { t } = useI18n();
+  const { reset } = useSettings();
+  const { error, retry } = props;
+  const message = error instanceof AlignmentTooLargeError ? t("common.error.too_large") : t("common.error.screen_failed");
+  const detail = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+  return (
+    <section className="screen">
+      <div className="card stack">
+        <p className="error" role="alert">
+          {message}
+        </p>
+        <p className="muted small">{t("common.error.screen_failed.hint")}</p>
+        <div className="row">
+          <button
+            type="button"
+            className="btn btn--primary"
+            onClick={() => {
+              reset();
+              retry();
+            }}
+          >
+            {t("common.error.screen_failed.reset")}
+          </button>
+          <button type="button" className="btn" onClick={retry}>
+            {t("common.error.screen_failed.retry")}
+          </button>
+          <a className="btn btn--quiet" href={routePath({ name: "passages" })}>
+            {t("common.error.screen_failed.home")}
+          </a>
+        </div>
+        <TechnicalDetails summary={t("common.tech.summary")}>
+          <code className="tech__full">{detail}</code>
+        </TechnicalDetails>
+      </div>
+    </section>
+  );
+}
 
 function SettingsIcon(): JSX.Element {
   return (
@@ -78,7 +147,9 @@ function Shell(): JSX.Element {
       </header>
 
       <main className="app-main">
-        <Screen route={route} />
+        <ErrorBoundary key={routePath(route)} renderError={(error, retry) => <ScreenError error={error} retry={retry} />}>
+          <Screen route={route} />
+        </ErrorBoundary>
       </main>
 
       <footer className="app-footer">{t("common.footer.original_only")}</footer>

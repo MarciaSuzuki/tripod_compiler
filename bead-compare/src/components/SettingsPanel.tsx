@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type ChangeEvent } from "react";
 import type { AlignmentSettings, GroupingSettings, Settings } from "../model";
+import { AudioEngine } from "../audio/engine";
 import { repo } from "../db/repo";
 import { LANGS, isLang, useI18n, type Lang } from "../i18n";
 import { navigate } from "../router";
@@ -130,6 +131,7 @@ export function SettingsPanel(props: { open: boolean; onClose(): void }): JSX.El
     setBusy(true);
     try {
       await repo.clearAll();
+      AudioEngine.get().unloadAll();
       window.dispatchEvent(new CustomEvent(DATA_CLEARED_EVENT));
       setNotice(t("common.settings.clear_all.done"));
       navigate({ name: "passages" });

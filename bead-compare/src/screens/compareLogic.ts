@@ -160,16 +160,17 @@ export type SideDescription =
 
 /**
  * One side of a region as time text: "0:03.4 – 0:04.1" for a span, or the
- * single position for a zero-length side (the screen adds "here").
+ * single position for a zero-length side (the screen adds "here"). The
+ * tenths separator follows `lang` ("0:03,4" in pt-BR).
  */
-export function describeSide(range: FrameRange, frameRate: number): SideDescription {
+export function describeSide(range: FrameRange, frameRate: number, lang?: Lang): SideDescription {
   const startSeconds = frameTime(range.start, frameRate);
   if (range.end <= range.start) {
-    return { kind: "point", text: formatTime(startSeconds), atSeconds: startSeconds };
+    return { kind: "point", text: formatTime(startSeconds, lang), atSeconds: startSeconds };
   }
   return {
     kind: "range",
-    text: formatRange(range.start, range.end, frameRate),
+    text: formatRange(range.start, range.end, frameRate, lang),
     startSeconds,
     endSeconds: frameTime(range.end, frameRate),
   };

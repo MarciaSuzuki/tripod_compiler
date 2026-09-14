@@ -18,7 +18,7 @@ import {
 } from "../export/report";
 import { useI18n, type Lang, type T } from "../i18n";
 import type { Comment, CompareResult, PairRecord, Passage, Version } from "../model";
-import { compareTapes, shortHash } from "../model";
+import { AlignmentTooLargeError, compareTapes, shortHash } from "../model";
 import { routePath, useRoute } from "../router";
 import { useSettings } from "../settings";
 
@@ -99,11 +99,19 @@ export function Report(): JSX.Element {
 
   const data = load.status === "ready" ? load.data : null;
   const mismatch = data !== null && data.a.tape.codebook_hash !== data.b.tape.codebook_hash;
+  const rateMismatch = data !== null && data.a.tape.frame_rate !== data.b.tape.frame_rate;
 
-  const result = useMemo<CompareResult | null>(() => {
-    if (!data || mismatch) return null;
-    return compareTapes(data.a.tape, data.b.tape, data.commentsA, bId, settings);
-  }, [data, mismatch, bId, settings]);
+  const computed = useMemo<{ result: CompareResult | null; tooLarge: boolean }>(() => {
+    if (!data || mismatch || rateMismatch) return { result: null, tooLarge: false };
+    try {
+      return { result: compareTapes(data.a.tape, data.b.tape, data.commentsA, bId, settings), tooLarge: false };
+    } catch (e) {
+      if (e instanceof AlignmentTooLargeError) return { result: null, tooLarge: true };
+      throw e;
+    }
+  }, [data, mismatch, rateMismatch, bId, settings]);
+  const result = computed.result;
+  const refusal = mismatch ? "codebook_mismatch" : rateMismatch ? "frame_rate_mismatch" : computed.tooLarge ? "too_large" : null;
 
   /** The passage as the report needs it; a missing passage record gets a placeholder title. */
   const passageForReport = useCallback(
@@ -171,13 +179,13 @@ export function Report(): JSX.Element {
   const title = passageForReport(load.data).title;
   const compareHref = routePath({ name: "compare", aId, bId });
 
-  if (mismatch) {
+  if (refusal) {
     return (
       <section className="screen report">
         <Header title={title} a={a} b={b} t={t} compareHref={compareHref} />
         <div className="card stack">
           <p className="report__refusal" role="alert">
-            {t("common.error.codebook_mismatch")}
+            {t(`common.error.${refusal}`)}
           </p>
           <p>
             <a className="btn btn--quiet" href={routePath({ name: "passages" })}>

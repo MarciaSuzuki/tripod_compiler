@@ -4,7 +4,7 @@ import type { StringModule } from "../index";
 export const passages = {
   "pt-BR": {
     "passages.title": "Passagens",
-    "passages.intro": "Cada passagem reúne as versões gravadas de um mesmo trecho.",
+    "passages.intro": "Cada passagem reúne as versões gravadas de um mesmo texto.",
     "passages.empty":
       "Nenhuma passagem ainda. Carregue a passagem de demonstração ou crie uma passagem e importe uma gravação.",
 
@@ -13,7 +13,7 @@ export const passages = {
     "passages.create.button": "Criar passagem",
 
     "passages.demo.button": "Carregar passagem de demonstração",
-    "passages.demo.passage_title": "Ruth 1:1-5 (demo)",
+    "passages.demo.passage_title": "Rute 1:1-5 (demonstração)",
     "passages.demo.loading": "Carregando a demonstração…",
     "passages.demo.done": "Passagem de demonstração carregada com duas versões.",
     "passages.demo.failed": "Não foi possível carregar a demonstração: {message}",
@@ -33,16 +33,16 @@ export const passages = {
     "passages.passage.export_failed": "Não foi possível exportar a passagem: {message}",
 
     "passages.version.import": "Importar gravação",
-    "passages.version.import_folder": "Pasta da gravação",
-    "passages.version.import_zip": "Gravação em .zip",
+    "passages.version.import_folder": "Importar pasta…",
+    "passages.version.import_zip": "Importar .zip…",
     "passages.version.import_hint":
       "Escolha a pasta com audio.wav, tape.json e meta.json, ou um .zip com esses arquivos.",
     "passages.version.import_errors": "A gravação não pôde ser importada:",
     "passages.version.import_warnings": "Importada com avisos:",
     "passages.version.imported": "Versão “{label}” adicionada.",
     "passages.version.listen": "Ouvir",
-    "passages.version.recorded_at": "Gravado em",
-    "passages.version.imported_at": "Importado em",
+    "passages.version.recorded_at": "Gravada em",
+    "passages.version.imported_at": "Importada em",
     "passages.version.narrator": "Narrador(a)",
     "passages.version.language": "Idioma",
     "passages.version.aria": "Versão {label}",
@@ -57,12 +57,38 @@ export const passages = {
     "passages.compare.need_two": "Adicione pelo menos duas versões para comparar.",
     "passages.compare.button": "Comparar A e B",
 
-    "passages.tech.tape_hash": "Hash da fita",
+    "passages.tech.tape_hash": "Hash da fita (JSON canônico)",
     "passages.tech.audio_hash": "Hash do áudio",
     "passages.tech.codebook": "Codebook",
     "passages.tech.frames": "Quadros",
     "passages.tech.frame_rate": "Quadros por segundo",
     "passages.tech.id": "Identificador",
+
+    "passages.import.no_files": "Nenhum arquivo foi selecionado.",
+    "passages.import.audio_missing": "O arquivo audio.wav não foi encontrado.",
+    "passages.import.tape_missing": "O arquivo tape.json não foi encontrado.",
+    "passages.import.duplicates":
+      "Foram encontrados {count} arquivos chamados {file} ({list}). Escolha uma pasta de gravação por vez.",
+    "passages.import.not_wav": "O arquivo {file} não é um áudio WAV.",
+    "passages.import.tape_invalid": "O arquivo {file} é inválido: {detail}",
+    "passages.import.meta_missing": "meta.json ausente; a versão foi importada sem título, narrador(a) e data.",
+    "passages.import.meta_not_object": "meta.json não contém um objeto JSON e foi ignorado.",
+    "passages.import.meta_invalid_json": "meta.json não é um JSON válido e foi ignorado ({detail}).",
+    "passages.import.wav_format":
+      "O audio.wav está em {rate} Hz, {channels} canal(is), {bits} bits; o esperado é 16 kHz, mono, 16 bits. Ele foi importado assim mesmo.",
+    "passages.import.wav_not_pcm":
+      "O audio.wav não está em PCM inteiro; o esperado é 16 kHz, mono, PCM 16 bits. Ele foi importado assim mesmo.",
+    "passages.import.duration_mismatch":
+      "O áudio dura {audio_s} s, mas a fita dura {tape_s} s. Confira se audio.wav e tape.json são da mesma gravação.",
+    "passages.import.frame_rate_unusual": "A fita usa {rate} quadros por segundo; o esperado é 50.",
+    "passages.import.zip_unreadable": "O .zip não pôde ser lido: {detail}",
+    "passages.import.zip_not_passage": "Este .zip não é uma passagem exportada pelo Bead Compare.",
+    "passages.import.zip_format_version":
+      "Esta passagem foi exportada no formato {version}; este aplicativo lê o formato {supported}.",
+    "passages.import.manifest_invalid": "O arquivo passage.json do .zip é inválido: {detail}",
+    "passages.import.zip_file_missing": "O arquivo {file} está faltando no .zip.",
+    "passages.import.comment_audio_missing":
+      "O áudio do comentário falado {file} está faltando no .zip; o comentário foi mantido sem áudio.",
   },
   en: {
     "passages.title": "Passages",
@@ -94,8 +120,8 @@ export const passages = {
     "passages.passage.export_failed": "The passage could not be exported: {message}",
 
     "passages.version.import": "Import recording",
-    "passages.version.import_folder": "Recording folder",
-    "passages.version.import_zip": "Recording as .zip",
+    "passages.version.import_folder": "Import folder…",
+    "passages.version.import_zip": "Import .zip…",
     "passages.version.import_hint": "Choose the folder holding audio.wav, tape.json and meta.json, or a .zip of those files.",
     "passages.version.import_errors": "The recording could not be imported:",
     "passages.version.import_warnings": "Imported with warnings:",
@@ -117,11 +143,34 @@ export const passages = {
     "passages.compare.need_two": "Add at least two versions to compare.",
     "passages.compare.button": "Compare A and B",
 
-    "passages.tech.tape_hash": "Tape hash",
+    "passages.tech.tape_hash": "Tape hash (canonical JSON)",
     "passages.tech.audio_hash": "Audio hash",
     "passages.tech.codebook": "Codebook",
     "passages.tech.frames": "Frames",
     "passages.tech.frame_rate": "Frames per second",
     "passages.tech.id": "Identifier",
+
+    "passages.import.no_files": "No files were selected.",
+    "passages.import.audio_missing": "The file audio.wav was not found.",
+    "passages.import.tape_missing": "The file tape.json was not found.",
+    "passages.import.duplicates": "Found {count} files named {file} ({list}). Choose one recording folder at a time.",
+    "passages.import.not_wav": "The file {file} is not a WAV audio file.",
+    "passages.import.tape_invalid": "The file {file} is invalid: {detail}",
+    "passages.import.meta_missing": "meta.json is missing; the version was imported without a title, narrator or date.",
+    "passages.import.meta_not_object": "meta.json does not hold a JSON object and was ignored.",
+    "passages.import.meta_invalid_json": "meta.json is not valid JSON and was ignored ({detail}).",
+    "passages.import.wav_format":
+      "audio.wav is {rate} Hz, {channels} channel(s), {bits}-bit; 16 kHz mono 16-bit was expected. It was imported anyway.",
+    "passages.import.wav_not_pcm": "audio.wav is not integer PCM; 16 kHz mono 16-bit PCM was expected. It was imported anyway.",
+    "passages.import.duration_mismatch":
+      "The audio lasts {audio_s} s but the tape lasts {tape_s} s. Check that audio.wav and tape.json come from the same recording.",
+    "passages.import.frame_rate_unusual": "The tape uses {rate} frames per second; 50 was expected.",
+    "passages.import.zip_unreadable": "The .zip could not be read: {detail}",
+    "passages.import.zip_not_passage": "This .zip is not a passage exported by Bead Compare.",
+    "passages.import.zip_format_version": "This passage was exported in format {version}; this app reads format {supported}.",
+    "passages.import.manifest_invalid": "The passage.json inside the .zip is invalid: {detail}",
+    "passages.import.zip_file_missing": "The file {file} is missing from the .zip.",
+    "passages.import.comment_audio_missing":
+      "The spoken-comment audio {file} is missing from the .zip; the comment was kept without audio.",
   },
 } satisfies StringModule;

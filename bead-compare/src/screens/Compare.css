@@ -297,4 +297,9 @@
   .carried-row__badge {
     margin-left: 0;
   }
+  /* the primary action of the region player keeps its text on a phone;
+     the plain "Play A" / "Play B" buttons next to it are text-only anyway */
+  .compare__player .player__btn--play .player__label {
+    display: inline;
+  }
 }

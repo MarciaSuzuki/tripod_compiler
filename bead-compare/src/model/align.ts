@@ -7,6 +7,26 @@ import type { Alignment, AlignmentSettings, AlignOp, Cluster } from "./types";
  * Memory: one Uint8Array traceback of (n+1)*(m+1) bytes plus two Int32 rows,
  * so a 5-minute recording at ~1 cluster / 100 ms (3000 clusters) costs ~9 MB.
  */
+/**
+ * Upper bound on the traceback table, in cells (= bytes). 200 MB is far
+ * beyond any real pair of recordings (a 45-minute tape at ~1 cluster per
+ * 100 ms is ~27 000 clusters, i.e. ~730 MB against itself only when the
+ * grouping is set to 1 frame); above it the alignment refuses instead of
+ * allocating until the tab dies.
+ */
+export const MAX_ALIGNMENT_CELLS = 200_000_000;
+
+/** Thrown by alignClusters when the two cluster sequences are too long to align in memory. */
+export class AlignmentTooLargeError extends Error {
+  constructor(
+    public readonly clustersA: number,
+    public readonly clustersB: number,
+  ) {
+    super(`alignment too large: ${clustersA} x ${clustersB} clusters`);
+    this.name = "AlignmentTooLargeError";
+  }
+}
+
 export function alignClusters(
   a: Cluster[],
   b: Cluster[],
@@ -14,6 +34,7 @@ export function alignClusters(
 ): Alignment {
   const n = a.length;
   const m = b.length;
+  if ((n + 1) * (m + 1) > MAX_ALIGNMENT_CELLS) throw new AlignmentTooLargeError(n, m);
   const MATCH = settings.match_score;
   const MIS = -settings.mismatch_penalty;
   const GAP = -settings.gap_penalty;

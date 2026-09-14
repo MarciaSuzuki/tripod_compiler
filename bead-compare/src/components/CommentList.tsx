@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import type { Comment, CommentKind, CommentStatus } from "../model";
 import { formatRange } from "../audio/format";
+import type { Lang } from "../i18n";
 
 /**
  * Comments under a strip. Tapping a comment's header plays its span (the
  * screen decides); a spoken comment gets an <audio controls> element that
  * plays the consultant's own recording. Holds no strings.
+ *
+ * A comment carried from an earlier version (carried_from set) is a
+ * projection of its source: it can be resolved but not deleted here — delete
+ * the source on the earlier version instead.
  */
 
 export interface CommentListLabels {
@@ -29,6 +34,8 @@ export interface CommentListProps {
   onResolve?(c: Comment): void;
   onDelete?(c: Comment): void;
   labels: CommentListLabels;
+  /** Decimal mark of the time positions; en when omitted. */
+  lang?: Lang;
 }
 
 /** <audio controls> for a blob; the object URL is created on mount and revoked on cleanup. */
@@ -46,7 +53,7 @@ export function CommentAudio(props: { blob: Blob; label: string }): JSX.Element 
 }
 
 export function CommentList(props: CommentListProps): JSX.Element {
-  const { comments, frameRate, activeId, labels } = props;
+  const { comments, frameRate, activeId, labels, lang } = props;
   return (
     <ul className="comment-list">
       {comments.map((c) => {
@@ -61,11 +68,11 @@ export function CommentList(props: CommentListProps): JSX.Element {
               type="button"
               className="comment__head"
               onClick={() => props.onTap(c)}
-              aria-label={`${labels.play}: ${labels.kinds[c.kind]}, ${c.author}, ${formatRange(c.span.start_frame, c.span.end_frame, frameRate)}`}
+              aria-label={`${labels.play}: ${labels.kinds[c.kind]}, ${c.author}, ${formatRange(c.span.start_frame, c.span.end_frame, frameRate, lang)}`}
             >
               <span className={"comment__dot comment__dot--" + c.kind} aria-hidden="true" />
               <span className="comment__author">{c.author}</span>
-              <span className="comment__range">{formatRange(c.span.start_frame, c.span.end_frame, frameRate)}</span>
+              <span className="comment__range">{formatRange(c.span.start_frame, c.span.end_frame, frameRate, lang)}</span>
               <span className="comment__kind">{labels.kinds[c.kind]}</span>
             </button>
             {c.text && <p className="comment__text">{c.text}</p>}
@@ -80,7 +87,7 @@ export function CommentList(props: CommentListProps): JSX.Element {
                       {labels.resolve}
                     </button>
                   )}
-                  {props.onDelete && (
+                  {props.onDelete && !c.carried_from && (
                     <button type="button" className="btn btn--small btn--danger" onClick={() => props.onDelete?.(c)}>
                       {labels.delete}
                     </button>

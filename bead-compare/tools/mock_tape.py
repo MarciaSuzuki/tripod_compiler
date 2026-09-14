@@ -21,6 +21,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 import struct
 import sys
 import wave
@@ -220,9 +221,12 @@ def main():
     args = ap.parse_args()
     x = read_wav(args.wav)
     tape = make_tape(x, silence_db=args.silence_db)
-    out = args.out or args.wav.rsplit(".", 1)[0].rsplit("/", 1)[0] + "/tape.json"
-    if args.wav.rsplit("/", 1)[-1] != "audio.wav" and args.out is None:
-        out = args.wav.rsplit(".", 1)[0] + ".tape.json"
+    if args.out:
+        out = args.out
+    else:
+        folder, name = os.path.split(args.wav)
+        # audio.wav -> tape.json beside it; anything else -> <stem>.tape.json
+        out = os.path.join(folder, "tape.json" if name.lower() == "audio.wav" else os.path.splitext(name)[0] + ".tape.json")
     with open(out, "w") as fh:
         json.dump(tape, fh)
     pauses = sum(1 for v in tape["u"] if v == PAUSE_UNIT)

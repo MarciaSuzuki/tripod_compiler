@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatRange, formatTime, frameTime } from "../src/audio/format";
+import { decimalMark, formatRange, formatTime, frameTime } from "../src/audio/format";
 
 describe("formatTime", () => {
   it("formats seconds as m:ss.s", () => {
@@ -20,6 +20,15 @@ describe("formatTime", () => {
     expect(formatTime(NaN)).toBe("0:00.0");
     expect(formatTime(Infinity)).toBe("0:00.0");
   });
+  it("uses the language's decimal mark for the tenths", () => {
+    expect(decimalMark("pt-BR")).toBe(",");
+    expect(decimalMark("en")).toBe(".");
+    expect(decimalMark(undefined)).toBe(".");
+    expect(formatTime(3.4, "pt-BR")).toBe("0:03,4");
+    expect(formatTime(3.4, "en")).toBe("0:03.4");
+    expect(formatTime(72, "pt-BR")).toBe("1:12,0");
+    expect(formatTime(NaN, "pt-BR")).toBe("0:00,0");
+  });
 });
 
 describe("frameTime", () => {
@@ -39,5 +48,9 @@ describe("formatRange", () => {
     expect(formatRange(170, 205, 50)).toBe("0:03.4 – 0:04.1");
     expect(formatRange(0, 0, 50)).toBe("0:00.0 – 0:00.0");
     expect(formatRange(3600, 3625, 50)).toBe("1:12.0 – 1:12.5");
+  });
+  it("follows the language like formatTime", () => {
+    expect(formatRange(170, 205, 50, "pt-BR")).toBe("0:03,4 – 0:04,1");
+    expect(formatRange(170, 205, 50, "en")).toBe("0:03.4 – 0:04.1");
   });
 });

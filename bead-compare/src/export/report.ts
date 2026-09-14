@@ -206,10 +206,10 @@ export function formatReportDate(value: string | undefined, lang: Lang): string 
   }
 }
 
-/** "0:00.6 – 0:01.0" for a span; "em 0:01.4" / "at 0:01.4" for a zero-length point. */
+/** "0:00.6 – 0:01.0" (en) / "0:00,6 – 0:01,0" (pt-BR) for a span; "em 0:01,4" / "at 0:01.4" for a zero-length point. */
 export function describeSpan(startSeconds: number, endSeconds: number, lang: Lang): string {
-  if (!(endSeconds > startSeconds)) return translate(lang, "report.regions.point", { time: formatTime(startSeconds) });
-  return `${formatTime(startSeconds)} – ${formatTime(endSeconds)}`;
+  if (!(endSeconds > startSeconds)) return translate(lang, "report.regions.point", { time: formatTime(startSeconds, lang) });
+  return `${formatTime(startSeconds, lang)} – ${formatTime(endSeconds, lang)}`;
 }
 
 // ---------------------------------------------------------------------------

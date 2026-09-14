@@ -16,6 +16,13 @@
  * except for the deliberate gap (gapSeconds between items and between
  * sequence repeats; LOOP_GAP_SECONDS between repeats of a single item).
  *
+ * Memory policy: decoded buffers are kept in a small LRU cache
+ * (MAX_CACHED_VERSIONS) so bouncing between Listen and Compare stays
+ * instant while a long session over many versions cannot grow without
+ * bound. The context is created at the tape's native rate (16 kHz) so a
+ * decode does not upsample a 5-minute recording threefold; browsers that
+ * refuse the option fall back to their default rate.
+ *
  * SSR/tests: nothing touches window or AudioContext until load() or play().
  */
 
@@ -40,6 +47,11 @@ export interface PlayState {
   playing: boolean;
   item: PlayItem;
 }
+
+/** Decoded versions kept in memory at once; the least recently used is evicted beyond this. */
+export const MAX_CACHED_VERSIONS = 4;
+/** The recordings' native sample rate (16 kHz mono PCM, per the brief). */
+export const NATIVE_SAMPLE_RATE = 16000;
 
 /** Small lead so a freshly scheduled sequence starts sample-accurately. */
 const LEAD_SECONDS = 0.03;
@@ -162,16 +174,38 @@ export class AudioEngine {
   private ensureContext(): AudioContext {
     if (this.ctx) return this.ctx;
     const w = typeof window !== "undefined" ? (window as unknown as Record<string, unknown>) : undefined;
-    const Ctor = (w?.AudioContext ?? w?.webkitAudioContext) as (new () => AudioContext) | undefined;
+    const Ctor = (w?.AudioContext ?? w?.webkitAudioContext) as (new (opts?: AudioContextOptions) => AudioContext) | undefined;
     if (typeof Ctor !== "function") throw new Error("Web Audio is not available in this environment");
-    this.ctx = new Ctor();
+    try {
+      this.ctx = new Ctor({ sampleRate: NATIVE_SAMPLE_RATE });
+    } catch {
+      this.ctx = new Ctor(); // the browser does not take a sample rate: use its default
+    }
     return this.ctx;
+  }
+
+  /** Mark a cached version as most recently used (Map keeps insertion order). */
+  private touch(versionId: string, loaded: LoadedAudio): void {
+    this.cache.delete(versionId);
+    this.cache.set(versionId, loaded);
+  }
+
+  /** Drop the least recently used versions beyond the cache size, never one that is playing. */
+  private evict(): void {
+    const playing = new Set(this.session?.segments.map((s) => s.item.versionId) ?? []);
+    for (const id of this.cache.keys()) {
+      if (this.cache.size <= MAX_CACHED_VERSIONS) return;
+      if (!playing.has(id)) this.cache.delete(id);
+    }
   }
 
   /** Decode once per versionId; concurrent calls share one decode. */
   load(versionId: string, audio: Blob): Promise<LoadedAudio> {
     const existing = this.cache.get(versionId);
-    if (existing) return Promise.resolve(existing);
+    if (existing) {
+      this.touch(versionId, existing);
+      return Promise.resolve(existing);
+    }
     const inFlight = this.pending.get(versionId);
     if (inFlight) return inFlight;
     const p = (async () => {
@@ -179,7 +213,8 @@ export class AudioEngine {
       const bytes = await audio.arrayBuffer();
       const buffer = await decode(ctx, bytes);
       const loaded = makeLoaded(buffer);
-      this.cache.set(versionId, loaded);
+      this.touch(versionId, loaded);
+      this.evict();
       return loaded;
     })();
     this.pending.set(versionId, p);
@@ -191,12 +226,25 @@ export class AudioEngine {
   }
 
   loaded(versionId: string): LoadedAudio | undefined {
-    return this.cache.get(versionId);
+    const l = this.cache.get(versionId);
+    if (l) this.touch(versionId, l);
+    return l;
+  }
+
+  /** Ids of the versions currently decoded, least recently used first. */
+  get cachedVersionIds(): string[] {
+    return [...this.cache.keys()];
   }
 
   unload(versionId: string): void {
     if (this.session && this.session.segments.some((s) => s.item.versionId === versionId)) this.stop();
     this.cache.delete(versionId);
+  }
+
+  /** Forget every decoded buffer (after "clear all local data" or deleting a passage). */
+  unloadAll(): void {
+    this.stop();
+    this.cache.clear();
   }
 
   /** Play one slice. Stops anything playing first. A zero-length item plays nothing. */
@@ -219,6 +267,7 @@ export class AudioEngine {
     for (const item of items) {
       const loaded = this.cache.get(item.versionId);
       if (!loaded) throw new Error(`audio not loaded: ${item.versionId}`);
+      this.touch(item.versionId, loaded);
       if (!(item.frameRate > 0)) continue;
       const offsetSeconds = Math.max(0, item.startFrame / item.frameRate);
       const wanted = (item.endFrame - item.startFrame) / item.frameRate;

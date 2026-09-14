@@ -198,6 +198,8 @@ describe("markersFromComments", () => {
     ]);
     expect(markersFromComments([a], null).map((m) => m.active)).toEqual([false]);
     expect(markersFromComments([], "x")).toEqual([]);
+    // an optional label names the marker for assistive technology
+    expect(markersFromComments([a], null, (c) => `${c.kind} by ${c.author}`)[0]!.ariaLabel).toBe("fix_requested by test");
   });
 });
 
@@ -310,6 +312,9 @@ describe("keyboard", () => {
     expect(isTextEntryTarget({ tagName: "textarea" })).toBe(true);
     expect(isTextEntryTarget({ tagName: "SELECT" })).toBe(true);
     expect(isTextEntryTarget({ tagName: "DIV", isContentEditable: true })).toBe(true);
+    // a spoken comment's <audio controls>: Space pauses it, the arrows seek it
+    expect(isTextEntryTarget({ tagName: "AUDIO" })).toBe(true);
+    expect(isTextEntryTarget({ tagName: "video" })).toBe(true);
     expect(isTextEntryTarget({ tagName: "DIV" })).toBe(false);
     expect(isTextEntryTarget({ tagName: "BUTTON" })).toBe(false);
     expect(isTextEntryTarget({ tagName: "svg" })).toBe(false);
@@ -324,6 +329,9 @@ describe("keyboard", () => {
     expect(resolveKeyAction({ key: "Escape" }, { tagName: "INPUT" })).toBeNull();
     expect(resolveKeyAction({ key: " " }, { tagName: "BUTTON" })).toBeNull();
     expect(resolveKeyAction({ key: " " }, { tagName: "summary" })).toBeNull();
+    expect(resolveKeyAction({ key: " " }, { tagName: "AUDIO" })).toBeNull();
+    expect(resolveKeyAction({ key: "ArrowRight" }, { tagName: "AUDIO" })).toBeNull();
+    expect(resolveKeyAction({ key: "Escape" }, { tagName: "AUDIO" })).toBeNull();
     expect(resolveKeyAction({ key: "Escape" }, { tagName: "SUMMARY" })).toEqual({ type: "escape" });
     expect(resolveKeyAction({ key: "c" }, { tagName: "BUTTON" })).toEqual({ type: "comment" });
     expect(resolveKeyAction({ key: "ArrowRight" }, { tagName: "BUTTON" })).toEqual({

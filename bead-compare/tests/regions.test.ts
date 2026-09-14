@@ -141,9 +141,13 @@ describe("rangesOverlap", () => {
     expect(rangesOverlap({ start: 0, end: 10 }, { start: 5, end: 15 })).toBe(true);
     expect(rangesOverlap({ start: 0, end: 10 }, { start: 10, end: 15 })).toBe(false);
   });
-  it("treats a point inside a range as overlap", () => {
+  it("treats a point strictly inside a range as overlap, a point on its boundary as no overlap", () => {
     expect(rangesOverlap({ start: 5, end: 5 }, { start: 0, end: 10 })).toBe(true);
-    expect(rangesOverlap({ start: 0, end: 10 }, { start: 10, end: 10 })).toBe(true);
+    expect(rangesOverlap({ start: 0, end: 10 }, { start: 5, end: 5 })).toBe(true);
+    // an insertion point sitting exactly at a cluster's end (or start) borders it without changing it
+    expect(rangesOverlap({ start: 0, end: 10 }, { start: 10, end: 10 })).toBe(false);
+    expect(rangesOverlap({ start: 10, end: 10 }, { start: 0, end: 10 })).toBe(false);
+    expect(rangesOverlap({ start: 0, end: 10 }, { start: 0, end: 0 })).toBe(false);
     expect(rangesOverlap({ start: 0, end: 10 }, { start: 11, end: 11 })).toBe(false);
   });
   it("never overlaps two points", () => {

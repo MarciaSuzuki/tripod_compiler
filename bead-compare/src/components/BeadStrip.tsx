@@ -9,6 +9,7 @@ import {
 import type { Cluster, CommentKind, CommentStatus, FrameRange, RegionKind } from "../model";
 import { clusterAtFrame } from "../model";
 import { formatTime, frameTime } from "../audio/format";
+import type { Lang } from "../i18n";
 
 /**
  * The bead strip (SVG). Beads are rounded rects whose width is proportional
@@ -31,6 +32,8 @@ export interface StripMarker {
   id: string;
   active?: boolean;
   carried?: boolean;
+  /** Accessible name of the marker button (kind, author, time range), translated by the screen. */
+  ariaLabel?: string;
 }
 
 export interface BeadStripProps {
@@ -50,6 +53,8 @@ export interface BeadStripProps {
   /** Reports the drawn width so Compare can draw connectors. */
   onWidth?(px: number): void;
   ariaLabel?: string;
+  /** Decimal mark of the bead names (time positions); en when omitted. */
+  lang?: Lang;
 }
 
 /** Width used when no layout is available (tests, SSR). */
@@ -175,6 +180,7 @@ export function BeadStrip(props: BeadStripProps): JSX.Element {
     highlights = [],
     markers = [],
     ariaLabel,
+    lang,
   } = props;
   const wrapRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -331,7 +337,7 @@ export function BeadStrip(props: BeadStripProps): JSX.Element {
                 ry={4}
                 fill={selected ? "var(--bead-active)" : "var(--bead)"}
                 role="button"
-                aria-label={formatTime(frameTime(c.start, frameRate))}
+                aria-label={formatTime(frameTime(c.start, frameRate), lang)}
                 data-cluster={c.index}
               />
             );
@@ -359,6 +365,9 @@ export function BeadStrip(props: BeadStripProps): JSX.Element {
             const x1 = fx(h.range.end);
             const x = point ? x0 - POINT_MARKER_W / 2 : x0;
             const w = point ? POINT_MARKER_W : Math.max(1, x1 - x0);
+            // "No change detected here" gets a dashed full-opacity outline on top of its
+            // colour, so the one warning the strip carries reads without colour too.
+            const warning = h.kind === "carried_warning";
             const cls =
               `strip-highlight strip-highlight--${h.kind}` +
               (h.active ? " strip-highlight--active" : "") +
@@ -374,8 +383,9 @@ export function BeadStrip(props: BeadStripProps): JSX.Element {
                 rx={point ? 1.5 : 3}
                 fill={highlightFill(h.kind)}
                 fillOpacity={point ? 0.9 : h.active ? 0.5 : 0.32}
-                stroke={h.active ? highlightFill(h.kind) : "none"}
-                strokeWidth={h.active ? 2 : 0}
+                stroke={h.active || warning ? highlightFill(h.kind) : "none"}
+                strokeWidth={h.active || warning ? 2 : 0}
+                strokeDasharray={warning ? "4 3" : undefined}
                 data-highlight-id={h.id}
               />
             );
@@ -437,6 +447,7 @@ export function BeadStrip(props: BeadStripProps): JSX.Element {
                 strokeWidth={m.active ? 2 : 1.5}
                 strokeDasharray={m.carried ? "3 2" : undefined}
                 role="button"
+                aria-label={m.ariaLabel}
                 data-marker-id={m.id}
                 style={{ cursor: "pointer" }}
               />

@@ -16,10 +16,10 @@ export const compare = {
     "compare.header.back": "Voltar às passagens",
     "compare.header.report": "Ver relatório",
 
-    "compare.summary.regions_one": "região",
-    "compare.summary.regions_other": "regiões",
+    "compare.summary.regions_one": "Região",
+    "compare.summary.regions_other": "Regiões",
     "compare.summary.seconds": "{value} s",
-    "compare.summary.changed": "alterados",
+    "compare.summary.changed": "Alterados",
     "compare.summary.stability": "Estabilidade",
     "compare.summary.no_regions": "Nenhuma diferença encontrada entre A e B.",
 
@@ -32,7 +32,7 @@ export const compare = {
     "compare.player.play_b": "Ouvir B",
     "compare.player.play_both": "Ouvir A e B",
     "compare.player.region": "Região {n}",
-    "compare.player.carried": "Correção pedida por {author}",
+    "compare.player.carried": "Correção solicitada por {author}",
     "compare.player.audio_loading": "Preparando o áudio…",
     "compare.player.audio_failed": "Não foi possível preparar o áudio: {message}",
 
@@ -44,19 +44,19 @@ export const compare = {
     "compare.regions.verdict": "Decisão sobre a região {n}",
     "compare.regions.save_failed": "Não foi possível salvar a decisão: {message}",
 
-    "compare.carried.title": "Correções pedidas em A",
-    "compare.carried.intro": "Cada correção pedida em A é levada ao ponto correspondente em B.",
-    "compare.carried.empty": "Nenhuma correção em aberto em A.",
+    "compare.carried.title": "Correções solicitadas em A",
+    "compare.carried.intro": "Cada correção solicitada em A é transferida ao ponto correspondente em B.",
+    "compare.carried.empty": "Nenhuma correção solicitada em aberto em A.",
     "compare.carried.original": "Em A: {range}",
     "compare.carried.lands": "Em B: {where}",
     "compare.carried.audio": "Comentário falado",
     "compare.carried.play_here": "Ouvir em B",
     "compare.carried.play_a_instead": "Ouvir em A",
-    "compare.carried.play_a_note": "Nada corresponde a este trecho em B; toca-se o trecho original em A.",
+    "compare.carried.play_a_note": "Nada corresponde a este trecho em B; o trecho original em A é tocado no lugar.",
     "compare.carried.resolve": "Marcar como resolvido",
     "compare.carried.resolve_failed": "Não foi possível marcar como resolvido: {message}",
     "compare.carried.warning_hint":
-      "Em pelo menos um ponto não foi detectada mudança. A equipe pode ter deixado passar a correção pedida.",
+      "Em pelo menos um ponto não foi detectada mudança. A equipe pode ter deixado passar a correção solicitada.",
 
     "compare.tech.alignment_score": "Pontuação do alinhamento",
     "compare.tech.ops": "Operações do alinhamento",
@@ -87,10 +87,10 @@ export const compare = {
     "compare.header.back": "Back to passages",
     "compare.header.report": "View report",
 
-    "compare.summary.regions_one": "region",
-    "compare.summary.regions_other": "regions",
+    "compare.summary.regions_one": "Region",
+    "compare.summary.regions_other": "Regions",
     "compare.summary.seconds": "{value} s",
-    "compare.summary.changed": "changed",
+    "compare.summary.changed": "Changed",
     "compare.summary.stability": "Stability",
     "compare.summary.no_regions": "No differences found between A and B.",
 
@@ -124,7 +124,7 @@ export const compare = {
     "compare.carried.play_here": "Play on B",
     "compare.carried.play_a_instead": "Play on A",
     "compare.carried.play_a_note": "Nothing on B matches this span; the original span on A is played instead.",
-    "compare.carried.resolve": "Mark resolved",
+    "compare.carried.resolve": "Mark as resolved",
     "compare.carried.resolve_failed": "The comment could not be marked resolved: {message}",
     "compare.carried.warning_hint":
       "At one or more spots no change was detected. The team may have missed the requested fix.",

@@ -116,16 +116,28 @@ export function extendSelection(
 // ---------------------------------------------------------------------------
 // comments
 
-/** One strip marker per comment; the active one is drawn stronger. */
-export function markersFromComments(comments: Comment[], activeId: string | null | undefined): StripMarker[] {
-  return comments.map((c) => ({
-    id: c.id,
-    range: spanToRange(c.span),
-    kind: c.kind,
-    status: c.status,
-    active: activeId != null && activeId === c.id,
-    carried: c.carried_from !== undefined,
-  }));
+/**
+ * One strip marker per comment; the active one is drawn stronger. `label`
+ * (when given) names the marker for assistive technology, e.g.
+ * "Correção solicitada, Ana, 0:03,4 – 0:04,1".
+ */
+export function markersFromComments(
+  comments: Comment[],
+  activeId: string | null | undefined,
+  label?: (c: Comment) => string,
+): StripMarker[] {
+  return comments.map((c) => {
+    const m: StripMarker = {
+      id: c.id,
+      range: spanToRange(c.span),
+      kind: c.kind,
+      status: c.status,
+      active: activeId != null && activeId === c.id,
+      carried: c.carried_from !== undefined,
+    };
+    if (label) m.ariaLabel = label(c);
+    return m;
+  });
 }
 
 /** The author to save on a comment: the typed name, or the translated fallback when empty. */
@@ -222,21 +234,26 @@ export interface TargetLike {
 }
 
 const TEXT_ENTRY_TAGS = new Set(["INPUT", "TEXTAREA", "SELECT"]);
+/** Media controls (a spoken comment's <audio controls>) own Space, the arrows and every other key. */
+const MEDIA_TAGS = new Set(["AUDIO", "VIDEO"]);
 /** Elements that activate on Space themselves (a click, a details toggle). */
 const SPACE_OWNER_TAGS = new Set(["BUTTON", "SUMMARY"]);
 
-/** True for an element that takes typed text; keys must reach it untouched. */
+/**
+ * True for an element that takes typed text, or a media player with its own
+ * keyboard handling; keys must reach it untouched.
+ */
 export function isTextEntryTarget(target: unknown): boolean {
   if (!target || typeof target !== "object") return false;
   const el = target as TargetLike;
   const tag = typeof el.tagName === "string" ? el.tagName.toUpperCase() : "";
-  return TEXT_ENTRY_TAGS.has(tag) || el.isContentEditable === true;
+  return TEXT_ENTRY_TAGS.has(tag) || MEDIA_TAGS.has(tag) || el.isContentEditable === true;
 }
 
 /**
  * keyboardAction, minus the cases where the focused element owns the key:
- * a text field owns everything; a button or a <summary> owns Space (it is a
- * click there).
+ * a text field or a media player owns everything; a button or a <summary>
+ * owns Space (it is a click there).
  */
 export function resolveKeyAction(e: KeyLike, target: unknown): ListenKeyAction | null {
   if (isTextEntryTarget(target)) return null;

@@ -45,4 +45,18 @@ describe("demo fixtures (ruth-1-1-5)", () => {
     const r3 = compareTapes(v1, v2, [untouched], "B", DEFAULT_SETTINGS);
     expect(r3.carried[0].outcome).toBe("no_change_detected");
   });
+
+  it("do not flag the clusters next to the inserted syllable as changed", () => {
+    const r = compareTapes(v1, v2, [], "B", DEFAULT_SETTINGS);
+    const inserted = r.regions[1];
+    expect(inserted.kind).toBe("inserted");
+    expect(inserted.a).toEqual({ start: 186, end: 186 });
+    // v1's cluster 172..186 (3.44–3.72 s) ends exactly at the insertion point; 186..196 starts there
+    const before = comment("A", 172, 186);
+    const after = comment("A", 186, 196);
+    const across = comment("A", 172, 196);
+    const rr = compareTapes(v1, v2, [before, after, across], "B", DEFAULT_SETTINGS);
+    expect(rr.carried.map((c) => c.outcome)).toEqual(["no_change_detected", "no_change_detected", "changed_here"]);
+    expect(rr.carried[2].region_indexes).toEqual([1]);
+  });
 });

@@ -166,9 +166,15 @@ export function computeSummary(
   };
 }
 
+/**
+ * Whether two frame ranges share material. A zero-length range (a pure
+ * insertion or deletion point) counts only when it lies strictly inside the
+ * other range: a point sitting exactly on a range's boundary touches it but
+ * does not change it, so a fix request on a cluster that merely borders an
+ * inserted or deleted cluster is not reported as "changed here".
+ */
 export function rangesOverlap(x: FrameRange, y: FrameRange): boolean {
-  // A zero-length range counts as overlapping when its point lies inside the other.
-  if (x.start === x.end) return x.start >= y.start && x.start <= y.end && y.start !== y.end;
-  if (y.start === y.end) return y.start >= x.start && y.start <= x.end;
+  if (x.start === x.end) return y.start < x.start && x.start < y.end;
+  if (y.start === y.end) return x.start < y.start && y.start < x.end;
   return x.start < y.end && y.start < x.end;
 }

@@ -1,22 +1,29 @@
 import { useCallback, useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { AudioEngine } from "../audio/engine";
 import { MockBadge } from "../components/MockBadge";
 import { DATA_CLEARED_EVENT } from "../components/SettingsPanel";
 import { TechnicalDetails } from "../components/TechnicalDetails";
-import { parseRecordingFiles, type ParsedRecording } from "../db/recording";
+import { parseRecordingFiles, type ImportDiagnostic, type ParsedRecording } from "../db/recording";
 import { repo } from "../db/repo";
 import { downloadBlob, safeFilename } from "../export/download";
 import { useI18n, type Lang, type T } from "../i18n";
 import type { Meta, Passage, Version } from "../model";
 import { parseTape, shortHash } from "../model";
 import { navigate } from "../router";
+import { diagnosticMessage, importErrorMessage } from "./importMessages";
 
 /**
  * Passage list (#/): create passages, load the demo passage, import
  * recordings as versions (folder or zip), pick A/B and open Compare, open
  * Listen, export/import/delete passages.
  *
- * Hashes and frame counts appear only inside <TechnicalDetails>.
+ * Hashes and frame counts appear only inside <TechnicalDetails>. Import
+ * problems arrive as diagnostics ({ code, vars }) and are translated here,
+ * so the consultant reads them in the interface language.
  */
+
+/** A line of the import report: a diagnostic to translate, or an already-final message. */
+type ImportLine = ImportDiagnostic | string;
 
 interface PassageItem {
   passage: Passage;
@@ -78,14 +85,14 @@ async function fetchDemoRecording(version: string, t: T): Promise<ParsedRecordin
   const parsed = parseTape(await tapeRes.text());
   if (!parsed.tape) throw new Error(t("passages.demo.bad_tape", { file: tapeFile, message: parsed.errors.join("; ") }));
 
-  const warnings: string[] = [];
+  const warnings: ImportDiagnostic[] = [];
   let meta: Meta = {};
   try {
     const metaRes = await fetch(demoUrl(metaFile));
     if (metaRes.ok) meta = pickMeta(JSON.parse(await metaRes.text()));
-    else warnings.push("meta.json missing");
+    else warnings.push({ code: "meta_missing" });
   } catch {
-    warnings.push("meta.json missing");
+    warnings.push({ code: "meta_missing" });
   }
 
   return { audio, tape: parsed.tape, meta, warnings };
@@ -212,7 +219,7 @@ export function PassageList(): JSX.Element {
         const passage = await repo.importPassage(file);
         return t("passages.passage.imported", { title: passage.title });
       } catch (err) {
-        throw new Error(t("passages.passage.import_failed", { message: errorMessage(err) }));
+        throw new Error(t("passages.passage.import_failed", { message: importErrorMessage(t, lang, err) }));
       }
     });
   };
@@ -229,10 +236,12 @@ export function PassageList(): JSX.Element {
     });
   };
 
-  const onDelete = (passage: Passage) => {
+  const onDelete = ({ passage, versions }: PassageItem) => {
     if (!window.confirm(t("passages.passage.delete_confirm", { title: passage.title }))) return;
     void run(null, async () => {
       await repo.deletePassage(passage.id);
+      const engine = AudioEngine.get();
+      for (const v of versions) engine.unload(v.id);
       return t("passages.passage.deleted", { title: passage.title });
     });
   };
@@ -308,7 +317,7 @@ export function PassageList(): JSX.Element {
               disabled={busy !== null}
               onChanged={reload}
               onExport={() => onExport(item.passage)}
-              onDelete={() => onDelete(item.passage)}
+              onDelete={() => onDelete(item)}
             />
           ))}
         </div>
@@ -343,8 +352,9 @@ function PassageCard(props: PassageCardProps): JSX.Element {
   }, [n]);
 
   const [importing, setImporting] = useState(false);
-  const [importErrors, setImportErrors] = useState<string[]>([]);
-  const [importWarnings, setImportWarnings] = useState<string[]>([]);
+  const [importErrors, setImportErrors] = useState<ImportLine[]>([]);
+  const [importWarnings, setImportWarnings] = useState<ImportLine[]>([]);
+  const lineText = (line: ImportLine): string => (typeof line === "string" ? line : diagnosticMessage(t, lang, line));
   const [importNotice, setImportNotice] = useState<string | null>(null);
   const folderInput = useRef<HTMLInputElement>(null);
   const zipInput = useRef<HTMLInputElement>(null);
@@ -381,7 +391,7 @@ function PassageCard(props: PassageCardProps): JSX.Element {
       setImportNotice(t("passages.version.imported", { label: version.label }));
       await props.onChanged();
     } catch (e) {
-      setImportErrors([errorMessage(e)]);
+      setImportErrors([t("common.error.with_detail", { message: importErrorMessage(t, lang, e) })]);
     } finally {
       setImporting(false);
     }
@@ -556,7 +566,7 @@ function PassageCard(props: PassageCardProps): JSX.Element {
           <p>{t("passages.version.import_errors")}</p>
           <ul>
             {importErrors.map((m, i) => (
-              <li key={i}>{m}</li>
+              <li key={i}>{lineText(m)}</li>
             ))}
           </ul>
         </div>
@@ -566,7 +576,7 @@ function PassageCard(props: PassageCardProps): JSX.Element {
           <p>{t("passages.version.import_warnings")}</p>
           <ul>
             {importWarnings.map((m, i) => (
-              <li key={i}>{m}</li>
+              <li key={i}>{lineText(m)}</li>
             ))}
           </ul>
         </div>

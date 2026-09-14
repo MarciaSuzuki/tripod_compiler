@@ -42,6 +42,10 @@ import "./Listen.css";
  * Sound comes only from AudioEngine (slices of the decoded audio.wav) and
  * from the <audio> element of a spoken comment. Beads are never numbered;
  * frame indexes and U/F values appear only inside <TechnicalDetails>.
+ *
+ * Comments carried forward from an earlier version (carried_from set) show
+ * with the "carried" label and dashed markers; resolving one also resolves
+ * its source on the earlier version, and it cannot be deleted here.
  */
 
 type Load = { status: "loading" } | { status: "missing" } | { status: "ready"; version: Version };
@@ -206,10 +210,18 @@ export function Listen(): JSX.Element {
   const totalFrames = version ? version.tape.u.length : 0;
   const frameRate = version ? version.tape.frame_rate : 0;
   const peaks = useMemo(() => (loaded && stripWidth > 0 ? loaded.peaks(stripWidth) : null), [loaded, stripWidth]);
-  const markers = useMemo(() => markersFromComments(comments, activeId), [comments, activeId]);
   const labelsPlayer = useMemo(() => playerLabels(t), [t]);
   const labelsEditor = useMemo(() => editorLabels(t), [t]);
   const labelsList = useMemo(() => listLabels(t), [t]);
+  const markers = useMemo(
+    () =>
+      markersFromComments(
+        comments,
+        activeId,
+        (c) => `${labelsList.kinds[c.kind]}, ${c.author}, ${formatRange(c.span.start_frame, c.span.end_frame, frameRate, lang)}`,
+      ),
+    [comments, activeId, labelsList, frameRate, lang],
+  );
 
   // --- playback -------------------------------------------------------------
 
@@ -309,6 +321,8 @@ export function Listen(): JSX.Element {
     if (!version) return;
     try {
       await repo.updateComment(c.id, { status: "resolved" });
+      // A carried copy is a projection of its source on the earlier version: resolve that too.
+      if (c.carried_from) await repo.updateComment(c.carried_from, { status: "resolved" }).catch(() => undefined);
       await reloadComments(version.id);
     } catch (e) {
       setError(t("common.error.with_detail", { message: errorMessage(e) }));
@@ -402,7 +416,9 @@ export function Listen(): JSX.Element {
   const meta = version.meta;
   const values = selectionValues(version.tape, selection);
   const canComment = loaded !== null && hasSelection(selection);
-  const rangeText = selection ? formatRange(selection.start, selection.end, frameRate) : formatRange(0, totalFrames, frameRate);
+  const rangeText = selection
+    ? formatRange(selection.start, selection.end, frameRate, lang)
+    : formatRange(0, totalFrames, frameRate, lang);
 
   return (
     <section className="screen listen">
@@ -451,6 +467,7 @@ export function Listen(): JSX.Element {
             onTapMarker={onTapMarker}
             onWidth={setStripWidth}
             ariaLabel={t("listen.player.strip_aria", { label: version.label })}
+            lang={lang}
           />
         </div>
 
@@ -534,7 +551,7 @@ export function Listen(): JSX.Element {
         {editorSpan && (
           <div className="stack stack--tight listen__editor">
             <p className="muted small">
-              {t("listen.comment.editing", { range: formatRange(editorSpan.start_frame, editorSpan.end_frame, frameRate) })}
+              {t("listen.comment.editing", { range: formatRange(editorSpan.start_frame, editorSpan.end_frame, frameRate, lang) })}
             </p>
             <CommentEditor
               key={`${editorSpan.start_frame}-${editorSpan.end_frame}`}
@@ -558,6 +575,7 @@ export function Listen(): JSX.Element {
             onResolve={(c) => void onResolve(c)}
             onDelete={(c) => void onDelete(c)}
             labels={labelsList}
+            lang={lang}
           />
         )}
       </div>
@@ -574,7 +592,7 @@ export function Listen(): JSX.Element {
           </dd>
           <dt>{t("listen.tech.duration")}</dt>
           <dd>
-            <code>{formatTime(frameRate > 0 ? totalFrames / frameRate : 0)}</code>
+            <code>{formatTime(frameRate > 0 ? totalFrames / frameRate : 0, lang)}</code>
           </dd>
           <dt>{t("listen.tech.audio_duration")}</dt>
           <dd>

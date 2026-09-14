@@ -49,7 +49,17 @@ export function CommentEditor(props: CommentEditorProps): JSX.Element {
   const [recordError, setRecordError] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const handleRef = useRef<RecordingHandle | null>(null);
+  /** A getUserMedia request is in flight (the permission prompt may be up). */
+  const pendingRef = useRef(false);
+  /** False once the editor unmounted: a stream that arrives afterwards is released at once. */
+  const aliveRef = useRef(true);
+  const textRef = useRef<HTMLTextAreaElement>(null);
   const supported = canRecord();
+
+  // Keyboard flow: "c" (or the button) opens the editor; typing must land here, not on the shortcuts.
+  useEffect(() => {
+    textRef.current?.focus();
+  }, []);
 
   // Object URL for the preview; revoked on change/unmount.
   useEffect(() => {
@@ -62,23 +72,35 @@ export function CommentEditor(props: CommentEditorProps): JSX.Element {
     return () => URL.revokeObjectURL(url);
   }, [blob]);
 
-  // Release the microphone if the editor unmounts mid-recording.
+  // Release the microphone if the editor unmounts mid-recording, or while the
+  // permission prompt is still up (the stream is dropped when it arrives).
   useEffect(() => {
+    aliveRef.current = true;
     return () => {
+      aliveRef.current = false;
+      pendingRef.current = false;
       handleRef.current?.cancel();
       handleRef.current = null;
     };
   }, []);
 
   const beginRecording = async () => {
-    if (isRecording || handleRef.current) return;
+    if (isRecording || handleRef.current || pendingRef.current) return;
+    pendingRef.current = true;
     setRecordError(false);
     try {
       const handle = await startRecording();
+      if (!aliveRef.current || !pendingRef.current) {
+        // Cancelled (or the editor closed) while the prompt was up: never keep the stream.
+        handle.cancel();
+        return;
+      }
       handleRef.current = handle;
       setIsRecording(true);
     } catch {
-      setRecordError(true);
+      if (aliveRef.current && pendingRef.current) setRecordError(true);
+    } finally {
+      pendingRef.current = false;
     }
   };
 
@@ -97,6 +119,7 @@ export function CommentEditor(props: CommentEditorProps): JSX.Element {
   };
 
   const discardRecording = () => {
+    pendingRef.current = false;
     handleRef.current?.cancel();
     handleRef.current = null;
     setIsRecording(false);
@@ -120,6 +143,7 @@ export function CommentEditor(props: CommentEditorProps): JSX.Element {
   };
 
   const cancel = () => {
+    pendingRef.current = false;
     handleRef.current?.cancel();
     handleRef.current = null;
     setIsRecording(false);
@@ -137,6 +161,7 @@ export function CommentEditor(props: CommentEditorProps): JSX.Element {
       <label className="comment-editor__field">
         <span className="comment-editor__label">{labels.text}</span>
         <textarea
+          ref={textRef}
           className="comment-editor__text"
           value={text}
           placeholder={labels.text}

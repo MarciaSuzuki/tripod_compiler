@@ -149,7 +149,7 @@ def main():
     base = os.path.join(out, "ruth-1-1-5")
     v1 = render(PASSAGE_V1, jitter=0.0, seed=1)
     v2 = render(PASSAGE_V2, jitter=0.01, pitch_scale_by_phrase={3: 1.25}, seed=2)
-    common = {"passage": "Ruth 1:1-5", "language": "por", "narrator": "Voz sintética (demo)"}
+    common = {"passage": "Rute 1:1-5", "language": "por", "narrator": "Voz sintética (demo)"}
     write_version(os.path.join(base, "v1"), v1, {**common, "recorded_at": "2026-09-01T10:00:00Z", "label": "v1 rascunho"})
     write_version(os.path.join(base, "v2"), v2, {**common, "recorded_at": "2026-09-08T10:00:00Z", "label": "v2 revisão (3 mudanças)"})
     with open(os.path.join(base, "README.md"), "w") as fh:

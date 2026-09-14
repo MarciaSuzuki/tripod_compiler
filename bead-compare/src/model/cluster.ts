@@ -22,10 +22,12 @@ export function runLengthEncode(u: number[]): Run[] {
  *
  * 1. Run-length encode `u`.
  * 2. Any run shorter than `min_cluster_frames` merges into its left neighbour.
- *    Exceptions, so that short speech is never hidden inside a pause:
+ *    Two exceptions keep short speech out of a pause where a speech neighbour
+ *    exists:
  *    - a short run with no left neighbour merges into the right neighbour;
  *    - a short speech run whose left neighbour is a pause merges right when the
- *      right neighbour is speech.
+ *      right neighbour is speech (a short burst between two pauses still
+ *      joins the left pause).
  *    A tape that is a single short run stays as one cluster.
  * 3. Clusters bounded by pause runs form phrases (pause clusters have phrase null).
  */

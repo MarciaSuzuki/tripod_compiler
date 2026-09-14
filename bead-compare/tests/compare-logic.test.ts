@@ -159,6 +159,12 @@ describe("describeSide", () => {
   it("describes a zero-length side as a single position", () => {
     expect(describeSide({ start: 70, end: 70 }, 50)).toEqual({ kind: "point", text: "0:01.4", atSeconds: 1.4 });
   });
+
+  it("writes the tenths with the language's decimal mark", () => {
+    expect(describeSide({ start: 30, end: 50 }, 50, "pt-BR").text).toBe("0:00,6 – 0:01,0");
+    expect(describeSide({ start: 70, end: 70 }, 50, "pt-BR").text).toBe("0:01,4");
+    expect(describeSide({ start: 30, end: 50 }, 50, "en").text).toBe("0:00.6 – 0:01.0");
+  });
 });
 
 describe("verdictOf", () => {

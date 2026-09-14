@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { alignClusters, groupClusters } from "../src/model";
+import { AlignmentTooLargeError, MAX_ALIGNMENT_CELLS, alignClusters, groupClusters } from "../src/model";
 import { settings, tape } from "./helpers";
 
 const g = settings.grouping;
@@ -83,5 +83,17 @@ describe("alignClusters", () => {
     const r = alignClusters(a, b, al);
     expect(r.ops.map((o) => o.kind)).toEqual(["delete_b", "delete_b", "match"]);
     expect(r.score).toBe(al.match_score - 2 * al.gap_penalty);
+  });
+});
+
+describe("alignment memory guard", () => {
+  it("refuses two sequences whose traceback table would exceed the budget, before allocating", () => {
+    const side = Math.ceil(Math.sqrt(MAX_ALIGNMENT_CELLS)) + 1;
+    const fake = (n: number) =>
+      Array.from({ length: n }, (_, i) => ({ index: i, start: i, end: i + 1, u: 1, is_pause: false, phrase: 0 }));
+    const a = fake(side);
+    expect(() => alignClusters(a, a, al)).toThrow(AlignmentTooLargeError);
+    // and stays quiet for anything realistic
+    expect(() => alignClusters(fake(3000), fake(3000), al)).not.toThrow();
   });
 });

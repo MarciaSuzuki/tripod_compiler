@@ -16,7 +16,7 @@ export const listen = {
     "listen.header.untitled": "Passagem sem título",
     "listen.header.version": "Versão",
     "listen.header.narrator": "Narrador(a)",
-    "listen.header.recorded_at": "Gravado em",
+    "listen.header.recorded_at": "Gravada em",
     "listen.header.passages": "Passagens",
 
     "listen.state.loading": "Carregando a gravação…",
@@ -48,7 +48,7 @@ export const listen = {
     "listen.comment.resolve": "Marcar como resolvido",
     "listen.comment.play": "Ouvir o trecho",
     "listen.comment.audio": "Comentário falado",
-    "listen.comment.carried": "Trazido da versão anterior",
+    "listen.comment.carried": "Transferido da versão anterior",
     "listen.comment.delete_confirm": "Excluir este comentário?",
     "listen.comment.editing": "Novo comentário em {range}",
 
@@ -114,7 +114,7 @@ export const listen = {
     "listen.comment.resolve": "Mark as resolved",
     "listen.comment.play": "Play the span",
     "listen.comment.audio": "Spoken comment",
-    "listen.comment.carried": "Carried from the previous version",
+    "listen.comment.carried": "Carried forward from the previous version",
     "listen.comment.delete_confirm": "Delete this comment?",
     "listen.comment.editing": "New comment at {range}",
 

@@ -11,7 +11,7 @@ import { tape } from "./helpers";
 // ---- tiny fixtures ---------------------------------------------------------
 
 /** A minimal 16-bit mono PCM WAV with the given samples. */
-function wavBytes(samples: number[], sampleRate = 8000): Uint8Array<ArrayBuffer> {
+function wavBytes(samples: number[], sampleRate = 16000): Uint8Array<ArrayBuffer> {
   const dataLen = samples.length * 2;
   const buf = new ArrayBuffer(44 + dataLen);
   const dv = new DataView(buf);
@@ -152,6 +152,86 @@ describe("comments", () => {
     await repo.deleteComment(c1.id);
     expect((await repo.listComments(v1.id)).map((c) => c.id)).toEqual([c2.id]);
     await repo.deleteComment("missing"); // no-op
+  });
+});
+
+// ---- carried copies ---------------------------------------------------------
+
+describe("syncCarriedComments", () => {
+  it("places one carried copy per source on B, keyed by carried_from, and never duplicates", async () => {
+    const p = await repo.createPassage("P");
+    const v1 = await repo.addVersion(p.id, REC_A());
+    const v2 = await repo.addVersion(p.id, REC_B());
+    const spoken = new Blob([new Uint8Array([1, 2])], { type: "audio/webm" });
+    const src1 = await repo.addComment(draft(v1.id, 0, 5));
+    const src2 = await repo.addComment(draft(v1.id, 8, 12, { text: undefined, audio_blob: spoken, author: "Ana" }));
+    const items = [
+      { source: src1, span: { version_id: v2.id, start_frame: 0, end_frame: 5 } },
+      { source: src2, span: { version_id: v2.id, start_frame: 9, end_frame: 14 } },
+    ];
+
+    const first = await repo.syncCarriedComments(v1.id, v2.id, items);
+    expect(first).toHaveLength(2);
+    const copyOf = (cs: Comment[], sourceId: string) => cs.find((c) => c.carried_from === sourceId)!;
+    const copy1 = copyOf(first, src1.id);
+    const copy2 = copyOf(first, src2.id);
+    expect(copy1).toMatchObject({ status: "carried", kind: "fix_requested", author: "Marcia", text: "fix this" });
+    expect(copy1.span).toEqual({ version_id: v2.id, start_frame: 0, end_frame: 5 });
+    expect(copy2).toMatchObject({ status: "carried", author: "Ana" });
+    expect(copy2.text).toBeUndefined();
+    expect(await bytesOf(copy2.audio_blob!)).toEqual([1, 2]);
+    expect([copy1.id, copy2.id]).not.toContain(src1.id);
+
+    // the copies live on B and A is untouched
+    expect((await repo.listComments(v2.id)).map((c) => c.carried_from).sort()).toEqual([src1.id, src2.id].sort());
+    expect((await repo.listComments(v1.id)).map((c) => c.status)).toEqual(["open", "open"]);
+
+    // a second sync (a re-opened Compare, StrictMode) keeps the same ids; a moved span is updated in place
+    const again = await repo.syncCarriedComments(v1.id, v2.id, [
+      items[0]!,
+      { source: src2, span: { version_id: v2.id, start_frame: 10, end_frame: 15 } },
+    ]);
+    expect(again.map((c) => c.id).sort()).toEqual([copy1.id, copy2.id].sort());
+    expect(copyOf(again, src2.id).span).toEqual({ version_id: v2.id, start_frame: 10, end_frame: 15 });
+    expect(copyOf(again, src1.id).span).toEqual(copy1.span);
+    expect(await repo.listComments(v2.id)).toHaveLength(2);
+  });
+
+  it("resolves the copy when its source was resolved, removes it when the source is gone, and leaves other pairs alone", async () => {
+    const p = await repo.createPassage("P");
+    const v1 = await repo.addVersion(p.id, REC_A());
+    const v2 = await repo.addVersion(p.id, REC_B());
+    const v3 = await repo.addVersion(p.id, REC_B());
+    const src1 = await repo.addComment(draft(v1.id, 0, 5));
+    const src2 = await repo.addComment(draft(v1.id, 6, 9));
+    const fromV2 = await repo.addComment(draft(v2.id, 1, 3));
+    const span = (start: number, end: number) => ({ version_id: v3.id, start_frame: start, end_frame: end });
+
+    await repo.syncCarriedComments(v1.id, v3.id, [
+      { source: src1, span: span(0, 5) },
+      { source: src2, span: span(6, 9) },
+    ]);
+    await repo.syncCarriedComments(v2.id, v3.id, [{ source: fromV2, span: span(1, 3) }]);
+    expect(await repo.listComments(v3.id)).toHaveLength(3);
+
+    await repo.updateComment(src1.id, { status: "resolved" });
+    await repo.deleteComment(src2.id); // cascades to the copy right away
+    const byFrom = (cs: Comment[]) => [...cs].sort((x, y) => (x.carried_from ?? "").localeCompare(y.carried_from ?? ""));
+    const expectedOrder = [src1.id, fromV2.id].sort();
+    expect(byFrom(await repo.listComments(v3.id)).map((c) => c.carried_from)).toEqual(expectedOrder);
+
+    const after = byFrom(await repo.syncCarriedComments(v1.id, v3.id, []));
+    expect(after.map((c) => [c.carried_from, c.status])).toEqual(
+      [
+        [src1.id, "resolved"],
+        [fromV2.id, "carried"], // carried from v2, not part of the v1→v3 pair
+      ].sort((x, y) => x[0]!.localeCompare(y[0]!)),
+    );
+    // a copy whose source vanished without the cascade (an imported zip, say) is dropped on sync
+    await repo.addComment({ ...draft(v3.id, 2, 4), status: "carried", carried_from: "ghost" });
+    const cleaned = byFrom(await repo.syncCarriedComments(v1.id, v3.id, []));
+    expect(cleaned.map((c) => c.carried_from)).toEqual(expectedOrder);
+    expect((await repo.listComments(v3.id)).some((c) => c.carried_from === "ghost")).toBe(false);
   });
 });
 

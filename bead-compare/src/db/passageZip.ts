@@ -12,12 +12,29 @@
  *
  * Ids inside the zip are the exporter's ids; repo.importPassage regenerates
  * them. This module only moves bytes.
+ *
+ * Import failures throw ImportError, whose `diagnostic` the screen
+ * translates; the Error message is an English detail for logs and tests.
  */
 
 import { strFromU8, strToU8, unzipSync, zipSync } from "fflate";
 import type { Comment, Meta, Passage, PairRecord, Version } from "../model";
-import { AUDIO_FILE, META_FILE, TAPE_FILE, basename, blobPart, isWavHeader, normalizeMeta, parseMetaText, tapeErrors } from "./recording";
-import type { ParsedRecording } from "./recording";
+import {
+  AUDIO_FILE,
+  ImportError,
+  META_FILE,
+  TAPE_FILE,
+  audioWarnings,
+  basename,
+  blobPart,
+  isWavHeader,
+  normalizeMeta,
+  parseMetaText,
+  parseWavHeader,
+  tapeErrors,
+  tapeWarnings,
+} from "./recording";
+import type { ImportDiagnostic, ParsedRecording } from "./recording";
 
 export const PASSAGE_ZIP_FORMAT = "bead-compare-passage";
 export const PASSAGE_ZIP_FORMAT_VERSION = 1;
@@ -55,7 +72,7 @@ export interface ImportedPassage {
   comments: Comment[];
   pairs: PairRecord[];
   /** Non-fatal problems (a comment audio file missing from the zip, ...). */
-  warnings: string[];
+  warnings: ImportDiagnostic[];
 }
 
 // ---- comment audio file naming --------------------------------------------
@@ -159,28 +176,35 @@ function isStringArray(x: unknown): x is string[] {
   return Array.isArray(x) && x.every((s) => typeof s === "string");
 }
 
+function manifestInvalid(detail: string): ImportError {
+  return new ImportError({ code: "manifest_invalid", vars: { detail } }, detail);
+}
+
 function readManifest(text: string): PassageManifest {
   let raw: unknown;
   try {
     raw = JSON.parse(text);
   } catch (e) {
-    throw new Error(`${MANIFEST_FILE} is not valid JSON: ${(e as Error).message}`);
+    throw manifestInvalid(`${MANIFEST_FILE} is not valid JSON: ${(e as Error).message}`);
   }
   if (!isRecord(raw) || raw.format !== PASSAGE_ZIP_FORMAT) {
-    throw new Error("This zip is not a Bead Compare passage export.");
+    throw new ImportError({ code: "zip_not_passage" }, "This zip is not a Bead Compare passage export.");
   }
   if (raw.format_version !== PASSAGE_ZIP_FORMAT_VERSION) {
-    throw new Error(`This passage export uses format version ${String(raw.format_version)}; this app reads version ${PASSAGE_ZIP_FORMAT_VERSION}.`);
+    throw new ImportError(
+      { code: "zip_format_version", vars: { version: String(raw.format_version), supported: PASSAGE_ZIP_FORMAT_VERSION } },
+      `This passage export uses format version ${String(raw.format_version)}; this app reads version ${PASSAGE_ZIP_FORMAT_VERSION}.`,
+    );
   }
   const p = raw.passage;
   if (!isRecord(p) || typeof p.id !== "string" || typeof p.title !== "string" || !isStringArray(p.version_ids)) {
-    throw new Error(`${MANIFEST_FILE} has no valid passage entry.`);
+    throw manifestInvalid(`${MANIFEST_FILE} has no valid passage entry.`);
   }
   if (!Array.isArray(raw.versions) || !Array.isArray(raw.comments) || !Array.isArray(raw.pairs)) {
-    throw new Error(`${MANIFEST_FILE} is missing its versions, comments or pairs lists.`);
+    throw manifestInvalid(`${MANIFEST_FILE} is missing its versions, comments or pairs lists.`);
   }
   const versions = raw.versions.map((v: unknown, i: number): ManifestVersion => {
-    if (!isRecord(v) || typeof v.id !== "string") throw new Error(`${MANIFEST_FILE}: version entry ${i + 1} has no id.`);
+    if (!isRecord(v) || typeof v.id !== "string") throw manifestInvalid(`${MANIFEST_FILE}: version entry ${i + 1} has no id.`);
     return {
       id: v.id,
       label: typeof v.label === "string" ? v.label : "",
@@ -192,13 +216,13 @@ function readManifest(text: string): PassageManifest {
   });
   const comments = raw.comments.map((c: unknown, i: number): ManifestComment => {
     if (!isRecord(c) || typeof c.id !== "string" || !isRecord(c.span) || typeof c.span.version_id !== "string") {
-      throw new Error(`${MANIFEST_FILE}: comment entry ${i + 1} is malformed.`);
+      throw manifestInvalid(`${MANIFEST_FILE}: comment entry ${i + 1} is malformed.`);
     }
     return c as unknown as ManifestComment;
   });
   const pairs = raw.pairs.map((pr: unknown, i: number): PairRecord => {
     if (!isRecord(pr) || typeof pr.a_version_id !== "string" || typeof pr.b_version_id !== "string" || !isRecord(pr.verdicts)) {
-      throw new Error(`${MANIFEST_FILE}: pair entry ${i + 1} is malformed.`);
+      throw manifestInvalid(`${MANIFEST_FILE}: pair entry ${i + 1} is malformed.`);
     }
     return pr as unknown as PairRecord;
   });
@@ -223,32 +247,42 @@ export async function importPassageZip(bytes: Blob | ArrayBuffer | Uint8Array): 
   try {
     entries = unzipSync(data);
   } catch (e) {
-    throw new Error(`The zip file could not be read: ${(e as Error).message}`);
+    const detail = (e as Error).message;
+    throw new ImportError({ code: "zip_unreadable", vars: { detail } }, `The zip file could not be read: ${detail}`);
   }
 
   // passage.json sits at the root, but tolerate a zip that wraps one folder.
   const manifestPath = Object.keys(entries)
     .filter((k) => !k.endsWith("/") && basename(k) === MANIFEST_FILE)
     .sort((a, b) => a.split("/").length - b.split("/").length)[0];
-  if (!manifestPath) throw new Error(`${MANIFEST_FILE} was not found; this zip is not a Bead Compare passage export.`);
+  if (!manifestPath) {
+    throw new ImportError({ code: "zip_not_passage" }, `${MANIFEST_FILE} was not found; this zip is not a Bead Compare passage export.`);
+  }
   const prefix = manifestPath.slice(0, manifestPath.length - MANIFEST_FILE.length);
   const file = (rel: string): Uint8Array | undefined => entries[prefix + rel];
 
   const manifest = readManifest(strFromU8(entries[manifestPath]!));
-  const warnings: string[] = [];
+  const warnings: ImportDiagnostic[] = [];
 
   const versions: ImportedVersion[] = [];
   for (const mv of manifest.versions) {
     const dir = `versions/${mv.id}`;
-    const audioBytes = file(`${dir}/${AUDIO_FILE}`);
-    if (!audioBytes) throw new Error(`${dir}/${AUDIO_FILE} is missing from the zip.`);
-    if (!isWavHeader(audioBytes)) throw new Error(`${dir}/${AUDIO_FILE} is not a WAV file (it does not start with a RIFF/WAVE header).`);
-    const tapeBytes = file(`${dir}/${TAPE_FILE}`);
-    if (!tapeBytes) throw new Error(`${dir}/${TAPE_FILE} is missing from the zip.`);
-    const t = tapeErrors(strFromU8(tapeBytes));
-    if (!t.tape) throw new Error(`${dir}/${t.errors.join("; ")}`);
+    const audioFile = `${dir}/${AUDIO_FILE}`;
+    const tapeFile = `${dir}/${TAPE_FILE}`;
+    const audioBytes = file(audioFile);
+    if (!audioBytes) throw new ImportError({ code: "zip_file_missing", vars: { file: audioFile } }, `${audioFile} is missing from the zip.`);
+    if (!isWavHeader(audioBytes)) {
+      throw new ImportError({ code: "not_wav", vars: { file: audioFile } }, `${audioFile} is not a WAV file (it does not start with a RIFF/WAVE header).`);
+    }
+    const tapeBytes = file(tapeFile);
+    if (!tapeBytes) throw new ImportError({ code: "zip_file_missing", vars: { file: tapeFile } }, `${tapeFile} is missing from the zip.`);
+    const t = tapeErrors(strFromU8(tapeBytes), tapeFile);
+    if (!t.tape) {
+      const detail = t.errors.map((e) => String(e.vars?.detail ?? e.code)).join("; ");
+      throw new ImportError({ code: "tape_invalid", vars: { file: tapeFile, detail } }, `${tapeFile}: ${detail}`);
+    }
 
-    const versionWarnings: string[] = [];
+    const versionWarnings: ImportDiagnostic[] = [...tapeWarnings(t.tape), ...audioWarnings(parseWavHeader(audioBytes), t.tape)];
     let meta: Meta = mv.meta;
     const metaBytes = file(`${dir}/${META_FILE}`);
     if (metaBytes) {
@@ -256,7 +290,7 @@ export async function importPassageZip(bytes: Blob | ArrayBuffer | Uint8Array): 
       if (m.warning) versionWarnings.push(m.warning);
       else meta = m.meta;
     } else {
-      versionWarnings.push(`${META_FILE} missing`);
+      versionWarnings.push({ code: "meta_missing" });
     }
 
     versions.push({
@@ -277,7 +311,7 @@ export async function importPassageZip(bytes: Blob | ArrayBuffer | Uint8Array): 
         const ext = audio_file.split(".").pop() ?? "bin";
         comment.audio_blob = new Blob([blobPart(audioBytes)], { type: mimeForExt(ext) });
       } else {
-        warnings.push(`Spoken comment audio ${audio_file} is missing from the zip; the comment was kept without audio.`);
+        warnings.push({ code: "comment_audio_missing", vars: { file: audio_file } });
       }
     }
     return comment;

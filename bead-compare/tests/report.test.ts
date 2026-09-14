@@ -208,6 +208,8 @@ describe("reportToMarkdown", () => {
   it.each(LANGS as readonly Lang[])("%s: renders every part of the report", (lang) => {
     const md = reportToMarkdown(r, lang);
     const lines = md.split("\n");
+    // positions take the language's decimal mark, like the seconds and the percent
+    const tm = (s: string) => (lang === "pt-BR" ? s.replace(/\.(\d)/g, ",$1") : s);
 
     expect(lines[0]).toBe("# Bead Compare — Ruth 1:1-5");
     expect(md).toContain("v1");
@@ -230,11 +232,11 @@ describe("reportToMarkdown", () => {
     expect(regionRows).toHaveLength(2);
     expect(regionRows[0]).toContain(translate(lang, "common.region.substituted"));
     expect(regionRows[0]).toContain(translate(lang, "common.verdict.requested_fix_confirmed"));
-    expect(regionRows[0]).toContain("0:00.6 – 0:01.0");
+    expect(regionRows[0]).toContain(tm("0:00.6 – 0:01.0"));
     expect(regionRows[1]).toContain(translate(lang, "common.region.inserted"));
     expect(regionRows[1]).toContain(translate(lang, "common.verdict.undecided"));
-    expect(regionRows[1]).toContain(translate(lang, "report.regions.point", { time: "0:01.4" }));
-    expect(regionRows[1]).toContain("0:01.4 – 0:01.8");
+    expect(regionRows[1]).toContain(translate(lang, "report.regions.point", { time: tm("0:01.4") }));
+    expect(regionRows[1]).toContain(tm("0:01.4 – 0:01.8"));
 
     // one row per carried comment, with the outcome and the audio flag
     const carriedRows = lines.filter((l) => l.startsWith("| test |"));
@@ -278,9 +280,12 @@ describe("reportToMarkdown", () => {
     expect(pt).toContain("## Regiões");
     expect(pt).toContain("55,6%");
     expect(pt).toContain("0,8 s");
+    expect(pt).toContain("0:00,6 – 0:01,0");
+    expect(pt).not.toContain("0:00.6");
     expect(en).toContain("## Regions");
     expect(en).toContain("55.6%");
     expect(en).toContain("0.8 s");
+    expect(en).toContain("0:00.6 – 0:01.0");
   });
 
   it("says so when there are no regions and no carried comments", () => {
@@ -334,10 +339,11 @@ describe("formatting helpers", () => {
     expect(formatPercent(250, "en")).toBe("100%");
   });
 
-  it("describes spans and points as m:ss.s", () => {
+  it("describes spans and points as m:ss.s with the language's decimal mark", () => {
     expect(describeSpan(0.6, 1, "en")).toBe("0:00.6 – 0:01.0");
+    expect(describeSpan(0.6, 1, "pt-BR")).toBe("0:00,6 – 0:01,0");
     expect(describeSpan(1.4, 1.4, "en")).toBe("at 0:01.4");
-    expect(describeSpan(1.4, 1.4, "pt-BR")).toBe("em 0:01.4");
+    expect(describeSpan(1.4, 1.4, "pt-BR")).toBe("em 0:01,4");
     expect(describeSpan(2, 1, "en")).toBe("at 0:02.0");
   });
 
