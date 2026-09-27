@@ -28,8 +28,10 @@
   Coordinates carry, NEARER_REDEEMER_UNNAMED, now registered on B19), plus the P06 R2 note, the P10 register line and the P03 R4/R11 forecast. Registry:
   B32 added (`ruth.aliases.json`), FIG_0139/FIG_0140 slugs renamed (`figures.json` 0.7.1), enum v0.24
   (+NOT_GONE_AFTER). Owed: the vault half (prepared, not applied), the Internalize pin bump (a
-  separate app-side step), and Marcia's calls listed in the SC-0086 row (among them the app's
-  coverage label for B19, still the registry's book-level name). Next in the queue: P08, then P10–P14.
+  separate app-side step), and Marcia's calls listed in the SC-0086 row. Her word of 2026-09-27
+  closed two of them in the same change: B19's book-level name is now "The Nearer Redeemer" (the
+  app's coverage label for B19 follows it; vault note renamed) and the P09 title reads "…the word
+  redeemer spoken…". Next in the queue: P08, then P10–P14.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
 

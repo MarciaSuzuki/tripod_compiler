@@ -141,6 +141,46 @@ describe("SC-0086 — P09 rulings guard (what the app reads)", () => {
     }
   });
 
+  // Marcia, 2026-09-27 («sim, siga as recomendações»), OWED items 1 and 3 of SC-0086:
+  // (A) B19's book-level name — the app labels B19's coverage element with the registry `english`,
+  //     and P11's 4:1 designation (peloni almoni) reached the voice's ledger on P09/P10 turns;
+  // (B) the P09 title — "the redeemer named" could be heard as naming the nearer redeemer.
+  it("2026-09-27 (A): B19's book-level name is The Nearer Redeemer, and no So-and-so reaches P09/P10 canon", () => {
+    const aliases = JSON.parse(read("_spec/registry/ruth.aliases.json"));
+    expect(aliases.entities.B19.english).toBe("The Nearer Redeemer");
+    expect(aliases.entities.B19.english.toLowerCase()).not.toContain("so-and-so");
+    for (const p of [
+      "fixtures/meaning-map/P09-Ruth-3-6-13.md",
+      "fixtures/meaning-coordinates/P09-Ruth-3-6-13-MEANING-COORDINATES.md",
+      "fixtures/compilation-log/P09-Ruth-3-6-13-COMPILATION-LOG.md",
+      "fixtures/meaning-map/P10-Ruth-3-14-18.md",
+      "fixtures/meaning-coordinates/P10-Ruth-3-14-18-MEANING-COORDINATES.md",
+      "fixtures/compilation-log/P10-Ruth-3-14-18-COMPILATION-LOG.md",
+    ]) {
+      expect(read(p).toLowerCase(), p).not.toContain("so-and-so");
+    }
+    // The canon slug follows the name (id-check: slug = slugify(english)); the old slug is gone.
+    const p11 = read("fixtures/meaning-map/P11-Ruth-4-1-8.md");
+    expect(p11).toContain("[[B19-The-Nearer-Redeemer]]");
+    expect(p11).not.toContain("B19-The-Man-Mr");
+    // P11's own words keep the passage's referential form (peloni almoni, "friend So-and-so").
+    expect(p11).toContain("friend So-and-so");
+    expect(aliases.entities.B19.referential_forms).toContain("PLONI_ALMONI_VOCATIVE_OF_ANONYMITY");
+  });
+
+  it("2026-09-27 (B): the P09 title is \"…the word redeemer spoken…\" in the map, the Coordinates and the log", () => {
+    const TITLE = "The threshing-floor night: the wing asked for, the word redeemer spoken, the oath";
+    const rawMap = read("fixtures/meaning-map/P09-Ruth-3-6-13.md");
+    expect(rawMap).toContain(`pericope-title: "${TITLE}"`);
+    expect(rawMap).toContain(`- **Pericope title:** ${TITLE}\n`);
+    expect(mcText).toContain(`pericope-title: "${TITLE}"`);
+    expect(mc.header.pericope_title).toBe(TITLE);
+    expect(cl.pericope_title).toBe(TITLE);
+    for (const t of [rawMap, mcText, read("fixtures/compilation-log/P09-Ruth-3-6-13-COMPILATION-LOG.md")]) {
+      expect(t).not.toContain("the redeemer named");
+    }
+  });
+
   it("ruling 2: P19 keeps both conditions of the morning", () => {
     const p19 = mc.level_3_propositions.find((p: { prop_id: string }) => p.prop_id === "P19");
     const conds = p19.event_specific_slots.protocol_components.map((c: { condition: string }) => c.condition);

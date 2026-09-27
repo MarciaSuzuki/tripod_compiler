@@ -1,7 +1,7 @@
 ---
 type: "sta-meaning-coordinates"
 pericope: "P09"
-pericope-title: "The threshing-floor night: the wing asked for, the redeemer named, the oath"
+pericope-title: "The threshing-floor night: the wing asked for, the word redeemer spoken, the oath"
 source-meaning-map: [[P09-Ruth-3-6-13]]
 status: "valid"
 pilot: "pilot-2"
@@ -18,7 +18,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
   "tagset_version": "TRIPOD_STA_v2_0",
   "header": {
     "bcv": "Ruth 3:6-13",
-    "pericope_title": "The threshing-floor night: the wing asked for, the redeemer named, the oath",
+    "pericope_title": "The threshing-floor night: the wing asked for, the word redeemer spoken, the oath",
     "book_context_ref": "ruth_pilot_BCD_v0_3",
     "source_meaning_map_ref": "P09-Ruth-3-6-13",
     "source_language": "Biblical Hebrew"

@@ -13,7 +13,7 @@ pilot: "pilot-2"
   "tagset_version": "TRIPOD_STA_v2_0",
   "bcv": "Ruth 3:6-13",
   "pericope_id": "P09",
-  "pericope_title": "The threshing-floor night: the wing asked for, the redeemer named, the oath",
+  "pericope_title": "The threshing-floor night: the wing asked for, the word redeemer spoken, the oath",
   "compiled_at": "2026-05-29",
   "review_status": {
     "meaning_map_status": "PARSED_BY_COMPILER",
