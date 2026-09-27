@@ -143,7 +143,7 @@ describe("SC-0086 — P09 rulings guard (what the app reads)", () => {
 
   // Marcia, 2026-09-27 («sim, siga as recomendações»), OWED items 1 and 3 of SC-0086:
   // (A) B19's book-level name — the app labels B19's coverage element with the registry `english`,
-  //     and P11's 4:1 designation (peloni almoni) reached the voice's ledger on P09/P10 turns;
+  //     and P11's 4:1 designation (peloni almoni) reached the voice's ledger on P09 turns (and P11, where B19 is labelled);
   // (B) the P09 title — "the redeemer named" could be heard as naming the nearer redeemer.
   it("2026-09-27 (A): B19's book-level name is The Nearer Redeemer, and no So-and-so reaches P09/P10 canon", () => {
     const aliases = JSON.parse(read("_spec/registry/ruth.aliases.json"));

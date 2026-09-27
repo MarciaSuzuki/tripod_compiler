@@ -60,6 +60,13 @@ editing the test's list in a governed change.
   turns; the vault note is renamed `B19-The-Nearer-Redeemer.md` and every link to it rewritten), and
   (B) the P09 title reads "The threshing-floor night: the wing asked for, the word redeemer spoken,
   the oath". The vault half carries both.
+  App follow-up (Internalize, not canon; one app PR on Marcia's word, before or with the app's
+  canon sync to this pin): the coverage matcher's concrete heuristic now takes generic keys from
+  two SC-0086 names — "The Nearer Redeemer" gives B19 'resgatador' (so a line about Boaz, 3:9,
+  engages B19 in P09 S3 and P11 S1), and "Young Men Ruth Did Not Go After" gives B32 'rute' (any
+  line naming Rute engages B32 in P09 S3). Fix in the app: whole-phrase entries used alone
+  ("the nearer redeemer" → "resgatador mais próximo" etc.; B32 → rapazes / moços / jovens),
+  role nouns out of the proper-noun loop, and coverage tests for both.
 - P10–P14: skeletons, all three signals agree (incomplete) — closed, queued in order. Carried from
   the SC-0086 review (seen, not changed; each only on Marcia's word in its own slice):
   - P10: Scene 1 register stays INTIMATE while P09 Scenes 2–3 (the same two, the same night) are now
