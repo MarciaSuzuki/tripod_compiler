@@ -1,7 +1,7 @@
 ---
 type: "sta-meaning-coordinates"
 pericope: "P09"
-pericope-title: "The threshing-floor night: the wing asked for, the redeemer named, the oath"
+pericope-title: "The threshing-floor night: the wing asked for, the word redeemer spoken, the oath"
 source-meaning-map: [[P09-Ruth-3-6-13]]
 status: "valid"
 pilot: "pilot-2"
@@ -18,7 +18,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
   "tagset_version": "TRIPOD_STA_v2_0",
   "header": {
     "bcv": "Ruth 3:6-13",
-    "pericope_title": "The threshing-floor night: the wing asked for, the redeemer named, the oath",
+    "pericope_title": "The threshing-floor night: the wing asked for, the word redeemer spoken, the oath",
     "book_context_ref": "ruth_pilot_BCD_v0_3",
     "source_meaning_map_ref": "P09-Ruth-3-6-13",
     "source_language": "Biblical Hebrew"
@@ -28,23 +28,18 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
     "genre": "HISTORICAL_NARRATIVE",
     "register": "INFORMAL_CASUAL",
     "register_overrides": {
-      "_note": "Scenes 2-3 shift to INTIMATE (the whispered exchange in the dark at midnight); one moment at 3:10 lifts to CEREMONIAL (Boaz's blessing form). The v.13 chai-YHWH oath stays INTIMATE per the P03 precedent. Scene 1 is the narrator's plain INFORMAL_CASUAL telling.",
+      "_note": "Scenes 2-3 shift to CONSULTATIVE (a respectful exchange between the two, alone, at night). The blessing (3:10, FIG_0137) and the oath (3:13, FIG_0135) keep their exact formula wording and carry no register override of their own. Scene 1 is the narrator's plain INFORMAL_CASUAL telling.",
       "scene_level": [
         {
           "scene_id": "S2",
-          "override_value": "INTIMATE"
+          "override_value": "CONSULTATIVE"
         },
         {
           "scene_id": "S3",
-          "override_value": "INTIMATE"
+          "override_value": "CONSULTATIVE"
         }
       ],
-      "moment_level": [
-        {
-          "verse": "3:10a",
-          "override_value": "CEREMONIAL"
-        }
-      ]
+      "moment_level": null
     }
   },
   "level_1": {
@@ -68,7 +63,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
     "tone_elements": [
       "QUIET",
       "ECONOMICAL",
-      "INTIMATE",
       "ANTICIPATORY",
       "STILLED"
     ],
@@ -92,7 +86,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "scene_id": "S1",
       "verse_range": "3:6-7",
       "scene_kind": "NIGHT_APPROACH_SCENE",
-      "scene_communicative_purpose": "Executes the plan to the letter and sets the night's stage: the man asleep by his grain, the woman at his feet, and nothing yet said.",
+      "scene_communicative_purpose": "Executes the plan to the letter and sets the night's stage: the man lying down at the end of the grain heap, the woman at his feet, and nothing yet said.",
       "beings_in_scene": {
         "entries": [
           {
@@ -195,7 +189,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "Ruth does not wait for the man to tell her what to do, though that is what the plan promised; the narrator does not mark the breach — her speech simply takes the plan's place. What the uncovering and the lying-down mean beyond themselves is never said; the text keeps the night's modesty. And no word of love or desire is spoken by either of them."
+      "significant_absence": "Ruth does not wait for the man to tell her what to do, though Naomi's plan said he would (3:4); in the night it is Ruth who makes the request, and the narrator does not comment on the change. What the uncovering and the lying down mean is never said. No word of love or desire is spoken by either of them."
     },
     {
       "scene_id": "S3",
@@ -232,8 +226,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "presence": "REFERENCED"
           },
           {
-            "being_id": "B?",
-            "role_in_scene": "POTENTIAL_SUITORS",
+            "being_id": "B32",
+            "role_in_scene": "NOT_GONE_AFTER",
             "presence": "REFERENCED"
           },
           {
@@ -247,9 +241,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "entries": [
           {
             "place_id": "PL6"
-          },
-          {
-            "place_id": "PL7"
           }
         ]
       },
@@ -265,9 +256,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "object_id": "CB_0032"
           },
           {
-            "object_id": "CB_0006"
-          },
-          {
             "object_id": "CB_0001"
           }
         ]
@@ -279,7 +267,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "Boaz does not say yes to the marriage itself — his pledge is to the redeeming, with the queue honored first; what he wants is never said apart from what is right. The nearer redeemer is not named. And nothing improper happens in the dark: the narrator marks no touch beyond the uncovering, and the night passes in words."
+      "significant_absence": "Boaz answers yes to the request (\"all that you say I will do\") but binds the promise to the order of redeemers: if the nearer one redeems, good; if he is not willing, Boaz himself will redeem, under oath by YHWH. The text does not say which of the two will act, nor what Boaz feels or wants. The nearer redeemer is not named. The narrator reports no touch beyond the uncovering and no word of love or desire; the night passes in words. The text gives no verdict on the night — neither that something happened nor that nothing did."
     }
   ],
   "level_3_propositions": [
@@ -443,6 +431,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "paired_with": "P7",
         "forward_link_to": "P9"
       },
+      "cross_ref": "FIG_0132 closes here with amah; opened at P06 (2:13) with shifchah; the change of word is kept, its meaning is not stated",
       "cb_flags": [],
       "figure_flags": [
         "FIG_0132"
@@ -463,6 +452,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "inter_proposition_links": {
         "forward_link_to": "P10"
       },
+      "cross_ref": "FIG_0131 closes the FIG_0011 wing pair here; opened at P06 (2:12); Ruth uses the same word (kanaph) Boaz used at 2:12 for the wings of YHWH",
       "cb_flags": [
         "CB_0037"
       ],
@@ -529,6 +519,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "inter_proposition_links": {
         "forward_link_to": "P13"
       },
+      "cross_ref": "FIG_0111 closes here; opened at P07 (2:20). CB_0011 third station (1:8, 2:20, 3:10); whose hesed was not forsaken at 2:20 — YHWH's or the man's — stays open",
       "cb_flags": [
         "CB_0011"
       ],
@@ -545,7 +536,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "declarer": "B13",
         "about_party": "B9",
-        "young_men": "B?",
+        "young_men": "B32",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {
@@ -577,6 +568,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P9",
         "forward_link_to": "P15"
       },
+      "cross_ref": "FIG_0123 closes here in Boaz's mouth (FIG_0136); opened at P08 (3:5) in Ruth's mouth",
       "cb_flags": [],
       "figure_flags": [
         "FIG_0123",
@@ -591,8 +583,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "declarer": "B13",
         "knowing_public": "B21",
-        "public_venue": "PL7",
-        "gate_concept": "CB_0006",
         "worth_concept": "CB_0032",
         "about_party": "B9",
         "referential_form_at_verse": "ESHET_CHAYIL_WOMAN_OF_WORTH",
@@ -602,9 +592,9 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P14",
         "forward_link_to": "P16"
       },
+      "cross_ref": "FIG_0134 closes here with eshet chayil; opened at P05 (2:1) with Boaz as ish gibbor chayil (FIG_0090, CB_0032)",
       "cb_flags": [
-        "CB_0032",
-        "CB_0006"
+        "CB_0032"
       ],
       "figure_flags": [
         "FIG_0134"
@@ -644,6 +634,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P16",
         "forward_link_to": "P18"
       },
+      "cross_ref": "FIG_0112 returns here: a redeemer nearer than I, who comes first because he is nearer; opened at P07 (2:20)",
       "cb_flags": [
         "CB_0001"
       ],
@@ -667,6 +658,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P17",
         "forward_link_to": "P19"
       },
+      "cross_ref": "FIG_0140 closes the FIG_0122 pair here; opened at P08 (3:4): Naomi's plan said he would tell Ruth what to do; in the night Ruth makes the request (3:9), and Boaz sends the next step to the morning",
       "cb_flags": [],
       "figure_flags": [
         "FIG_0140"
@@ -681,10 +673,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "speaker": "B13",
         "protocol_components": [
           {
+            "condition": "IF_HE_REDEEMS",
             "redeemer": "B19",
+            "response": "GOOD",
             "speech_act": "STATES_AS_TRUE"
           },
           {
+            "condition": "IF_NOT_WILLING",
             "self_redeemer": "B13",
             "speech_act": "VOWS"
           }
@@ -695,6 +690,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "caused_by": "P17",
         "forward_link_to": "P20"
       },
+      "cross_ref": "FIG_0140 continues from P18: the next step sent to the morning",
       "cb_flags": [
         "CB_0001"
       ],

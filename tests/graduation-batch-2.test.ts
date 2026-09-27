@@ -59,7 +59,9 @@ const ANCHORS: Anchor[] = [
     genreGroup: "NARRATIVE", genre: "HISTORICAL_NARRATIVE", register: "INFORMAL_CASUAL",
     // 52→43 (SC-0064 §C, Marcia 2026-06-12): three place/time entities coded in the P09 map
     // (PL_END_OF_GRAIN_HEAP, TM_MIDDLE_OF_THE_NIGHT, TM_NIGHT_UNTIL_MORNING) resolve their __TODO__ placeholders
-    blocks: 43, explicit: 39, implied: 23,
+    // 43→42 (SC-0086, Marcia 2026-09-26, ruling 6): the young men of 3:10 are coded [[B32-…]] in the map, so
+    // the skeleton's uncoded being_id placeholder at S3 entries/5 resolves (PL7/CB_0006 removal adds no block).
+    blocks: 42, explicit: 39, implied: 23,
     registered: { cb: ["CB_0001", "CB_0011", "CB_0037"], fig: ["FIG_0131", "FIG_0135"] },
   },
   {

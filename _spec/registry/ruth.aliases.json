@@ -3,12 +3,12 @@
   "counts": {
     "by_kind": {
       "INSTITUTION": 9,
-      "PERSON": 31,
+      "PERSON": 32,
       "PLACE": 19,
       "THING": 24,
       "TIME": 13
     },
-    "entities": 96
+    "entities": 97
   },
   "entities": {
     "B1": {
@@ -161,7 +161,7 @@
         "P11",
         "P12"
       ],
-      "english": "The Man Mr. So-and-so",
+      "english": "The Nearer Redeemer",
       "gender": "m",
       "hebrew": "הָאִישׁ פְּלֹנִי אַלְמֹנִי",
       "hebrew_cons": "האישפלניאלמני",
@@ -170,7 +170,8 @@
         "NEARER_REDEEMER_REFERENCED",
         "HA_ISH_THE_MAN",
         "PLONI_ALMONI_VOCATIVE_OF_ANONYMITY",
-        "HA_GOEL_THE_REDEEMER"
+        "HA_GOEL_THE_REDEEMER",
+        "NEARER_REDEEMER_UNNAMED"
       ]
     },
     "B2": {
@@ -364,6 +365,17 @@
         "People-of-YHWH",
         "People of YHWH"
       ]
+    },
+    "B32": {
+      "appears_in": [
+        "P09"
+      ],
+      "english": "Young Men Ruth Did Not Go After",
+      "gender": "m",
+      "hebrew": "בַּחוּרִים",
+      "hebrew_cons": "בחורים",
+      "kind": "PERSON",
+      "referential_forms": []
     },
     "B4": {
       "appears_in": [

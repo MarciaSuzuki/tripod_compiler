@@ -831,7 +831,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
         "opens_at": "P03 P4 (1:17b)",
         "closes_at": "P03 P4 — single-occurrence at P03; cross-canonical recurrences outside Ruth",
         "verification_status": "VERIFIED",
-        "note": "P03 self-curse oath formula; cross-pericope pair with 3:13 (Boaz's oath) DEFERRED. No P05 activity."
+        "note": "P03 self-curse oath formula; single occurrence in Ruth. No P05 activity."
       }
     ]
   },

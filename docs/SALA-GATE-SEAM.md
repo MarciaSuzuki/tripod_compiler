@@ -40,11 +40,45 @@ known list — any NEW divergence fails, and resolving Esther (either completing
 or re-flagging its maps) is **future-card work**; burning entries off the frozen list requires
 editing the test's list in a governed change.
 
-## Queue state (the SC-0085 program)
+## Queue state (the SC-0085 program; updated SC-0086, 2026-09-26 and 2026-09-27)
 
 - P01–P06: real audits, all three signals agree (complete) — open to Sala.
 - **P07: completed under the SC-0085 P07 slice** (14 entries ruled by Marcia 2026-08-31).
-- P08–P14: skeletons, all three signals agree (incomplete) — closed, queued in order.
+- P08: skeleton, all three signals agree (incomplete) — closed; next in the queue (P09 was ruled
+  ahead of it, sheet decision C). Carried to the P08 slice from the SC-0086 review (seen, not changed;
+  each only on Marcia's word): map §5B FIG_0122 line "the reverse lands at P09, where she tells him"
+  (the reversal/handoff framing ruling 7 removed from P09; a possible rendering: "closes at P09, where in
+  the night the request comes from Ruth (3:9)"), the FIG_0122 slug "He-Will-Tell-You-Handoff" the voice
+  reads in P08, and §2.1 "…but with a handoff: he will tell you what to do".
+- **P09: completed under SC-0086** (18 entries, 10 do_not_decide, ruled by Marcia 2026-09-26 point
+  by point, together with the P09 map + Meaning Coordinates corrections). The three signals flipped
+  together in the same change; the vault half (map `sta-status` + `stas/` copies) is prepared, not yet
+  applied — until it lands, the vault still reads P09 closed (skeleton + `pending`), the safe direction.
+  Marcia's word of 2026-09-27 («sim, siga as recomendações») closed two SC-0086 OWED items in the same
+  change: (A) B19's book-level name is now "The Nearer Redeemer" (registry `english`, which the app
+  uses as B19's coverage label — P11's 4:1 designation no longer reaches the voice's ledger on P09
+  turns; the vault note is renamed `B19-The-Nearer-Redeemer.md` and every link to it rewritten), and
+  (B) the P09 title reads "The threshing-floor night: the wing asked for, the word redeemer spoken,
+  the oath". The vault half carries both.
+  App follow-up (Internalize, not canon; one app PR on Marcia's word, before or with the app's
+  canon sync to this pin): the coverage matcher's concrete heuristic now takes generic keys from
+  two SC-0086 names — "The Nearer Redeemer" gives B19 'resgatador' (so a line about Boaz, 3:9,
+  engages B19 in P09 S3 and P11 S1), and "Young Men Ruth Did Not Go After" gives B32 'rute' (any
+  line naming Rute engages B32 in P09 S3). Fix in the app: whole-phrase entries used alone
+  ("the nearer redeemer" → "resgatador mais próximo" etc.; B32 → rapazes / moços / jovens),
+  role nouns out of the proper-noun loop, and coverage tests for both.
+- P10–P14: skeletons, all three signals agree (incomplete) — closed, queued in order. Carried from
+  the SC-0086 review (seen, not changed; each only on Marcia's word in its own slice):
+  - P10: Scene 1 register stays INTIMATE while P09 Scenes 2–3 (the same two, the same night) are now
+    CONSULTATIVE — keep, or align? The MC `register_overrides._note` "the two women alone again"
+    describes only Scene 2. §3C CB_0042 "the place where the sleeper's feet lie" carries the "he
+    sleeps" reading ruling 1 removed from P09 (a possible rendering: "the place of his feet
+    (margelot)").
+  - P11: map "turns the matter from a night's whisper into the town's record" (ruling 5 removed
+    "whispers" from the P09 night) and "redeemer-queue"/"queue" (ruling 9 replaced "queue" in P09 with
+    "a redeemer nearer than I, who comes first because he is nearer"). Since 2026-09-27 B19's coverage
+    label in P11 is also "The Nearer Redeemer" (the book-level name); P11's text keeps its own words,
+    "friend So-and-so" (peloni almoni), and B19's link in the P11 map is `[[B19-The-Nearer-Redeemer]]`.
 - Jonah J01–J05: skeletons, signals agree (incomplete) — closed; outside the current card.
 - Esther E01–E18: the frozen known-divergence set above; outside the current card.
 - T13 (Psalm 13): no COMPILATION-LOG yet (its Meaning Coordinates is born at compiler Phase 4)
