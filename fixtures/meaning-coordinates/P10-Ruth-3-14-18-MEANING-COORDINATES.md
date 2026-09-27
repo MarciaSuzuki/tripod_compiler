@@ -28,11 +28,11 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
     "genre": "HISTORICAL_NARRATIVE",
     "register": "INFORMAL_CASUAL",
     "register_overrides": {
-      "_note": "MM Section 1 marks both scenes shifting to INTIMATE at scene level (the dawn's privacy; the two women alone again). No moment-level register shift and no NARRATIVE_FRAMING override are marked.",
+      "_note": "MM Section 1 marks Scene 1 shifting to CONSULTATIVE at scene level (the dawn at the floor, under Boaz's word of 3:14) and Scene 2 to INTIMATE (the two women alone again). No moment-level register shift and no NARRATIVE_FRAMING override are marked.",
       "scene_level": [
         {
           "scene_id": "S1",
-          "override_value": "INTIMATE"
+          "override_value": "CONSULTATIVE"
         },
         {
           "scene_id": "S2",

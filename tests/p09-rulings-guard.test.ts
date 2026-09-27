@@ -163,8 +163,10 @@ describe("SC-0086 — P09 rulings guard (what the app reads)", () => {
     const p11 = read("fixtures/meaning-map/P11-Ruth-4-1-8.md");
     expect(p11).toContain("[[B19-The-Nearer-Redeemer]]");
     expect(p11).not.toContain("B19-The-Man-Mr");
-    // P11's own words keep the passage's referential form (peloni almoni, "friend So-and-so").
-    expect(p11).toContain("friend So-and-so");
+    // P11's own words keep the passage's referential form (peloni almoni, "So-and-so"); since SC-0087
+    // (Marcia's ruling R-2 of 2026-09-27) without "friend", which is not in the Hebrew.
+    expect(p11).toContain("So-and-so");
+    expect(p11).not.toContain("friend So-and-so");
     expect(aliases.entities.B19.referential_forms).toContain("PLONI_ALMONI_VOCATIVE_OF_ANONYMITY");
   });
 

@@ -149,8 +149,8 @@ pilot: "pilot-2"
     {
       "id": "R4",
       "kind": "FIGURE_FIRST_OCCURRENCE",
-      "applies_to": "FIG_0110 Living-and-Dead Formula at 2:20 (P11) — theological hinge",
-      "note": "REQUIRED keep-image. Opens here; pairs forward to P11 4:5 and P12 4:10. The paired phrase 'the living and the dead' must render as a deliberate pair so the dead remain in the family's covenantal accounting across the book. Theological hinge of the pericope.",
+      "applies_to": "FIG_0110 Living-and-Dead Formula at 2:20 (P11) — theological hinge; 4:5 says only 'the dead' (corrected under SC-0087); the link continues to 4:10",
+      "note": "REQUIRED keep-image. Opens here. The paired phrase 'the living and the dead' must render as a deliberate pair so the dead remain in the family's covenantal accounting across the book. Theological hinge of the pericope. Corrected under SC-0087: 4:5 says only 'the dead' — the phrase 'the living and the dead' is not repeated there — and 2:20 is not brought into 4:5; in the canon record the link continues to 4:10 (P12).",
       "required_in_audit": true,
       "do_not_decide": true,
       "carries_forward_to": "P11_audit",
@@ -274,9 +274,9 @@ pilot: "pilot-2"
       {
         "fig_id": "FIG_0110",
         "opens_at": "P07 P11 (2:20 living and dead)",
-        "closes_at": "P11 4:5; P12 4:10",
+        "closes_at": "P11 4:5 (only 'the dead'); P12 4:10",
         "verification_status": "PENDING",
-        "note": "FIG_0110 is present in the P11 and P12 MEANING_COORDINATES; full verification at those registers. Theological hinge pairing forward to the legal acquisition scenes."
+        "note": "FIG_0110 is present in the P11 and P12 MEANING_COORDINATES; full verification at those registers. 4:5 says only 'the dead': the 2:20 phrase 'the living and the dead' is not repeated there, and 2:20 is not brought into 4:5 (SC-0087). The link continues to 4:10 (P12)."
       },
       {
         "fig_id": "FIG_0113",
