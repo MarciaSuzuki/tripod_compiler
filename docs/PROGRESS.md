@@ -2,14 +2,14 @@
 
 > **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
 
-## Current floor (refreshed 2026-08-31, SC-0085 rider)
+## Current floor (refreshed 2026-09-26, SC-0086)
 
 - **Canon: the FOUR-BOOK SEED is sealed and publicly live** (SC-0084, 2026-07-15) — Ruth (14) +
   Jonah (5) + Esther (18) pericopes with Meaning Maps, Meaning Coordinates, and valid
   COMPILATION-LOGs, plus the T13 Psalm-13 map (its MC is born at Phase 4). Portal:
   marciasuzuki.github.io/tripod_compiler.
 - **Where the live state actually lives:** the `SPEC_CHANGES.md` **SC-ID allocation ledger** is
-  the authoritative decision log (SC-0001 → SC-0085); the working handoffs live in the project
+  the authoritative decision log (SC-0001 → SC-0086); the working handoffs live in the project
   memory, not here. This file's body below is the **June-2026 checkpoint, kept as history** —
   its "state" claims (PR #10, spec v0.6, 164 tests, P01–P06 scope) are long superseded; its
   mechanism descriptions (how validate/coverage/lint/id-check/compile work) remain accurate.
@@ -20,6 +20,15 @@
   `tests/sala-gate-signals.test.ts` guard). P07 landed first; P08–P14 follow in order, each
   ruled entry-by-entry by Marcia. Then compiler Phase 4 (the first Meaning-Coordinates-born
   compile, starting at T13).
+- **SC-0086 (2026-09-26): P09 lands, ahead of P08.** Marcia ruled the P09 register point by point
+  (18 entries, 9 do_not_decide) together with corrections to the P09 map + Meaning Coordinates (the
+  night without a verdict, Boaz's conditional yes, amah/shifchah without a status reading, the first
+  kindness unnamed, Scenes 2–3 CONSULTATIVE, the young men of 3:10 registered as B32, the plan/request
+  fact without "authority"/"handoff", the wing as a verbal echo, no pointer ahead to the gate, B19 by its
+  registered form), plus the P06 R2 note, the P10 register line and the P03 R4/R11 forecast. Registry:
+  B32 added (`ruth.aliases.json`), FIG_0139/FIG_0140 slugs renamed (`figures.json` 0.7.1), enum v0.24
+  (+NOT_GONE_AFTER). Owed: the vault half (prepared, not applied) and the Internalize pin bump (a
+  separate app-side step). Next in the queue: P08, then P10–P14.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
 

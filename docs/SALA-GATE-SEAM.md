@@ -40,11 +40,17 @@ known list — any NEW divergence fails, and resolving Esther (either completing
 or re-flagging its maps) is **future-card work**; burning entries off the frozen list requires
 editing the test's list in a governed change.
 
-## Queue state (the SC-0085 program)
+## Queue state (the SC-0085 program; updated SC-0086, 2026-09-26)
 
 - P01–P06: real audits, all three signals agree (complete) — open to Sala.
 - **P07: completed under the SC-0085 P07 slice** (14 entries ruled by Marcia 2026-08-31).
-- P08–P14: skeletons, all three signals agree (incomplete) — closed, queued in order.
+- P08: skeleton, all three signals agree (incomplete) — closed; next in the queue (P09 was ruled
+  ahead of it, sheet decision C).
+- **P09: completed under SC-0086** (18 entries, 9 do_not_decide, ruled by Marcia 2026-09-26 point
+  by point, together with the P09 map + Meaning Coordinates corrections). The three signals flipped
+  together in the same change; the vault half (map `sta-status` + `stas/` copies) is prepared, not yet
+  applied — until it lands, the vault still reads P09 closed (skeleton + `pending`), the safe direction.
+- P10–P14: skeletons, all three signals agree (incomplete) — closed, queued in order.
 - Jonah J01–J05: skeletons, signals agree (incomplete) — closed; outside the current card.
 - Esther E01–E18: the frozen known-divergence set above; outside the current card.
 - T13 (Psalm 13): no COMPILATION-LOG yet (its Meaning Coordinates is born at compiler Phase 4)

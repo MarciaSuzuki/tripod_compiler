@@ -3,12 +3,12 @@
   "counts": {
     "by_kind": {
       "INSTITUTION": 9,
-      "PERSON": 31,
+      "PERSON": 32,
       "PLACE": 19,
       "THING": 24,
       "TIME": 13
     },
-    "entities": 96
+    "entities": 97
   },
   "entities": {
     "B1": {
@@ -364,6 +364,17 @@
         "People-of-YHWH",
         "People of YHWH"
       ]
+    },
+    "B32": {
+      "appears_in": [
+        "P09"
+      ],
+      "english": "Young Men Ruth Did Not Go After",
+      "gender": "m",
+      "hebrew": "בַּחוּרִים",
+      "hebrew_cons": "בחורים",
+      "kind": "PERSON",
+      "referential_forms": []
     },
     "B4": {
       "appears_in": [

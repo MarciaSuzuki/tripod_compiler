@@ -429,7 +429,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "id": "R2",
       "kind": "FIGURE_FIRST_OCCURRENCE",
       "applies_to": "FIG_0132 Amah-Vs-Shifchah at 2:13 (P11)",
-      "note": "PREFERRED keep-image. Opens here with shifchah self-designation; closes at P09 3:9 with amah. Status-shift signals positioning for marriage proposal.",
+      "note": "PREFERRED keep-image. The pair opens with shifchah and closes at 3:9 with amah; the change of word is kept; its meaning is not stated.",
       "required_in_audit": true,
       "carries_forward_to": "P09_audit",
       "source_in_meaning_map": "Section 3C Scene 2 Objects (TH_SHIFCHAH_SELF_NAMING_FORM); Section 5B Figure Flags (FIG_0132)"
