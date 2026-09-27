@@ -43,8 +43,9 @@
   P07, P08 and P10 lines those rulings touch (P10 Scene 1 → CONSULTATIVE). Registry: CB_0002 slug →
   `Widow-Acquired-to-Raise-Up-the-Name-of-the-Dead` (`concepts.json` 0.7.1), FIG_0122 slug →
   `He-Will-Tell-You` (`figures.json` 0.7.2); B2 out of the P11 MC Scene 1. Owed: the vault half
-  (prepared, not applied), the Internalize pin bump + the app's `[[CODE]]`-only wikilink rendering and
-  the B? grounded label (app-side, R-9 B/D), and Marcia's yes/no on the builder extensions listed in
+  (prepared, not applied), the Internalize pin bump + the app's `[[CODE]]`-only wikilink rendering in
+  the same app PR (never the pin first: two P11 slugs carry "Staging" / "Two-Stage") and the B?
+  grounded label (app-side, R-9 B/D), and Marcia's yes/no on the builder extensions listed in
   the SC-0087 entry. Next in the queue: P08, then P10, P12–P14.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
