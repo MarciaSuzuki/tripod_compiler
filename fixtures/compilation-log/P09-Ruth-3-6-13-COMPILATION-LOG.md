@@ -44,12 +44,12 @@ pilot: "pilot-2"
     {
       "decision_id": "P09-D4",
       "decision": "High-risk register ruled by Marcia under SC-0086 (the P07–P14 register-completion program opened by SC-0085).",
-      "description": "Drafted 2026-09-24 from the P09 map in the P07 pattern; ruled by Marcia 2026-09-26, point by point, with Astra's P09 guide as the checklist (her words: «sim, siga a recomendação» on each point, «sim, siga a recomendação da Astra» on point 1, «10 e 11 como recomendado» on points 10–11; the English wording of the entries is the builder's rendering of her Portuguese). 18 entries, 9 do_not_decide (R1 the wing, R3 which the first kindness was, R4 whose hesed at 2:20, R7 the nearer redeemer unnamed, R9 Ruth's request past the plan, R15 which redeemer acts, R16 the night, R17 the wordless Scene 1, R18 the young men of 3:10); kinds from the approved high_risk_register_kind list. Carried-forward items land: P06 R1/R2, P07 R3/R5 (R5 continues to P11 in the canon record only), P05 R1/R7/R8. Pair table: FIG_0011, FIG_0132, FIG_0111, FIG_0134, FIG_0123 and FIG_0122 VERIFIED here; FIG_0112 PENDING (closes at P11). P09 ruled ahead of P08 (sheet decision C). The three Sala gate signals (the real audit, high_risk_register_complete, and the map's sta-status) flip together in this change."
+      "description": "Drafted 2026-09-24 from the P09 map in the P07 pattern; ruled by Marcia 2026-09-26, point by point, with Astra's P09 guide as the checklist (her words: «sim, siga a recomendação» on each point, «sim, siga a recomendação da Astra» on point 1, «10 e 11 como recomendado» on points 10–11; the English wording of the entries is the builder's rendering of her Portuguese). 18 entries, 10 do_not_decide (R1 the wing, R2 the change of servant word, R3 which the first kindness was, R4 whose hesed at 2:20, R7 the nearer redeemer unnamed, R9 Ruth's request past the plan, R15 which redeemer acts, R16 the night, R17 the wordless Scene 1, R18 the young men of 3:10); kinds from the approved high_risk_register_kind list. Carried-forward items land: P06 R1/R2, P07 R3/R5 (R5 continues to P11 in the canon record only), P05 R1/R7/R8. Pair table: FIG_0011, FIG_0132, FIG_0111, FIG_0134, FIG_0123 and FIG_0122 VERIFIED here; FIG_0112 PENDING (closes at P11). P09 ruled ahead of P08 (sheet decision C). The three Sala gate signals (the real audit, high_risk_register_complete, and the map's sta-status) flip together in this change."
     },
     {
       "decision_id": "P09-D5",
       "decision": "Meaning Map + MEANING_COORDINATES corrected under the SC-0086 rulings (2026-09-26).",
-      "description": "Rulings 1–10 applied to the map and the MEANING_COORDINATES together: the night told only as the text tells it, with no verdict either way (1); Boaz's answer as a yes bound to the order of redeemers, both branches kept (2); amah/shifchah kept as two words without a meaning for the change (3); the first kindness not named (4); Scenes 2–3 CONSULTATIVE, the 3:10a CEREMONIAL override removed (5); the young men of 3:10 registered as B32, distinct from B17, role NOT_GONE_AFTER (6); Ruth's request past the plan kept as a fact, FIG_0139/FIG_0140 notes and slugs rewritten (7); the wing kept as 'wing', the 2:12 link a verbal echo (8); no pointer ahead to 4:1–8, PL7 and CB_0006 no longer in this passage (9); B19 linked by its registered form NEARER_REDEEMER_REFERENCED instead of the P11 designation (10a). Eight cross_ref notes added to the pair propositions (P8, P9, P12, P14, P15, P17, P18, P19). The B32 BCD note and the two figure-note renames are the vault half."
+      "description": "Rulings 1–10 applied to the map and the MEANING_COORDINATES together: the night told only as the text tells it, with no verdict either way (1); Boaz's answer as a yes bound to the order of redeemers, both branches kept (2); amah/shifchah kept as two words without a meaning for the change (3); the first kindness not named (4); Scenes 2–3 CONSULTATIVE, the 3:10a CEREMONIAL override removed (5); the young men of 3:10 registered as B32, distinct from B17, role NOT_GONE_AFTER (6); Ruth's request past the plan kept as a fact, FIG_0139/FIG_0140 notes and slugs rewritten (7); the wing kept as 'wing', the 2:12 link a verbal echo (8); no pointer ahead to 4:1–8, PL7 and CB_0006 no longer in this passage (9); B19 linked by the form the MEANING_COORDINATES carries, NEARER_REDEEMER_UNNAMED (now registered on B19), instead of the P11 designation (10a). Eight cross_ref notes added to the pair propositions (P8, P9, P12, P14, P15, P17, P18, P19). The B32 BCD note and the two figure-note renames are the vault half."
     }
   ],
   "vocabulary_additions": {
@@ -101,7 +101,7 @@ pilot: "pilot-2"
         "value": "NEARER_REDEEMER_DISCLOSURE",
         "source": "P09-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-02-29-206Z (claude-opus-4-8, req a8b2dd692305aee9…) · ruled by Marcia 2026-06-19 (arc_element)",
         "status": "CONFIRMED",
-        "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. MM 3:12: 'there is a redeemer nearer than I' turns 2:20's comfort into a legal queue; distinct beat with no approved fit. (Provenance note of 2026-06-19; the quoted map wording was superseded under SC-0086 — no 'queue' now: a redeemer nearer than I, who comes first because he is nearer. The value itself is unchanged.)"
+        "note": "arc_element (Marcia 2026-06-19 bulk-tick): clean reusable arc-type. MM 3:12: 'there is a redeemer nearer than I' turns 2:20's comfort into a legal queue; distinct beat with no approved fit."
       },
       {
         "value": "PLAN_EXECUTION",
@@ -135,7 +135,7 @@ pilot: "pilot-2"
         "value": "POTENTIAL_SUITORS",
         "source": "P09-MEANING-COORDINATES · SC-0063 drafter run-run-2026-06-12T15-02-29-206Z (claude-opus-4-8, req a8b2dd692305aee9…) · ruled by Marcia 2026-06-13 (role_in_scene_being)",
         "status": "CONFIRMED",
-        "note": "Scene role (Principle A, Marcia 2026-06-13). MM 3A-S3: 'the young men of marrying age, poor or rich; none of them chosen' — their scene function is the unchosen marital alternative, with no approved role_in_scene_being fit. Superseded in P09 by NOT_GONE_AFTER under SC-0086; the approved value stays in the registry (append-only), unused."
+        "note": "Scene role (Principle A, Marcia 2026-06-13). MM 3A-S3: 'the young men of marrying age, poor or rich; none of them chosen' — their scene function is the unchosen marital alternative, with no approved role_in_scene_being fit."
       },
       {
         "value": "NOT_GONE_AFTER",
@@ -162,6 +162,7 @@ pilot: "pilot-2"
       "applies_to": "FIG_0132 Amah-Vs-Shifchah at 3:9 (P8) — CLOSES at 3:9 with amah; opened at P06 P11 (2:13) with shifchah",
       "note": "PREFERRED keep-image. Cross-pericope pair closes here. Ruth names herself 'Ruth your servant' with amah (אֲמָתֶךָ); at 2:13 she called herself shifchah (P06 R2). Keep the two servant words different where the language allows: shifchah at 2:13, amah at 3:9. The change of word is kept; the text does not say what it means; nobody says it is a rise in status or a marriage status.",
       "required_in_audit": true,
+      "do_not_decide": true,
       "source_in_meaning_map": "Section 5B Figure Flags (FIG_0132 'cross-pericope pair closes here at 3:9 with amah; opened at P06 2:13 with shifchah; the change of word is kept, its meaning is not stated'); Section 3A Scene 2 (B9 referential form: 'then by her own mouth, \"Ruth your servant\" — amah (at 2:13 she called herself shifchah, another word for servant); the text does not say what the change of word means'); carried forward from P06 R2"
     },
     {
@@ -206,7 +207,7 @@ pilot: "pilot-2"
       "required_in_audit": true,
       "do_not_decide": true,
       "carries_forward_to": "P11_audit",
-      "source_in_meaning_map": "Section 5B Figure Flags (FIG_0138 active at Proposition 17; FIG_0112 '(the 2:20 nearness-word returns: a redeemer nearer than I)'); Section 3A Scene 3 (B19, linked by its registered form [[B19-NEARER_REDEEMER_REFERENCED]]: 'a redeemer nearer than Boaz, who comes first because he is nearer; unnamed here'; 'unnamed here — only \"a redeemer nearer than I\"'); Significant Absence in Scene 3 ('The nearer redeemer is not named'); carried forward from P07 R5"
+      "source_in_meaning_map": "Section 5B Figure Flags (FIG_0138 active at Proposition 17; FIG_0112 '(the 2:20 nearness-word returns: a redeemer nearer than I)'); Section 3A Scene 3 (B19, linked by its registered form [[B19-NEARER_REDEEMER_UNNAMED]]: 'a redeemer nearer than Boaz, who comes first because he is nearer; unnamed here'; 'unnamed here — only \"a redeemer nearer than I\"'); Significant Absence in Scene 3 ('The nearer redeemer is not named'); carried forward from P07 R5"
     },
     {
       "id": "R8",
@@ -381,14 +382,16 @@ pilot: "pilot-2"
   },
   "known_limitations": [
     "Mechanized ruled log (SC-0064 close part 2): the judgment half was machine-drafted (SC-0063) and reviewer-ruled; vocabulary_additions are assembled from this pericope's per-axis ruling-logs.",
-    "The high-risk register audit was ruled by Marcia 2026-09-26 under SC-0086: 18 entries (9 do_not_decide) traced to the P09 map, with the carried-forward held-open items (P06 R1, P07 R3, P07 R5) also citing their source registers and maps (P09-D4).",
+    "The high-risk register audit was ruled by Marcia 2026-09-26 under SC-0086: 18 entries (10 do_not_decide) traced to the P09 map, with the carried-forward held-open items (P06 R1, P07 R3, P07 R5) also citing their source registers and maps (P09-D4).",
     "Propositions stay at meaning-map granularity; multi-event propositions decompose in-slot per the granularity contract.",
     "CB_0032 Chayil cross-pericope pair (opened at P05 2:1; P05 known_limitations and P05-D15 deferred it to P09 3:11) closes here with FIG_0134 at P15 (R6).",
     "CB_0020 / FIG_0075 (the self-curse oath formula): the P03 forecast that the formula recurs at 3:13 is removed under SC-0086 (P03 R4, R11, known_limitations; the P04 and P05 FIG_0075 rows). The P09 map carries FIG_0135 'as YHWH lives' at 3:13 (P20) and neither FIG_0075 nor CB_0020 (R8).",
     "P08's register is still the skeleton: the openers of FIG_0122 (P08 P8) and FIG_0123 (P08 P9) have no P08 entries yet, and P09's register was drafted ahead of P08's. The P09 closes (R5, R9) stand on the two maps and MEANING_COORDINATES.",
     "FIG_0138's registry note names CB_0045 Nearer-Redeemer (CANDIDATE, first appearance P09) as its related concept; the P09 map flags CB_0001 at Proposition 17 and not CB_0045, and the register follows the map.",
-    "B32 (the young men of 3:10, bachurim) registered under SC-0086, distinct from B17 (ne'arim, Boaz's workers); its BCD note lands in the vault half. POTENTIAL_SUITORS stays approved but unused.",
-    "FIG_0137 is kept as REQUIRED here (ruling 5: the blessing's formula wording is kept whole); the vault FIG_0137 note still lists PREFERRED — alignment listed in the SC-0086 vault half."
+    "B32 (the young men of 3:10, bachurim) registered under SC-0086, distinct from B17 (ne'arim, Boaz's workers); its BCD note lands in the vault half. POTENTIAL_SUITORS is no longer used in P09 (replaced by NOT_GONE_AFTER, ruling 6); the approved value is kept in the registry pending a deprecation ruling (owed to Marcia — it was promoted by her SC-0064 role ruling of 2026-06-13, so its removal is hers).",
+    "FIG_0137 is kept as REQUIRED here (ruling 5: the blessing's formula wording is kept whole); the vault FIG_0137 note still lists PREFERRED — alignment listed in the SC-0086 vault half.",
+    "The vocabulary_additions provenance notes of 2026-06-13 (POTENTIAL_SUITORS) and 2026-06-19 (NEARER_REDEEMER_DISCLOSURE) are kept byte-intact as the record of those rulings; the map wording they quote ('none of them chosen', 'a legal queue') was superseded under SC-0086 (rulings 6 and 9). The values themselves are unchanged; NOT_GONE_AFTER replaces POTENTIAL_SUITORS in P09.",
+    "B19 is linked in the P09 map as [[B19-NEARER_REDEEMER_UNNAMED]] (ruling 10a): the code followed by a registered referential form, in place of the book-level name. This link style is new in the corpus and confined to P09 by ruling 10a; tripod id-check accepts it (the form is registered on B19), but in Obsidian it does not resolve to the vault note, whose filename carries the book-level name."
   ]
 }
 ```

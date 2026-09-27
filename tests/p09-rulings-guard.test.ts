@@ -90,6 +90,57 @@ describe("SC-0086 — P09 rulings guard (what the app reads)", () => {
     expect(aliases.entities.B17.hebrew_cons).toBe("נערים");
   });
 
+  it("ruling 3 reaches the Validator: R2 (the change of servant word) is do_not_decide", () => {
+    const r2 = (cl.high_risk_register_audit as { id: string; do_not_decide?: boolean; note: string }[]).find((e) => e.id === "R2")!;
+    expect(r2.do_not_decide).toBe(true);
+    expect(r2.note).toContain("the text does not say what it means");
+  });
+
+  it("ruling 6: POTENTIAL_SUITORS is used in no Meaning Coordinates of P09 or P10", () => {
+    const p10mc = read("fixtures/meaning-coordinates/P10-Ruth-3-14-18-MEANING-COORDINATES.md");
+    expect(mcText).not.toContain("POTENTIAL_SUITORS");
+    expect(p10mc).not.toContain("POTENTIAL_SUITORS");
+  });
+
+  it("ruling 10a: the map links B19 by the form the Coordinates carry, and that form is registered", () => {
+    expect(mapText).toContain("[[B19-NEARER_REDEEMER_UNNAMED]]");
+    const forms = new Set<string>();
+    const walk = (o: unknown): void => {
+      if (Array.isArray(o)) o.forEach(walk);
+      else if (o && typeof o === "object") {
+        const r = o as Record<string, unknown>;
+        if ((r.being_id === "B19" || r.disclosed_party === "B19") && typeof r.referential_form === "string") forms.add(r.referential_form);
+        Object.values(r).forEach(walk);
+      }
+    };
+    walk(mc);
+    expect([...forms]).toEqual(["NEARER_REDEEMER_UNNAMED"]);
+    const aliases = JSON.parse(read("_spec/registry/ruth.aliases.json"));
+    expect(aliases.entities.B19.referential_forms).toContain("NEARER_REDEEMER_UNNAMED");
+  });
+
+  // The rulings also changed lines outside P09 (P06 R2 + P06 map §5B; P10 map + MC; the P03/P04/P05
+  // 3:13 forecast). Guard every surface a ruling touched, not only P09 (recurring-error discipline).
+  it("rulings 3, 5 and 10b hold in the neighbouring passages they touched", () => {
+    const low = (p: string) => read(p).toLowerCase();
+    for (const p of ["fixtures/compilation-log/P06-Ruth-2-8-16-COMPILATION-LOG.md", "fixtures/meaning-map/P06-Ruth-2-8-16.md"]) {
+      const t = low(p);
+      expect(["status-shift", "positioning for marriage"].filter((w) => t.includes(w)), p).toEqual([]);
+    }
+    for (const p of ["fixtures/meaning-map/P10-Ruth-3-14-18.md", "fixtures/meaning-coordinates/P10-Ruth-3-14-18-MEANING-COORDINATES.md"]) {
+      const t = low(p);
+      expect(["hushed", "low instructions"].filter((w) => t.includes(w)), p).toEqual([]);
+    }
+    for (const p of [
+      "fixtures/compilation-log/P03-Ruth-1-15-18-COMPILATION-LOG.md",
+      "fixtures/compilation-log/P04-Ruth-1-19-22-COMPILATION-LOG.md",
+      "fixtures/compilation-log/P05-Ruth-2-1-7-COMPILATION-LOG.md",
+    ]) {
+      const t = low(p);
+      expect(["recur at 3:13", "recurs at 3:13 when", "with 3:13", "boaz's oath) deferred", "same oath-formula form at both"].filter((w) => t.includes(w)), p).toEqual([]);
+    }
+  });
+
   it("ruling 2: P19 keeps both conditions of the morning", () => {
     const p19 = mc.level_3_propositions.find((p: { prop_id: string }) => p.prop_id === "P19");
     const conds = p19.event_specific_slots.protocol_components.map((c: { condition: string }) => c.condition);

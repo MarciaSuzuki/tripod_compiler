@@ -88,11 +88,11 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
     }
   });
 
-  it("SC-0086: the P09 register carries the 18 ruled entries, 9 do_not_decide", () => {
+  it("SC-0086: the P09 register carries the 18 ruled entries, 10 do_not_decide", () => {
     const text = readFileSync(join(CL_DIR, "P09-Ruth-3-6-13-COMPILATION-LOG.md"), "utf8");
     const d = JSON.parse(text.match(/```json\n([\s\S]*?)\n```/)![1]!);
     const audit: { id: string; do_not_decide?: boolean }[] = d.high_risk_register_audit;
     expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 18 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R3", "R4", "R7", "R9", "R15", "R16", "R17", "R18"]);
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R7", "R9", "R15", "R16", "R17", "R18"]);
   });
 });

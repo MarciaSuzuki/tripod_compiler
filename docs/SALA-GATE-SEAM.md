@@ -45,12 +45,25 @@ editing the test's list in a governed change.
 - P01–P06: real audits, all three signals agree (complete) — open to Sala.
 - **P07: completed under the SC-0085 P07 slice** (14 entries ruled by Marcia 2026-08-31).
 - P08: skeleton, all three signals agree (incomplete) — closed; next in the queue (P09 was ruled
-  ahead of it, sheet decision C).
-- **P09: completed under SC-0086** (18 entries, 9 do_not_decide, ruled by Marcia 2026-09-26 point
+  ahead of it, sheet decision C). Carried to the P08 slice from the SC-0086 review (seen, not changed;
+  each only on Marcia's word): map §5B FIG_0122 line "the reverse lands at P09, where she tells him"
+  (the reversal/handoff framing ruling 7 removed from P09; a possible rendering: "closes at P09, where in
+  the night the request comes from Ruth (3:9)"), the FIG_0122 slug "He-Will-Tell-You-Handoff" the voice
+  reads in P08, and §2.1 "…but with a handoff: he will tell you what to do".
+- **P09: completed under SC-0086** (18 entries, 10 do_not_decide, ruled by Marcia 2026-09-26 point
   by point, together with the P09 map + Meaning Coordinates corrections). The three signals flipped
   together in the same change; the vault half (map `sta-status` + `stas/` copies) is prepared, not yet
   applied — until it lands, the vault still reads P09 closed (skeleton + `pending`), the safe direction.
-- P10–P14: skeletons, all three signals agree (incomplete) — closed, queued in order.
+- P10–P14: skeletons, all three signals agree (incomplete) — closed, queued in order. Carried from
+  the SC-0086 review (seen, not changed; each only on Marcia's word in its own slice):
+  - P10: Scene 1 register stays INTIMATE while P09 Scenes 2–3 (the same two, the same night) are now
+    CONSULTATIVE — keep, or align? The MC `register_overrides._note` "the two women alone again"
+    describes only Scene 2. §3C CB_0042 "the place where the sleeper's feet lie" carries the "he
+    sleeps" reading ruling 1 removed from P09 (a possible rendering: "the place of his feet
+    (margelot)").
+  - P11: map "turns the matter from a night's whisper into the town's record" (ruling 5 removed
+    "whispers" from the P09 night) and "redeemer-queue"/"queue" (ruling 9 replaced "queue" in P09 with
+    "a redeemer nearer than I, who comes first because he is nearer").
 - Jonah J01–J05: skeletons, signals agree (incomplete) — closed; outside the current card.
 - Esther E01–E18: the frozen known-divergence set above; outside the current card.
 - T13 (Psalm 13): no COMPILATION-LOG yet (its Meaning Coordinates is born at compiler Phase 4)

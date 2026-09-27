@@ -478,7 +478,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "id": "R11",
       "kind": "CROSS_PERICOPE_PAIRING_FIRST_OCCURRENCE",
       "applies_to": "CB_0020 Oath-Formula-Self-curse opens at P03 v.17b",
-      "note": "First occurrence of the canonical Hebrew self-curse oath formula in the book.",
+      "note": "First occurrence of the canonical Hebrew self-curse oath formula in the book; single occurrence in Ruth — no cross-pericope pair is tracked (the 3:13 oath is 'as YHWH lives', FIG_0135).",
       "required_in_audit": true,
       "source_in_meaning_map": "Section 5A Concept Bank Flags (CB_0020 active at P4); Section 3C Scene 2 (TH_SELF_CURSE_OATH_FORMULA)"
     },

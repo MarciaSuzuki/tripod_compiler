@@ -21,14 +21,15 @@
   ruled entry-by-entry by Marcia. Then compiler Phase 4 (the first Meaning-Coordinates-born
   compile, starting at T13).
 - **SC-0086 (2026-09-26): P09 lands, ahead of P08.** Marcia ruled the P09 register point by point
-  (18 entries, 9 do_not_decide) together with corrections to the P09 map + Meaning Coordinates (the
+  (18 entries, 10 do_not_decide) together with corrections to the P09 map + Meaning Coordinates (the
   night without a verdict, Boaz's conditional yes, amah/shifchah without a status reading, the first
   kindness unnamed, Scenes 2–3 CONSULTATIVE, the young men of 3:10 registered as B32, the plan/request
-  fact without "authority"/"handoff", the wing as a verbal echo, no pointer ahead to the gate, B19 by its
-  registered form), plus the P06 R2 note, the P10 register line and the P03 R4/R11 forecast. Registry:
+  fact without "authority"/"handoff", the wing as a verbal echo, no pointer ahead to the gate, B19 in the map by the form the
+  Coordinates carry, NEARER_REDEEMER_UNNAMED, now registered on B19), plus the P06 R2 note, the P10 register line and the P03 R4/R11 forecast. Registry:
   B32 added (`ruth.aliases.json`), FIG_0139/FIG_0140 slugs renamed (`figures.json` 0.7.1), enum v0.24
-  (+NOT_GONE_AFTER). Owed: the vault half (prepared, not applied) and the Internalize pin bump (a
-  separate app-side step). Next in the queue: P08, then P10–P14.
+  (+NOT_GONE_AFTER). Owed: the vault half (prepared, not applied), the Internalize pin bump (a
+  separate app-side step), and Marcia's calls listed in the SC-0086 row (among them the app's
+  coverage label for B19, still the registry's book-level name). Next in the queue: P08, then P10–P14.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
 
