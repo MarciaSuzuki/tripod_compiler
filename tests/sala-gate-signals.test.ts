@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 /**
  * SC-0085 — the Sala three-signal gate guard (docs/SALA-GATE-SEAM.md). Floor extended by SC-0086
- * (P09, ruled 2026-09-26, ahead of P08).
+ * (P09, ruled 2026-09-26, ahead of P08) and SC-0087 (P11, ruled 2026-09-27).
  *
  * João's Sala opens a pericope only when THREE signals agree: (1) a real
  * high_risk_register_audit (no SKELETON entries), (2) validation_checklist.
@@ -73,7 +73,7 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
     expect(divergent).toEqual([...KNOWN_DIVERGENT_FROZEN_2026_08_31].sort());
   });
 
-  it("completed registers agree in the complete direction (P01–P07 + P09)", () => {
+  it("completed registers agree in the complete direction (P01–P07 + P09 + P11)", () => {
     const complete = all.filter((s) => !s.hasSkeleton).map((s) => s.stem).sort();
     for (const stem of complete) {
       const s = all.find((x) => x.stem === stem)!;
@@ -81,9 +81,9 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
       expect(s.staStatus, `${stem}: real audit + flag true but sta-status is not complete`).toBe("complete");
     }
     // The queue's floor: P01–P07 are complete as of the SC-0085 P07 slice; P09 joined under
-    // SC-0086 (ruled ahead of P08). A pericope joining this list (P08, P10…) is expected
-    // SC-0085-program progress; one LEAVING it is a regression.
-    for (const stem of ["P01-Ruth-1-1-5", "P02-Ruth-1-6-14", "P03-Ruth-1-15-18", "P04-Ruth-1-19-22", "P05-Ruth-2-1-7", "P06-Ruth-2-8-16", "P07-Ruth-2-17-23", "P09-Ruth-3-6-13"]) {
+    // SC-0086 (ruled ahead of P08) and P11 under SC-0087. A pericope joining this list (P08, P10…)
+    // is expected SC-0085-program progress; one LEAVING it is a regression.
+    for (const stem of ["P01-Ruth-1-1-5", "P02-Ruth-1-6-14", "P03-Ruth-1-15-18", "P04-Ruth-1-19-22", "P05-Ruth-2-1-7", "P06-Ruth-2-8-16", "P07-Ruth-2-17-23", "P09-Ruth-3-6-13", "P11-Ruth-4-1-8"]) {
       expect(complete, `${stem} fell out of the completed set`).toContain(stem);
     }
   });
@@ -94,5 +94,23 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
     const audit: { id: string; do_not_decide?: boolean }[] = d.high_risk_register_audit;
     expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 18 }, (_, i) => `R${i + 1}`));
     expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R7", "R9", "R15", "R16", "R17", "R18"]);
+  });
+
+  it("SC-0087: the P11 register carries the 14 ruled entries, 8 do_not_decide", () => {
+    const text = readFileSync(join(CL_DIR, "P11-Ruth-4-1-8-COMPILATION-LOG.md"), "utf8");
+    const d = JSON.parse(text.match(/```json\n([\s\S]*?)\n```/)![1]!);
+    const audit: { id: string; do_not_decide?: boolean }[] = d.high_risk_register_audit;
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 14 }, (_, i) => `R${i + 1}`));
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R10"]);
+  });
+
+  // Exact set (SC-0087): the three signals open a pericope to Sala only on Marcia's ruled register, so
+  // the governed change that completes the next register (P08, P10, P12…) adds its stem here.
+  it("the complete-agreeing set is exactly the ruled Ruth pericopes (P01–P07, P09, P11)", () => {
+    const completeAgreeing = all.filter((s) => s.agree && !s.hasSkeleton).map((s) => s.stem).sort();
+    expect(completeAgreeing).toEqual([
+      "P01-Ruth-1-1-5", "P02-Ruth-1-6-14", "P03-Ruth-1-15-18", "P04-Ruth-1-19-22", "P05-Ruth-2-1-7",
+      "P06-Ruth-2-8-16", "P07-Ruth-2-17-23", "P09-Ruth-3-6-13", "P11-Ruth-4-1-8",
+    ]);
   });
 });
