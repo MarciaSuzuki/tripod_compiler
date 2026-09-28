@@ -93,7 +93,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "scene_id": "S1",
       "verse_range": "4:1-2",
       "scene_kind": "GATE_COURT_CONVENING_SCENE",
-      "scene_communicative_purpose": "Convenes the court in three sittings — the redeemer, the elders, the matter — and lets the book's second great coincidence pass without comment: the very man, passing at the very moment.",
+      "scene_communicative_purpose": "Convenes the court: Boaz sits, the redeemer sits, the ten elders sit. The redeemer is passing just then, and the narrator does not say why.",
       "beings_in_scene": {
         "entries": [
           {
@@ -111,11 +111,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "being_id": "B20",
             "role_in_scene": "WITNESSING_ELDERS",
             "presence": "PRESENT"
-          },
-          {
-            "being_id": "B2",
-            "role_in_scene": "DECEASED_KIN",
-            "presence": "REFERENCED"
           }
         ]
       },
@@ -143,13 +138,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "The nearer redeemer is given no name — the narrator, who names with care everywhere, hands him only a placeholder. Nothing is said of why he happens to pass at that moment; the chance is told as flatly as the chance of 2:3. Ruth and Naomi are not present, and will not be, through the whole proceeding."
+      "significant_absence": "The narrator does not give his name; Boaz calls him So-and-so. The narrator does not say why he passes at that moment. Ruth and Naomi are not present, and will not be, through the whole proceeding."
     },
     {
       "scene_id": "S2",
       "verse_range": "4:3-4",
       "scene_kind": "REDEMPTION_OFFER_SCENE",
-      "scene_communicative_purpose": "Lays the first stage before the court — the field alone — and draws the confident claim that the second stage will reverse.",
+      "scene_communicative_purpose": "Lays the field alone before the court, and the redeemer says: I will redeem.",
       "beings_in_scene": {
         "entries": [
           {
@@ -205,13 +200,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "Ruth is not mentioned in the offer — the staging withholds her entirely. How Naomi came to hold the right to sell, and why this is the first the audience hears of a field, the narrator never explains. The dead man is \"our brother\"; his sons are not named."
+      "significant_absence": "Ruth is not mentioned in this first offer; Boaz speaks of the field alone. How Naomi came to hold the right to sell, and why this is the first the audience hears of a field, the narrator never explains. The dead man is \"our brother\"; his sons are not named."
     },
     {
       "scene_id": "S3",
       "verse_range": "4:5-6",
       "scene_kind": "REDEMPTION_DECLINE_SCENE",
-      "scene_communicative_purpose": "Springs the staged second stage: the field carries the widow and the dead man's name, and the confident claim of the first stage reverses into the decline that frees Boaz's way.",
+      "scene_communicative_purpose": "Boaz adds the second term — whoever buys the field also acquires Ruth, to raise up the name of the dead — and the man who said I will redeem now says I cannot, and gives his right of redemption to Boaz.",
       "beings_in_scene": {
         "entries": [
           {
@@ -276,13 +271,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "Why redeeming Ruth would ruin the man's inheritance is never explained — the reason is left folded inside his refusal. No one asks Ruth; no one asks Naomi; neither is there. The dead husband is still \"the dead,\" his name one scene away. And the man who will not raise the name gives his refusal — and keeps his own name unspoken too."
+      "significant_absence": "Why it would ruin the man's inheritance is never explained; he says only \"I cannot\", twice. Ruth and Naomi are not at the gate; neither of them speaks. At the gate no one speaks of the night at the threshing floor. The dead husband is \"the dead\"; his name is not said here."
     },
     {
       "scene_id": "S4",
       "verse_range": "4:7-8",
       "scene_kind": "RATIFICATION_SCENE",
-      "scene_communicative_purpose": "Closes the proceeding with its one physical act, slowed by the narrator's aside so the sandal comes off in full view: the right is Boaz's, attested in the old form.",
+      "scene_communicative_purpose": "Closes the proceeding with its one physical act. First the narrator stops to explain the old custom; then the sandal comes off: the right is Boaz's, attested in the old form.",
       "beings_in_scene": {
         "entries": [
           {
@@ -324,7 +319,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "The handing of the sandal to Boaz is not narrated — the drawing-off stands for the whole. No words of parting are given to the nearer redeemer; he leaves the book mid-gesture, nameless. The terms now Boaz's — the field, the widow, the name — are not restated; the attestation scene will say them in full."
+      "significant_absence": "No words of parting are given to the nearer redeemer. The terms now Boaz's — the field, the widow, the name — are not restated. In the whole proceeding no one says the name of God."
     }
   ],
   "level_3_propositions": [
@@ -369,7 +364,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "CB_0045"
       ],
       "figure_flags": [
-        "FIG_0015",
         "FIG_0160",
         "FIG_0112"
       ]

@@ -106,12 +106,12 @@
       "sha256": "3353c0316b6bbca642643ce08b8527a07eda6c0e3fcfee5f84fe3ae1e64fd1d9"
     },
     "registry/concepts.json": {
-      "version": "0.7.0",
-      "sha256": "6f0aab849f6db9ac86bb163459177e2fbac0e2e4d143a2e768f7d898e82a5c58"
+      "version": "0.7.1",
+      "sha256": "c2d59ccbe8322809b72c7b2910771a8f2cd31f3f76ae5c6773f557ec32759fe8"
     },
     "registry/figures.json": {
-      "version": "0.7.1",
-      "sha256": "9238b8a2cfdd776181c7597363c3eab0c28658255851599d5c965b74d981ab14"
+      "version": "0.7.2",
+      "sha256": "8d3342a75b091a638ffcb4e348e1bb10ea3b74fcb7e1b2c29c4213aeacba45f0"
     },
     "source/ruth/P08.json": {
       "version": "extractor-0.1.0/bhsa-2021",

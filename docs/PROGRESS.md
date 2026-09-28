@@ -2,14 +2,14 @@
 
 > **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
 
-## Current floor (refreshed 2026-09-26, SC-0086)
+## Current floor (refreshed 2026-09-28, SC-0087 + point A)
 
 - **Canon: the FOUR-BOOK SEED is sealed and publicly live** (SC-0084, 2026-07-15) — Ruth (14) +
   Jonah (5) + Esther (18) pericopes with Meaning Maps, Meaning Coordinates, and valid
   COMPILATION-LOGs, plus the T13 Psalm-13 map (its MC is born at Phase 4). Portal:
   marciasuzuki.github.io/tripod_compiler.
 - **Where the live state actually lives:** the `SPEC_CHANGES.md` **SC-ID allocation ledger** is
-  the authoritative decision log (SC-0001 → SC-0086); the working handoffs live in the project
+  the authoritative decision log (SC-0001 → SC-0087); the working handoffs live in the project
   memory, not here. This file's body below is the **June-2026 checkpoint, kept as history** —
   its "state" claims (PR #10, spec v0.6, 164 tests, P01–P06 scope) are long superseded; its
   mechanism descriptions (how validate/coverage/lint/id-check/compile work) remain accurate.
@@ -31,7 +31,26 @@
   separate app-side step), and Marcia's calls listed in the SC-0086 row. Her word of 2026-09-27
   closed two of them in the same change: B19's book-level name is now "The Nearer Redeemer" (the
   app's coverage label for B19 follows it; vault note renamed) and the P09 title reads "…the word
-  redeemer spoken…". Next in the queue: P08, then P10–P14.
+  redeemer spoken…".
+- **SC-0087 (2026-09-27): P11 lands (Ruth 4:1–8, the gate).** Marcia ruled nine points, each «(a), sim,
+  pode seguir com as recomendações»: the P11 register (14 entries, 8 do_not_decide — R1–R7, R10) and the
+  P11 map + Meaning Coordinates corrections — Boaz's order (the field alone, then Ruth) kept as a fact
+  with no reason given; "So-and-so" without "friend" and no reason for the non-name; "I cannot", said
+  twice, not explained; 4:1 told only with "and behold" (FIG_0015 unflagged there; the 2:3 pair in the
+  canon record only); the sandal told as the text tells it (the handing only in the narrator's custom);
+  three gate silences as facts (the women, the night, the name of God); the P09 rulings applied (no
+  "whisper", no "queue", no pointer ahead to 4:9–22, no Jonah aside); minor text points; the P05, P06,
+  P07, P08 and P10 lines those rulings touch (P10 Scene 1 → CONSULTATIVE). Registry: CB_0002 slug →
+  `Widow-Acquired-to-Raise-Up-the-Name-of-the-Dead` (`concepts.json` 0.7.1), FIG_0122 slug →
+  `He-Will-Tell-You` (`figures.json` 0.7.2); B2 out of the P11 MC Scene 1. Owed: the vault half
+  (prepared, not applied), the Internalize pin bump + the app's `[[CODE]]`-only wikilink rendering in
+  the same app PR (never the pin first: two P11 slugs carry "Staging" / "Two-Stage") and the B?
+  grounded label (app-side, R-9 B/D), and Marcia's yes/no on the builder extensions listed in
+  the SC-0087 entry. **Point A (2026-09-28, «(a), sim, pode seguir com o ponto A»; P11-D6):** the
+  Scene 4 silence no longer says the handing (the custom told at 4:7 says it; O26's Function now
+  carries it), R2/R5 say the voice accepts the team's rendering without correcting or remarking on
+  it, and B19 is "the nearer redeemer" (not "kinsman") in Scenes 2–4 — the vault half's P11 copies
+  are to be re-synced to it. Next in the queue: P08, then P10, P12–P14.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
 

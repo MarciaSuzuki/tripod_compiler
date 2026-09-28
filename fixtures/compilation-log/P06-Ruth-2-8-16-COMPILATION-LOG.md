@@ -419,7 +419,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
       "id": "R1",
       "kind": "FIGURE_FIRST_OCCURRENCE",
       "applies_to": "FIG_0011 Wing-of-Refuge at 2:12 (P9)",
-      "note": "REQUIRED keep-image. The Hebrew word kanaph must render the same way at 2:12 and at 3:9 so the petition lands as an answer to the blessing. Cross-pericope pair opens here.",
+      "note": "REQUIRED keep-image. The Hebrew word kanaph must render the same way at 2:12 and at 3:9 so the same word, wing, is heard in both places (a verbal echo). Cross-pericope pair opens here.",
       "required_in_audit": true,
       "do_not_decide": true,
       "carries_forward_to": "P09_audit",

@@ -40,16 +40,18 @@ known list — any NEW divergence fails, and resolving Esther (either completing
 or re-flagging its maps) is **future-card work**; burning entries off the frozen list requires
 editing the test's list in a governed change.
 
-## Queue state (the SC-0085 program; updated SC-0086, 2026-09-26 and 2026-09-27)
+## Queue state (the SC-0085 program; updated SC-0086, 2026-09-26 and 2026-09-27; SC-0087, 2026-09-27)
 
 - P01–P06: real audits, all three signals agree (complete) — open to Sala.
 - **P07: completed under the SC-0085 P07 slice** (14 entries ruled by Marcia 2026-08-31).
 - P08: skeleton, all three signals agree (incomplete) — closed; next in the queue (P09 was ruled
   ahead of it, sheet decision C). Carried to the P08 slice from the SC-0086 review (seen, not changed;
-  each only on Marcia's word): map §5B FIG_0122 line "the reverse lands at P09, where she tells him"
-  (the reversal/handoff framing ruling 7 removed from P09; a possible rendering: "closes at P09, where in
-  the night the request comes from Ruth (3:9)"), the FIG_0122 slug "He-Will-Tell-You-Handoff" the voice
-  reads in P08, and §2.1 "…but with a handoff: he will tell you what to do".
+  each only on Marcia's word): §2.1 "…but with a handoff: he will tell you what to do", and §3C "the
+  place where a sleeper's feet lie; to uncover it is to fold the covering back" (the "he sleeps" reading
+  ruling 1 of P09 removed). **Resolved under SC-0087 (her ruling R-9 C of 2026-09-27):** the FIG_0122
+  slug is now `He-Will-Tell-You` (map frontmatter + §5B, `figures.json` 0.7.2, vault note renamed) and the
+  §5B line no longer says "the reverse lands at P09, where she tells him" ("cross-pericope pair opens
+  here at 3:4").
 - **P09: completed under SC-0086** (18 entries, 10 do_not_decide, ruled by Marcia 2026-09-26 point
   by point, together with the P09 map + Meaning Coordinates corrections). The three signals flipped
   together in the same change; the vault half (map `sta-status` + `stas/` copies) is prepared, not yet
@@ -67,18 +69,30 @@ editing the test's list in a governed change.
   line naming Rute engages B32 in P09 S3). Fix in the app: whole-phrase entries used alone
   ("the nearer redeemer" → "resgatador mais próximo" etc.; B32 → rapazes / moços / jovens),
   role nouns out of the proper-noun loop, and coverage tests for both.
-- P10–P14: skeletons, all three signals agree (incomplete) — closed, queued in order. Carried from
-  the SC-0086 review (seen, not changed; each only on Marcia's word in its own slice):
-  - P10: Scene 1 register stays INTIMATE while P09 Scenes 2–3 (the same two, the same night) are now
-    CONSULTATIVE — keep, or align? The MC `register_overrides._note` "the two women alone again"
-    describes only Scene 2. §3C CB_0042 "the place where the sleeper's feet lie" carries the "he
-    sleeps" reading ruling 1 removed from P09 (a possible rendering: "the place of his feet
-    (margelot)").
-  - P11: map "turns the matter from a night's whisper into the town's record" (ruling 5 removed
-    "whispers" from the P09 night) and "redeemer-queue"/"queue" (ruling 9 replaced "queue" in P09 with
-    "a redeemer nearer than I, who comes first because he is nearer"). Since 2026-09-27 B19's coverage
-    label in P11 is also "The Nearer Redeemer" (the book-level name); P11's text keeps its own words,
-    "friend So-and-so" (peloni almoni), and B19's link in the P11 map is `[[B19-The-Nearer-Redeemer]]`.
+- P10: skeleton, all three signals agree (incomplete) — closed; queued (no P10 register was built under
+  SC-0087). **Resolved under SC-0087 (R-9 C):** Scene 1 is now CONSULTATIVE (as P09 Scenes 2–3; map §1 +
+  MC scene_level + the MC `_note`, which now describes both scenes), Scene 2 stays INTIMATE; §3C CB_0042
+  "the place of his feet"; §2.4 "keep the secret Boaz asked for (3:14)"; every pointer ahead to the
+  gate removed from the map (§2.2's closing sentence, §2.3 "the whole legal day" → "the whole day", §2.4
+  twice, §3B PL4 "and its gate", §3A Scene 2 B13 and §5B FIG_0155 "his name rests until the gate", §5B
+  FIG_0156 "the gate scene fulfills it at P11"). The whole-sentence cut in §2.2, the §2.3 / PL4 / §3A
+  edits are builder calls under "any other" pointer, for her yes/no.
+- **P11: completed under SC-0087** (14 entries, 8 do_not_decide — R1–R7 and R10 — ruled by Marcia
+  2026-09-27, nine rulings, her word «(a), sim, pode seguir com as recomendações», together with the
+  P11 map + Meaning Coordinates corrections). The three signals flipped together in the same change; the
+  vault half (map `sta-status` + `stas/` copies + the CB_0002 / FIG_0122 note renames) is prepared, not
+  yet applied — until it lands, the vault still reads P11 closed (skeleton + `pending`), the safe
+  direction. The map says "So-and-so" without "friend" (R-2); "whisper" and "queue" are gone (R-7);
+  FIG_0015 is no longer flagged at 4:1 (the 2:3 pair lives in the canon record only, R-4); B2 left the
+  MC Scene 1 beings (R-9 B). Forward links to P12/P13 live only in the P11 register (R14) and pair table.
+  Carried to the P12/P13 slices (seen, not changed): FIG_0003 — the vault note lists closes-at P12 but
+  neither the P12 map nor the P12 MC flags it; FIG_0014 — the P12 map says it closes at 4:11, the vault
+  note says P13 and the P13 MC flags it again at 4:14a; FIG_0016 — the vault note's appears-in lists P12,
+  which does not flag it; the vault FIG_0015 note still lists closes-at P11 (P11:4:1). P12 map CB_0002
+  "the family-duty shadow — the widow taken so the dead line continues" / "the duty … the nearer
+  redeemer would not" (R-3 says "cannot"), the Tamar line "levirate-style right", and §2 "the gate
+  scene the sandal sealed" — each for her word in the P12 slice.
+- P12–P14: skeletons, all three signals agree (incomplete) — closed, queued in order.
 - Jonah J01–J05: skeletons, signals agree (incomplete) — closed; outside the current card.
 - Esther E01–E18: the frozen known-divergence set above; outside the current card.
 - T13 (Psalm 13): no COMPILATION-LOG yet (its Meaning Coordinates is born at compiler Phase 4)
