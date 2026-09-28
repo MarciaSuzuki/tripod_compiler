@@ -84,7 +84,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "scene_id": "S1",
       "verse_range": "4:9-10",
       "scene_kind": "RATIFICATION_SCENE",
-      "scene_communicative_purpose": "Makes the redemption public and complete: every party and holding named, the marriage declared, the dead man's name secured — and the names the gate withheld, including Mahlon as Ruth's husband, finally spoken.",
+      "scene_communicative_purpose": "Makes the purchase public before witnesses: all that was Elimelech's, Chilion's and Mahlon's, from Naomi's hand, and Ruth the Moabite, the wife of Mahlon, to be Boaz's wife — to raise up the name of the dead upon his inheritance. Here, for the first time, the story says whose wife Ruth was.",
       "beings_in_scene": {
         "entries": [
           {
@@ -128,12 +128,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "role_in_scene": "WIDOW",
             "presence": "REFERENCED",
             "referential_form": "RUTH_THE_MOABITESS"
-          },
-          {
-            "being_id": "B4",
-            "role_in_scene": "DECEASED_KIN",
-            "presence": "REFERENCED",
-            "referential_form": "HA_MET_THE_DEAD"
           }
         ]
       },
@@ -176,13 +170,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "Ruth and Naomi are not present to hear themselves named; the declaration is made over them. The narrator does not record any change in Ruth's standing in her own voice — the marriage is announced as a thing done, not asked. And the divine name is still not spoken in this legal declaration; it waits for the blessing."
+      "significant_absence": "Neither Ruth nor Naomi speaks. At the gate no one speaks of the night at the threshing floor. No one says the name of God in Boaz's declaration."
     },
     {
       "scene_id": "S2",
       "verse_range": "4:11-12",
       "scene_kind": "BLESSING_SCENE",
-      "scene_communicative_purpose": "Answers the witness with a blessing that turns the law toward a future: Ruth measured to the matriarchs, the house measured to Perez's, and the seed asked of YHWH — the divine name returning at the prayer.",
+      "scene_communicative_purpose": "All the people at the gate and the elders answer: we are witnesses. Then they bless: may YHWH make the woman coming into Boaz's house like Rachel and Leah; may Boaz do worthily in Ephrathah and call out a name in Bethlehem; may his house be like the house of Perez, from the seed YHWH will give him from this young woman. In the blessing the name of God is said, which no one said in the proceeding.",
       "beings_in_scene": {
         "entries": [
           {
@@ -258,9 +252,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
             "object_id": "CB_0010"
           },
           {
-            "object_id": "CB_0009"
-          },
-          {
             "object_id": "CB_0049"
           }
         ]
@@ -269,7 +260,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "Ruth, blessed by name of her role, is not there to receive it; the blessing is spoken to Boaz over her. The blessing names a son's line to come but no child yet; the seed is asked, not given. And no one at the gate names what the audience knows from the genealogy — that the name to be called out in Bethlehem runs to David."
+      "significant_absence": "Neither Ruth nor Naomi speaks. The seed is asked for, not told as given. The blessing tells no more of Rachel and Leah, of Tamar, Judah and Perez, than it says here."
     }
   ],
   "level_3_propositions": [
@@ -391,7 +382,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "CB_0006"
       ],
       "figure_flags": [
-        "FIG_0110"
+        "FIG_0110",
+        "FIG_0003"
       ]
     },
     {
@@ -486,7 +478,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "forward_link_to": "P10"
       },
       "cb_flags": [
-        "CB_0008"
+        "CB_0008",
+        "CB_0032"
       ],
       "figure_flags": [
         "FIG_0017"

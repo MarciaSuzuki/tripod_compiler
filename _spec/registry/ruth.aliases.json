@@ -242,12 +242,14 @@
         "P04",
         "P13"
       ],
-      "english": "Women of Bethlehem",
+      "english": "The Women",
       "gender": "f",
       "hebrew": "נָשִׁים",
       "hebrew_cons": "נשים",
       "kind": "PERSON",
-      "referential_forms": []
+      "referential_forms": [
+        "Women of Bethlehem"
+      ]
     },
     "B25": {
       "appears_in": [
@@ -280,7 +282,7 @@
         "P12",
         "P14"
       ],
-      "english": "Genealogy Figures",
+      "english": "Perez and His Descendants",
       "gender": "m",
       "hebrew": "פֶּרֶץ חֶצְרוֹן רָם עַמִּינָדָב נַחְשׁוֹן שַׂלְמָה שַׂלְמוֹן",
       "hebrew_cons": "פרץחצרוןרםעמינדבנחשוןשלמהשלמון",
@@ -871,12 +873,14 @@
         "P05",
         "P12"
       ],
-      "english": "Bethlehem of Judah",
+      "english": "Bethlehem",
       "gender": null,
       "hebrew": "בֵּית לֶחֶם יְהוּדָה",
       "hebrew_cons": "ביתלחםיהודה",
       "kind": "PLACE",
-      "referential_forms": []
+      "referential_forms": [
+        "Bethlehem of Judah"
+      ]
     },
     "PL2": {
       "appears_in": [
