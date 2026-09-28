@@ -319,7 +319,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "The narrator tells only that he drew off his sandal; the custom he has just explained says the sandal was given to the other. No words of parting are given to the nearer redeemer. The terms now Boaz's — the field, the widow, the name — are not restated. In the whole proceeding no one says the name of God."
+      "significant_absence": "No words of parting are given to the nearer redeemer. The terms now Boaz's — the field, the widow, the name — are not restated. In the whole proceeding no one says the name of God."
     }
   ],
   "level_3_propositions": [

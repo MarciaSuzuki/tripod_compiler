@@ -128,7 +128,7 @@ describe("SC-0087 — P11 rulings guard (what the app reads)", () => {
       "The narrator does not give his name; Boaz calls him So-and-so.", // R-2
       "Why it would ruin the man's inheritance is never explained; he says only \"I cannot\", twice.", // R-3
       "the narrator does not say why he passes at that moment", // R-4
-      "The narrator tells only that he drew off his sandal; the custom he has just explained says the sandal was given to the other.", // R-5
+      "- Function in scene: the sign that confirmed the matter (4:7); by the custom the narrator has just told, a man gave his sandal to the other\n", // R-5 (point A)
       "Ruth and Naomi are not at the gate; neither of them speaks.", // R-6
       "At the gate no one speaks of the night at the threshing floor.", // R-6 (new)
       "In the whole proceeding no one says the name of God.", // R-6
@@ -140,6 +140,29 @@ describe("SC-0087 — P11 rulings guard (what the app reads)", () => {
       expect(rawMap, fact).toContain(fact);
     }
     expect(rawMap).toContain("So-and-so");
+  });
+
+  it("point A (Marcia 2026-09-28): the Scene 4 silence without the handing, R2/R5 accept without remark, B19 'the nearer redeemer'", () => {
+    // (1) The handing is not a silence: the custom the narrator tells at 4:7 says the sandal was
+    // given, so the fact now lives in O26's Function line and the Scene 4 absence no longer says it.
+    const s4Absence = "No words of parting are given to the nearer redeemer. The terms now Boaz's — the field, the widow, the name — are not restated. In the whole proceeding no one says the name of God.";
+    expect(rawMap).toContain(`**Significant Absence**\n${s4Absence}\n`);
+    const s4 = mc.level_2_scenes.find((s: { scene_id: string }) => s.scene_id === "S4");
+    expect(s4.significant_absence).toBe(s4Absence);
+    for (const gone of ["The narrator tells only that he drew off his sandal", "the custom he has just explained says the sandal was given to the other"]) {
+      expect(rawMap, gone).not.toContain(gone);
+      expect(mcProseText, gone).not.toContain(gone);
+    }
+    // (2) The voice accepts a non-name for So-and-so and "and gave it to Boaz" without remark.
+    const note = (id: string) => (cl.high_risk_register_audit as { id: string; note: string }[]).find((e) => e.id === id)!.note;
+    expect(note("R2")).toMatch(/If asked, the story gives no name and does not say why\. The voice accepts such a rendering and does not correct or remark on it\.$/);
+    expect(note("R5")).toContain("A team telling 'and gave it to Boaz' is correct, not an addition. The voice accepts it and does not correct or remark on it. Voice and team");
+    expect(note("R5")).toContain("The voice tells as the text and does not itself add the handing"); // ruling 5 stands
+    // (3) B19 is "the nearer redeemer" in every Relationship line; "kinsman" is not his word here.
+    expect(rawMap.toLowerCase()).not.toContain("nearer kinsman");
+    for (const rel of ["- Relationship: the nearer redeemer\n", "- Relationship: the nearer redeemer, now declining\n", "- Relationship: the nearer redeemer, withdrawing by the old form\n"]) {
+      expect(rawMap, rel).toContain(rel);
+    }
   });
 
   it("R-4: FIG_0015 is not flagged at 4:1 — the 2:3 pair lives in the canon record only", () => {

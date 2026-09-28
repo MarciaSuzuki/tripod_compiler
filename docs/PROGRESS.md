@@ -2,7 +2,7 @@
 
 > **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
 
-## Current floor (refreshed 2026-09-27, SC-0087)
+## Current floor (refreshed 2026-09-28, SC-0087 + point A)
 
 - **Canon: the FOUR-BOOK SEED is sealed and publicly live** (SC-0084, 2026-07-15) — Ruth (14) +
   Jonah (5) + Esther (18) pericopes with Meaning Maps, Meaning Coordinates, and valid
@@ -46,7 +46,11 @@
   (prepared, not applied), the Internalize pin bump + the app's `[[CODE]]`-only wikilink rendering in
   the same app PR (never the pin first: two P11 slugs carry "Staging" / "Two-Stage") and the B?
   grounded label (app-side, R-9 B/D), and Marcia's yes/no on the builder extensions listed in
-  the SC-0087 entry. Next in the queue: P08, then P10, P12–P14.
+  the SC-0087 entry. **Point A (2026-09-28, «(a), sim, pode seguir com o ponto A»; P11-D6):** the
+  Scene 4 silence no longer says the handing (the custom told at 4:7 says it; O26's Function now
+  carries it), R2/R5 say the voice accepts the team's rendering without correcting or remarking on
+  it, and B19 is "the nearer redeemer" (not "kinsman") in Scenes 2–4 — the vault half's P11 copies
+  are to be re-synced to it. Next in the queue: P08, then P10, P12–P14.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
 
