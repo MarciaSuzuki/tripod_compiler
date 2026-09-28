@@ -2,14 +2,14 @@
 
 > **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
 
-## Current floor (refreshed 2026-09-28, SC-0087 + point A)
+## Current floor (refreshed 2026-09-28, SC-0088)
 
 - **Canon: the FOUR-BOOK SEED is sealed and publicly live** (SC-0084, 2026-07-15) — Ruth (14) +
   Jonah (5) + Esther (18) pericopes with Meaning Maps, Meaning Coordinates, and valid
   COMPILATION-LOGs, plus the T13 Psalm-13 map (its MC is born at Phase 4). Portal:
   marciasuzuki.github.io/tripod_compiler.
 - **Where the live state actually lives:** the `SPEC_CHANGES.md` **SC-ID allocation ledger** is
-  the authoritative decision log (SC-0001 → SC-0087); the working handoffs live in the project
+  the authoritative decision log (SC-0001 → SC-0088); the working handoffs live in the project
   memory, not here. This file's body below is the **June-2026 checkpoint, kept as history** —
   its "state" claims (PR #10, spec v0.6, 164 tests, P01–P06 scope) are long superseded; its
   mechanism descriptions (how validate/coverage/lint/id-check/compile work) remain accurate.
@@ -51,6 +51,23 @@
   carries it), R2/R5 say the voice accepts the team's rendering without correcting or remarking on
   it, and B19 is "the nearer redeemer" (not "kinsman") in Scenes 2–4 — the vault half's P11 copies
   are to be re-synced to it. Next in the queue: P08, then P10, P12–P14.
+- **SC-0088 (2026-09-28): P12, P13, P14 land (Ruth 4:9–22).** Marcia's map standard of 2026-09-28
+  («O padrão do mapa — o que a voz pode contar», «(a), sim, pode seguir com as recomendações», item 16
+  included) applied silently to the three maps + Meaning Coordinates, and her four SC-0088 rulings
+  («(b), (b), (a), sim — pode seguir com as recomendações»): D1 — a team's «o rei Davi» is a nuance,
+  named once («a história dá só o nome dele, Davi») without a send-back, the same rule in P13 R8 and
+  P14 R4; the voice never says "king"; D2 — in 4:9–12 the map says only "Neither Ruth nor Naomi
+  speaks." and the voice never says whether they are at the gate (P11's sentence stays for 4:1–8);
+  D3 — "do worthily" (4:11) keeps the worth-word chayil of 2:1 and 3:11 (CB_0032 flagged); D4 — the
+  P01/P02/P06 notes now say the Mahlon–Ruth pairing is said at 4:10 and the text never says whose wife
+  Orpah was, and the stale "P13" labels for 4:10 read P12. Registers: P12 12 entries (4
+  do_not_decide), P13 12 (7), P14 11 (5); FIG_0014 closes at P13. Registry labels: B24 "The Women",
+  B27 "Perez and His Descendants", PL1 "Bethlehem" (`ruth.aliases.json` re-pinned). The three Sala
+  signals flipped together for P12–P14: 12 of the 14 Ruth pericopes are complete-agreeing (P08 and P10
+  are still skeletons). A separate, droppable commit changes P11's go'el lines "kinsman" →
+  "redeemer" and needs her explicit yes. Owed: her merge word, her yes/no on the builder extensions
+  and the section-C calls listed in the SC-0088 entry, the vault half (prepared, not applied), and the
+  app's pin bump with its coverage-label follow-ups. Next in the queue: P08, then P10.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
 
