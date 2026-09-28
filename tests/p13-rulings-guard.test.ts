@@ -67,6 +67,8 @@ const BANNED_IN_MAP_AND_MC = [
   "kinsman", "queue", "whisper", "friend", "of bethlehem", "naomi's dwelling",
   // D2: 'not at the gate' only for 4:1–8
   "not at the gate (4:1–12)", "not at the gate in 4:1–12",
+  // the wish kept a wish (items 1 and 2; SC-0088 review): the name is 'called out', not 'known'
+  "known among",
 ];
 // The do_not_decide notes may name what must not be said ("the levirate law, Deuteronomy 25", "that she
 // adopted him"), so their list is narrower. R7 gives no name meaning for Obed (cross-check).
@@ -158,6 +160,9 @@ describe("SC-0088 — P13 rulings guard (what the app reads)", () => {
   it("elements the text does not have are gone: no place in 4:13–17, no CB_0001 at 4:13, the child once in Scene 3", () => {
     expect(read(MC)).not.toContain("PL_NAOMIS_DWELLING");
     expect(rawMap).not.toContain("PL_NAOMIS_DWELLING");
+    // SC-0088 review: 4:13 does not say 'redeemer' (the reason CB_0001 left S1), so Boaz's S1 line does not either.
+    expect(rawMap).toContain("- Relationship: now her husband\n");
+    expect(rawMap).not.toContain("the redeemer, now her husband");
     const [s1, , s3] = mc.level_2_scenes as {
       places_in_scene: { entries: unknown[] | null }; objects_in_scene: { entries: unknown[] | null };
       beings_in_scene: { entries: { being_id: string }[] };
@@ -192,6 +197,8 @@ describe("SC-0088 — P13 rulings guard (what the app reads)", () => {
     const s21 = rawMap.match(/### 2\.1 [^\n]*\n([^\n]*)\n/)![1]!;
     expect(s21).not.toMatch(/Perez|4:18|\bking\b|line of/i);
     expect(s21).toMatch(/and the passage ends on three names — Obed, Jesse, David\.$/);
+    // SC-0088 review: the 4:17 closing line is the narrator's in the story-so-far P14 hears, as P14 §2.2 has it.
+    expect(s21).toContain("and they call his name Obed. The narrator adds: he is the father of Jesse, the father of David.");
     expect(rawMap).toMatch(/### 2\.3 [^\n]*\nSwift, then warm, then still\. /);
     expect(rawMap).toContain("And the last line is the narrator's: Obed is the father of Jesse, the father of David.");
   });
