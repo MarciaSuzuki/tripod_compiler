@@ -93,10 +93,19 @@
   owed). Pericope titles seen, not changed. Local commits only (a) `3d25d59` canon, (b) `dcb5c07` docs + guards,
   (c) `177a24e` review fixes (P10 §1 and §2.2/§2.4), (d) follow-ups (P10 B13 "a redeemer (3:12)", 3:12's own
   words; `ruth.aliases.json` re-pinned for the vault's `bcd/` appears-in edits, so the vault half is one patch, 0001,
-  rebuilt at (d)); board 550 + 1 skipped. Owed: her merge word and her yes/no on
+  rebuilt at (d)), (e) her rulings after the team's session, «(a), (a), sim — pode seguir com as recomendações» (2026-09-29): the P08 Scene 1 absence
+  (map = MC) now reads 'After "lie down" she says only: he will tell you what you shall do. The word redeemer (2:20) is not said here; Naomi calls Boaz "our kinsman".' (live, the voice read 'Naomi says "a resting place".' as
+  "rest left undefined" and once retracted a correct acceptance of an added marriage), the 1:9 words
+  sit at the CB_0014 rest-word line ("at 1:9 Naomi wished each daughter-in-law rest, 'each in the house of her
+  husband'"); a do_not_decide never-rule "never asleep or awake" (dormiu, dormindo, acordou, acordou assustado)
+  as P09 R19 and P10 R14 (live: «acordou assustado» in 3 scripts); P08 R9 (a named Ruth accepted without
+  comment) do_not_decide (item 16). Registers now P08 13 (10 do_not_decide: R2–R11), P09 19 (11), P10 14 (8);
+  board 554 + 1 skipped, every other gate output byte-identical to (d). Owed from (e), each in its own slice:
+  the Guide prompt's silence-to-instruction habit, the golden judge applying item 16, the P10-eps measure
+  markers; the app's «acord-» key; P08-resting-place re-run 3×. Owed: her merge word and her yes/no on
   the builder, integration, review-step and follow-up extensions
-  and the section-C calls in the SC-0089 entry, the vault half (prepared, not applied; its P10 mirrors to rebuild from
-  (d)), the app's pin bump
+  and the section-C calls in the SC-0089 entry, the vault half (prepared, not applied; 0001 to rebuild from
+  (e)), the app's pin bump
   with the (vi) label, the form-table and `town → cidade` follow-ups, and P08/P10 live goldens when the
   team is not in session. Next, on her word: the registers beyond Ruth (Jonah J01–J05 and Esther E01–E18
   are outside the current card) and compiler Phase 4 (T13).

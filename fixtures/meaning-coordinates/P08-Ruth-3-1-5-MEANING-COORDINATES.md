@@ -139,7 +139,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "Naomi says \"a resting place\". After \"lie down\" she says only: he will tell you what you shall do. The word redeemer (2:20) is not said here; Naomi calls Boaz \"our kinsman\"."
+      "significant_absence": "After \"lie down\" she says only: he will tell you what you shall do. The word redeemer (2:20) is not said here; Naomi calls Boaz \"our kinsman\"."
     },
     {
       "scene_id": "S2",

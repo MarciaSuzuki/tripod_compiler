@@ -44,7 +44,8 @@ editing the test's list in a governed change.
 
 - P01–P06: real audits, all three signals agree (complete) — open to Sala.
 - **P07: completed under the SC-0085 P07 slice** (14 entries ruled by Marcia 2026-08-31).
-- **P08: completed under SC-0089** (13 entries, 9 do_not_decide — R2–R8, R10, R11 — Marcia's map
+- **P08: completed under SC-0089** (13 entries, 10 do_not_decide — R2–R11; R9 since her word of 2026-09-29 after the
+  team's session, which also took 'Naomi says "a resting place".' out of the Scene 1 absence — Marcia's map
   standard of 2026-09-28 and her SC-0089 rulings of 2026-09-29, «(b), (b), (a), sim — pode seguir com as
   recomendações», together with the P08 map + Meaning Coordinates corrections). The three signals flipped
   together in the same change; the vault half (map `sta-status` + `stas/` copies) is prepared, not yet
@@ -62,7 +63,8 @@ editing the test's list in a governed change.
   slug is now `He-Will-Tell-You` (map frontmatter + §5B, `figures.json` 0.7.2, vault note renamed) and the
   §5B line no longer says "the reverse lands at P09, where she tells him" ("cross-pericope pair opens
   here at 3:4").
-- **P09: completed under SC-0086** (18 entries, 10 do_not_decide, ruled by Marcia 2026-09-26 point
+- **P09: completed under SC-0086** (18 entries, 10 do_not_decide; since SC-0089, on her word of 2026-09-29 after the
+  team's session, 19 and 11 — R19, Boaz never asleep or awake; ruled by Marcia 2026-09-26 point
   by point, together with the P09 map + Meaning Coordinates corrections). The three signals flipped
   together in the same change; the vault half (map `sta-status` + `stas/` copies) is prepared, not yet
   applied — until it lands, the vault still reads P09 closed (skeleton + `pending`), the safe direction.
@@ -79,7 +81,8 @@ editing the test's list in a governed change.
   line naming Rute engages B32 in P09 S3). Fix in the app: whole-phrase entries used alone
   ("the nearer redeemer" → "resgatador mais próximo" etc.; B32 → rapazes / moços / jovens),
   role nouns out of the proper-noun loop, and coverage tests for both.
-- **P10: completed under SC-0089** (13 entries, 7 do_not_decide — R1, R2, R4, R5, R6, R9, R10 — the same
+- **P10: completed under SC-0089** (14 entries, 8 do_not_decide — R1, R2, R4, R5, R6, R9, R10, R14; R14, Boaz never
+  asleep or awake, since her word of 2026-09-29 after the team's session — the same
   standard and rulings, together with the P10 map + Meaning Coordinates corrections). The three signals
   flipped together in the same change; the vault half is prepared, not yet applied (the vault still reads
   P10 closed until it lands). Ruling D2 (b): the voice tells "he goes into the town" (3:15) and a team's

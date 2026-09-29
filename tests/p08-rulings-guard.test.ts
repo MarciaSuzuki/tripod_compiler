@@ -21,6 +21,11 @@ import { fileURLToPath } from "node:url";
  * resting place" and adds marriage or a husband is accepted without comment (R2); an added "redeemer" at
  * 3:2 is offered back gently with "our kinsman" (R10, SC-0053). Ruling D3 (a): the small fixes (i)–(iv) in
  * the approved P07 and P09 files that pointed at P08 are pinned here; (v)–(vi) in the P10 guard.
+ * Her rulings of 2026-09-29 after the team's session («(a), (a), sim — pode seguir com as recomendações»):
+ * (1) the Scene 1 absence no longer says 'Naomi says "a resting place".' (live, the voice read it as "the
+ * story does not say what the rest is" and treated an added marriage as a filled silence), and the 1:9 words
+ * sit at the rest-word (§3C CB_0014 Cross-ref); (3) R9, a named Ruth accepted without comment, is
+ * do_not_decide (item 16) — do_not_decide is R2–R11.
  * A future governed change that re-rules P08 edits this list.
  */
 const here = dirname(fileURLToPath(import.meta.url));
@@ -57,8 +62,15 @@ const audit = cl.high_risk_register_audit as Entry[];
 const entry = (id: string) => audit.find((e) => e.id === id)!;
 const dndNotes = audit.filter((e) => e.do_not_decide).map((e) => e.note).join("\n");
 
-// Ruling D1 (b), in the words approved with the cross-check (#19, #23).
-const S1_ABSENCE = "Naomi says \"a resting place\". After \"lie down\" she says only: he will tell you what you shall do. The word redeemer (2:20) is not said here; Naomi calls Boaz \"our kinsman\".";
+// Ruling D1 (b), in the words approved with the cross-check (#19, #23), as her ruling (1) of 2026-09-29
+// (after the team's session) reworded it: the sentence 'Naomi says "a resting place".' is out.
+const S1_ABSENCE = "After \"lie down\" she says only: he will tell you what you shall do. The word redeemer (2:20) is not said here; Naomi calls Boaz \"our kinsman\".";
+const OLD_S1_SENTENCE = "Naomi says \"a resting place\".";
+// Her ruling (1): the 1:9 words at the rest-word itself (§3C Scene 1, CB_0014).
+const CB_0014_XREF = "- Cross-ref: the rest-word of 1:9 comes again (1:9 menuchah, 3:1 manoach); at 1:9 Naomi wished each daughter-in-law rest, \"each in the house of her husband\"\n";
+// Her ruling (3), R9 to the Validator (item 16).
+const R9_NEVER = "For the voice only, never to be said: a remark that the text does not say her name, when a team names Ruth; a team that names Ruth is accepted without comment (item 16).";
+const DND = ["R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11"];
 const D1_MARRIAGE = "do not tell the plan as a marriage plan or say that Naomi wants a husband for Ruth; a team telling that keeps \"a resting place\" and adds marriage or a husband, as 1:9 said, is accepted without comment; one that puts marriage in place of \"a resting place\" is offered back gently.";
 const D1_REDEEMER = "A telling that calls Boaz \"redeemer\" at 3:2 fills the silence recorded here (SC-0053): offer it back gently with \"our kinsman\".";
 const ITEM16 = "Do not announce this silence before the team tells (item 16).";
@@ -110,9 +122,9 @@ describe("SC-0089 — P08 rulings guard (what the app reads)", () => {
     expect(lowHits(dndNotes.replace(R5_NEVER, "").replace(R6_NEVER, ""), BANNED_IN_RULE_NOTES)).toEqual([]);
   });
 
-  it("the register has R1–R13, do_not_decide exactly on R2–R8, R10, R11, every entry traced to the map", () => {
+  it("the register has R1–R13, do_not_decide exactly on R2–R11, every entry traced to the map", () => {
     expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 13 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R2", "R3", "R4", "R5", "R6", "R7", "R8", "R10", "R11"]);
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(DND);
     expect(audit.filter((e) => e.required_in_audit !== true).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => !(e.source_in_meaning_map ?? "").trim()).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.kind === "SKELETON_PENDING_HIGH_RISK_REVIEW")).toEqual([]);
@@ -172,10 +184,42 @@ describe("SC-0089 — P08 rulings guard (what the app reads)", () => {
     expect(entry("R3").note).toContain("A telling in which Ruth asks Naomi a question fills this silence: offer it back gently.");
     expect(entry("R3").note).toContain(ITEM16);
     expect(entry("R8").do_not_decide).toBe(true);
-    expect(entry("R9").do_not_decide).toBeUndefined();
     expect(entry("R9").applies_to).toContain("her name is not said in 3:1-5");
     expect(entry("R9").note).toContain("Naomi calls Ruth \"my daughter\"; Ruth's name is not said in 3:1-5.");
     expect(entry("R12").note).not.toContain("public moment");
+  });
+
+  // Her rulings (1) and (3) of 2026-09-29, after the team's session.
+  it("2026-09-29 (1): the Scene 1 absence without 'Naomi says \"a resting place\".', in map and MC; the 1:9 words at CB_0014", () => {
+    const s1 = (mc.level_2_scenes as { scene_id: string; significant_absence: string }[]).find((s) => s.scene_id === "S1")!;
+    expect(s1.significant_absence).toBe(S1_ABSENCE);
+    expect(s1.significant_absence).not.toContain(OLD_S1_SENTENCE);
+    const mapAbsences = [...rawMap.matchAll(/\*\*Significant Absence\*\*\n([^\n]*)\n/g)].map((m) => m[1]!);
+    expect(mapAbsences.length).toBe(2);
+    expect(mapAbsences[0]).toBe(S1_ABSENCE);
+    expect(mapAbsences.filter((a) => a.includes("resting place"))).toEqual([]);
+    expect((mc.level_2_scenes as { significant_absence: string }[]).filter((s) => s.significant_absence.includes("resting place"))).toEqual([]);
+    expect(rawMap).toContain(`[[CB_0014-Rest-Menucha]] — מָנוֹחַ / "a resting place"\n- What it is: "a resting place" (manoach), a place of rest\n- Function in scene: in Naomi's question — shall I not seek a resting place for you, that it may be well with you?\n${CB_0014_XREF}`);
+    expect(rawMap).not.toContain("- Cross-ref: the rest-word of 1:9 comes again (1:9 menuchah, 3:1 manoach)\n");
+    // No register text calls "a resting place" a silence: a clause that names it says "not a silence" or no silence.
+    const clauses = audit.flatMap((e) => `${e.applies_to}. ${e.note}`.split(/[.;] /)).filter((c) => /resting place/i.test(c));
+    expect(clauses.length).toBeGreaterThan(0);
+    expect(clauses.filter((c) => /silence/i.test(c) && !/not a silence/i.test(c))).toEqual([]);
+    expect(entry("R2").note).toContain("Naomi says 'a resting place' (3:1): that is the text's word, which the telling keeps; it is not a silence.");
+    // R2 and R4 quote the new lines, verbatim.
+    expect(entry("R2").source_in_meaning_map).toContain("Significant Absence in Scene 1 ('After \"lie down\" she says only: he will tell you what you shall do.')");
+    expect(entry("R2").source_in_meaning_map).not.toContain(OLD_S1_SENTENCE);
+    for (const id of ["R2", "R4"]) {
+      expect(entry(id).source_in_meaning_map, id).toContain("'the rest-word of 1:9 comes again (1:9 menuchah, 3:1 manoach); at 1:9 Naomi wished each daughter-in-law rest, \"each in the house of her husband\"'");
+    }
+  });
+
+  it("2026-09-29 (3): R9 (a named Ruth accepted without comment) is do_not_decide, with its item-16 never-sentence", () => {
+    expect(entry("R9").do_not_decide).toBe(true);
+    expect(entry("R9").note).toContain(R9_NEVER);
+    expect(dndNotes).toContain(R9_NEVER);
+    const d6 = (cl.compilation_decisions as { decision_id: string; description: string }[]).find((x) => x.decision_id === "P08-D6")!.description;
+    expect(d6).toContain("(a), (a), sim — pode seguir com as recomendações");
   });
 
   it("3:1 and 3:5 give no name for Ruth: Scene 1 'speaks to her', Scene 2 'she said', not רוּת", () => {

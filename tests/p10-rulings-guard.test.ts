@@ -107,9 +107,9 @@ describe("SC-0089 — P10 rulings guard (what the app reads)", () => {
     expect(lowHits(dndNotes.replace(R4_NEVER, ""), BANNED_IN_RULE_NOTES)).toEqual([]);
   });
 
-  it("the register has R1–R13, do_not_decide exactly on R1, R2, R4, R5, R6, R9, R10, every entry traced to the map", () => {
-    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 13 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R4", "R5", "R6", "R9", "R10"]);
+  it("the register has R1–R14, do_not_decide exactly on R1, R2, R4, R5, R6, R9, R10, R14, every entry traced to the map", () => {
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 14 }, (_, i) => `R${i + 1}`));
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R4", "R5", "R6", "R9", "R10", "R14"]);
     expect(audit.filter((e) => e.required_in_audit !== true).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => !(e.source_in_meaning_map ?? "").trim()).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.kind === "SKELETON_PENDING_HIGH_RISK_REVIEW")).toEqual([]);
@@ -129,6 +129,26 @@ describe("SC-0089 — P10 rulings guard (what the app reads)", () => {
     expect(cl.validation_checklist.high_risk_register_complete).toBe(true);
     expect(cl.validation_checklist.every_high_risk_entry_traces_to_meaning_map).toBe(true);
     expect(rawMap).toMatch(/^sta-status: "complete"$/m);
+  });
+
+  // Marcia 2026-09-29, after the team's session («(a), (a), sim — pode seguir com as recomendações»),
+  // ruling (2): live, the voice said «acordou assustado» in three scripts; the text never says Boaz slept or woke.
+  it("2026-09-29 (2): R14 — Boaz never asleep or awake (do_not_decide, the never-list, traced to 3:14)", () => {
+    const r14 = entry("R14");
+    expect(r14.kind).toBe("SIGNIFICANT_ABSENCE");
+    expect(r14.do_not_decide).toBe(true);
+    expect(r14.required_in_audit).toBe(true);
+    expect(r14.applies_to).toMatch(/^Boaz at 3:14 \(P1\): 3:14 tells only that Ruth lay at the place of his feet until the morning;/);
+    expect(r14.note).toContain("The text never says that Boaz slept or woke.");
+    expect(r14.note).toContain("3:14 tells only that Ruth lay at the place of his feet until the morning.");
+    expect(r14.note).toContain("For the voice only, never to be said: that he fell asleep, was sleeping or woke up ('dormiu', 'dormindo', 'acordou', 'acordou assustado').");
+    const quotes = [...(r14.source_in_meaning_map ?? "").matchAll(/(?:\(|; |, | )'(.{8,}?)'(?=[;),])/g)].map((m) => m[1]!);
+    expect(quotes.length).toBe(4);
+    expect(quotes.filter((q) => !rawMap.includes(q))).toEqual([]);
+    expect(quotes).toContain("She lies at the place of his feet until the morning");
+    expect(["asleep", "sleeps", "slept", "woke", "wakes", "awake"].filter((w) => voiceText.toLowerCase().includes(w))).toEqual([]);
+    const d6 = (cl.compilation_decisions as { decision_id: string; description: string }[]).find((x) => x.decision_id === "P10-D6")!.description;
+    expect(d6).toContain("(a), (a), sim — pode seguir com as recomendações");
   });
 
   it("the record: P10-D4 quotes her words of 2026-09-28 and 2026-09-29", () => {

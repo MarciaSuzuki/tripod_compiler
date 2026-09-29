@@ -89,12 +89,13 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
     }
   });
 
-  it("SC-0086: the P09 register carries the 18 ruled entries, 10 do_not_decide", () => {
+  // SC-0089 (Marcia 2026-09-29, after the team's session): R19 appended — Boaz never asleep or awake.
+  it("SC-0086 + SC-0089: the P09 register carries the 19 ruled entries, 11 do_not_decide", () => {
     const text = readFileSync(join(CL_DIR, "P09-Ruth-3-6-13-COMPILATION-LOG.md"), "utf8");
     const d = JSON.parse(text.match(/```json\n([\s\S]*?)\n```/)![1]!);
     const audit: { id: string; do_not_decide?: boolean }[] = d.high_risk_register_audit;
-    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 18 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R7", "R9", "R15", "R16", "R17", "R18"]);
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 19 }, (_, i) => `R${i + 1}`));
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R7", "R9", "R15", "R16", "R17", "R18", "R19"]);
   });
 
   it("SC-0087 + SC-0088: the P11 register carries 15 entries, 10 do_not_decide", () => {
@@ -111,9 +112,10 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
     ["P12-Ruth-4-9-12", "SC-0088", 13, ["R1", "R2", "R3", "R5", "R6", "R13"]],
     ["P13-Ruth-4-13-17", "SC-0088", 13, ["R1", "R2", "R3", "R5", "R7", "R8", "R9", "R10", "R13"]],
     ["P14-Ruth-4-18-22", "SC-0088", 11, ["R1", "R2", "R3", "R4", "R5", "R6"]],
-    // SC-0089, Marcia 2026-09-29: every never-rule do_not_decide from the start (the SC-0088 lesson).
-    ["P08-Ruth-3-1-5", "SC-0089", 13, ["R2", "R3", "R4", "R5", "R6", "R7", "R8", "R10", "R11"]],
-    ["P10-Ruth-3-14-18", "SC-0089", 13, ["R1", "R2", "R4", "R5", "R6", "R9", "R10"]],
+    // SC-0089, Marcia 2026-09-29: every never-rule do_not_decide from the start (the SC-0088 lesson);
+    // after the team's session the same day: P08 R9 to the Validator, P10 R14 appended (never asleep or awake).
+    ["P08-Ruth-3-1-5", "SC-0089", 13, ["R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11"]],
+    ["P10-Ruth-3-14-18", "SC-0089", 14, ["R1", "R2", "R4", "R5", "R6", "R9", "R10", "R14"]],
   ] as [string, string, number, string[]][]) {
     it(`${sc}: the ${stem.slice(0, 3)} register carries ${n} entries, ${dnd.length} do_not_decide`, () => {
       const text = readFileSync(join(CL_DIR, `${stem}-COMPILATION-LOG.md`), "utf8");

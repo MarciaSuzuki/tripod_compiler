@@ -183,6 +183,31 @@ describe("SC-0086 — P09 rulings guard (what the app reads)", () => {
     }
   });
 
+  // SC-0089 — Marcia 2026-09-29, after the team's session («(a), (a), sim — pode seguir com as
+  // recomendações»), ruling (2): the voice said «acordou assustado» in three scripts live; the text never
+  // says Boaz slept or woke. A do_not_decide never-rule in this approved passage (R19) and in P10 (R14).
+  it("2026-09-29 (2): R19 — Boaz never asleep or awake (do_not_decide, the never-list, traced to 3:7–8)", () => {
+    const audit = cl.high_risk_register_audit as { id: string; kind: string; applies_to: string; note: string; do_not_decide?: boolean; required_in_audit?: boolean; source_in_meaning_map?: string }[];
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 19 }, (_, i) => `R${i + 1}`));
+    const r19 = audit.find((e) => e.id === "R19")!;
+    expect(r19.kind).toBe("SIGNIFICANT_ABSENCE");
+    expect(r19.do_not_decide).toBe(true);
+    expect(r19.required_in_audit).toBe(true);
+    expect(r19.applies_to).toMatch(/^Boaz at 3:7–8 /);
+    expect(r19.note).toContain("The text never says that Boaz slept or woke. He lies down at the end of the grain heap (3:7); at half of the night the man trembles and twists, and there is a woman lying at the place of his feet (3:8).");
+    expect(r19.note).toContain("For the voice only, never to be said: that he fell asleep, was sleeping or woke up ('dormiu', 'dormindo', 'acordou', 'acordou assustado').");
+    const rawMap = read("fixtures/meaning-map/P09-Ruth-3-6-13.md");
+    const quotes = [...(r19.source_in_meaning_map ?? "").matchAll(/(?:\(|; |, | )'(.{8,}?)'(?=[;),])/g)].map((m) => m[1]!);
+    expect(quotes.length).toBe(6);
+    expect(quotes.filter((q) => !rawMap.includes(q))).toEqual([]);
+    expect(quotes).toContain("he lies down at the end of the grain heap");
+    expect(quotes).toContain("the man trembles and twists — and behold, a woman lying at the place of his feet");
+    // The map still tells him lying down, never asleep or waking (the voice reads the map).
+    expect(["asleep", "sleeps", "slept", "woke", "wakes", "awake"].filter((w) => mapText.toLowerCase().includes(w))).toEqual([]);
+    const d6 = (cl.compilation_decisions as { decision_id: string; description: string }[]).find((x) => x.decision_id === "P09-D6")!.description;
+    expect(d6).toContain("(a), (a), sim — pode seguir com as recomendações");
+  });
+
   it("ruling 2: P19 keeps both conditions of the morning", () => {
     const p19 = mc.level_3_propositions.find((p: { prop_id: string }) => p.prop_id === "P19");
     const conds = p19.event_specific_slots.protocol_components.map((c: { condition: string }) => c.condition);
