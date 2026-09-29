@@ -72,6 +72,7 @@
       "appears_in": [
         "P05",
         "P06",
+        "P08",
         "P09",
         "P10",
         "P11",
@@ -118,7 +119,8 @@
     "B16": {
       "appears_in": [
         "P06",
-        "P07"
+        "P07",
+        "P08"
       ],
       "english": "Young Women",
       "gender": "f",
@@ -1081,8 +1083,6 @@
       "appears_in": [
         "P05",
         "P07",
-        "P08",
-        "P10",
         "P13"
       ],
       "english": "Naomi's Dwelling in Bethlehem",

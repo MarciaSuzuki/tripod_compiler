@@ -148,6 +148,20 @@ describe("SC-0089 — P10 rulings guard (what the app reads)", () => {
     expect(rawMap).toContain("Naomi asks \"who are you, my daughter?\", with the words Boaz asked at night, \"who are you?\" (3:9).");
   });
 
+  // SC-0089 follow-up (standard item 1; builder fix, named for her yes/no at the merge word): 3:12 says only
+  // "I am a redeemer" and "there is a redeemer nearer than I" — "of the household" is P09's phrase, not the
+  // text's. B13's Relationship in both scenes reads "a redeemer (3:12)"; R13's two source quotes follow.
+  it("item-1 fix: B13 is 'a redeemer (3:12)' in Scenes 1 and 2 (not 'of the household'); R13's quotes follow", () => {
+    expect(rawMap).toContain("- Relationship: a redeemer (3:12); at night he said: if the nearer redeemer will redeem you, good; if he does not want to redeem you, I will redeem you (3:12–13)\n");
+    expect(rawMap).toContain("- Relationship: a redeemer (3:12); in Naomi's words, the man who will not rest unless he has finished the matter today\n");
+    expect(rawMap.toLowerCase()).not.toContain("household");
+    expect(mcProseText.toLowerCase()).not.toContain("household");
+    const r13 = entry("R13").source_in_meaning_map ?? "";
+    expect(r13).toContain("Section 3A Scene 1 (B13 'a redeemer (3:12); at night he said: if the nearer redeemer will redeem you, good; if he does not want to redeem you, I will redeem you (3:12–13)')");
+    expect(r13).toContain("Section 3A Scene 2 (B13 'a redeemer (3:12); in Naomi's words, the man who will not rest unless he has finished the matter today')");
+    expect(read(CL).toLowerCase()).not.toContain("household");
+  });
+
   it("the Coordinates' two scene purposes and absences are the map's 3F and Significant Absence texts", () => {
     const scenes = mc.level_2_scenes as { scene_id: string; scene_communicative_purpose: string; significant_absence: string }[];
     expect(scenes.map((s) => s.scene_id)).toEqual(["S1", "S2"]);
@@ -246,5 +260,15 @@ describe("SC-0089 — P10 rulings guard (what the app reads)", () => {
     expect(ent.O19!.referential_forms).toContain("Word");
     expect(ent.O16!.english).toBe("Six Measures of Barley");
     expect(ent.O16!.referential_forms).toContain("Six Barley");
+  });
+
+  // SC-0089 follow-up (builder note 6, in her «sim»): the vault's bcd appears-in edits (vault patch 0002) ship
+  // with this re-pin — B13 and B16 appear in P08 (3:2); Naomi's dwelling is named in neither P08 nor P10.
+  it("registry appears_in (vault 0002 + the re-pin): B13 and B16 gain P08; PL_NAOMIS_DWELLING loses P08 and P10", () => {
+    const reg = JSON.parse(read("_spec/registry/ruth.aliases.json"));
+    const ent = reg.entities as Record<string, { appears_in: string[] }>;
+    expect(ent.B13!.appears_in).toEqual(["P05", "P06", "P08", "P09", "P10", "P11", "P12", "P13", "P14"]);
+    expect(ent.B16!.appears_in).toEqual(["P06", "P07", "P08"]);
+    expect(ent.PL_NAOMIS_DWELLING!.appears_in).toEqual(["P05", "P07", "P13"]);
   });
 });
