@@ -90,8 +90,9 @@
   do_not_decide: R2–R8, R10, R11), P10 13 (7: R1, R2, R4, R5, R6, R9, R10) — every never-rule
   do_not_decide from the start; P10 «como foi, minha filha?» a nuance, named once. Registry labels: PL4
   "The Town", O19 "The Matter", O16 "Six Measures of Barley" (`ruth.aliases.json` re-pinned; O13 unchanged,
-  owed). Pericope titles seen, not changed. Local commits only (a) `3d25d59` canon, (b) docs + guards;
-  board 545 + 1 skipped. Owed: her merge word and her yes/no on the builder and integration extensions
+  owed). Pericope titles seen, not changed. Local commits only (a) `3d25d59` canon, (b) `dcb5c07` docs + guards,
+  (c) review fixes (P10 §1 and §2.2/§2.4); board 548 + 1 skipped. Owed: her merge word and her yes/no on
+  the builder, integration and review-step extensions
   and the section-C calls in the SC-0089 entry, the vault half (prepared, not applied), the app's pin bump
   with the (vi) label, the form-table and `town → cidade` follow-ups, and P08/P10 live goldens when the
   team is not in session. Next, on her word: the registers beyond Ruth (Jonah J01–J05 and Esther E01–E18

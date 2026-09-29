@@ -69,7 +69,9 @@ const BANNED_IN_MAP_AND_MC = [
   // no images, no pointers ahead, no place the text does not give (items 1, 6, 8)
   "gray", "sack", "before light", "parts them", "the parting", "held breath", "sets the story down", "final",
   "wait-formula", "decided", "homecoming", "at home", "debrief", "wound", "into the cloak", "carries the gift",
-  "until the matter falls", "naomi's dwelling",
+  "until the matter falls", "naomi's dwelling", "alone",
+  // SC-0089 review: at 3:14–15 only Boaz speaks (no 'exchange'); at 3:9 Boaz asked only "who are you?" (item 1)
+  "respectful exchange", "in the same words boaz",
   // carried rulings: the go'el is 'redeemer', never 'kinsman'; nothing of the gate (P11); no hushed night (P09)
   "kinsman", "gate", "hush", "sleeper", "whisper", "queue", "friend", "p11", "4:1", "levirat", "marr",
   // feelings the text does not give
@@ -127,6 +129,23 @@ describe("SC-0089 — P10 rulings guard (what the app reads)", () => {
     expect(cl.validation_checklist.high_risk_register_complete).toBe(true);
     expect(cl.validation_checklist.every_high_risk_entry_traces_to_meaning_map).toBe(true);
     expect(rawMap).toMatch(/^sta-status: "complete"$/m);
+  });
+
+  it("the record: P10-D4 quotes her words of 2026-09-28 and 2026-09-29", () => {
+    const d4 = (cl.compilation_decisions as { decision_id: string; description: string }[]).find((x) => x.decision_id === "P10-D4")!.description;
+    expect(d4).toContain("sim, pode começar pela P08 e P10");
+    expect(d4).toContain("(b), (b), (a), sim — pode seguir com as recomendações");
+  });
+
+  // SC-0089 review step (standard item 1; named for her yes/no at the merge word): at 3:14–15 only Boaz
+  // speaks, so Scene 1's register line gives Ruth no speech; at 3:9 Boaz asked only "who are you?".
+  it("review fixes: Scene 1 CONSULTATIVE 'as in the night at the threshing floor'; Boaz's 3:9 words quoted exactly", () => {
+    expect(rawMap).toContain("Scene 1 shifts to CONSULTATIVE at scene level, as in the night at the threshing floor; the dawn is still private — before one person could recognize another, and under Boaz's word that it must not be known that the woman came to the threshing floor (3:14).");
+    expect(mc.pericope_classification.register_overrides._note).toContain("Scene 1 shifting to CONSULTATIVE at scene level (at the threshing floor at dawn, as in the night, under Boaz's word of 3:14)");
+    expect(entry("R12").note).toContain("Scene 1 (3:14–15) is CONSULTATIVE at scene level, as in the night at the threshing floor; the dawn is still private (3:14).");
+    expect(entry("R12").note).not.toContain("exchange");
+    expect(rawMap).toContain("Naomi's question, \"who are you, my daughter?\", uses the words Boaz asked at night, \"who are you?\" (3:9).");
+    expect(rawMap).toContain("Naomi asks \"who are you, my daughter?\", with the words Boaz asked at night, \"who are you?\" (3:9).");
   });
 
   it("the Coordinates' two scene purposes and absences are the map's 3F and Significant Absence texts", () => {

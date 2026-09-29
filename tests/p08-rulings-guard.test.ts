@@ -70,6 +70,8 @@ const BANNED_IN_MAP_AND_MC = [
   // readings of the plan: its goal and means, marriage told as the plan, intent (items 2, 3; D1 (b))
   "goal", "the means", "secure home", "married woman", "marri", "softer", "legal word", "unspoken",
   "permanence", "provision", "promise", "sought for", "trust", "hesitation", "levirat", "bride", "wedding",
+  // no motive for Boaz the text does not give (item 3): the grain line says what he is winnowing (SC-0089 review)
+  "what brings",
   // verdicts and denials nobody raised (items 3, 16)
   "total assent", "accepted whole", "completely", "public moment", "ceremonial lift", "the closed door", "alone at",
   // nothing of what comes later (item 6): no passage IDs, no later verses, no 'next'
@@ -132,6 +134,13 @@ describe("SC-0089 — P08 rulings guard (what the app reads)", () => {
     expect(cl.validation_checklist.high_risk_register_complete).toBe(true);
     expect(cl.validation_checklist.every_high_risk_entry_traces_to_meaning_map).toBe(true);
     expect(rawMap).toMatch(/^sta-status: "complete"$/m);
+  });
+
+  it("the record: P08-D4 quotes her words of 2026-09-28 and 2026-09-29; the grain line gives no motive", () => {
+    const d4 = (cl.compilation_decisions as { decision_id: string; description: string }[]).find((x) => x.decision_id === "P08-D4")!.description;
+    expect(d4).toContain("sim, pode começar pela P08 e P10");
+    expect(d4).toContain("(b), (b), (a), sim — pode seguir com as recomendações");
+    expect(rawMap).toContain("- Function in scene: what Boaz is winnowing at the threshing floor tonight\n");
   });
 
   it("the Coordinates' two scene purposes and absences are the map's 3F and Significant Absence texts", () => {
