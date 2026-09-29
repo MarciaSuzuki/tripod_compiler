@@ -146,7 +146,7 @@ describe("SC-0089 — P10 rulings guard (what the app reads)", () => {
     expect(quotes.length).toBe(4);
     expect(quotes.filter((q) => !rawMap.includes(q))).toEqual([]);
     expect(quotes).toContain("She lies at the place of his feet until the morning");
-    expect(["asleep", "sleeps", "slept", "woke", "wakes", "awake"].filter((w) => voiceText.toLowerCase().includes(w))).toEqual([]);
+    expect([...voiceText.matchAll(/\b(?:a?sleep\w*|slept|wak(?:e|es|ing|ened)|woke\w*|awake\w*|awoke\w*)\b/gi)].map((m) => m[0])).toEqual([]);
     const d6 = (cl.compilation_decisions as { decision_id: string; description: string }[]).find((x) => x.decision_id === "P10-D6")!.description;
     expect(d6).toContain("(a), (a), sim — pode seguir com as recomendações");
   });

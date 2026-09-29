@@ -203,7 +203,7 @@ describe("SC-0086 — P09 rulings guard (what the app reads)", () => {
     expect(quotes).toContain("he lies down at the end of the grain heap");
     expect(quotes).toContain("the man trembles and twists — and behold, a woman lying at the place of his feet");
     // The map still tells him lying down, never asleep or waking (the voice reads the map).
-    expect(["asleep", "sleeps", "slept", "woke", "wakes", "awake"].filter((w) => mapText.toLowerCase().includes(w))).toEqual([]);
+    expect([...mapText.matchAll(/\b(?:a?sleep\w*|slept|wak(?:e|es|ing|ened)|woke\w*|awake\w*|awoke\w*)\b/gi)].map((m) => m[0])).toEqual([]);
     const d6 = (cl.compilation_decisions as { decision_id: string; description: string }[]).find((x) => x.decision_id === "P09-D6")!.description;
     expect(d6).toContain("(a), (a), sim — pode seguir com as recomendações");
   });
