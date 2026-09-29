@@ -79,7 +79,9 @@ editing the test's list in a governed change.
   edits are builder calls under "any other" pointer, for her yes/no.
 - **P11: completed under SC-0087** (14 entries, 8 do_not_decide — R1–R7 and R10 — ruled by Marcia
   2026-09-27, nine rulings, her word «(a), sim, pode seguir com as recomendações», together with the
-  P11 map + Meaning Coordinates corrections). The three signals flipped together in the same change; the
+  P11 map + Meaning Coordinates corrections; since SC-0088, her word of 2026-09-28 after the team's
+  session «Pode passar as regras do tipo nunca para o validador», 15 entries, 10 do_not_decide —
+  R1–R7, R10, R13, R15: R13 flipped whole, R15 = R9's never-rule sentences, moved word for word). The three signals flipped together in the same change; the
   vault half (map `sta-status` + `stas/` copies + the CB_0002 / FIG_0122 note renames) is prepared, not
   yet applied — until it lands, the vault still reads P11 closed (skeleton + `pending`), the safe
   direction. The map says "So-and-so" without "friend" (R-2); "whisper" and "queue" are gone (R-7);

@@ -78,6 +78,9 @@ const BANNED_IN_RULE_NOTES = [
   "asks ruth", "queue", "whisper", "next scene", "jonah", "nineveh",
 ];
 
+// R15's never-rule names the word it forbids ('queue'); that one sentence is left out of the ban check.
+const R15_QUEUE = "Never call it a queue.";
+
 const lowHits = (text: string, list: string[]) => list.filter((w) => text.toLowerCase().includes(w));
 
 describe("SC-0087 — P11 rulings guard (what the app reads)", () => {
@@ -95,15 +98,19 @@ describe("SC-0087 — P11 rulings guard (what the app reads)", () => {
       .filter((e) => e.do_not_decide)
       .map((e) => e.note)
       .join("\n");
-    expect(lowHits(notes, BANNED_IN_RULE_NOTES)).toEqual([]);
+    expect(notes).toContain(R15_QUEUE);
+    expect(lowHits(notes.replace(R15_QUEUE, ""), BANNED_IN_RULE_NOTES)).toEqual([]);
   });
 
-  it("R-9 E: the register has R1–R14, do_not_decide exactly on R1–R7 and R10, every entry traced", () => {
+  it("R-9 E: the register has R1–R15, do_not_decide exactly on R1–R7, R10, R13 and R15, every entry traced", () => {
     const audit = cl.high_risk_register_audit as {
-      id: string; kind: string; do_not_decide?: boolean; required_in_audit?: boolean; source_in_meaning_map?: string;
+      id: string; kind: string; note: string; do_not_decide?: boolean; required_in_audit?: boolean; source_in_meaning_map?: string;
     }[];
-    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 14 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R10"]);
+    // SC-0088, Marcia 2026-09-28 after the session: «Pode passar as regras do tipo nunca para o validador» —
+    // P11 too (P11-D7): R13 flipped whole; R9's never-rules moved, word for word, into R15.
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 15 }, (_, i) => `R${i + 1}`));
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R10", "R13", "R15"]);
+    expect(audit.filter((e) => /\bnever\b/i.test(e.note) && !e.do_not_decide).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.required_in_audit !== true).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => !(e.source_in_meaning_map ?? "").trim()).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.kind === "SKELETON_PENDING_HIGH_RISK_REVIEW")).toEqual([]);
@@ -191,7 +198,11 @@ describe("SC-0087 — P11 rulings guard (what the app reads)", () => {
     const note = (id: string) => (cl.high_risk_register_audit as { id: string; note: string }[]).find((e) => e.id === id)!.note;
     expect(note("R7")).toContain("Never say or suggest which of Naomi's sons was Ruth's husband");
     expect(note("R8")).toContain("Keep 'the Moabite' in the line.");
-    expect(note("R9")).toContain("never 'kinsman' or 'relative'");
+    expect(note("R15")).toBe("The nearness is kinship, not place or friendship (P07 R5, P09 R7). Never call it a queue. The redeemer word stays 'redeemer', never 'kinsman' or 'relative' (P09 R14).");
+    expect(note("R9")).toMatch(/^PREFERRED keep-image\. The nearness word of 2:20 .* 'there is no one besides you to redeem, and I am after you' \(4:4\)\.$/);
+    expect(note("R9")).not.toMatch(/\bnever\b/i);
+    expect(note("R13")).toContain("never say that he was the blood brother of both men");
+    expect(note("R13")).toContain("never says at 4:5 that Boaz acquires Ruth");
     expect(note("R10")).toContain("never say that Boaz married Ruth or will marry her in this passage");
     expect(note("R11")).toContain("2:20 is not brought into 4:5");
   });

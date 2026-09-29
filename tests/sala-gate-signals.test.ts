@@ -97,12 +97,13 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
     expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R7", "R9", "R15", "R16", "R17", "R18"]);
   });
 
-  it("SC-0087: the P11 register carries the 14 ruled entries, 8 do_not_decide", () => {
+  it("SC-0087 + SC-0088: the P11 register carries 15 entries, 10 do_not_decide", () => {
     const text = readFileSync(join(CL_DIR, "P11-Ruth-4-1-8-COMPILATION-LOG.md"), "utf8");
     const d = JSON.parse(text.match(/```json\n([\s\S]*?)\n```/)![1]!);
     const audit: { id: string; do_not_decide?: boolean }[] = d.high_risk_register_audit;
-    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 14 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R10"]);
+    // SC-0088, Marcia 2026-09-28 after the session: P11's never-rules to the Validator too (P11-D7).
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 15 }, (_, i) => `R${i + 1}`));
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R10", "R13", "R15"]);
   });
 
   for (const [stem, sc, n, dnd] of [

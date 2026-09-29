@@ -63,7 +63,9 @@
   Orpah was, and the stale "P13" labels for 4:10 read P12. Registers: P12 13 entries (6
   do_not_decide), P13 13 (9), P14 11 (6) — after the team's session (2026-09-28) her word «Pode passar
   as regras do tipo nunca para o validador» made every never-rule do_not_decide (P12 R1, R13; P13 R2,
-  R13; P14 R6); P13 Scene 3 lost its INTIMATE override (item 10); FIG_0014 closes at P13. Registry labels: B24 "The Women",
+  R13; P14 R6) — and, the same word covering P11's never-rules, P11 15 entries (10 do_not_decide:
+  R1–R7, R10, R13, R15; R13 flipped whole, R15 = R9's never-rules incl. the redeemer never
+  'kinsman'/'relative'); P13 Scene 3 lost its INTIMATE override (item 10); FIG_0014 closes at P13. Registry labels: B24 "The Women",
   B27 "Perez and His Descendants", PL1 "Bethlehem" (`ruth.aliases.json` re-pinned). The three Sala
   signals flipped together for P12–P14: 12 of the 14 Ruth pericopes are complete-agreeing (P08 and P10
   are still skeletons). A separate commit changes P11's go'el lines "kinsman" → "redeemer" — kept,
