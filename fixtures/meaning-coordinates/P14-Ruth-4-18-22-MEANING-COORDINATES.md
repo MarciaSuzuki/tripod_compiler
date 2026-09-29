@@ -69,7 +69,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "scene_id": "S1",
       "verse_range": "4:18-22",
       "scene_kind": "GENEALOGY_SCENE",
-      "scene_communicative_purpose": "Closes the book with a ten-name line from Perez to David, placing the redeemed Bethlehem household in the direct ancestry of the king.",
+      "scene_communicative_purpose": "Closes the book with a line of ten names from Perez to David; Boaz and Obed are among them.",
       "beings_in_scene": {
         "entries": [
           {
@@ -102,15 +102,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "entries": [
           {
             "object_id": "CB_0049"
-          },
-          {
-            "object_id": "CB_0005"
-          },
-          {
-            "object_id": "CB_0047"
-          },
-          {
-            "object_id": "CB_0048"
           }
         ]
       },
@@ -118,7 +109,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "The genealogy names no mother — not Tamar, not Ruth, not Naomi — though the book it closes is theirs; the formal line carries only the fathers. And it adds no comment on David: the last name simply stops the list, the weight left for the audience to carry."
+      "significant_absence": "The list names no woman — not Tamar, not Ruth, not Naomi; it names only fathers and sons. It does not name God. It adds no comment on David; the list stops at his name."
     }
   ],
   "level_3_propositions": [

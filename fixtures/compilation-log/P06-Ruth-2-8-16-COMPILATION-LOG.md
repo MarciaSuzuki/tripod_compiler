@@ -35,7 +35,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
     {
       "decision_id": "P06-D1",
       "decision": "Wife-pairing withheld at v.11 husband reference.",
-      "description": "At v.11 Boaz says 'after the death of your husband' without naming which son. The Mahlon-Ruth / Chilion-Orpah pairing is withheld in narrator-readable text until 4:10. P7 recital_components uses after_whose_death: B? rather than B4. Carries P01-D2 forward into Boaz's recital."
+      "description": "At v.11 Boaz says 'after the death of your husband' without naming which son. The pairing is withheld in narrator-readable text. The Mahlon–Ruth pairing is said at 4:10; the text never says whose wife Orpah was. P7 recital_components uses after_whose_death: B? rather than B4. Carries P01-D2 forward into Boaz's recital."
     },
     {
       "decision_id": "P06-D2",
@@ -606,7 +606,7 @@ This page renders the COMPILATION-LOG JSON as a wiki-addressable artifact. The c
   "known_limitations": [
     "PL_AMONG_SHEAVES used as a working code pending formal PL-code assignment in BCD v0.4.",
     "Cross-pericope pair verification for FIG_0011, FIG_0132, and FIG_0104 deferred pending P07 and P09 compilations.",
-    "Wife pairing at v.11 withheld per P01-D2 source-text discipline. Pairing disclosure carried forward to P13 audit at 4:10.",
+    "Wife pairing at v.11 withheld per P01-D2 source-text discipline. Pairing disclosure carried forward to P12 audit at 4:10.",
     "FIG_0001 Ruth-the-Moabitess narrator-epithet does not fire in P06; carries forward to P07 v.21 where the narrator-voice epithet returns.",
     "CB_0011 Hesed lexeme does not fire in P06; hesed is enacted in narrative substance but the word first appears at 2:20 (P07).",
     "community_verified and translation_team_verified remain false; this is a pilot compilation."

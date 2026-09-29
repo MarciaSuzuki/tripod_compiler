@@ -441,7 +441,7 @@
   },
   {
     "pericope": "P12",
-    "matched": 54,
+    "matched": 56,
     "divergent": 0,
     "agreementPct": 100,
     "judgmentPlaceholders": 44,
@@ -449,10 +449,10 @@
   },
   {
     "pericope": "P13",
-    "matched": 45,
+    "matched": 43,
     "divergent": 0,
     "agreementPct": 100,
-    "judgmentPlaceholders": 45,
+    "judgmentPlaceholders": 43,
     "divergences": []
   },
   {

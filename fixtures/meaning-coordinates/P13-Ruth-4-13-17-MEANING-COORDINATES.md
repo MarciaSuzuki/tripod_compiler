@@ -28,15 +28,11 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
     "genre": "HISTORICAL_NARRATIVE",
     "register": "INFORMAL_CASUAL",
     "register_overrides": {
-      "_note": "Pericope stays INFORMAL_CASUAL (narrator's telling). MM Section 1 marks two scene-level shifts: S2 (4:14-15) the women's benediction lifts to CEREMONIAL; S3 (4:16-17) the lap/cradle settles to INTIMATE. No moment-level or framing overrides.",
+      "_note": "Pericope stays INFORMAL_CASUAL (narrator's telling). MM Section 1 marks one scene-level shift: S2 (4:14-15) the women's benediction lifts to CEREMONIAL. S3 (4:16-17), Naomi taking the child and the neighbor-women naming him, stays in the pericope-level INFORMAL_CASUAL (no override). No moment-level or framing overrides.",
       "scene_level": [
         {
           "scene_id": "S2",
           "override_value": "CEREMONIAL"
-        },
-        {
-          "scene_id": "S3",
-          "override_value": "INTIMATE"
         }
       ],
       "moment_level": null
@@ -87,7 +83,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "scene_id": "S1",
       "verse_range": "4:13",
       "scene_kind": "BIRTH_SCENE",
-      "scene_communicative_purpose": "Resolves the marriage and the waiting in a single swift line, with YHWH's gift of conception at its center — the book's second direct act of God.",
+      "scene_communicative_purpose": "Tells the marriage and the birth in a single swift line, with YHWH's giving of conception at its center.",
       "beings_in_scene": {
         "entries": [
           {
@@ -113,30 +109,24 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         ]
       },
       "places_in_scene": {
-        "entries": [
-          {
-            "place_id": "PL_NAOMIS_DWELLING"
-          }
-        ]
+        "_note": "the text names no place in this verse (per meaning map)",
+        "entries": null
       },
       "objects_in_scene": {
-        "entries": [
-          {
-            "object_id": "CB_0001"
-          }
-        ]
+        "_note": "no object or concept is named in this verse (per meaning map)",
+        "entries": null
       },
       "times_in_scene": {
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "The narrator gives no wedding, no span of time, no description of the birth — only the bare swift verbs. And the child is not yet named or claimed; the women's word in the next verses does that, and not by the parents."
+      "significant_absence": "The narrator tells no wedding, no span of time, and nothing of the birth itself — only the swift verbs. The child is not named in this verse."
     },
     {
       "scene_id": "S2",
       "verse_range": "4:14-15",
       "scene_kind": "BLESSING_SCENE",
-      "scene_communicative_purpose": "Turns the birth into a word of YHWH's faithfulness to Naomi: the child named her redeemer, restorer, and sustainer, and Ruth measured past a full house.",
+      "scene_communicative_purpose": "The women speak to Naomi and bless YHWH, who has not left her without a redeemer today; the one born will be a restorer of her life and a sustainer of her old age, and her daughter-in-law, who loves her, is better to her than seven sons.",
       "beings_in_scene": {
         "entries": [
           {
@@ -195,23 +185,18 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "The women bless Naomi, not Ruth and not Boaz — the child is reckoned first to the once-empty grandmother. And though they praise Ruth's love and her bearing, they do not name her — she is \"your daughter-in-law\"; the Moabite label, carried the whole book, is gone here, replaced by love."
+      "significant_absence": "The women speak to Naomi; they say nothing to Ruth or to Boaz, and Boaz is not mentioned. They do not say Ruth's name or call her the Moabite; she is \"your daughter-in-law who loves you\"."
     },
     {
       "scene_id": "S3",
       "verse_range": "4:16-17",
       "scene_kind": "NAMING_SCENE",
-      "scene_communicative_purpose": "Closes the book's reversal at its tenderest and then its widest: the child against Naomi's chest, named for her by the women, and the names that open onto David.",
+      "scene_communicative_purpose": "Naomi takes the child to her bosom and becomes his nurse; the neighbor-women call a name — a son has been born to Naomi — and call him Obed; and the narrator names Obed's son and grandson, Jesse and David.",
       "beings_in_scene": {
         "entries": [
           {
             "being_id": "B3",
             "role_in_scene": "GRANDMOTHER",
-            "presence": "PRESENT"
-          },
-          {
-            "being_id": "B?",
-            "role_in_scene": "SON",
             "presence": "PRESENT"
           },
           {
@@ -232,11 +217,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         ]
       },
       "places_in_scene": {
-        "entries": [
-          {
-            "place_id": "PL_NAOMIS_DWELLING"
-          }
-        ]
+        "_note": "the text names no place in this scene (per meaning map)",
+        "entries": null
       },
       "objects_in_scene": {
         "entries": [
@@ -252,7 +234,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "Ruth is not in this last scene — the child is on Naomi's lap and reckoned a son to Naomi, the mother stepped out of the closing frame. Boaz, too, is gone from the telling after 4:13. And the narrator names David without a word of who he is or will be — the weight of the name is left for the audience to carry."
+      "significant_absence": "Ruth is not mentioned in this scene; the neighbor-women say a son has been born to Naomi. Boaz is not mentioned after 4:13 in this passage. The neighbor-women give the child his name; the text does not say why the name Obed. The narrator names David and says nothing more about him."
     }
   ],
   "level_3_propositions": [
@@ -269,9 +251,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "inter_proposition_links": {
         "forward_link_to": "P2"
       },
-      "cb_flags": [
-        "CB_0001"
-      ],
+      "cb_flags": [],
       "figure_flags": [
         "FIG_0180",
         "FIG_0188"
@@ -409,7 +389,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "proposition_kind": "TOOK",
       "event_specific_slots": {
         "taker": "B3",
-        "child_taken": "B?",
+        "child_taken": "B25",
         "placement": "ON_BOSOM"
       },
       "inter_proposition_links": {
@@ -429,7 +409,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "caregiver": "B3",
         "assumed_role": "NURSE_OMENET",
-        "for_child": "B?"
+        "for_child": "B25"
       },
       "inter_proposition_links": {
         "caused_by": "P8",
@@ -448,7 +428,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "naming_speakers": "B24",
         "reckoned_to": "B3",
-        "named_child": "B?",
+        "named_child": "B25",
         "speech_act": "STATES_AS_TRUE"
       },
       "inter_proposition_links": {

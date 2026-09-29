@@ -88,7 +88,9 @@ const ANCHORS: Anchor[] = [
   {
     pid: "P13", file: "P13-Ruth-4-13-17.md", staId: "ruth_pericope_13_v2_0", bcvStart: /^Ruth 4:13/,
     genreGroup: "NARRATIVE", genre: "HISTORICAL_NARRATIVE", register: "INFORMAL_CASUAL",
-    blocks: 38, explicit: 33, implied: 7,
+    // 38→36 (SC-0088, Marcia 2026-09-28): the map's uncoded Scene 3 'The child — הַיֶּלֶד' entry is joined to
+    // [[B25-Obed]] (the child was listed twice), so its being_id and role placeholders no longer emit blocks.
+    blocks: 36, explicit: 33, implied: 7,
     registered: { cb: ["CB_0046", "CB_0047", "CB_0048"], fig: ["FIG_0183", "FIG_0187", "FIG_0181"] },
   },
   {
