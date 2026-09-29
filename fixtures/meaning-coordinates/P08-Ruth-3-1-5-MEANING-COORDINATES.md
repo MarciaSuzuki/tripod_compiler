@@ -28,7 +28,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
     "genre": "HISTORICAL_NARRATIVE",
     "register": "INFORMAL_CASUAL",
     "register_overrides": {
-      "_note": "Both scenes shift to INTIMATE at scene level — the two women alone at home, a private risky plan and a one-line answer of trust (per MM Section 1). No moment-level register or NARRATIVE_FRAMING shifts are marked in the prose.",
+      "_note": "Both scenes shift to INTIMATE at scene level — a talk between Naomi and her daughter-in-law: Naomi's plan and Ruth's one-line answer (per MM Section 1). No moment-level register or NARRATIVE_FRAMING shifts are marked in the prose.",
       "scene_level": [
         {
           "scene_id": "S1",
@@ -84,7 +84,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
       "scene_id": "S1",
       "verse_range": "3:1-4",
       "scene_kind": "INSTRUCTION_SCENE",
-      "scene_communicative_purpose": "Turns the rest-wish into a worked plan: goal, man, night, place, and step-by-step instructions, ending with the next word handed to Boaz.",
+      "scene_communicative_purpose": "Naomi asks Ruth: shall I not seek a resting place for you, that it may be well with you? She names Boaz, our kinsman, winnowing the barley at the threshing floor tonight, and gives the steps: wash, anoint yourself, put your garments on you, and go down to the threshing floor; do not be known to the man until he has finished eating and drinking; when he lies down, know the place where he lies; go in, uncover the place of his feet, and lie down. She ends: he will tell you what you shall do.",
       "beings_in_scene": {
         "entries": [
           {
@@ -109,19 +109,11 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
             "being_id": "B16",
             "role_in_scene": "FEMALE_WORKERS",
             "presence": "REFERENCED"
-          },
-          {
-            "being_id": "B2",
-            "role_in_scene": "HUSBAND",
-            "presence": "REFERENCED"
           }
         ]
       },
       "places_in_scene": {
         "entries": [
-          {
-            "place_id": "PL_NAOMIS_DWELLING"
-          },
           {
             "place_id": "PL6"
           }
@@ -147,13 +139,13 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "The plan never names its goal outright — marriage is not said, and what should happen after the lying down is left entirely to \"he will tell you what you shall do.\" The word redeemer, spoken at 2:20, is not spoken here — Boaz is named by the softer family word, \"our kinsman.\" And the risk — a woman alone at night at the floor — is never acknowledged."
+      "significant_absence": "Naomi says \"a resting place\". After \"lie down\" she says only: he will tell you what you shall do. The word redeemer (2:20) is not said here; Naomi calls Boaz \"our kinsman\"."
     },
     {
       "scene_id": "S2",
       "verse_range": "3:5",
       "scene_kind": "CONSENT_SCENE",
-      "scene_communicative_purpose": "Closes the exchange with total assent — one line, no questions — and sends the plan toward the floor.",
+      "scene_communicative_purpose": "Ruth answers Naomi in one line: all that you say I will do.",
       "beings_in_scene": {
         "entries": [
           {
@@ -169,11 +161,8 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         ]
       },
       "places_in_scene": {
-        "entries": [
-          {
-            "place_id": "PL_NAOMIS_DWELLING"
-          }
-        ]
+        "_note": "the text names no place in this scene (per meaning map)",
+        "entries": null
       },
       "objects_in_scene": {
         "entries": []
@@ -182,7 +171,7 @@ Machine-drafted judgment half (SC-0063 drafter) over the deterministic skeleton;
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "Ruth asks nothing — not the goal, not the meaning of the uncovering, not what to do if the man is angry. The narrator records no hesitation between hearing the plan and accepting all of it."
+      "significant_absence": "Ruth asks nothing; she answers in one line. The narrator does not say what she thinks or feels."
     }
   ],
   "level_3_propositions": [

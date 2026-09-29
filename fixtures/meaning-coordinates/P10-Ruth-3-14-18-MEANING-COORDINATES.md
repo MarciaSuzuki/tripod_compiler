@@ -28,7 +28,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
     "genre": "HISTORICAL_NARRATIVE",
     "register": "INFORMAL_CASUAL",
     "register_overrides": {
-      "_note": "MM Section 1 marks Scene 1 shifting to CONSULTATIVE at scene level (the dawn at the floor, under Boaz's word of 3:14) and Scene 2 to INTIMATE (the two women alone again). No moment-level register shift and no NARRATIVE_FRAMING override are marked.",
+      "_note": "MM Section 1 marks Scene 1 shifting to CONSULTATIVE at scene level (a respectful exchange at the threshing floor at dawn, under Boaz's word of 3:14) and Scene 2 to INTIMATE (Ruth and her mother-in-law, 3:16–18). No moment-level register shift and no NARRATIVE_FRAMING override are marked.",
       "scene_level": [
         {
           "scene_id": "S1",
@@ -82,7 +82,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "scene_id": "S1",
       "verse_range": "3:14-15",
       "scene_kind": "INSTRUCTION_SCENE",
-      "scene_communicative_purpose": "Closes the night under its rule — unseen, unnamed — and sends its meaning home as a weighed gift.",
+      "scene_communicative_purpose": "Ruth lies at the place of his feet until the morning and rises before one person could recognize another. Boaz says: let it not be known that the woman came to the threshing floor. He says: hold out the cloak that is on you; she holds it, and he measures six measures of barley and lays it on her, and he goes into the town.",
       "beings_in_scene": {
         "entries": [
           {
@@ -94,13 +94,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           {
             "being_id": "B13",
             "role_in_scene": "REDEEMER_KIN",
-            "presence": "PRESENT",
-            "referential_form": "HA_ISH_THE_MAN"
-          },
-          {
-            "being_id": "B3",
-            "role_in_scene": "MOTHER_IN_LAW",
-            "presence": "REFERENCED"
+            "presence": "PRESENT"
           }
         ]
       },
@@ -134,13 +128,13 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "No farewell is recorded, and no word about what the gift means is spoken at the floor — the do-not-go-empty reason surfaces only later, in Ruth's report. The measure-unit of the six measures is never named; the text leaves \"six of barley\" standing open. And no one is named: he is \"he,\" she is \"the woman.\""
+      "significant_absence": "The narrator tells no farewell. The narrator does not tell Boaz saying \"do not go empty to your mother-in-law\" at the threshing floor; those words are heard only in Ruth's report (3:17). The text says \"six of barley\" and does not say six of what measure."
     },
     {
       "scene_id": "S2",
       "verse_range": "3:16-18",
       "scene_kind": "REPORT_SCENE",
-      "scene_communicative_purpose": "Brings the night's meaning home — the question, the full report, the gift with its aimed word — and sets the story down to wait on the man and the day.",
+      "scene_communicative_purpose": "Ruth comes to her mother-in-law, who asks: who are you, my daughter? Ruth tells her all that the man did for her, and says: these six measures of barley he gave me, for he said to me, do not go empty to your mother-in-law. Naomi tells her to sit still until she knows how the matter falls, for the man will not rest unless he has finished the matter today.",
       "beings_in_scene": {
         "entries": [
           {
@@ -164,11 +158,8 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         ]
       },
       "places_in_scene": {
-        "entries": [
-          {
-            "place_id": "PL_NAOMIS_DWELLING"
-          }
-        ]
+        "_note": "the text names no place in this scene (per meaning map)",
+        "entries": null
       },
       "objects_in_scene": {
         "entries": [
@@ -177,9 +168,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           },
           {
             "object_id": "CB_0044"
-          },
-          {
-            "object_id": "CB_0024"
           },
           {
             "object_id": "CB_0043"
@@ -196,7 +184,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "Naomi's question gets no direct answer — no name, no \"I am Ruth\"; the report stands where the answer would be, and the words keep open whether she asks who it is at the door, or what the night has made of her. Boaz's \"do not go empty\" is heard only through Ruth — the narrator never showed him saying it at the floor. And the whole exchange passes without one personal name: the man, the woman, my daughter, your mother-in-law."
+      "significant_absence": "To Naomi's question, Ruth tells her all that the man did for her. The narrator does not tell Boaz saying \"do not go empty\" at the threshing floor; it is heard only in Ruth's report."
     }
   ],
   "level_3_propositions": [
@@ -320,7 +308,6 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "event_specific_slots": {
         "arriver": "B9",
         "arrival_target": "B3",
-        "where": "PL_NAOMIS_DWELLING",
         "target_referential_form": "HER_MOTHER_IN_LAW_CHAMOT"
       },
       "inter_proposition_links": {

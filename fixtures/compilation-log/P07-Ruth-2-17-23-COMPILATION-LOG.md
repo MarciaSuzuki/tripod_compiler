@@ -235,10 +235,10 @@ pilot: "pilot-2"
       "id": "R14",
       "kind": "STRUCTURAL_ABSENCE_OF_GRIEF",
       "applies_to": "No further Ruth-Boaz contact through the harvest weeks (v.23 close)",
-      "note": "The narrator does not say Ruth and Boaz meet again or speak again through all the weeks of harvest; the season passes with no further contact recorded. The quiet must be preserved — the next move waits for Naomi's plan in chapter 3. The reconstructor must not invent intervening encounters.",
+      "note": "The narrator does not say Ruth and Boaz meet again or speak again through all the weeks of harvest; the season passes with no further contact recorded. The quiet must be preserved. The reconstructor must not invent intervening encounters.",
       "required_in_audit": true,
       "do_not_decide": true,
-      "source_in_meaning_map": "Significant Absence in Scene 4 ('Through all the weeks of both harvests, the narrator records no further meeting and no further word between Ruth and Boaz. The season passes in silence; the next move waits for Naomi's plan at 3:1')"
+      "source_in_meaning_map": "Significant Absence in Scene 4 ('Through all the weeks of both harvests, the narrator records no further meeting and no further word between Ruth and Boaz. The season passes in silence')"
     }
   ],
   "cross_pericope_pair_verification": {
@@ -281,9 +281,9 @@ pilot: "pilot-2"
       {
         "fig_id": "FIG_0113",
         "opens_at": "P07 P6 (2:18 leftover after satiety)",
-        "closes_at": "P08 (3:1-5)",
-        "verification_status": "PENDING",
-        "note": "The P08 MEANING_COORDINATES does NOT yet carry FIG_0113 — ruled by Marcia 2026-08-31: resolve at P08's high-risk register (next in this queue). OPTIONAL small abundance-after-famine image."
+        "closes_at": "P07 P6 (single occurrence)",
+        "verification_status": "VERIFIED",
+        "note": "Single occurrence within the pericope: the P07 MC flags FIG_0113 at P6 (2:18). 3:1–5 has no leftover image, and the P08 map and MC do not flag FIG_0113; registry frontmatter (vault note) confirms opens-at and closes-at P07. Marcia's ruling of 2026-08-31 (resolve at P08's high-risk register) is resolved there (SC-0089). OPTIONAL small abundance-after-famine image."
       },
       {
         "fig_id": "FIG_0001",

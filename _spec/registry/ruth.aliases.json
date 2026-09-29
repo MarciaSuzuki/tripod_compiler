@@ -669,12 +669,14 @@
       "appears_in": [
         "P10"
       ],
-      "english": "Six Barley",
+      "english": "Six Measures of Barley",
       "gender": null,
       "hebrew": "שֵׁשׁ שְׂעֹרִים",
       "hebrew_cons": "שששערים",
       "kind": "THING",
-      "referential_forms": []
+      "referential_forms": [
+        "Six Barley"
+      ]
     },
     "O17": {
       "appears_in": [
@@ -704,12 +706,14 @@
         "P09",
         "P10"
       ],
-      "english": "Word",
+      "english": "The Matter",
       "gender": null,
       "hebrew": "דָּבָר",
       "hebrew_cons": "דבר",
       "kind": "THING",
-      "referential_forms": []
+      "referential_forms": [
+        "Word"
+      ]
     },
     "O2": {
       "appears_in": [
@@ -914,12 +918,14 @@
         "P04",
         "P11"
       ],
-      "english": "The City",
+      "english": "The Town",
       "gender": null,
       "hebrew": "הָעִיר",
       "hebrew_cons": "העיר",
       "kind": "PLACE",
-      "referential_forms": []
+      "referential_forms": [
+        "The City"
+      ]
     },
     "PL5": {
       "appears_in": [

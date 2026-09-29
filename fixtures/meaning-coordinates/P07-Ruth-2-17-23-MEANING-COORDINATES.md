@@ -349,7 +349,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
           }
         ]
       },
-      "significant_absence": "Through all the weeks of both harvests, the narrator records no further meeting and no further word between Ruth and Boaz. The season passes in silence; the next move waits for Naomi's plan at 3:1."
+      "significant_absence": "Through all the weeks of both harvests, the narrator records no further meeting and no further word between Ruth and Boaz. The season passes in silence."
     }
   ],
   "level_3_propositions": [
@@ -475,7 +475,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
       "inter_proposition_links": {
         "forward_link_to": "P7"
       },
-      "cross_ref": "FIG_0104 cross-pericope pair closes here at 2:18 (opened at P06 P15, 2:14 — the third action, had leftover, lands as the leftover food Ruth gives Naomi); FIG_0113 opens here, pairs forward to P08",
+      "cross_ref": "FIG_0104 cross-pericope pair closes here at 2:18 (opened at P06 P15, 2:14 — the third action, had leftover, lands as the leftover food Ruth gives Naomi); FIG_0113 single occurrence",
       "cb_flags": [],
       "figure_flags": [
         "FIG_0104",

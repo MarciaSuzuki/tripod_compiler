@@ -262,9 +262,9 @@ pilot: "pilot-2"
       "id": "R14",
       "kind": "DISCOURSE_THREAD_OPENED",
       "applies_to": "T2 line-and-redemption thread: the redeemer word enters Ruth's mouth at 3:9 (P10) and the nearer redeemer is disclosed at 3:12 (P16, P17, P19); T4 hesed thread, third station at 3:10 (P12)",
-      "note": "Two threads turn here. T2 (line and redemption; P05 R8, P07 R12): the word redeemer (גֹאֵל), withheld through the plan — P08 called Boaz only 'our kinsman' — is spoken at last by Ruth, in the dark, as the reason for her request ('you are a redeemer'). Boaz owns the role ('truly I am a redeemer'), discloses a redeemer nearer than he, who comes first because he is nearer, and the redeem-word runs through the morning's promise, redeem upon redeem. It should stay the redeemer word, not fall back to 'kinsman' or 'relative'. The passage's held breath is the gap between 'you are a redeemer' and 'there is a redeemer nearer than I'. In the canon record the nearer redeemer's claim continues to P11 (4:1–8; P07 R5, P09 R7); that link stays here only and is not part of P09's telling. T4 (hesed): the thread's third station (1:8, 2:20, 3:10), where Boaz compares her last hesed with the first.",
+      "note": "Two threads turn here. T2 (line and redemption; P05 R8, P07 R12): the word redeemer (גֹאֵל), not said in Naomi's plan — at 3:2 she called Boaz 'our kinsman' — is said now by Ruth, in the dark, as the reason for her request ('you are a redeemer'). Boaz owns the role ('truly I am a redeemer'), discloses a redeemer nearer than he, who comes first because he is nearer, and the redeem-word runs through the morning's promise, redeem upon redeem. It should stay the redeemer word, not fall back to 'kinsman' or 'relative'. The passage's held breath is the gap between 'you are a redeemer' and 'there is a redeemer nearer than I'. In the canon record the nearer redeemer's claim continues to P11 (4:1–8; P07 R5, P09 R7); that link stays here only and is not part of P09's telling. T4 (hesed): the thread's third station (1:8, 2:20, 3:10), where Boaz compares her last hesed with the first.",
       "required_in_audit": true,
-      "source_in_meaning_map": "Section 2.2 ('The word redeemer, withheld through the plan (P08 called him only \"our kinsman\"), is spoken at last — by Ruth, in the dark, as the reason for her request'); Section 2.3 ('The held breath of the passage is the gap between \"you are a redeemer\" and \"there is a redeemer nearer than I.\"'); Section 2.4 ('It puts the word redeemer in Ruth's mouth for the first time, and Boaz at once adds that there is a redeemer nearer than he'); Section 3C Scene 2 (CB_0001 'the word the plan withheld, spoken at last — by Ruth, as the reason for her request'); Section 3C Scene 3 (CB_0001 'the redeem-word then runs through the morning protocol, redeem upon redeem'); Section 5A Concept Flags (CB_0001 'the word enters Ruth's mouth at 3:9; the nearer redeemer is disclosed at 3:12'; CB_0011 'the thread's third station: 1:8, 2:20, 3:10'); carried forward from P05 R8; the P11 link per P07 R5 and the P11 map"
+      "source_in_meaning_map": "Section 2.2 ('The word redeemer, not said in Naomi's plan (at 3:2 she called him \"our kinsman\"), is said now — by Ruth, in the dark, as the reason for her request'); Section 2.3 ('The held breath of the passage is the gap between \"you are a redeemer\" and \"there is a redeemer nearer than I.\"'); Section 2.4 ('It puts the word redeemer in Ruth's mouth for the first time, and Boaz at once adds that there is a redeemer nearer than he'); Section 3C Scene 2 (CB_0001 'said by Ruth, as the reason for her request'); Section 3C Scene 3 (CB_0001 'the redeem-word then runs through the morning protocol, redeem upon redeem'); Section 5A Concept Flags (CB_0001 'the word enters Ruth's mouth at 3:9; the nearer redeemer is disclosed at 3:12'; CB_0011 'the thread's third station: 1:8, 2:20, 3:10'); carried forward from P05 R8; the P11 link per P07 R5 and the P11 map"
     },
     {
       "id": "R15",
@@ -288,11 +288,11 @@ pilot: "pilot-2"
     {
       "id": "R17",
       "kind": "STRUCTURAL_FRAMING_DEVICE",
-      "applies_to": "Scene 1 (3:6-7, P1-P4) told by the narrator without a word spoken; Ruth's intent beyond the plan and the risk left unsaid",
-      "note": "Scene 1 is the narrator's plain telling: Ruth goes down and does all that her mother-in-law commanded; Boaz eats, drinks, and lies down, and does not yet know she is there; she comes softly, uncovers the place of his feet, and lies down. No word is spoken in the whole scene; the night holds its breath. The narrator does not say what Ruth intends beyond the plan and does not name the risk. The reconstructor must add no speech and no inner thoughts to Scene 1, must not state what Ruth intends beyond carrying out the plan, and must not name or describe the risk.",
+      "applies_to": "Scene 1 (3:6-7, P1-P4) told by the narrator without a word spoken; Ruth's intent beyond the plan left unsaid",
+      "note": "Scene 1 is the narrator's plain telling: Ruth goes down and does all that her mother-in-law commanded; Boaz eats, drinks, and lies down, and does not yet know she is there; she comes softly, uncovers the place of his feet, and lies down. No word is spoken in the whole scene. The narrator does not say what Ruth intends beyond the plan. The reconstructor must add no speech and no inner thoughts to Scene 1, must not state what Ruth intends beyond carrying out the plan, and must bring in no danger the text does not give.",
       "required_in_audit": true,
       "do_not_decide": true,
-      "source_in_meaning_map": "Significant Absence in Scene 1 ('The narrator does not say what Ruth intends beyond the plan, and does not name the risk. No word is spoken in the whole scene; the night holds its breath'); Section 1 Metadata ('Scene 1 is the narrator's plain telling'); Section 3A Scene 1 (B13 'he does not yet know she is there'); Section 3F Scene 1 ('the man lying down at the end of the grain heap, the woman at his feet, and nothing yet said')"
+      "source_in_meaning_map": "Significant Absence in Scene 1 ('The narrator does not say what Ruth intends beyond the plan. No word is spoken in the whole scene'); Section 1 Metadata ('Scene 1 is the narrator's plain telling'); Section 3A Scene 1 (B13 'he does not yet know she is there'); Section 3F Scene 1 ('the man lying down at the end of the grain heap, the woman at his feet, and nothing yet said')"
     },
     {
       "id": "R18",
@@ -339,14 +339,14 @@ pilot: "pilot-2"
         "opens_at": "P08 P9 (3:5 Ruth to Naomi, 'all that you say I will do')",
         "closes_at": "P09 P14 (3:11 Boaz to Ruth, 'all that you say I will do for you'; FIG_0136)",
         "verification_status": "VERIFIED",
-        "note": "Pair closed at this register (R5), on the two maps and MEANING_COORDINATES: the P08 MC flags FIG_0123 at P9, the P09 MC flags FIG_0123 and FIG_0136 at P14. P08's own register is still the skeleton, so the opening half has no P08 entry yet."
+        "note": "Pair closed at this register (R5), on the two maps and MEANING_COORDINATES: the P08 MC flags FIG_0123 at P9, the P09 MC flags FIG_0123 and FIG_0136 at P14. P08's register records the opening half (P08 R8)."
       },
       {
         "fig_id": "FIG_0122",
         "opens_at": "P08 P8 (3:4 'he will tell you what you shall do')",
         "closes_at": "P09 P18-P19 (3:13 the next step sent to the morning; FIG_0140)",
         "verification_status": "VERIFIED",
-        "note": "Pair closed at this register (R9), on the two maps and MEANING_COORDINATES: the P08 MC flags FIG_0122 at P8, the P09 MC flags FIG_0140 at P18 and P19. The FIG_0122 registry note names its pair 'FIG_0124', which does not exist; the P08 and P09 maps and the FIG_0140 note name FIG_0140, and the maps govern. P08's own register is still the skeleton."
+        "note": "Pair closed at this register (R9), on the two maps and MEANING_COORDINATES: the P08 MC flags FIG_0122 at P8, the P09 MC flags FIG_0140 at P18 and P19. The FIG_0122 registry note names its pair 'FIG_0124', which does not exist; the P08 and P09 maps and the FIG_0140 note name FIG_0140, and the maps govern. P08's register records the opening half (P08 R7)."
       },
       {
         "fig_id": "FIG_0112",
