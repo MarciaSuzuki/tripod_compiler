@@ -40,12 +40,22 @@ known list — any NEW divergence fails, and resolving Esther (either completing
 or re-flagging its maps) is **future-card work**; burning entries off the frozen list requires
 editing the test's list in a governed change.
 
-## Queue state (the SC-0085 program; updated SC-0086, 2026-09-26 and 2026-09-27; SC-0087, 2026-09-27; SC-0088, 2026-09-28)
+## Queue state (the SC-0085 program; updated SC-0086, 2026-09-26 and 2026-09-27; SC-0087, 2026-09-27; SC-0088, 2026-09-28; SC-0089, 2026-09-29)
 
 - P01–P06: real audits, all three signals agree (complete) — open to Sala.
 - **P07: completed under the SC-0085 P07 slice** (14 entries ruled by Marcia 2026-08-31).
-- P08: skeleton, all three signals agree (incomplete) — closed; next in the queue (P09 was ruled
-  ahead of it, sheet decision C). Carried to the P08 slice from the SC-0086 review (seen, not changed;
+- **P08: completed under SC-0089** (13 entries, 9 do_not_decide — R2–R8, R10, R11 — Marcia's map
+  standard of 2026-09-28 and her SC-0089 rulings of 2026-09-29, «(b), (b), (a), sim — pode seguir com as
+  recomendações», together with the P08 map + Meaning Coordinates corrections). The three signals flipped
+  together in the same change; the vault half (map `sta-status` + `stas/` copies) is prepared, not yet
+  applied — until it lands, the vault still reads P08 closed (skeleton + `pending`), the safe direction.
+  Ruling D1 (b): a team that keeps "a resting place" and adds marriage or a husband, as 1:9 said, is
+  accepted without comment (§2.2 carries the 1:9 words); an added "redeemer" at 3:2 is offered back gently
+  with "our kinsman" (R2, R10). B2 and PL_NAOMIS_DWELLING left the MC; 3:5's "she said" replaces the רוּת
+  heading. The two items carried to this slice are resolved: §2.1 has no handoff, and §3C CB_0042 reads "the
+  place of his feet (margelot); the text says only that Naomi tells Ruth to uncover it". The history, as
+  it stood before SC-0089: P08 was a skeleton, all three signals agreeing (incomplete) — closed; next in the
+  queue (P09 was ruled ahead of it, sheet decision C). Carried to the P08 slice from the SC-0086 review (seen, not changed;
   each only on Marcia's word): §2.1 "…but with a handoff: he will tell you what to do", and §3C "the
   place where a sleeper's feet lie; to uncover it is to fold the covering back" (the "he sleeps" reading
   ruling 1 of P09 removed). **Resolved under SC-0087 (her ruling R-9 C of 2026-09-27):** the FIG_0122
@@ -69,7 +79,14 @@ editing the test's list in a governed change.
   line naming Rute engages B32 in P09 S3). Fix in the app: whole-phrase entries used alone
   ("the nearer redeemer" → "resgatador mais próximo" etc.; B32 → rapazes / moços / jovens),
   role nouns out of the proper-noun loop, and coverage tests for both.
-- P10: skeleton, all three signals agree (incomplete) — closed; queued (no P10 register was built under
+- **P10: completed under SC-0089** (13 entries, 7 do_not_decide — R1, R2, R4, R5, R6, R9, R10 — the same
+  standard and rulings, together with the P10 map + Meaning Coordinates corrections). The three signals
+  flipped together in the same change; the vault half is prepared, not yet applied (the vault still reads
+  P10 closed until it lands). Ruling D2 (b): the voice tells "he goes into the town" (3:15) and a team's
+  «ela foi para a cidade» is offered back gently, as at 4:5 (R10); D3 (vi): Scene 2 is "To her
+  mother-in-law: …" (app label «Com a sogra: …»); «como foi, minha filha?» is a nuance, named once (R5).
+  B3 left the MC Scene 1, PL_NAOMIS_DWELLING Scene 2, CB_0024 the Scene 2 objects. As it stood before
+  SC-0089: a skeleton, all three signals agreeing (incomplete) — closed (no P10 register was built under
   SC-0087 or SC-0088). **Resolved under SC-0087 (R-9 C):** Scene 1 is now CONSULTATIVE (as P09 Scenes 2–3; map §1 +
   MC scene_level + the MC `_note`, which now describes both scenes), Scene 2 stays INTIMATE; §3C CB_0042
   "the place of his feet"; §2.4 "keep the secret Boaz asked for (3:14)"; every pointer ahead to the
@@ -113,9 +130,9 @@ editing the test's list in a governed change.
   P14 R4). Ruling D2: in 4:9–12 the map says only "Neither Ruth nor Naomi speaks." and the voice never says
   whether they are at the gate (P12 R3, P13 R10). Ruling D3: "do worthily" keeps the worth-word (CB_0032,
   P12 R13, do_not_decide). P13 Scene 3 has no INTIMATE override (standard item 10). Forward links from P12 and P13 live only in their registers and pair tables.
-- **After SC-0088 the complete-agreeing Ruth set is P01–P07, P09, P11–P14 — 12 of the 14 pericopes.** P08
-  and P10 are still skeletons (closed, agreeing) and are the queue's last two Ruth slices; the guard pins
-  both sets exactly.
+- **After SC-0089 the complete-agreeing Ruth set is all 14 pericopes, P01–P14; no Ruth register is a
+  skeleton.** The guard pins both sets exactly (complete-agreeing = the 14; closed Ruth = none). (After
+  SC-0088 it was P01–P07, P09, P11–P14 — 12 of 14 — with P08 and P10 closed.)
 - Jonah J01–J05: skeletons, signals agree (incomplete) — closed; outside the current card.
 - Esther E01–E18: the frozen known-divergence set above; outside the current card.
 - T13 (Psalm 13): no COMPILATION-LOG yet (its Meaning Coordinates is born at compiler Phase 4)
