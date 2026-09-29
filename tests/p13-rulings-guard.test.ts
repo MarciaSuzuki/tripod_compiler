@@ -44,7 +44,7 @@ const walk = (o: unknown): void => {
 walk(mc);
 const mcProseText = mcProse.join("\n");
 
-type Entry = { id: string; kind: string; note: string; do_not_decide?: boolean; required_in_audit?: boolean; source_in_meaning_map?: string };
+type Entry = { id: string; kind: string; applies_to: string; note: string; do_not_decide?: boolean; required_in_audit?: boolean; source_in_meaning_map?: string };
 const audit = cl.high_risk_register_audit as Entry[];
 const note = (id: string) => audit.find((e) => e.id === id)!.note;
 const dndNotes = audit.filter((e) => e.do_not_decide).map((e) => e.note).join("\n");
@@ -77,6 +77,9 @@ const BANNED_IN_RULE_NOTES = [
   "kinsman", "queue", "whisper", "not at the gate in 4:1–12", "one who serves",
 ];
 
+// R2's never-list names the word it forbids ('kinsman'); that one sentence is left out of the ban check.
+const R2_NEVER = "For the voice only, never to be said: do not call the redeemer 'kinsman' or 'relative', add another reason for the women's words, or explain what 'seven sons' stands for.";
+
 const lowHits = (text: string, list: string[]) => list.filter((w) => text.toLowerCase().includes(w));
 
 describe("SC-0088 — P13 rulings guard (what the app reads)", () => {
@@ -92,12 +95,14 @@ describe("SC-0088 — P13 rulings guard (what the app reads)", () => {
   });
 
   it("the P13 do_not_decide notes carry none of the removed wording", () => {
-    expect(lowHits(dndNotes, BANNED_IN_RULE_NOTES)).toEqual([]);
+    expect(dndNotes).toContain(R2_NEVER);
+    expect(lowHits(dndNotes.replace(R2_NEVER, ""), BANNED_IN_RULE_NOTES)).toEqual([]);
   });
 
-  it("the register has R1–R12, do_not_decide exactly on R1, R3, R5, R7, R8, R9, R10, every entry traced", () => {
-    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 12 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R3", "R5", "R7", "R8", "R9", "R10"]);
+  it("the register has R1–R13, do_not_decide exactly on R1, R2, R3, R5, R7, R8, R9, R10, R13, every entry traced", () => {
+    // Marcia 2026-09-28, after the session: «Pode passar as regras do tipo nunca para o validador» (P13-D6).
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 13 }, (_, i) => `R${i + 1}`));
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R5", "R7", "R8", "R9", "R10", "R13"]);
     expect(audit.filter((e) => e.required_in_audit !== true).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => !(e.source_in_meaning_map ?? "").trim()).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.kind === "SKELETON_PENDING_HIGH_RISK_REVIEW")).toEqual([]);
@@ -152,7 +157,12 @@ describe("SC-0088 — P13 rulings guard (what the app reads)", () => {
   it("R3 settled on the approved reading; R5, R7, R9 keep their never-lists for the voice only", () => {
     expect(note("R3")).toContain("the one Ruth has borne is the redeemer, and 'his name' is his.");
     expect(note("R3")).toContain("For the voice only, never to be said: do not teach other readings");
-    for (const id of ["R1", "R5", "R7", "R9", "R10"]) expect(note(id), id).toContain("For the voice only, never to be said:");
+    for (const id of ["R1", "R2", "R5", "R7", "R9", "R10", "R13"]) expect(note(id), id).toContain("For the voice only, never to be said:");
+    // SC-0088 post-session (P13-D6): every never-list is do_not_decide; R11's moved, word for word, into R13.
+    expect(audit.filter((e) => /never to be said/.test(e.note) && !e.do_not_decide).map((e) => e.id)).toEqual([]);
+    expect(note("R13")).toBe("For the voice only, never to be said: do not say that the women's blessing answers the blessing at the gate or fulfils it, or that it ends Naomi's grief.");
+    expect(note("R11")).not.toContain("never to be said");
+    expect(note("R2")).toContain(R2_NEVER);
     expect(note("R7")).toContain("The text does not say why the name Obed; if asked, the text does not tell.");
     expect(note("R9")).toContain("A telling that recalls Boaz's words at the gate — he bought Ruth to raise up the name of the dead — is correct; accept it without comment.");
   });
@@ -185,6 +195,19 @@ describe("SC-0088 — P13 rulings guard (what the app reads)", () => {
     for (const fig of ["FIG_0014", "FIG_0016", "FIG_0187", "FIG_0007"]) expect(row(fig).verification_status, fig).toBe("VERIFIED");
     expect(row("FIG_0014").closes_at).toContain("middle station at P12 P8");
     for (const fig of ["FIG_0194", "FIG_0192", "FIG_0189"]) expect(row(fig).verification_status, fig).toBe("PENDING");
+  });
+
+  it("Scene 3 is not INTIMATE (standard item 10): only S2 CEREMONIAL at scene level; the log has no placeholder link", () => {
+    const ro = mc.pericope_classification.register_overrides as { scene_level: { scene_id: string; override_value: string }[] | null; moment_level: unknown };
+    expect(mc.pericope_classification.register).toBe("INFORMAL_CASUAL");
+    expect(ro.scene_level!.map((s) => `${s.scene_id}:${s.override_value}`)).toEqual(["S2:CEREMONIAL"]);
+    expect(ro.moment_level).toBeNull();
+    expect(rawMap).toContain("Scene 3, Naomi taking the child and the neighbor-women naming him (4:16–17), stays in the pericope-level INFORMAL_CASUAL.");
+    expect(rawMap).not.toContain("settles to INTIMATE");
+    const r12 = audit.find((e) => e.id === "R12")!;
+    expect(r12.note).not.toContain("INTIMATE");
+    expect(r12.applies_to).not.toContain("INTIMATE");
+    expect(read(CL)).not.toMatch(/\[\[\s*\]\]|\[\[CODE\]\]/);
   });
 
   it("titles and §2.1 (P14's story-so-far) carry no reading and no pointer ahead", () => {

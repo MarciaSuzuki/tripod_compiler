@@ -99,15 +99,18 @@ editing the test's list in a governed change.
   flag (ruling D2). The P11 pair rows themselves are not edited (approved passage; OWED 9 of SC-0088).
 - **P12, P13, P14: completed under SC-0088** (Marcia's map standard of 2026-09-28 and her four SC-0088
   rulings of 2026-09-28, «(b), (b), (a), sim — pode seguir com as recomendações», together with the P12–P14
-  map + Meaning Coordinates corrections). P12: 12 entries, 4 do_not_decide (R2, R3, R5, R6); P13: 12
-  entries, 7 do_not_decide (R1, R3, R5, R7, R8, R9, R10); P14: 11 entries, 5 do_not_decide (R1–R5). The
+  map + Meaning Coordinates corrections). P12: 13 entries, 6 do_not_decide (R1, R2, R3, R5, R6, R13); P13:
+  13 entries, 9 do_not_decide (R1, R2, R3, R5, R7, R8, R9, R10, R13); P14: 11 entries, 6 do_not_decide
+  (R1–R6) — every never-rule do_not_decide since her word after the team's session of 2026-09-28
+  («Pode passar as regras do tipo nunca para o validador»; P12 R13 and P13 R13 carry the never-rule
+  sentences moved out of the mixed P12 R9 and P13 R11). The
   three signals flipped together for each in the same change; the vault half (map `sta-status` + `stas/`
   copies + the B24 / PL1 / B27 `bcd/` notes) is prepared, not yet applied — until it lands, the vault still
   reads P12–P14 closed (skeleton + `pending`), the safe direction. Ruling D1: the voice never says "king";
   a team's «o rei Davi» is named once («a história dá só o nome dele, Davi») without a send-back (P13 R8,
   P14 R4). Ruling D2: in 4:9–12 the map says only "Neither Ruth nor Naomi speaks." and the voice never says
   whether they are at the gate (P12 R3, P13 R10). Ruling D3: "do worthily" keeps the worth-word (CB_0032,
-  P12 R9). Forward links from P12 and P13 live only in their registers and pair tables.
+  P12 R13, do_not_decide). P13 Scene 3 has no INTIMATE override (standard item 10). Forward links from P12 and P13 live only in their registers and pair tables.
 - **After SC-0088 the complete-agreeing Ruth set is P01–P07, P09, P11–P14 — 12 of the 14 pericopes.** P08
   and P10 are still skeletons (closed, agreeing) and are the queue's last two Ruth slices; the guard pins
   both sets exactly.

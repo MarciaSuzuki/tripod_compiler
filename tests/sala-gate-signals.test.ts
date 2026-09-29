@@ -106,9 +106,10 @@ describe("Sala gate — three-signal agreement (SC-0085)", () => {
   });
 
   for (const [stem, sc, n, dnd] of [
-    ["P12-Ruth-4-9-12", "SC-0088", 12, ["R2", "R3", "R5", "R6"]],
-    ["P13-Ruth-4-13-17", "SC-0088", 12, ["R1", "R3", "R5", "R7", "R8", "R9", "R10"]],
-    ["P14-Ruth-4-18-22", "SC-0088", 11, ["R1", "R2", "R3", "R4", "R5"]],
+    // SC-0088, Marcia 2026-09-28 after the session: the never-rules go to the Validator (P12-D6, P13-D6, P14-D6).
+    ["P12-Ruth-4-9-12", "SC-0088", 13, ["R1", "R2", "R3", "R5", "R6", "R13"]],
+    ["P13-Ruth-4-13-17", "SC-0088", 13, ["R1", "R2", "R3", "R5", "R7", "R8", "R9", "R10", "R13"]],
+    ["P14-Ruth-4-18-22", "SC-0088", 11, ["R1", "R2", "R3", "R4", "R5", "R6"]],
   ] as [string, string, number, string[]][]) {
     it(`${sc}: the ${stem.slice(0, 3)} register carries ${n} entries, ${dnd.length} do_not_decide`, () => {
       const text = readFileSync(join(CL_DIR, `${stem}-COMPILATION-LOG.md`), "utf8");

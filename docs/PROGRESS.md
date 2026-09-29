@@ -60,12 +60,15 @@
   speaks." and the voice never says whether they are at the gate (P11's sentence stays for 4:1–8);
   D3 — "do worthily" (4:11) keeps the worth-word chayil of 2:1 and 3:11 (CB_0032 flagged); D4 — the
   P01/P02/P06 notes now say the Mahlon–Ruth pairing is said at 4:10 and the text never says whose wife
-  Orpah was, and the stale "P13" labels for 4:10 read P12. Registers: P12 12 entries (4
-  do_not_decide), P13 12 (7), P14 11 (5); FIG_0014 closes at P13. Registry labels: B24 "The Women",
+  Orpah was, and the stale "P13" labels for 4:10 read P12. Registers: P12 13 entries (6
+  do_not_decide), P13 13 (9), P14 11 (6) — after the team's session (2026-09-28) her word «Pode passar
+  as regras do tipo nunca para o validador» made every never-rule do_not_decide (P12 R1, R13; P13 R2,
+  R13; P14 R6); P13 Scene 3 lost its INTIMATE override (item 10); FIG_0014 closes at P13. Registry labels: B24 "The Women",
   B27 "Perez and His Descendants", PL1 "Bethlehem" (`ruth.aliases.json` re-pinned). The three Sala
   signals flipped together for P12–P14: 12 of the 14 Ruth pericopes are complete-agreeing (P08 and P10
-  are still skeletons). A separate, droppable commit changes P11's go'el lines "kinsman" →
-  "redeemer" and needs her explicit yes. Owed: her merge word, her yes/no on the builder extensions
+  are still skeletons). A separate commit changes P11's go'el lines "kinsman" → "redeemer" — kept,
+  her word of 2026-09-28; the two Portuguese P13 scene titles written in the app are approved. Owed:
+  her merge word (and her yes/no on the P13 Scene 3 register, which supersedes SC-0060), her yes/no on the builder extensions
   and the section-C calls listed in the SC-0088 entry, the vault half (prepared, not applied), and the
   app's pin bump with its coverage-label follow-ups. Next in the queue: P08, then P10.
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`

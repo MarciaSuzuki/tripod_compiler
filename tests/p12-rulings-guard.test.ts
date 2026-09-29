@@ -93,9 +93,10 @@ describe("SC-0088 — P12 rulings guard (what the app reads)", () => {
     expect(dndNotes).not.toMatch(/\bking\b/i);
   });
 
-  it("the register has R1–R12, do_not_decide exactly on R2, R3, R5, R6, every entry traced to the map", () => {
-    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 12 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R2", "R3", "R5", "R6"]);
+  it("the register has R1–R13, do_not_decide exactly on R1, R2, R3, R5, R6, R13, every entry traced to the map", () => {
+    // Marcia 2026-09-28, after the session: «Pode passar as regras do tipo nunca para o validador» (P12-D6).
+    expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 13 }, (_, i) => `R${i + 1}`));
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R5", "R6", "R13"]);
     expect(audit.filter((e) => e.required_in_audit !== true).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => !(e.source_in_meaning_map ?? "").trim()).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.kind === "SKELETON_PENDING_HIGH_RISK_REVIEW")).toEqual([]);
@@ -139,14 +140,21 @@ describe("SC-0088 — P12 rulings guard (what the app reads)", () => {
     expect(read("fixtures/meaning-map/P11-Ruth-4-1-8.md")).toContain("Ruth and Naomi are not at the gate; neither of them speaks.");
   });
 
-  it("D3 (a): 'do worthily' keeps the worth-word — CB_0032 flagged at Proposition 9, the team rule in R9", () => {
+  it("D3 (a): 'do worthily' keeps the worth-word — CB_0032 flagged at Proposition 9, the team rule in R13 (do_not_decide)", () => {
     const props = mc.level_3_propositions as { prop_id: string; cb_flags: string[]; figure_flags: string[] }[];
     expect(props.filter((p) => p.cb_flags.includes("CB_0032")).map((p) => p.prop_id)).toEqual(["P9"]);
     expect(rawMap).toContain("- [[CB_0032-Chayil]] — active at Proposition 9 (the worth-word chayil, as in \"a man of worth\" (2:1) and \"a woman of worth\" (3:11))");
-    const r9 = note("R9");
-    expect(r9).toContain("the voice keeps the worth-word the same as at 2:1 and 3:11");
-    expect(r9).toContain("In a team telling, worth, standing, strength, prosperity or means are correct; accept them without comment.");
-    expect(r9).toContain("'Have (many) children' is offered back gently with the map's reading, as at 4:5 (P11 R13). The voice does not teach the variants.");
+    // SC-0088 post-session (P12-D6): D3's sentences moved, word for word, out of the mixed R9 into R13.
+    const r13 = audit.find((e) => e.id === "R13")!;
+    expect(r13.do_not_decide).toBe(true);
+    expect(r13.note).toMatch(/^CB_0032 \(Marcia's SC-0088 ruling D3\): 'do worthily' carries the worth-word chayil/);
+    expect(r13.note).toContain("the voice keeps the worth-word the same as at 2:1 and 3:11");
+    expect(r13.note).toContain("In a team telling, worth, standing, strength, prosperity or means are correct; accept them without comment.");
+    expect(r13.note).toContain("'Have (many) children' is offered back gently with the map's reading, as at 4:5 (P11 R13). The voice does not teach the variants.");
+    const r9 = audit.find((e) => e.id === "R9")!;
+    expect(r9.do_not_decide).toBeUndefined();
+    expect(r9.note).not.toContain("CB_0032");
+    expect(r9.note).toMatch(/^PREFERRED \(FIG_0017\): Ephrathah and Bethlehem named side by side — do worthily in Ephrathah, call out a name in Bethlehem\. REQUIRED \(FIG_0004, CB_0010\)/);
   });
 
   it("FIG_0003 closes here (Proposition 5); FIG_0014 has its middle station here and closes at P13", () => {
@@ -203,6 +211,15 @@ describe("SC-0088 — P12 rulings guard (what the app reads)", () => {
     expect(ent.PL1!.english).toBe("Bethlehem");
     expect(ent.PL1!.referential_forms).toContain("Bethlehem of Judah"); // the text's own form at 1:1–2
     expect(ent.B26!.english).toBe("Jesse and David"); // both names are in 4:17 and 4:22
+  });
+
+  it("R1 (do_not_decide since 2026-09-28): 'the wife of Mahlon' kept, Orpah not brought in; no never-list outside do_not_decide", () => {
+    const r1 = audit.find((e) => e.id === "R1")!;
+    expect(r1.do_not_decide).toBe(true);
+    expect(r1.note).toContain("The text names only Ruth as Mahlon's wife and never says whose wife Orpah was; Orpah is not in this passage, and the voice does not bring her in.");
+    expect(audit.filter((e) => /never to be said/.test(e.note) && !e.do_not_decide).map((e) => e.id)).toEqual([]);
+    // Obsidian: the Compilation Log carries no empty or placeholder link.
+    expect(read(CL)).not.toMatch(/\[\[\s*\]\]|\[\[CODE\]\]/);
   });
 
   it("D4 (sim): 4:10 says only Ruth's pairing; the text never says whose wife Orpah was; 4:10 is P12", () => {

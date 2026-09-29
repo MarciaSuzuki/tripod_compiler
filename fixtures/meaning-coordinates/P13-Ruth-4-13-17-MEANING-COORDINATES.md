@@ -28,15 +28,11 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
     "genre": "HISTORICAL_NARRATIVE",
     "register": "INFORMAL_CASUAL",
     "register_overrides": {
-      "_note": "Pericope stays INFORMAL_CASUAL (narrator's telling). MM Section 1 marks two scene-level shifts: S2 (4:14-15) the women's benediction lifts to CEREMONIAL; S3 (4:16-17) the lap and the naming settle to INTIMATE. No moment-level or framing overrides.",
+      "_note": "Pericope stays INFORMAL_CASUAL (narrator's telling). MM Section 1 marks one scene-level shift: S2 (4:14-15) the women's benediction lifts to CEREMONIAL. S3 (4:16-17), Naomi taking the child and the neighbor-women naming him, stays in the pericope-level INFORMAL_CASUAL (no override). No moment-level or framing overrides.",
       "scene_level": [
         {
           "scene_id": "S2",
           "override_value": "CEREMONIAL"
-        },
-        {
-          "scene_id": "S3",
-          "override_value": "INTIMATE"
         }
       ],
       "moment_level": null

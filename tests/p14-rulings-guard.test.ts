@@ -61,6 +61,9 @@ const BANNED_IN_MAP_AND_MC = [
 // and R1 lists 'begot' among the accepted words for 'fathered', so their list is narrower.
 const BANNED_IN_RULE_NOTES = ["redeemed", "hinge", "destination", "completes", "fulfil", "prologue", "inclusio", "royal", "patriarch"];
 
+// R6's never-list names the word it forbids ('fulfilment'); that one sentence is left out of the ban check.
+const R6_NEVER = "For the voice only, never to be said: do not present the list as the answer to the blessing or as its fulfilment.";
+
 const lowHits = (text: string, list: string[]) => list.filter((w) => text.toLowerCase().includes(w));
 
 // The one D1 rule, word for word the same in P13 R8 and P14 R4.
@@ -80,12 +83,15 @@ describe("SC-0088 — P14 rulings guard (what the app reads)", () => {
   });
 
   it("the P14 do_not_decide notes carry none of the removed wording", () => {
-    expect(lowHits(dndNotes, BANNED_IN_RULE_NOTES)).toEqual([]);
+    expect(dndNotes).toContain(R6_NEVER);
+    expect(lowHits(dndNotes.replace(R6_NEVER, ""), BANNED_IN_RULE_NOTES)).toEqual([]);
   });
 
-  it("the register has R1–R11, do_not_decide exactly on R1–R5, every entry traced to the map", () => {
+  it("the register has R1–R11, do_not_decide exactly on R1–R6, every entry traced to the map", () => {
+    // Marcia 2026-09-28, after the session: «Pode passar as regras do tipo nunca para o validador» (P14-D6).
     expect(audit.map((e) => e.id)).toEqual(Array.from({ length: 11 }, (_, i) => `R${i + 1}`));
-    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R5"]);
+    expect(audit.filter((e) => e.do_not_decide).map((e) => e.id)).toEqual(["R1", "R2", "R3", "R4", "R5", "R6"]);
+    expect(audit.filter((e) => /never to be said/.test(e.note) && !e.do_not_decide).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.required_in_audit !== true).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => !(e.source_in_meaning_map ?? "").trim()).map((e) => e.id)).toEqual([]);
     expect(audit.filter((e) => e.kind === "SKELETON_PENDING_HIGH_RISK_REVIEW")).toEqual([]);
