@@ -127,7 +127,7 @@ drafter: "claude-opus-4-8 · fm-drafter prompt (see _spec/pins.json) · machine-
         "_note": "no distinct temporal frame for this scene (per meaning map)",
         "entries": null
       },
-      "significant_absence": "The narrator does not say what Ruth intends beyond the plan, and does not name the risk. No word is spoken in the whole scene; the night holds its breath."
+      "significant_absence": "The narrator does not say what Ruth intends beyond the plan. No word is spoken in the whole scene."
     },
     {
       "scene_id": "S2",

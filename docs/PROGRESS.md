@@ -2,14 +2,14 @@
 
 > **Terminology (SC-0080, 2026-07-06):** the machine-facing artifact is **Meaning Coordinates** (formerly FOR_MODEL, renamed under Marcia's 2026-07-05 rulings). Live surfaces carry the new name; historical records keep the old one by design.
 
-## Current floor (refreshed 2026-09-28, SC-0088)
+## Current floor (refreshed 2026-09-29, SC-0089)
 
 - **Canon: the FOUR-BOOK SEED is sealed and publicly live** (SC-0084, 2026-07-15) — Ruth (14) +
   Jonah (5) + Esther (18) pericopes with Meaning Maps, Meaning Coordinates, and valid
   COMPILATION-LOGs, plus the T13 Psalm-13 map (its MC is born at Phase 4). Portal:
   marciasuzuki.github.io/tripod_compiler.
 - **Where the live state actually lives:** the `SPEC_CHANGES.md` **SC-ID allocation ledger** is
-  the authoritative decision log (SC-0001 → SC-0088); the working handoffs live in the project
+  the authoritative decision log (SC-0001 → SC-0089); the working handoffs live in the project
   memory, not here. This file's body below is the **June-2026 checkpoint, kept as history** —
   its "state" claims (PR #10, spec v0.6, 164 tests, P01–P06 scope) are long superseded; its
   mechanism descriptions (how validate/coverage/lint/id-check/compile work) remain accurate.
@@ -73,6 +73,42 @@
   her merge word (and her yes/no on the P13 Scene 3 register, which supersedes SC-0060), her yes/no on the builder extensions
   and the section-C calls listed in the SC-0088 entry, the vault half (prepared, not applied), and the
   app's pin bump with its coverage-label follow-ups. Next in the queue: P08, then P10.
+- **SC-0089 (2026-09-29): P08 and P10 land (Ruth 3:1–5, 3:14–18) — all 14 Ruth pericopes are now
+  complete-agreeing; the SC-0085 program's Ruth queue is done.** Her word to begin («sim, pode começar
+  pela P08 e P10», 2026-09-28), her map standard of 2026-09-28 applied silently, and her three SC-0089
+  rulings («(b), (b), (a), sim — pode seguir com as recomendações», 2026-09-29; every cross-check
+  recommendation approved): D1 (b) — at 3:1–2 a team that keeps "a resting place" and adds marriage or a
+  husband, as 1:9 said, is accepted without comment (§2.2 now carries the 1:9 words "each in the house of
+  her husband"); one that puts marriage in its place is offered back; an added "redeemer" at 3:2 is
+  offered back gently with "our kinsman" (her SC-0053 silence) — P08 R2, R10; D2 (b) — at 3:15 the voice
+  tells "he goes into the town" and a team's «ela foi para a cidade» is offered back gently, as at 4:5
+  (P10 R10); D3 (a) — the small fixes in the approved P04, P07 and P09 files that pointed at P08/P10 (P07
+  FIG_0113 a single occurrence, "The season passes in silence."; P09 "This follows Naomi's plan (3:1–5).",
+  the redeemer word "said now", the S1 absence and her own SC-0086 R17 reworded with her approval —
+  "must bring in no danger the text does not give"; P04 R5 "said again at 3:17"), the P10 Scene 2 title
+  "To her mother-in-law: …" (app label «Com a sogra: …»); P02 waits. Registers: P08 13 entries (9
+  do_not_decide: R2–R8, R10, R11), P10 13 (7: R1, R2, R4, R5, R6, R9, R10) — every never-rule
+  do_not_decide from the start; P10 «como foi, minha filha?» a nuance, named once. Registry labels: PL4
+  "The Town", O19 "The Matter", O16 "Six Measures of Barley" (`ruth.aliases.json` re-pinned; O13 unchanged,
+  owed). Pericope titles seen, not changed. Local commits only (a) `3d25d59` canon, (b) `dcb5c07` docs + guards,
+  (c) `177a24e` review fixes (P10 §1 and §2.2/§2.4), (d) follow-ups (P10 B13 "a redeemer (3:12)", 3:12's own
+  words; `ruth.aliases.json` re-pinned for the vault's `bcd/` appears-in edits, so the vault half is one patch, 0001,
+  rebuilt at (d)), (e) her rulings after the team's session, «(a), (a), sim — pode seguir com as recomendações» (2026-09-29): the P08 Scene 1 absence
+  (map = MC) now reads 'After "lie down" she says only: he will tell you what you shall do. The word redeemer (2:20) is not said here; Naomi calls Boaz "our kinsman".' (live, the voice read 'Naomi says "a resting place".' as
+  "rest left undefined" and once retracted a correct acceptance of an added marriage), the 1:9 words
+  sit at the CB_0014 rest-word line ("at 1:9 Naomi wished each daughter-in-law rest, 'each in the house of her
+  husband'"); a do_not_decide never-rule "never asleep or awake" (dormiu, dormindo, acordou, acordou assustado)
+  as P09 R19 and P10 R14 (live: «acordou assustado» in 3 scripts); P08 R9 (a named Ruth accepted without
+  comment) do_not_decide (item 16). Registers now P08 13 (10 do_not_decide: R2–R11), P09 19 (11), P10 14 (8);
+  board 554 + 1 skipped, every other gate output byte-identical to (d). Owed from (e), each in its own slice:
+  the Guide prompt's silence-to-instruction habit, the golden judge applying item 16, the P10-eps measure
+  markers; the app's «acord-» key; P08-resting-place re-run 3×. Owed: her merge word and her yes/no on
+  the builder, integration, review-step and follow-up extensions
+  and the section-C calls in the SC-0089 entry, the vault half (prepared, not applied; 0001 to rebuild from
+  (e)), the app's pin bump
+  with the (vi) label, the form-table and `town → cidade` follow-ups, and P08/P10 live goldens when the
+  team is not in session. Next, on her word: the registers beyond Ruth (Jonah J01–J05 and Esther E01–E18
+  are outside the current card) and compiler Phase 4 (T13).
 - **Machine note (2026-08-31):** the working clone on the M5 Max is `~/Github/tripod_compiler`
   (Marcia's ruling; the Dropbox copy is a frozen backup — git hangs there under File Provider).
 

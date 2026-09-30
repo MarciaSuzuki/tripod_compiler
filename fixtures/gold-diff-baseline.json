@@ -409,7 +409,7 @@
   },
   {
     "pericope": "P08",
-    "matched": 23,
+    "matched": 21,
     "divergent": 0,
     "agreementPct": 100,
     "judgmentPlaceholders": 27,
@@ -425,7 +425,7 @@
   },
   {
     "pericope": "P10",
-    "matched": 29,
+    "matched": 28,
     "divergent": 0,
     "agreementPct": 100,
     "judgmentPlaceholders": 34,
